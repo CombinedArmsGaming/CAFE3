@@ -29,4 +29,6 @@ clearMagazineCargoGlobal _vehicle;
 clearItemCargoGlobal _vehicle;
 clearBackpackCargoGlobal _vehicle;
 
+[_vehicle] remoteExec ["bub_fnc_addVehicleToZeus", 2];
+
 _vehicle

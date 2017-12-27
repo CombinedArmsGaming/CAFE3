@@ -51,4 +51,7 @@ switch(_side) do {
 
 [_group] call CBA_fnc_clearWaypoints;
 _group setFormation "LINE";
+
+[_group] remoteExec ["bub_fnc_addGroupToZeus", 2];
+
 _group
