@@ -2,8 +2,9 @@ params ["_unit"];
 
 if (!isServer) exitWith {};
 
-_unit setVariable ["ace_w_allow_dam",false,true];
-_unit addEventHandler ["HandleDamage", {false}];
+[_unit, false] remoteExec ["allowDamage", 0, true];
+[_unit, ["ace_w_allow_dam",false,true]] remoteExec ["setVariable", 0, true];
+[_unit, ["HandleDamage", {false}]] remoteExec ["addEventHandler", 0, true];
 _unit addCuratorEditableObjects [(vehicles + allUnits), true];
 _unit removeCuratorEditableObjects [_unit, true];
 

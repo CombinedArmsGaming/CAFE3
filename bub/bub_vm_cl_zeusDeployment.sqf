@@ -18,6 +18,8 @@ _unit addAction ["Add unit-spawner to Zeus mode", {execVM "bub\zeus_ui\bub_fnc_z
 {
 	params ["_unit"];
 	
+	_default_pos = getMarkerPos "zeus_default";
+	
 	zeus_camPosLast = getPos _unit;
 	
 	while {true} do 
@@ -32,7 +34,7 @@ _unit addAction ["Add unit-spawner to Zeus mode", {execVM "bub\zeus_ui\bub_fnc_z
 			}
 			else
 			{
-				zeus_camPosLast = [0,0,0];
+				zeus_camPosLast = _default_pos;
 			};
 			
 			_unit setVehiclePosition [zeus_camPosLast, [], 1, "NONE"];

@@ -31,8 +31,6 @@ f_available_languages = [
             if (_languagesPlayerSpeaks isEqualTo []) then {_languagesPlayerSpeaks = ["en", "fr"];};
         };
 	default {
-			diag_log "my dude";
-			hint "aaaaaaaaaaaa";
             if (_languagesPlayerSpeaks isEqualTo []) then {_languagesPlayerSpeaks = ["en", "de", "fr"];};
         };
     };

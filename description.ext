@@ -630,11 +630,6 @@ class CfgFunctions
 			{
 				file = "bub\bub_fnc_addGroupToZeus.sqf";
 			};
-			class acreSetup
-			{
-				file = "bub\bub_fnc_acreSetup.sqf";
-				postInit = 1;
-			};
 		};
 	};
 };
