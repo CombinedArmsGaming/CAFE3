@@ -1,6 +1,6 @@
 if (isDedicated) exitWith {};
 
-params ["_list"];
+params ["_listIDC"];
 
 _units = missionNamespace getVariable "bub_zeus_unitsStructure";
 
@@ -9,6 +9,6 @@ _units = missionNamespace getVariable "bub_zeus_unitsStructure";
 	
 	_name = _category select 0;
 	
-	_list lbAdd _name;
+	[_listIDC, _name] execVM "bub\zeus_ui\displayManip\bub_vm_cl_addToList.sqf";
 
 } forEach _units;

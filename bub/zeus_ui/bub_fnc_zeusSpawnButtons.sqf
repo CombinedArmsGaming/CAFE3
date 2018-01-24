@@ -57,18 +57,19 @@ _unitsList ctrlAddEventHandler ["LBSelChanged",
 }];
 _unitsList ctrlCommit 0;
 
-bub_zeus_unitsList = _unitsList;
+bub_zeus_unitsList_idc = ctrlIDC _unitsList;
 
 
 _categoriesList = ["RscCombo"] call _fn_newCtrl;
 _categoriesList ctrlSetPosition [ -0.05, 1.007, 0.28, 0.041 ];
-[_categoriesList] execVM "bub\zeus_ui\bub_fnc_zeusFillCategories.sqf";
+[ctrlIDC _categoriesList] execVM "bub\zeus_ui\bub_fnc_zeusFillCategories.sqf";
 _categoriesList ctrlAddEventHandler ["LBSelChanged", 
 {
 	params ["_list", "_sel"];
 	if (_sel < 0) exitWith {};
 	
-	[bub_zeus_unitsList, _sel] execVM "bub\zeus_ui\bub_fnc_zeusFillUnits.sqf";
+	_unitsListIDC = bub_zeus_unitsList_idc;
+	[_unitsListIDC, _sel] execVM "bub\zeus_ui\bub_fnc_zeusFillUnits.sqf";
 	
 }];
 _categoriesList ctrlCommit 0;

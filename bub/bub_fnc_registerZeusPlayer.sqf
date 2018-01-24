@@ -1,4 +1,4 @@
-params ["_unit"];
+params ["_unit", "_spawnMenu", "_deployMenu"];
 
 if (!isServer) exitWith {};
 
@@ -8,4 +8,4 @@ if (!isServer) exitWith {};
 _unit addCuratorEditableObjects [(vehicles + allUnits), true];
 _unit removeCuratorEditableObjects [_unit, true];
 
-[[_unit], "bub\bub_vm_cl_zeusDeployment.sqf"] remoteExec ["execVM", _unit, true];
+[[_unit, _spawnMenu, _deployMenu], "bub\bub_vm_cl_zeusDeployment.sqf"] remoteExec ["execVM", _unit, true];

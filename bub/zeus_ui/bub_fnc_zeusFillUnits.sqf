@@ -1,7 +1,8 @@
 if (isDedicated) exitWith {};
 
-params ["_list", "_categoryIdx"];
-lbClear _list;
+params ["_listIDC", "_categoryIdx"];
+
+[_listIDC] execVM "bub\zeus_ui\displayManip\bub_vm_cl_clearList.sqf";
 
 _units = bub_zeus_unitsStructure;
 
@@ -21,7 +22,8 @@ switch (_type) do
 			_name = _x select 0;
 			_def = [_type, _x select 1, _gear, _side];
 			
-			_list lbAdd _name;
+			[_listIDC, _name] execVM "bub\zeus_ui\displayManip\bub_vm_cl_addToList.sqf";
+			
 			_listDefs pushBack _def;
 		
 		} forEach _defs;
@@ -34,7 +36,8 @@ switch (_type) do
 			_name = _x select 0;
 			_def = [_type, _x select 2, _x select 1, _gear, _side];
 			
-			_list lbAdd _name;
+			[_listIDC, _name] execVM "bub\zeus_ui\displayManip\bub_vm_cl_addToList.sqf";
+			
 			_listDefs pushBack _def;
 		
 		} forEach _defs;

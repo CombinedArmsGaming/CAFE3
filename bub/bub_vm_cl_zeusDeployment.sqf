@@ -1,4 +1,4 @@
-params ["_unit"];
+params ["_unit", "_spawnMenu", "_deployMenu"];
 
 _unit setVariable ["ace_w_allow_dam",false,true];
 _unit allowDamage false;
@@ -12,7 +12,35 @@ _unit addAction ["Toggle Zeus Deployment mode",
 	hint format ["Zeus deployment is %1.", _onOff];
 }];
 
-_unit addAction ["Add unit-spawner to Zeus mode", {execVM "bub\zeus_ui\bub_fnc_zeusSpawnButtons.sqf";}];
+if (_spawnMenu and _deployMenu) then
+{
+	_unit addAction ["Add unit-spawner to Zeus mode", 
+	{
+		execVM "bub\zeus_ui\bub_fnc_zeusSpawnButtons.sqf";
+		[false] execVM "bub\zeus_ui\bub_fnc_zeusDeployButtons.sqf";
+	}];
+}
+else
+{
+	if (_spawnMenu) then
+	{
+		_unit addAction ["Add unit-spawner to Zeus mode", 
+		{
+			execVM "bub\zeus_ui\bub_fnc_zeusSpawnButtons.sqf";
+		}];
+	}
+	else
+	{
+		if (_deployMenu) then
+		{
+			_unit addAction ["Add unit-spawner to Zeus mode", 
+			{
+				[true] execVM "bub\zeus_ui\bub_fnc_zeusDeployButtons.sqf";
+			}];
+		};
+	};
+};
+
 
 [_unit] spawn 
 {
