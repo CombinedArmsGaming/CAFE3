@@ -2,6 +2,9 @@
 // Maintain 4 vehicles at all times.
 [] spawn 
 {
+	// Give em a chance tho.
+	sleep 120;
+	
 	_vehicleDefs = 
 	[
 		[["crew","crew","crew"],"taki_veh_1","feruz_area","LOP_IA_M1025_W_M2","ind_f",independent],
@@ -37,7 +40,7 @@
 				
 				_groupsActive = _newActive;
 				
-				count _groupsActive < 4;
+				count _groupsActive < 4
 			};
 			
 		} forEach _vehicleDefs;
@@ -66,6 +69,8 @@
 			_vehDef = _x;
 			_group = _vehDef call ca_fnc_spawnattack;
 			_groupsActive pushBack _group;
+			
+			[_group] spawn ca_fnc_groupGuerrillaAI;
 
 			waitUntil 
 			{
@@ -84,7 +89,7 @@
 				
 				_groupsActive = _newActive;
 				
-				count _groupsActive < 6;
+				count _groupsActive < 6
 			};
 			
 		} forEach _vehicleDefs;
@@ -98,7 +103,7 @@
 [] spawn 
 {
 	// Give em a chance tho.
-	sleep 120;
+	sleep 180;
 
 	_vehicleDefs = 
 	[
@@ -134,7 +139,7 @@
 				
 				_groupsActive = _newActive;
 				
-				count _groupsActive < 2;
+				count _groupsActive < 2
 			};
 			
 		} forEach _vehicleDefs;

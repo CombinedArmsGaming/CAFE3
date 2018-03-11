@@ -14,7 +14,7 @@
  * [player,"C_Quadbike_01_F",0] call ca_fnc_spawnvehicle
  *
  */
-params ["_position","_vehicletype",["_locknumber",3]];
+params ["_position","_vehicletype",["_locknumber",0]];
 
 _posdir = _position call ca_fnc_getdirpos;
 _spawnpos = _posdir select 0;
