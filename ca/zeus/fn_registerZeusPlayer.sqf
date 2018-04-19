@@ -11,7 +11,7 @@
 
 params ["_unit", "_spawnMenu"];
 
-if (!local _unit) exitWith {};
+if (!isServer) exitWith {};
 
-[_unit] call ca_fnc_giveUnitGodmode;
-[_unit, _spawnMenu] call ca_fnc_zeusDeployment;
+[_unit] remoteExec ["ca_fnc_giveUnitGodmode", _unit, true];
+[_unit, _spawnMenu] remoteExec ["ca_fnc_zeusDeployment", _unit, true];

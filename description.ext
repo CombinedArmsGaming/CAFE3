@@ -246,6 +246,7 @@ class CfgRespawnTemplates
 class ca_respawn
 {
     onPlayerRespawn = "ca\respawn\ca_onDeath.sqf";
+	// onPlayerRespawn = "bub\respawnTemplates\swapTeam_onPlayerRespawn.sqf";
 };
 };
 
@@ -438,6 +439,18 @@ class CfgFunctions
 			class deleteAfterSeconds
 			{
 				file = "bub\bub_fnc_deleteAfterSeconds.sqf";
+			};
+			class makeLoadoutDispenser
+			{
+				file = "bub\bub_fnc_makeLoadoutDispenser.sqf";
+			};
+			class jumpIntoGroupVehicle
+			{
+				file = "bub\bub_fnc_jumpIntoGroupVehicle.sqf";
+			};
+			class addUnflipAction
+			{
+				file = "bub\bub_fnc_addUnflipAction.sqf";
 			};
 		};
 	};
