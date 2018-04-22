@@ -452,6 +452,14 @@ class CfgFunctions
 			{
 				file = "bub\bub_fnc_addUnflipAction.sqf";
 			};
+			class addGroupToZeus
+			{
+				file = "bub\bub_fnc_addGroupToZeus.sqf";
+			};
+			class addVehicleToZeus
+			{
+				file = "bub\bub_fnc_addVehicleToZeus.sqf";
+			};
 		};
 	};
 };
