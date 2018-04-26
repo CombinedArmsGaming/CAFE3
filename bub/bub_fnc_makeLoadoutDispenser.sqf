@@ -6,7 +6,12 @@ _loadouts_blufor = [["Fireteam Lead", "ftl"], ["Medic", "med"], ["Autorifleman",
 _chooseLoadoutFormattable = 
 	'params ["_target", "_caller"];
 	
-	["%1", _caller, "%2"] call f_fnc_assignGear;';
+	["%1", _caller, "%2"] call f_fnc_assignGear;
+	
+	_setMed = 0;
+	if ("%1" == "med") then {_setMed = 2;};
+	
+	_caller setVariable ["ace_medical_medicClass", _setMed, true];';
 
 
 
