@@ -18,11 +18,11 @@ f_radios_settings_acre2_disableFrequencySplit = FALSE;
 f_radios_settings_acre2_shortRange = nil;
 
 // Set the list of units that get a long range
-f_radios_settings_acre2_longRange = ["co", "dc", "vc"];
+f_radios_settings_acre2_longRange = [];
 
 // Unit types you want to give an extra long-range radio
 // E.G: ["co", "m"] would give the CO and all medics an extra long-range radios
-f_radios_settings_acre2_extraRadios = ["dc","ftl"];
+f_radios_settings_acre2_extraRadios = ["sl","ftl", "crew", "zeus", "co"];
 
 // Unit types you want to give a backpack radio
 // I'd recommend this is only used for Pilots and FAC (you'll need to sort out a separate FAC loadout in your gearscript, I'd recommend using the "UAV" unit type defined below.)
@@ -43,13 +43,13 @@ f_radios_settings_acre2_BackpackRadio = "ACRE_PRC117F";
 
 // Defines the languages that exist in the mission.
 // string id, displayname
-f_radios_settings_acre2_languages = [["english","English"],["farsi","Farsi"],["greek","Greek"]];
+f_radios_settings_acre2_languages = [["german","German"]];
 
 // defines the language that a player can speak.
 // can define multiple
-f_radios_settings_acre2_language_blufor = ["english"];
-f_radios_settings_acre2_language_opfor = ["farsi"];
-f_radios_settings_acre2_language_indfor = ["greek"];
+f_radios_settings_acre2_language_blufor = ["german"];
+f_radios_settings_acre2_language_opfor = ["german"];
+f_radios_settings_acre2_language_indfor = ["german"];
 
 // Channel names and group defaults
 // first item in the array will correspond to the first channel
@@ -57,12 +57,12 @@ f_radios_settings_acre2_language_indfor = ["greek"];
 // note that if using a 343 only the first 16 channels are available for the short-range array
 // also note these only work if f_radios_settings_acre2_disableFrequencySplit is set to false
 f_radios_settings_acre2_sr_groups_blufor = [
-    ["ASL",    ["ASL"]],
-    ["A1",    ["A1"]],
-    ["A2",  ["A2"]],
-    ["BSL",    ["BSL"]],
-    ["B1",     ["B1"]],
-    ["B2",  ["B2"]],
+    ["ALPHA",    ["ALPHA"]],
+    ["BRAVO",    ["BRAVO"]],
+    ["CHARLIE",  ["CHARLIE"]],
+    ["COMMAND",    ["COMMAND"]],
+    ["HAMMER",     ["HAMMER"]],
+    ["ANVIL",  ["ANVIL"]],
     ["CSL",     ["CSL"]],
     ["C1",    ["C1"]],
     ["C2",    ["C2"]],
@@ -82,14 +82,14 @@ f_radios_settings_acre2_sr_groups_blufor = [
     ["ADDITIONAL 8",  []],
     ["ADDITIONAL 9",    []],
     ["ADDITIONAL 10",   []],
-    ["ADDITIONAL 11",     []]
+    ["ZEUS",     ["ZEUS"]]
 ];
 
 f_radios_settings_acre2_sr_groups_opfor = f_radios_settings_acre2_sr_groups_blufor;
 f_radios_settings_acre2_sr_groups_indfor = f_radios_settings_acre2_sr_groups_blufor;
 
 f_radios_settings_acre2_lr_groups_blufor = [
-    ["GRND COMMAND 1",    ["CO","ASL","BSL","CSL","ENG1","MMG1","HMG1","MAT1","HAT1","MTR1","MSAM1","HSAM1","ST1","DT1"]],
+    ["GRND COMMAND 1",    ["ALPHA","BRAVO","CHARLIE","COMMAND","HAMMER","ANVIL","ZEUS","MAT1","HAT1","MTR1","MSAM1","HSAM1","ST1","DT1"]],
     ["GRND COMMAND 2",    ["IFV1","IFV2","IFV3","IFV4","IFV5","IFV6","IFV7","IFV8","TNK1"]],
     ["AIR",  ["TH1","TH2","TH3","T4","TH5","TH6","TH7","TH8","AH1"]],
     ["FAC",	 []],
