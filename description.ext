@@ -460,6 +460,14 @@ class CfgFunctions
 			{
 				file = "bub\bub_fnc_addVehicleToZeus.sqf";
 			};
+			class medicalOverrideLoop
+			{
+				file = "bub\bub_fnc_medicalOverrideLoop.sqf";
+			};
+			class trackKilledEvent
+			{
+				file = "bub\bub_fnc_trackKilledEvent.sqf";
+			};
 		};
 	};
 };
@@ -563,5 +571,21 @@ class RscCombo
 		arrowFull = "\ca\ui\data\ui_arrow_top_active_ca.paa";
 		arrowEmpty = "\ca\ui\data\ui_arrow_top_ca.paa";
 		border = "\ca\ui\data\ui_border_scroll_ca.paa";
+	};
+};
+
+class Extended_Killed_EventHandlers
+{
+	class AllVehicles
+	{
+		killed = "_this call bub_fnc_trackKilledEvent";
+	};
+};
+
+class Extended_PostInit_EventHandlers
+{
+	class AllVehicles
+	{
+		init = "_obj = _this select 0; _obj setVariable ['bub_side', side _obj, 1]";
 	};
 };

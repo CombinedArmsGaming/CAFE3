@@ -32,6 +32,7 @@ missionNamespace setVariable ['f_var_radios',3, true]; // Radio system. 0 = none
 missionNamespace setVariable ['f_var_mission_timer',5, true]; // Safestart duration. Value in minutes
 missionNamespace setVariable ['f_param_caching',0, true]; // Ai Caching distance in meters, 0 = off
 
+missionNamespace setVariable ['bub_allowKillTracking',1, true]; // Enable kill-tracking system to aid missionmaker with campaign persistence.
 
 // Allow init.sqf to go ahead
 missionNamespace setVariable ['ca_initserver',true, true];

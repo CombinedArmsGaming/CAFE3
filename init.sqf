@@ -178,3 +178,22 @@ f_var_cachingAggressiveness = 2;
 
 // CA - Initialize CA framework
 [] execVM "ca\ca_init.sqf";
+
+
+if (isServer and {bub_allowKillTracking == 1}) then
+{
+	_killTracking = profileNamespace getVariable ["bub_killTracking", []];
+	diag_log format ["[TrackKills] Initial log state: %1", _killTracking];
+
+	[] spawn 
+	{
+		while {true} do
+		{
+			uiSleep 120;
+			diag_log "[TrackKills] Saving log.";
+			saveProfileNamespace;
+		};
+		
+	};
+	
+};
