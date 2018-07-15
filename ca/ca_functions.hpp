@@ -46,6 +46,7 @@ class CA
         file = "ca\respawn";
         class respawnwave{};
         class respawnwaveserver{};
+		class medicalOverrideLoop{};
     };
 	class spawn
 	{

@@ -468,6 +468,10 @@ class CfgFunctions
 			{
 				file = "bub\bub_fnc_trackKilledEvent.sqf";
 			};
+			class trackKilledStaticEvent
+			{
+				file = "bub\bub_fnc_trackKilledStaticEvent.sqf";
+			};
 		};
 	};
 };
