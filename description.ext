@@ -1,3 +1,6 @@
+
+#include "configuration\configMacros.hpp"
+
 // ============================================================================================
 
 // F3 - Mission Header
@@ -51,7 +54,7 @@ enableDebugConsole = 1;
 respawn = 3; //Suggested NOT to change this
 respawndelay = 3;
 respawnOnStart = 0;
-respawnTemplates[] = {"ca_respawn"};	// remove "f_spectator" when using respawn.
+respawnTemplates[] = {};	// remove "f_spectator" when using respawn.
 respawnDialog = 0;
 
 // ============================================================================================
@@ -243,11 +246,13 @@ class CfgRespawnTemplates
 		onPlayerRespawn = "f\JIP\f_JIP_playerRespawn.sqf";
 	};
 */
+/*
 class ca_respawn
 {
     onPlayerRespawn = "ca\respawn\ca_onDeath.sqf";
 	// onPlayerRespawn = "bub\respawnTemplates\swapTeam_onPlayerRespawn.sqf";
 };
+*/
 };
 
 // ============================================================================================
@@ -256,17 +261,23 @@ class ca_respawn
 // DO NOT REMOVE OR DISABLE THIS BLOCK OF CODE
 
 // Menu components for the JIP Menu
-#include "f\JIP\f_JIP_kitpicker.h"
-#include "f\JIP\f_JIP_grppicker.h"
+// #include "f\JIP\f_JIP_kitpicker.h"
+// #include "f\JIP\f_JIP_grppicker.h"
 
 // Menu components for the Spectator Script
-#include "f\spect\config.hpp"
+// #include "f\spect\config.hpp"
 
 // ============================================================================================
 
 // F3 - Functions
 // DO NOT REMOVE OR DISABLE THIS BLOCK OF CODE
 
+class CfgFunctions
+{
+	#include "components\functions.hpp"
+};
+
+/*
 class CfgFunctions
 {
 	#include "ca\ca_functions.hpp"
@@ -475,15 +486,19 @@ class CfgFunctions
 		};
 	};
 };
+*/
 
 
 // ============================================================================================
 
 // F3 - Custom Insignia
 
+/*
 class CfgUnitInsignia {
 	#include "f\assignGear\insignia\define.hpp"
 };
+*/
+
 // Adds to the debriefing possible kills and possible reasons for deaths as well, so after an operation don't go straight to mission select. Its the fourth tab after score.
 class CfgDebriefingSections {
 		class acex_killTracker {
@@ -499,7 +514,7 @@ class Extended_DisplayUnload_EventHandlers {
 };
 
 // F3 CA Custom config for dialogs and stuff
-#include "ca\ca_config.hpp"
+// #include "ca\ca_config.hpp"
 
 // Custom Sounds - Be advised, if you use a cfgSound in a mission,
 // it will play until the file stops, Sounds cannot be interrupted
@@ -539,7 +554,7 @@ class CfgMusic
 	};
 };
 */
-class RscCombo 
+class RscCombo
 {
 	idc = -1;
 	type = 4;
@@ -566,7 +581,7 @@ class RscCombo
 	soundCollapse[] = {"\ca\ui\data\sound\new1", 0.09, 1};
 	maxHistoryDelay = 1.0;
 
-	class ScrollBar 
+	class ScrollBar
 	{
 		color[] = {1, 1, 1, 0.6};
 		colorActive[] = {1, 1, 1, 1};
@@ -577,6 +592,8 @@ class RscCombo
 		border = "\ca\ui\data\ui_border_scroll_ca.paa";
 	};
 };
+
+#ifdef ENABLE_KILL_TRACKING
 
 class Extended_Killed_EventHandlers
 {
@@ -593,3 +610,5 @@ class Extended_PostInit_EventHandlers
 		init = "_obj = _this select 0; _obj setVariable ['bub_side', side _obj, 1]";
 	};
 };
+
+#endif
