@@ -30,7 +30,7 @@ _actionFnc =
         systemChat format ["[F3 ACRE2] Warning: No room to add radio '%1', remove more stuff and try again", _radioToGive];
     };
 
-}
+};
 
 _actionID = _unit addAction [_actionText, _actionFnc, [_x], 0, false, false, "", "(_target == _this)"];
 

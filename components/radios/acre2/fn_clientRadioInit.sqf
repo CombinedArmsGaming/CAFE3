@@ -1,3 +1,5 @@
+#include "..\macros.hpp"
+
 // F3 - ACRE Clientside Initialisation
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 // ====================================================================================
@@ -19,6 +21,9 @@ if (f_radios_settings_acre2_disableFrequencySplit) then
 };
 
 
+DEBUG_FORMAT1_LOG("[Radios] Using preset: %1",_presetName)
+
+
 _ret = ["ACRE_PRC343", _presetName ] call acre_api_fnc_setPreset;
 _ret = ["ACRE_PRC148", _presetName ] call acre_api_fnc_setPreset;
 _ret = ["ACRE_PRC152", _presetName ] call acre_api_fnc_setPreset;
@@ -30,6 +35,7 @@ _ret = ["ItemRadio", _presetName ] call acre_api_fnc_setPreset;
 if (!alive player) exitWith
 {
 	[true] call acre_api_fnc_setSpectator;
+	DEBUG_PRINT_LOG("[Radios] Player is dead, exit early.")
 };
 
 _unit = player;
@@ -50,6 +56,9 @@ _languages = switch (side _unit) do
 _languages call acre_api_fnc_babelSetSpokenLanguages;
 [_languages select 0] call acre_api_fnc_babelSetSpeakingLanguage;
 
+DEBUG_FORMAT1_LOG("[Radios] Using languages: %1",_languages)
+DEBUG_FORMAT1_LOG("[Radios] Speaking: %1",(_languages select 0))
+
 
 // ====================================================================================
 
@@ -58,6 +67,7 @@ _languages call acre_api_fnc_babelSetSpokenLanguages;
 // BUB 2018-09-24 TODO :: Decouple radios from gearscript.
 _typeOfUnit = _unit getVariable ["f_var_assignGear", "NIL"];
 
+DEBUG_FORMAT1_LOG("[Radios] Unit type is: %1",_typeOfUnit)
 
 // REMOVE ALL RADIOS
 // Wait for ACRE2 to initialise any radios the unit has in their inventory, and then
@@ -76,6 +86,8 @@ waitUntil
 	[] call acre_api_fnc_isInitialized
 };
 
+
+DEBUG_PRINT_LOG("[Radios] Removing radios from unit.")
 
 {
 	_unit removeItem _x;
@@ -96,6 +108,7 @@ if (_typeOfUnit != "NIL") then
 		// Everyone gets a short-range radio by default
 		if (isnil "f_radios_settings_acre2_shortRange") then
 		{
+			DEBUG_PRINT_LOG("[Radios] Everyone gets a SR radio: adding.")
 			if (_unit canAdd f_radios_settings_acre2_standardSHRadio) then
 			{
 				_unit addItem f_radios_settings_acre2_standardSHRadio;
@@ -109,6 +122,7 @@ if (_typeOfUnit != "NIL") then
 		{
 			if (_typeOfUnit in f_radios_settings_acre2_shortRange) then
 			{
+				DEBUG_PRINT_LOG("[Radios] Unit is in SR radio list: adding.")
 				if (_unit canAdd f_radios_settings_acre2_standardSHRadio) then
 				{
 					_unit addItem f_radios_settings_acre2_standardSHRadio;
@@ -125,6 +139,7 @@ if (_typeOfUnit != "NIL") then
 		// If unit is in the above list, add a 148
 		if (_typeOfUnit in f_radios_settings_acre2_longRange) then
 		{
+			DEBUG_PRINT_LOG("[Radios] Unit is in LR radio list: adding.")
 			if (_unit canAdd f_radios_settings_acre2_standardLRRadio) then
 			{
 				_unit addItem f_radios_settings_acre2_standardLRRadio;
@@ -138,6 +153,7 @@ if (_typeOfUnit != "NIL") then
 			// If unit is in the list of units that receive an extra long-range radio, add another 148
 		if (_typeOfUnit in f_radios_settings_acre2_extraRadios) then
 		{
+			DEBUG_PRINT_LOG("[Radios] Unit is in ER radio list: adding.")
 			if (_unit canAdd f_radios_settings_acre2_extraRadio) then
 			{
 				_unit addItem f_radios_settings_acre2_extraRadio;
@@ -151,6 +167,7 @@ if (_typeOfUnit != "NIL") then
 			// If unit is in the list of units that receive a backpack radio, then add a 117F
 		if (_typeOfUnit in f_radios_settings_acre2_BackpackRadios) then
 		{
+			DEBUG_PRINT_LOG("[Radios] Unit is in Backpack radio list: adding.")
 			if (_unit canAdd f_radios_settings_acre2_BackpackRadio) then
 			{
 				_unit addItem f_radios_settings_acre2_BackpackRadio;
@@ -255,10 +272,7 @@ if (!f_radios_settings_acre2_disableRadios) then
 
 	if (_hasSR) then
 	{
-		if (f_var_debugMode == 1) then
-		{
-			player sideChat format ["DEBUG (f\radios\acre2\acre2_clientInit.sqf): Setting radio channel for '%1' to %2", _radioSR, _groupChannelIndex + 1];
-		};
+		DEBUG_FORMAT2_LOG("[Radios] Setting radio channel for '%1' to %2",_radioSR,(_groupChannelIndex + 1))
 
 	    [_radioSR, (_groupChannelIndex + 1)] call acre_api_fnc_setRadioChannel;
 
@@ -267,10 +281,7 @@ if (!f_radios_settings_acre2_disableRadios) then
 
 	if (_hasLR) then
 	{
-		if (f_var_debugMode == 1) then
-		{
-			player sideChat format ["DEBUG (f\radios\acre2\acre2_clientInit.sqf): Setting radio channel for '%1' to %2", _radioLR, _groupLRChannelIndex + 1];
-		};
+		DEBUG_FORMAT2_LOG("[Radios] Setting radio channel for '%1' to %2",_radioLR,(_groupLRChannelIndex + 1))
 
 	    [_radioLR, (_groupLRChannelIndex + 1)] call acre_api_fnc_setRadioChannel;
 
@@ -279,10 +290,7 @@ if (!f_radios_settings_acre2_disableRadios) then
 
 	if (_hasExtra) then
 	{
-		if (f_var_debugMode == 1) then
-		{
-			player sideChat format ["DEBUG (f\radios\acre2\acre2_clientInit.sqf): Setting radio channel for '%1' to %2", _radioExtra, _groupLRChannelIndex + 1];
-		};
+		DEBUG_FORMAT2_LOG("[Radios] Setting radio channel for '%1' to %2",_radioExtra,(_groupLRChannelIndex + 1))
 
 	    [_radioExtra, (_groupLRChannelIndex + 1)] call acre_api_fnc_setRadioChannel;
 
@@ -291,10 +299,7 @@ if (!f_radios_settings_acre2_disableRadios) then
 
 	if (_hasBackpack) then
 	{
-		if (f_var_debugMode == 1) then
-		{
-			player sideChat format ["DEBUG (f\radios\acre2\acre2_clientInit.sqf): Setting radio channel for '%1' to %2", _radioExtra, _groupLRChannelIndex + 1];
-		};
+		DEBUG_FORMAT2_LOG("[Radios] Setting radio channel for '%1' to %2",_radioExtra,(_groupLRChannelIndex + 1))
 
 	    [_radioBackpack, (_groupLRChannelIndex + 1)] call acre_api_fnc_setRadioChannel;
 

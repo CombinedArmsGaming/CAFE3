@@ -7,5 +7,7 @@ class F
 #include "safeStart\functions.hpp"
 #include "safeEnd\functions.hpp"
 #include "aiCache\functions.hpp"
+#include "radios\functions.hpp"
+#include "gearScript\functions.hpp"
 
 }

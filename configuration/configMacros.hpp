@@ -14,4 +14,4 @@
 #define RADIO_ACRE 1
 
 // Set radio system to TFR
-#define RADIO_TFR 1
+// #define RADIO_TFR 1
