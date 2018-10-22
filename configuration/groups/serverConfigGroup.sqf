@@ -6,3 +6,6 @@
 
 // AI Caching settings
 #include "..\aiCache.sqf"
+
+// AI Caching settings
+#include "..\respawnWaves.sqf"

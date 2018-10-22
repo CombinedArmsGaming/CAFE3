@@ -3,8 +3,15 @@
 // ====================================================================================
 
 #include "macros.hpp"
+CLIENT_ONLY;
+
 
 DEBUG_PRINT_LOG("running f_briefing")
+
+if (isNull player) then
+{
+    waitUntil {sleep 0.1; !isNull player};
+};
 
 // ====================================================================================
 
@@ -16,6 +23,8 @@ _unitSide = side player;
 
 DEBUG_FORMAT1_CHAT("DEBUG (briefing.sqf): Player faction: %1", _unitSide)
 
+#include "briefings\ca_briefing_player.sqf";
+
 // ====================================================================================
 
 // BRIEFING: ADMIN
@@ -24,7 +33,10 @@ DEBUG_FORMAT1_CHAT("DEBUG (briefing.sqf): Player faction: %1", _unitSide)
 
 if (serverCommandAvailable "#kick") then
 {
+
 #include "briefings\part_briefing_admin.sqf"
+
+#include "briefings\ca_briefing_admin.sqf";
 
 	DEBUG_PRINT_CHAT("DEBUG (briefing.sqf): Briefing for host selected.")
 };

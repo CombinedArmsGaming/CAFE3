@@ -25,3 +25,6 @@ INIT_COMPONENT(radios)
 
 // Gearscript placeholder
 INIT_COMPONENT(gearScript)
+
+// Miscellaneous client scripts
+INIT_COMPONENT(miscClient)

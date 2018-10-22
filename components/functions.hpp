@@ -9,5 +9,7 @@ class F
 #include "aiCache\functions.hpp"
 #include "radios\functions.hpp"
 #include "gearScript\functions.hpp"
+#include "miscClient\functions.hpp"
+#include "respawnWaves\functions.hpp"
 
 }

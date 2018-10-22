@@ -516,6 +516,9 @@ class Extended_DisplayUnload_EventHandlers {
 // F3 CA Custom config for dialogs and stuff
 // #include "ca\ca_config.hpp"
 
+#include "components\markerDialog\ca_markerDialog.hpp"
+#include "components\respawnWaves\ca_respawnDialog.hpp"
+
 // Custom Sounds - Be advised, if you use a cfgSound in a mission,
 // it will play until the file stops, Sounds cannot be interrupted
 // unless the object playing the sound is killed or otherwise destroyed.
