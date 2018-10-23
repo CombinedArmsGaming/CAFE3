@@ -5,16 +5,16 @@
 #ifdef ENABLE_DEBUG
 
 // Clientside only.
-#define DEBUG_PRINT_CHAT(STRING) if (f_var_debugMode == 1) then { player sideChat STRING; };
-#define DEBUG_FORMAT1_CHAT(STRING, F1) if (f_var_debugMode == 1) then { player sideChat format [STRING, str F1]; };
-#define DEBUG_FORMAT2_CHAT(STRING, F1, F2) if (f_var_debugMode == 1) then { player sideChat format [STRING, str F1, str F2]; };
-#define DEBUG_FORMAT3_CHAT(STRING, F1, F2, F3) if (f_var_debugMode == 1) then { player sideChat format [STRING, str F1, str F2, str F3]; };
+#define DEBUG_PRINT_CHAT(STRING) player sideChat STRING;
+#define DEBUG_FORMAT1_CHAT(STRING, F1) player sideChat format [STRING, str F1];
+#define DEBUG_FORMAT2_CHAT(STRING, F1, F2) player sideChat format [STRING, str F1, str F2];
+#define DEBUG_FORMAT3_CHAT(STRING, F1, F2, F3) player sideChat format [STRING, str F1, str F2, str F3];
 
 // Client and serverside.
-#define DEBUG_PRINT_LOG(STRING) if (f_var_debugMode == 1) then { diag_log STRING; };
-#define DEBUG_FORMAT1_LOG(STRING, F1) if (f_var_debugMode == 1) then { diag_log format [STRING, str F1]; };
-#define DEBUG_FORMAT2_LOG(STRING, F1, F2) if (f_var_debugMode == 1) then { diag_log format [STRING, str F1, str F2]; };
-#define DEBUG_FORMAT3_LOG(STRING, F1, F2, F3) if (f_var_debugMode == 1) then { diag_log format [STRING, str F1, str F2, str F3]; };
+#define DEBUG_PRINT_LOG(STRING) diag_log STRING;
+#define DEBUG_FORMAT1_LOG(STRING, F1) diag_log format [STRING, str F1];
+#define DEBUG_FORMAT2_LOG(STRING, F1, F2) diag_log format [STRING, str F1, str F2];
+#define DEBUG_FORMAT3_LOG(STRING, F1, F2, F3) diag_log format [STRING, str F1, str F2, str F3];
 
 #else
 
@@ -35,6 +35,7 @@
 
 // General utility
 #define CONCAT(s1,s2) s1##s2
+#define CONCAT3(s1,s2,s3) s1##s2##s3
 
 // Startup convenience macros
 #define RUN_ONLY_ONCE_ASYNC(PATH,VAR) if (isNil #VAR) then { VAR = [] execVM PATH; };

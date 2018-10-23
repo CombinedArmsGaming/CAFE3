@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={43.712025,148.00372,476.50629};
-		dir[]={0.74580419,-0.57847148,0.33058417};
-		up[]={0.52891982,0.8156358,0.23444708};
-		aside[]={0.40526178,-2.9476359e-007,-0.9142741};
+		pos[]={92.288429,196.28256,38.581028};
+		dir[]={0.10778892,-0.42194101,0.90027577};
+		up[]={0.050174467,0.90656233,0.41905731};
+		aside[]={0.99298,-1.8111314e-007,-0.11888703};
 	};
 };
 binarizationWanted=0;
@@ -2454,8 +2454,8 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={223.73485,29.788712,524.04956};
-						angles[]={0.089757703,0,6.218276};
+						position[]={223.735,29.788664,524.04999};
+						angles[]={0.089762285,0,6.2182765};
 					};
 					side="West";
 					flags=4;
@@ -3716,7 +3716,7 @@ class Mission
 					{
 						skill=1;
 						rank="COLONEL";
-						init="call{[""zeus"", this] call f_fnc_assignGear;" \n "[this, true] call ca_fnc_registerZeusPlayer;}";
+						init="call{diag_log ""what in fuc"";" \n "[""ar"", this] call f_fnc_assignGear;" \n "[this, true] call ca_fnc_registerZeusPlayer;}";
 						name="zeus_ply";
 						description="Zeus Player";
 						isPlayer=1;

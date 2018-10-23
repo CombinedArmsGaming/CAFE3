@@ -12,3 +12,6 @@
 
 // AI Caching settings
 #include "..\aiCache.sqf"
+
+// Gearscript2
+#include "..\gearScript.sqf"

@@ -40,6 +40,9 @@ loadScreen = "ca_logo_large.jpg";
 
 enableDebugConsole = 1;
 
+// F3 - Debug variable, needs to exist pre-init.
+#include "configuration\debug.sqf"
+
 // ============================================================================================
 
 // F3 - Respawn Settings

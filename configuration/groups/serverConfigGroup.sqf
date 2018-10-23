@@ -9,3 +9,6 @@
 
 // AI Caching settings
 #include "..\respawnWaves.sqf"
+
+// Gearscript2
+#include "..\gearScript.sqf"
