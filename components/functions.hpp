@@ -10,6 +10,8 @@ class F
 #include "radios\functions.hpp"
 #include "gearScript\functions.hpp"
 #include "miscClient\functions.hpp"
+#include "miscShared\functions.hpp"
 #include "respawnWaves\functions.hpp"
+#include "spawnNpcs\functions.hpp"
 
 }

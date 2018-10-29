@@ -237,7 +237,7 @@ class CfgDebriefing
 
 class CfgRespawnTemplates
 {
-/*
+	/*
 	class f_Spectator
 	{
 		onPlayerRespawn = "f_fnc_CamInit";
@@ -248,14 +248,14 @@ class CfgRespawnTemplates
 	{
 		onPlayerRespawn = "f\JIP\f_JIP_playerRespawn.sqf";
 	};
-*/
-/*
-class ca_respawn
-{
-    onPlayerRespawn = "ca\respawn\ca_onDeath.sqf";
-	// onPlayerRespawn = "bub\respawnTemplates\swapTeam_onPlayerRespawn.sqf";
-};
-*/
+	//*/
+	//*
+	class ca_respawn
+	{
+	    onPlayerRespawn = "respawnTemplates\ca_onDeath.sqf";
+		// onPlayerRespawn = "bub\respawnTemplates\swapTeam_onPlayerRespawn.sqf";
+	};
+	//*/
 };
 
 // ============================================================================================

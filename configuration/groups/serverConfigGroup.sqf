@@ -12,3 +12,6 @@
 
 // Gearscript2
 #include "..\gearScript.sqf"
+
+// NPC spawn scripts
+#include "..\spawnNpcs.sqf"

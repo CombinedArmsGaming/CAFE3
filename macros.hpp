@@ -54,4 +54,6 @@
 #define CLIENT_ONLY if (!hasInterface) exitWith {}
 #define LOCAL_ONLY(obj) if !(local obj) exitWith {}
 
+#define RUN_ON_SERVER(FUNC,ARGS) if (!isServer) exitWith { [ARGS] remoteExec [#FUNC,2]; }
+
 #define INIT_COMPONENT(COMPNAME) RUN_ONLY_ONCE_ASYNC('components\COMPNAME\init_component.sqf',CONCAT(f_script_,COMPNAME))
