@@ -5,11 +5,11 @@ _briefing = "";
 _briefing = _briefing + "
 <font size='20'>Marker Controls</font><br/><br/>
 
-|- <execute expression=""if(leader player == player) then { [(netId group player)] remoteExec ['ca_fnc_groupMarker', (side player)];} else {hint 'You are not the group leader!'};"">
-Create new marker for my group(Leader only)</execute><br/><br/>
-|- <execute expression=""if(leader player == player) then {_handle=createdialog 'ca_groupid'; } else {hint 'You are not the group leader!'};"">
-Change marker status(Leader only)</execute><br/>
-|- <execute expression=""_handle=createdialog 'ca_respawndiag';"">
+|- <execute expression=""if(leader player == player) then { [(netId group player)] remoteExec ['f_fnc_groupMarker', (side player)];} else {hint 'You are not the group leader!'};"">
+Create new marker for my group (Leader only)</execute><br/><br/>
+|- <execute expression=""if(leader player == player) then {_handle=createdialog 'f_groupid'; } else {hint 'You are not the group leader!'};"">
+Change marker status (Leader only)</execute><br/>
+|- <execute expression=""_handle=createdialog 'RespawnWavesDialog';"">
 Respawn system</execute><br/>
 |- <execute expression=""if (serverCommandAvailable '#kick') then { [] execvm 'components\briefing\briefings\ca_briefing_admin.sqf'} else {hint 'You need to be an admin to get this!'};"">
 Give self admin menu</execute><br/>

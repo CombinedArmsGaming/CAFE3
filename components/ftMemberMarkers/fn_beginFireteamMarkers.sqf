@@ -141,7 +141,7 @@ FTMK_TOREMOVE_2 = [];
         _myTeam = assignedTeam player;
         _myTeamStored = player getVariable ["assignedTeam", ""];
 
-        if (_myTeam != _myTeamStored) then
+        if (!isNil "_myTeam" and {_myTeam != _myTeamStored}) then
         {
             _color = [_myTeam] call f_fnc_getMarkerColor;
 

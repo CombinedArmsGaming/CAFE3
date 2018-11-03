@@ -13,5 +13,6 @@ class F
 #include "miscShared\functions.hpp"
 #include "respawnWaves\functions.hpp"
 #include "spawnNpcs\functions.hpp"
+#include "joinInProgress\functions.hpp"
 
 }

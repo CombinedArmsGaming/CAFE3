@@ -18,3 +18,6 @@
 
 // NPC spawn scripts
 #include "..\spawnNpcs.sqf"
+
+// Player respawn
+#include "..\respawn.sqf"

@@ -13,6 +13,10 @@ class RscFrame
     sizeEx = 0.03;
     text = "";
 };
+
+
+
+
 class RscPicture
 {
  access = 0;
@@ -28,6 +32,9 @@ class RscPicture
  fixedWidth = 0;
  shadow = 0;
 };
+
+
+
 
 class RscButton
 {
@@ -61,6 +68,9 @@ class RscButton
     borderSize = 0;
 };
 
+
+
+
 class RscEdit
 {
 	idc = -1;
@@ -81,6 +91,8 @@ class RscEdit
 	colorDisabled[] = {1,0,0,1};
 	colorBackground[] = {0,0,0,0.5};
 };
+
+
 
 
 class RscListBox
@@ -123,6 +135,8 @@ class RscListBox
   shadow = 0;
  };
 };
+
+
 
 
 class ca_groupid
@@ -209,6 +223,6 @@ class ca_groupid
 
         };
 
+    };
 
-};
 };

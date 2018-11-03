@@ -12,7 +12,12 @@ class RscFrame1
     font = "PuristaLight";
     sizeEx = 0.03;
     text = "";
+
 };
+
+
+
+
 class RscButton1
 {
    access = 0;
@@ -43,7 +48,12 @@ class RscButton1
     offsetPressedX = 0.002;
     offsetPressedY = 0.002;
     borderSize = 0;
+
 };
+
+
+
+
 class RscListBox1
 {
  access = 0;
@@ -83,8 +93,13 @@ class RscListBox1
   border = "#(argb,8,8,3)color(1,1,1,1)";
   shadow = 0;
  };
+
 };
-class ca_respawndiag
+
+
+
+
+class RespawnWavesDialog
 {
 	idd= 1996;
 	movingenable=false;
@@ -167,6 +182,6 @@ class ca_respawndiag
 
         };
 
+    };
 
-};
 };

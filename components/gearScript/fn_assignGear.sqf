@@ -9,7 +9,7 @@ if !(canSuspend) exitWith
 };
 
 
-waitUntil {time > 1};
+waitUntil {time > 0};
 
 _unit = _this select 1;
 

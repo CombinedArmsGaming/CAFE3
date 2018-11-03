@@ -57,7 +57,7 @@ enableDebugConsole = 1;
 respawn = 3; //Suggested NOT to change this
 respawndelay = 3;
 respawnOnStart = 0;
-respawnTemplates[] = {};	// remove "f_spectator" when using respawn.
+respawnTemplates[] = {"ca_respawn"};	// remove "f_spectator" when using respawn.
 respawnDialog = 0;
 
 // ============================================================================================
@@ -84,6 +84,7 @@ corpseRemovalMaxTime = 300; //seconds
 
 // ============================================================================================
 // F3 - Start of Notifications block.
+
 
 class cfgNotifications
 {
@@ -156,15 +157,14 @@ class cfgNotifications
 	};
 };
 
-// ============================================================================================
 
-// F3 - Start of Params code blocks.
-// WARNING: DO NOT DELETE OR COMMENT OUT THIS CODE BLOCK
+
 
 // ============================================================================================
 
 // F3 - Briefing Template
 // Credits: BIS - Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
+
 
 class CfgDebriefing
 {
@@ -235,6 +235,7 @@ class CfgDebriefing
 // F3 - Respawn Templates
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 
+
 class CfgRespawnTemplates
 {
 	/*
@@ -258,6 +259,9 @@ class CfgRespawnTemplates
 	//*/
 };
 
+
+
+
 // ============================================================================================
 
 // F3 - Menu components
@@ -275,10 +279,15 @@ class CfgRespawnTemplates
 // F3 - Functions
 // DO NOT REMOVE OR DISABLE THIS BLOCK OF CODE
 
+
 class CfgFunctions
 {
 	#include "components\functions.hpp"
 };
+
+
+
+
 
 /*
 class CfgFunctions
@@ -502,6 +511,9 @@ class CfgUnitInsignia {
 };
 */
 
+
+
+
 // Adds to the debriefing possible kills and possible reasons for deaths as well, so after an operation don't go straight to mission select. Its the fourth tab after score.
 class CfgDebriefingSections {
 		class acex_killTracker {
@@ -509,6 +521,10 @@ class CfgDebriefingSections {
 				variable = "acex_killTracker_outputText";
 		};
 };
+
+
+
+
 // Makes splendid camera still show chat after quitting splendid camera.
 class Extended_DisplayUnload_EventHandlers {
     class RscDisplayCamera {
@@ -516,11 +532,8 @@ class Extended_DisplayUnload_EventHandlers {
     };
 };
 
-// F3 CA Custom config for dialogs and stuff
-// #include "ca\ca_config.hpp"
 
-#include "components\markerDialog\ca_markerDialog.hpp"
-#include "components\respawnWaves\ca_respawnDialog.hpp"
+
 
 // Custom Sounds - Be advised, if you use a cfgSound in a mission,
 // it will play until the file stops, Sounds cannot be interrupted
@@ -560,6 +573,15 @@ class CfgMusic
 	};
 };
 */
+
+
+
+
+#include "dialogs.hpp"
+
+
+
+
 class RscCombo
 {
 	idc = -1;
@@ -599,7 +621,11 @@ class RscCombo
 	};
 };
 
+
+
+
 #ifdef ENABLE_KILL_TRACKING
+
 
 class Extended_Killed_EventHandlers
 {
@@ -609,6 +635,7 @@ class Extended_Killed_EventHandlers
 	};
 };
 
+
 class Extended_PostInit_EventHandlers
 {
 	class AllVehicles
@@ -616,5 +643,6 @@ class Extended_PostInit_EventHandlers
 		init = "_obj = _this select 0; _obj setVariable ['bub_side', side _obj, 1]";
 	};
 };
+
 
 #endif

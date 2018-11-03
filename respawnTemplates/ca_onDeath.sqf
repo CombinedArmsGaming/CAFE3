@@ -1,6 +1,6 @@
 // CA respawn system with wave respawns
 
-#include "macros.hpp"
+#include "..\macros.hpp"
 CLIENT_ONLY;
 
 
@@ -11,8 +11,9 @@ if (isNull player) then
     {
         sleep 0.1;
         !isNull player;
-        !isnil {ca_initserver}
+        !isNil "f_var_initServer"
     };
+
 };
 
 
@@ -33,10 +34,9 @@ if (time < 10 && isNull _corpse) exitWith {}; //if not a JIP and its the start o
 if ((time < 10) || (isNull _corpse)) exitWith
 {
     _loadout = (_unit getVariable "f_var_assignGear");
-    _unit setVariable ["f_var_assignGear_done",false,true];
-    [_loadout,player] call f_fnc_assignGear;
+    _unit setVariable ["f_var_assignGear_done", false, true];
 
-    [] execVM "f\radios\radio_init.sqf";
+    [_loadout, player] call f_fnc_assignGear;
 
     if (!f_var_JIP_JIPMenu) exitWith {}; //do JIP players get teleport menu?
 
@@ -44,13 +44,16 @@ if ((time < 10) || (isNull _corpse)) exitWith
 
     if (isNil "F3_JIP_reinforcementOptionsAction") then
     {
-    	[player] execVM "f\JIP\f_JIP_addReinforcementOptionsAction.sqf";
+    	[player] spawn f_fnc_addJipReinforcementOptionsAction;
     };
 
 };
 
 
-if (!ca_respawningroup) then {[player] join grpNull;};
+if (!f_var_respawnInGroup) then
+{
+    [player] join grpNull;
+};
 
 
 // Enter spectator
@@ -69,10 +72,8 @@ waitUntil { ca_respawnwave };
 
 // F3 assign radio and gear
 _loadout = (_unit getVariable "f_var_assignGear");
-_unit setVariable ["f_var_assignGear_done",false,true];
-[_loadout,player] call f_fnc_assignGear;
-
-[] execVM "f\radios\radio_init.sqf";
+_unit setVariable ["f_var_assignGear_done", false, true];
+[_loadout, player] call f_fnc_assignGear;
 
 // Exit spectator and setpos to respawn_west
 [false] call ace_spectator_fnc_setSpectator;
@@ -83,7 +84,7 @@ sleep 5;
 
 if (isNil "F3_JIP_reinforcementOptionsAction") then
 {
-    [player] execVM "f\JIP\f_JIP_addReinforcementOptionsAction.sqf";
+    [player] spawn f_fnc_addJipReinforcementOptionsAction;
 };
 
 // [_unit] call ca_fnc_parachute;

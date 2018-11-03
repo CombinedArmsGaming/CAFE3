@@ -24,7 +24,8 @@ This briefing section can only be seen by the current admin.
 // MISSION-MAKER NOTES
 // This section displays notes made by the mission-maker for the ADMIN
 
-if (_customText != "") then {
+if (_customText != "") then
+{
 	_briefing ="
 	<br/>
 	<font size='18'>MISSION-MAKER NOTES</font><br/>
@@ -44,13 +45,18 @@ _ending = [];
 _endings = [];
 
 _i = 1;
-while {true} do {
+
+while {true} do
+{
 	_title = getText (missionconfigfile >> "CfgDebriefing" >> format ["end%1",_i] >> "title");
 	_description = getText (missionconfigfile >> "CfgDebriefing" >> format ["end%1",_i] >> "description");
+
 	if (_title == "") exitWith {};
+
 	_ending = [_i,_title,_description];
 	_endings append ([_ending]);
 	_i = _i + 1;
+
 };
 
 // Create the briefing section to display the endings
@@ -66,6 +72,7 @@ These endings are available. To trigger an ending click on its link.<br/><br/>
 	"<execute expression=""[[%1],'f_fnc_mpEnd',false] spawn BIS_fnc_MP;"">'end%1'</execute> - %2:<br/>
 	%3<br/><br/>"
 	,_x select 0,_x select 1,_x select 2];
+
 } forEach _endings;
 
 // ====================================================================================

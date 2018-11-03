@@ -28,6 +28,8 @@ if (isServer) then
 
 	#include "startup\groups\serverStartupGroup.sqf"
 
+	missionNamespace setVariable ["f_var_initServer", true, true];
+
 };
 
 
