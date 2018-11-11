@@ -14,5 +14,7 @@ class F
 #include "respawnWaves\functions.hpp"
 #include "spawnNpcs\functions.hpp"
 #include "joinInProgress\functions.hpp"
+#include "mapClick\functions.hpp"
+#include "aiBehaviour\functions.hpp"
 
 }

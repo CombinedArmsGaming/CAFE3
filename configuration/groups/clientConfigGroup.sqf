@@ -21,3 +21,6 @@
 
 // Player respawn
 #include "..\respawn.sqf"
+
+// Zeus Gearscript spawner
+#include "..\zeusNpcSpawner.sqf"

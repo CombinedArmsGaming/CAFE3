@@ -11,4 +11,11 @@ class spawnNpcs
     class spawnVehicleGroup{};
     class spawnVehiclePatrol{};
     class spawnVehicleStatic{};
+    class massAttack{};
+    class massCharge{};
+    class massFortify{};
+    class massPatrol{};
+    class massVehicleAttack{};
+    class massVehiclePatrol{};
+    class massVehicleStatic{};
 };

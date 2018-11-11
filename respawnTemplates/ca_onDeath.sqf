@@ -87,4 +87,4 @@ if (isNil "F3_JIP_reinforcementOptionsAction") then
     [player] spawn f_fnc_addJipReinforcementOptionsAction;
 };
 
-// [_unit] call ca_fnc_parachute;
+// [_unit] call f_fnc_paradropUnit;
