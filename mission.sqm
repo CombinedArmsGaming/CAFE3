@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1198;
+		nextID=1210;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={133.93108,98.508759,484.82184};
-		dir[]={0.46634781,-0.64132941,0.60947877};
-		up[]={0.3897745,0.76713955,0.50940627};
-		aside[]={0.79429495,-4.9141236e-006,-0.60774696};
+		pos[]={265.23499,92.027267,662.11932};
+		dir[]={-0.39587829,-0.50243586,-0.76883227};
+		up[]={-0.2300685,0.86448139,-0.44681922};
+		aside[]={-0.88918573,-2.0401785e-006,0.45783797};
 	};
 };
 binarizationWanted=0;
@@ -3716,7 +3716,7 @@ class Mission
 					{
 						skill=1;
 						rank="COLONEL";
-						init="call{diag_log ""what in fuc"";" \n "[""ar"", this] call f_fnc_assignGear;" \n "[this, true] call ca_fnc_registerZeusPlayer;}";
+						init="call{[""ar"", this] call f_fnc_assignGear;" \n "[this, true] call f_fnc_registerZeusPlayer;}";
 						name="zeus_ply";
 						description="Zeus Player";
 						isPlayer=1;
@@ -3875,7 +3875,7 @@ class Mission
 					{
 						skill=1;
 						rank="COLONEL";
-						init="call{[""zeus"", this] call f_fnc_assignGear;" \n "[this, true] call ca_fnc_registerZeusPlayer;}";
+						init="call{[""zeus"", this] call f_fnc_assignGear;" \n "[this, true] call f_fnc_registerZeusPlayer;}";
 						name="zeus_ply_1";
 						description="Zeus Player 2";
 						isPlayable=1;

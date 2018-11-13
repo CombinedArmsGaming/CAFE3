@@ -15,7 +15,7 @@ class zeusUi
     class setZeusUiHidden{};
     class spawnGroupForZeus{};
     class spawnVehicleGroupForZeus{};
-    class updateButtonToggleStatus{};
+    class updateButtonToggleState{};
     class zeusDoSpawn{};
     class zeusFillCategories{};
     class zeusFillUnits{};

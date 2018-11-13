@@ -16,5 +16,6 @@ class F
 #include "joinInProgress\functions.hpp"
 #include "mapClick\functions.hpp"
 #include "aiBehaviour\functions.hpp"
+#include "zeusAdditions\functions.hpp"
 
 }
