@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1210;
+		nextID=1226;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={265.23499,92.027267,662.11932};
-		dir[]={-0.39587829,-0.50243586,-0.76883227};
-		up[]={-0.2300685,0.86448139,-0.44681922};
-		aside[]={-0.88918573,-2.0401785e-006,0.45783797};
+		pos[]={86.187706,44.820507,1022.9249};
+		dir[]={-0.80393404,-0.36633059,-0.46877551};
+		up[]={-0.31661564,0.93036211,-0.18462093};
+		aside[]={-0.50379413,-1.0875519e-006,0.86397707};
 	};
 };
 binarizationWanted=0;
@@ -117,7 +117,7 @@ class ScenarioData
 };
 class CustomAttributes
 {
-	class Category0
+	class Category1
 	{
 		name="Scenario";
 		class Attribute0
