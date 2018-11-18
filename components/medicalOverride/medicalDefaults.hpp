@@ -1,5 +1,5 @@
+#include "macros.hpp"
 
-#include "..\..\configuration\medicalOverride.hpp"
 
 #ifdef MEDICAL_BASIC
 

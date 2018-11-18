@@ -9,10 +9,6 @@ if (hasInterface && (isNull player)) then
 	waitUntil {sleep 0.1; !isNull player};
 };
 
-// include the smaller acre2 settings file.
-#include "acre2_settings.sqf"
-
-
 // setup presets
 _presetSetup = [] call f_fnc_setupRadioPresets;
 
