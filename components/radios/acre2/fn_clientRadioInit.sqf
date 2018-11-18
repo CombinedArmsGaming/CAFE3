@@ -5,7 +5,13 @@
 // ====================================================================================
 
 // Set up the radio presets according to side.
-_presetName = switch (side player) do
+
+params ["_unit"];
+
+RUN_LOCAL_TO(_unit,f_fnc_clientRadioInit,_this);
+
+
+_presetName = switch (side _unit) do
 {
 	case west: {"default2"};
 	case east: {"default3"};
@@ -32,13 +38,12 @@ _ret = ["ItemRadio", _presetName ] call acre_api_fnc_setPreset;
 
 
 // if dead, set spectator and exit
-if (!alive player) exitWith
+if (!alive _unit) exitWith
 {
-	[true] call acre_api_fnc_setSpectator;
+ 	[true] call acre_api_fnc_setSpectator;
 	DEBUG_PRINT_LOG("[Radios] Player is dead, exit early.")
 };
 
-_unit = player;
 
 // ====================================================================================
 
@@ -258,14 +263,14 @@ if (!f_radios_settings_acre2_disableRadios) then
 
 	if (_groupChannelIndex == -1 && {_hasSR}) then
 	{
-		player sideChat format ["[F3 ACRE2] Warning: Unknown group for short-range channel defaults (%1)", _groupID];
+		DEBUG_FORMAT1_CHAT("[F3 ACRE2] Warning: Unknown group for short-range channel defaults (%1)", _groupID);
 		_groupChannelIndex = 0;
 	};
 
 
 	if (_groupLRChannelIndex == -1 && {(_hasLR || _hasExtra)}) then
 	{
-  		player sideChat format ["[F3 ACRE2] Warning: Unknown group for long-range channel defaults (%1)", _groupID];
+  		DEBUG_FORMAT1_CHAT("[F3 ACRE2] Warning: Unknown group for long-range channel defaults (%1)", _groupID);
 	  	_groupLRChannelIndex = 0;
 	};
 
