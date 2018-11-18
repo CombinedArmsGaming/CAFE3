@@ -6,11 +6,11 @@
 
 // Rifleman Loadout
 
-_baseLoadout = [["arifle_TRG21_F","","acc_flashlight","optic_ACO_grn",["30Rnd_556x45_Stanag",30],[],""],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_IG_Guerilla1_1",[["ACRE_PRC343",1],["ACE_elasticBandage",3],["ACE_packingBandage",3],["ACE_morphine",1],["ACE_epinephrine",1],["ACE_salineIV_500",1]]],["V_TacVest_oli",[["HandGrenade",2,1],["SmokeShell",2,1],["9Rnd_45ACP_Mag",2,8],["ACE_30Rnd_556x45_Stanag_Mk318_mag",7,30]]],["B_AssaultPack_rgr",[["ACE_30Rnd_556x45_Stanag_Mk318_mag",7,30],["30Rnd_556x45_Stanag_Tracer_Red",4,30],["HandGrenade",2,1]]],"H_Shemag_olive","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+_baseLoadout = [["arifle_TRG21_F","","acc_flashlight","optic_ACO_grn",["30Rnd_556x45_Stanag",30],[],""],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_BG_Guerilla1_1",[["ACRE_PRC343",1],["ACE_elasticBandage",3],["ACE_packingBandage",3],["ACE_morphine",1],["ACE_epinephrine",1],["ACE_salineIV_500",1]]],["V_TacVest_oli",[["HandGrenade",2,1],["SmokeShell",2,1],["9Rnd_45ACP_Mag",2,8],["ACE_30Rnd_556x45_Stanag_Mk318_mag",7,30]]],["B_AssaultPack_rgr",[["ACE_30Rnd_556x45_Stanag_Mk318_mag",7,30],["30Rnd_556x45_Stanag_Tracer_Red",4,30],["HandGrenade",2,1]]],"H_Shemag_olive","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
 
 CREATE_LOADOUT(rif,_baseLoadout);
 
-ADD_UNIFORM(rif,"U_IG_Guerilla1_1");
+ADD_UNIFORM(rif,"U_BG_Guerilla1_1");
 ADD_UNIFORM(rif,"U_BG_Guerrilla_6_1");
 ADD_UNIFORM(rif,"U_BG_Guerilla2_2");
 ADD_UNIFORM(rif,"U_BG_Guerilla2_1");
@@ -55,7 +55,7 @@ COPY_LOADOUT(sl,ftl);
 
 // Medic Loadout
 
-_baseLoadout = [["arifle_TRG20_F","","acc_flashlight","optic_ACO_grn",["30Rnd_556x45_Stanag",30],[],""],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_IG_Guerilla1_1",[["ACRE_PRC343",1],["ACE_elasticBandage",3],["ACE_packingBandage",3],["ACE_morphine",1],["ACE_epinephrine",1],["ACE_salineIV_500",1]]],["V_TacVest_oli",[["SmokeShell",4,1],["9Rnd_45ACP_Mag",2,8],["ACE_30Rnd_556x45_Stanag_Mk318_mag",7,30]]],["B_FieldPack_oli",[["ACE_elasticBandage",15],["ACE_fieldDressing",10],["ACE_epinephrine",15],["ACE_morphine",15],["ACE_atropine",5],["ACE_packingBandage",15],["ACE_bloodIV",10],["ACE_30Rnd_556x45_Stanag_Mk318_mag",1,30],["30Rnd_556x45_Stanag_Tracer_Red",2,30]]],"H_Shemag_olive","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+_baseLoadout = [["arifle_TRG20_F","","acc_flashlight","optic_ACO_grn",["30Rnd_556x45_Stanag",30],[],""],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_BG_Guerilla1_1",[["ACRE_PRC343",1],["ACE_elasticBandage",3],["ACE_packingBandage",3],["ACE_morphine",1],["ACE_epinephrine",1],["ACE_salineIV_500",1]]],["V_TacVest_oli",[["SmokeShell",4,1],["9Rnd_45ACP_Mag",2,8],["ACE_30Rnd_556x45_Stanag_Mk318_mag",7,30]]],["B_FieldPack_oli",[["ACE_elasticBandage",15],["ACE_fieldDressing",10],["ACE_epinephrine",15],["ACE_morphine",15],["ACE_atropine",5],["ACE_packingBandage",15],["ACE_bloodIV",10],["ACE_30Rnd_556x45_Stanag_Mk318_mag",1,30],["30Rnd_556x45_Stanag_Tracer_Red",2,30]]],"H_Shemag_olive","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
 
 CREATE_LOADOUT(med,_baseLoadout);
 COPY_ADDONS(med,rif);
@@ -72,7 +72,7 @@ ADD_BACKPACK(rif,"B_TacticalPack_oli");
 
 // Autorifleman Loadout
 
-_baseLoadout = [["LMG_Mk200_F","","acc_flashlight","optic_Holosight",["200Rnd_65x39_cased_Box_Tracer",200],[],"bipod_01_F_snd"],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_IG_Guerilla1_1",[["ACRE_PRC343",1],["ACE_elasticBandage",3],["ACE_packingBandage",3],["ACE_morphine",1],["ACE_epinephrine",1],["ACE_salineIV_500",1]]],["V_TacVest_oli",[["HandGrenade",2,1],["SmokeShell",2,1],["9Rnd_45ACP_Mag",2,8],["200Rnd_65x39_cased_Box",1,200]]],["B_AssaultPack_rgr",[["200Rnd_65x39_cased_Box_Tracer",1,200],["200Rnd_65x39_cased_Box",1,200],["ACE_SpareBarrel",1,1]]],"H_Shemag_olive","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+_baseLoadout = [["LMG_Mk200_F","","acc_flashlight","optic_Holosight",["200Rnd_65x39_cased_Box_Tracer",200],[],"bipod_01_F_snd"],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_BG_Guerilla1_1",[["ACRE_PRC343",1],["ACE_elasticBandage",3],["ACE_packingBandage",3],["ACE_morphine",1],["ACE_epinephrine",1],["ACE_salineIV_500",1]]],["V_TacVest_oli",[["HandGrenade",2,1],["SmokeShell",2,1],["9Rnd_45ACP_Mag",2,8],["200Rnd_65x39_cased_Box",1,200]]],["B_AssaultPack_rgr",[["200Rnd_65x39_cased_Box_Tracer",1,200],["200Rnd_65x39_cased_Box",1,200],["ACE_SpareBarrel",1,1]]],"H_Shemag_olive","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
 
 CREATE_LOADOUT(ar,_baseLoadout);
 COPY_ADDONS(ar,rif);
@@ -80,7 +80,7 @@ COPY_ADDONS(ar,rif);
 
 // Assistant AR Loadout
 
-_baseLoadout = [["arifle_TRG20_F","","acc_flashlight","optic_ACO_grn",["30Rnd_556x45_Stanag",30],[],""],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_IG_Guerilla1_1",[["ACRE_PRC343",1],["ACE_elasticBandage",3],["ACE_packingBandage",3],["ACE_morphine",1],["ACE_epinephrine",1],["ACE_salineIV_500",1]]],["V_TacVest_oli",[["HandGrenade",2,1],["SmokeShell",2,1],["9Rnd_45ACP_Mag",2,8],["ACE_30Rnd_556x45_Stanag_Mk318_mag",7,30]]],["B_FieldPack_oli",[["ACE_30Rnd_556x45_Stanag_Mk318_mag",1,30],["30Rnd_556x45_Stanag_Tracer_Red",2,30],["200Rnd_65x39_cased_Box_Tracer",1,200],["200Rnd_65x39_cased_Box",2,200]]],"H_Shemag_olive","",["Binocular","","","",[],[],""],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+_baseLoadout = [["arifle_TRG20_F","","acc_flashlight","optic_ACO_grn",["30Rnd_556x45_Stanag",30],[],""],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_BG_Guerilla1_1",[["ACRE_PRC343",1],["ACE_elasticBandage",3],["ACE_packingBandage",3],["ACE_morphine",1],["ACE_epinephrine",1],["ACE_salineIV_500",1]]],["V_TacVest_oli",[["HandGrenade",2,1],["SmokeShell",2,1],["9Rnd_45ACP_Mag",2,8],["ACE_30Rnd_556x45_Stanag_Mk318_mag",7,30]]],["B_FieldPack_oli",[["ACE_30Rnd_556x45_Stanag_Mk318_mag",1,30],["30Rnd_556x45_Stanag_Tracer_Red",2,30],["200Rnd_65x39_cased_Box_Tracer",1,200],["200Rnd_65x39_cased_Box",2,200]]],"H_Shemag_olive","",["Binocular","","","",[],[],""],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
 
 CREATE_LOADOUT(aar,_baseLoadout);
 COPY_ADDONS(aar,med);
@@ -88,7 +88,7 @@ COPY_ADDONS(aar,med);
 
 // Light anti-tank Loadout
 
-_baseLoadout = [["arifle_TRG21_F","","acc_flashlight","optic_ACO_grn",["30Rnd_556x45_Stanag",30],[],""],["launch_RPG7_F","","","",["RPG7_F",1],[],""],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_IG_Guerilla1_1",[["ACRE_PRC343",1],["ACE_elasticBandage",3],["ACE_packingBandage",3],["ACE_morphine",1],["ACE_epinephrine",1],["ACE_salineIV_500",1]]],["V_TacVest_oli",[["HandGrenade",2,1],["SmokeShell",2,1],["9Rnd_45ACP_Mag",2,8],["ACE_30Rnd_556x45_Stanag_Mk318_mag",7,30]]],["B_AssaultPack_rgr",[["30Rnd_556x45_Stanag_Tracer_Red",2,30],["ACE_30Rnd_556x45_Stanag_Mk318_mag",1,30],["RPG7_F",3,1]]],"H_Shemag_olive","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+_baseLoadout = [["arifle_TRG21_F","","acc_flashlight","optic_ACO_grn",["30Rnd_556x45_Stanag",30],[],""],["launch_RPG7_F","","","",["RPG7_F",1],[],""],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_BG_Guerilla1_1",[["ACRE_PRC343",1],["ACE_elasticBandage",3],["ACE_packingBandage",3],["ACE_morphine",1],["ACE_epinephrine",1],["ACE_salineIV_500",1]]],["V_TacVest_oli",[["HandGrenade",2,1],["SmokeShell",2,1],["9Rnd_45ACP_Mag",2,8],["ACE_30Rnd_556x45_Stanag_Mk318_mag",7,30]]],["B_AssaultPack_rgr",[["30Rnd_556x45_Stanag_Tracer_Red",2,30],["ACE_30Rnd_556x45_Stanag_Mk318_mag",1,30],["RPG7_F",3,1]]],"H_Shemag_olive","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
 
 CREATE_LOADOUT(lat,_baseLoadout);
 COPY_ADDONS(lat,rif);
@@ -96,7 +96,7 @@ COPY_ADDONS(lat,rif);
 
 // Marksman Loadout
 
-_baseLoadout = [["srifle_EBR_F","","acc_pointer_IR","optic_MRCO",["20Rnd_762x51_Mag",20],[],"bipod_03_F_blk"],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_IG_Guerilla1_1",[["ACRE_PRC343",1],["ACE_elasticBandage",3],["ACE_packingBandage",3],["ACE_morphine",1],["ACE_epinephrine",1],["ACE_salineIV_500",1]]],["V_TacVest_oli",[["HandGrenade",2,1],["SmokeShell",2,1],["9Rnd_45ACP_Mag",2,8],["20Rnd_762x51_Mag",5,20]]],["B_AssaultPack_rgr",[["HandGrenade",2,1],["ACE_20Rnd_762x51_Mag_Tracer",3,20],["20Rnd_762x51_Mag",2,20]]],"H_Shemag_olive","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
+_baseLoadout = [["srifle_EBR_F","","acc_pointer_IR","optic_DMS",["20Rnd_762x51_Mag",20],[],"bipod_03_F_blk"],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_BG_Guerilla1_1",[["ACRE_PRC343",1],["ACE_elasticBandage",3],["ACE_packingBandage",3],["ACE_morphine",1],["ACE_epinephrine",1],["ACE_salineIV_500",1],["ACE_RangeCard",1]]],["V_TacVest_oli",[["HandGrenade",2,1],["SmokeShell",2,1],["9Rnd_45ACP_Mag",2,8],["20Rnd_762x51_Mag",5,20]]],["B_AssaultPack_rgr",[["HandGrenade",2,1],["ACE_20Rnd_762x51_Mag_Tracer",3,20],["20Rnd_762x51_Mag",2,20]]],"H_Shemag_olive","",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch",""]];
 
 CREATE_LOADOUT(mk,_baseLoadout);
 COPY_ADDONS(mk,rif);

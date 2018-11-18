@@ -65,7 +65,7 @@ COPY_ADDONS(lat,rif);
 
 // Marksman Loadout
 
-_baseLoadout = [["srifle_DMR_01_F","","acc_pointer_IR","optic_MRCO",["10Rnd_762x54_Mag",10],[],"bipod_02_F_hex"],[],["hgun_Rook40_F","","","",["16Rnd_9x21_Mag",17],[],""],["U_O_CombatUniform_ocamo",[["ACE_elasticBandage",3],["ACE_packingBandage",3],["ACE_morphine",1],["ACE_epinephrine",1],["ACRE_PRC343",1],["ACE_salineIV_500",1],["16Rnd_9x21_Mag",2,17]]],["V_HarnessO_brn",[["HandGrenade",2,1],["SmokeShell",4,1],["ACE_Chemlight_IR",1,1],["10Rnd_762x54_Mag",10,10],["ACE_10Rnd_762x54_Tracer_mag",5,10]]],["B_AssaultPack_ocamo",[["10Rnd_762x54_Mag",5,10]]],"H_HelmetO_ocamo","G_Combat",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch","NVGoggles"]];
+_baseLoadout = [["srifle_DMR_01_F","","acc_pointer_IR","optic_DMS",["10Rnd_762x54_Mag",10],[],"bipod_02_F_hex"],[],["hgun_Rook40_F","","","",["16Rnd_9x21_Mag",17],[],""],["U_O_CombatUniform_ocamo",[["ACE_elasticBandage",3],["ACE_packingBandage",3],["ACE_morphine",1],["ACE_epinephrine",1],["ACRE_PRC343",1],["ACE_salineIV_500",1],["ACE_RangeCard",1],["16Rnd_9x21_Mag",2,17]]],["V_HarnessO_brn",[["HandGrenade",2,1],["SmokeShell",4,1],["ACE_Chemlight_IR",1,1],["10Rnd_762x54_Mag",10,10],["ACE_10Rnd_762x54_Tracer_mag",5,10]]],["B_AssaultPack_ocamo",[["10Rnd_762x54_Mag",5,10]]],"H_HelmetO_ocamo","G_Combat",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch","NVGoggles"]];
 
 CREATE_LOADOUT(mk,_baseLoadout);
 COPY_ADDONS(mk,rif);
