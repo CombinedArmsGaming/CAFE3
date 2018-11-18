@@ -280,6 +280,16 @@ class CfgRespawnTemplates
 // DO NOT REMOVE OR DISABLE THIS BLOCK OF CODE
 
 
+
+
+class Params
+{
+	#include "components\missionParameters.hpp"
+};
+
+
+
+
 class CfgFunctions
 {
 	#include "components\functions.hpp"
