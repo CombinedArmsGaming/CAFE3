@@ -146,3 +146,8 @@ _unit setVariable ["f_var_assignGear_done",true,true];
 // ====================================================================================
 
 // BUB 2018-10-23 TODO :: Call radio config from gearscript instead of the other way around.
+
+if (isPlayer _unit) then
+{
+    [_unit] call f_fnc_clientRadioInit;
+};
