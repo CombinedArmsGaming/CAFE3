@@ -3,7 +3,7 @@
 params ["_container"];
 
 
-_bandageTypes = ["ACE_elasticBandage", "ACE_packingBandage"];
+_bandageTypes = ["ACE_elasticBandage", "ACE_packingBandage", "ACE_tourniquet"];
 
 {
 

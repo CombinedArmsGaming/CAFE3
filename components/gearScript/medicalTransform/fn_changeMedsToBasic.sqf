@@ -20,11 +20,8 @@ _medEntries = [];
 if (_totalMeds <= 0) exitWith {};
 
 
-{
-    _medEntries pushBack ["ACE_morphine", floor (_totalMeds / 2)];
-    _medEntries pushBack ["ACE_epinephrine", ceil (_totalMeds / 2)];
-
-} forEach _medTypes;
+_medEntries pushBack ["ACE_morphine", floor (_totalMeds / 2)];
+_medEntries pushBack ["ACE_epinephrine", ceil (_totalMeds / 2)];
 
 
 reverse _medIndices;
@@ -36,7 +33,7 @@ reverse _medIndices;
 } forEach _medIndices;
 
 
-_container append _medTypes;
+_container append _medEntries;
 
 
 _container
