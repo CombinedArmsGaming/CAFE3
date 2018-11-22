@@ -253,7 +253,7 @@ class CfgRespawnTemplates
 	//*
 	class ca_respawn
 	{
-	    onPlayerRespawn = "respawnTemplates\ca_onDeath.sqf";
+	    onPlayerRespawn = "respawnTemplates\respawnWaves.sqf";
 		// onPlayerRespawn = "bub\respawnTemplates\swapTeam_onPlayerRespawn.sqf";
 	};
 	//*/

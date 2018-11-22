@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={146.26793,165.30289,750.98145};
-		dir[]={0.050054535,-0.57934481,-0.81370085};
-		up[]={0.03557986,0.81494308,-0.57836115};
-		aside[]={-0.99824131,-2.2658278e-006,-0.06141277};
+		pos[]={202.61374,47.194706,507.63199};
+		dir[]={0.62754917,-0.29794368,0.71949041};
+		up[]={0.19597298,0.95446193,0.22468443};
+		aside[]={0.75372207,-1.3667159e-006,-0.65739632};
 	};
 };
 binarizationWanted=0;
@@ -789,6 +789,7 @@ class Mission
 					flags=6;
 					class Attributes
 					{
+						rank="COLONEL";
 						init="call{[""ftl"", this] call f_fnc_assignGear;}";
 						description="ALPHA Fireteam Leader";
 						isPlayable=1;
@@ -1404,6 +1405,7 @@ class Mission
 					flags=6;
 					class Attributes
 					{
+						rank="COLONEL";
 						init="call{[""ftl"", this] call f_fnc_assignGear;}";
 						description="BRAVO Fireteam Leader";
 						isPlayable=1;
@@ -2019,6 +2021,7 @@ class Mission
 					flags=6;
 					class Attributes
 					{
+						rank="COLONEL";
 						init="call{[""ftl"", this] call f_fnc_assignGear;}";
 						description="CHARLIE Fireteam Leader";
 						isPlayable=1;

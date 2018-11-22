@@ -39,6 +39,7 @@
 
 // Startup convenience macros
 #define RUN_ONLY_ONCE_ASYNC(PATH,VAR) if (isNil #VAR) then { VAR = [] execVM PATH; };
+#define RUN_FUNC_ONCE_ASYNC(FUNC,VAR) if (isNil #VAR) then { VAR = [] spawn FUNC; };
 
 // CBA Hash convenience macros
 #define HASH_CREATE(NAME) NAME = [] call CBA_fnc_hashCreate
@@ -56,5 +57,6 @@
 
 #define RUN_ON_SERVER(FUNC,ARGS) if (!isServer) exitWith { [ARGS] remoteExec [#FUNC,2]; }
 #define RUN_LOCAL_TO(OBJ,FUNC,ARGS) if (!(local OBJ)) exitWith { [ARGS] remoteExec [#FUNC,OBJ]; }
+#define RUN_AS_ASYNC(FUNC) if (!canSuspend) exitWith { _this spawn FUNC; }
 
 #define INIT_COMPONENT(COMPNAME) RUN_ONLY_ONCE_ASYNC('components\COMPNAME\init_component.sqf',CONCAT(f_script_,COMPNAME))

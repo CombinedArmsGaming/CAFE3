@@ -131,7 +131,7 @@ class RespawnWavesDialog
         	y = 0.35 * safezoneH + safezoneY;
         	w = 0.2 * safezoneW;
         	h = 0.05 * safezoneH;
-            action =  "if (rank player == 'COLONEL' || (serverCommandAvailable '#kick')) then {[] call f_fnc_respawnwave; hint 'Wave spawned!';}";
+            action =  "if ( player getVariable ['f_var_canUseRespawnMenu', false] == true ) then { [] call f_fnc_respawnwave; hint 'Wave spawned!'; }";
             //closeDialog 0;
         };
         class infotext2: RscFrame

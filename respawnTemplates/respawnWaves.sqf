@@ -23,12 +23,7 @@ if (!f_var_JIP_JIPMenu && isNull _corpse) exitWith {}; // If no corpse exists th
 
 if (time < 10 && isNull _corpse) exitWith {}; //if not a JIP and its the start of the mission exit out
 
-
-{
-    _unit removeItem _x;
-
-} forEach ([] call acre_api_fnc_getCurrentRadioList);  //Remove any additional radios that might get spawned
-
+RUN_FUNC_ONCE_ASYNC(f_fnc_aceRespawnMenuAction,f_script_aceRespawn)
 
 // Join in progress and instant respawn handling
 if ((time < 10) || (isNull _corpse)) exitWith
@@ -67,7 +62,7 @@ if (!f_var_respawnInGroup) then
 
 
 // Wait for respawn to happen
-waitUntil { ca_respawnwave };
+waitUntil { sleep 0.5; ca_respawnwave };
 
 
 // F3 assign radio and gear

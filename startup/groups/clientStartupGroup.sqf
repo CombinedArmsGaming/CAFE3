@@ -28,3 +28,6 @@ INIT_COMPONENT(gearScript)
 
 // Miscellaneous client scripts
 INIT_COMPONENT(miscClient)
+
+// Respawn waves init
+INIT_COMPONENT(respawnWaves)
