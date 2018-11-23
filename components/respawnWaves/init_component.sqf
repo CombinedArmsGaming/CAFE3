@@ -22,4 +22,4 @@ DEBUG_PRINT_LOG("initting respawnWaves")
 };
 
 
-[player] call f_fnc_aceRespawnMenuAction;
+RUN_FUNC_ONCE_ASYNC(f_fnc_aceRespawnMenuAction)

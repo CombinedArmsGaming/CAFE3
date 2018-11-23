@@ -11,6 +11,10 @@ params ["_unit"];
 RUN_LOCAL_TO(_unit,f_fnc_clientRadioInit,_this);
 
 
+if ( !isNil 'f_var_running_radios' and {f_var_running_radios} ) exitWith {};
+f_var_running_radios = true;
+
+
 _presetName = switch (side _unit) do
 {
 	case west: {"default2"};
@@ -69,11 +73,6 @@ DEBUG_FORMAT1_LOG("[Radios] Speaking: %1",(_languages select 0))
 
 // RADIO ASSIGNMENT
 
-// BUB 2018-09-24 TODO :: Decouple radios from gearscript.
-_typeOfUnit = _unit getVariable ["f_var_assignGear", "NIL"];
-
-DEBUG_FORMAT1_LOG("[Radios] Unit type is: %1",_typeOfUnit)
-
 // REMOVE ALL RADIOS
 // Wait for ACRE2 to initialise any radios the unit has in their inventory, and then
 // remove them to ensure that duplicate radios aren't added by accident.
@@ -85,19 +84,12 @@ waitUntil
 
 uiSleep 1;
 
-
-waitUntil
-{
-	[] call acre_api_fnc_isInitialized
-};
-
-
 DEBUG_PRINT_LOG("[Radios] Removing radios from unit.")
+[] call f_fnc_removeRadios;
 
-{
-	_unit removeItem _x;
 
-} forEach ([] call acre_api_fnc_getCurrentRadioList);
+_typeOfUnit = _unit getVariable ["f_var_assignGear", "NIL"];
+DEBUG_FORMAT1_LOG("[Radios] Unit type is: %1",_typeOfUnit)
 
 // ====================================================================================
 
@@ -311,3 +303,5 @@ if (!f_radios_settings_acre2_disableRadios) then
 	};
 
 };
+
+f_var_running_radios = false;

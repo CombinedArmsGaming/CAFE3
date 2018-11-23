@@ -1,21 +1,19 @@
 #include "macros.hpp"
 
-DEBUG_PRINT_LOG("[GEARSCRIPT-2]: Entering assignGearWaited...")
+RUN_AS_ASYNC(f_fnc_assignGear);
 
+_unit = _this select 1;
+LOCAL_ONLY(_unit);
 
-if !(canSuspend) exitWith
-{
-    _this spawn f_fnc_assignGear;
-};
+_runningAlready = _unit getVariable ["f_var_assignGear_running",false];
+if (_runningAlready) exitWith {};
+
+_unit setVariable ["f_var_assignGear_running",true];
+_unit setVariable ["f_var_assignGear_done",false,true];
 
 
 waitUntil {time > 0};
 
-_unit = _this select 1;
-
-LOCAL_ONLY(_unit);
-
-DEBUG_PRINT_LOG("[GEARSCRIPT-2]: Is local.")
 
 // ====================================================================================
 
@@ -60,16 +58,7 @@ _unit setVariable ["f_var_assignGear_Faction", _faction, true];
 
 // ====================================================================================
 
-// This variable simply tracks the progress of the gear assignation process, for other
-// scripts to reference.
-
-_unit setVariable ["f_var_assignGear_done",false,true];
-
-// ====================================================================================
-
 DEBUG_FORMAT1_CHAT("DEBUG (assignGear.sqf): unit faction: %1",_faction);
-
-// ====================================================================================
 
 // ====================================================================================
 
@@ -138,16 +127,17 @@ if (_gearVariant == "") exitWith {};
 [_unit, _typeofUnit, _gearVariant] call f_fnc_applyLoadout;
 
 
-// This variable simply tracks the progress of the gear assignation process, for other
-// scripts to reference.
 
-_unit setVariable ["f_var_assignGear_done",true,true];
-
-// ====================================================================================
-
-// BUB 2018-10-23 TODO :: Call radio config from gearscript instead of the other way around.
 
 if (isPlayer _unit) then
 {
     [_unit] call f_fnc_clientRadioInit;
 };
+
+// This variable simply tracks the progress of the gear assignation process, for other
+// scripts to reference.
+
+_unit setVariable ["f_var_assignGear_done",true,true];
+_unit setVariable ["f_var_assignGear_running",false];
+
+// ====================================================================================

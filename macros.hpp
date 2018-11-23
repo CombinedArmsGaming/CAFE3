@@ -39,7 +39,7 @@
 
 // Startup convenience macros
 #define RUN_ONLY_ONCE_ASYNC(PATH,VAR) if (isNil #VAR) then { VAR = [] execVM PATH; };
-#define RUN_FUNC_ONCE_ASYNC(FUNC,VAR) if (isNil #VAR) then { VAR = [] spawn FUNC; };
+#define RUN_FUNC_ONCE_ASYNC(FUNC) if (isNil #CONCAT(f_script,FUNC)) then { CONCAT(f_script,FUNC) = [] spawn FUNC; };
 
 // CBA Hash convenience macros
 #define HASH_CREATE(NAME) NAME = [] call CBA_fnc_hashCreate

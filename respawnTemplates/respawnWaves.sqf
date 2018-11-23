@@ -23,7 +23,9 @@ if (!f_var_JIP_JIPMenu && isNull _corpse) exitWith {}; // If no corpse exists th
 
 if (time < 10 && isNull _corpse) exitWith {}; //if not a JIP and its the start of the mission exit out
 
-RUN_FUNC_ONCE_ASYNC(f_fnc_aceRespawnMenuAction,f_script_aceRespawn)
+
+RUN_FUNC_ONCE_ASYNC(f_fnc_aceRespawnMenuAction)
+
 
 // Join in progress and instant respawn handling
 if ((time < 10) || (isNull _corpse)) exitWith
@@ -53,12 +55,7 @@ if (!f_var_respawnInGroup) then
 
 // Enter spectator
 [true] call ace_spectator_fnc_setSpectator;
-
-
-{
-    _unit removeItem _x;
-
-} forEach ([] call acre_api_fnc_getCurrentRadioList);  //Remove any additional radios for sure
+[] call f_fnc_removeRadios;  //Remove any additional radios for sure
 
 
 // Wait for respawn to happen
@@ -68,7 +65,9 @@ waitUntil { sleep 0.5; ca_respawnwave };
 // F3 assign radio and gear
 _loadout = (_unit getVariable "f_var_assignGear");
 _unit setVariable ["f_var_assignGear_done", false, true];
+
 [_loadout, player] call f_fnc_assignGear;
+
 
 // Exit spectator and setpos to respawn_west
 [false] call ace_spectator_fnc_setSpectator;

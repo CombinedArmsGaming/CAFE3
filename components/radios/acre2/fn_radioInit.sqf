@@ -22,6 +22,4 @@ if (hasInterface) then
 
 	} foreach f_radios_settings_acre2_languages;
 
-	[player] call f_fnc_clientRadioInit;
-
 };
