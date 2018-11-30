@@ -31,8 +31,8 @@ class ace_medical_enableunconsciousnessai
 {
     title = "Enable AI unconsciousness";
     ACE_setting = 1;
-    values[] = {0, 1};
-    texts[] =  {"Disabled", "Enabled"};
+    values[] = {0, 1, 2};
+    texts[] =  {"Disabled", "50/50", "Enabled"};
     default = ACE_MEDICAL_ENABLEUNCONSCIOUSNESSAI;
 };
 
@@ -77,7 +77,7 @@ class ace_medical_menu_maxrange
     title = "Medical menu max-range";
     ACE_setting = 1;
     values[] = {2, 3, 5, 7, 10};
-    texts[] =  {"2m", "3m", "5m", "7m", "10m"};
+    texts[] =  {"2 mins", "3 mins", "5 mins", "7 mins", "10 mins"};
     default = ACE_MEDICAL_MENU_MAXRANGE;
 };
 
