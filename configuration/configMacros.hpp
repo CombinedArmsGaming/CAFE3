@@ -5,13 +5,10 @@
 
 #include "radios.hpp"
 #include "medicalOverride.hpp"
-
+#include "aceActions.hpp"
 
 // Enables kill-logging.
 //#define ENABLE_KILL_TRACKING 1
 
 // Enables debugging
 #define ENABLE_DEBUG 1
-
-// Enables inventory ACE action.
-#define ENABLE_INVENTORY_ACTION 1

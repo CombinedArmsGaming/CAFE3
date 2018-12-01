@@ -636,7 +636,6 @@ class RscCombo
 
 #ifdef ENABLE_KILL_TRACKING
 
-
 class Extended_Killed_EventHandlers
 {
 	class AllVehicles
@@ -645,26 +644,26 @@ class Extended_Killed_EventHandlers
 	};
 };
 
-
-class Extended_PostInit_EventHandlers
-{
-	class AllVehicles
-	{
-		init = "_obj = _this select 0; _obj setVariable ['bub_side', side _obj, 1]";
-	};
-};
-
-
 #endif
 
 
 
 
-#ifdef ENABLE_INVENTORY_ACTION
-
-
 class Extended_InitPost_EventHandlers
 {
+
+#ifdef ENABLE_KILL_TRACKING
+
+	class AllVehicles
+	{
+		init = "_obj = _this select 0; _obj setVariable ['bub_side', side _obj, 1]";
+	};
+
+#endif
+
+
+#ifdef ENABLE_INVENTORY_ACTION
+
     class CAManBase
 	{
         class addInventoryAction
@@ -674,7 +673,20 @@ class Extended_InitPost_EventHandlers
 
     };
 
-};
+#endif
 
+
+#ifdef ENABLE_UNFLIP_ACTION
+
+	class LandVehicle
+	{
+		class addUnflipAction
+		{
+			init = "_this call f_fnc_addUnflipActionToClass";
+		};
+
+	};
 
 #endif
+
+};

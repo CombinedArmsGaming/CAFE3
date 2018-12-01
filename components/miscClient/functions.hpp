@@ -5,5 +5,4 @@ class miscClient
     class paradropUnit{};
     class setRating{};
     class removeRadios{};
-    class addInventoryActionToClass{};
 };
