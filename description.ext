@@ -656,3 +656,25 @@ class Extended_PostInit_EventHandlers
 
 
 #endif
+
+
+
+
+#ifdef ENABLE_INVENTORY_ACTION
+
+
+class Extended_InitPost_EventHandlers
+{
+    class CAManBase
+	{
+        class addInventoryAction
+		{
+            init = "_this call f_fnc_addInventoryActionToClass";
+        };
+
+    };
+
+};
+
+
+#endif

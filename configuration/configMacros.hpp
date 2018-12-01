@@ -12,3 +12,6 @@
 
 // Enables debugging
 #define ENABLE_DEBUG 1
+
+// Enables inventory ACE action.
+#define ENABLE_INVENTORY_ACTION 1
