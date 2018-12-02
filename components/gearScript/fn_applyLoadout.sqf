@@ -4,9 +4,49 @@ params ["_unit", "_typeofUnit", "_gearVariant"];
 
 LOCAL_ONLY(_unit);
 
+_gearVariant = toLower _gearVariant;
+_typeofUnit = toLower _typeofUnit;
 
-_loadoutVarName = format ["f_loadouts_%1_%2", toLower _gearVariant, toLower _typeofUnit];
-_loadoutVariants = missionNamespace getVariable [_loadoutVarName, []];
+
+if (_typeofUnit find "crate_" == 0) exitWith
+{
+    _crateArray = LOADOUT_VAR_DYNAMIC(_gearVariant,_typeofUnit);
+
+    if !(_crateArray isEqualTo []) then
+    {
+        clearWeaponCargoGlobal _unit;
+        clearMagazineCargoGlobal _unit;
+        clearItemCargoGlobal _unit;
+        clearBackpackCargoGlobal _unit;
+
+        {
+            switch (_x select 0) do
+            {
+                case "backpack":
+                {
+                    DEBUG_FORMAT2_LOG("[GEARSCRIPT-2]: Adding %1 to backpack cargo in %2.",(_x select 1),_typeofUnit)
+                    _unit addBackpackCargoGlobal (_x select 1);
+                };
+
+                default
+                {
+                    _unit addItemCargoGlobal _x;
+                };
+
+            };
+
+        } forEach _crateArray;
+
+    }
+    else
+    {
+        DEBUG_FORMAT2_LOG("[GEARSCRIPT-2]: Skipping crate type %1 for side %2 because it is empty or undefined.",_typeofUnit,_gearVariant)
+    };
+
+};
+
+
+_loadoutVariants = LOADOUT_VAR_DYNAMIC(_gearVariant,_typeofUnit);
 
 
 if (_loadoutVariants isEqualTo []) then
@@ -14,9 +54,8 @@ if (_loadoutVariants isEqualTo []) then
     DEBUG_FORMAT2_LOG("[GEARSCRIPT-2]: No '%1' loadouts found for side '%2' - attempting to use default...",_typeofUnit,_gearVariant)
     _typeofUnit = "default";
 
-    _loadoutVarName = format ["f_loadouts_%1_%2", toLower _gearVariant, toLower _typeofUnit];
-    _loadoutVariants = missionNamespace getVariable [_loadoutVarName, []];
-    
+    _loadoutVariants = LOADOUT_VAR_DYNAMIC(_gearVariant,_typeofUnit);
+
 };
 
 

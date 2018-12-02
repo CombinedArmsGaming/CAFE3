@@ -1,5 +1,7 @@
 #include "macros.hpp"
+if !(isNil "f_var_gearscript_already_run") exitWith {DEBUG_PRINT_LOG("[GEARSCRIPT-2]: Gearscript tried running multiple times.")};
 #include "..\gearscript_macros.hpp"
+f_var_gearscript_already_run = true;
 
 // Configure sides below.
 // Supported sides are: BLUFOR, OPFOR, INDFOR, Guerrilla, Civilian.

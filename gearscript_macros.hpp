@@ -2,6 +2,7 @@
 #define FACTION NONE
 
 #define LOADOUT_VAR(NAME) CONCAT3(f_loadouts_,CONCAT(FACTION,_),NAME)
+#define LOADOUT_VAR_DYNAMIC(SIDE,NAME) (missionNamespace getVariable [format ["f_loadouts_%1_%2", SIDE, NAME], []])
 
 #define LOADOUT_ITEM_VAR(NAME,ITEM) CONCAT3(LOADOUT_VAR(NAME),_,ITEM)
 #define LOADOUT_ITEM_VAR_DYNAMIC(SIDE,NAME,ITEM) (missionNamespace getVariable [format ["f_loadouts_%1_%2_%3", SIDE, NAME, ITEM], []])
@@ -45,3 +46,27 @@
 #define COPY_LOADOUT(NAME,OTHERNAME)\
     LOADOUT_VAR(NAME) = +LOADOUT_VAR(OTHERNAME);\
     COPY_ADDONS(NAME,OTHERNAME)
+
+
+
+
+#define CRATE_VAR(NAME) LOADOUT_VAR(CONCAT(crate_,NAME))
+#define CRATE_VAR_DYNAMIC(SIDE,NAME) (missionNamespace getVariable [format ["f_loadouts_%1_crate_%2", SIDE, NAME], []])
+#define CRATE_VAR_EXISTS(SIDE,NAME) !(isNil format ["f_loadouts_%1_crate_%2", SIDE, NAME])
+
+#define CREATE_CRATE(NAME) CRATE_VAR(NAME) = []
+
+#define ADD_ITEMS_TO_CRATE(CRATE,ITEM,AMOUNT) [#FACTION,#CRATE,ITEM,AMOUNT] call f_fnc_addItemsToCrate
+
+#define ADD_RIFLE_TO_CRATE(CRATE,NAME,AMOUNT) [#FACTION,#CRATE,#NAME,AMOUNT] call f_fnc_addRifleToCrate
+#define ADD_RIFLE_AMMO_TO_CRATE(CRATE,NAME,AMOUNT) [#FACTION,#CRATE,#NAME,AMOUNT] call f_fnc_addRifleAmmoToCrate
+#define ADD_RIFLE_GRENADES_TO_CRATE(CRATE,NAME,AMOUNT) [#FACTION,#CRATE,#NAME,AMOUNT] call f_fnc_addRifleGrenadesToCrate
+
+#define ADD_PISTOL_TO_CRATE(CRATE,NAME,AMOUNT) [#FACTION,#CRATE,#NAME,AMOUNT] call f_fnc_addPistolToCrate
+#define ADD_PISTOL_AMMO_TO_CRATE(CRATE,NAME,AMOUNT) [#FACTION,#CRATE,#NAME,AMOUNT] call f_fnc_addPistolAmmoToCrate
+
+#define ADD_LAUNCHER_TO_CRATE(CRATE,NAME,AMOUNT) [#FACTION,#CRATE,#NAME,AMOUNT] call f_fnc_addLauncherToCrate
+#define ADD_LAUNCHER_AMMO_TO_CRATE(CRATE,NAME,AMOUNT) [#FACTION,#CRATE,#NAME,AMOUNT] call f_fnc_addLauncherAmmoToCrate
+
+#define ADD_BANDAGES_TO_CRATE(CRATE,AMOUNT) [#FACTION,#CRATE,AMOUNT] call f_fnc_addBandagesToCrate
+#define ADD_BACKPACKS_TO_CRATE(CRATE,NAME,AMOUNT) [#FACTION,#CRATE,#NAME,AMOUNT] call f_fnc_addBackpacksToCrate

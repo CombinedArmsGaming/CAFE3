@@ -16,3 +16,18 @@ class gearScriptMedical
     class changeBandagesToAdvanced{};
     class changeMedsToAdvanced{};
 };
+
+class gearScriptCrates
+{
+    file = "components\gearScript\crateSupport";
+    class addRifleToCrate{};
+    class addRifleAmmoToCrate{};
+    class addRifleGrenadesToCrate{};
+    class addPistolToCrate{};
+    class addPistolAmmoToCrate{};
+    class addLauncherToCrate{};
+    class addLauncherAmmoToCrate{};
+    class addBandagesToCrate{};
+    class addBackpacksToCrate{};
+    class addItemsToCrate{};
+};
