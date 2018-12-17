@@ -1,3 +1,4 @@
+#include "macros.hpp"
 //	Zeus extensions for CA, by Bubbus.
 //
 //	PARAMETERS:
@@ -11,7 +12,7 @@
 
 params ["_unit", "_spawnMenu"];
 
-if (!isServer) exitWith {};
+RUN_LOCAL_TO(_unit,f_fnc_registerZeusPlayer,_this);
 
-[_unit] remoteExec ["f_fnc_giveUnitGodmode", _unit, true];
-[_unit, _spawnMenu] remoteExec ["f_fnc_zeusDeployment", _unit, true];
+[_unit] call f_fnc_giveUnitGodmode;
+[_unit, _spawnMenu] call f_fnc_zeusDeployment;

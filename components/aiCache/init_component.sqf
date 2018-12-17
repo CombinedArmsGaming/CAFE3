@@ -27,5 +27,9 @@ if (hasInterface && { !(group player getVariable ["f_cacheExcl", false]) }) then
 // Rest of the Script is only run server-side
 if (isServer) then
 {
+    f_arr_playerGroups = [];
+    [] spawn f_fnc_playerGroupLoop;
+
     [] spawn f_fnc_initCacher;
+    
 };

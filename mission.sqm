@@ -17,9 +17,9 @@ class EditorData
 	class Camera
 	{
 		pos[]={164.64468,55.464073,507.63876};
-		dir[]={0.76351547,-0.3685315,0.53054607};
-		up[]={0.30279136,0.9294802,0.21040073};
-		aside[]={0.5707168,-2.3210887e-006,-0.82131493};
+		dir[]={0.76974064,-0.39133853,0.50458342};
+		up[]={0.32743502,0.9201082,0.21464083};
+		aside[]={0.54831249,-2.4934998e-006,-0.8364383};
 	};
 };
 binarizationWanted=0;
@@ -3375,7 +3375,7 @@ class Mission
 						class Attribute0
 						{
 							property="ace_isEngineer";
-							expression="if (_value != -1) then {_this setVariable ['ace_isEngineer',_value, true];}";
+							expression="if !(_value == ([0,1] select (_this getUnitTrait 'engineer'))|| {_value == -1}) then {_this setVariable ['ace_isEngineer', _value, true]}";
 							class Value
 							{
 								class data
@@ -3533,7 +3533,7 @@ class Mission
 						class Attribute0
 						{
 							property="ace_isEngineer";
-							expression="if (_value != -1) then {_this setVariable ['ace_isEngineer',_value, true];}";
+							expression="if !(_value == ([0,1] select (_this getUnitTrait 'engineer'))|| {_value == -1}) then {_this setVariable ['ace_isEngineer', _value, true]}";
 							class Value
 							{
 								class data

@@ -6,7 +6,15 @@
 //
 //		See parameters for f_fnc_spawnvehiclegroup.
 
-params ["_units", "_camPos", "_veh", "_gear", "_side"];
+params [
+	"_units",
+	"_camPos",
+	"_veh",
+	"_gear",
+	"_side",
+	["_spawn_vcom", false, [false]],
+	["_spawn_suppress", false, [false]]
+];
 
 _groupVeh = [_units, _camPos, _veh, _gear, _side] call f_fnc_spawnvehiclegroup;
 
@@ -21,3 +29,14 @@ _groupVeh = [_units, _camPos, _veh, _gear, _side] call f_fnc_spawnvehiclegroup;
 	_curator addCuratorEditableObjects [_units, true];
 
 } forEach allCurators;
+
+if (_spawn_vcom) then
+{
+	_group setVariable ["Vcm_Disable", true, true];
+};
+
+if (_spawn_suppress) then
+{
+	private _group = _groupVeh select 0;
+	[_group] call f_fnc_groupSuppressiveAI;
+};

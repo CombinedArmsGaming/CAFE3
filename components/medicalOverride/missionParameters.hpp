@@ -76,8 +76,8 @@ class ace_medical_menu_maxrange
 {
     title = "Medical menu max-range";
     ACE_setting = 1;
-    values[] = {2, 3, 5, 7, 10};
-    texts[] =  {"2 mins", "3 mins", "5 mins", "7 mins", "10 mins"};
+    values[] = {1, 2, 3};
+    texts[] =  {"1m", "2m", "3m"};
     default = ACE_MEDICAL_MENU_MAXRANGE;
 };
 
@@ -122,7 +122,7 @@ class ace_medical_maxrevivetime
     title = "Revive time limit";
     ACE_setting = 1;
     values[] = {10, 30, 45, 60, 90, 120, 180, 300, 600};
-    texts[] =  {"10s", "30s", "45s", "60s", "1m 30s", "2m", "3m", "5m", "10m"};
+    texts[] =  {"10s", "30s", "45s", "60s", "1m 30s", "2 mins", "3 mins", "5 mins", "10 mins"};
     default = ACE_MEDICAL_MAXREVIVETIME;
 };
 

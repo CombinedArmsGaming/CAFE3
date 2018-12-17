@@ -6,6 +6,9 @@
 
 params ["_unit", "_distance"];
 
+_playerGroups = missionNamespace getVariable ["f_arr_playerGroups", []];
+if (_playerGroups isEqualTo []) exitWith { false };
+
 _closeEnough = false;
 
 scopeName "sqfSucks";
@@ -22,7 +25,7 @@ scopeName "sqfSucks";
         breakTo "sqfSucks";
     };
 
-} forEach f_arr_playerGroups;
+} forEach _playerGroups;
 
 
 _closeEnough

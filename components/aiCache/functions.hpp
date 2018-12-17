@@ -6,4 +6,5 @@ class aiCache
     class cacheTracker{};
     class initCacher{};
     class nearPlayerGroup{};
+    class playerGroupLoop{};
 };
