@@ -16,3 +16,5 @@ RUN_LOCAL_TO(_unit,f_fnc_registerZeusPlayer,_this);
 
 [_unit] call f_fnc_giveUnitGodmode;
 [_unit, _spawnMenu] call f_fnc_zeusDeployment;
+
+_unit setVariable ["f_var_isKillLogRecipient", true, true];

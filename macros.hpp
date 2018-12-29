@@ -69,3 +69,6 @@
 #define RUN_AS_ASYNC(FUNC) if (!canSuspend) exitWith { _this spawn FUNC; }
 
 #define INIT_COMPONENT(COMPNAME) RUN_ONLY_ONCE_ASYNC('components\COMPNAME\init_component.sqf',CONCAT(f_script_,COMPNAME))
+
+#define FULL_KILL_LOG_KEY_SERVER "f_var_killTracking_KILL_LOG_NAME"
+#define FULL_KILL_LOG_KEY_CLIENT "f_var_killTracking_KILL_LOG_NAME_received"

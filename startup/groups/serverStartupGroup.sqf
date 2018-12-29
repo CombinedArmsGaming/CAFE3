@@ -17,3 +17,11 @@ INIT_COMPONENT(radios)
 
 // Gearscript placeholder
 INIT_COMPONENT(gearScript)
+
+
+#ifdef ENABLE_KILL_TRACKING
+
+// Kill tracker init
+INIT_COMPONENT(killTracker)
+
+#endif

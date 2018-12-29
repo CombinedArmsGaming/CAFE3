@@ -17,5 +17,6 @@ class F
 #include "aiBehaviour\functions.hpp"
 #include "zeusAdditions\functions.hpp"
 #include "aceActions\functions.hpp"
+#include "killTracker\functions.hpp"
 
 }
