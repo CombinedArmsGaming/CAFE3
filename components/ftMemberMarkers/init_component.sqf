@@ -14,8 +14,6 @@ if (hasInterface) then
         };
     };
 
-    DEBUG_PRINT_LOG("done waiting: markers")
-
     [] call f_fnc_beginFireteamMarkers;
-    
+
 };

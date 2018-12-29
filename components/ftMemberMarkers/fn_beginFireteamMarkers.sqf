@@ -49,7 +49,7 @@ FTMK_GROUP = [];
 
             if (isNil "_val") then
             {
-                DEBUG_FORMAT1_LOG("Adding group member: %1",_x)
+                DEBUG_FORMAT1_LOG("[FT Markers] Adding group member: %1",_x)
                 HASH_SET(FTMK_MKHASH, _x, []);
             };
 
@@ -61,7 +61,14 @@ FTMK_GROUP = [];
         HASH_FOREACH(FTMK_MKHASH, _syncGroupLeavers);
 
         {
-            DEBUG_FORMAT1_LOG("Removing group member: %1",_x)
+            DEBUG_FORMAT1_LOG("[FT Markers] Removing group member: %1",_x)
+
+            _value = HASH_GET(FTMK_MKHASH, _x);
+
+            DEBUG_FORMAT1_LOG("[FT Markers] Deleting group marker for: %1",_x)
+            deleteMarkerLocal (_value select 1);
+            deleteMarkerLocal (_value select 0);
+
             HASH_REMOVE(FTMK_MKHASH, _x);
 
         } forEach FTMK_TOREMOVE_1;
@@ -90,7 +97,7 @@ FTMK_TOREMOVE_2 = [];
 
             if (!(_value isEqualTo [])) then
             {
-                DEBUG_FORMAT1_LOG("Deleting group marker for: %1",_key)
+                DEBUG_FORMAT1_LOG("[FT Markers] Deleting group marker for: %1",_key)
                 deleteMarkerLocal (_value select 1);
                 deleteMarkerLocal (_value select 0);
             };
@@ -102,7 +109,7 @@ FTMK_TOREMOVE_2 = [];
             {
                 _value = [_key] call f_fnc_createUnitMarker;
                 HASH_SET(FTMK_MKHASH, _key, _value);
-                DEBUG_FORMAT1_LOG("Created group member for: %1",_key)
+                DEBUG_FORMAT1_LOG("[FT Markers] Created group member for: %1",_key)
             };
 
             [_key, _value] call f_fnc_updateUnitMarker;
@@ -118,7 +125,7 @@ FTMK_TOREMOVE_2 = [];
         HASH_FOREACH(FTMK_MKHASH, _syncMarker);
 
         {
-            DEBUG_FORMAT1_LOG("Removing group member: %1",_x)
+            DEBUG_FORMAT1_LOG("[FT Markers] Removing group member: %1",_x)
             HASH_REMOVE(FTMK_MKHASH, _x);
 
         } forEach FTMK_TOREMOVE_2;
@@ -153,4 +160,4 @@ FTMK_TOREMOVE_2 = [];
 
 };
 
-DEBUG_PRINT_LOG("started all marker loops")
+DEBUG_PRINT_LOG("[FT Markers] Started all marker loops")
