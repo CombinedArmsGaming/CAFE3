@@ -23,9 +23,6 @@ INIT_COMPONENT(aiCache)
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 INIT_COMPONENT(radios)
 
-// Gearscript placeholder
-INIT_COMPONENT(gearScript)
-
 // Miscellaneous client scripts
 INIT_COMPONENT(miscClient)
 

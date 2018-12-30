@@ -60,9 +60,15 @@
 #define HASH_REMOVE(NAME,KEY) HASH_DELETE(NAME,KEY)
 #define HASH_FOREACH(NAME,FUNC) [NAME, FUNC] call CBA_fnc_hashEachPair
 
+
 #define SERVER_ONLY if (!isServer) exitWith {}
 #define CLIENT_ONLY if (!hasInterface) exitWith {}
 #define LOCAL_ONLY(obj) if !(local obj) exitWith {}
+
+#define SERVER_WARN(MESSAGE) if (!isServer) then { DEBUG_PRINT_LOG(MESSAGE) }
+#define CLIENT_WARN(MESSAGE) if (!hasInterface) then { DEBUG_PRINT_LOG(MESSAGE) }
+#define LOCAL_WARN(OBJ, MESSAGE) if !(local OBJ) then { DEBUG_PRINT_LOG(MESSAGE) }
+
 
 #define RUN_ON_SERVER(FUNC,ARGS) if (!isServer) exitWith { [ARGS] remoteExec [#FUNC,2]; }
 #define RUN_LOCAL_TO(OBJ,FUNC,ARGS) if (!(local OBJ)) exitWith { [ARGS] remoteExec [#FUNC,OBJ]; }
@@ -70,5 +76,5 @@
 
 #define INIT_COMPONENT(COMPNAME) RUN_ONLY_ONCE_ASYNC('components\COMPNAME\init_component.sqf',CONCAT(f_script_,COMPNAME))
 
-#define FULL_KILL_LOG_KEY_SERVER "f_var_killTracking_KILL_LOG_NAME"
-#define FULL_KILL_LOG_KEY_CLIENT "f_var_killTracking_KILL_LOG_NAME_received"
+#define FULL_KILL_LOG_KEY_SERVER 'f_var_killTracking_##KILL_LOG_NAME##'
+#define FULL_KILL_LOG_KEY_CLIENT 'f_var_killTracking_##KILL_LOG_NAME##_received'

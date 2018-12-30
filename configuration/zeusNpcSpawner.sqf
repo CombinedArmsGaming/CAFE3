@@ -6,8 +6,8 @@
 //	The default example in this file covers all factions of vanilla Arma.  You can modify it to spawn your own custom units.
 //	The NATO example has comments to help understanding.
 
+CLIENT_WARN("[ZeusAdditions] Spawner config file running non-clientside!");
 
-CLIENT_ONLY;  // Don't remove this line!
 
 _units =
 [

@@ -523,7 +523,7 @@ class Extended_Killed_EventHandlers
 {
 	class AllVehicles
 	{
-		killed = "_this call bub_fnc_trackKilledEvent";
+		killed = "_this call f_fnc_trackKilledEvent";
 	};
 };
 

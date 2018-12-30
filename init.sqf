@@ -41,23 +41,3 @@ if (isServer) then
 	missionNamespace setVariable ["f_var_initServer", true, true];
 
 };
-
-
-
-//if (isServer and {bub_allowKillTracking == 1}) then
-//{
-//	_killTracking = profileNamespace getVariable ["bub_killTracking", []];
-//	diag_log format ["[TrackKills] Initial log state: %1", _killTracking];
-//
-//	[] spawn
-//	{
-//		while {true} do
-//		{
-//			uiSleep 120;
-//			diag_log "[TrackKills] Saving log.";
-//			saveProfileNamespace;
-//		};
-//
-//	};
-//
-//};

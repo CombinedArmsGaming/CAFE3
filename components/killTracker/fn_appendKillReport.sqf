@@ -11,4 +11,4 @@ _killTracking pushBack _report;
 
 DEBUG_FORMAT1_LOG("[TrackKills] Adding to log: %1",_killReport)
 
-profileNamespace setVariable [_fullKeyName, _killTracking];
+profileNamespace setVariable [FULL_KILL_LOG_KEY_SERVER, _killTracking];

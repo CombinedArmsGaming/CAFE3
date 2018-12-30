@@ -6,16 +6,13 @@ DEBUG_PRINT_LOG("initting kill tracker")
 
 if (isServer) then
 {
-	profileNamespace setVariable ["bub_killTracking", []];
-
-    DEBUG_FORMAT1_LOG("[TrackKills] Initial log state: %1",_killTracking)
+	profileNamespace setVariable [FULL_KILL_LOG_KEY_SERVER, []];
 
 	[] spawn
 	{
 		while {true} do
 		{
-			uiSleep 120;
-			diag_log "[TrackKills] Saving log.";
+			uiSleep 30;
 			saveProfileNamespace;
 
 			[] call f_fnc_transmitKillsToRecipients;
@@ -27,6 +24,11 @@ if (isServer) then
 	waitUntil {sleep 1; time > 0};
 	[] call f_fnc_trackStaticKillsInAO;
 
+};
+
+if (hasInterface) then
+{
+	profileNamespace setVariable [FULL_KILL_LOG_KEY_CLIENT, nil];
 };
 
 #else
