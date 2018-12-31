@@ -2,7 +2,9 @@ class killTracker
 {
     file = "components\killTracker";
     class appendKillReport{};
-    class edenDisplayKillMarkers{};
+    class edenShowKillLog{};
+    class edenDeleteKillLogs{};
+    class edenListKillLogs{};
     class trackKilledEvent{};
     class trackKilledStaticEvent{};
     class trackStaticKillsInAO{};

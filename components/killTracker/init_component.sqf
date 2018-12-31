@@ -12,7 +12,7 @@ if (isServer) then
 	{
 		while {true} do
 		{
-			uiSleep 30;
+			uiSleep 15;
 			saveProfileNamespace;
 
 			[] call f_fnc_transmitKillsToRecipients;
@@ -28,7 +28,15 @@ if (isServer) then
 
 if (hasInterface) then
 {
-	profileNamespace setVariable [FULL_KILL_LOG_KEY_CLIENT, nil];
+	_killLogs = profileNamespace getVariable [FULL_KILL_LOG_KEY_CLIENT, []];
+
+	if (_killLogs isEqualTo []) then
+	{
+		profileNamespace setVariable [FULL_KILL_LOG_KEY_CLIENT, []];
+	};
+
+	f_var_currentKillLogIndex = count _killLogs;
+
 };
 
 #else

@@ -20,7 +20,17 @@ if (_keyName isEqualTo "") then
 }; */
 
 //_fullKeyName = format ["f_var_killTracking_%1_received", _keyName];
-_killTracking = profileNamespace getVariable [FULL_KILL_LOG_KEY_CLIENT, []];
+
+params ["_index"];
+
+_killLogs = profileNamespace getVariable [FULL_KILL_LOG_KEY_CLIENT, []];
+
+if (count _killLogs <= _index) exitWith
+{
+	format ["%1 is not a valid index.  Use f_fnc_edenListKillLogs to see valid indices.", _index]
+};
+
+_killTracking = _killLogs select _index;
 
 
 _chooseColour =
@@ -42,15 +52,30 @@ _chooseColour =
 };
 
 
+if !(isNil 'f_var_currentDisplayedKillLogMarkers') then
+{
+	for "_i" from 0 to f_var_currentDisplayedKillLogMarkers do
+	{
+		_markerName = format ["f_killmarker_%1", _i];
+		systemChat _markerName;
+		deleteMarker _markerName;
+	};
+
+};
+
+
 _markerIdNum = 0;
 
+
 {
+
 	_entry = _x;
 	_entryType = _entry select 0;
 
 	_text = "";
 	_colour = "";
 	_pos = [];
+
 
 	if (_entryType isEqualTo "Killed") then
 	{
@@ -74,6 +99,7 @@ _markerIdNum = 0;
 		_pos = _position;
 	};
 
+
 	if (_entryType isEqualTo "KilledStatic") then
 	{
 		_typeBefore = _entry select 1;
@@ -90,6 +116,7 @@ _markerIdNum = 0;
 
 	};
 
+
 	_markerName = format ["f_killmarker_%1", _markerIdNum];
 	_markerIdNum = _markerIdNum + 1;
 
@@ -99,3 +126,9 @@ _markerIdNum = 0;
 	_markerId setMarkerText _text;
 
 } forEach _killTracking;
+
+
+f_var_currentDisplayedKillLogMarkers = _markerIdNum;
+
+
+format ["Found %1 total entries for kill log #%2.", count _killTracking, _index]
