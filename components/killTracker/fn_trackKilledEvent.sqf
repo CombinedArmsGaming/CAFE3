@@ -9,6 +9,9 @@ _getUnitDetails =
 
 	_type = typeOf _unit;
 
+	private "_side";
+	private "_name";
+
 	if (_unit isKindOf "Man") then
 	{
 		_loadout = _unit getVariable ["f_var_assignGear",""];
@@ -17,13 +20,23 @@ _getUnitDetails =
 		{
 			_type = toUpper _loadout;
 		};
+
+		_side = _unit getVariable ["f_var_side", side group _unit];
+		_name = name _unit;
+
+	}
+	else
+	{
+		_commander = effectiveCommander _unit;
+		if (isNull _commander) then {_commander = _unit};
+
+		_side = _commander getVariable ["f_var_side", side group _commander];
+		_name = name _unit;
+
 	};
 
-	_side = _unit getVariable ["f_var_side", side group _unit];
-	_name = name _unit;
 	_position = getPos _unit;
 	_dir = getDir _unit;
-
 
 	[_type, _side, _name, _position, _dir]
 
