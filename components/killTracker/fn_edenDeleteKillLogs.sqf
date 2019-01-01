@@ -14,6 +14,8 @@ if !(isNil 'f_var_currentDisplayedKillLogMarkers') then
 
 };
 
+
+f_var_killerMapLines = [];
 f_var_currentDisplayedKillLogMarkers = nil;
 
 

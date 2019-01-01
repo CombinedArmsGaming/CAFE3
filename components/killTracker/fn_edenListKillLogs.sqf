@@ -15,6 +15,7 @@ if !(isNil 'f_var_currentDisplayedKillLogMarkers') then
 };
 
 
+f_var_killerMapLines = [];
 _markerIdNum = 0;
 
 

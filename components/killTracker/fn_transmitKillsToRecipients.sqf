@@ -23,8 +23,6 @@ _currentLogSize = count _killTracking;
 if (_currentLogSize <= 0) exitWith {};
 
 
-DEBUG_FORMAT1_LOG("[TrackKills] Found %1 log recipients.",(count _recipients))
-
 {
     _lastLogSize = _x getVariable ["f_var_killLogLastSize", 0];
 
