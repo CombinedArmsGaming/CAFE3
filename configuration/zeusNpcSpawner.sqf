@@ -181,18 +181,18 @@ _units =
 		"inf", "ind_f", independent,
 		[
 			[
-				"CSAT Rifleman",	// This is the name of the squad which will be shown in-game.
+				"AAF Rifleman",	// This is the name of the squad which will be shown in-game.
 				["rif"]				// This is the squad which will spawn - this just spawns one rifleman.
 			],
 			// If you get errors, make sure there's a comma at the end of all the sections except the very last one.  Look one line up.
 
 			[
-				"CSAT Fireteam 6x",
+				"AAF Fireteam 6x",
 				["ftl", "ar", "aar", "lat", "med", "mk"] // This spawns a full 6-man fireteam.  You can have as many or as few units in a squad as you want.
 			],
 
 			[
-				"CSAT Rifle Sec 9x",
+				"AAF Rifle Sec 9x",
 				["ftl", "ar", "aar", "lat", "med", "rif", "rif", "rif", "rif"]
 			]
 

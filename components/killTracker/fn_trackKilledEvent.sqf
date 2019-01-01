@@ -33,7 +33,7 @@ _getUnitDetails =
 _victimDetails = [_unit] call _getUnitDetails;
 _killReport = ["Suicide", daytime, _victimDetails];
 
-// BUB 2018-12-31 TODO :: Find a better way to detect killer than ace_medical_lastDamageSource: ACE overrides this EH's parameters and it's not very good.
+// BUB 2018-12-31 TODO :: Find a better way to detect killer than ace_medical_lastDamageSource: ACE overrides this EH's parameters and it's not very good.  Maybe use EntityKilled mission event?
 _aceKiller = _unit getVariable ["ace_medical_lastDamageSource", objNull];
 
 
