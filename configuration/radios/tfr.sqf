@@ -29,3 +29,6 @@ f_radios_settings_tfr_backpackRadios = ["co","dc","div"];
 // Independent radio encryption code: Independent faction use radio code of side
 // they are friendly to if they are only friendly to one side.
 f_radios_settings_tfr_indepUseRadioCode = FALSE;
+
+// Used by other componets to determine when all radio settings have been populated.
+f_radios_loadedSettings = true;

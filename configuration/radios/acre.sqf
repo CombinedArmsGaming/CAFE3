@@ -63,25 +63,6 @@ f_radios_settings_acre2_sr_groups_blufor = [
     ["COMMAND",    ["COMMAND"]],
     ["HAMMER",     ["HAMMER"]],
     ["ANVIL",  ["ANVIL"]],
-    ["CSL",     ["CSL"]],
-    ["C1",    ["C1"]],
-    ["C2",    ["C2"]],
-    ["CO",   ["CO"]],
-    ["SUPPORT UNIT 1",     []],
-    ["SUPPORT UNIT 2",     []],
-    ["SUPPORT UNIT 3",     []],
-    ["SUPPORT UNIT 4", []],
-    ["SUPPORT UNIT 5", 	 []],
-    ["ADDITIONAL 1", 	 []],
-    ["ADDITIONAL 2", 	 []],
-    ["ADDITIONAL 3",    []],
-    ["ADDITIONAL 4",   []],
-    ["ADDITIONAL 5",    []],
-    ["ADDITIONAL 6",  []],
-    ["ADDITIONAL 7",   []],
-    ["ADDITIONAL 8",  []],
-    ["ADDITIONAL 9",    []],
-    ["ADDITIONAL 10",   []],
     ["ZEUS",     ["ZEUS"]]
 ];
 
@@ -89,32 +70,7 @@ f_radios_settings_acre2_sr_groups_opfor = f_radios_settings_acre2_sr_groups_bluf
 f_radios_settings_acre2_sr_groups_indfor = f_radios_settings_acre2_sr_groups_blufor;
 
 f_radios_settings_acre2_lr_groups_blufor = [
-    ["GRND COMMAND 1",    ["ALPHA","BRAVO","CHARLIE","COMMAND","HAMMER","ANVIL","ZEUS","MAT1","HAT1","MTR1","MSAM1","HSAM1","ST1","DT1"]],
-    ["GRND COMMAND 2",    ["IFV1","IFV2","IFV3","IFV4","IFV5","IFV6","IFV7","IFV8","TNK1"]],
-    ["AIR",  ["TH1","TH2","TH3","T4","TH5","TH6","TH7","TH8","AH1"]],
-    ["FAC",	 []],
-    ["ALPHA SQUAD",     ["ASL","A1","A2","A3"]],
-    ["BRAVO SQUAD",  ["BSL","B1","B2","B3"]],
-    ["CHARLIE SQUAD",     ["CSL","C1","C2","C3"]],
-    ["Hotel",    []],
-    ["India",    []],
-    ["Juliet",   []],
-    ["Kilo",     []],
-    ["Lima",     []],
-    ["Mike",     []],
-    ["November", []],
-    ["Oscar", 	 []],
-    ["Papa", 	 []],
-    ["Quebec", 	 []],
-    ["Romeo",    []],
-    ["Sierra",   []],
-    ["Tango",    []],
-    ["Uniform",  []],
-    ["Victor",   []],
-    ["Whiskey",  []],
-    ["X-ray",    []],
-    ["Yankee",   []],
-    ["Zulu",     []]
+    ["GRND COMMAND 1",    ["ALPHA","BRAVO","CHARLIE","COMMAND","HAMMER","ANVIL","ZEUS"]]
 ];
 
 f_radios_settings_acre2_lr_groups_opfor = f_radios_settings_acre2_lr_groups_blufor;
@@ -139,3 +95,6 @@ f_radios_settings_acre2_lr_groups_indfor = f_radios_settings_acre2_lr_groups_blu
 // ACRE can AI hear players?
 // False - AI not hear players, true - AI hear players.
 [true] call acre_api_fnc_setRevealToAI;
+
+// Used by other componets to determine when all radio settings have been populated.
+f_radios_loadedSettings = true;

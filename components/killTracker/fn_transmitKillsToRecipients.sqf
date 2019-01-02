@@ -5,7 +5,7 @@ RUN_ON_SERVER(f_fnc_transmitKillsToRecipients,_this);
 _recipients = [];
 
 {
-    _isRecipient = (_x getVariable ["f_var_isKillLogRecipient", false] or {admin owner _x});
+    _isRecipient = (_x getVariable ["f_var_isKillLogRecipient", false] or {admin owner _x > 0});
 
 	if (_isRecipient) then
 	{
