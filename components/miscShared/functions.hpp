@@ -2,4 +2,6 @@ class miscShared
 {
     file = "components\miscShared";
     class getDirPos{};
+    class teleportPlayer{};
+    class tryMoveIntoVehicle{};
 };

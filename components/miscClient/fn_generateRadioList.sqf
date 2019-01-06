@@ -19,7 +19,7 @@ _sideColour = switch (_side) do
 };
 
 
-_oldMarkers = missionNamespace getVariable [format ["f_arr_radioList_markers_%1", _side], []];
+_oldMarkers = missionNamespace getVariable ["f_arr_radioList_markers", []];
 
 if !(_oldMarkers isEqualTo []) then
 {
@@ -57,7 +57,7 @@ _longRangeList = [];
 } forEach _longRangeConfig;
 
 
-_configMarkerName = format ["radio_list_%1", _side];
+_configMarkerName = "radio_list";
 
 if !(getMarkerColor _configMarkerName == "") then
 {
@@ -160,6 +160,6 @@ STEP_RIGHT
 STEP_LEFT
 
 
-missionNamespace setVariable [format ["f_arr_radioList_markers_%1", _side], _markerNames];
+missionNamespace setVariable ["f_arr_radioList_markers", _markerNames];
 
 #endif

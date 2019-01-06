@@ -24,3 +24,6 @@
 
 // Zeus Gearscript spawner
 #include "..\zeusNpcSpawner.sqf"
+
+// Respawn waves settings
+#include "..\respawnWaves.sqf"

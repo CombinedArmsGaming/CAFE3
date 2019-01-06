@@ -1,25 +1,48 @@
 #include "macros.hpp"
 
-CLIENT_ONLY;
 
-DEBUG_PRINT_LOG("initting respawnWaves")
-
-[] spawn
+if (isServer) then
 {
-	while {true} do
+	if (isNil 'ca_respawnmarker') then
 	{
-		_canRespawn = player getVariable ["f_var_canUseRespawnMenu", false];
-		if !(_canRespawn) then { _canRespawn = (rank player == 'COLONEL') };
-		if !(_canRespawn) then { _canRespawn = (serverCommandAvailable '#kick') };
+		DEBUG_PRINT_LOG("[RespawnWaves] ca_respawnmarker is nil, setting it to respawn_west by default.")
+		missionNamespace setVariable ["ca_respawnmarker", "respawn_west", true];
+	};
 
-		player setVariable ["f_var_canUseRespawnMenu", _canRespawn];
+	if (getMarkerColor ca_respawnmarker == "") then
+	{
+		DEBUG_PRINT_LOG("[RespawnWaves] ca_respawnmarker doesn't exist, creating it at a random player position.")
+		_playerPos = getPos (selectRandom (allPlayers - entities "HeadlessClient_F"));
+		createMarker [ca_respawnmarker, _playerPos];
+	};
 
-		sleep 5;
+	_pos = getMarkerPos ca_respawnmarker;
+	_respawnObject = createSimpleObject ["Static", _pos];
+	missionNamespace setVariable ["f_respawnWavesLocation", _respawnObject, true];
+
+};
+
+if (hasInterface) then
+{
+	DEBUG_PRINT_LOG("initting respawnWaves")
+
+	[] spawn
+	{
+		while {true} do
+		{
+			_canRespawn = player getVariable ["f_var_canUseRespawnMenu", false];
+			if !(_canRespawn) then { _canRespawn = (rank player == 'COLONEL') };
+			if !(_canRespawn) then { _canRespawn = (serverCommandAvailable '#kick') };
+
+			player setVariable ["f_var_canUseRespawnMenu", _canRespawn];
+
+			sleep 5;
+
+		};
 
 	};
 
 
+	RUN_FUNC_ONCE_ASYNC(f_fnc_aceRespawnMenuAction);
+
 };
-
-
-RUN_FUNC_ONCE_ASYNC(f_fnc_aceRespawnMenuAction)

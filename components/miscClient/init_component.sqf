@@ -5,7 +5,9 @@ CLIENT_ONLY;
 
 DEBUG_PRINT_LOG("initting client misc")
 
+
 [] spawn f_fnc_pmMissionIntro;
+
 
 [] spawn
 {
@@ -17,21 +19,32 @@ DEBUG_PRINT_LOG("initting client misc")
 
 };
 
+
 [] spawn
 {
     waitUntil {uiSleep 1; !isNil "f_radios_loadedSettings"};
 
-    _side = switch (side player) do
-    {
-        case west: { "blufor" };
-        case east: { "opfor" };
-        case independent: { "indfor" };
-        default { "indfor" };
-    };
+	_lastSide = "";
 
-    if !(_side == "") then
-    {
-        [_side] call f_fnc_generateRadioList;
-    }
+	while {true} do
+	{
+		_side = switch (side group player) do
+		{
+			case west: { "blufor" };
+			case east: { "opfor" };
+			case independent: { "indfor" };
+			default { "indfor" };
+		};
+
+		if !(_side == "" or {_side == _lastSide}) then
+		{
+			[_side] call f_fnc_generateRadioList;
+		};
+
+		_lastSide = _side;
+
+		sleep 5;
+
+	};
 
 };

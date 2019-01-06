@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1229;
+		nextID=1232;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={-438.05884,586.89447,350.18188};
-		dir[]={0.73760182,-0.53965014,0.40617585};
-		up[]={0.47283137,0.84173965,0.26037285};
-		aside[]={0.48243994,-2.9810471e-006,-0.87608713};
+		pos[]={509.81506,54.020298,501.54309};
+		dir[]={0.81214553,-0.58247411,0.037444606};
+		up[]={0.58197165,0.81269789,0.026830506};
+		aside[]={0.046067424,-3.2621174e-006,-0.99907583};
 	};
 };
 binarizationWanted=0;
@@ -3829,7 +3829,7 @@ class Mission
 		class Item26
 		{
 			dataType="Marker";
-			position[]={833.01599,55.344002,1121.476};
+			position[]={577.01587,32.274181,566.80896};
 			name="radio_list_blufor";
 			type="Empty";
 			id=1226;
@@ -3838,16 +3838,16 @@ class Mission
 		class Item27
 		{
 			dataType="Marker";
-			position[]={1348.7321,45.702,1125.9871};
+			position[]={1092.7319,37.189075,571.32007};
 			name="radio_list_opfor";
 			type="Empty";
 			id=1227;
-			atlOffset=-1.4317741;
+			atlOffset=-3.8146973e-006;
 		};
 		class Item28
 		{
 			dataType="Marker";
-			position[]={1844.4784,45.470245,1140.2095};
+			position[]={1588.4783,43.882557,585.54248};
 			name="radio_list_indfor";
 			type="Empty";
 			id=1228;

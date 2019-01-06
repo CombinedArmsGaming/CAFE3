@@ -4,14 +4,46 @@
 CLIENT_ONLY;
 
 
+_tryTeleport =
+{
+    params ["_goto"];
+
+    _onTeleportFailure =
+    {
+        DEBUG_FORMAT1_LOG("[RespawnWaves] Failed to teleport to location, defaulting to location of %1.",ca_respawnmarker)
+        _basePos = getMarkerPos ca_respawnmarker;
+        [player, _basePos] spawn f_fnc_teleportPlayer;
+    };
+
+    DEBUG_FORMAT1_LOG("[RespawnWaves] Attempting to teleport to %1.",_goto)
+    _teleHandle = [player, _goto, _onTeleportFailure] spawn f_fnc_teleportPlayer;
+
+    waitUntil { sleep 0.1; scriptDone _teleHandle };
+
+};
+
+
+_handleJipMenu =
+{
+    if (!f_var_JIP_JIPMenu) exitWith {}; //do JIP players get teleport menu?
+
+    sleep 5;
+
+    if (isNil "F3_JIP_reinforcementOptionsAction") then
+    {
+    	[player] spawn f_fnc_addJipReinforcementOptionsAction;
+    };
+
+};
+
+
 // MAKE SURE THE PLAYER INITIALIZES PROPERLY
 if (isNull player) then
 {
     waitUntil
     {
         sleep 0.1;
-        !isNull player;
-        !isNil "f_var_initServer"
+        !(isNull player or {isNil "f_var_initServer"})
     };
 
 };
@@ -33,16 +65,9 @@ if ((time < 10) || (isNull _corpse)) exitWith
     _loadout = (_unit getVariable "f_var_assignGear");
     _unit setVariable ["f_var_assignGear_done", false, true];
 
-    [_loadout, player] call f_fnc_assignGear;
+    [_loadout, player] spawn f_fnc_assignGear;
 
-    if (!f_var_JIP_JIPMenu) exitWith {}; //do JIP players get teleport menu?
-
-    sleep 5;
-
-    if (isNil "F3_JIP_reinforcementOptionsAction") then
-    {
-    	[player] spawn f_fnc_addJipReinforcementOptionsAction;
-    };
+    [] spawn _handleJipMenu;
 
 };
 
@@ -59,26 +84,31 @@ if (!f_var_respawnInGroup) then
 
 
 // Wait for respawn to happen
-waitUntil { sleep 0.5; ca_respawnwave };
+_waveInfo = false;
 
+waitUntil
+{
+    sleep 0.5;
+
+    _waveInfo = ca_respawnwave;
+    if (_waveInfo isEqualTo false) exitWith {};
+    if ((typeName _waveInfo == typeName []) and {(_waveInfo select 0) isEqualTo true}) exitWith { true };
+
+};
 
 // F3 assign radio and gear
 _loadout = (_unit getVariable "f_var_assignGear");
 _unit setVariable ["f_var_assignGear_done", false, true];
 
-[_loadout, player] call f_fnc_assignGear;
+[_loadout, player] spawn f_fnc_assignGear;
 
+// Try spawning at designated location, or fallback to base location.
+_spawnAt = _waveInfo select 1;
+_tpHandle = [_spawnAt] spawn _tryTeleport;
 
-// Exit spectator and setpos to respawn_west
+waitUntil { scriptDone _tpHandle };
 [false] call ace_spectator_fnc_setSpectator;
 
-if (!f_var_JIP_RespawnMenu) exitWith {}; //do respawning players get menu?
-
-sleep 5;
-
-if (isNil "F3_JIP_reinforcementOptionsAction") then
-{
-    [player] spawn f_fnc_addJipReinforcementOptionsAction;
-};
+[] spawn _handleJipMenu;
 
 // [_unit] call f_fnc_paradropUnit;

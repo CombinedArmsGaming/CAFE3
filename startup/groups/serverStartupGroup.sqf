@@ -15,6 +15,9 @@ INIT_COMPONENT(aiCache)
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 INIT_COMPONENT(radios)
 
+// Respawn waves init
+INIT_COMPONENT(respawnWaves)
+
 
 #ifdef ENABLE_KILL_TRACKING
 
