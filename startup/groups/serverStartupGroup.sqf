@@ -19,9 +19,17 @@ INIT_COMPONENT(radios)
 INIT_COMPONENT(respawnWaves)
 
 
+// Kill tracker init
 #ifdef ENABLE_KILL_TRACKING
 
-// Kill tracker init
 INIT_COMPONENT(killTracker)
+
+#endif
+
+
+// Gravestones init
+#ifdef ENABLE_GRAVESTONES
+
+INIT_COMPONENT(gravestones)
 
 #endif

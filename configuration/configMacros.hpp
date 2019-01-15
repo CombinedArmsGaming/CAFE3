@@ -7,6 +7,7 @@
 #include "medicalOverride.hpp"
 #include "aceActions.hpp"
 #include "killTracking.hpp"
+#include "gravestones.hpp"
 
 // Enables debugging
 #define ENABLE_DEBUG 1

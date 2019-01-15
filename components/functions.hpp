@@ -18,5 +18,6 @@ class F
 #include "zeusAdditions\functions.hpp"
 #include "aceActions\functions.hpp"
 #include "killTracker\functions.hpp"
+#include "gravestones\functions.hpp"
 
 }

@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1232;
+		nextID=1240;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={509.81506,54.020298,501.54309};
-		dir[]={0.81214553,-0.58247411,0.037444606};
-		up[]={0.58197165,0.81269789,0.026830506};
-		aside[]={0.046067424,-3.2621174e-006,-0.99907583};
+		pos[]={94.89492,71.348991,504.48093};
+		dir[]={0.66178828,-0.40064472,0.6338625};
+		up[]={0.28946811,0.91609818,0.2772536};
+		aside[]={0.69179744,-3.5723206e-006,-0.72227114};
 	};
 };
 binarizationWanted=0;
@@ -32,13 +32,14 @@ addons[]=
 	"ace_repair",
 	"ace_finger",
 	"A3_Weapons_F_Ammoboxes",
-	"ace_cargo"
+	"ace_cargo",
+	"A3_Structures_F_EPB_Civ_Dead"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=8;
+		items=9;
 		class Item0
 		{
 			className="A3_Modules_F_Curator";
@@ -94,6 +95,13 @@ class AddonsMetaData
 			name="ACE3 - Cargo";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
+		};
+		class Item8
+		{
+			className="A3_Structures_F_EPB";
+			name="Arma 3 Adapt Episode - Buildings and Structures";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
 		};
 	};
 };
@@ -161,7 +169,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=29;
+		items=28;
 		class Item0
 		{
 			dataType="Logic";
@@ -3829,28 +3837,27 @@ class Mission
 		class Item26
 		{
 			dataType="Marker";
-			position[]={577.01587,32.274181,566.80896};
-			name="radio_list_blufor";
+			position[]={577.01599,32.273998,566.80902};
+			name="radio_list";
 			type="Empty";
 			id=1226;
-			atlOffset=0.00029373169;
+			atlOffset=0.00011062622;
 		};
 		class Item27
 		{
-			dataType="Marker";
-			position[]={1092.7319,37.189075,571.32007};
-			name="radio_list_opfor";
-			type="Empty";
-			id=1227;
-			atlOffset=-3.8146973e-006;
-		};
-		class Item28
-		{
-			dataType="Marker";
-			position[]={1588.4783,43.882557,585.54248};
-			name="radio_list_indfor";
-			type="Empty";
-			id=1228;
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={121.31008,36.817921,533.40076};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				name="gravestone";
+			};
+			id=1236;
+			type="Land_Grave_dirt_F";
 		};
 	};
 	class Connections

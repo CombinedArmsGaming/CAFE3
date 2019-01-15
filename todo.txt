@@ -1,0 +1,35 @@
+[x] Autosaving kill tracker
+[x] Accumulate kill logs per mission run
+[x] Killer info in kill tracker
+[x] Killer visualization
+[x] Kill-log visualization LODs
+[/] Mission boundaries rectangle
+[x] Radio list generator
+[x] Allow radio lists to regenerate if player swaps sides.
+[/] Add config file for radio lists to configuration folder.
+[x] Spawn wave: use location instead of marker, ensure spawn height is respected.
+[x] Spawn wave: ensure marker is auto-generated if not existing.
+[x] Spawn wave: enable vehicle spawn if seats are available.
+[/] ca_respawnmarker -> f_respawnmarker
+[/] All other ca_* vars in respawnWaves config.
+[x] respawnWaves config: missionNamespace stuff can be removed due if config is client and serverside.
+[x] If radio lists swappable, consolidate config marker down into a single one.
+[/] FT markers: show unit type marker
+[/] FT markers: see how far frequency can be increased or use lerp/slerp
+[/] Face/name translator - allow configuration of faces/names per side.
+[ ] Corpse preservation / gravestone placement
+[ ] Gravestone data collection should occur locally in handler to avoid "no unit" problem.
+[ ] Use 'gravestone' entity as a template for gravestone model.
+[ ] Detect if gravestone is a container and assign dummy container to it if not.
+[ ] Turn gravestones into containers + fill with corpse items.
+[ ] Add 'dismantle' action to gravestones.
+[ ] Add obituary to gravestones.
+[ ] Allow exemption from grave cache for marked units.
+[ ] Make zeus addons transfer to new units if zeus is killed.
+[ ] Test all in real MP env.
+[ ] Mop up todos in code
+[ ] Add/test squad markers
+[ ] Make squad markers indicate squad size/assets automatically
+[ ] Do additional checks before caching a squad that a player isn't in it.
+[ ] If player spawns high enough in the air, turn them into a skydiver (and back).
+[ ] Find a better way to detect killer than ace_medical_lastDamageSource: it's not very good. entity killed event?

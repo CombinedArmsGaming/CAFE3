@@ -28,3 +28,11 @@ INIT_COMPONENT(miscClient)
 
 // Respawn waves init
 INIT_COMPONENT(respawnWaves)
+
+
+// Gravestones init
+#ifdef ENABLE_GRAVESTONES
+
+INIT_COMPONENT(gravestones)
+
+#endif
