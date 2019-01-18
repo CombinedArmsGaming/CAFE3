@@ -17,14 +17,16 @@
 [/] FT markers: show unit type marker
 [/] FT markers: see how far frequency can be increased or use lerp/slerp
 [/] Face/name translator - allow configuration of faces/names per side.
-[ ] Corpse preservation / gravestone placement
-[ ] Gravestone data collection should occur locally in handler to avoid "no unit" problem.
+[x] Corpse preservation / gravestone placement
+[x] Gravestone data collection should occur locally in handler to avoid "no unit" problem.
 [ ] Use 'gravestone' entity as a template for gravestone model.
 [ ] Detect if gravestone is a container and assign dummy container to it if not.
-[ ] Turn gravestones into containers + fill with corpse items.
+[x] Turn gravestones into containers + fill with corpse items.
 [ ] Add 'dismantle' action to gravestones.
 [ ] Add obituary to gravestones.
 [ ] Allow exemption from grave cache for marked units.
+[ ] In gravestones, fill backpacks etc with items instead of completely flattening the loadout structure.
+[ ] Ensure graves work in MP (because local inventory commands used).
 [ ] Make zeus addons transfer to new units if zeus is killed.
 [ ] Test all in real MP env.
 [ ] Mop up todos in code

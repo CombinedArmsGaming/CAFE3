@@ -11,7 +11,14 @@ if (isNull _unit) exitWith
     DEBUG_PRINT_LOG("[Gravestones] Called addToGravestoneManager but the corpse was a null object.")
 };
 
-_cacheEntry = [time, _unit];
+_name = name _unit;
+_primary = primaryWeapon _unit;
+_secondary = secondaryWeapon _unit;
+
+_unit setVariable ["f_var_diedWithPrimary", _primary];
+_unit setVariable ["f_var_diedWithSecondary", _secondary];
+
+_cacheEntry = [time, _unit, _name];
 
 if (isPlayer _unit) exitWith
 {

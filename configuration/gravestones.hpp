@@ -8,10 +8,10 @@
 #define GRAVESTONES_USE_PRIORITY_LIST 1
 
 // The amount of corpses which can exist before gravestones start to appear.
-#define MAX_CORPSES_BEFORE_GRAVESTONES 20
+#define MAX_CORPSES_BEFORE_GRAVESTONES 8
 
 // The normal amount of time a corpse will lie around before being gravestoned.
-#define GRAVESTONE_CORPSE_TIMEOUT 15
+#define GRAVESTONE_CORPSE_TIMEOUT 3
 
 // The amount of corpses which can exist before the normal corpse 'lifetime' will be ignored.
 #define MAX_CORPSES_PANIC_MODE 30
