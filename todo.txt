@@ -19,10 +19,10 @@
 [/] Face/name translator - allow configuration of faces/names per side.
 [x] Corpse preservation / gravestone placement
 [x] Gravestone data collection should occur locally in handler to avoid "no unit" problem.
-[ ] Use 'gravestone' entity as a template for gravestone model.
-[ ] Detect if gravestone is a container and assign dummy container to it if not.
+[x] Use 'gravestone' entity as a template for gravestone model.
+[/] Detect if gravestone is a container and assign dummy container to it if not.
 [x] Turn gravestones into containers + fill with corpse items.
-[ ] Add 'dismantle' action to gravestones.
+[x] Add 'dismantle' action to gravestones.
 [ ] Add obituary to gravestones.
 [ ] Allow exemption from grave cache for marked units.
 [ ] In gravestones, fill backpacks etc with items instead of completely flattening the loadout structure.

@@ -7,4 +7,5 @@ class miscShared
     class isKindOfAny{};
     class insertLoadoutIntoCrate{};
     class addWeaponToCrate{};
+    class isContainer{};
 };

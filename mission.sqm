@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1248;
+		nextID=1268;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={32.51878,96.377258,518.21906};
-		dir[]={0.85778201,-0.46438506,0.22094911};
-		up[]={0.44986191,0.88549167,0.11587654};
-		aside[]={0.24947515,-3.7950813e-006,-0.96851587};
+		pos[]={115.84541,47.148357,516.84229};
+		dir[]={0.26348129,-0.56278718,0.78365016};
+		up[]={0.17940205,0.82644242,0.53357542};
+		aside[]={0.94798374,-4.370464e-006,-0.31873095};
 	};
 };
 binarizationWanted=0;
@@ -33,7 +33,7 @@ addons[]=
 	"ace_finger",
 	"A3_Weapons_F_Ammoboxes",
 	"ace_cargo",
-	"A3_Structures_F_EPB_Civ_Dead"
+	"rhs_c_weapons"
 };
 class AddonsMetaData
 {
@@ -98,10 +98,10 @@ class AddonsMetaData
 		};
 		class Item8
 		{
-			className="A3_Structures_F_EPB";
-			name="Arma 3 Adapt Episode - Buildings and Structures";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
+			className="rhs_c_weapons";
+			name="AFRF Weapons Pack";
+			author="Red Hammer Studios";
+			url="http://www.rhsmods.org/";
 		};
 	};
 };
@@ -3848,16 +3848,40 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={121.31008,36.817921,533.40076};
+				position[]={121.82652,36.46347,534.8985};
+				angles[]={0.10461503,0,0.010000736};
 			};
 			side="Empty";
-			flags=5;
+			flags=4;
 			class Attributes
 			{
 				name="gravestone";
 			};
-			id=1236;
-			type="Land_Grave_dirt_F";
+			id=1248;
+			type="rhs_7ya37_1_single";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 	};
 	class Connections

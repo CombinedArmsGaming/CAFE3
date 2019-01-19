@@ -7,5 +7,6 @@ class gravestones
     class fillGraveAndDeleteCorpse{};
     class initGravestoneManager{};
     class readGravestone{};
+    class deleteGravestone{};
     class sendGravestoneToClients{};
 };

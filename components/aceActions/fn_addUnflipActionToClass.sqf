@@ -10,7 +10,7 @@ if (_type in f_arr_unflipActionClasses) exitWith {};
 f_arr_unflipActionClasses pushBack _type;
 
 
-_actionCode = { [30, [_target], { (_this select 0) remoteExec ["f_fnc_unflipVehicle", (_this select 0)]; }, {}, "Un-flipping vehicle..."] call ace_common_fnc_progressBar; };
+_actionCode = { [30, _target, { (_this select 0) remoteExec ["f_fnc_unflipVehicle", (_this select 0)]; }, {}, "Un-flipping vehicle..."] call ace_common_fnc_progressBar; };
 
 _condition =
 {

@@ -4,7 +4,7 @@ params ["_grave", "_corpse"];
 
 RUN_LOCAL_TO(_corpse,f_fnc_fillGraveAndDeleteCorpse,_this);
 
-_isContainer = [_grave, ["ReammoBox_F", "ReammoBox", "Bag_Base"]] call f_fnc_isKindOfAny;
+_isContainer = [_grave] call f_fnc_isContainer;
 
 if !(_isContainer) exitWith
 {
@@ -18,8 +18,6 @@ _loadout = getUnitLoadout _corpse;
 [_grave, _loadout] call f_fnc_insertLoadoutIntoCrate;
 
 
-_weaponsOnGround = nearestObjects [(ASLToAGL getPosASL _corpse), ["WeaponHolderSimulated", "GroundWeaponHolder"], 5];
-
 _primary = _corpse getVariable ["f_var_diedWithPrimary", ""];
 _secondary = _corpse getVariable ["f_var_diedWithSecondary", ""];
 
@@ -27,6 +25,14 @@ _types = [];
 
 if (_primary != "") then {_types pushBack _primary};
 if (_secondary != "") then {_types pushBack _secondary};
+
+if (count _types <= 0) exitWith
+{
+    deleteVehicle _corpse;
+};
+
+_corpsePos = (ASLToAGL getPosASL _corpse);
+_weaponsOnGround = nearestObjects [_corpsePos, ["WeaponHolderSimulated", "GroundWeaponHolder"], 5];;
 
 {
     _weapons = weaponsItemsCargo _x;
@@ -38,7 +44,6 @@ if (_secondary != "") then {_types pushBack _secondary};
         if (_weaponName in _types) then
         {
             _types deleteAt (_types find _weaponName);
-            DEBUG_FORMAT1_LOG("[Gravestones] Adding %1 to grave.",(_weapons select 0));
             [_weapons select 0, _grave] call f_fnc_addWeaponToCrate;
         };
 
