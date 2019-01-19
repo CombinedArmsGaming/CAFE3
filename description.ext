@@ -77,7 +77,7 @@ disabledAI = true;
 
 // CA Remove corpse manager
 
-#ifdef ENABLE_GRAVESTONES
+#ifdef ENABLE_GRAVESTONE_CORPSE_MANAGER
 
 corpseManagerMode = 0;
 
@@ -481,7 +481,7 @@ class Extended_Killed_EventHandlers
 #endif
 
 
-#ifdef ENABLE_GRAVESTONES
+#ifdef ENABLE_GRAVESTONE_CORPSE_MANAGER
 
 	class CAManBase
 	{

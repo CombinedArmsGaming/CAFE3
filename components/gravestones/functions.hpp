@@ -3,7 +3,8 @@ class gravestones
     file = "components\gravestones";
     class addActionToGravestone{};
     class addToGravestoneManager{};
-    class createGravestone{};
+    class allowGravestone{};
+    class createGravestoneAndDeleteCorpse{};
     class fillGraveAndDeleteCorpse{};
     class initGravestoneManager{};
     class readGravestone{};

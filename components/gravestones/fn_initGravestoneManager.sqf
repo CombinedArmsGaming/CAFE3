@@ -29,7 +29,7 @@ _mainLoopBody =
 
         if (_corpseOldEnough) then
         {
-            _corpseEntry call f_fnc_createGravestone;
+            _corpseEntry call f_fnc_createGravestoneAndDeleteCorpse;
 
             _cacheToUse deleteAt 0;
             _corpseCount = _corpseCount - 1;

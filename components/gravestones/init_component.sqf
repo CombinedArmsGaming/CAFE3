@@ -1,7 +1,7 @@
 #include "macros.hpp"
 
 
-#ifdef ENABLE_GRAVESTONES
+#ifdef ENABLE_GRAVESTONE_CORPSE_MANAGER
 
 
 if (isServer) then
@@ -69,6 +69,6 @@ if (hasInterface) then
 
 #else
 
-if (true) exitWith { DEBUG_PRINT_LOG("[Gravestones] init_component was called but ENABLE_GRAVESTONES is not set.") };
+if (true) exitWith { DEBUG_PRINT_LOG("[Gravestones] init_component was called but ENABLE_GRAVESTONE_CORPSE_MANAGER is not set.") };
 
 #endif

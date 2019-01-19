@@ -31,7 +31,7 @@ INIT_COMPONENT(respawnWaves)
 
 
 // Gravestones init
-#ifdef ENABLE_GRAVESTONES
+#ifdef ENABLE_GRAVESTONE_CORPSE_MANAGER
 
 INIT_COMPONENT(gravestones)
 

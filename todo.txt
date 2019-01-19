@@ -24,8 +24,8 @@
 [x] Turn gravestones into containers + fill with corpse items.
 [x] Add 'dismantle' action to gravestones.
 [ ] Add obituary to gravestones.
-[ ] Allow exemption from grave cache for marked units.
-[ ] In gravestones, fill backpacks etc with items instead of completely flattening the loadout structure.
+[x] Allow exemption from grave cache for marked units.
+[/] In gravestones, fill backpacks etc with items instead of completely flattening the loadout structure.
 [ ] Ensure graves work in MP (because local inventory commands used).
 [ ] Make zeus addons transfer to new units if zeus is killed.
 [ ] Test all in real MP env.
