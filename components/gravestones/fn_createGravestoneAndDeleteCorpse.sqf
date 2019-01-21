@@ -1,11 +1,6 @@
 #include "macros.hpp"
 
-if (count _this != 4) exitWith
-{
-    DEBUG_FORMAT1_LOG("[Gravestones] Invalid corpse entry: %1.",_this)
-};
-
-params ["_deathTime", "_corpse", "_corpseName", "_isPriority"];
+params ["_deathTime", "_corpse", "_corpseName", "_obituary", "_isPriority"];
 
 
 #ifdef ENABLE_GRAVESTONES
@@ -37,7 +32,7 @@ params ["_deathTime", "_corpse", "_corpseName", "_isPriority"];
 
     [_grave, _corpse] call f_fnc_fillGraveAndDeleteCorpse;
 
-    [_grave, _corpseName, _deathTime, ""] call f_fnc_sendGravestoneToClients;
+    [_grave, _corpseName, _deathTime, _obituary] call f_fnc_sendGravestoneToClients;
 
 
 #else

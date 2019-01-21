@@ -2,60 +2,31 @@
 //
 //	This function is called from f_fnc_registerZeusPlayer.
 //
-//	PARAMETERS:
-//
-//		_unit
-//			A player unit which is intended to be used for zeusing.  Will be granted godmode by default.
-//
-//		_spawnMenu
-//			If true, gives the unit a spawn-menu for gearscripted squads which appears in the zeus camera mode.
-//
 
-_alreadyRan = missionNamespace getVariable ["f_zeusDeployment_alreadyRan", false];
-if (_alreadyRan) exitWith {};
+#include "macros.hpp"
 
-params ["_unit", "_spawnMenu"];
-
-_unit setVariable ["ace_w_allow_dam",false,true];
-_unit allowDamage false;
+CLIENT_ONLY;
+RUN_AS_ASYNC(f_fnc_zeusDeployment);
 
 
-if (_spawnMenu) then
+_default_pos = [0, 0, 0];
+
+zeus_camPosLast = getPos player;
+
+while {true} do
 {
-	_unit addAction ["Add unit-spawner to Zeus mode",
-	{
-		params ["_target", "_caller", "_actionId"];
-
-		zeus_spawn_guerrillas = false;
-		zeus_hide_ui = false;
-
-		[] spawn f_fnc_zeusSpawnButtons;
-
-		_target removeAction _actionId;
-	}];
-};
-
-
-
-[_unit] spawn
-{
-	params ["_unit"];
-
-	_default_pos = [0, 0, 0];
-
-	zeus_camPosLast = getPos _unit;
-
-	while {true} do
+	if (alive player) then
 	{
 		_camPos = getPos curatorCamera;
+
 		if (_camPos isEqualTo [0,0,0]) then
 		{
-			_isRemoteControlling = [_unit] call f_fnc_isZeusRemoteControlling;
+			_isRemoteControlling = [player] call f_fnc_isZeusRemoteControlling;
 
 			if (!_isRemoteControlling) then
 			{
 				zeus_camPosLast set [2, 0];
-				[_unit, true] remoteExec ["f_fnc_activateZeusPlayer", 2];
+				[player, true] remoteExec ["f_fnc_activateZeusPlayer", 2];
 				zeusDeployed = true;
 			}
 			else
@@ -63,27 +34,29 @@ if (_spawnMenu) then
 				zeus_camPosLast = _default_pos;
 			};
 
-			_unit setVehiclePosition [zeus_camPosLast, [], 1, "NONE"];
+			player setVehiclePosition [zeus_camPosLast, [], 1, "NONE"];
 
 		};
 
 		waitUntil
 		{
+			sleep 1;
 			!(getPos curatorCamera isEqualTo [0,0,0])
 		};
 
-		[_unit, false] remoteExec ["f_fnc_activateZeusPlayer", 2];
+		[player, false] remoteExec ["f_fnc_activateZeusPlayer", 2];
 		zeusDeployed = false;
 
 		while {!(getPos curatorCamera isEqualTo [0,0,0])} do
 		{
 			_camPos = getPos curatorCamera;
-			_unit setPos _camPos;
+			player setPos _camPos;
 			zeus_camPosLast = _camPos;
 
-			sleep 0.5;
-		}
-	};
-};
+			sleep 0.25;
 
-missionNamespace setVariable ["f_zeusDeployment_alreadyRan", true];
+		};
+
+	};
+
+};

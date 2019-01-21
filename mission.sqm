@@ -17,9 +17,9 @@ class EditorData
 	class Camera
 	{
 		pos[]={-9.4638319,127.86416,592.73639};
-		dir[]={0.92744869,-0.33254284,0.17179306};
-		up[]={0.32719541,0.94295233,0.060605451};
-		aside[]={0.18216129,-3.3589313e-006,-0.9834013};
+		dir[]={0.87122095,-0.45069242,-0.1952066};
+		up[]={0.43996406,0.89252508,-0.098580375};
+		aside[]={-0.21866441,-4.0964806e-006,-0.9759292};
 	};
 };
 binarizationWanted=0;
@@ -3370,7 +3370,7 @@ class Mission
 					{
 						skill=1;
 						rank="COLONEL";
-						init="call{[""ar"", this] call f_fnc_assignGear;" \n "[this, true] call f_fnc_registerZeusPlayer;}";
+						init="call{[""ar"", this] call f_fnc_assignGear;" \n "[this] call f_fnc_registerZeusPlayer;}";
 						name="zeus_ply";
 						description="Zeus Player";
 						isPlayer=1;
@@ -3529,7 +3529,7 @@ class Mission
 					{
 						skill=1;
 						rank="COLONEL";
-						init="call{[""zeus"", this] call f_fnc_assignGear;" \n "[this, true] call f_fnc_registerZeusPlayer;}";
+						init="call{[""zeus"", this] call f_fnc_assignGear;" \n "[this] call f_fnc_registerZeusPlayer;}";
 						name="zeus_ply_1";
 						description="Zeus Player 2";
 						isPlayable=1;

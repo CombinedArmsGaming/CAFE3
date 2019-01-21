@@ -13,3 +13,5 @@ _createDialogAction =
 _action = ["RespawnWavesDialog", "View Respawn Waves", "", _createDialogAction, {player getVariable ["f_var_canUseRespawnMenu", false]}] call ace_interact_menu_fnc_createAction;
 
 [player, 1, ["ACE_SelfActions"], _action] call ace_interact_menu_fnc_addActionToObject;
+
+player setVariable ["f_var_hasRespawnMenuAction", true];

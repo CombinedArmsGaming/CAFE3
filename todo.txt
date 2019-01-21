@@ -23,15 +23,17 @@
 [/] Detect if gravestone is a container and assign dummy container to it if not.
 [x] Turn gravestones into containers + fill with corpse items.
 [x] Add 'dismantle' action to gravestones.
-[ ] Add obituary to gravestones.
+[x] Add obituary to gravestones.
 [x] Allow exemption from grave cache for marked units.
 [/] In gravestones, fill backpacks etc with items instead of completely flattening the loadout structure.
-[ ] Ensure graves work in MP (because local inventory commands used).
-[ ] Make zeus addons transfer to new units if zeus is killed.
-[ ] Test all in real MP env.
-[ ] Mop up todos in code
+[x] Rewrite the respawnWaves respawn config, allow modularity.
+[x] Make zeus addons transfer to new units if zeus is killed.
+[ ] Upgrade unit markers.
 [ ] Add/test squad markers
 [ ] Make squad markers indicate squad size/assets automatically
-[ ] Do additional checks before caching a squad that a player isn't in it.
 [ ] If player spawns high enough in the air, turn them into a skydiver (and back).
 [ ] Find a better way to detect killer than ace_medical_lastDamageSource: it's not very good. entity killed event?
+[ ] Do additional checks before caching a squad, that a player isn't in it.
+[ ] Ensure graves work in MP (because local inventory commands used).
+[ ] Mop up todos in code
+[ ] Test all in real MP env.

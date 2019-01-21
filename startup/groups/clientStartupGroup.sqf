@@ -23,11 +23,11 @@ INIT_COMPONENT(aiCache)
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 INIT_COMPONENT(radios)
 
-// Miscellaneous client scripts
 INIT_COMPONENT(miscClient)
 
-// Respawn waves init
 INIT_COMPONENT(respawnWaves)
+
+INIT_COMPONENT(zeusAdditions)
 
 
 // Gravestones init

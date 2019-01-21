@@ -3,7 +3,11 @@
 //	This function is called from f_fnc_zeusDeployment.
 //	Waits for the zeus display to be created (id = 312), then creates a spawn menu for gearscripted squads.
 
-if (isDedicated) exitWith {};
+#include "macros.hpp"
+
+CLIENT_ONLY;
+RUN_AS_ASYNC(f_fnc_zeusSpawnButtons);
+
 disableSerialization;
 
 _ctrls = missionNamespace getVariable ["f_zeus_ctrls", []];

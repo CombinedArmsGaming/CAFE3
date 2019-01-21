@@ -27,13 +27,14 @@ if (isServer) then
 
 };
 
+
 if (hasInterface) then
 {
     _actionParams =
     [
         "ReadGravestone",
         "Read Gravestone",
-        "",
+        "\A3\ui_f\data\igui\cfg\simpleTasks\types\search_ca.paa",
         f_fnc_readGravestone,
         {true},
         {},
@@ -51,7 +52,7 @@ if (hasInterface) then
     [
         "DeleteGravestone",
         "Remove Gravestone",
-        "",
+        "\A3\ui_f\data\igui\cfg\simpleTasks\types\destroy_ca.paa",
         f_fnc_deleteGravestone,
         {true},
         {},
@@ -65,6 +66,9 @@ if (hasInterface) then
     f_var_deleteGravestoneAction = _actionParams call ace_interact_menu_fnc_createAction;
 
 };
+
+
+#include "..\..\configuration\obituaries\obituaries.sqf";
 
 
 #else

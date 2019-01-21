@@ -69,6 +69,16 @@
 #define CLIENT_WARN(MESSAGE) if (!hasInterface) then { DEBUG_PRINT_LOG(MESSAGE) }
 #define LOCAL_WARN(OBJ, MESSAGE) if !(local OBJ) then { DEBUG_PRINT_LOG(MESSAGE) }
 
+#define WAIT_UNTIL_PLAYER_EXISTS()  \
+if (isNull player) then             \
+{                                   \
+    waitUntil                       \
+    {                               \
+        sleep 0.1;                  \
+        !isNull player              \
+    };                              \
+                                    \
+}
 
 #define RUN_ON_SERVER(FUNC,ARGS) if (!isServer) exitWith { [ARGS] remoteExec [#FUNC,2]; }
 #define RUN_LOCAL_TO(OBJ,FUNC,ARGS) if (!(local OBJ)) exitWith { [ARGS] remoteExec [#FUNC,OBJ]; }

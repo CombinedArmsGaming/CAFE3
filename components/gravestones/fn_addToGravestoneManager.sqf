@@ -25,12 +25,14 @@ _secondary = secondaryWeapon _unit;
 _unit setVariable ["f_var_diedWithPrimary", _primary];
 _unit setVariable ["f_var_diedWithSecondary", _secondary];
 
-_cacheEntry = [time, _unit, _name];
+_obituary = [_unit] call f_fnc_getObituary;
+
+_cacheEntry = [time, _unit, _name, _obituary];
 
 if (isPlayer _unit) exitWith
 {
     DEBUG_FORMAT1_LOG("[Gravestones] Adding corpse to the priority cache because it was a player: %1",_unit)
-    
+
     _cacheEntry pushBack true;
     VIP_CACHE pushBack _cacheEntry;
 };

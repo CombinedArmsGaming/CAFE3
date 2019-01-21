@@ -6,6 +6,7 @@ class gravestones
     class allowGravestone{};
     class createGravestoneAndDeleteCorpse{};
     class fillGraveAndDeleteCorpse{};
+    class getObituary{};
     class initGravestoneManager{};
     class readGravestone{};
     class deleteGravestone{};

@@ -3,7 +3,7 @@ _unitWithin = _target getVariable ["UnitWithin", "a forgotten soul"];
 _unitWithin = _unitWithin splitString "<\/>" joinString " ";
 
 _timeOfDeath = _target getVariable ["UnitDeathTime", 0];
-_obituary = "Rest in peace";//_target getVariable ["UnitObituary", ""];
+_obituary = _target getVariable ["UnitObituary", "Rest in peace"];
 
 _baseDayTime = daytime - time / 3600;
 _deathDayTime = _baseDayTime + (_timeOfDeath / 3600);

@@ -36,13 +36,15 @@ if (hasInterface) then
 
 			player setVariable ["f_var_canUseRespawnMenu", _canRespawn];
 
+			if !(player getVariable ["f_var_hasRespawnMenuAction", false]) then
+			{
+				[] call f_fnc_aceRespawnMenuAction;
+			};
+
 			sleep 5;
 
 		};
 
 	};
-
-
-	RUN_FUNC_ONCE_ASYNC(f_fnc_aceRespawnMenuAction);
 
 };
