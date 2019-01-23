@@ -69,6 +69,13 @@
 #define CLIENT_WARN(MESSAGE) if (!hasInterface) then { DEBUG_PRINT_LOG(MESSAGE) }
 #define LOCAL_WARN(OBJ, MESSAGE) if !(local OBJ) then { DEBUG_PRINT_LOG(MESSAGE) }
 
+#define WAIT_UNTIL_MISSION_STARTED()\
+waitUntil                           \
+{                                   \
+    time > 0                        \
+};                
+
+
 #define WAIT_UNTIL_PLAYER_EXISTS()  \
 if (isNull player) then             \
 {                                   \
