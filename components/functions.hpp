@@ -3,7 +3,6 @@ class F
 
 #include "briefing\functions.hpp"
 #include "ftMemberMarkers\functions.hpp"
-#include "ftMemberMarkers2\functions.hpp"
 #include "safeStart\functions.hpp"
 #include "safeEnd\functions.hpp"
 #include "aiCache\functions.hpp"
@@ -20,5 +19,6 @@ class F
 #include "aceActions\functions.hpp"
 #include "killTracker\functions.hpp"
 #include "gravestones\functions.hpp"
+#include "squadMarkers\functions.hpp"
 
 }

@@ -8,6 +8,7 @@
 #include "aceActions.hpp"
 #include "killTracking.hpp"
 #include "gravestones.hpp"
+#include "squadMarkers.hpp"
 
 // Enables debugging
 #define ENABLE_DEBUG 1

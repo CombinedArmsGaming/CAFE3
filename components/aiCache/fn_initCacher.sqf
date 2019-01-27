@@ -30,7 +30,7 @@ f_var_cacheRun = true;
 
 DEBUG_FORMAT3_LOG("f_fnc_cInit DBG: Starting to track %1 groups, %2 range, %3 sleep",count allGroups,_range,f_var_cacheSleep)
 
-[] spawn
+/* [] spawn
 {
    // Giving the tracker a head start
    sleep (f_var_cacheSleep * 1.1);
@@ -49,6 +49,6 @@ DEBUG_FORMAT3_LOG("f_fnc_cInit DBG: Starting to track %1 groups, %2 range, %3 sl
 		sleep f_var_cacheSleep;
 	};
 
-};
+}; */
 
 #endif

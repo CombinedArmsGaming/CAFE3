@@ -4,4 +4,5 @@
 WAIT_UNTIL_MISSION_STARTED();
 WAIT_UNTIL_PLAYER_EXISTS();
 
-[] call f_fnc_createFireteamMarkerHook;
+[] call f_fnc_createSquadMarkerHook;
+[] call f_fnc_initSquadMarkerManager;

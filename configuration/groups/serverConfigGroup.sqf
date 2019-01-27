@@ -1,5 +1,5 @@
-// Client configuration group
-// Includes all config scripts needed for clients.
+// Server configuration group
+// Includes all config scripts needed for the server.
 
 // Debug settings
 #include "..\debug.sqf"

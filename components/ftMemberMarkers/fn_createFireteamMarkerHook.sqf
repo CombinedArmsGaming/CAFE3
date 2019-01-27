@@ -1,5 +1,12 @@
 #include "macros.hpp"
 
+waitUntil
+{
+	_display = findDisplay 12;
+	!( (isNull _display) or {isNull (_display displayCtrl 51)} )
+};
+
+
 if (isNil 'f_var_ftMarkersDrawHandlerId') then
 {
 	DEBUG_PRINT_LOG("[FTMarkers-2] Creating handler.")

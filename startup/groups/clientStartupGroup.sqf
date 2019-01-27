@@ -5,7 +5,9 @@
 
 // 	F3 - Fireteam Member Markers
 // 	Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
-INIT_COMPONENT(ftMemberMarkers2)
+INIT_COMPONENT(ftMemberMarkers)
+
+INIT_COMPONENT(squadMarkers)
 
 // F3 - Briefing
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)

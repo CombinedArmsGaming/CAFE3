@@ -8,4 +8,5 @@ class miscShared
     class insertLoadoutIntoCrate{};
     class addWeaponToCrate{};
     class isContainer{};
+    class sideToString{};
 };

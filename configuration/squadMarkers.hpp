@@ -1,0 +1,3 @@
+
+
+#define ENABLE_SQUAD_MARKERS 1

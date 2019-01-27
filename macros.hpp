@@ -41,16 +41,17 @@
 #define RUN_ONLY_ONCE_ASYNC(PATH,VAR) if (isNil #VAR) then { VAR = [] execVM PATH; };
 #define RUN_FUNC_ONCE_ASYNC(FUNC) if (isNil #CONCAT(f_script,FUNC)) then { CONCAT(f_script,FUNC) = [] spawn FUNC; };
 
-// CBA Hash convenience macros
-//#define HASH_CREATE(NAME) NAME = createLocation ["CBA_NamespaceDummy", [0,0,0], 0, 0]
-//#define HASH_CREATE_VALS(NAME,VALUES) HASH_CREATE(NAME); {NAME setVariable [_x select 0, _x select 1]} foreach VALUES
-//#define HASH_GET(NAME,KEY) NAME getVariable [KEY, []]
-//#define HASH_CONTAINS(NAME,KEY) !(NAME getVariable [KEY, "q£fsDSd4&&<"] isEqualTo "q£fsDSd4&&<")
-//#define HASH_SET(NAME,KEY,VALUE) NAME setVariable [KEY, VALUE]
-//#define HASH_DELETE(NAME,KEY) NAME setVariable [KEY, nil]
-//#define HASH_REMOVE(NAME,KEY) HASH_DELETE(NAME,KEY)
-//#define HASH_FOREACH(NAME,FUNC) {private _key = _x; private _value = HASH_GET(NAME,_x); call _code;} forEach (allVariables NAME)
+// String-keyed dictionary convenience macros
+#define DICT_CREATE(NAME) NAME = createLocation ["CBA_NamespaceDummy", [0,0,0], 0, 0]
+#define DICT_CREATE_VALS(NAME,VALUES) DICT_CREATE(NAME); {NAME setVariable [_x select 0, _x select 1]} foreach VALUES
+#define DICT_GET(NAME,KEY) NAME getVariable [KEY, []]
+#define DICT_CONTAINS(NAME,KEY) !((NAME getVariable [KEY, "q£fsDSd4&&<"]) isEqualTo "q£fsDSd4&&<")
+#define DICT_SET(NAME,KEY,VALUE) NAME setVariable [KEY, VALUE]
+#define DICT_DELETE(NAME,KEY) NAME setVariable [KEY, nil]
+#define DICT_REMOVE(NAME,KEY) DICT_DELETE(NAME,KEY)
+#define DICT_FOREACH(NAME,FUNC) {private _key = _x; private _value = DICT_GET(NAME,_x); call _code;} forEach (allVariables NAME)
 
+// CBA hash convenience macros
 #define HASH_CREATE(NAME) NAME = [] call CBA_fnc_hashCreate
 #define HASH_CREATE_VALS(NAME,VALUES) NAME = [VALUES] call CBA_fnc_hashCreate
 #define HASH_GET(NAME,KEY) [NAME, KEY] call CBA_fnc_hashGet
@@ -73,7 +74,7 @@
 waitUntil                           \
 {                                   \
     time > 0                        \
-};                
+};
 
 
 #define WAIT_UNTIL_PLAYER_EXISTS()  \
@@ -81,7 +82,6 @@ if (isNull player) then             \
 {                                   \
     waitUntil                       \
     {                               \
-        sleep 0.1;                  \
         !isNull player              \
     };                              \
                                     \

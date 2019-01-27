@@ -1,19 +1,7 @@
 #include "macros.hpp"
 
-DEBUG_PRINT_LOG("initting markers")
+DEBUG_PRINT_LOG("initting ft markers")
 
-if (hasInterface) then
-{
-    // MAKE SURE THE PLAYER INITIALIZES PROPERLY
-    if (isNull player) then
-    {
-        waitUntil
-        {
-            uiSleep 1;
-            !isNull player
-        };
-    };
+CLIENT_ONLY;
 
-    [] call f_fnc_beginFireteamMarkers;
-
-};
+[] call f_fnc_beginFireteamMarkers;
