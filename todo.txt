@@ -29,11 +29,13 @@
 [x] Rewrite the respawnWaves respawn config, allow modularity.
 [x] Make zeus addons transfer to new units if zeus is killed.
 [x] Upgrade unit markers.
-[ ] Add/test squad markers
-[ ] Make squad markers indicate squad size/assets automatically
+[x] Add/test squad markers
+[x] Make squad markers indicate squad assets automatically
 [ ] If player spawns high enough in the air, turn them into a skydiver (and back).
 [ ] Find a better way to detect killer than ace_medical_lastDamageSource: it's not very good. entity killed event?
 [ ] Do additional checks before caching a squad, that a player isn't in it.
+[ ] Make squad markers indicate squad size automatically
+[ ] Add mission-end hooks/wrappers to save client namespace, so kill-logger entries are saved.
 [ ] Ensure graves work in MP (because local inventory commands used).
 [ ] Mop up todos in code
 [ ] Test all in real MP env.

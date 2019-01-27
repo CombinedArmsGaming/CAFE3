@@ -6,7 +6,7 @@ _alreadyTracked = missionNamespace getVariable ["f_var_staticKillsTracked", fals
 
 if (_alreadyTracked isEqualTo true) exitWith
 {
-	diag_log "[TrackKills] Static kills already tracked.";
+	DEBUG_PRINT_LOG("[TrackKills] Static kills already tracked.")
 };
 
 

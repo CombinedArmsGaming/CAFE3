@@ -17,7 +17,7 @@ _recipients = [];
 if (count _recipients <= 0) exitWith {};
 
 
-_killTracking = profileNamespace getVariable [FULL_KILL_LOG_KEY_SERVER, []];
+_killTracking = missionNamespace getVariable [FULL_KILL_LOG_KEY_SERVER, []];
 _currentLogSize = count _killTracking;
 
 if (_currentLogSize <= 0) exitWith {};

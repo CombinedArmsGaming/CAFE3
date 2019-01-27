@@ -6,14 +6,13 @@ DEBUG_PRINT_LOG("initting kill tracker")
 
 if (isServer) then
 {
-	profileNamespace setVariable [FULL_KILL_LOG_KEY_SERVER, []];
+	missionNamespace setVariable [FULL_KILL_LOG_KEY_SERVER, []];
 
 	[] spawn
 	{
 		while {true} do
 		{
 			uiSleep 15;
-			saveProfileNamespace;
 
 			[] call f_fnc_transmitKillsToRecipients;
 
@@ -21,7 +20,7 @@ if (isServer) then
 
 	};
 
-	waitUntil {sleep 1; time > 0};
+	WAIT_UNTIL_MISSION_STARTED();
 	[] call f_fnc_trackStaticKillsInAO;
 
 };
