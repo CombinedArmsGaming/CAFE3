@@ -46,14 +46,24 @@ waitUntil
 
             if (_visible) then
             {
+                _isAiOnly = ({isPlayer _x} count _units) <= 0;
+
+                if (_isAiOnly) then
+                {
+                    if (_name == groupId _x) then
+                    {
+                        _name = "Allies";
+                    };
+
+                    if (_colour isEqualTo []) then
+                    {
+                        _colour = LIGHTGREY;
+                    };
+
+                };
+
                 if (_icon isEqualTo "") then {_icon = [_x] call f_fnc_getGroupMarker};
                 if (_colour isEqualTo []) then {_colour = DEFAULT_COLOUR};
-
-                if (_name == groupId _x) then
-                {
-                    _isAiOnly = ({isPlayer _x} count _units) <= 0;
-                    if (_isAiOnly) then {_name = "Friendly forces"};
-                };
 
                 _newMarkers pushBack [_x, _icon, _name, _colour];
 

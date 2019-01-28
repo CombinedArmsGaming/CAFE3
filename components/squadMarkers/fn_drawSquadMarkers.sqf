@@ -5,13 +5,14 @@ if (isNil 'f_arr_squadMarkers') exitWith {};
 params ["_map"];
 
 
+// NOTE: Only supports custom textures (in mission folder).
 _drawMarker =
 {
 	params ["_map", "_icon", "_name", "_colour", "_pos"];
 
 	_map drawIcon
 	[
-		_icon,
+		format ["%1%2",MISSION_ROOT,_icon],
 		_colour,
 		_pos,
 		32,

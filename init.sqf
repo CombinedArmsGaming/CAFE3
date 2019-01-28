@@ -16,6 +16,19 @@ enableSentences false;
 
 // ====================================================================================
 
+
+
+// Thanks to http://killzonekid.com/arma-scripting-tutorials-mission-root/
+MISSION_ROOT = call
+{
+    private "_arr"; 
+    _arr = toArray str missionConfigFile;
+    _arr resize (count _arr - 15);
+    toString _arr
+};
+
+
+
 DEBUG_FORMAT2_LOG("Is CLIENT? %1.  Is SERVER? %2.",hasInterface,isServer)
 
 if (hasInterface) then

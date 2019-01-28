@@ -24,7 +24,7 @@ _crewSize = count _crew;
 
 if (_crewSize <= 0) exitWith
 {
-    "\A3\ui_f\data\Map\Markers\NATO\b_inf.paa"
+    INFANTRY
 };
 
 
@@ -32,9 +32,10 @@ _vehicles = [];
 
 {
     _vehicles pushBack (objectParent _x);
-    _vehicles = _vehicles call BIS_fnc_consolidateArray;
 
 } forEach _crew;
+
+_vehicles = _vehicles call BIS_fnc_consolidateArray;
 
 
 _hasTank = false; // Tank, Tank_F, "Wheeled_APC_F"
@@ -57,36 +58,36 @@ _hasShip = false; // "Ship_F", "Ship"
 
 if (_hasShip) exitWith
 {
-    "\A3\ui_f\data\Map\Markers\NATO\b_naval.paa"
+    NAVAL
 };
 
 if (_hasPlane) exitWith
 {
-    "\A3\ui_f\data\Map\Markers\NATO\b_plane.paa"
+    PLANE
 };
 
 if (_hasHelo) exitWith
 {
-    "\A3\ui_f\data\Map\Markers\NATO\b_air.paa"
+    HELO
 };
 
 if (_hasTank) exitWith
 {
     if (_size > _crewSize) then
     {
-        "\A3\ui_f\data\Map\Markers\NATO\b_mech_inf.paa"
+        MECHINF
     }
     else
     {
-        "\A3\ui_f\data\Map\Markers\NATO\b_armor.paa"
+        ARMOR
     };
 
 };
 
 if (_hasCar) exitWith
 {
-    "\A3\ui_f\data\Map\Markers\NATO\b_motor_inf.paa"
+    MOTORINF
 };
 
 
-"\A3\ui_f\data\Map\Markers\NATO\b_unknown.paa"
+UNKNOWN
