@@ -36,6 +36,12 @@ if (hasInterface) then
 
 	f_var_currentKillLogIndex = count _killLogs;
 
+
+	addMissionEventHandler ["Ended",
+	{
+		saveProfileNamespace;
+	}];
+
 };
 
 #else

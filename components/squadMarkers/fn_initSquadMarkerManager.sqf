@@ -12,7 +12,7 @@ waitUntil
 
     _newMarkers = [];
 
-    _playerSide = side player;
+    _playerSide = side group player;
     _sideGroups = allGroups select {side _x == _playerSide};
 
     _sideName = [_playerSide] call f_fnc_sideToString;
@@ -20,7 +20,7 @@ waitUntil
     {
         _units = units _x;
 
-        if !(isNull _x or {count _units <= 0}) then
+        if !(isNull _x or {{alive _x} count _units <= 0}) then
     	{
             _name = groupId _x;
 

@@ -4,7 +4,7 @@ params ["_map"];
 
 if !(alive player) exitWith {};
 
-_group = units player;
+_group = (units player) select {alive _x};
 _baseIcon = "\A3\ui_f\data\map\vehicleicons\iconMan_ca.paa";
 
 

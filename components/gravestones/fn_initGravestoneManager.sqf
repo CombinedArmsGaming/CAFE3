@@ -7,7 +7,7 @@ CACHE = [];
 VIP_CACHE = [];
 
 
-_mainLoopBody =
+waitUntil
 {
     _corpseCount = count CACHE + count VIP_CACHE;
 
@@ -35,17 +35,19 @@ _mainLoopBody =
             _corpseCount = _corpseCount - 1;
 
         };
-        // "else exitWith", except SQF is bad.
+        // "else break", except SQF is bad.
         // We break the loop here because the cache lists are in ascending chronological order.
         if !(_corpseOldEnough) exitWith {};
 
     };
 
+    sleep GRAVESTONE_MANAGER_INTERVAL;
+
 };
 
 
-while {true} do
+waitUntil
 {
     [] call _mainLoopBody;
-    sleep GRAVESTONE_MANAGER_INTERVAL;
+
 }

@@ -26,7 +26,7 @@ _appendWeapon =
     _pointer = _array select 2;
     _optic = _array select 3;
     _primaryMag = _array select 4;
-    
+
     _secondaryMag = [];
     _bipod = "";
 
@@ -159,20 +159,20 @@ _items append _assignedItems;
 
 
 {
-    _crate addBackpackCargo _x;
+    _crate addBackpackCargoGlobal _x;
 
 } forEach _backpacks;
 
 
 {
-    _crate addWeaponCargo _x;
+    _crate addWeaponCargoGlobal _x;
 
 } forEach _weapons;
 
 {
     if (typeName _x == "ARRAY" and {_x select 0 != ""}) then
     {
-        _crate addItemCargo _x;
+        _crate addItemCargoGlobal _x;
     };
 
 } forEach _items;

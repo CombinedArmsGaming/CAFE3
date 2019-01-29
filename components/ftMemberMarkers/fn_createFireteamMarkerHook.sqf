@@ -1,20 +1,50 @@
 #include "macros.hpp"
 
-waitUntil
+[] spawn
 {
-	_display = findDisplay 12;
-	!( (isNull _display) or {isNull (_display displayCtrl 51)} )
+	waitUntil
+	{
+		sleep 1;
+		_display = (uiNamespace getVariable "RscDiary");
+		!( (isNull _display) or {isNull (_display displayCtrl 51)} )
+	};
+
+
+	if (isNil 'f_var_ftMarkersDrawHandlerId_RscDiary') then
+	{
+		DEBUG_PRINT_LOG("[FTMarkers-2] Creating handler.")
+
+		f_var_ftMarkersDrawHandlerId_RscDiary = ((uiNamespace getVariable "RscDiary") displayCtrl 51) ctrlAddEventHandler
+		[
+			"Draw",
+			"_this call f_fnc_drawFireteamMarkers"
+		];
+
+	};
+
 };
 
 
-if (isNil 'f_var_ftMarkersDrawHandlerId') then
+[] spawn
 {
-	DEBUG_PRINT_LOG("[FTMarkers-2] Creating handler.")
+	waitUntil
+	{
+		sleep 1;
+		_display = (uiNamespace getVariable "RscCustomInfoMiniMap");
+		!( (isNull _display) or {isNull (_display displayCtrl 101)} )
+	};
 
-	f_var_ftMarkersDrawHandlerId = (findDisplay 12 displayCtrl 51) ctrlAddEventHandler
-	[
-		"Draw",
-		"_this call f_fnc_drawFireteamMarkers"
-	];
+
+	if (isNil 'f_var_ftMarkersDrawHandlerId_RscCustomInfoMiniMap') then
+	{
+		DEBUG_PRINT_LOG("[FTMarkers-2] Creating handler.")
+
+		f_var_ftMarkersDrawHandlerId_RscCustomInfoMiniMap = ((uiNamespace getVariable "RscCustomInfoMiniMap") displayCtrl 101) ctrlAddEventHandler
+		[
+			"Draw",
+			"_this call f_fnc_drawFireteamMarkers"
+		];
+
+	};
 
 };

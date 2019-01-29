@@ -1,5 +1,5 @@
 
-#include "components\markerDialog\markerDialog.hpp"
+#include "baseControls.hpp"
 
 #include "components\joinInProgress\jipCommonSettings.hpp"
 #include "components\joinInProgress\jipGroupPicker.hpp"

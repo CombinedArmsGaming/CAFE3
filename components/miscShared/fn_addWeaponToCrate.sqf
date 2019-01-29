@@ -2,7 +2,7 @@
 
 params ["_array", "_crate"];
 
-RUN_LOCAL_TO(_crate,f_fnc_insertLoadoutIntoCrate,_this);
+RUN_LOCAL_TO(_crate,f_fnc_addWeaponToCrate,_this);
 
 _weapon = _array select 0;
 _muzzleDevice = _array select 1;
@@ -23,27 +23,27 @@ else
     _bipod = _array select 6;
 };
 
-_crate addWeaponCargo [_weapon, 1];
+_crate addWeaponCargoGlobal [_weapon, 1];
 
 if (typeName _primaryMag == "ARRAY" and {count _primaryMag > 0}) then {_crate addMagazineAmmoCargo _primaryMag};
 if (typeName _secondaryMag == "ARRAY" and {count _secondaryMag > 0}) then {_crate addMagazineAmmoCargo _secondaryMag};
 
 if (_muzzleDevice != "") then
 {
-    _crate addItemCargo [_muzzleDevice, 1];
+    _crate addItemCargoGlobal [_muzzleDevice, 1];
 };
 
 if (_pointer != "") then
 {
-    _crate addItemCargo [_pointer, 1];
+    _crate addItemCargoGlobal [_pointer, 1];
 };
 
 if (_optic != "") then
 {
-    _crate addItemCargo [_optic, 1];
+    _crate addItemCargoGlobal [_optic, 1];
 };
 
 if (_bipod != "") then
 {
-    _crate addItemCargo [_bipod, 1];
+    _crate addItemCargoGlobal [_bipod, 1];
 };

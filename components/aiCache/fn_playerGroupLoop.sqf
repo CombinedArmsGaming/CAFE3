@@ -29,8 +29,6 @@ while {true} do
 
     f_arr_playerGroups = _newArray;
 
-    //DEBUG_FORMAT1_LOG("Player groups: %1",str f_arr_playerGroups)
-
-    sleep 5;
+    sleep 30;
 
 };

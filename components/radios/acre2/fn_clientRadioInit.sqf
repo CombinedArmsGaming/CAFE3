@@ -8,6 +8,11 @@
 
 params ["_unit"];
 
+if (typeName _unit == "ARRAY") exitWith
+{
+	DEBUG_FORMAT2_LOG("[BIG OOF] ClientRadioInit got array unit: _unit = %1, _this = %2",_unit,_this)
+};
+
 RUN_LOCAL_TO(_unit,f_fnc_clientRadioInit,_this);
 
 

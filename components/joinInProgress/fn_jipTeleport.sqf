@@ -48,7 +48,8 @@ if (count units group player == 1) then
 								else
 								{
 									_unit = player;
-									[["JIP",[format ["%1 has joined your group.",name _unit]]],"BIS_fnc_showNotification",units (group _unit) - [_unit]] spawn BIS_fnc_MP;
+									_sendToUnits = (units (group _unit) - [_unit]) select {isPlayer _x};
+									[["JIP",[format ["%1 has joined your group.",name _unit]]],"BIS_fnc_showNotification",_sendToUnits] spawn BIS_fnc_MP;
 									player removeAction _tpaction;
 									tpAction = nil;
 									hintSilent "";
@@ -65,7 +66,8 @@ if (count units group player == 1) then
 							else
 							{
 								_unit = player;
-								[["JIP",[format ["%1 has joined your group.",name _unit]]],"BIS_fnc_showNotification",units (group _unit) - [_unit]] spawn BIS_fnc_MP;
+								_sendToUnits = (units (group _unit) - [_unit]) select {isPlayer _x};
+								[["JIP",[format ["%1 has joined your group.",name _unit]]],"BIS_fnc_showNotification",_sendToUnits] spawn BIS_fnc_MP;
 								player removeAction _tpaction;
 								tpAction = nil;
 								hintSilent "";
@@ -124,7 +126,8 @@ else
 						else
 						{
 							_unit = player;
-							[["JIP",[format ["%1 has joined your group.",name _unit]]],"BIS_fnc_showNotification",units (group _unit) - [_unit]] spawn BIS_fnc_MP;
+							_sendToUnits = (units (group _unit) - [_unit]) select {isPlayer _x};
+							[["JIP",[format ["%1 has joined your group.",name _unit]]],"BIS_fnc_showNotification",_sendToUnits] spawn BIS_fnc_MP;
 							player removeAction _tpaction;
 							tpAction = nil;
 							hintSilent "";
@@ -141,7 +144,8 @@ else
 					else
 					{
 						_unit = player;
-						[["JIP",[format ["%1 has joined your group.",name _unit]]],"BIS_fnc_showNotification",units (group _unit) - [_unit]] spawn BIS_fnc_MP;
+						_sendToUnits = (units (group _unit) - [_unit]) select {isPlayer _x};
+						[["JIP",[format ["%1 has joined your group.",name _unit]]],"BIS_fnc_showNotification",_sendToUnits] spawn BIS_fnc_MP;
 						player removeAction _tpaction;
 						tpAction = nil;
 						hintSilent "";
@@ -189,7 +193,8 @@ else
 			else
 			{
 				_unit = player;
-				[["JIP",[format ["%1 has joined your group.",name _unit]]],"BIS_fnc_showNotification",units (group _unit) - [_unit]] spawn BIS_fnc_MP;
+				_sendToUnits = (units (group _unit) - [_unit]) select {isPlayer _x};
+				[["JIP",[format ["%1 has joined your group.",name _unit]]],"BIS_fnc_showNotification",_sendToUnits] spawn BIS_fnc_MP;
 				player removeAction _tpaction;
 				tpAction = nil;
 				hintSilent "";
@@ -207,7 +212,8 @@ else
 		else
 		{
 			_unit = player;
-			[["JIP",[format ["%1 has joined your group.",name _unit]]],"BIS_fnc_showNotification",units (group _unit) - [_unit]] spawn BIS_fnc_MP;
+			_sendToUnits = (units (group _unit) - [_unit]) select {isPlayer _x};
+			[["JIP",[format ["%1 has joined your group.",name _unit]]],"BIS_fnc_showNotification",_sendToUnits] spawn BIS_fnc_MP;
 			player removeAction _tpaction;
 			tpAction = nil;
 			hintSilent "";
@@ -218,7 +224,7 @@ else
 			hintSilent format ["Teleported to %1",name _leader];
 			sleep 2;
 			breakTo "main";
-			
+
 		};
 
 	};

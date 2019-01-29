@@ -44,10 +44,18 @@ while {f_var_cacheRun} do
                 {
                     if !(_isNearEnough) then
                     {
-                        DEBUG_FORMAT1_CHAT("f_fnc_cache DBG: Caching: %1",_x);
+                        if ((units _x) findIf {isPlayer _x} >= 0) then
+                        {
+                            f_arr_playerGroups pushBack _x;
+                        }
+                        else
+                        {
+                            DEBUG_FORMAT1_CHAT("f_fnc_cache DBG: Caching: %1",_x);
 
-                        _x setvariable ["f_cached", true];
-                        [_x] spawn f_fnc_cacheGroup;
+                            _x setvariable ["f_cached", true];
+                            [_x] spawn f_fnc_cacheGroup;
+
+                        };
 
                     };
 
