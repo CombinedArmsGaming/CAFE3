@@ -1,6 +1,6 @@
 // Respawn waves config
 
-ca_respawnmode    = 1;      // Respawn modes: 0: Off, 1: Base respawn, 2: Spawn on Commanding Officer
+ca_respawnmode    = 2;      // Respawn modes: 0: Off, 1: Base respawn, 2: Spawn on Commanding Officer
 ca_wavecooldown   = 10;     // Seconds between each wave plus wavetime below
 ca_wavetime       = 60;     // How many seconds each wave lasts where you can die and instantly respawn (Incase someone gets armaed on respawn or similar incidents)
 ca_norespawnwaves = 5;      // Number of waves the CO can call in.

@@ -31,11 +31,69 @@
 [x] Upgrade unit markers.
 [x] Add/test squad markers
 [x] Make squad markers indicate squad assets automatically
-[ ] If player spawns high enough in the air, turn them into a skydiver (and back).
+[/] If player spawns high enough in the air, turn them into a skydiver (and back).
 [ ] Find a better way to detect killer than ace_medical_lastDamageSource: it's not very good. entity killed event?
 [ ] Do additional checks before caching a squad, that a player isn't in it.
-[ ] Make squad markers indicate squad size automatically
+[/] Make squad markers indicate squad size automatically
+[ ] Make squad markers appear in briefing screen + gps
 [ ] Add mission-end hooks/wrappers to save client namespace, so kill-logger entries are saved.
-[ ] Ensure graves work in MP (because local inventory commands used).
+[ ] Convert grave commands to global MP (mags command is global already).
+[ ] Refactor JIP menu: spammed join notifications.
+[ ] Add animations to ACE actions
+[ ] AI caching: Space partitioning for player groups
+[ ] AI caching: Add flag to treat players individually
 [ ] Mop up todos in code
+[ ] Set all config values to 'real' values.
+[ ] Remove marker dialog + briefing entries.
 [ ] Test all in real MP env.
+
+
+
+
+
+22:45:29 Error in expression <
+params ["_unit"];
+
+if (!(local _unit)) exitWith { [_this] remoteE>
+22:45:29   Error position: <local _unit)) exitWith { [_this] remoteE>
+22:45:29   Error local: Type Array, expected Object,Group
+22:45:29 File components\zeusAdditions\fn_registerZeusPlayer.sqf [F_fnc_registerZeusPlayer], line 196
+
+
+
+
+
+22:19:51 Error in expression < ["[TrackKills] Adding to log: %1", str _killReport];
+
+missionNamespace setVaria>
+22:19:51   Error position: <_killReport];
+
+missionNamespace setVaria>
+22:19:51   Error Undefined variable in expression: _killreport
+22:19:51 File components\killTracker\fn_appendKillReport.sqf [F_fnc_appendKillReport], line 194
+
+
+
+
+
+22:45:29 Error in expression <
+
+params ["_unit"];
+
+if (!(local _unit)) exitWith { [_this] remoteE>
+22:45:29   Error position: <local _unit)) exitWith { [_this] remoteE>
+22:45:29   Error local: Type Array, expected Object,Group
+22:45:29 File components\radios\acre2\fn_clientRadioInit.sqf [F_fnc_clientRadioInit], line 193
+
+
+
+
+
+20:46:49 Error in expression <
+
+params ["_unit"];
+
+if (!(local _unit)) exitWith { [_this] remoteE>
+20:46:49   Error position: <local _unit)) exitWith { [_this] remoteE>
+20:46:49   Error local: Type Array, expected Object,Group
+20:46:49 File components\radios\acre2\fn_clientRadioInit.sqf [F_fnc_clientRadioInit], line 193

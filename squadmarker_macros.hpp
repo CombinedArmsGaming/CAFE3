@@ -2,18 +2,18 @@
 #define FACTION NONE
 #define SQUADS f_dict_squadmarkers
 
-#define RED         [1,0,0,1]
+#define RED         [1,0.15,0.15,1]
 #define ORANGE      [1,0.5,1,1]
 #define YELLOW      [1,1,0,1]
 #define GREEN       [0,1,0,1]
-#define BLUE        [0,0,1,1]
+#define BLUE        [0.2,0.2,1,1]
 #define CYAN        [0,1,1,1]
 #define MAGENTA     [1,0,1,1]
 #define PINK	    [1,0.3,0.4,1]
 #define PURPLE      [0.5,0,1,1]
 #define WHITE       [1,1,1,1]
 #define LIGHTGREY   [0.7,0.7,0.7,1]
-#define DARKGREY    [0.2,0.2,0.2,1]
+#define DARKGREY    [0.3,0.3,0.3,1]
 #define BLACK	    [0,0,0,1]
 #define GREY	    [0.5,0.5,0.5,1]
 #define RED	        [0.9,0,0,1]
