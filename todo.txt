@@ -41,13 +41,14 @@
 [/] Rate-limit grave creation.
 [x] Refactor JIP menu: spammed join notifications when player has local squad ai.
 [/] Add animations to ACE actions
-[ ] AI caching: Space partitioning for player groups
+[x] AI caching: Space partitioning for player groups
 [/] AI caching: Add flag to treat players individually
-[ ] AI caching: See if there's any extra things to do to cached units to improve perf savings.
+[/] AI caching: See if there's any extra things to do to cached units to improve perf savings.
 [ ] Mop up todos in code
 [ ] Set all config values to 'real' values.
 [x] Remove marker dialog + briefing entries.
 [/] Spawn scripts: make ai teleport into vehicles.
 [ ] Script for triggers, to ignore registered zeuses passing through.
-[ ] Refactor fn_jipTeleport.  It's mad.
+[/] Refactor fn_jipTeleport.  It's mad.
+[ ] Add more configurable params to params screen (similar to medical toggle).
 [ ] Test all in real MP env.

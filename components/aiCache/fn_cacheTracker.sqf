@@ -46,7 +46,7 @@ while {f_var_cacheRun} do
                     {
                         if ((units _x) findIf {isPlayer _x} >= 0) then
                         {
-                            f_arr_playerGroups pushBack _x;
+                            f_arr_aiCaching_playerGroups pushBack _x;
                         }
                         else
                         {

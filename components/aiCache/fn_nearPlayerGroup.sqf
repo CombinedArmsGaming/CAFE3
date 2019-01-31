@@ -6,26 +6,38 @@
 
 params ["_unit", "_distance"];
 
-_playerGroups = missionNamespace getVariable ["f_arr_playerGroups", []];
+_playerGroups = missionNamespace getVariable ["f_arr_aiCaching_playerGroups", []];
 if (_playerGroups isEqualTo []) exitWith { false };
 
 _closeEnough = false;
 
-scopeName "sqfSucks";
-
 {
-    _group = _x;
-    _leader = leader _group;
-
+    _leader = leader _x;
     _distance2D = _leader distance2D _unit;
 
-    if (_distance2D < _distance) then
+    if (_distance2D < _distance) exitWith
     {
         _closeEnough = true;
-        breakTo "sqfSucks";
     };
 
 } forEach _playerGroups;
+
+if (_closeEnough) exitWith {true};
+
+
+_awayPlayers = missionNamespace getVariable ["f_arr_aiCaching_awayPlayers", []];
+if (_awayPlayers isEqualTo []) exitWith { false };
+
+{
+    _player = _x;
+    _distance2D = _player distance2D _unit;
+
+    if (_distance2D < _distance) exitWith
+    {
+        _closeEnough = true;
+    };
+
+} forEach _awayPlayers;
 
 
 _closeEnough
