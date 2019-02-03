@@ -10,11 +10,11 @@
 [x] Spawn wave: use location instead of marker, ensure spawn height is respected.
 [x] Spawn wave: ensure marker is auto-generated if not existing.
 [x] Spawn wave: enable vehicle spawn if seats are available.
-[/] ca_respawnmarker -> f_respawnmarker
+[/] f_var_respawnMarker -> f_respawnmarker
 [/] All other ca_* vars in respawnWaves config.
 [x] respawnWaves config: missionNamespace stuff can be removed due if config is client and serverside.
 [x] If radio lists swappable, consolidate config marker down into a single one.
-[/] FT markers: show unit type marker
+[x] FT markers: show unit type marker
 [/] FT markers: see how far frequency can be increased or use lerp/slerp
 [/] Face/name translator - allow configuration of faces/names per side.
 [x] Corpse preservation / gravestone placement
@@ -48,7 +48,12 @@
 [ ] Set all config values to 'real' values.
 [x] Remove marker dialog + briefing entries.
 [/] Spawn scripts: make ai teleport into vehicles.
-[ ] Script for triggers, to ignore registered zeuses passing through.
+[x] Script for triggers, to ignore registered zeuses passing through.
 [/] Refactor fn_jipTeleport.  It's mad.
-[ ] Add more configurable params to params screen (similar to medical toggle).
+[/] Add more configurable params to params screen (similar to medical toggle).
+[/] Squad composition framework that ties into zeus spawner and spawn triggers.
+[ ] Change zeus spawner definitions to a more declarative format.
 [ ] Test all in real MP env.
+[ ] Check before gravestoning a unit, that it isn't in a vehicle.
+[ ] Revise zeus ui: hide sometimes needs to be toggled off/on
+[ ] Gearscript: add medical transforms to crates too.

@@ -1,4 +1,4 @@
-#include "configuration\configMacros.hpp"
+#include "configuration\internals\configMacros.hpp"
 
 
 // Debugging utilities

@@ -2,7 +2,7 @@
 // Includes all config scripts needed for the server.
 
 // Debug settings
-#include "..\debug.sqf"
+#include "..\internals\debug.sqf"
 
 // AI Caching settings
 #include "..\aiCache.sqf"
@@ -11,7 +11,7 @@
 #include "..\respawnWaves.sqf"
 
 // Gearscript2
-#include "..\gearScript.sqf"
+#include "..\internals\gearScript.sqf"
 
 // NPC spawn scripts
 #include "..\spawnNpcs.sqf"

@@ -23,10 +23,10 @@ while {true} do
     _timer = _display displayCtrl 1006;
 
 
-    _waves ctrlSetText ('Waves left:'+ str(ca_norespawnwaves));
+    _waves ctrlSetText ('Waves left:'+ str(f_var_respawnWavesAmount));
     _noplayers ctrlSetText (str(count _specplayers) + ' players in spectate');
 
-    _time = (ca_wavetime + ca_wavecooldown + ca_respawntime - time);
+    _time = (f_var_waveTime + f_var_waveCooldown + ca_respawntime - time);
 
     if ( 0 > _time) then
     {

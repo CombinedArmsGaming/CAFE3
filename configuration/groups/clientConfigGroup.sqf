@@ -2,7 +2,7 @@
 // Includes all config scripts needed for clients.
 
 // Debug settings
-#include "..\debug.sqf"
+#include "..\internals\debug.sqf"
 
 // Map-click actions
 #include "..\mapClick.sqf"
@@ -14,7 +14,7 @@
 #include "..\aiCache.sqf"
 
 // Gearscript2
-#include "..\gearScript.sqf"
+#include "..\internals\gearScript.sqf"
 
 // NPC spawn scripts
 #include "..\spawnNpcs.sqf"
@@ -30,4 +30,4 @@
 
 
 #include "..\squadMarkers.hpp"
-#include "..\squadMarkers\squadMarkers.sqf"
+#include "..\internals\squadMarkers.sqf"

@@ -68,7 +68,7 @@ if (hasInterface) then
 };
 
 
-#include "..\..\configuration\obituaries\obituaries.sqf";
+#include "..\..\configuration\internals\obituaries.sqf";
 
 
 #else

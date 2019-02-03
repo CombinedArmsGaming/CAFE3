@@ -1,4 +1,4 @@
-#include "..\macros.hpp"
+#include "macros.hpp"
 
 if (isNil "f_var_squadMarkers_already_run") then
 {
@@ -7,10 +7,10 @@ if (isNil "f_var_squadMarkers_already_run") then
 
     INIT_SQUADS();
 
-    #include "squadMarkers_blufor.sqf"
-    #include "squadMarkers_opfor.sqf"
-    #include "squadMarkers_indfor.sqf"
-    #include "squadMarkers_civ.sqf"
+    #include "..\squadMarkers\squadMarkers_blufor.sqf"
+    #include "..\squadMarkers\squadMarkers_opfor.sqf"
+    #include "..\squadMarkers\squadMarkers_indfor.sqf"
+    #include "..\squadMarkers\squadMarkers_civ.sqf"
 
 }
 else

@@ -110,6 +110,30 @@ ADD_ITEMS_TO_CRATE(small,"Binocular",2);
 ADD_ITEMS_TO_CRATE(small,"Toolkit",1);
 
 
+// Small crate loadout
+CREATE_CRATE(med);
+
+ADD_RIFLE_TO_CRATE(med,rif,4);
+ADD_LAUNCHER_TO_CRATE(med,lat,4);
+ADD_PISTOL_TO_CRATE(med,rif,4);
+
+ADD_PISTOL_AMMO_TO_CRATE(med,rif,12);
+ADD_RIFLE_AMMO_TO_CRATE(med,rif,60);
+ADD_RIFLE_AMMO_TO_CRATE(med,ar,8);
+ADD_RIFLE_AMMO_TO_CRATE(med,crew,4);
+ADD_RIFLE_GRENADES_TO_CRATE(med,ftl,8);
+
+ADD_BANDAGES_TO_CRATE(med,60);
+
+ADD_BACKPACKS_TO_CRATE(med,rif,4);
+
+ADD_ITEMS_TO_CRATE(med,"ACRE_PRC343",12);
+ADD_ITEMS_TO_CRATE(med,"ACRE_PRC152",4);
+ADD_ITEMS_TO_CRATE(med,"ACRE_PRC148",4);
+ADD_ITEMS_TO_CRATE(med,"Binocular",4);
+ADD_ITEMS_TO_CRATE(med,"Toolkit",1);
+
+
 // Default loadout.
 // If Gearscript tries to use an invalid loadout, it will fall-back to this default loadout instead.
 

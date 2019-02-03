@@ -3,20 +3,20 @@
 
 if (isServer) then
 {
-	if (isNil 'ca_respawnmarker') then
+	if (isNil 'f_var_respawnMarker') then
 	{
-		DEBUG_PRINT_LOG("[RespawnWaves] ca_respawnmarker is nil, setting it to respawn_west by default.")
-		missionNamespace setVariable ["ca_respawnmarker", "respawn_west", true];
+		DEBUG_PRINT_LOG("[RespawnWaves] f_var_respawnMarker is nil, setting it to respawn_west by default.")
+		missionNamespace setVariable ["f_var_respawnMarker", "respawn_west", true];
 	};
 
-	if (getMarkerColor ca_respawnmarker == "") then
+	if (getMarkerColor f_var_respawnMarker == "") then
 	{
-		DEBUG_PRINT_LOG("[RespawnWaves] ca_respawnmarker doesn't exist, creating it at a random player position.")
+		DEBUG_PRINT_LOG("[RespawnWaves] f_var_respawnMarker doesn't exist, creating it at a random player position.")
 		_playerPos = getPos (selectRandom (allPlayers - entities "HeadlessClient_F"));
-		createMarker [ca_respawnmarker, _playerPos];
+		createMarker [f_var_respawnMarker, _playerPos];
 	};
 
-	_pos = getMarkerPos ca_respawnmarker;
+	_pos = getMarkerPos f_var_respawnMarker;
 	_respawnObject = createSimpleObject ["Static", _pos];
 	missionNamespace setVariable ["f_respawnWavesLocation", _respawnObject, true];
 

@@ -9,4 +9,5 @@ class miscShared
     class addWeaponToCrate{};
     class isContainer{};
     class sideToString{};
+    class ignoreZeus{};
 };

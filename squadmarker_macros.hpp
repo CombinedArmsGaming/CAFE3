@@ -2,7 +2,7 @@
 #define FACTION NONE
 #define SQUADS f_dict_squadmarkers
 
-#define RED         [1,0.15,0.15,1]
+#define RED	        [0.9,0,0,1]
 #define ORANGE      [1,0.5,1,1]
 #define YELLOW      [1,1,0,1]
 #define GREEN       [0,1,0,1]
@@ -16,7 +16,6 @@
 #define DARKGREY    [0.3,0.3,0.3,1]
 #define BLACK	    [0,0,0,1]
 #define GREY	    [0.5,0.5,0.5,1]
-#define RED	        [0.9,0,0,1]
 #define BROWN	    [0.5,0.25,0,1]
 #define KHAKI	    [0.5,0.6,0.4,1]
 
