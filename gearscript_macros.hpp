@@ -69,4 +69,8 @@
 #define ADD_LAUNCHER_AMMO_TO_CRATE(CRATE,NAME,AMOUNT) [#FACTION,#CRATE,#NAME,AMOUNT] call f_fnc_addLauncherAmmoToCrate
 
 #define ADD_BANDAGES_TO_CRATE(CRATE,AMOUNT) [#FACTION,#CRATE,AMOUNT] call f_fnc_addBandagesToCrate
+#define ADD_MEDS_TO_CRATE(CRATE,AMOUNT) [#FACTION,#CRATE,AMOUNT] call f_fnc_addMedsToCrate
+#define ADD_BLOOD_TO_CRATE(CRATE,AMOUNT) [#FACTION,#CRATE,AMOUNT] call f_fnc_addBloodToCrate
 #define ADD_BACKPACKS_TO_CRATE(CRATE,NAME,AMOUNT) [#FACTION,#CRATE,#NAME,AMOUNT] call f_fnc_addBackpacksToCrate
+
+#define FINALIZE_CRATE(NAME) [CRATE_VAR(NAME)] call f_fnc_applyCrateModifications

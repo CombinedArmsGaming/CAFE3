@@ -27,7 +27,7 @@ _fluids1000 = ["ACE_salineIV_1000", "ACE_plasmaIV_1000"];
 
     if (typeName _x == "ARRAY" and {count _x == 2 and {_x select 0 in _fluids1000}}) then
     {
-        _x set [0, "ACE_bloodIV_1000"];
+        _x set [0, "ACE_bloodIV"];
     };
 
 } forEach _container;

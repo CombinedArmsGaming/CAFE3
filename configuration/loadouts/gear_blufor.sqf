@@ -100,6 +100,8 @@ ADD_RIFLE_AMMO_TO_CRATE(small,crew,2);
 ADD_RIFLE_GRENADES_TO_CRATE(small,ftl,4);
 
 ADD_BANDAGES_TO_CRATE(small,30);
+ADD_MEDS_TO_CRATE(small,20);
+ADD_BLOOD_TO_CRATE(small,6);
 
 ADD_BACKPACKS_TO_CRATE(small,rif,2);
 
@@ -109,8 +111,10 @@ ADD_ITEMS_TO_CRATE(small,"ACRE_PRC148",2);
 ADD_ITEMS_TO_CRATE(small,"Binocular",2);
 ADD_ITEMS_TO_CRATE(small,"Toolkit",1);
 
+FINALIZE_CRATE(small);
 
-// Small crate loadout
+
+// Medium crate loadout
 CREATE_CRATE(med);
 
 ADD_RIFLE_TO_CRATE(med,rif,4);
@@ -124,6 +128,8 @@ ADD_RIFLE_AMMO_TO_CRATE(med,crew,4);
 ADD_RIFLE_GRENADES_TO_CRATE(med,ftl,8);
 
 ADD_BANDAGES_TO_CRATE(med,60);
+ADD_MEDS_TO_CRATE(med,40);
+ADD_BLOOD_TO_CRATE(med,12);
 
 ADD_BACKPACKS_TO_CRATE(med,rif,4);
 
@@ -132,6 +138,8 @@ ADD_ITEMS_TO_CRATE(med,"ACRE_PRC152",4);
 ADD_ITEMS_TO_CRATE(med,"ACRE_PRC148",4);
 ADD_ITEMS_TO_CRATE(med,"Binocular",4);
 ADD_ITEMS_TO_CRATE(med,"Toolkit",1);
+
+FINALIZE_CRATE(med);
 
 
 // Default loadout.

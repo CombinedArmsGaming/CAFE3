@@ -109,6 +109,63 @@ _baseLoadout = [["SMG_02_F","","acc_flashlight","optic_ACO_grn_smg",["30Rnd_9x21
 CREATE_LOADOUT(crew,_baseLoadout);
 
 
+// Small crate loadout
+CREATE_CRATE(small);
+
+ADD_RIFLE_TO_CRATE(small,rif,2);
+ADD_LAUNCHER_AMMO_TO_CRATE(small,lat,2);
+ADD_PISTOL_TO_CRATE(small,rif,2);
+
+ADD_PISTOL_AMMO_TO_CRATE(small,rif,6);
+ADD_RIFLE_AMMO_TO_CRATE(small,rif,30);
+ADD_RIFLE_AMMO_TO_CRATE(small,ar,4);
+ADD_RIFLE_AMMO_TO_CRATE(small,mk,5);
+ADD_RIFLE_AMMO_TO_CRATE(small,crew,2);
+
+ADD_BANDAGES_TO_CRATE(small,30);
+ADD_MEDS_TO_CRATE(small,20);
+ADD_BLOOD_TO_CRATE(small,6);
+
+ADD_BACKPACKS_TO_CRATE(small,rif,2);
+
+ADD_ITEMS_TO_CRATE(small,"ACRE_PRC343",6);
+ADD_ITEMS_TO_CRATE(small,"ACRE_PRC152",2);
+ADD_ITEMS_TO_CRATE(small,"ACRE_PRC148",2);
+ADD_ITEMS_TO_CRATE(small,"Binocular",2);
+ADD_ITEMS_TO_CRATE(small,"Toolkit",1);
+
+FINALIZE_CRATE(small);
+
+
+// Medium crate loadout
+CREATE_CRATE(med);
+
+ADD_RIFLE_TO_CRATE(med,rif,4);
+ADD_LAUNCHER_TO_CRATE(med,lat,1);
+ADD_LAUNCHER_AMMO_TO_CRATE(med,lat,4);
+ADD_PISTOL_TO_CRATE(med,rif,4);
+
+ADD_PISTOL_AMMO_TO_CRATE(med,rif,12);
+ADD_RIFLE_AMMO_TO_CRATE(med,rif,60);
+ADD_RIFLE_AMMO_TO_CRATE(med,ar,8);
+ADD_RIFLE_AMMO_TO_CRATE(med,mk,10);
+ADD_RIFLE_AMMO_TO_CRATE(med,crew,4);
+
+ADD_BANDAGES_TO_CRATE(med,60);
+ADD_MEDS_TO_CRATE(med,40);
+ADD_BLOOD_TO_CRATE(med,12);
+
+ADD_BACKPACKS_TO_CRATE(med,rif,4);
+
+ADD_ITEMS_TO_CRATE(med,"ACRE_PRC343",12);
+ADD_ITEMS_TO_CRATE(med,"ACRE_PRC152",4);
+ADD_ITEMS_TO_CRATE(med,"ACRE_PRC148",4);
+ADD_ITEMS_TO_CRATE(med,"Binocular",4);
+ADD_ITEMS_TO_CRATE(med,"Toolkit",1);
+
+FINALIZE_CRATE(med);
+
+
 // Default loadout.
 // If Gearscript tries to use an invalid loadout, it will fall-back to this default loadout instead.
 

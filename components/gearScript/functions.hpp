@@ -30,4 +30,7 @@ class gearScriptCrates
     class addBandagesToCrate{};
     class addBackpacksToCrate{};
     class addItemsToCrate{};
+    class addMedsToCrate{};
+    class addBloodToCrate{};
+    class applyCrateModifications{};
 };

@@ -44,16 +44,16 @@
 [x] AI caching: Space partitioning for player groups
 [/] AI caching: Add flag to treat players individually
 [/] AI caching: See if there's any extra things to do to cached units to improve perf savings.
-[ ] Mop up todos in code
-[ ] Set all config values to 'real' values.
+[/] Mop up todos in code
+[x] Set all config values to 'real' values.
 [x] Remove marker dialog + briefing entries.
 [/] Spawn scripts: make ai teleport into vehicles.
 [x] Script for triggers, to ignore registered zeuses passing through.
 [/] Refactor fn_jipTeleport.  It's mad.
 [/] Add more configurable params to params screen (similar to medical toggle).
 [/] Squad composition framework that ties into zeus spawner and spawn triggers.
-[ ] Change zeus spawner definitions to a more declarative format.
+[/] Change zeus spawner definitions to a more declarative format.
 [ ] Test all in real MP env.
-[ ] Check before gravestoning a unit, that it isn't in a vehicle.
-[ ] Revise zeus ui: hide sometimes needs to be toggled off/on
-[ ] Gearscript: add medical transforms to crates too.
+[x] Check before gravestoning a unit, that it isn't in a vehicle.
+[/] Revise zeus ui: hide sometimes needs to be toggled off/on
+[x] Gearscript: add medical transforms to crates too.
