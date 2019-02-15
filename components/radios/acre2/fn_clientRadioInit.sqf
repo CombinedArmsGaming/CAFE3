@@ -15,8 +15,9 @@ if (typeName _unit == "ARRAY") exitWith
 
 RUN_LOCAL_TO(_unit,f_fnc_clientRadioInit,_this);
 
+waitUntil { IS_TRUE(f_radios_ready) };
 
-if ( !isNil 'f_var_running_radios' and {f_var_running_radios} ) exitWith {};
+if ( IS_TRUE(f_var_running_radios) ) exitWith {};
 f_var_running_radios = true;
 
 

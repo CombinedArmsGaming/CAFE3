@@ -1,59 +1,59 @@
-[x] Autosaving kill tracker
-[x] Accumulate kill logs per mission run
-[x] Killer info in kill tracker
-[x] Killer visualization
-[x] Kill-log visualization LODs
-[/] Mission boundaries rectangle
-[x] Radio list generator
-[x] Allow radio lists to regenerate if player swaps sides.
-[/] Add config file for radio lists to configuration folder.
+[x] respawnWaves config: missionNamespace stuff can be removed due if config is client and serverside.
+[x] Use 'gravestone' entity as a template for gravestone model.
+[x] Upgrade unit markers.
+[x] Turn gravestones into containers + fill with corpse items.
 [x] Spawn wave: use location instead of marker, ensure spawn height is respected.
 [x] Spawn wave: ensure marker is auto-generated if not existing.
 [x] Spawn wave: enable vehicle spawn if seats are available.
-[/] f_var_respawnMarker -> f_respawnmarker
-[/] All other ca_* vars in respawnWaves config.
-[x] respawnWaves config: missionNamespace stuff can be removed due if config is client and serverside.
-[x] If radio lists swappable, consolidate config marker down into a single one.
-[x] FT markers: show unit type marker
-[/] FT markers: see how far frequency can be increased or use lerp/slerp
-[/] Face/name translator - allow configuration of faces/names per side.
-[x] Corpse preservation / gravestone placement
-[x] Gravestone data collection should occur locally in handler to avoid "no unit" problem.
-[x] Use 'gravestone' entity as a template for gravestone model.
-[/] Detect if gravestone is a container and assign dummy container to it if not.
-[x] Turn gravestones into containers + fill with corpse items.
-[x] Add 'dismantle' action to gravestones.
-[x] Add obituary to gravestones.
-[x] Allow exemption from grave cache for marked units.
-[/] In gravestones, fill backpacks etc with items instead of completely flattening the loadout structure.
+[x] Set all config values to 'real' values.
+[x] Script for triggers, to ignore registered zeuses passing through.
 [x] Rewrite the respawnWaves respawn config, allow modularity.
+[x] Remove marker dialog + briefing entries.
+[x] Refactor JIP menu: spammed join notifications when player has local squad ai.
+[x] Radio list generator
 [x] Make zeus addons transfer to new units if zeus is killed.
-[x] Upgrade unit markers.
-[x] Add/test squad markers
 [x] Make squad markers indicate squad assets automatically
+[x] Make squad markers appear in gps
+[x] Killer visualization
+[x] Killer info in kill tracker
+[x] Kill-log visualization LODs
+[x] If radio lists swappable, consolidate config marker down into a single one.
+[x] Gravestone data collection should occur locally in handler to avoid "no unit" problem.
+[x] Gearscript: add medical transforms to crates too.
+[x] FT markers: show unit type marker
+[x] Do additional checks before caching a squad, that a player isn't in it.
+[x] Corpse preservation / gravestone placement
+[x] Convert grave commands to global MP (mags command is global already).
+[x] Check before gravestoning a unit, that it isn't in a vehicle.
+[x] Autosaving kill tracker
+[x] Allow radio lists to regenerate if player swaps sides.
+[x] Allow exemption from grave cache for marked units.
+[x] Add/test squad markers
+[x] Add obituary to gravestones.
+[x] Add mission-end hooks/wrappers to save client namespace, so kill-logger entries are saved.
+[x] Add 'dismantle' action to gravestones.
+[x] Accumulate kill logs per mission run
+[x] AI caching: Space partitioning for player groups
+[/] f_var_respawnMarker -> f_respawnmarker
+[/] Squad composition framework that ties into zeus spawner and spawn triggers.
+[/] Spawn scripts: make ai teleport into vehicles.
+[/] Revise zeus ui: hide sometimes needs to be toggled off/on
+[/] Refactor fn_jipTeleport.  It's mad.
+[/] Rate-limit grave creation.
+[/] Mop up todos in code
+[/] Mission boundaries rectangle
+[/] Make squad markers indicate squad size automatically
+[/] In gravestones, fill backpacks etc with items instead of completely flattening the loadout structure.
 [/] If player spawns high enough in the air, turn them into a skydiver (and back).
 [/] Find a better way to detect killer than ace_medical_lastDamageSource: it's not very good. entity killed event?
-[x] Do additional checks before caching a squad, that a player isn't in it.
-[/] Make squad markers indicate squad size automatically
-[x] Make squad markers appear in gps
-[x] Add mission-end hooks/wrappers to save client namespace, so kill-logger entries are saved.
-[x] Convert grave commands to global MP (mags command is global already).
-[/] Rate-limit grave creation.
-[x] Refactor JIP menu: spammed join notifications when player has local squad ai.
-[/] Add animations to ACE actions
-[x] AI caching: Space partitioning for player groups
-[/] AI caching: Add flag to treat players individually
-[/] AI caching: See if there's any extra things to do to cached units to improve perf savings.
-[/] Mop up todos in code
-[x] Set all config values to 'real' values.
-[x] Remove marker dialog + briefing entries.
-[/] Spawn scripts: make ai teleport into vehicles.
-[x] Script for triggers, to ignore registered zeuses passing through.
-[/] Refactor fn_jipTeleport.  It's mad.
-[/] Add more configurable params to params screen (similar to medical toggle).
-[/] Squad composition framework that ties into zeus spawner and spawn triggers.
+[/] Face/name translator - allow configuration of faces/names per side.
+[/] FT markers: see how far frequency can be increased or use lerp/slerp
+[/] Detect if gravestone is a container and assign dummy container to it if not.
 [/] Change zeus spawner definitions to a more declarative format.
+[/] All other ca_* vars in respawnWaves config.
+[/] Add more configurable params to params screen (similar to medical toggle).
+[/] Add config file for radio lists to configuration folder.
+[/] Add animations to ACE actions
+[/] AI caching: See if there's any extra things to do to cached units to improve perf savings.
+[/] AI caching: Add flag to treat players individually
 [ ] Test all in real MP env.
-[x] Check before gravestoning a unit, that it isn't in a vehicle.
-[/] Revise zeus ui: hide sometimes needs to be toggled off/on
-[x] Gearscript: add medical transforms to crates too.

@@ -44,16 +44,16 @@ f_radios_settings_acre2_BackpackRadio = "ACRE_PRC117F";
 // string id, displayname
 f_radios_settings_acre2_languages =
 [
-    ["blufor",  "English"],
-    ["indfor",  "Greek"],
-    ["opfor",   "Farsi"]
+    ["blu", "English"],
+    ["ind", "Greek"],
+    ["opf", "Farsi"]
 ];
 
 // defines the language that a player can speak.
 // can define multiple
-f_radios_settings_acre2_language_blufor = ["blufor"];
-f_radios_settings_acre2_language_opfor = ["indfor"];
-f_radios_settings_acre2_language_indfor = ["opfor"];
+f_radios_settings_acre2_language_blufor = ["blu"];
+f_radios_settings_acre2_language_opfor = ["ind"];
+f_radios_settings_acre2_language_indfor = ["opf"];
 
 // Channel names and group defaults
 // first item in the array will correspond to the first channel

@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1298;
+		nextID=1308;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={148.16316,62.125122,561.3244};
-		dir[]={0.85002154,-0.50721371,-0.14301299};
-		up[]={0.50034583,0.86165959,-0.084183469};
-		aside[]={-0.16593376,-4.1386229e-006,-0.98626953};
+		pos[]={122.39998,42.634712,522.82257};
+		dir[]={0.22298478,-0.49957234,0.83722746};
+		up[]={0.12861694,0.86610812,0.48290277};
+		aside[]={0.96643668,-4.0479936e-006,-0.25739542};
 	};
 };
 binarizationWanted=0;
@@ -169,7 +169,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=29;
+		items=30;
 		class Item0
 		{
 			dataType="Logic";
@@ -3855,7 +3855,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				name="gravestone";
+				name="grapestone";
 			};
 			id=1248;
 			type="rhs_7ya37_1_single";
@@ -3895,6 +3895,23 @@ class Mission
 			id=1282;
 			type="EmptyDetectorAreaR50";
 			atlOffset=-1.9073486e-006;
+		};
+		class Item29
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={122.968,36.314472,535.00201};
+				angles[]={0.10461503,0,0.010000736};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				name="gravestone";
+			};
+			id=1307;
+			type="B_Kitbag_sgg";
 		};
 	};
 	class Connections

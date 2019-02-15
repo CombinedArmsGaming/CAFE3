@@ -5,14 +5,14 @@ RUN_AS_ASYNC(f_fnc_assignGear);
 _unit = _this select 1;
 LOCAL_ONLY(_unit);
 
+waitUntil { IS_TRUE(f_var_gearscript_loaded) };
+
+
 _runningAlready = _unit getVariable ["f_var_assignGear_running",false];
 if (_runningAlready) exitWith {};
 
 _unit setVariable ["f_var_assignGear_running",true];
 _unit setVariable ["f_var_assignGear_done",false,true];
-
-
-waitUntil {time > 0};
 
 
 // ====================================================================================
