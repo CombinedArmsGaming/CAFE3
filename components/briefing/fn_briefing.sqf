@@ -8,10 +8,8 @@ CLIENT_ONLY;
 
 DEBUG_PRINT_LOG("running f_briefing")
 
-if (isNull player) then
-{
-    waitUntil {sleep 0.1; !isNull player};
-};
+WAIT_UNTIL_PLAYER_EXISTS();
+WAIT_UNTIL_SETTINGS_READY();
 
 // ====================================================================================
 

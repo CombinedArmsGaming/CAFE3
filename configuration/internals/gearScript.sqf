@@ -12,8 +12,8 @@ if (isNil "f_var_gearscript_already_run") then
         #include "..\gearScript.sqf"
 
         f_var_gearscript_loaded = true;
-        
-    }
+
+    };
 
 }
 else

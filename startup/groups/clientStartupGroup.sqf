@@ -27,6 +27,8 @@ INIT_COMPONENT(radios)
 
 INIT_COMPONENT(miscClient)
 
+INIT_COMPONENT(miscShared)
+
 INIT_COMPONENT(respawnWaves)
 
 INIT_COMPONENT(zeusAdditions)

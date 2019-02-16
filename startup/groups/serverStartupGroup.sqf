@@ -17,6 +17,8 @@ INIT_COMPONENT(radios)
 
 INIT_COMPONENT(respawnWaves)
 
+INIT_COMPONENT(miscShared)
+
 
 // Kill tracker init
 #ifdef ENABLE_KILL_TRACKING

@@ -16,7 +16,7 @@ LOCAL_ONLY(_unit);
 _doRespawn =
 {
     params ["_unit", "_corpse", "_doJipMenu"];
-    [_unit, _corpse] call _applyOldLoadout;
+    [_unit, _corpse] spawn _applyOldLoadout;
     [false] call ace_spectator_fnc_setSpectator;
     if (_doJipMenu) then { [] spawn _handleJipMenu };
 
@@ -59,7 +59,7 @@ if (_hasBeenKilled) then
         [player] join grpNull;
     };
 
-    [_unit, _corpse] call _applyOldLoadout;
+    [_unit, _corpse] spawn _applyOldLoadout;
 
     // Wait for respawn to happen
     _waveInfo = false;

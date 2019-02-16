@@ -128,9 +128,9 @@ if (_gearVariant == "") exitWith {};
 
 
 
-
 if (isPlayer _unit) then
 {
+    sleep 1;
     [_unit] call f_fnc_clientRadioInit;
 };
 

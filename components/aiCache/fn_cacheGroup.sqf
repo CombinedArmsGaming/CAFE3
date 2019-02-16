@@ -2,8 +2,6 @@
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 // ====================================================================================
 
-// LOOP THROUGH THE PASSED UNITS
-// We loop through the units of the passed group and disable Simulation for those that are not vehicle drivers and are standing still
 
 #include "macros.hpp"
 
@@ -15,29 +13,51 @@ params [["_group", grpNull], ["_aggressiveness", f_var_cachingAggressiveness]];
     switch (_aggressiveness) do
     {
 
-        case 1:
+        case AI_CACHE_EXCEPT_LEADERS_AND_DRIVERS:
         {
-            if ((count (assignedVehicleRole _x) == 0 || {"Driver" != (assignedVehicleRole _x) select 0}) && (_x != leader _group)) then
+            _role = assignedVehicleRole _x;
+
+            if ((_x != leader _group) and {count _role == 0 or {"Driver" != _role select 0}}) then
             {
                 _x enableSimulationGlobal false;
             };
 
         };
 
-        case 2:
+        case AI_CACHE_EXCEPT_CREW:
         {
-            if (count (assignedVehicleRole _x) == 0 || {"Driver" != (assignedVehicleRole _x) select 0}) then
-            {
-                if ((_x != leader _group) || (_x == leader _group && speed _x == 0)) then
-                {
-                    _x enableSimulationGlobal false;
-                };
+            _role = assignedVehicleRole _x;
 
+            if !(count _role > 0 and {"Cargo" != _role select 0}) then
+            {
+                _x enableSimulationGlobal false;
             };
 
         };
 
-        case 3:
+        case AI_CACHE_EXCEPT_LEADERS_AND_CREW:
+        {
+            _role = assignedVehicleRole _x;
+
+            if ((_x != leader _group) and {!(count _role > 0 and {"Cargo" != _role select 0})}) then
+            {
+                _x enableSimulationGlobal false;
+            };
+
+        };
+
+        case AI_CACHE_EXCEPT_DRIVERS:
+        {
+            _role = assignedVehicleRole _x;
+
+            if (count _role == 0 || {"Driver" != _role select 0}) then
+            {
+                _x enableSimulationGlobal false;
+            };
+
+        };
+
+        case AI_CACHE_ALL:
         {
             _x enableSimulationGlobal false;
         };
@@ -48,6 +68,7 @@ params [["_group", grpNull], ["_aggressiveness", f_var_cachingAggressiveness]];
         };
 
     };
+
 
     // All unit's are hidden
     _x hideObjectGlobal true;
@@ -60,6 +81,7 @@ params [["_group", grpNull], ["_aggressiveness", f_var_cachingAggressiveness]];
         };
 
     };
+
 
     sleep 0.1;
 

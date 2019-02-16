@@ -71,10 +71,16 @@
 #define CLIENT_WARN(MESSAGE) if (!hasInterface) then { DEBUG_PRINT_LOG(MESSAGE) }
 #define LOCAL_WARN(OBJ, MESSAGE) if !(local OBJ) then { DEBUG_PRINT_LOG(MESSAGE) }
 
-#define WAIT_UNTIL_MISSION_STARTED()\
+#define WAIT_UNTIL_SETTINGS_READY() \
 waitUntil                           \
 {                                   \
-    time > 0                        \
+    IS_TRUE(f_var_allSettingsReady) \
+};
+
+#define WAIT_UNTIL_MISSION_STARTED()                 \
+waitUntil                                            \
+{                                                    \
+    (time > 0) and {IS_TRUE(f_var_allSettingsReady)} \
 };
 
 

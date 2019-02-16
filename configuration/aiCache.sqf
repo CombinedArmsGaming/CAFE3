@@ -9,7 +9,9 @@ f_param_caching = 1000;
 // AI_CACHE_ALL,
 // AI_CACHE_EXCEPT_DRIVERS,
 // AI_CACHE_EXCEPT_LEADERS_AND_DRIVERS
-f_var_cachingAggressiveness = AI_CACHE_EXCEPT_LEADERS_AND_DRIVERS;
+// AI_CACHE_EXCEPT_CREW
+// AI_CACHE_EXCEPT_LEADERS_AND_CREW
+f_var_cachingAggressiveness = AI_CACHE_EXCEPT_LEADERS_AND_CREW;
 
 // The interval between caching runs, in seconds.  Lower intervals are useful for aircraft missions, but hits performance.
 f_var_cacheSleep = 6;

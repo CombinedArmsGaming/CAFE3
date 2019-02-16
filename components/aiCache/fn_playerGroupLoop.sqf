@@ -50,7 +50,7 @@ f_fnc_getPlayersAwayFromGroup =
         f_arr_aiCaching_playerGroups = _newArray;
         f_arr_aiCaching_awayPlayers = _awayPlayers;
 
-        sleep 30;
+        sleep 10;
 
     };
 
