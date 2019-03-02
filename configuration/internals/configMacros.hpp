@@ -3,6 +3,7 @@
 
 // To disable a feature, comment out its #define line.
 
+#include "configAliases.hpp"
 #include "..\radios.hpp"
 #include "..\medicalOverride.hpp"
 #include "..\aceActions.hpp"

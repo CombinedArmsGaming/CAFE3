@@ -10,4 +10,6 @@ class miscShared
     class isContainer{};
     class sideToString{};
     class ignoreZeus{};
+    class makeExplosion{};
+    class attachKeepOrient{};
 };

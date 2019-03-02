@@ -66,6 +66,7 @@ if (_loadoutVariants isEqualTo []) exitWith
 
 
 _loadout = selectRandom _loadoutVariants;
+_loadout = +_loadout;
 
 
 if (count HATS_DYNAMIC(_gearVariant,_typeofUnit) > 0) then

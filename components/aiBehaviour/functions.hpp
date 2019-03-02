@@ -6,4 +6,6 @@ class aiBehaviour
     class groupSuppressiveAI{};
     class unitGuerrillaAI{};
     class unitSuppressiveAI{};
+    class unitStartSeated{};
+    class veryImportantPrisoner{};
 };
