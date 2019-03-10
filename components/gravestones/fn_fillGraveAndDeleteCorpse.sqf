@@ -15,6 +15,11 @@ if !(_isContainer) exitWith
 
 _loadout = getUnitLoadout _corpse;
 
+clearWeaponCargoGlobal _grave;
+clearMagazineCargoGlobal _grave;
+clearItemCargoGlobal _grave;
+clearBackpackCargoGlobal _grave;
+
 [_grave, _loadout] call f_fnc_insertLoadoutIntoCrate;
 
 
