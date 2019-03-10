@@ -1,6 +1,7 @@
 #include "macros.hpp"
 
 if (isNil 'f_arr_squadMarkers') exitWith {};
+if (IS_TRUE(f_var_hideSquadMarkers)) exitWith {};
 
 params ["_map"];
 

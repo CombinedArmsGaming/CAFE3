@@ -2,6 +2,8 @@
 
 DEBUG_PRINT_LOG("initting squad markers")
 
+f_var_hideSquadMarkers = false;
+
 CLIENT_ONLY;
 
 
