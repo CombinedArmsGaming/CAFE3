@@ -11,16 +11,16 @@
 
 DEBUG_PRINT_LOG("initting safestart")
 
-if (f_var_mission_timer > 0) then
-{
-	// The server will handle the loop and notifications
-	if (isServer) then {
-		[] spawn f_fnc_safeStartLoop;
-	};
+WAIT_UNTIL_MISSION_STARTED();
 
-	// Enable invincibility for players
-	if (hasInterface) then {
-		[true] call f_fnc_safety;
-	};
+waitUntil { sleep 1; f_var_mission_timer > 0 };
 
+// The server will handle the loop and notifications
+if (isServer) then {
+	[] spawn f_fnc_safeStartLoop;
+};
+
+// Enable invincibility for players
+if (hasInterface) then {
+	[true] call f_fnc_safety;
 };
