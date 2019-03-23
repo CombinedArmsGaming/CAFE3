@@ -13,12 +13,13 @@ if !(_isContainer) exitWith
 };
 
 
-_loadout = getUnitLoadout _corpse;
-
 clearWeaponCargoGlobal _grave;
 clearMagazineCargoGlobal _grave;
 clearItemCargoGlobal _grave;
 clearBackpackCargoGlobal _grave;
+
+
+_loadout = getUnitLoadout _corpse;
 
 [_grave, _loadout] call f_fnc_insertLoadoutIntoCrate;
 
@@ -37,7 +38,7 @@ if (count _types <= 0) exitWith
 };
 
 _corpsePos = (ASLToAGL getPosASL _corpse);
-_weaponsOnGround = nearestObjects [_corpsePos, ["WeaponHolderSimulated", "GroundWeaponHolder"], 5];;
+_weaponsOnGround = nearestObjects [_corpsePos, ["WeaponHolderSimulated", "GroundWeaponHolder"], 5];
 
 {
     _weapons = weaponsItemsCargo _x;

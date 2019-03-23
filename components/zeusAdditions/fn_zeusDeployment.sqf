@@ -26,7 +26,7 @@ while {true} do
 			if (!_isRemoteControlling) then
 			{
 				zeus_camPosLast set [2, 0];
-				[player, true] remoteExec ["f_fnc_activateZeusPlayer", 2];
+				[player, true] remoteExec ["f_fnc_activatePlayer", 2];
 				zeusDeployed = true;
 			}
 			else
@@ -44,7 +44,7 @@ while {true} do
 			!(getPos curatorCamera isEqualTo [0,0,0])
 		};
 
-		[player, false] remoteExec ["f_fnc_activateZeusPlayer", 2];
+		[player, false] remoteExec ["f_fnc_activatePlayer", 2];
 		zeusDeployed = false;
 
 		while {!(getPos curatorCamera isEqualTo [0,0,0])} do

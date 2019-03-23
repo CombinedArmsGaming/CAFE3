@@ -12,4 +12,5 @@ class miscShared
     class ignoreZeus{};
     class makeExplosion{};
     class attachKeepOrient{};
+    class activatePlayer{};
 };

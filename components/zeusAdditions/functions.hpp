@@ -1,7 +1,6 @@
 class zeus
 {
     file = "components\zeusAdditions";
-    class activateZeusPlayer{};
     class giveUnitGodmode{};
     class isZeusRemoteControlling{};
     class registerZeusPlayer{};

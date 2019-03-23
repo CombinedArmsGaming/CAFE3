@@ -54,6 +54,8 @@ if (_hasBeenKilled) then
 {
     DEBUG_PRINT_LOG("[RespawnWaves] Player was killed, adding to respawn wave...")
 
+    [_unit, false] call f_fnc_activatePlayer;
+
     if (!f_var_respawnInGroup) then
     {
         [player] join grpNull;
@@ -81,6 +83,7 @@ if (_hasBeenKilled) then
     _tpHandle = [_spawnAt] spawn _tryTeleport;
 
     waitUntil { scriptDone _tpHandle };
+    [_unit, true] call f_fnc_activatePlayer;
     [false] call ace_spectator_fnc_setSpectator;
 
     [] spawn _handleJipMenu;

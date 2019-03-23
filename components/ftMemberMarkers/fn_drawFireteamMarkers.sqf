@@ -37,25 +37,30 @@ _drawMarker =
 
 {
 	_unit = _x;
-	_pos = getPos _unit;
-	_dir = getDir _unit;
 
-	private "_icon";
-	private "_colour";
+	if (simulationEnabled _unit) then
+	{
+		_pos = getPos _unit;
+		_dir = getDir _unit;
 
-	// Requires shacktac hud.
-	if !(isNil 'STHud_Icon') then
-	{
-		_icon = _unit call STHud_Icon;
-		_teamIdx = _unit call STUI_assignedTeamIndex;
-		_colour = STHud_PlayerColours select _teamIdx;
-	}
-	else
-	{
-		_icon = _baseIcon;
-		_colour = [1,1,1,1];
+		private "_icon";
+		private "_colour";
+
+		// Requires shacktac hud.
+		if !(isNil 'STHud_Icon') then
+		{
+			_icon = _unit call STHud_Icon;
+			_teamIdx = _unit call STUI_assignedTeamIndex;
+			_colour = STHud_PlayerColours select _teamIdx;
+		}
+		else
+		{
+			_icon = _baseIcon;
+			_colour = [1,1,1,1];
+		};
+
+		[_map, _icon, _colour, _pos, _dir] call _drawMarker;
+
 	};
-
-	[_map, _icon, _colour, _pos, _dir] call _drawMarker;
-
+	
 } forEach _group;
