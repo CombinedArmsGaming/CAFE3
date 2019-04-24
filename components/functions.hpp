@@ -20,5 +20,6 @@ class F
 #include "killTracker\functions.hpp"
 #include "gravestones\functions.hpp"
 #include "squadMarkers\functions.hpp"
+#include "endings\functions.hpp"
 
 }
