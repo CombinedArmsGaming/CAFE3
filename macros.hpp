@@ -94,9 +94,15 @@ if (isNull player) then             \
                                     \
 }
 
+
 #define RUN_ON_SERVER(FUNC,ARGS) if (!isServer) exitWith { ARGS remoteExec [#FUNC,2]; }
-#define RUN_LOCAL_TO(OBJ,FUNC,ARGS) if (!(local OBJ)) exitWith { ARGS remoteExec [#FUNC,OBJ]; }
+
+#define RUN_LOCAL_TO(OBJ,FUNC,ARGS) \
+if (isNull OBJ) exitwith { DEBUG_FORMAT1_LOG("Tried calling %1 local to a null object.",FUNC) }; \
+if (!(local OBJ)) exitWith { ARGS remoteExec [#FUNC,OBJ]; }
+
 #define RUN_AS_ASYNC(FUNC) if (!canSuspend) exitWith { _this spawn FUNC }
+
 
 #define INIT_COMPONENT(COMPNAME) RUN_ONLY_ONCE_ASYNC('components\COMPNAME\init_component.sqf',CONCAT(f_script_,COMPNAME))
 

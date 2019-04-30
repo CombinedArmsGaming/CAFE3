@@ -6,6 +6,8 @@
 
 #include "macros.hpp"
 
+SERVER_ONLY;
+
 // BEGIN SAFE-START LOOP
 // If a value was set for the mission-timer, begin the safe-start loop and turn on invincibility
 
@@ -13,14 +15,9 @@ DEBUG_PRINT_LOG("initting safestart")
 
 WAIT_UNTIL_MISSION_STARTED();
 
-waitUntil { sleep 1; f_var_mission_timer > 0 };
+waitUntil { sleep 1; f_var_safestart_end > 0 };
 
-// The server will handle the loop and notifications
-if (isServer) then {
-	[] spawn f_fnc_safeStartLoop;
-};
+f_var_safeStartEnabled = true;
+[] remoteExec ["f_fnc_enableSafeStart", 0, "SafeStartSync"];
 
-// Enable invincibility for players
-if (hasInterface) then {
-	[true] call f_fnc_safety;
-};
+[] call f_fnc_safeStartLoop;

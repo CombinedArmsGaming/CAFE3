@@ -1,33 +1,55 @@
+#include "macros.hpp"
+
 // F3 - Safe Start, Server Loop
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 //=====================================================================================
 
-// Run the loop only on the server
-if !(isServer) exitWith {};
 
-// Redundant sleep to give everything a second to settle
-sleep 1;
+[] spawn
+{
+	_continueLoop = true;
 
-while {f_var_mission_timer > 0} do {
+	while {_continueLoop} do
+	{
+		uiSleep 0.5;
 
-	// Broadcast remaining time to players
-	[["SafeStart",[format["Time Remaining: %1 min",f_var_mission_timer]]],"bis_fnc_showNotification",true] call BIS_fnc_MP;
+		_endTime = missionNamespace getVariable ["f_var_safestart_end", 0];
+		_timeLeft = _endTime - time;
+		_timeLeftFloor = floor _timeLeft;
 
-	uisleep 60; // Sleep 60 seconds
+		if (_timeLeftFloor < 60) then
+		{
+			if (_timeLeftFloor == 30 or _timeLeftFloor == 10) then
+			{
+				["SafeStart", [format ["%1 seconds remaining", _timeLeftFloor]]] remoteExec ["bis_fnc_showNotification"];
+				uiSleep 1;
+			};
+		}
+		else
+		{
+			if (_timeLeftFloor mod 60 == 0) then
+			{
+				_timeMins = _timeLeftFloor / 60;
+				_plural = if (_timeMins == 1) then {"minute"} else {"minutes"};
 
-	// If mission timer has been terminated by admin briefing, simply exit
-	if (f_var_mission_timer < 0) exitWith {};
+				["SafeStart", [format ["%1 %2 remaining", _timeMins, _plural]]] remoteExec ["bis_fnc_showNotification"];
+				uiSleep 1;
 
-	// Reduce the mission timer by one
-	f_var_mission_timer = f_var_mission_timer - 1;
-	publicVariable "f_var_mission_timer";
-};
+			};
 
-//Once the mission timer has reached 0, disable the safeties
-if (f_var_mission_timer <= 0) then {
-		// Broadcast message to players
-		[["SafeStartMissionStarting",["Mission starting now!"]],"bis_fnc_showNotification",true] call BIS_fnc_MP;
+		};
 
-		// Remotely execute script to disable safety for all selectable units
-		[[false],"f_fnc_safety",playableUnits + switchableUnits] call BIS_fnc_MP;
-};
+		if (_timeLeft <= 0 and f_var_safeStartEnabled) then
+		{
+			f_var_safeStartEnabled = false;
+		    [] remoteExec ["f_fnc_disableSafeStart", 0, "SafeStartSync"];
+
+			["SafeStart", ["Mission starting now!"]] remoteExec ["bis_fnc_showNotification"];
+
+			_continueLoop = false;
+
+		};
+
+	};
+
+}

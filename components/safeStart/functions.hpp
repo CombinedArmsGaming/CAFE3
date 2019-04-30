@@ -1,6 +1,8 @@
 class safeStart
 {
     file = "components\safeStart";
-    class safety{};
+    class changeSafestartTimer{};
+    class disableSafeStart{};
+    class enableSafeStart{};
     class safeStartLoop{};
 };
