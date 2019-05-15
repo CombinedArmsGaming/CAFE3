@@ -2,6 +2,8 @@
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 // ====================================================================================
 
+_this setvariable ["f_cached", false, true];
+
 {
     _x enableSimulationGlobal true;
     _x hideObjectGlobal false;

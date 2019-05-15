@@ -2,9 +2,10 @@ class aiCache
 {
     file = "components\aiCache";
     class cacheGroup{};
+    class doAiCacheIteration{};
+    class excludePlayerGroupsFromCache{};
+    class nearPlayerCluster{};
     class uncacheGroup{};
-    class cacheTracker{};
-    class initCacher{};
-    class nearPlayerGroup{};
-    class playerGroupLoop{};
+    class updatePlayerClusters{};
+    class displayClusters{};
 };

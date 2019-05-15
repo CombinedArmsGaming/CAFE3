@@ -12,8 +12,15 @@ if (_clusters isEqualTo []) exitWith { false };
 _closeEnough = false;
 
 {
+    _vehicle = _x select 2;
     _centroid = _x select 0;
-    // TODO :: Ensure distance2D is valid for vectors.
+
+    if !(isNull _vehicle) then
+    {
+        _centroid = getPos _vehicle;
+    };
+
+
     _distance2D = _centroid distance2D (getPos _unit);
 
     if (_distance2D < _distance) exitWith

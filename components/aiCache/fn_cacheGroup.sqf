@@ -7,7 +7,10 @@
 
 params [["_group", grpNull], ["_aggressiveness", f_var_cachingAggressiveness]];
 
+_group setVariable ["f_cached", true, true];
+
 {
+    _leader = leader _group;
 
   // Disable simulation based on aggressiveness
     switch (_aggressiveness) do
@@ -16,8 +19,10 @@ params [["_group", grpNull], ["_aggressiveness", f_var_cachingAggressiveness]];
         case AI_CACHE_EXCEPT_LEADERS_AND_DRIVERS:
         {
             _role = assignedVehicleRole _x;
+            _isLeader = _x isEqualTo _leader;
+            _isDriver = (count _role > 0) and {"Driver" isEqualTo (_role select 0)};
 
-            if ((_x != leader _group) and {count _role == 0 or {"Driver" != _role select 0}}) then
+            if !(_isLeader or _isDriver) then
             {
                 _x enableSimulationGlobal false;
             };
@@ -27,8 +32,9 @@ params [["_group", grpNull], ["_aggressiveness", f_var_cachingAggressiveness]];
         case AI_CACHE_EXCEPT_CREW:
         {
             _role = assignedVehicleRole _x;
+            _isCrew = (count _role > 0) and {!("Cargo" isEqualTo (_role select 0))};
 
-            if !(count _role > 0 and {"Cargo" != _role select 0}) then
+            if !(_isCrew) then
             {
                 _x enableSimulationGlobal false;
             };
@@ -38,8 +44,10 @@ params [["_group", grpNull], ["_aggressiveness", f_var_cachingAggressiveness]];
         case AI_CACHE_EXCEPT_LEADERS_AND_CREW:
         {
             _role = assignedVehicleRole _x;
+            _isLeader = _x isEqualTo _leader;
+            _isCrew = (count _role > 0) and {!("Cargo" isEqualTo (_role select 0))};
 
-            if ((_x != leader _group) and {!(count _role > 0 and {"Cargo" != _role select 0})}) then
+            if !(_isLeader or _isCrew) then
             {
                 _x enableSimulationGlobal false;
             };
@@ -49,8 +57,9 @@ params [["_group", grpNull], ["_aggressiveness", f_var_cachingAggressiveness]];
         case AI_CACHE_EXCEPT_DRIVERS:
         {
             _role = assignedVehicleRole _x;
+            _isDriver = (count _role > 0) and {"Driver" isEqualTo (_role select 0)};
 
-            if (count _role == 0 || {"Driver" != _role select 0}) then
+            if !(_isDriver) then
             {
                 _x enableSimulationGlobal false;
             };
@@ -75,7 +84,7 @@ params [["_group", grpNull], ["_aggressiveness", f_var_cachingAggressiveness]];
 
     if (_aggressiveness == 3) then
     {
-        if (vehicle _x != _x) then
+        if (vehicle _x isEqualTo _x) then
         {
             (vehicle _x) hideObjectGlobal true
         };
