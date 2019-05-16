@@ -58,7 +58,7 @@ if (_hasBeenKilled) then
 
     if (!f_var_respawnInGroup) then
     {
-        [player] join grpNull;
+        [_unit] join grpNull;
     };
 
     [_unit, _corpse] spawn _applyOldLoadout;

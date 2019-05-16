@@ -1,6 +1,6 @@
 #include "macros.hpp"
 
-RUN_ON_SERVER(f_fnc_trackStaticKillsInAO,);
+RUN_ON_SERVER(f_fnc_trackStaticKillsInAO,_this);
 
 _alreadyTracked = missionNamespace getVariable ["f_var_staticKillsTracked", false];
 
