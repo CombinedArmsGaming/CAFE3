@@ -16,7 +16,7 @@ Spawn respawn wave(Move respawn marker)</execute><br/>
 /*
 _briefing = _briefing + "
 <font size='18'>Ai spawn buttons </font><br/><br/>
-|- <execute expression=""[['SC1_CA','SC1_CA_1','SC1_CA_2'],['ftl','ar','r','r','r'],'SC1_CA_A','opf_f',east] spawn ca_fnc_massattack"">
+|- <execute expression=""[['SC1_CA','SC1_CA_1','SC1_CA_2'],['ftl','ar','r','r','r'],'SC1_CA_A','opf_f',east] spawn f_fnc_massattack"">
 Spawn big wave on west, east and north hill</execute><br/>
 ";
 

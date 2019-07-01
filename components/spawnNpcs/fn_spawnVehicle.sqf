@@ -13,7 +13,7 @@
  * Vehicle
  *
  * Example:
- * [player,"C_Quadbike_01_F",0] call ca_fnc_spawnvehicle
+ * [player,"C_Quadbike_01_F",0] call f_fnc_spawnvehicle
  *
  */
 

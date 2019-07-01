@@ -328,7 +328,7 @@ if (_cycleDelay < 0.5) then {
                                                                                         // If the target can be suppressed again, engage
                                                                                         if (time > _currentTarget getvariable [_nextSuppressVarName, 0]) then {
                                                                                                 _unit doTarget _dummy;
-                                                                                                private _fired = [_unit, currentMuzzle _unit, "Single"] MACRO_CALL(f_fnc_fireWeaponSafe,"ca\ai\fn_fireWeaponSafe.sqf");
+                                                                                                private _fired = [_unit, currentMuzzle _unit, "Single"] MACRO_CALL(f_fnc_fireWeaponSafe,"components\aiBehaviour\fn_fireWeaponSafe.sqf");
 
                                                                                                 // If we were able to suppress the target, lower its threat value
                                                                                                 if (_fired) then {

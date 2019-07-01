@@ -9,7 +9,7 @@
  * [position,direction]
  *
  * Example:
- * ["marker1"] call ca_fnc_getdirpos
+ * ["marker1"] call f_fnc_getdirpos
  *
  */
 

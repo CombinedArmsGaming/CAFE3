@@ -10,13 +10,13 @@ if (isServer) then {
 
   waitUntil {time>2; sleep 0.1;};
   {
-  [_x] remoteExec ["ca_fnc_parachute", _x, false];
+  [_x] remoteExec ["f_fnc_parachute", _x, false];
   } forEach playableUnits;
 };
 
 in f_JIP_playerRespawn.sqf:
 end of file add:
-[_unit] call ca_fnc_parachute;
+[_unit] call f_fnc_parachute;
 In future this is done in ca\respawn\ca_onDeath.sqf i just cannot be asked to update this info atm.
 
 Remember to change the settings for respawn to in init.sqf!
