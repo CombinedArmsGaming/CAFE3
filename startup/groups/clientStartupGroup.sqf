@@ -27,7 +27,7 @@ INIT_COMPONENT(miscShared)
 
 INIT_COMPONENT(respawnWaves)
 
-INIT_COMPONENT(zeusAdditions)
+INIT_COMPONENT(zeus_ui)
 
 
 // Gravestones init

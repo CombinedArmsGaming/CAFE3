@@ -418,6 +418,8 @@ class CfgMusic
 
 #include "dialogs.hpp"
 
+#include "componentsConfig.hpp"
+
 
 
 

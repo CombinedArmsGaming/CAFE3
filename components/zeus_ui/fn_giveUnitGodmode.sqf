@@ -11,15 +11,14 @@
 //			The unit to give godmode to.
 //
 
-#include "macros.hpp"
 
 params ["_unit"];
 
-RUN_LOCAL_TO(_unit,f_fnc_giveUnitGodmode,_this);
+if (!local _unit) exitWith {};
 
 [_unit, false] remoteExec ["allowDamage", 0, true];
 [_unit, ["ace_w_allow_dam",false,true]] remoteExec ["setVariable", 0, true];
-[_unit, ["HandleDamage", {0}]] remoteExec ["addEventHandler", 0, true];
+[_unit, ["HandleDamage", {false}]] remoteExec ["addEventHandler", 0, true];
 _unit addCuratorEditableObjects [(vehicles + allUnits), true];
 _unit removeCuratorEditableObjects [_unit, true];
 
@@ -27,7 +26,7 @@ _unit removeCuratorEditableObjects [_unit, true];
 {
 	params ["_unit"];
 
-	while {true} do
+	while {alive _unit} do
 	{
 		[objNull, _unit] call ace_medical_fnc_treatmentAdvanced_fullHealLocal;
 		sleep 1;

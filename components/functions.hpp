@@ -15,7 +15,7 @@ class F
 #include "joinInProgress\functions.hpp"
 #include "mapClick\functions.hpp"
 #include "aiBehaviour\functions.hpp"
-#include "zeusAdditions\functions.hpp"
+#include "zeus_ui\functions.hpp"
 #include "aceActions\functions.hpp"
 #include "killTracker\functions.hpp"
 #include "gravestones\functions.hpp"
