@@ -9,6 +9,8 @@ if (isServer) then
     DEBUG_PRINT_LOG("initting gravestones")
 
     _gravestoneType = "Box_Syndicate_Ammo_F";
+	
+	[] spawn f_fnc_initGravestoneManager;
 
     if (!isNil "gravestone" and {typeName gravestone == "OBJECT"}) then
     {
@@ -20,10 +22,7 @@ if (isServer) then
         deleteVehicle gravestone;
     };
 
-    missionNamespace setVariable ["f_var_gravestoneTypeName", _gravestoneType, true];
-
-
-    [] spawn f_fnc_initGravestoneManager;
+    missionNamespace setVariable ["f_var_gravestoneTypeName", _gravestoneType, true];  
 
 };
 

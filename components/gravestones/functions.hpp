@@ -11,4 +11,5 @@ class gravestones
     class readGravestone{};
     class deleteGravestone{};
     class sendGravestoneToClients{};
+    class sendUnitToGravestoneCache{};
 };
