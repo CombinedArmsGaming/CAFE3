@@ -60,12 +60,16 @@ _killTracking = _killLogs select _index;
 #include "..\edenRender\chooseColour.sqf"
 
 #include "..\edenRender\renderSuicide_Full.sqf"
+#include "..\edenRender\renderSuicide_DotsOnly.sqf"
 
 #include "..\edenRender\renderKilled_Full.sqf"
 #include "..\edenRender\renderKilled_DeathOnly.sqf"
 #include "..\edenRender\renderKilled_NoLines.sqf"
+#include "..\edenRender\renderKilled_DotsOnly.sqf"
+#include "..\edenRender\renderKilled_DotsAndLines.sqf"
 
 #include "..\edenRender\renderKilledStatic_DeathOnly.sqf"
+#include "..\edenRender\renderKilledStatic_DotsOnly.sqf"
 
 
 [] call f_fnc_edenClearKillLogDisplay;
@@ -87,6 +91,19 @@ if (tolower _lod == "nolines") then
 	_renderKilled = _renderKilled_NoLines;
 };
 
+if (tolower _lod == "dotsonly") then
+{
+	_renderKilled = _renderKilled_DotsOnly;
+	_renderSuicide = _renderSuicide_DotsOnly;
+	_renderKilledStatic = _renderKilledStatic_DotsOnly;
+};
+
+if (tolower _lod == "dotsandlines") then
+{
+	_renderKilled = _renderKilled_DotsAndLines;
+	_renderSuicide = _renderSuicide_DotsOnly;
+	_renderKilledStatic = _renderKilledStatic_DotsOnly;
+};
 
 {
 
