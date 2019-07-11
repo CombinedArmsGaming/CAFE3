@@ -37,7 +37,7 @@
 [/] f_var_respawnMarker -> f_respawnmarker
 [/] Squad composition framework that ties into zeus spawner and spawn triggers.
 [/] Spawn scripts: make ai teleport into vehicles.
-[/] Revise zeus ui: hide sometimes needs to be toggled off/on
+[x] Revise zeus ui: hide sometimes needs to be toggled off/on
 [/] Refactor fn_jipTeleport.  It's mad.
 [/] Rate-limit grave creation.
 [/] Mop up todos in code
