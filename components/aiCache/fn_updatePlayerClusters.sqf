@@ -74,7 +74,9 @@ _clusterThisPlayer =
 
     if (vehicle _ply != _ply) exitWith
     {
-        [_ply] call _createVehicleCluster
+        _cluster = [_ply] call _createVehicleCluster;
+		f_arr_aiCaching_playerClustersTemp pushBack _cluster;
+		_cluster
     };
 
     _pos = getPos _ply;

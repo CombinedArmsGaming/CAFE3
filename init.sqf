@@ -34,6 +34,8 @@ DEBUG_FORMAT2_LOG("Is CLIENT? %1.  Is SERVER? %2.",hasInterface,isServer)
 if (hasInterface) then
 {
 	DEBUG_PRINT_LOG("Using CLIENT config and startup groups.")
+	
+	#include "customStartup_client.sqf"
 
 	#include "configuration\groups\clientConfigGroup.sqf"
 
@@ -46,6 +48,8 @@ if (hasInterface) then
 if (isServer) then
 {
 	DEBUG_PRINT_LOG("Using SERVER config and startup groups.")
+
+	#include "customStartup_server.sqf"
 
 	#include "configuration\groups\serverConfigGroup.sqf"
 
