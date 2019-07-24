@@ -9,6 +9,7 @@ VIP_CACHE = [];
 
 waitUntil
 {
+    scopeName "main";
     _corpseCount = count CACHE + count VIP_CACHE;
 
     if (_corpseCount <= MAX_CORPSES_BEFORE_GRAVESTONES) exitWith {};
@@ -20,24 +21,36 @@ waitUntil
 
         _corpseEntry = _cacheToUse select 0;
         _corpseDeathTime = _corpseEntry select 0;
-        _corpse = _corpseEntry select 1;
+        _netId = _corpseEntry select 1;
 
-        _corpseTimeout = if (_corpseCount <= MAX_CORPSES_PANIC_MODE) then {GRAVESTONE_CORPSE_TIMEOUT} else {0};
+        _corpse = _netId call BIS_fnc_objectFromNetId;
 
-        _eligibleDeathTime = time - _corpseTimeout;
-        _corpseOldEnough = (_corpseDeathTime <= _eligibleDeathTime);
-
-        if (_corpseOldEnough) then
+        if !(isNull _corpse) then
         {
-            _corpseEntry call f_fnc_createGravestoneAndDeleteCorpse;
+            _corpseTimeout = if (_corpseCount <= MAX_CORPSES_PANIC_MODE) then {GRAVESTONE_CORPSE_TIMEOUT} else {0};
 
+            _eligibleDeathTime = time - _corpseTimeout;
+            _corpseOldEnough = (_corpseDeathTime <= _eligibleDeathTime);
+
+            if (_corpseOldEnough) then
+            {
+                _corpseEntry set [1, _corpse];
+                _corpseEntry call f_fnc_createGravestoneAndDeleteCorpse;
+
+                _cacheToUse deleteAt 0;
+                _corpseCount = _corpseCount - 1;
+            }
+            else
+            {
+                breakTo "main";
+            };
+
+        }
+        else
+        {
             _cacheToUse deleteAt 0;
             _corpseCount = _corpseCount - 1;
-
         };
-        // "else break", except SQF is bad.
-        // We break the loop here because the cache lists are in ascending chronological order.
-        if !(_corpseOldEnough) exitWith {};
 
     };
 

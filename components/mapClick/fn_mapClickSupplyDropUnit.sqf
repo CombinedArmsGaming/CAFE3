@@ -54,9 +54,9 @@ openMap false;
 
 _dropitem = createVehicle ["B_CargoNet_01_ammo_F", [0,0,1000], [], 0, "CAN_COLLIDE"];
 
-_playerfaction = player getVariable ["f_var_assignGear_Faction", toLower (faction player)];
+//_playerfaction = player getVariable ["f_var_assignGear_Faction", toLower (faction player)];
 
-["crate_med", _dropitem, _playerfaction] call f_fnc_assignGear;
+["crate_med", _dropitem, "blu_f"] call f_fnc_assignGear;
 
 _orgitem = _dropitem;
 _orgitem allowDammage false;

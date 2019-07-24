@@ -1,6 +1,6 @@
 
 // When a player respawns, do they automatically re-join their group?
-f_var_respawnInGroup = false;
+f_var_respawnInGroup = true;
 
 // When a player JIPs, do they get to choose a group to re-join and teleport to?
 f_var_JIP_JIPMenu = true;

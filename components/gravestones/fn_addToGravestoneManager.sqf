@@ -28,7 +28,9 @@ _unit setVariable ["f_var_diedWithSecondary", _secondary];
 
 _obituary = [_unit] call f_fnc_getObituary;
 
-_cacheEntry = [time, _unit, _name, _obituary];
+_netId = _unit call BIS_fnc_netId;
+
+_cacheEntry = [time, _netId, _name, _obituary];
 
 if (isPlayer _unit) exitWith
 {
