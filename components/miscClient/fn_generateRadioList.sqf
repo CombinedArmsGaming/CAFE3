@@ -34,27 +34,39 @@ if !(_oldMarkers isEqualTo []) then
 _shortRangeVariable = format ["f_radios_settings_acre2_sr_groups_%1", _side];
 _shortRangeConfig = missionNamespace getVariable [_shortRangeVariable, []];
 
-if (_shortRangeConfig isEqualTo []) exitWith { format ["Short-range radio channels don't exist for side '%1'.", _side] };
-
 _shortRangeList = [];
 
+if (_shortRangeConfig isEqualTo []) then
 {
-    _shortRangeList pushBack format ["Channel #%1: %2", _forEachIndex + 1, _x select 0];
+     _shortRangeList pushBack "No short-range channels.";
+}
+else
+{
+    {
+        _shortRangeList pushBack format ["Channel #%1: %2", _forEachIndex + 1, _x select 0];
 
-} forEach _shortRangeConfig;
+    } forEach _shortRangeConfig;
+
+};
 
 
 _longRangeVariable = format ["f_radios_settings_acre2_lr_groups_%1", _side];
 _longRangeConfig = missionNamespace getVariable [_longRangeVariable, []];
 
-if (_longRangeConfig isEqualTo []) exitWith { format ["Long-range radio channels don't exist for side '%1'.", _side] };
-
 _longRangeList = [];
 
+if (_longRangeConfig isEqualTo []) then
 {
-    _longRangeList pushBack format ["Channel #%1: %2", _forEachIndex + 1, _x select 0];
+     _longRangeList pushBack "No long-range channels.";
+}
+else
+{
+    {
+        _longRangeList pushBack format ["Channel #%1: %2", _forEachIndex + 1, _x select 0];
 
-} forEach _longRangeConfig;
+    } forEach _longRangeConfig;
+    
+};
 
 
 _configMarkerName = "radio_list";

@@ -8,7 +8,7 @@ f_arr_squadMarkers = [];
 
 waitUntil
 {
-    if !(alive player) exitWith {};
+    if !(alive player) exitWith {false};
 
     _newMarkers = [];
 
@@ -77,4 +77,6 @@ waitUntil
     f_arr_squadMarkers = _newMarkers;
 
     sleep 1;
+	false
+	
 };

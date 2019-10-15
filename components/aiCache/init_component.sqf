@@ -40,6 +40,7 @@ if (isServer) then
 #endif
 
             sleep f_var_cacheSleep;
+			false
 
         };
 

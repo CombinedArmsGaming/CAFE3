@@ -499,4 +499,16 @@ class Extended_InitPost_EventHandlers
 
 #endif
 
+
+/*
+	class Helicopter
+	{
+		class addMusic
+		{
+			init = "_this call f_fnc_addHeliMusic";
+		};
+
+	};
+*/
+
 };

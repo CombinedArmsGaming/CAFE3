@@ -46,7 +46,7 @@ DEBUG_FORMAT1_LOG("[RespawnWaves] Player has been killed?: %1",_hasBeenKilled)
 if (!_hasBeenKilled) exitWith
 {
     DEBUG_PRINT_LOG("[RespawnWaves] Player was not killed, handling as JIP...")
-    [_unit, _corpse, true] call _doRespawn;
+    [_unit, _corpse, f_var_JIP_JIPMenu] call _doRespawn;
 
 };
 // if () exitWith {} else {} doesn't exist in SQF...
@@ -71,8 +71,10 @@ if (_hasBeenKilled) then
         sleep 0.5;
 
         _waveInfo = ca_respawnwave;
-        if (_waveInfo isEqualTo false) exitWith {};
+        if (_waveInfo isEqualTo false) exitWith {false};
         if ((typeName _waveInfo == typeName []) and {(_waveInfo select 0) isEqualTo true}) exitWith { true };
+
+		false
 
     };
 
@@ -86,7 +88,10 @@ if (_hasBeenKilled) then
     [_unit, true] call f_fnc_activatePlayer;
     [false] call ace_spectator_fnc_setSpectator;
 
-    [] spawn _handleJipMenu;
+    if (f_var_JIP_RespawnMenu) then
+    {
+        [] spawn _handleJipMenu;
+    };
 
     #include "..\parts\zeusAdditions_onRespawn.sqf"
 

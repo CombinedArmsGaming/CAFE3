@@ -4,6 +4,7 @@ class miscClient
     class pmMissionIntro{};
     class paradropUnit{};
     class setRating{};
+    class say3D{};
     class removeRadios{};
     class generateRadioList{};
 };

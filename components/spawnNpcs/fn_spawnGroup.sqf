@@ -57,6 +57,9 @@ switch(_side) do
 _group setFormation "LINE";
 
 
+_group spawn f_fnc_groupGuerrillaAI;
+_group spawn f_fnc_groupSuppressiveAI;
+
 //[_group] remoteExec ["bub_fnc_addGroupToZeus", 2];
 
 _group

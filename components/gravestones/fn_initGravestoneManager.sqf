@@ -12,8 +12,11 @@ waitUntil
     scopeName "main";
     _corpseCount = count CACHE + count VIP_CACHE;
 
-    if (_corpseCount <= MAX_CORPSES_BEFORE_GRAVESTONES) exitWith {};
-    if (MAX_CORPSES_BEFORE_GRAVESTONES <= 0) exitWith {};
+    if (_corpseCount <= MAX_CORPSES_BEFORE_GRAVESTONES) exitWith 
+	{
+		sleep GRAVESTONE_MANAGER_INTERVAL;
+		false
+	};
 
     while {_corpseCount > MAX_CORPSES_BEFORE_GRAVESTONES} do
     {
@@ -55,12 +58,7 @@ waitUntil
     };
 
     sleep GRAVESTONE_MANAGER_INTERVAL;
+	false
 
 };
 
-
-waitUntil
-{
-    [] call _mainLoopBody;
-
-}

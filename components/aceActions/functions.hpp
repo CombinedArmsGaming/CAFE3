@@ -1,6 +1,7 @@
 class aceActions
 {
     file = "components\aceActions";
+    class addHeliMusic{};
     class addInventoryActionToClass{};
     class addPushActionToClass{};
     class addUnflipActionToClass{};

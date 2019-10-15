@@ -6,4 +6,4 @@ f_var_respawnInGroup = true;
 f_var_JIP_JIPMenu = true;
 
 // When a player respawns, do they get to choose a group to re-join and teleport to?
-f_var_JIP_RespawnMenu = true;
+f_var_JIP_RespawnMenu = false;
