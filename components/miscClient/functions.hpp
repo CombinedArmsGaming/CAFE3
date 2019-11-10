@@ -7,4 +7,5 @@ class miscClient
     class say3D{};
     class removeRadios{};
     class generateRadioList{};
+    class onlyRadioTalkers{};
 };

@@ -45,8 +45,8 @@ f_radios_settings_acre2_BackpackRadio = "ACRE_PRC117F";
 f_radios_settings_acre2_languages =
 [
     ["blu", "English"],
-    ["ind", "Debugese"],
-    ["opf", "Vietnamese"]
+    ["ind", "Foreignese"],
+    ["opf", "Enemese"]
 ];
 
 // defines the language that a player can speak.
@@ -69,8 +69,8 @@ f_radios_settings_acre2_sr_groups_indfor = f_radios_settings_acre2_sr_groups_blu
 
 f_radios_settings_acre2_lr_groups_blufor =
 [
-    ["GROUND",    ["ALPHA", "BRAVO", "COMMAND"]],
-	["SUPPORT",    ["CASTER", "FALCON", "HAWK", "COMMAND", "ZEUS"]]
+    ["GROUND",    ["ALPHA", "BRAVO", "CHARLIE", "COMMAND"]],
+	["HOTLINE ZEUS",    ["ZEUS"]]
 ];
 
 f_radios_settings_acre2_lr_groups_opfor = f_radios_settings_acre2_lr_groups_blufor;

@@ -14,4 +14,5 @@ class miscShared
     class makeExplosiveBig{};
     class attachKeepOrient{};
     class activatePlayer{};
+    class radioAlarm{};
 };
