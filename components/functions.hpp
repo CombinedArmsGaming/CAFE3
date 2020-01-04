@@ -21,5 +21,6 @@ class F
 #include "gravestones\functions.hpp"
 #include "squadMarkers\functions.hpp"
 #include "endings\functions.hpp"
+#include "lootBox\functions.hpp"
 
 }

@@ -16,6 +16,9 @@
 // Gearscript2
 #include "..\internals\gearScript.sqf"
 
+// Lootbox
+#include "..\internals\lootBox.sqf"
+
 // NPC spawn scripts
 #include "..\spawnNpcs.sqf"
 
