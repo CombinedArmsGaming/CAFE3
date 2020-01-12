@@ -5,6 +5,7 @@ if (IS_TRUE(f_var_hideSquadMarkers)) exitWith {};
 
 params ["_map"];
 
+_baseUnitIcon = "\A3\ui_f\data\map\vehicleicons\iconMan_ca.paa";
 
 // NOTE: Only supports custom textures (in mission folder).
 _drawMarker =
@@ -26,6 +27,36 @@ _drawMarker =
 };
 
 
+_drawUnitMarker =
+{
+	params ["_map", "_icon", "_name", "_colour", "_pos", "_dir"];
+
+	_map drawIcon
+	[
+		_baseUnitIcon,
+		[0,0,0,1],
+		_pos,
+		20,
+		20,
+		_dir
+	];
+
+	_map drawIcon
+	[
+		_icon,
+		_colour,
+		_pos,
+		16,
+		16,
+		_dir,
+		_name,
+		2,
+		0.04
+	];
+
+};
+
+
 {
 	_x params ["_group", "_icon", "_name", "_colour"];
 
@@ -38,3 +69,33 @@ _drawMarker =
 	};
 
 } forEach f_arr_squadMarkers;
+
+
+_playerGroup = group player;
+
+{
+	_x params ["_group", "_unit", "_name", "_colour"];
+
+	_inDifferentGroup = !(_playerGroup isEqualTo _group);
+
+	if (_inDifferentGroup and {alive _unit}) then
+	{
+		_pos = getPos _unit;
+		_dir = getDir _unit;
+
+		private "_icon";
+
+		// Requires shacktac hud.
+		if !(isNil 'STHud_Icon') then
+		{
+			_icon = _unit call STHud_Icon;
+		}
+		else
+		{
+			_icon = _baseUnitIcon;
+		};
+
+		[_map, _icon, _name, _colour, _pos, _dir] call _drawUnitMarker;
+	};
+
+} forEach f_arr_unitMarkers;

@@ -40,6 +40,10 @@
 #define UNKNOWN     "res\images\squadMarkers\squad_unknown.paa"
 
 
+#define UNIT_MARKER(CLASS,NAME) ([#CLASS, NAME] call f_fnc_generateUnitMarkerCode)
+#define MEDIC_MARKER UNIT_MARKER(med,"Medic")
+
+
 #define INIT_SQUADS() DICT_CREATE(SQUADS)
 
 #define SQUAD_INDEX(NAME) (format ["%1_%2",#FACTION,#NAME])
@@ -48,7 +52,7 @@
 #define SQUAD_VAR(NAME) DICT_GET(SQUADS,SQUAD_INDEX(NAME))
 #define SQUAD_VAR_DYNAMIC(NAME,SIDE) DICT_GET(SQUADS,SQUAD_INDEX_DYNAMIC(NAME,SIDE))
 
-#define NEW_SQUAD() [true,[],"",""]
+#define NEW_SQUAD() [true,[],"","",[]]
 #define MAKE_SQUAD_EDITABLE(NAME) DICT_SET(SQUADS,SQUAD_INDEX(NAME),NEW_SQUAD())
 #define IS_SQUAD_EDITABLE(NAME) DICT_CONTAINS(SQUADS,SQUAD_INDEX(NAME))
 
@@ -59,8 +63,10 @@
 #define SET_SQUAD_ICON(NAME,ICON) (SQUAD_VAR(NAME)) set [2,ICON]
 #define SET_SQUAD_COLOUR(NAME,COLOUR) (SQUAD_VAR(NAME)) set [1,COLOUR]
 #define SET_SQUAD_NAME(NAME,OVERRIDE) (SQUAD_VAR(NAME)) set [3,OVERRIDE]
+#define ADD_SPECIAL_MARKER(NAME,CODE) ((SQUAD_VAR(NAME)) select 4) pushBack CODE
 
 #define SQUAD_VISIBLE(VAR) (VAR) select 0
 #define SQUAD_COLOUR(VAR) (VAR) select 1
 #define SQUAD_ICON(VAR) (VAR) select 2
 #define SQUAD_NAME(VAR) (VAR) select 3
+#define SQUAD_SPECIALS(VAR) (VAR) select 4

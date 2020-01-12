@@ -6,4 +6,6 @@ class squadMarkers
     class drawSquadMarkers{};
     class getGroupMarker{};
     class initSquadMarkerManager{};
+    class generateUnitMarkerCode{};
+    class addGroupMemberMarkers{};
 };
