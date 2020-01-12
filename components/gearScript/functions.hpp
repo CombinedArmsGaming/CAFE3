@@ -6,17 +6,6 @@ class gearScript
     class applyLoadoutModifications{};
 };
 
-class gearScriptMedical
-{
-    file = "components\gearScript\medicalTransform";
-    class changeBandagesToBasic{};
-    class changeFluidsToBlood{};
-    class changeMedsToBasic{};
-    class containsAdvancedMedical{};
-    class changeBandagesToAdvanced{};
-    class changeMedsToAdvanced{};
-};
-
 class gearScriptCrates
 {
     file = "components\gearScript\crateSupport";
@@ -33,4 +22,5 @@ class gearScriptCrates
     class addMedsToCrate{};
     class addBloodToCrate{};
     class applyCrateModifications{};
+    class addSplintsToCrate{};
 };

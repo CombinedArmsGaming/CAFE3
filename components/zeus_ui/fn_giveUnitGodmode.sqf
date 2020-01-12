@@ -28,7 +28,8 @@ _unit removeCuratorEditableObjects [_unit, true];
 
 	while {alive _unit} do
 	{
-		[objNull, _unit] call ace_medical_fnc_treatmentAdvanced_fullHealLocal;
+		[_unit] call ace_medical_treatment_fnc_fullHealLocal;
+		[_unit, false] call ace_medical_fnc_setUnconscious;
 		sleep 1;
 	};
 

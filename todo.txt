@@ -41,7 +41,6 @@
 [/] Refactor fn_jipTeleport.  It's mad.
 [/] Rate-limit grave creation.
 [/] Mop up todos in code
-[/] Mission boundaries rectangle
 [/] Make squad markers indicate squad size automatically
 [/] In gravestones, fill backpacks etc with items instead of completely flattening the loadout structure.
 [/] If player spawns high enough in the air, turn them into a skydiver (and back).
@@ -57,3 +56,4 @@
 [/] AI caching: See if there's any extra things to do to cached units to improve perf savings.
 [/] AI caching: Add flag to treat players individually
 [ ] Test all in real MP env.
+[ ] Re-introduce medical config via CBA.

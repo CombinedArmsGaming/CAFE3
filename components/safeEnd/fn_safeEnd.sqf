@@ -95,7 +95,7 @@ if (isClass(configFile >> "CfgPatches" >> "ace_medical")) then
 {
     {
         _unit = _x;
-        [_unit,_unit] remoteExec ["ACE_medical_fnc_treatmentAdvanced_fullHealLocal", _unit];
+        [_unit] remoteExec ["ace_medical_treatment_fnc_fullHealLocal", _unit];
         [_unit, false] remoteExec ["ace_medical_fnc_setUnconscious", _unit];
 
     } forEach _playersList;
@@ -118,5 +118,5 @@ if (isClass(configFile >> "CfgPatches" >> "ace_medical")) then
         _x allowDamage true;
 
     } forEach _list;
-    
+
 };

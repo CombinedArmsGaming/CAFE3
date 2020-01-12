@@ -23,8 +23,6 @@ DEBUG_FORMAT1_CHAT("DEBUG (briefing.sqf): Player faction: %1", _unitSide)
 
 #include "briefings\ca_briefing_player.sqf";
 
-#include "briefings\part_briefing_medical.sqf";
-
 // ====================================================================================
 
 // BRIEFING: ADMIN
