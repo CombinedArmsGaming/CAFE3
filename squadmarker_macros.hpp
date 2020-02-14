@@ -3,7 +3,7 @@
 #define SQUADS f_dict_squadmarkers
 
 #define RED	        [0.9,0,0,1]
-#define ORANGE      [1,0.5,1,1]
+#define ORANGE      [1,0.5,0,1]
 #define YELLOW      [1,1,0,1]
 #define GREEN       [0,1,0,1]
 #define BLUE        [0.2,0.2,1,1]

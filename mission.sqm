@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1308;
+		nextID=1321;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={-86.321716,198.82253,539.18134};
-		dir[]={0.79137319,-0.60633796,0.07946609};
-		up[]={0.6034373,0.79500818,0.060593363};
-		aside[]={0.099934652,-5.0453818e-006,-0.9951244};
+		pos[]={326.83569,91.371094,468.35016};
+		dir[]={0.44675282,-0.6766479,0.58548266};
+		up[]={0.4105317,0.73609501,0.53801328};
+		aside[]={0.7950992,-5.5138953e-006,-0.60668939};
 	};
 };
 binarizationWanted=0;
@@ -33,13 +33,14 @@ addons[]=
 	"ace_finger",
 	"A3_Weapons_F_Ammoboxes",
 	"ace_cargo",
-	"rhs_c_weapons"
+	"rhs_c_weapons",
+	"A3_Supplies_F_Orange_Ammoboxes"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=9;
+		items=10;
 		class Item0
 		{
 			className="A3_Modules_F_Curator";
@@ -102,6 +103,13 @@ class AddonsMetaData
 			name="AFRF Weapons Pack";
 			author="Red Hammer Studios";
 			url="http://www.rhsmods.org/";
+		};
+		class Item9
+		{
+			className="A3_Supplies_F_Orange";
+			name="Arma 3 Orange - Ammoboxes and Supplies";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
 		};
 	};
 };
@@ -169,7 +177,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=29;
+		items=33;
 		class Item0
 		{
 			dataType="Logic";
@@ -989,7 +997,7 @@ class Mission
 						class Attribute1
 						{
 							property="ace_isMedic";
-							expression="if (_value > -1) then {_this setVariable [""ace_medical_medicClass"", _value, true];};";
+							expression="if (_value != -1 && {_value != (parseNumber (_this getUnitTrait 'medic'))}) then {_this setVariable [""ace_medical_medicClass"", _value, true]}";
 							class Value
 							{
 								class data
@@ -1605,7 +1613,7 @@ class Mission
 						class Attribute1
 						{
 							property="ace_isMedic";
-							expression="if (_value > -1) then {_this setVariable [""ace_medical_medicClass"", _value, true];};";
+							expression="if (_value != -1 && {_value != (parseNumber (_this getUnitTrait 'medic'))}) then {_this setVariable [""ace_medical_medicClass"", _value, true]}";
 							class Value
 							{
 								class data
@@ -2220,7 +2228,7 @@ class Mission
 						class Attribute1
 						{
 							property="ace_isMedic";
-							expression="if (_value > -1) then {_this setVariable [""ace_medical_medicClass"", _value, true];};";
+							expression="if (_value != -1 && {_value != (parseNumber (_this getUnitTrait 'medic'))}) then {_this setVariable [""ace_medical_medicClass"", _value, true]}";
 							class Value
 							{
 								class data
@@ -2677,7 +2685,7 @@ class Mission
 						class Attribute1
 						{
 							property="ace_isMedic";
-							expression="if (_value > -1) then {_this setVariable [""ace_medical_medicClass"", _value, true];};";
+							expression="if (_value != -1 && {_value != (parseNumber (_this getUnitTrait 'medic'))}) then {_this setVariable [""ace_medical_medicClass"", _value, true]}";
 							class Value
 							{
 								class data
@@ -2778,7 +2786,7 @@ class Mission
 						class Attribute1
 						{
 							property="ace_isMedic";
-							expression="if (_value > -1) then {_this setVariable [""ace_medical_medicClass"", _value, true];};";
+							expression="if (_value != -1 && {_value != (parseNumber (_this getUnitTrait 'medic'))}) then {_this setVariable [""ace_medical_medicClass"", _value, true]}";
 							class Value
 							{
 								class data
@@ -3459,7 +3467,7 @@ class Mission
 						class Attribute4
 						{
 							property="ace_isMedic";
-							expression="if (_value > -1) then {_this setVariable [""ace_medical_medicClass"", _value, true];};";
+							expression="if (_value != -1 && {_value != (parseNumber (_this getUnitTrait 'medic'))}) then {_this setVariable [""ace_medical_medicClass"", _value, true]}";
 							class Value
 							{
 								class data
@@ -3617,7 +3625,7 @@ class Mission
 						class Attribute4
 						{
 							property="ace_isMedic";
-							expression="if (_value > -1) then {_this setVariable [""ace_medical_medicClass"", _value, true];};";
+							expression="if (_value != -1 && {_value != (parseNumber (_this getUnitTrait 'medic'))}) then {_this setVariable [""ace_medical_medicClass"", _value, true]}";
 							class Value
 							{
 								class data
@@ -3895,6 +3903,166 @@ class Mission
 			id=1282;
 			type="EmptyDetectorAreaR50";
 			atlOffset=-1.9073486e-006;
+		};
+		class Item29
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={186.18623,30.158855,559.69946};
+				angles[]={0.037489671,0,6.2806892};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				init="call{[this, ""weapons""] call f_fnc_assignLoot;}";
+			};
+			id=1308;
+			type="C_IDAP_supplyCrate_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item30
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={186.53526,30.262794,555.69037};
+				angles[]={6.2307339,0,0.010000871};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				init="call{[this, ""weapons""] call f_fnc_assignLoot;}";
+			};
+			id=1309;
+			type="C_IDAP_supplyCrate_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item31
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={187.29492,30.102184,551.26782};
+				angles[]={0.0049914722,0,6.2606897};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				init="call{[this, ""weapons""] call f_fnc_assignLoot;}";
+			};
+			id=1310;
+			type="C_IDAP_supplyCrate_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item32
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={187.57062,30.20652,547.32544};
+				angles[]={0.11202946,0,6.2332273};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				init="call{[this, ""weapons""] call f_fnc_assignLoot;}";
+			};
+			id=1311;
+			type="C_IDAP_supplyCrate_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 	};
 	class Connections
