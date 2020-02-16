@@ -8,5 +8,6 @@ class downtimeActivity
 {
     file = "components\downtime\activity";
     class downtimeSpectate{};
+    class downtimeControl{};
     class downtimeActivitySelector{};
 };

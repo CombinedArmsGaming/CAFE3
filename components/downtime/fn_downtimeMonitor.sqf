@@ -32,12 +32,10 @@ waitUntil
 {
     waitUntil { sleep 1; PLAYER_IS_DOWN };
 
-    DEBUG_PRINT_CHAT("downtime!")
     RUN_FUNC_ONCE_ASYNC(f_fnc_downtimeExperience);
 
     waitUntil { !PLAYER_IS_DOWN };
-    
-    DEBUG_PRINT_CHAT("stoptime!")
+
     [] call _stopDowntimeExperience;
 
     false

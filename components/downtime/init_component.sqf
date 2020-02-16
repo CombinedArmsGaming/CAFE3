@@ -6,6 +6,7 @@ DEBUG_PRINT_LOG("initting downtime")
 if (!hasInterface) exitWith {DEBUG_PRINT_LOG("jumped out of downtime")};
 
 f_script_downtimeActivityCurrent = scriptNull;
+f_var_downtimeExperienceActive = false;
 
 // MAKE SURE THE PLAYER INITIALIZES PROPERLY
 waitUntil
