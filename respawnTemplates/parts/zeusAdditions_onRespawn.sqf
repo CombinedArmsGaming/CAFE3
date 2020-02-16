@@ -3,6 +3,8 @@
 if (missionNamespace getVariable ["f_var_tempRespawnAsZeus", false]) then
 {
     f_var_tempRespawnAsZeus = false;
-    [player] call f_fnc_registerZeusPlayer;
+    
+    player setVariable ["f_var_isKillLogRecipient", true, true];
+    player setVariable ["f_var_isZeus", true, true];
 
 };

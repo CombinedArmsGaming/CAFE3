@@ -29,6 +29,8 @@ INIT_COMPONENT(respawnWaves)
 
 INIT_COMPONENT(zeus_ui)
 
+INIT_COMPONENT(downtime)
+
 
 // Gravestones init
 #ifdef ENABLE_GRAVESTONE_CORPSE_MANAGER

@@ -38,8 +38,11 @@
 #define CONCAT3(s1,s2,s3) s1##s2##s3
 
 // Startup convenience macros
+#define ASYNC_FUNC_HANDLE(FUNC) CONCAT(f_script,FUNC)
+#define ASYNC_FUNC_HANDLE_DYNAMIC(FUNC) (missionNamespace getVariable (format ["f_script%1",#FUNC]))
+
 #define RUN_ONLY_ONCE_ASYNC(PATH,VAR) if (isNil #VAR) then { VAR = [] execVM PATH; };
-#define RUN_FUNC_ONCE_ASYNC(FUNC) if (isNil #CONCAT(f_script,FUNC)) then { CONCAT(f_script,FUNC) = [] spawn FUNC; };
+#define RUN_FUNC_ONCE_ASYNC(FUNC) if (isNil #CONCAT(f_script,FUNC)) then { ASYNC_FUNC_HANDLE(FUNC) = [] spawn FUNC; };
 
 // String-keyed dictionary convenience macros
 #define DICT_CREATE(NAME) NAME = createLocation ["CBA_NamespaceDummy", [0,0,0], 0, 0]

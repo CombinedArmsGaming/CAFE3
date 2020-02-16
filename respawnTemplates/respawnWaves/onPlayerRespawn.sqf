@@ -37,8 +37,6 @@ WAIT_UNTIL_PLAYER_EXISTS();
 
 
 _hasBeenKilled = missionNamespace getVariable ["f_var_playerHasBeenKilled", false];
-f_var_playerHasBeenKilled = false;
-
 DEBUG_FORMAT1_LOG("[RespawnWaves] Player has been killed?: %1",_hasBeenKilled)
 
 
@@ -85,8 +83,8 @@ if (_hasBeenKilled) then
     _tpHandle = [_spawnAt] spawn _tryTeleport;
 
     waitUntil { scriptDone _tpHandle };
+    f_var_playerHasBeenKilled = false;
     [_unit, true] call f_fnc_activatePlayer;
-    [false] call ace_spectator_fnc_setSpectator;
 
     if (f_var_JIP_RespawnMenu) then
     {
