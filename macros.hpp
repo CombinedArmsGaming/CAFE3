@@ -36,6 +36,9 @@
 // General utility
 #define CONCAT(s1,s2) s1##s2
 #define CONCAT3(s1,s2,s3) s1##s2##s3
+#define STRING(ARG) #ARG
+#define SINGLEQUOTE '
+#define STRING_SINGLE(ARG) CONCAT3(SINGLEQUOTE,ARG,SINGLEQUOTE)
 
 // Startup convenience macros
 #define ASYNC_FUNC_HANDLE(FUNC) CONCAT(f_script,FUNC)

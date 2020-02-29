@@ -3,8 +3,6 @@
 CLIENT_ONLY;
 RUN_AS_ASYNC(f_fnc_downtimeMonitor);
 
-#define PLAYER_IS_DOWN (player getVariable ["ACE_isUnconscious", false] or {!alive player} or {missionNamespace getVariable ["f_var_playerHasBeenKilled", false]})
-
 
 _stopDowntimeExperience =
 {

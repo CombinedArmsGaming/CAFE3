@@ -70,7 +70,7 @@ if (_hasBeenKilled) then
 
         _waveInfo = ca_respawnwave;
         if (_waveInfo isEqualTo false) exitWith {false};
-        if ((typeName _waveInfo == typeName []) and {(_waveInfo select 0) isEqualTo true}) exitWith { true };
+        if ((typeName _waveInfo == typeName []) and {(_waveInfo select 0) isEqualTo true} and {[] call f_fnc_playerWantsRespawn}) exitWith { true };
 
 		false
 

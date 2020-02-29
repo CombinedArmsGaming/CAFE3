@@ -7,10 +7,10 @@ RUN_AS_ASYNC(f_fnc_downtimeSpectate);
 
 if !(SHOULD_CONTINUE) exitWith {};
 
-// Can't move around in spectator while unconscious unless we do this...
-["unconscious", false] call ace_common_fnc_setDisableUserInputStatus;
+waitUntil { PLAYER_IS_GHOST or {!SHOULD_CONTINUE} };
 
-// BUB 2020-02-29 TODO :: turn this into a loop that checks if player is unconscious or dead/"ghost".  If dead hide player, else don't.
+if !(SHOULD_CONTINUE) exitWith {};
+
 [true, true, false] call ace_spectator_fnc_setSpectator;
 
 waitUntil {!SHOULD_CONTINUE};

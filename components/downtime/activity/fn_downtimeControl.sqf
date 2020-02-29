@@ -17,12 +17,16 @@ _findUnitToControl =
     // We want to select an AI unit which is not too far away from players.  200m is a decent engagement range.
     // If we can't find any units within 200m then we fallback to more distant units.
     _sides = DOWNTIME_CONTROL_SIDES;
-    _closeEnoughRadius = 20;
+    _closeEnoughRadius = 200;
     _closestDistanceYet = 1000000;
     _toControl = objNull;
 
     // Select a random player to be our "anchor", hopefully this makes AI selection fairer.
+    // BUB 2020-02-25 TODO :: Make this exclude players who are down or in spectator.
     _alivePlayers = allPlayers select {alive _x};
+
+    if ((count _alivePlayers) <= 0) exitWith { objNull };
+
     _targetPlayer = selectRandom _alivePlayers;
 
     {

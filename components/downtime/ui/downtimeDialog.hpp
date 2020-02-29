@@ -1,9 +1,13 @@
+#include "..\macros.hpp"
 
 class CA2_Downtime_Dialog
 {
     idd = 12143;
     enableSimulation = 1;
     enableDisplay = 1;
+
+    onLoad = "[] call f_fnc_downtimeDialog_setupTempVars;";
+    onUnload = "_this call f_fnc_downtimeDialog_exitDialog;";
 
     class ControlsBackground
     {
@@ -26,7 +30,10 @@ class CA2_Downtime_Dialog
         	w = 24 * GUI_GRID_W;
         	h = 3 * GUI_GRID_H;
         	colorBackground[] = {0,0,0,0.5};
-        	sizeEx = 2.5 * GUI_GRID_H;
+        	sizeEx = 2.4 * GUI_GRID_H;
+            style = ST_CENTER;
+
+            onLoad = "_this call f_fnc_downtimeDialog_setupTitleText;"
         };
 
     };
@@ -53,6 +60,9 @@ class CA2_Downtime_Dialog
         	w = 6 * GUI_GRID_W;
         	h = 1.5 * GUI_GRID_H;
         	tooltip = "Look around and talk to spectators until you're up again.";
+
+            onLoad = "_this call f_fnc_downtimeDialog_setupButton;";
+            onButtonClick = "f_var_downtimeDialog_selectedActivity = 'f_fnc_downtimeSpectate'; ['activity'] call f_fnc_downtimeDialog_updateButtonGroup;";
         };
 
         class CA2_Downtime_ControlButton: CA2_DefaultButton
@@ -63,7 +73,10 @@ class CA2_Downtime_Dialog
         	y = 10.5 * GUI_GRID_H + GUI_GRID_Y;
         	w = 6 * GUI_GRID_W;
         	h = 1.5 * GUI_GRID_H;
-        	tooltip = "Control a%1 %2 unit until you're up again. ";
+        	tooltip = "Control a%1 unit until you're up again.";
+
+            onLoad = "_this call f_fnc_downtimeDialog_setupButton; _this call f_fnc_downtimeDialog_setupControlTooltip"
+            onButtonClick = "f_var_downtimeDialog_selectedActivity = 'f_fnc_downtimeControl'; ['activity'] call f_fnc_downtimeDialog_updateButtonGroup;";
         };
 
         class CA2_Downtime_NothingButton: CA2_DefaultButton
@@ -75,6 +88,9 @@ class CA2_Downtime_Dialog
         	w = 6 * GUI_GRID_W;
         	h = 1.5 * GUI_GRID_H;
         	tooltip = "Hey, sometimes we've got better things to do.  If you die you'll become a spectator.";
+
+            onLoad = "_this call f_fnc_downtimeDialog_setupButton;"
+            onButtonClick = "f_var_downtimeDialog_selectedActivity = 'f_fnc_downtimeDoNothing'; ['activity'] call f_fnc_downtimeDialog_updateButtonGroup;";
         };
 
         class CA2_Downtime_ConsentHeader: CA2_DefaultText
@@ -96,6 +112,9 @@ class CA2_Downtime_Dialog
         	w = 9.5 * GUI_GRID_W;
         	h = 1.5 * GUI_GRID_H;
         	tooltip = "You will respawn when your commander spends tickets or uses a spawn wave.";
+
+            onLoad = "_this call f_fnc_downtimeDialog_setupButton;"
+            onButtonClick = "f_var_downtimeDialog_selectedRespawnMode = 'respawnAlways'; ['respawn'] call f_fnc_downtimeDialog_updateButtonGroup;";
         };
 
         class CA2_Downtime_RespawnWithConsentButton: CA2_DefaultButton
@@ -106,7 +125,10 @@ class CA2_Downtime_Dialog
         	y = 14.5 * GUI_GRID_H + GUI_GRID_Y;
         	w = 9.5 * GUI_GRID_W;
         	h = 1.5 * GUI_GRID_H;
-        	tooltip = "When respawn is available, you will need to actively opt-in.";
+        	tooltip = "When respawn is available, you will need to actively opt-in.\nBe warned: you may miss opportunities to respawn.";
+
+            onLoad = "_this call f_fnc_downtimeDialog_setupButton;"
+            onButtonClick = "f_var_downtimeDialog_selectedRespawnMode = 'respawnWithConsent'; ['respawn'] call f_fnc_downtimeDialog_updateButtonGroup;";
         };
 
         class CA2_Downtime_ConfirmButton: CA2_DefaultButton
@@ -118,6 +140,8 @@ class CA2_Downtime_Dialog
         	w = 5 * GUI_GRID_W;
         	h = 1.5 * GUI_GRID_H;
         	tooltip = "Save the changes you've made above.";
+
+            onButtonClick = "closeDialog 3";
         };
 
         class CA2_Downtime_DismissButton: CA2_DefaultButton
@@ -129,6 +153,8 @@ class CA2_Downtime_Dialog
         	w = 4.5 * GUI_GRID_W;
         	h = 1.5 * GUI_GRID_H;
         	tooltip = "Dismiss any changes made above and keep any previous settings.";
+
+            onButtonClick = "closeDialog 4";
         };
     };
 
