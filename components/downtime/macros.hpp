@@ -13,5 +13,9 @@
 #define DOWNTIME_WAIT_TIME 10
 #define DOWNTIME_CONTROL_SIDES [independent, east]
 
-#define PLAYER_IS_DOWN (player getVariable ["ACE_isUnconscious", false] or {!alive player} or {missionNamespace getVariable ["f_var_playerHasBeenKilled", false]})
-#define PLAYER_IS_GHOST ((missionNamespace getVariable ["f_var_playerHasBeenKilled", false]) and {alive player})
+#define IS_UNCONSCIOUS(UNIT)        (UNIT getVariable ["ACE_isUnconscious", false])
+#define PLAYER_IS_AWAITING_RESPAWN  (missionNamespace getVariable ["f_var_playerHasBeenKilled", false])
+#define PLAYER_IS_DOWN              (IS_UNCONSCIOUS(player) or {!alive player} or {PLAYER_IS_AWAITING_RESPAWN})
+#define PLAYER_IS_GHOST             (PLAYER_IS_AWAITING_RESPAWN and {alive player})
+
+#define CLOSE_DOWNTIME_BUTTON _dtButton = findDisplay 12343; if !(isNull _dtButton) then {_dtButton closeDisplay 2;};

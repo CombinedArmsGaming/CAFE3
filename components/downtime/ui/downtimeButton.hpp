@@ -21,7 +21,7 @@ class CA2_DowntimeButton
         	w = 9 * GUI_GRID_W;
         	h = 1.5 * GUI_GRID_H;
 
-            onButtonClick = "closeDialog 12343; createDialog 'CA2_Downtime_Dialog'";
+            onButtonClick = "_dtButton = findDisplay 12343; if !(isNull _dtButton) then {_dtButton closeDisplay 2;}; [true] call f_fnc_downtimeActivitySelector;";
         };
 
     };

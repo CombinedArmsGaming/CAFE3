@@ -37,7 +37,7 @@ _findUnitToControl =
             // These checks are almost identical to the ones used by the Zeus module.
             if (isNull _x) exitWith {};
             if (isPlayer _x) exitWith {};
-	        if (!(alive _x) or {_x getVariable ["ACE_isUnconscious", false]}) exitWith {};
+	        if (!(alive _x) or {IS_UNCONSCIOUS(_x)}) exitWith {};
 
 	        _tempOwner = _x getVariable ["bis_fnc_moduleRemoteControl_owner", objNull];
 	        if (!isNull _tempOwner and {_tempOwner in allPlayers}) exitWith {};
@@ -116,7 +116,7 @@ _controlUnit =
     _vehicle = vehicle _unit;
 	_vehicleRole = str assignedvehiclerole _unit;
 	_rating = rating player;
-    _unitIsActive = (alive _unit) and {!(_unit getVariable ["ACE_isUnconscious", false])};
+    _unitIsActive = (alive _unit) and {!IS_UNCONSCIOUS(_unit)};
 
 	waitUntil
     {
@@ -131,7 +131,7 @@ _controlUnit =
 
     	sleep 0.1;
 
-        _unitIsActive = (alive _unit) and {!(_unit getVariable ["ACE_isUnconscious", false])};
+        _unitIsActive = (alive _unit) and {!IS_UNCONSCIOUS(_unit)};
 
     	!(isNull curatorCamera) or {cameraOn == vehicle player} or {!(alive player)} or {!_unitIsActive} or {!SHOULD_CONTINUE}
 
@@ -193,7 +193,7 @@ while {SHOULD_CONTINUE} do
 
         };
 
-        closeDialog 12343;
+        CLOSE_DOWNTIME_BUTTON
 
     }
     else

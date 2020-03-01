@@ -6,6 +6,7 @@ class downtime
     class playerWantsRespawn{};
     class onDowntimeSelectorHotkey{};
     class setupDowntimeSelectorHotkey{};
+    class blockSelfInteractWhileUnconscious{};
 };
 class downtimeActivity
 {

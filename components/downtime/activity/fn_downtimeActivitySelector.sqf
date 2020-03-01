@@ -2,6 +2,8 @@
 
 #define DIALOG_IS_OPEN (missionNamespace getVariable ["f_var_downtimeActivitySelector_isOpen", false])
 
+params [["_openedOnTop", false, [false]]];
+
 CLIENT_ONLY;
 RUN_AS_ASYNC(f_fnc_downtimeActivitySelector);
 
@@ -12,6 +14,8 @@ if !(DIALOG_IS_OPEN) then
     {
         f_var_downtimeActivity = ACTIVITY_NOTHING;
     };
+
+    f_var_downtimeDialogOpenedOnTop = _openedOnTop;
 
     createDialog "CA2_Downtime_Dialog";
 
@@ -26,3 +30,5 @@ waitUntil
 {
     !DIALOG_IS_OPEN
 };
+
+f_var_downtimeDialogOpenedOnTop = nil;

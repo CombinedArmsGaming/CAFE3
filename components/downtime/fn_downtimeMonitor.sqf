@@ -45,6 +45,7 @@ waitUntil
     };
 
     [] call _stopDowntimeExperience;
+    CLOSE_DOWNTIME_BUTTON
 
     false
 

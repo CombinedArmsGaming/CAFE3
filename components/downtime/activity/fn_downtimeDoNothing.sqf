@@ -18,7 +18,7 @@ waitUntil
     PLAYER_IS_GHOST or {!SHOULD_CONTINUE}
 };
 
-closeDialog 12343;
+CLOSE_DOWNTIME_BUTTON
 
 if !(SHOULD_CONTINUE) exitWith {};
 
