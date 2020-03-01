@@ -26,11 +26,11 @@ class CA2_Downtime_Dialog
         	idc = 1001;
         	text = "This might take a while...";
         	x = 8 * GUI_GRID_W + GUI_GRID_X;
-        	y = 5 * GUI_GRID_H + GUI_GRID_Y;
+        	y = 6 * GUI_GRID_H + GUI_GRID_Y;
         	w = 24 * GUI_GRID_W;
-        	h = 3 * GUI_GRID_H;
+        	h = 2 * GUI_GRID_H;
         	colorBackground[] = {0,0,0,0.5};
-        	sizeEx = 2.4 * GUI_GRID_H;
+        	sizeEx = 1.6 * GUI_GRID_H;
             style = ST_CENTER;
 
             onLoad = "_this call f_fnc_downtimeDialog_setupTitleText;"

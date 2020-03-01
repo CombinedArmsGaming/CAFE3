@@ -28,11 +28,21 @@ _stopDowntimeExperience =
 
 waitUntil
 {
-    waitUntil { sleep 1; PLAYER_IS_DOWN };
+    f_var_firstUnconsciousWait = true;
+    waitUntil { sleep 0.1; PLAYER_IS_DOWN };
 
-    RUN_FUNC_ONCE_ASYNC(f_fnc_downtimeExperience);
+    RUN_FUNC_ONCE_ASYNC(f_fnc_downtimeExperience)
 
-    waitUntil { !PLAYER_IS_DOWN };
+    while {PLAYER_IS_DOWN} do
+    {
+        waitUntil { ((!PLAYER_IS_DOWN) or {ASYNC_FUNC_DONE(f_fnc_downtimeExperience)}) };
+
+        if (ASYNC_FUNC_DONE(f_fnc_downtimeExperience)) then
+        {
+            RUN_FUNC_ASYNC(f_fnc_downtimeExperience)
+        };
+
+    };
 
     [] call _stopDowntimeExperience;
 

@@ -6,7 +6,6 @@ _defaultKey = [219, [false, false, false]]; // Left Windows key
 
 _keyDown =
 {
-    systemChat "push me :D";
     [] call f_fnc_onDowntimeSelectorHotkey;
 };
 
@@ -14,6 +13,7 @@ _keyDown =
 
 
 // CBA keybinds don't work in spectator unless we do this...
+// BUB 2020-02-29 TODO :: Make this hack specific to this keybind only so people can't use *every* CBA keybind in spectator.
 [] spawn
 {
     while {true} do

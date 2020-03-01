@@ -41,11 +41,13 @@
 #define STRING_SINGLE(ARG) CONCAT3(SINGLEQUOTE,ARG,SINGLEQUOTE)
 
 // Startup convenience macros
-#define ASYNC_FUNC_HANDLE(FUNC) CONCAT(f_script,FUNC)
-#define ASYNC_FUNC_HANDLE_DYNAMIC(FUNC) (missionNamespace getVariable (format ["f_script%1",#FUNC]))
+#define ASYNC_FUNC_HANDLE(FUNC) CONCAT(f_script_,FUNC)
+#define ASYNC_FUNC_HANDLE_DYNAMIC(FUNC) (missionNamespace getVariable (format ["f_script_%1",#FUNC]))
 
 #define RUN_ONLY_ONCE_ASYNC(PATH,VAR) if (isNil #VAR) then { VAR = [] execVM PATH; };
-#define RUN_FUNC_ONCE_ASYNC(FUNC) if (isNil #CONCAT(f_script,FUNC)) then { ASYNC_FUNC_HANDLE(FUNC) = [] spawn FUNC; };
+#define RUN_FUNC_ONCE_ASYNC(FUNC) if (isNil #CONCAT(f_script_,FUNC)) then { ASYNC_FUNC_HANDLE(FUNC) = [] spawn FUNC; };
+#define RUN_FUNC_ASYNC(FUNC) ASYNC_FUNC_HANDLE(FUNC) = [] spawn FUNC;
+#define ASYNC_FUNC_DONE(FUNC) ((isNil #CONCAT(f_script_,FUNC)) or {scriptDone ASYNC_FUNC_HANDLE(FUNC)})
 
 // String-keyed dictionary convenience macros
 #define DICT_CREATE(NAME) NAME = createLocation ["CBA_NamespaceDummy", [0,0,0], 0, 0]

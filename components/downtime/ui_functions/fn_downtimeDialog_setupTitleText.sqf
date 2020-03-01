@@ -11,11 +11,8 @@ if !(IS_TRUE(f_var_downtimeDialog_notFirstTime)) exitWith
 
 _title = selectRandom [
     "Hello, old friend.",
-    "We've been here before.",
     "Ah, you're back.",
-    "You're not done yet.",
-    "Welcome back.",
-    "Since you're here..."
+    "Welcome back."
 ];
 
 _text ctrlSetText _title;

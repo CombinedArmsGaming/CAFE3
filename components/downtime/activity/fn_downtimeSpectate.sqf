@@ -15,4 +15,9 @@ if !(SHOULD_CONTINUE) exitWith {};
 
 waitUntil {!SHOULD_CONTINUE};
 
+if (player getVariable ["ACE_isUnconscious", false]) then
+{
+    ["unconscious", true] call ace_common_fnc_setDisableUserInputStatus;
+};
+
 [false, true, false] call ace_spectator_fnc_setSpectator;

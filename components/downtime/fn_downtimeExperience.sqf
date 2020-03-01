@@ -9,8 +9,10 @@ _timeStartWait = time;
 waitUntil
 {
     sleep 0.1;
-    (time > (_timeStartWait + 10)) or {!SHOULD_CONTINUE} or {PLAYER_IS_GHOST}
+    (time > (_timeStartWait + 10)) or {!IS_TRUE(f_var_firstUnconsciousWait)} or {!SHOULD_CONTINUE} or {PLAYER_IS_GHOST}
 };
+
+f_var_firstUnconsciousWait = false;
 
 if (!SHOULD_CONTINUE) exitWith {};
 

@@ -10,3 +10,5 @@ f_var_downtimeDialog_selectedActivity = nil;
 f_var_downtimeDialog_selectedRespawnMode = nil;
 
 f_var_downtimeActivitySelector_isOpen = nil;
+
+f_var_downtimeExperienceActive = false;

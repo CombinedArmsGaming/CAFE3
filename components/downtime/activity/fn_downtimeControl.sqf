@@ -173,7 +173,18 @@ while {SHOULD_CONTINUE} do
 
         waitUntil
         {
-            if !(_firstRun) then { titleText ["Still trying to find a unit...", "PLAIN", 0.15, true, true]; uiSleep 1; };
+            if !(_firstRun) then
+            {
+                titleText ["Still trying to find a unit...", "PLAIN", 0.15, true, true];
+
+                if !(IS_TRUE(f_var_showingDowntimeButton) or {IS_TRUE(f_var_downtimeActivitySelector_isOpen)} or {!isNull (findDisplay 49)}) then
+                {
+                    createDialog "CA2_DowntimeButton";
+                    sleep 1;
+                };
+
+                sleep 1;
+            };
             _firstRun = false;
 
             _toControl = [] call _findUnitToControl;
@@ -181,6 +192,8 @@ while {SHOULD_CONTINUE} do
             !((isNull _toControl) and {SHOULD_CONTINUE})
 
         };
+
+        closeDialog 12343;
 
     }
     else
