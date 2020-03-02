@@ -5,7 +5,7 @@ class downtime
     class downtimeMonitor{};
     class playerWantsRespawn{};
     class onDowntimeSelectorHotkey{};
-    class setupDowntimeSelectorHotkey{};
+    class addDowntimeButtonToSpectator{};
     class blockSelfInteractWhileUnconscious{};
 };
 class downtimeActivity
@@ -25,4 +25,5 @@ class downtimeUiSupport
     class downtimeDialog_setupControlTooltip{};
     class downtimeDialog_exitDialog{};
     class downtimeDialog_updateButtonGroup{};
+    class downtimeButtonSpectator_onLoad{};
 };
