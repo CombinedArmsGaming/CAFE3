@@ -19,3 +19,8 @@
 #define PLAYER_IS_GHOST             (PLAYER_IS_AWAITING_RESPAWN and {alive player})
 
 #define CLOSE_DOWNTIME_BUTTON _dtButton = findDisplay 12343; if !(isNull _dtButton) then {_dtButton closeDisplay 2;};
+
+#define FADE_OUT "DowntimeFade" cutText ["", "BLACK OUT", 0.3, false];
+#define FADE_OUT_WAIT uiSleep 0.3;
+#define FADE_IN "DowntimeFade" cutFadeOut 1;
+#define FADE_IN_WAIT uiSleep 1;

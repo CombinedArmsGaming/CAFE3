@@ -129,6 +129,8 @@ _controlUnit =
 
     [_unit] call _addDowntimeMenuAction;
 
+    FADE_IN
+
     // Begin a loop to maintain control of the unit until it dies or goes unconscious.
     _vehicle = vehicle _unit;
 	_vehicleRole = str assignedvehiclerole _unit;
@@ -154,10 +156,12 @@ _controlUnit =
 
 	};
 
+    FADE_OUT
+
     // Unit is down or player is dead - release control.
     objNull remoteControl _unit;
 
-    sleep 0.1;
+    FADE_OUT_WAIT
 
     player switchCamera cameraView;
 
@@ -178,6 +182,9 @@ if !(SHOULD_CONTINUE) exitWith {};
 while {SHOULD_CONTINUE} do
 {
     _toControl = objNull;
+
+    FADE_IN
+    FADE_IN_WAIT
 
     // Unfortunately control can't occur when player has died - it screws everything up.  Wait for player to respawn.
     waitUntil { (alive player) or {!SHOULD_CONTINUE} };
@@ -220,8 +227,16 @@ while {SHOULD_CONTINUE} do
 
     if !(SHOULD_CONTINUE) exitWith {};
 
+    FADE_OUT
+    FADE_OUT_WAIT
+
+    if !(SHOULD_CONTINUE) exitWith {};
+
     [_toControl] call _controlUnit;
 
 };
+
+FADE_IN
+FADE_IN_WAIT
 
 [] call _stopControllingUnits;
