@@ -3,7 +3,7 @@
 class CA2_DowntimeButton_Spectator: CA2_DefaultButton
 {
     onLoad = "f_var_showingDowntimeButton = true; _this spawn f_fnc_downtimeButtonSpectator_onLoad;";
-    onUnload = "f_var_showingDowntimeButton = false;";
+    onDestroy = "f_var_showingDowntimeButton = false;";
 
 	idc = 12343;
 	text = "Open Downtime Menu";

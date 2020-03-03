@@ -6,6 +6,21 @@ CLIENT_ONLY;
 RUN_AS_ASYNC(f_fnc_downtimeSpectate);
 
 
+// Allow the player to access the downtime dialog while controlling a unit, otherwise they'll be stuck doing it until they respawn.
+_addDowntimeMenuAction =
+{
+    params ["_unit"];
+
+    if !(_unit getVariable ["f_var_downtimeAddAction", false]) then
+    {
+        _unit addAction ["Show downtime options", { [true] call f_fnc_downtimeActivitySelector; }];
+        _unit setVariable ["f_var_downtimeAddAction", true];
+    };
+
+};
+
+
+
 
 // Find an eligible AI unit to remotr-control during downtime.
 // This function is specific to the downtime activity and should not be separated.
@@ -111,6 +126,8 @@ _controlUnit =
     {
 		_vehicle switchCamera cameraView;
 	};
+
+    [_unit] call _addDowntimeMenuAction;
 
     // Begin a loop to maintain control of the unit until it dies or goes unconscious.
     _vehicle = vehicle _unit;
