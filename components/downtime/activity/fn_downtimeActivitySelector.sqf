@@ -7,6 +7,11 @@ params [["_openedOnTop", false, [false]]];
 CLIENT_ONLY;
 RUN_AS_ASYNC(f_fnc_downtimeActivitySelector);
 
+if !(_openedOnTop) then
+{
+    RUNNING_ACTIVITY = ACTIVITY_SELECTOR;
+};
+
 if !(DIALOG_IS_OPEN) then
 {
 
@@ -32,3 +37,8 @@ waitUntil
 };
 
 f_var_downtimeDialogOpenedOnTop = nil;
+
+if !(_openedOnTop) then
+{
+    RUNNING_ACTIVITY = nil;
+};

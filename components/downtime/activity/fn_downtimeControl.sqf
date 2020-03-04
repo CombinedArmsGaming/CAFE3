@@ -84,6 +84,7 @@ _findUnitToControl =
 
 
 
+
 // Make sure the player has stopped controlling any AI and all relevant variables are cleared.
 // This function is specific to the downtime activity and should not be separated.
 _stopControllingUnits =
@@ -179,6 +180,8 @@ _controlUnit =
 
 if !(SHOULD_CONTINUE) exitWith {};
 
+RUNNING_ACTIVITY = ACTIVITY_REMOTECONTROL;
+
 while {SHOULD_CONTINUE} do
 {
     _toControl = objNull;
@@ -240,3 +243,5 @@ FADE_IN
 FADE_IN_WAIT
 
 [] call _stopControllingUnits;
+
+RUNNING_ACTIVITY = nil;

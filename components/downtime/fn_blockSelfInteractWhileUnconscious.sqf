@@ -9,7 +9,7 @@ waitUntil
 {
     waitUntil { sleep 1; IS_UNCONSCIOUS(player) };
 
-    while { IS_UNCONSCIOUS(player) } do
+    while { IS_UNCONSCIOUS(player) and {!(isNil STRING(RUNNING_ACTIVITY))} and {RUNNING_ACTIVITY isEqualTo ACTIVITY_NOTHING} } do
     {
         // Dialog ID of the ACE self-interact menu.
         _display = findDisplay 91919;

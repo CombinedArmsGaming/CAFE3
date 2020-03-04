@@ -24,3 +24,5 @@
 #define FADE_OUT_WAIT uiSleep 0.3;
 #define FADE_IN "DowntimeFade" cutFadeOut 1;
 #define FADE_IN_WAIT uiSleep 1;
+
+#define RUNNING_ACTIVITY f_var_runningDowntimeActivity

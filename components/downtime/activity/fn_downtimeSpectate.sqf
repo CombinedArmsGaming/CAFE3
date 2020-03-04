@@ -7,6 +7,8 @@ RUN_AS_ASYNC(f_fnc_downtimeSpectate);
 
 if !(SHOULD_CONTINUE) exitWith {};
 
+RUNNING_ACTIVITY = ACTIVITY_SPECTATE;
+
 // Can't move around in spectator while unconscious unless we do this...
 ["unconscious", false] call ace_common_fnc_setDisableUserInputStatus;
 
@@ -16,3 +18,5 @@ if !(SHOULD_CONTINUE) exitWith {};
 waitUntil {!SHOULD_CONTINUE};
 
 [false, true, false] call ace_spectator_fnc_setSpectator;
+
+RUNNING_ACTIVITY = nil;
