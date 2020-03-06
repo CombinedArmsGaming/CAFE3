@@ -15,7 +15,7 @@ f_radios_settings_acre2_disableFrequencySplit = FALSE;
 // Set a list of units that get a short wave
 // if its nil, that means all units get a radio
 // empty array means that noone gets
-f_radios_settings_acre2_shortRange = [];
+f_radios_settings_acre2_shortRange = nil;
 
 // Set the list of units that get a long range
 f_radios_settings_acre2_longRange = [];
@@ -62,6 +62,10 @@ f_radios_settings_acre2_language_indfor = ["opf"];
 // also note these only work if f_radios_settings_acre2_disableFrequencySplit is set to false
 f_radios_settings_acre2_sr_groups_blufor =
 [
+    ["ALPHA",    ["ALPHA"]],
+    ["BRAVO",    ["BRAVO"]],
+    ["CHARLIE",    ["CHARLIE"]],
+    ["COMMAND",    ["COMMAND"]]
 ];
 
 f_radios_settings_acre2_sr_groups_opfor = f_radios_settings_acre2_sr_groups_blufor;
