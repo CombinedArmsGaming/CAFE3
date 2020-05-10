@@ -53,6 +53,7 @@ if (_hasBeenKilled) then
     DEBUG_PRINT_LOG("[RespawnWaves] Player was killed, adding to respawn wave...")
 
     [_unit, false] call f_fnc_activatePlayer;
+    _unit setVariable ["f_var_awaitingRespawn", true, true];
 
     if (!f_var_respawnInGroup) then
     {
@@ -85,6 +86,7 @@ if (_hasBeenKilled) then
     waitUntil { scriptDone _tpHandle };
     f_var_playerHasBeenKilled = false;
     [_unit, true] call f_fnc_activatePlayer;
+    _unit setVariable ["f_var_awaitingRespawn", false, true];
 
     if (f_var_JIP_RespawnMenu) then
     {

@@ -25,3 +25,4 @@ DEBUG_PRINT_LOG("finished waiting: downtime")
 [] spawn f_fnc_downtimeMonitor;
 [] spawn f_fnc_blockSelfInteractWhileUnconscious;
 [] spawn f_fnc_addDowntimeButtonToSpectator;
+[] spawn f_fnc_initControlActivityHandler;

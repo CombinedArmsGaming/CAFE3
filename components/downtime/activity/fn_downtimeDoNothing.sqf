@@ -3,7 +3,7 @@
 #define SHOULD_CONTINUE f_var_downtimeExperienceActive
 
 CLIENT_ONLY;
-RUN_AS_ASYNC(f_fnc_downtimeSpectate);
+RUN_AS_ASYNC(f_fnc_downtimeDoNothing);
 
 if !(SHOULD_CONTINUE) exitWith {};
 

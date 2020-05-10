@@ -17,6 +17,7 @@
 #define PLAYER_IS_AWAITING_RESPAWN  (missionNamespace getVariable ["f_var_playerHasBeenKilled", false])
 #define PLAYER_IS_DOWN              (IS_UNCONSCIOUS(player) or {!alive player} or {PLAYER_IS_AWAITING_RESPAWN})
 #define PLAYER_IS_GHOST             (PLAYER_IS_AWAITING_RESPAWN and {alive player})
+#define UNIT_IS_ACTIVE(UNIT)        (!(IS_UNCONSCIOUS(UNIT) or {UNIT getVariable ["f_var_awaitingRespawn", false]}))
 
 #define CLOSE_DOWNTIME_BUTTON _dtButton = findDisplay 12343; if !(isNull _dtButton) then {_dtButton closeDisplay 2;};
 

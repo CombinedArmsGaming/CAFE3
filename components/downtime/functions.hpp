@@ -15,6 +15,10 @@ class downtimeActivity
     class downtimeControl{};
     class downtimeActivitySelector{};
     class downtimeDoNothing{};
+    class initControlActivityHandler{};
+    class remoteControlUnit{};
+    class stopRemoteControlUnit{};
+    class requestDowntimeControl{};
 };
 class downtimeUiSupport
 {
