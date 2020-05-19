@@ -41,6 +41,8 @@ _unit setvariable ["bis_fnc_moduleRemoteControl_owner", player, true];
 // Play a wind sound to all players - the Zeus module does this too.
 [format ["wind%1", ceil random 5], "bis_fnc_playsound"] call bis_fnc_mp;
 
+systemChat format ["Taking control of %1", _unit];
+
 // Perform the remote control.
 player remoteControl _unit;
 _vehicle = vehicle _unit;
@@ -62,7 +64,9 @@ waitUntil
 {
     // Refresh control when vehicle or vehicle role changes.
     if ((((vehicle _unit) != _vehicle) or {(str assignedVehicleRole _unit) != _vehicleRole}) and {_unitIsActive}) then
-    {
+    {	
+		systemChat format ["Re-taking control of unit %1", _unit];
+		
         player remoteControl _unit;
 
         _vehicle = vehicle _unit;
@@ -76,6 +80,8 @@ waitUntil
     (!(isNull curatorCamera)) or {cameraOn == vehicle player} or {!(alive player)} or {!_unitIsActive} or {!SHOULD_CONTINUE}
 
 };
+
+systemChat format ["Stopping control of unit %1", _unit];
 
 [] call f_fnc_stopRemoteControlUnit;
 

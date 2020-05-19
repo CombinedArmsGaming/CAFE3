@@ -36,13 +36,12 @@ _findUnitToControl =
     _toControl = objNull;
 
     // Select a random player to be our "anchor", hopefully this makes AI selection fairer.
-#ifdef ENABLE_DEBUG
-    _alivePlayers = allPlayers;
-#else
     _alivePlayers = allPlayers select {UNIT_IS_ACTIVE(_x)};
-#endif
 
-    if ((count _alivePlayers) <= 0) exitWith { objNull };
+    if ((count _alivePlayers) <= 0) then 
+	{
+		_alivePlayers = allPlayers;
+	};
 
     _targetPlayer = selectRandom _alivePlayers;
 

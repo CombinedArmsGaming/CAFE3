@@ -19,6 +19,8 @@ INIT_COMPONENT(respawnWaves)
 
 INIT_COMPONENT(miscShared)
 
+INIT_COMPONENT(downtime)
+
 
 // Kill tracker init
 #ifdef ENABLE_KILL_TRACKING
