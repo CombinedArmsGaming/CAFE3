@@ -1,5 +1,6 @@
 
 #include "baseControls.hpp"
+#include "ui_defaults.hpp"
 
 #include "components\joinInProgress\jipCommonSettings.hpp"
 #include "components\joinInProgress\jipGroupPicker.hpp"
@@ -8,4 +9,4 @@
 
 #include "components\zeus_ui\config\zeusUI.hpp"
 
-#include "components\squadMarkers\markerDialog\squadMarkerDialog.hpp"
+#include "components\squadMarkers\ui\squadMarkerDialog.hpp"

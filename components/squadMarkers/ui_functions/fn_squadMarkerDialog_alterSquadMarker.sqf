@@ -51,7 +51,7 @@ if !(_iconName isEqualTo "") then
         case ("Anti-air"): {ANTIAIR};
         case ("Armor"): {ARMOR};
         case ("Artillery"): {ARTILLERY};
-        case ("HQ"): {HQ};
+        case ("Headquarters"): {HQ};
         case ("Infantry"): {INFANTRY};
         case ("Repair"): {REPAIR};
         case ("Mechanized Inf."): {MECHINF};

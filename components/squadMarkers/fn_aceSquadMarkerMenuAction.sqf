@@ -9,7 +9,7 @@ if (player getVariable ["f_var_hasSquadMarkerMenuAction", false] isEqualTo true)
 
 _createDialogAction =
 {
-	createDialog 'ca_groupid';
+	createDialog 'CA2_SquadMarker_Dialog';
 };
 
 _action = ["SquadMarkerDialog", "Edit Squad Marker", "", _createDialogAction, {(leader group player) isEqualTo player}] call ace_interact_menu_fnc_createAction;

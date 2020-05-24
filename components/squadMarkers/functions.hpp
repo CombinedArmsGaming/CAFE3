@@ -11,7 +11,10 @@ class squadMarkers
 };
 class squadMarkersDialog
 {
-    file = "components\squadMarkers\markerDialog";
-    class squadMarkerDialog_listBoxFill{};
-    class alterSquadMarker{};
+    file = "components\squadMarkers\ui_functions";
+    class squadMarkerDialog_addSpecialistMarker{};
+    class squadMarkerDialog_alterSquadMarker{};
+    class squadMarkerDialog_onCloseDialog{};
+    class squadMarkerDialog_populateDialog{};
+    class squadMarkerDialog_removeSpecialistMarker{};
 };
