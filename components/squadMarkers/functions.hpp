@@ -6,6 +6,12 @@ class squadMarkers
     class drawSquadMarkers{};
     class getGroupMarker{};
     class initSquadMarkerManager{};
-    class generateUnitMarkerCode{};
     class addGroupMemberMarkers{};
+    class aceSquadMarkerMenuAction{};
+};
+class squadMarkersDialog
+{
+    file = "components\squadMarkers\markerDialog";
+    class squadMarkerDialog_listBoxFill{};
+    class alterSquadMarker{};
 };

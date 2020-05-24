@@ -39,34 +39,27 @@
 #define SUPPLY      "res\images\squadMarkers\squad_supply.paa"
 #define UNKNOWN     "res\images\squadMarkers\squad_unknown.paa"
 
+#define SQUAD_VAR(NAME) (allGroups param [(allGroups findIf {groupId _x isEqualTo #NAME}), grpNull])
 
-#define UNIT_MARKER(CLASS,NAME) ([#CLASS, NAME] call f_fnc_generateUnitMarkerCode)
-#define MEDIC_MARKER UNIT_MARKER(med,"Medic")
+#define SQUAD_VAL(VARNAME) STRING(CONCAT(f_var_squadMarker_,VARNAME))
+#define SET_SQUAD_VAL(NAME,VALNAME,VALUE) SQUAD_VAR(NAME) setVariable [SQUAD_VAL(VALNAME), VALUE, true]
 
+#define SET_SQUAD_IMPORTANT(NAME,VALUE) SET_SQUAD_VAL(NAME,Important,VALUE)
 
-#define INIT_SQUADS() DICT_CREATE(SQUADS)
+#define SET_SQUAD_VISIBILITY(NAME,VISIBLE) SET_SQUAD_VAL(NAME,Visible,VISIBLE)
+#define HIDE_SQUAD(NAME) SET_SQUAD_VISIBILITY(NAME,false)
+#define UNHIDE_SQUAD(NAME) SET_SQUAD_VISIBILITY(NAME,true)
 
-#define SQUAD_INDEX(NAME) (format ["%1_%2",#FACTION,#NAME])
-#define SQUAD_INDEX_DYNAMIC(NAME,SIDE) (format ["%1_%2",SIDE,NAME])
+#define SET_SQUAD_ICON(NAME,ICON) SET_SQUAD_VAL(NAME,Icon,ICON)
+#define SET_SQUAD_COLOUR(NAME,COLOUR) SET_SQUAD_VAL(NAME,Colour,COLOUR)
 
-#define SQUAD_VAR(NAME) DICT_GET(SQUADS,SQUAD_INDEX(NAME))
-#define SQUAD_VAR_DYNAMIC(NAME,SIDE) DICT_GET(SQUADS,SQUAD_INDEX_DYNAMIC(NAME,SIDE))
+// Won't work in server-centric refactor.  Swap to role-specific specialist markers.
+//#define ADD_SPECIAL_MARKER(NAME,CODE) ((SQUAD_VAR(NAME)) select 4) pushBack CODE
 
-#define NEW_SQUAD() [true,[],"","",[]]
-#define MAKE_SQUAD_EDITABLE(NAME) DICT_SET(SQUADS,SQUAD_INDEX(NAME),NEW_SQUAD())
-#define IS_SQUAD_EDITABLE(NAME) DICT_CONTAINS(SQUADS,SQUAD_INDEX(NAME))
+#define GET_SQUAD_VAL(GROUP,VALNAME,DEFAULT) GROUP getVariable [SQUAD_VAL(VALNAME),DEFAULT]
 
-#define SET_SQUAD_VISIBILITY(NAME,VISIBLE) (SQUAD_VAR(NAME)) set [0,VISIBLE]
-#define HIDE_SQUAD(NAME) (SQUAD_VAR(NAME)) set [0,false]
-#define UNHIDE_SQUAD(NAME) (SQUAD_VAR(NAME)) set [0,true]
-
-#define SET_SQUAD_ICON(NAME,ICON) (SQUAD_VAR(NAME)) set [2,ICON]
-#define SET_SQUAD_COLOUR(NAME,COLOUR) (SQUAD_VAR(NAME)) set [1,COLOUR]
-#define SET_SQUAD_NAME(NAME,OVERRIDE) (SQUAD_VAR(NAME)) set [3,OVERRIDE]
-#define ADD_SPECIAL_MARKER(NAME,CODE) ((SQUAD_VAR(NAME)) select 4) pushBack CODE
-
-#define SQUAD_VISIBLE(VAR) (VAR) select 0
-#define SQUAD_COLOUR(VAR) (VAR) select 1
-#define SQUAD_ICON(VAR) (VAR) select 2
-#define SQUAD_NAME(VAR) (VAR) select 3
-#define SQUAD_SPECIALS(VAR) (VAR) select 4
+#define SQUAD_VISIBLE(GROUP) GET_SQUAD_VAL(GROUP,Visible,true)
+#define SQUAD_COLOUR(GROUP) GET_SQUAD_VAL(GROUP,Colour,[])
+#define SQUAD_ICON(GROUP) GET_SQUAD_VAL(GROUP,Icon,"")
+#define SQUAD_NAME(GROUP) (groupId GROUP)
+#define SQUAD_IS_IMPORTANT(GROUP) GET_SQUAD_VAL(GROUP,Important,false)
