@@ -4,13 +4,7 @@ params ["_group"];
 
 _groupName = groupId _group;
 _sideName = [side leader _group] call f_fnc_sideToString;
-_squadDef = SQUAD_VAR_DYNAMIC(_groupName,_sideName);
-_iconOverride = "";
-
-if !(_squadDef isEqualTo []) then
-{
-    _iconOverride = SQUAD_ICON(_squadDef);
-};
+_iconOverride = SQUAD_ICON(_group);
 
 if !(_iconOverride isEqualTo "") exitWith
 {

@@ -36,17 +36,25 @@
 // General utility
 #define CONCAT(s1,s2) s1##s2
 #define CONCAT3(s1,s2,s3) s1##s2##s3
+#define CURLY(VARIABLE) {##VARIABLE##}
+#define SQUARE(VARIABLE) [##VARIABLE##]
+#define STRING(VARIABLE) #VARIABLE
 
 // Startup convenience macros
 #define RUN_ONLY_ONCE_ASYNC(PATH,VAR) if (isNil #VAR) then { VAR = [] execVM PATH; };
 #define RUN_FUNC_ONCE_ASYNC(FUNC) if (isNil #CONCAT(f_script,FUNC)) then { CONCAT(f_script,FUNC) = [] spawn FUNC; };
 
 // String-keyed dictionary convenience macros
+#define DICT_CREATE_GLOBAL(NAME) \
+    _tempDict = createLocation ["CBA_NamespaceDummy", [0,0,0], 0, 0] \
+    missionNamespace setVariable [#NAME, _tempDict, true];
+
 #define DICT_CREATE(NAME) NAME = createLocation ["CBA_NamespaceDummy", [0,0,0], 0, 0]
 #define DICT_CREATE_VALS(NAME,VALUES) DICT_CREATE(NAME); {NAME setVariable [_x select 0, _x select 1]} foreach VALUES
 #define DICT_GET(NAME,KEY) NAME getVariable [KEY, []]
 #define DICT_CONTAINS(NAME,KEY) !((NAME getVariable [KEY, "q£fsDSd4&&<"]) isEqualTo "q£fsDSd4&&<")
 #define DICT_SET(NAME,KEY,VALUE) NAME setVariable [KEY, VALUE]
+#define DICT_SET_GLOBAL(NAME,KEY,VALUE) NAME setVariable [KEY, VALUE, true]
 #define DICT_DELETE(NAME,KEY) NAME setVariable [KEY, nil]
 #define DICT_REMOVE(NAME,KEY) DICT_DELETE(NAME,KEY)
 #define DICT_FOREACH(NAME,FUNC) {private _key = _x; private _value = DICT_GET(NAME,_x); call _code;} forEach (allVariables NAME)

@@ -7,9 +7,6 @@
 
     Available commands:
 
-    MAKE_SQUAD_EDITABLE(SQUAD_NAME)
-    -   Makes a squad marker editable.  This command must be called before configuring a squad's marker.
-
     SET_SQUAD_VISIBILITY(SQUAD_NAME,<true or false>)
     -   If true, forces the squad marker to be visible.  If false, hides the squad's marker.
 
@@ -28,8 +25,5 @@
     -   Sets the squad marker's colour.  The default colour is white.
     Choices for COLOUR are:
         RED, ORANGE, YELLOW, GREEN, BLUE, CYAN, MAGENTA, PINK, PURPLE, WHITE, LIGHTGREY, DARKGREY, BLACK, GREY, BROWN, KHAKI
-
-    SET_SQUAD_NAME(NAME,"override")
-    -   Overrides the squad's name on the marker.  The default name is the squad's real name.
 
 */

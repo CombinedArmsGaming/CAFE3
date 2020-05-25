@@ -62,7 +62,7 @@ _drawUnitMarker =
 
 	if !(isNull _group or {count units _group <= 0}) then
 	{
-		_pos = getPos leader _group;
+		_pos = getPosVisual (leader _group);
 
 		[_map, _icon, _name, _colour, _pos] call _drawMarker;
 
@@ -80,8 +80,8 @@ _playerGroup = group player;
 
 	if (_inDifferentGroup and {alive _unit}) then
 	{
-		_pos = getPos _unit;
-		_dir = getDir _unit;
+		_pos = getPosVisual _unit;
+		_dir = getDirVisual _unit;
 
 		private "_icon";
 

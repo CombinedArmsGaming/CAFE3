@@ -4,15 +4,7 @@ params ["_group", "_markersArray", "_unitType", "_displayName"];
 
 // Getting custom entry for squad if exists.  Exit early if squad is forced invisible on map.
 _name = groupId _group;
-_entry = SQUAD_VAR_DYNAMIC(_name,_sideName);
-_entryExists = false;
-_visible = true;
-
-if !(_entry isEqualTo []) then
-{
-    _entryExists = true;
-    _visible = SQUAD_VISIBLE(_entry);
-};
+_visible = SQUAD_VISIBLE(_group);
 
 if !(_visible) exitWith {};
 
@@ -32,14 +24,11 @@ _units = [];
 
 
 // Try to match marker colour with squad colour, also marker name.
-_sideName = [side _group] call f_fnc_sideToString;
-
 _colour = WHITE;
 
-if (_entryExists and _visible) then
+if (_visible) then
 {
-    if !(SQUAD_NAME(_entry) isEqualTo "") then {_name = SQUAD_NAME(_entry)};
-    if !(SQUAD_COLOUR(_entry) isEqualTo []) then {_colour = SQUAD_COLOUR(_entry)};
+    if !(SQUAD_COLOUR(_group) isEqualTo []) then {_colour = SQUAD_COLOUR(_group)};
 };
 
 _name = format ["%1 %2", _name, _displayName];

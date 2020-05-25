@@ -32,18 +32,16 @@ waitUntil
             _visible = true;
             _specials = [];
 
-            _entry = SQUAD_VAR_DYNAMIC(_name,_sideName);
-
-            if !(_entry isEqualTo []) then
+            if !(isNull _group) then
             {
-                _visible = SQUAD_VISIBLE(_entry);
+                _visible = SQUAD_VISIBLE(_group);
 
                 if (_visible) then
                 {
-                    if !(SQUAD_NAME(_entry) isEqualTo "") then {_name = SQUAD_NAME(_entry)};
-                    if !(SQUAD_ICON(_entry) isEqualTo "") then {_icon = SQUAD_ICON(_entry)};
-                    if !(SQUAD_COLOUR(_entry) isEqualTo []) then {_colour = SQUAD_COLOUR(_entry)};
-                    _specials = SQUAD_SPECIALS(_entry);
+                    if !(SQUAD_ICON(_group) isEqualTo "") then {_icon = SQUAD_ICON(_group)};
+                    if !(SQUAD_COLOUR(_group) isEqualTo []) then {_colour = SQUAD_COLOUR(_group)};
+                    // 2020-05-21 TODO :: Redo special markers as class-specific markers.
+                    _specials = []; //SQUAD_SPECIALS(_group);
 
                 };
 
@@ -64,13 +62,9 @@ waitUntil
                 {
                     if (_isAiOnly) then
                     {
-                        if (_name == groupId _group) then
+                        if !(SQUAD_IS_IMPORTANT(_group)) then
                         {
                             _name = "Allies";
-                        };
-
-                        if (_colour isEqualTo []) then
-                        {
                             _colour = LIGHTGREY;
                         };
 
@@ -85,9 +79,11 @@ waitUntil
 
             };
 
-            {
-                [_group, _newUnitMarkers] call _x;
 
+            _specials = SQUAD_SPECIALISTS(_group);
+
+            {
+                [_group, _newUnitMarkers, _x, (toUpper _x)] call f_fnc_addGroupMemberMarkers;
             } forEach _specials;
 
         };

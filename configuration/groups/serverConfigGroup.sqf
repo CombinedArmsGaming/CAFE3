@@ -18,3 +18,7 @@
 
 // NPC spawn scripts
 #include "..\spawnNpcs.sqf"
+
+// Squad markers
+#include "..\squadMarkers.hpp"
+#include "..\internals\squadMarkers.sqf"

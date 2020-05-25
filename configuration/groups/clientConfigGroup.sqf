@@ -27,7 +27,3 @@
 
 // Respawn waves settings
 #include "..\respawnWaves.sqf"
-
-
-#include "..\squadMarkers.hpp"
-#include "..\internals\squadMarkers.sqf"
