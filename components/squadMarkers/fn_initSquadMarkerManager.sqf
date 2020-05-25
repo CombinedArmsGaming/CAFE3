@@ -79,9 +79,11 @@ waitUntil
 
             };
 
-            {
-                [_group, _newUnitMarkers] call _x;
 
+            _specials = SQUAD_SPECIALISTS(_group);
+
+            {
+                [_group, _newUnitMarkers, _x, (toUpper _x)] call f_fnc_addGroupMemberMarkers;
             } forEach _specials;
 
         };

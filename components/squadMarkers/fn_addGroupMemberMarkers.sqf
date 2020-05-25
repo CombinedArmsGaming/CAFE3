@@ -24,8 +24,6 @@ _units = [];
 
 
 // Try to match marker colour with squad colour, also marker name.
-_sideName = [side _group] call f_fnc_sideToString;
-
 _colour = WHITE;
 
 if (_visible) then

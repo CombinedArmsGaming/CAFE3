@@ -40,8 +40,8 @@ _drawMarker =
 
 	if (simulationEnabled _unit) then
 	{
-		_pos = getPos _unit;
-		_dir = getDir _unit;
+		_pos = getPosVisual _unit;
+		_dir = getDirVisual _unit;
 
 		private "_icon";
 		private "_colour";
@@ -62,5 +62,5 @@ _drawMarker =
 		[_map, _icon, _colour, _pos, _dir] call _drawMarker;
 
 	};
-	
+
 } forEach _group;

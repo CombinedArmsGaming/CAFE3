@@ -144,6 +144,7 @@ class CA2_SquadMarker_Dialog
 			y = 8 * GUI_GRID_H + GUI_GRID_Y;
 			w = 5.5 * GUI_GRID_W;
 			h = 6.5 * GUI_GRID_H;
+			sizeEx = 0.7 * GUI_GRID_H;
 		};
 
 		class CA2_SquadMarker_AddSpecialistButton: CA2_DefaultButton
@@ -154,6 +155,7 @@ class CA2_SquadMarker_Dialog
 			y = 15.5 * GUI_GRID_H + GUI_GRID_Y;
 			w = 5.5 * GUI_GRID_W;
 			h = 1 * GUI_GRID_H;
+			onButtonClick = "_this call f_fnc_squadMarkerDialog_addSpecialist";
 		};
 
 		class CA2_SquadMarker_VisibleSpecialistTitle: CA2_DefaultText
@@ -173,6 +175,7 @@ class CA2_SquadMarker_Dialog
 			y = 8 * GUI_GRID_H + GUI_GRID_Y;
 			w = 5.5 * GUI_GRID_W;
 			h = 6.5 * GUI_GRID_H;
+			sizeEx = 0.7 * GUI_GRID_H;
 		};
 
 		class CA2_SquadMarker_RemoveSpecialistButton: CA2_DefaultButton
@@ -183,6 +186,7 @@ class CA2_SquadMarker_Dialog
 			y = 15.5 * GUI_GRID_H + GUI_GRID_Y;
 			w = 5.5 * GUI_GRID_W;
 			h = 1 * GUI_GRID_H;
+            onButtonClick = "_this call f_fnc_squadMarkerDialog_removeSpecialist";
 		};
 
 		class CA2_SquadMarker_CloseButton: CA2_DefaultButton
