@@ -189,15 +189,26 @@ class CA2_SquadMarker_Dialog
             onButtonClick = "_this call f_fnc_squadMarkerDialog_removeSpecialist";
 		};
 
-		class CA2_SquadMarker_CloseButton: CA2_DefaultButton
+		class CA2_SquadMarker_ConfirmButton: CA2_DefaultButton
 		{
 			idc = 1602;
-			text = "Close menu";
+			text = "Confirm";
 			x = 28.5 * GUI_GRID_W + GUI_GRID_X;
 			y = 18.5 * GUI_GRID_H + GUI_GRID_Y;
 			w = 5.5 * GUI_GRID_W;
 			h = 1.5 * GUI_GRID_H;
             onButtonClick = "closeDialog 1";
+		};
+		
+		class CA2_SquadMarker_CancelButton: CA2_DefaultButton
+		{
+			idc = 1603;
+			text = "Cancel";
+			x = 22 * GUI_GRID_W + GUI_GRID_X;
+			y = 18.5 * GUI_GRID_H + GUI_GRID_Y;
+			w = 5.5 * GUI_GRID_W;
+			h = 1.5 * GUI_GRID_H;
+            onButtonClick = "closeDialog 2";
 		};
 
 		class CA2_SquadMarker_IShowedYouMyDialogPleaseRespond: CA2_DefaultText
