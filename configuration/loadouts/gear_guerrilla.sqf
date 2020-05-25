@@ -1,6 +1,8 @@
 
 #define FACTION guerrilla
 
+BEGIN_LOADOUTS;
+
 
 
 

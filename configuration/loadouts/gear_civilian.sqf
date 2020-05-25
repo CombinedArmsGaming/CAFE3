@@ -1,6 +1,11 @@
 
 #define FACTION civilian
 
+BEGIN_LOADOUTS;
+
+
+
+
 // Default loadout.
 // If Gearscript tries to use an invalid loadout, it will fall-back to this default loadout instead.
 

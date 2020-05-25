@@ -1,6 +1,8 @@
 
 #define FACTION indfor
 
+BEGIN_LOADOUTS;
+
 
 
 

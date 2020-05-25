@@ -4,6 +4,8 @@ class gearScript
     class assignGear{};
     class applyLoadout{};
     class applyLoadoutModifications{};
+    class factionToGearVariant{};
+    class createLoadoutLocker{};
 };
 
 class gearScriptCrates

@@ -1,11 +1,16 @@
 
 #define FACTION NONE
 
+#define BEGIN_LOADOUTS CONCAT3(f_loadouts_,CONCAT(FACTION,_),registry) = []
+#define ADD_LOADOUT_TO_REGISTRY(NAME) CONCAT3(f_loadouts_,CONCAT(FACTION,_),registry) pushBack #NAME
+
 #define LOADOUT_VAR(NAME) CONCAT3(f_loadouts_,CONCAT(FACTION,_),NAME)
 #define LOADOUT_VAR_DYNAMIC(SIDE,NAME) (missionNamespace getVariable [format ["f_loadouts_%1_%2", SIDE, NAME], []])
 
 #define LOADOUT_ITEM_VAR(NAME,ITEM) CONCAT3(LOADOUT_VAR(NAME),_,ITEM)
 #define LOADOUT_ITEM_VAR_DYNAMIC(SIDE,NAME,ITEM) (missionNamespace getVariable [format ["f_loadouts_%1_%2_%3", SIDE, NAME, ITEM], []])
+
+#define LOADOUT_REGISTRY_DYNAMIC(SIDE) (missionNamespace getVariable [format ["f_loadouts_%1_registry", SIDE], []])
 
 #define HATS_DYNAMIC(SIDE,NAME) LOADOUT_ITEM_VAR_DYNAMIC(SIDE,NAME,"hats")
 #define VESTS_DYNAMIC(SIDE,NAME) LOADOUT_ITEM_VAR_DYNAMIC(SIDE,NAME,"vest")
@@ -35,7 +40,8 @@
     VESTS(NAME) = [];\
     UNIFORMS(NAME) = [];\
     BACKPACKS(NAME) = [];\
-    ADD_VARIANT(NAME,LOADOUT)
+    ADD_VARIANT(NAME,LOADOUT);\
+    ADD_LOADOUT_TO_REGISTRY(NAME)
 
 #define COPY_UNIFORMS(NAME,OTHERNAME)\
 	UNIFORMS(NAME) = +UNIFORMS(OTHERNAME)
@@ -57,7 +63,8 @@
 
 #define COPY_LOADOUT(NAME,OTHERNAME)\
     LOADOUT_VAR(NAME) = +LOADOUT_VAR(OTHERNAME);\
-    COPY_ADDONS(NAME,OTHERNAME)
+    COPY_ADDONS(NAME,OTHERNAME);\
+    ADD_LOADOUT_TO_REGISTRY(NAME)
 
 
 

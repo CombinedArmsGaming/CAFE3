@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1339;
+		nextID=1347;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={111.59836,75.592232,170.05252};
-		dir[]={0.71564269,-0.53284746,0.45170856};
-		up[]={0.45060876,0.84618998,0.28442776};
-		aside[]={0.53378153,1.7739367e-006,-0.84569395};
+		pos[]={271.21536,14.354835,269.04681};
+		dir[]={0.92880386,-0.36357912,0.072604179};
+		up[]={0.362515,0.93153208,0.028343409};
+		aside[]={0.077926569,-7.7555887e-007,-0.99703413};
 	};
 };
 binarizationWanted=0;
@@ -34,13 +34,14 @@ addons[]=
 	"A3_Weapons_F_Ammoboxes",
 	"ace_cargo",
 	"A3_Supplies_F_Orange_Ammoboxes",
-	"AICommand"
+	"AICommand",
+	"3den_Objects"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=10;
+		items=11;
 		class Item0
 		{
 			className="A3_Modules_F_Curator";
@@ -108,6 +109,11 @@ class AddonsMetaData
 		{
 			className="AICommand";
 			name="AICommand";
+		};
+		class Item10
+		{
+			className="3den_Objects";
+			name="3den_Objects";
 		};
 	};
 };
@@ -3445,7 +3451,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=31;
+		items=32;
 		class Item0
 		{
 			dataType="Logic";
@@ -7223,6 +7229,22 @@ class Mission
 			};
 			id=1338;
 			type="AdvancedAICommand_Commanders";
+		};
+		class Item31
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={217.089,6.0308199,254.39101};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				init="call{[this, ""blu_f""] call f_fnc_createLoadoutLocker;}";
+			};
+			id=1345;
+			type="Metal_Locker_F";
 		};
 	};
 	class Connections

@@ -1,6 +1,8 @@
 
 #define FACTION opfor
 
+BEGIN_LOADOUTS;
+
 
 
 

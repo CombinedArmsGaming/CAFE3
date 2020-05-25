@@ -53,74 +53,11 @@ _unit setVariable ["f_var_assignGear_Faction", _faction, true];
 
 // ====================================================================================
 
-// DECLARE VARIABLES AND FUNCTIONS 2
-// Used by the faction-specific scripts
-
-// ====================================================================================
-
 DEBUG_FORMAT1_CHAT("DEBUG (assignGear.sqf): unit faction: %1",_faction);
 
 // ====================================================================================
 
-// GEAR: BLUFOR > NATO
-// The following block of code executes only if the unit is in a NATO slot; it
-// automatically includes a file which contains the appropriate equipment data.
-
-_gearVariant = _faction;
-
-
-if (_faction in ["blu_f", "blu_t_f", "blu_ctrg_f", "blu_gen_f"]) then
-{
-    _gearVariant = "blufor";
-};
-
-
-// ====================================================================================
-
-// GEAR: OPFOR > CSAT
-// The following block of code executes only if the unit is in a CSAT slot; it
-// automatically includes a file which contains the appropriate equipment data.
-
-if (_faction in ["opf_f", "opf_t_f"]) then
-{
-	_gearVariant = "opfor";
-};
-
-// ====================================================================================
-
-// GEAR: INDEPEDENT > AAF
-// The following block of code executes only if the unit is in a AAF slot; it
-// automatically includes a file which contains the appropriate equipment data.
-
-if (_faction in ["ind_f", "ind_c_f"]) then
-{
-    _gearVariant = "indfor";
-};
-
-// ====================================================================================
-
-// GEAR: FIA
-// The following block of code executes only if the unit is in a FIA slot (any faction); it
-// automatically includes a file which contains the appropriate equipment data.
-
-if (_faction in ["blu_g_f","opf_g_f","ind_g_f"]) then
-{
-    _gearVariant = "guerrilla";
-};
-
-
-// ====================================================================================
-
-// GEAR: CIVILIAN
-// The following block of code executes only if the unit is in a civilian slot; it
-// automatically includes a file which contains the appropriate equipment data.
-
-if (_faction in ["civ_f","civ_idap_f"]) then
-{
-    _gearVariant = "civilian";
-};
-
-// ====================================================================================
+_gearVariant = [_faction] call f_fnc_factionToGearVariant;
 
 if (_gearVariant == "") exitWith {};
 
