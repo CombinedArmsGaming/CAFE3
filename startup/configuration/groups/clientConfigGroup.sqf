@@ -5,13 +5,13 @@
 #include "..\internals\debug.sqf"
 
 // Map-click actions
-#include "..\mapClick.sqf"
+#include "..\..\..\configuration\mapClick.sqf"
 
 // Debug settings
-#include "..\safeStart.sqf"
+#include "..\..\..\configuration\safeStart.sqf"
 
 // AI Caching settings
-#include "..\aiCache.sqf"
+#include "..\..\..\configuration\aiCache.sqf"
 
 // Gearscript2
 #include "..\internals\gearScript.sqf"
@@ -20,10 +20,10 @@
 #include "..\internals\lootBox.sqf"
 
 // NPC spawn scripts
-#include "..\spawnNpcs.sqf"
+#include "..\..\..\configuration\spawnNpcs.sqf"
 
 // Player respawn
-#include "..\respawn.sqf"
+#include "..\..\..\configuration\respawn.sqf"
 
 // Respawn waves settings
-#include "..\respawnWaves.sqf"
+#include "..\..\..\configuration\respawnWaves.sqf"

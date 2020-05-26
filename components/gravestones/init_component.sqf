@@ -9,7 +9,7 @@ if (isServer) then
     DEBUG_PRINT_LOG("initting gravestones")
 
     _gravestoneType = "Box_Syndicate_Ammo_F";
-	
+
 	[] spawn f_fnc_initGravestoneManager;
 
     if (!isNil "gravestone" and {typeName gravestone == "OBJECT"}) then
@@ -22,7 +22,7 @@ if (isServer) then
         deleteVehicle gravestone;
     };
 
-    missionNamespace setVariable ["f_var_gravestoneTypeName", _gravestoneType, true];  
+    missionNamespace setVariable ["f_var_gravestoneTypeName", _gravestoneType, true];
 
 };
 
@@ -67,7 +67,7 @@ if (hasInterface) then
 };
 
 
-#include "..\..\configuration\internals\obituaries.sqf";
+#include "..\..\startup\configuration\internals\obituaries.sqf";
 
 
 #else

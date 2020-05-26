@@ -5,10 +5,10 @@
 #include "..\internals\debug.sqf"
 
 // AI Caching settings
-#include "..\aiCache.sqf"
+#include "..\..\..\configuration\aiCache.sqf"
 
 // Respawn waves settings
-#include "..\respawnWaves.sqf"
+#include "..\..\..\configuration\respawnWaves.sqf"
 
 // Gearscript2
 #include "..\internals\gearScript.sqf"
@@ -17,8 +17,8 @@
 #include "..\internals\lootBox.sqf"
 
 // NPC spawn scripts
-#include "..\spawnNpcs.sqf"
+#include "..\..\..\configuration\spawnNpcs.sqf"
 
 // Squad markers
-#include "..\squadMarkers.hpp"
+#include "..\..\..\configuration\squadMarkers.hpp"
 #include "..\internals\squadMarkers.sqf"

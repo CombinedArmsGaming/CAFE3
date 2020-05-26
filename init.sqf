@@ -21,7 +21,7 @@ enableSentences false;
 // Thanks to http://killzonekid.com/arma-scripting-tutorials-mission-root/
 MISSION_ROOT = call
 {
-    private "_arr"; 
+    private "_arr";
     _arr = toArray str missionConfigFile;
     _arr resize (count _arr - 15);
     toString _arr
@@ -34,12 +34,12 @@ DEBUG_FORMAT2_LOG("Is CLIENT? %1.  Is SERVER? %2.",hasInterface,isServer)
 if (hasInterface) then
 {
 	DEBUG_PRINT_LOG("Using CLIENT config and startup groups.")
-	
+
 	#include "customStartup_client.sqf"
 
-	#include "configuration\groups\clientConfigGroup.sqf"
+	#include "startup\configuration\groups\clientConfigGroup.sqf"
 
-	#include "startup\groups\clientStartupGroup.sqf"
+	#include "startup\components\groups\clientStartupGroup.sqf"
 
 	missionNamespace setVariable ["f_var_initClient", true, true];
 
@@ -51,9 +51,9 @@ if (isServer) then
 
 	#include "customStartup_server.sqf"
 
-	#include "configuration\groups\serverConfigGroup.sqf"
+	#include "startup\configuration\groups\serverConfigGroup.sqf"
 
-	#include "startup\groups\serverStartupGroup.sqf"
+	#include "startup\components\groups\serverStartupGroup.sqf"
 
 	missionNamespace setVariable ["f_var_initServer", true, true];
 

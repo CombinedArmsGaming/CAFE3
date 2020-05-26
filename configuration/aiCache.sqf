@@ -1,4 +1,4 @@
-#include "internals\configAliases.hpp"
+#include "..\startup\configuration\internals\configAliases.hpp"
 
 // Define parameters
 
