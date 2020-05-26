@@ -18,13 +18,9 @@ if (isNil "f_var_mapClickSupplyDrop_Used") then {f_var_mapClickSupplyDrop_Used =
 
 // ====================================================================================
 
-// SET KEY VARIABLES
-// Setup the localized strings for the various stages of the component
-// Depending on the setting of the height variable the strings either use the SupplyDrop or the HALO option.
-
-f_var_mapClickSupplyDrop_textAction = localize "STR_f_mapClickSupplyDropAction";
-f_var_mapClickSupplyDrop_textDone = localize "STR_f_mapClickSupplyDropDone";
-f_var_mapClickSupplyDrop_textSelect = localize "STR_f_mapClickSupplyDropSelect";
+f_var_mapClickSupplyDrop_textAction = "Supply Drop";
+f_var_mapClickSupplyDrop_textDone = "Supplies have been dropped at the selected location.";
+f_var_mapClickSupplyDrop_textSelect = "Click on the map to set Supply Drop coordinates.";
 
 // ====================================================================================
 

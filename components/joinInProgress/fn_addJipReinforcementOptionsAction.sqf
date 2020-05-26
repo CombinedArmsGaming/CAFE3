@@ -11,7 +11,7 @@ private ["_unit","_textAction"];
 // SET KEY VARIABLES
 
 _unit = _this select 0;
-_textAction = localize "STR_f_JIP_reinforcementOptionsAction";
+_textAction = "Select Reinforcement Options";
 
 // PREVENT THE JIP AI UNITS FROM FOLLOWING THEIR LEADER/MOVING AWAY
 _unit disableAI "move";
