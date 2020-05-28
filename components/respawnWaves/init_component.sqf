@@ -1,24 +1,47 @@
 #include "macros.hpp"
+#include "..\..\squadmarker_macros.hpp"
 
 
 if (isServer) then
 {
-	if (isNil 'f_var_respawnMarker') then
 	{
-		DEBUG_PRINT_LOG("[RespawnWaves] f_var_respawnMarker is nil, setting it to respawn_west by default.")
-		missionNamespace setVariable ["f_var_respawnMarker", "respawn_west", true];
-	};
+		_markerName = (format ["respawn_%1", toLower str _x]);
 
-	if (getMarkerColor f_var_respawnMarker == "") then
+		if ((getMarkerColor _markerName) isEqualTo "") then
+		{
+			DEBUG_FORMAT1_LOG("[RespawnWaves] The respawn marker '%1' does not exist, creating it automatically at origin.",_markerName)
+			createMarker [_markerName, [0,0,0]];
+		};
+
+    } forEach [west, east, independent, civilian];
+
+
+	// Hey guess what?  If you mark a group as "do not delete" and then all the units leave the group, it gets deleted anyway.  cool.
+	[] spawn
 	{
-		DEBUG_PRINT_LOG("[RespawnWaves] f_var_respawnMarker doesn't exist, creating it at a random player position.")
-		_playerPos = getPos (selectRandom (allPlayers - entities "HeadlessClient_F"));
-		createMarker [f_var_respawnMarker, _playerPos];
-	};
+		waitUntil
+		{
+			{
+				_groupVar = format ["f_group_spectators_%1", toLower str _x];
 
-	_pos = getMarkerPos f_var_respawnMarker;
-	_respawnObject = createSimpleObject ["Static", _pos];
-	missionNamespace setVariable ["f_respawnWavesLocation", _respawnObject, true];
+		        if (isNull (missionNamespace getVariable [_groupVar, grpNull])) then
+		        {
+					DEBUG_FORMAT1_LOG("[RespawnWaves] Creating spectator group '%1'.",_groupVar)
+		            _group = createGroup [_x, false];
+					_group setGroupIdGlobal [format ["Spectators", _x]];
+					_group deleteGroupWhenEmpty false;
+					HIDE_SQUAD_DIRECT(_group);
+
+		            missionNamespace setVariable [_groupVar, _group, true];
+		        };
+
+			} forEach [west, east, independent, civilian];
+
+			false
+
+		};
+
+	};
 
 };
 
@@ -28,7 +51,7 @@ if (hasInterface) then
 
 	[] spawn
 	{
-		while {true} do
+		waitUntil
 		{
 			_canRespawn = player getVariable ["f_var_canUseRespawnMenu", false];
 			if !(_canRespawn) then { _canRespawn = (rank player == 'COLONEL') };
@@ -36,12 +59,15 @@ if (hasInterface) then
 
 			player setVariable ["f_var_canUseRespawnMenu", _canRespawn];
 
-			if !(player getVariable ["f_var_hasRespawnMenuAction", false]) then
+			if !(player getVariable ["f_var_hasRespawnMenuAction", false]) exitWith
 			{
 				[] call f_fnc_aceRespawnMenuAction;
+				true
 			};
 
 			sleep 5;
+
+			false
 
 		};
 

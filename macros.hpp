@@ -36,6 +36,7 @@
 // General utility
 #define CONCAT(s1,s2) s1##s2
 #define CONCAT3(s1,s2,s3) s1##s2##s3
+#define CONCAT4(s1,s2,s3,s4) s1##s2##s3##s4
 #define CURLY(VARIABLE) {##VARIABLE##}
 #define SQUARE(VARIABLE) [##VARIABLE##]
 #define STRING(VARIABLE) #VARIABLE

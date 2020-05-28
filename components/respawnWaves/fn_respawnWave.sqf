@@ -3,30 +3,46 @@
 CLIENT_ONLY;
 
 
-if (f_var_respawnMode == 0) exitWith
+_side = side player;
+
+if (RESPAWN_MODE(_side) == RESPAWN_MODE_DISABLED) exitWith
 {
-    systemChat "HQ to command: Reinforcements are not available for this mission!";
+    systemChat "Reinforcements are not available for this mission!";
 };
 
-if (f_var_respawnWavesAmount <= 0) exitWith
+if (RESPAWN_WAVES(_side) <= 0) exitWith
 {
-    systemChat "HQ to command: We are out of reinforcement waves!";
+    systemChat format ["%1 is out of reinforcement waves!", toUpper (str _side)];
 };
 
-if (!ca_respawnready) exitWith
+if !(RESPAWN_WAVE_READY(_side)) exitWith
 {
-    systemChat "HQ to command: Reinforcements are not possible at this time!";
-};
-
-
-_spawnAt = switch (f_var_respawnMode) do
-{
-    case 1: {getMarkerPos f_var_respawnMarker};
-    case 2: {player};
-
-    default {getMarkerPos f_var_respawnMarker};
-
+    systemChat "Reinforcements are not possible at this time!";
 };
 
 
-[_spawnAt] remoteExec ["f_fnc_respawnWaveServer", 2];
+_spawnAt = switch (RESPAWN_MODE(_side)) do
+{
+    case RESPAWN_MODE_BASE: {RESPAWN_ENTITY(_side)};
+    case RESPAWN_MODE_COMMANDER:
+    {
+        if ((groupId group player) isEqualTo "Spectators") then
+        {
+            RESPAWN_ENTITY(_side)
+        }
+        else
+        {
+            player
+        }
+
+    };
+
+};
+
+if (isNull _spawnAt) then
+{
+    _spawnAt = RESPAWN_MARKER_POS(_side);
+};
+
+
+[_spawnAt, _side] remoteExec ["f_fnc_respawnWaveServer", 2];

@@ -4,8 +4,8 @@ _tryTeleport =
 
     _onTeleportFailure =
     {
-        DEBUG_FORMAT1_LOG("[RespawnWaves] Failed to teleport to location, defaulting to location of %1.",f_var_respawnMarker)
-        _basePos = getMarkerPos f_var_respawnMarker;
+        DEBUG_FORMAT1_LOG("[RespawnWaves] Failed to teleport to location, defaulting to location of %1.",RESPAWN_MARKER_POS((side player)))
+        _basePos = RESPAWN_MARKER_POS((side player));
         [player, _basePos] spawn f_fnc_teleportPlayer;
     };
 
