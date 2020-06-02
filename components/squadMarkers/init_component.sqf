@@ -16,7 +16,6 @@ CLIENT_ONLY;
 
 #ifdef ENABLE_SQUAD_MARKERS
 
-[] spawn f_fnc_aceSquadMarkerMenuAction;
 [] call f_fnc_beginSquadMarkers;
 
 #else

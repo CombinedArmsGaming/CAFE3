@@ -10,3 +10,4 @@
 #include "components\zeus_ui\config\zeusUI.hpp"
 
 #include "components\squadMarkers\ui\squadMarkerDialog.hpp"
+#include "components\joinInProgress\ui\groupPickerDialog.hpp"

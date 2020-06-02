@@ -480,6 +480,11 @@ class Extended_InitPost_EventHandlers
             init = "_this call f_fnc_addInventoryActionToClass";
         };
 
+		class addSquadManagerActions
+		{
+            init = "_this call f_fnc_addSquadManagerActionsToClass";
+        };
+
     };
 
 #endif

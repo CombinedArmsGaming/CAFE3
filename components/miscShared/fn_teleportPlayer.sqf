@@ -2,6 +2,8 @@
 #include "macros.hpp"
 RUN_AS_ASYNC(f_fnc_teleportPlayer);
 
+// 2020-06-02 TODO :: Add "loud/quiet" parameter to provide feedback to the user / target depending on current state.
+
 params ["_unit", "_posAtlOrObject", ["_onFailure", []]];
 
 
@@ -33,6 +35,8 @@ if (_object isKindOf "Man") exitWith
     _vehicle = objectParent _object;
     _success = false;
 
+    _timeOut = time + 30;
+
     waitUntil
     {
         if (!alive _object) exitWith {_success = false; true};
@@ -51,7 +55,10 @@ if (_object isKindOf "Man") exitWith
         if (_ret == 0) exitWith {_success = true; true};
         if (_ret == 2) exitWith {_success = false; true};
 
+        if (time > _timeOut) exitWith {_success = false; true};
+
         sleep 1;
+        false
 
     };
 
@@ -66,6 +73,7 @@ if (_object isKindOf "Man") exitWith
 
 
 _success = false;
+_timeOut = time + 30;
 
 waitUntil
 {
@@ -75,7 +83,10 @@ waitUntil
     if (_ret == 0) exitWith {_success = true; true};
     if (_ret == 2) exitWith {_success = false; true};
 
+    if (time > _timeOut) exitWith {_success = false; true};
+
     sleep 1;
+    false
 
 };
 

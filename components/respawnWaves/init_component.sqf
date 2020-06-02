@@ -53,17 +53,14 @@ if (hasInterface) then
 	{
 		waitUntil
 		{
-			_canRespawn = player getVariable ["f_var_canUseRespawnMenu", false];
-			if !(_canRespawn) then { _canRespawn = (rank player == 'COLONEL') };
-			if !(_canRespawn) then { _canRespawn = (serverCommandAvailable '#kick') };
+			_canRespawn = (rank player == 'COLONEL');
+
+			if !(_canRespawn) then
+			{
+				_canRespawn = (serverCommandAvailable '#kick')
+			};
 
 			player setVariable ["f_var_canUseRespawnMenu", _canRespawn];
-
-			if !(player getVariable ["f_var_hasRespawnMenuAction", false]) exitWith
-			{
-				[] call f_fnc_aceRespawnMenuAction;
-				true
-			};
 
 			sleep 5;
 

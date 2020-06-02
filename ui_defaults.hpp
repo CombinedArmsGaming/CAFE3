@@ -40,7 +40,7 @@ class CA2_DefaultListBox : RscListBox
 	period = 1.2;
 	rowHeight = 0;
 	shadow = 0;
-	sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 	soundSelect[] = {"\A3\ui_f\data\sound\RscListbox\soundSelect",0.09,1};
 	style = 16;
 	tooltipColorBox[] = {1,1,1,1};
@@ -62,7 +62,13 @@ class CA2_DefaultEdit : RscEdit
 	canModify = 1;
 	colorBackground[] = {0,0,0,0};
 	colorDisabled[] = {1,1,1,0.25};
-	colorSelection[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.13])","(profilenamespace getvariable ['GUI_BCG_RGB_G',0.54])","(profilenamespace getvariable ['GUI_BCG_RGB_B',0.21])",1};
+	colorSelection[] =
+	{
+		"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.13])",
+		"(profilenamespace getvariable ['GUI_BCG_RGB_G',0.54])",
+		"(profilenamespace getvariable ['GUI_BCG_RGB_B',0.21])",
+		1
+	};
 	colorText[] = {0.95,0.95,0.95,1};
 	deletable = 0;
 	fade = 0;
@@ -70,7 +76,7 @@ class CA2_DefaultEdit : RscEdit
 	h = 0.04;
 	shadow = 2;
 	size = 0.2;
-	sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 	style = "0x00 + 0x40";
 	text = "";
 	tooltipColorBox[] = {1,1,1,1};
@@ -107,7 +113,7 @@ class CA2_DefaultButton : RscButton
     offsetX = 0;
     offsetY = 0;
     shadow = 2;
-    sizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+    sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
     soundClick[] = {"\A3\ui_f\data\sound\RscButton\soundClick",0.09,1};
     soundEnter[] = {"\A3\ui_f\data\sound\RscButton\soundEnter",0.09,1};
     soundEscape[] = {"\A3\ui_f\data\sound\RscButton\soundEscape",0.09,1};
@@ -138,7 +144,7 @@ class CA2_DefaultText : RscText
     idc = -1;
     linespacing = 1;
     shadow = 1;
-    SizeEx = "(			(			(			((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
+    SizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
     style = 0;
     text = "";
     tooltipColorBox[] = {1,1,1,1};
@@ -149,4 +155,37 @@ class CA2_DefaultText : RscText
     x = 0;
     y = 0;
 
+};
+
+
+
+
+class CA2_DefaultTextCheckBox
+{
+	idc = -1;
+	type = 7;
+	style = 0;
+	x = "0.375 * safezoneW + safezoneX";
+	y = "0.36 * safezoneH + safezoneY";
+	w = "0.025 * safezoneW";
+	h = "0.04 * safezoneH";
+	colorText[] = {1,0,0,1};
+	color[] = {0,0,0,0};
+	colorBackground[] = {0,0,0,0};
+    colorBackgroundActive[] = {0,0,0,1};
+	colorTextSelect[] = {0,0.8.0.1};
+	colorSelectedBg[] = {0,0,0,0.5};
+	colorSelect[] = {0,0,0,1};
+	colorTextDisable[] = {0.4,0.4,0.4,1};
+	colorDisable[] = {0.4,0.4,0.4,1};
+    colorFocused[] = {0,0,0,1};
+	tooltipColorText[] = {1,1,1,1};
+	tooltipColorBox[] = {1,1,1,1};
+	tooltipColorShade[] = {0,0,0,0.65};
+	font = "RobotoCondensed";
+	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 0.8)";
+	rows = 1;
+	columns = 1;
+	strings[] = {"UNCHECKED"};
+	checked_strings[] = {"CHECKED"};
 };
