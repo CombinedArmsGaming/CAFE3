@@ -4,5 +4,4 @@ class respawnWaves
     class respawnWave{};
     class respawnWaveServer{};
     class respawnDialogSupport{};
-    class allowRespawnMenu{};
 };

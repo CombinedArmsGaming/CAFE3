@@ -1,18 +1,24 @@
+#include "macros.hpp"
+
 // CA - Filling listbox for the ca marker management system.
 _alreadyinlist = [];
 
 while {true} do
 {
     disableSerialization;
-    
+
     _display = findDisplay 1996;
     _lb1ctrl = _display displayCtrl 1500;
 
-    _specplayers = [] call ace_spectator_fnc_players;
+    _side = side player;
+    _groupVar = toLower format ["f_group_spectators_%1", _side];
+    _specGroup = missionNamespace getVariable [_groupVar, grpNull];
+
+    _specPlayers = (units _specGroup);
     _listplayers = _specplayers - _alreadyinlist;
 
     {
-         _alreadyinlist pushback _x;
+         _alreadyinlist pushBackUnique _x;
          _lb1ctrl lbAdd (name _x);
          _lb1ctrl lbSetData [_forEachIndex, (name _x)];
 
@@ -22,20 +28,36 @@ while {true} do
     _noplayers = _display displayCtrl 1005;
     _timer = _display displayCtrl 1006;
 
+    _waves ctrlSetText ('Waves left: ' + str RESPAWN_WAVES(_side));
+    _noplayers ctrlSetText (str (count _specPlayers) + ' players are waiting.');
 
-    _waves ctrlSetText ('Waves left:'+ str(f_var_respawnWavesAmount));
-    _noplayers ctrlSetText (str(count _specplayers) + ' players in spectate');
+    _time = (RESPAWN_WAVE_DURATION(_side) + RESPAWN_WAVE_COOLDOWN(_side) + LAST_RESPAWN_TIME(_side) - time);
 
-    _time = (f_var_waveTime + f_var_waveCooldown + ca_respawntime - time);
-
-    if ( 0 > _time) then
+    if (0 > _time) then
     {
         _timer ctrlSetText ('Respawn wave available');
     }
     else
     {
-        _timer ctrlSetText (str(round _time) + ' Seconds until wave available');
+        // 2020-06-06 TODO :: Split out into helper func if needed elsewhere.
+        _timeString = "";
+
+        if (_time > (60*60)) then
+        {
+            _timeString = format ["%1h %2m %3s", floor (_time / (60*60)), floor ((_time / 60) mod 60), floor (_time mod 60)];
+        };
+        if ((_timeString isEqualTo "") and {_time > 60}) then
+        {
+            _timeString = format ["%1m %2s", floor ((_time / 60) mod 60), floor (_time mod 60)];
+        }
+        else
+        {
+            _timeString = format ["%1s", floor _time];
+        };
+
+        _timer ctrlSetText (_timeString + ' until wave available');
+
     };
 
-    sleep 0.9;
+    uiSleep 1;
 };
