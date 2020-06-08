@@ -55,19 +55,19 @@ _disableCondition =
 
 _onCommander =
 {
-    [(_this select 0), (_this select 1)] call f_fnc_designateEffectiveCommander;
+    [(_this select 0), (_this select 1)] remoteExec ["f_fnc_designateEffectiveCommander", 2];
 };
 
 
 _onEnable =
 {
-    [(_this select 0)] spawn f_fnc_activateAiDriver;
+    [(_this select 0)] remoteExec ["f_fnc_activateAiDriver", 2];
 };
 
 
 _onDisable =
 {
-    [(_this select 0)] spawn f_fnc_deactivateAiDriver;
+    [(_this select 0)] remoteExec ["f_fnc_deactivateAiDriver", 2];
 };
 
 
