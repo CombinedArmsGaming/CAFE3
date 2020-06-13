@@ -6,6 +6,7 @@ class gearScript
     class applyLoadoutModifications{};
     class factionToGearVariant{};
     class createLoadoutLocker{};
+    class addInsigniaMonitor{};
 };
 
 class gearScriptCrates

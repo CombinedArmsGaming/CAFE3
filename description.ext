@@ -2,10 +2,9 @@
 #include "startup\configuration\internals\configMacros.hpp"
 #include "startup\configuration\internals\configClasses.hpp"
 
+
 // ============================================================================================
 
-// F3 - Mission Header
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 
 class Header
 {
@@ -24,27 +23,27 @@ class Header
 	maxPlayers = 100;
 };
 
+
 // ============================================================================================
 
-// F3 - Loading Screen
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 
 onLoadName = "*** Insert mission name here. ***";
 onLoadMission = "Made with the CA2 Framework";
 author = "*** Insert mission author name here. ***";
 loadScreen = "ca_logo_large.jpg";
 
+
 // ============================================================================================
 
-// F3 - Debug Console
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 
 enableDebugConsole = 1;
 
 // F3 - Debug variable, needs to exist pre-init.
 #include "startup\configuration\internals\debug.sqf"
 
+
 // ============================================================================================
+
 
 // F3 - Respawn Settings
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
@@ -61,22 +60,17 @@ respawnOnStart = 0;
 respawnTemplates[] = {"respawnWaves"};	// remove "f_spectator" when using respawn.
 respawnDialog = 0;
 
-// ============================================================================================
 
-// CA - RotorLib Simulation Setting
-// 0 - default: player options, 1 - all on, 2 - all off.
+// ============================================================================================
 
 forceRotorLibSimulation = 0;
 
 // ============================================================================================
 
-// CA - Disable playableunits AI
-
 disabledAI = true;
 
 // ============================================================================================
 
-// CA Remove corpse manager
 
 #ifdef ENABLE_GRAVESTONE_CORPSE_MANAGER
 
@@ -88,13 +82,12 @@ corpseManagerMode = 1;
 
 #endif
 
-
 corpseLimit = 15;
 corpseRemovalMinTime = 60; //seconds
 corpseRemovalMaxTime = 300; //seconds
 
+
 // ============================================================================================
-// F3 - Start of Notifications block.
 
 
 class cfgNotifications
@@ -131,6 +124,7 @@ class cfgNotifications
 		duration = 10;
 		priority = 0;
 	};
+
 	class SafeStartMissionStarting
 	{
 		title = "SAFE START";
@@ -141,7 +135,8 @@ class cfgNotifications
 	};
 
 	// Notification for the F3 Mapclick Teleport component
-	class MapClickTeleport {
+	class MapClickTeleport
+	{
 		title= "NOTE";
 		description= "%1";
 		iconPicture = "\A3\ui_f\data\map\markers\military\start_ca.paa";
@@ -150,7 +145,8 @@ class cfgNotifications
 	};
 
 	// Notification for the F3 Mapclick Supply Drop component
-	class MapClickSupplyDrop {
+	class MapClickSupplyDrop
+	{
 		title= "NOTE";
 		description= "%1";
 		iconPicture = "\A3\ui_f\data\map\markers\military\start_ca.paa";
@@ -159,22 +155,19 @@ class cfgNotifications
 	};
 
 	// Notification for the F3 JIP Component
-	class JIP {
+	class JIP
+	{
 		title= "REINFORCEMENTS";
 		description= "%1";
 		iconPicture = "\A3\ui_f\data\map\markers\military\flag_ca.paa";
 		duration = 3;
 		priority = 5;
 	};
+
 };
 
 
-
-
 // ============================================================================================
-
-// F3 - Briefing Template
-// Credits: BIS - Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 
 
 class CfgDebriefing
@@ -241,10 +234,8 @@ class CfgDebriefing
 
 };
 
-// ============================================================================================
 
-// F3 - Respawn Templates
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
+// ============================================================================================
 
 
 class CfgRespawnTemplates
@@ -271,26 +262,7 @@ class CfgRespawnTemplates
 };
 
 
-
-
 // ============================================================================================
-
-// F3 - Menu components
-// DO NOT REMOVE OR DISABLE THIS BLOCK OF CODE
-
-// Menu components for the JIP Menu
-// #include "f\JIP\f_JIP_kitpicker.h"
-// #include "f\JIP\f_JIP_grppicker.h"
-
-// Menu components for the Spectator Script
-// #include "f\spect\config.hpp"
-
-// ============================================================================================
-
-// F3 - Functions
-// DO NOT REMOVE OR DISABLE THIS BLOCK OF CODE
-
-
 
 
 class Params
@@ -309,70 +281,28 @@ class CfgFunctions
 
 
 
-
-/*
-class CfgFunctions
+class CfgUnitInsignia
 {
-	class F // Defines the "owner"
-	{
-		class mpEnd
-		{
-			file = "f\mpEnd";
-			class mpEnd{};
-			class mpEndReceiver{};
-		};
-		class mapClickTeleport
-		{
-			file = "f\mapClickTeleport";
-			class mapClickTeleportUnit{};
-			class mapClickTeleportGroup{};
-		};
-		class mapClickSupplyDrop
-		{
-			file = "f\mapClickSupplyDrop";
-			class mapClickSupplyDropUnit{};
-		};
-		#include "f\simplewoundingsystem\config.hpp"
-		#include "f\spect\functions.hpp"
-
-	};
-
+	#include "res\insignia\defines.hpp"
 };
-*/
 
 
 // ============================================================================================
 
-// F3 - Custom Insignia
-
-/*
-class CfgUnitInsignia {
-	#include "f\assignGear\insignia\define.hpp"
-};
-*/
-
-
-
 
 // Adds to the debriefing possible kills and possible reasons for deaths as well, so after an operation don't go straight to mission select. Its the fourth tab after score.
-class CfgDebriefingSections {
-		class acex_killTracker {
-				title = "Acex Killed Events";
-				variable = "acex_killTracker_outputText";
-		};
+class CfgDebriefingSections
+{
+	class acex_killTracker
+	{
+			title = "Acex Killed Events";
+			variable = "acex_killTracker_outputText";
+	};
+
 };
 
 
-
-
-// Makes splendid camera still show chat after quitting splendid camera.
-class Extended_DisplayUnload_EventHandlers {
-    class RscDisplayCamera {
-        ca_fixcamera = "showChat true";
-    };
-};
-
-
+// ============================================================================================
 
 
 // Custom Sounds - Be advised, if you use a cfgSound in a mission,
@@ -394,6 +324,11 @@ class CfgSounds
 	};
 };
 */
+
+
+// ============================================================================================
+
+
 // Custom Music - Can generally be stopped, but plays globally. Cannot be played in 3D
 // from an object but is affected by the Music volume slider.
 /*
@@ -415,11 +350,25 @@ class CfgMusic
 */
 
 
+// ============================================================================================
 
 
 #include "dialogs.hpp"
 
 
+
+// Makes splendid camera still show chat after quitting splendid camera.
+class Extended_DisplayUnload_EventHandlers
+{
+    class RscDisplayCamera
+	{
+        ca_fixcamera = "showChat true";
+    };
+
+};
+
+
+// ============================================================================================
 
 
 class Extended_Killed_EventHandlers
@@ -455,7 +404,7 @@ class Extended_Killed_EventHandlers
 };
 
 
-
+// ============================================================================================
 
 
 class Extended_InitPost_EventHandlers

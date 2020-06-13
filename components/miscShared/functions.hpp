@@ -15,4 +15,5 @@ class miscShared
     class attachKeepOrient{};
     class activatePlayer{};
     class radioAlarm{};
+    class applyInsignia{};
 };
