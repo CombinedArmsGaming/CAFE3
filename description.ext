@@ -420,14 +420,19 @@ class Extended_InitPost_EventHandlers
 #endif
 
 
-#ifdef ENABLE_INVENTORY_ACTION
+
 
     class CAManBase
 	{
+
+#ifdef ENABLE_INVENTORY_ACTION
+
         class addInventoryAction
 		{
             init = "_this call f_fnc_addInventoryActionToClass";
         };
+
+#endif
 
 		class addSquadManagerActions
 		{
@@ -436,21 +441,31 @@ class Extended_InitPost_EventHandlers
 
     };
 
-#endif
 
 
-#ifdef ENABLE_UNFLIP_ACTION
+
+
 
 	class LandVehicle
 	{
+
+#ifdef ENABLE_UNFLIP_ACTION
+
 		class addUnflipAction
 		{
 			init = "_this call f_fnc_addUnflipActionToClass";
 		};
 
+#endif
+
+		class addAiDriverAction
+		{
+			init = "_this call f_fnc_addAiDriverActions";
+		};
+
 	};
 
-#endif
+
 
 
 /*

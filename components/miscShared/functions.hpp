@@ -15,5 +15,6 @@ class miscShared
     class attachKeepOrient{};
     class activatePlayer{};
     class radioAlarm{};
+	class giveUnitGodmode{};
     class applyInsignia{};
 };

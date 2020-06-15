@@ -46,14 +46,14 @@
 [/] If player spawns high enough in the air, turn them into a skydiver (and back).
 [/] Find a better way to detect killer than ace_medical_lastDamageSource: it's not very good. entity killed event?
 [/] Face/name translator - allow configuration of faces/names per side.
-[/] FT markers: see how far frequency can be increased or use lerp/slerp
+[x] FT markers: see how far frequency can be increased or use lerp/slerp
 [/] Detect if gravestone is a container and assign dummy container to it if not.
-[/] Change zeus spawner definitions to a more declarative format.
+[x] Change zeus spawner definitions to a more declarative format.
 [/] All other ca_* vars in respawnWaves config.
 [/] Add more configurable params to params screen (similar to medical toggle).
-[/] Add config file for radio lists to configuration folder.
+[x] Add config file for radio lists to configuration folder.
 [/] Add animations to ACE actions
 [/] AI caching: See if there's any extra things to do to cached units to improve perf savings.
 [/] AI caching: Add flag to treat players individually
 [ ] Test all in real MP env.
-[ ] Re-introduce medical config via CBA.
+[x] Re-introduce medical config via CBA.

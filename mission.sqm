@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={161.89671,23.408808,302.35284};
-		dir[]={0.95442069,-0.28677988,-0.082773104};
-		up[]={0.28571329,0.95799446,-0.024779016};
-		aside[]={-0.086402088,-8.6554792e-008,-0.99626982};
+		pos[]={225.80508,14.031429,256.74365};
+		dir[]={-0.56865865,-0.80993515,0.1439116};
+		up[]={-0.78518629,0.58650678,0.19870856};
+		aside[]={0.24534778,-7.3341653e-008,0.96948093};
 	};
 };
 binarizationWanted=0;
@@ -7253,6 +7253,77 @@ class Mission
 			};
 			id=1345;
 			type="Metal_Locker_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ace_arsenal_attribute";
+					expression="if (!is3DEN) then {[_this, +_value] call ace_arsenal_fnc_attributeInit}";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"ARRAY"
+								};
+							};
+							class value
+							{
+								items=2;
+								class Item0
+								{
+									class data
+									{
+										class type
+										{
+											type[]=
+											{
+												"ARRAY"
+											};
+										};
+										class value
+										{
+											items=1;
+											class Item0
+											{
+												class data
+												{
+													class type
+													{
+														type[]=
+														{
+															"STRING"
+														};
+													};
+													value="RyanZombiesAntiVirusTemporary_Item";
+												};
+											};
+										};
+									};
+								};
+								class Item1
+								{
+									class data
+									{
+										class type
+										{
+											type[]=
+											{
+												"SCALAR"
+											};
+										};
+										value=0;
+									};
+								};
+							};
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 		class Item32
 		{
