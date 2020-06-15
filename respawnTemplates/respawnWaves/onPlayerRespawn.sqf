@@ -10,7 +10,6 @@ CLIENT_ONLY;
 LOCAL_ONLY(_unit);
 
 #include "..\parts\tryTeleport.sqf"
-#include "..\parts\handleJipMenu.sqf"
 #include "..\parts\applyOldLoadout.sqf"
 
 
@@ -18,10 +17,14 @@ LOCAL_ONLY(_unit);
 
 _doRespawn =
 {
-    params ["_unit", "_corpse", "_doJipMenu"];
+    params ["_unit", "_corpse", "_isJip"];
     [_unit, _corpse] spawn _applyOldLoadout;
     [false] call ace_spectator_fnc_setSpectator;
-    if (_doJipMenu) then { [] spawn _handleJipMenu };
+
+    if ((_isJip and IS_TRUE(f_var_JIPTeleport)) or ((!_isJip) and IS_TRUE(f_var_RespawnTeleport))) then
+    {
+        player setVariable ["f_var_mayTeleportToGroup", true, true];
+    };
 
     #include "..\parts\zeusAdditions_onRespawn.sqf"
 
@@ -54,7 +57,7 @@ DEBUG_FORMAT1_LOG("[RespawnWaves] Player has been killed?: %1",_hasBeenKilled)
 if (!_hasBeenKilled) exitWith
 {
     DEBUG_PRINT_LOG("[RespawnWaves] Player was not killed, handling as JIP...")
-    [_unit, _corpse, f_var_JIP_JIPMenu] call _doRespawn;
+    [_unit, _corpse, true] call _doRespawn;
 
 };
 
