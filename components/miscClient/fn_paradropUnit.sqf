@@ -19,12 +19,6 @@ end of file add:
 [_unit] call f_fnc_parachute;
 In future this is done in ca\respawn\ca_onDeath.sqf i just cannot be asked to update this info atm.
 
-Remember to change the settings for respawn to in init.sqf!
-f_var_JIP_JIPMenu = false;		// Do JIP players get the JIP menu?
-f_var_JIP_RespawnMenu = false;	// Do respawning players get the JIP menu?
-f_var_JIP_RemoveCorpse = false;	// Remove the old corpse of respawning players?
-f_var_JIP_Spectate = false;		// JIP players go into spectate straight away?
-
 
 */
 

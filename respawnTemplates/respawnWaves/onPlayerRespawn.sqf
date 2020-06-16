@@ -125,11 +125,6 @@ if (_hasBeenKilled) then
     [_unit, true] call f_fnc_activatePlayer;
     [false] call ace_spectator_fnc_setSpectator;
 
-    if (f_var_JIP_RespawnMenu) then
-    {
-        [] spawn _handleJipMenu;
-    };
-
     #include "..\parts\zeusAdditions_onRespawn.sqf"
 
     // [_unit] call f_fnc_paradropUnit;

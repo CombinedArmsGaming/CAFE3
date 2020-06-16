@@ -29,7 +29,7 @@
     SET_RESPAWN_WAVE_SQUADS(SIDE,SQUADS)
     Sets a list of squad names that reinforcements will be placed into.  Each squad name will be used in list-order.
     If squad names run out, all future reinforcements will be placed in a default reinforcement squad.
-    For squad members to rejoin their squads, they can either meet-up or use the JIP menu (ensure that 'f_var_JIP_RespawnMenu = true;' inside respawn.sqf).
+    For squad members to rejoin their squads, they can either meet-up or use the JIP menu (ensure that 'f_var_RespawnTeleport = true;' inside respawn.sqf).
 
     SET_RESPAWN_WAVE_READY(SIDE,READY)
     Sets whether the respawn wave starts ready-to-use or not.  If you set this to false, respawn waves will not be usable.
