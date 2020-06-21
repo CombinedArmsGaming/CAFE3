@@ -95,9 +95,24 @@ switch (_ending) do
 	};
 };
 
-// Using the integer we've got we use format to compile a string (e.g. "end1") and call the BIS function with it.
-_ending = format ["end%1",_ending];
-[_ending,_state] spawn BIS_fnc_endMission;
+
+_endingMusic = missionNamespace getVariable [format ["f_var_endingMusic_end%1", _ending], nil];
+_ending = format ["end%1", _ending];
+
+if (isNil "_endingMusic") then
+{
+	[_ending, _state] spawn BIS_fnc_endMission;
+}
+else
+{
+	[_ending, _state, true, false] spawn BIS_fnc_endMission;
+
+	if !(_endingMusic isEqualTo "") then
+	{
+		playMusic _endingMusic;
+	};
+};
+
 
 // ====================================================================================
 

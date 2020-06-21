@@ -27,3 +27,6 @@
 
 // Respawn waves settings
 #include "..\..\..\configuration\respawnWaves.sqf"
+
+// Ending music settings
+#include "..\..\..\configuration\endingMusic.sqf"
