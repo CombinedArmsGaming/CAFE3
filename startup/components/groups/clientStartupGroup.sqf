@@ -36,3 +36,11 @@ INIT_COMPONENT(zeus_ui)
 INIT_COMPONENT(gravestones)
 
 #endif
+
+
+// View distance editor
+#ifdef ENABLE_VIEWDISTANCE_EDITOR
+
+INIT_COMPONENT(viewDistanceEditor)
+
+#endif

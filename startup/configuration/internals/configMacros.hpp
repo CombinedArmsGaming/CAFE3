@@ -10,3 +10,4 @@
 #include "..\..\..\configuration\killTracking.hpp"
 #include "..\..\..\configuration\gravestones.hpp"
 #include "..\..\..\configuration\squadMarkers.hpp"
+#include "..\..\..\configuration\viewDistanceEditor.hpp"

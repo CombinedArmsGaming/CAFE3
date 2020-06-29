@@ -6,6 +6,7 @@ class aceActions
     class addSquadManagerActionsToClass{};
     class addPushActionToClass{};
     class addUnflipActionToClass{};
+    class addViewDistanceActionToClass{};
     class unflipVehicle{};
     class pushVehicle{};
     class playerPushVehicle{};

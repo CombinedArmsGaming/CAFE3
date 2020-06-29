@@ -434,14 +434,21 @@ class Extended_InitPost_EventHandlers
 
 #endif
 
+#ifdef ENABLE_VIEWDISTANCE_EDITOR
+
+		class addViewDistanceAction
+		{
+			init = "_this call f_fnc_addViewDistanceActionToClass";
+		};
+
+#endif
+
 		class addSquadManagerActions
 		{
             init = "_this call f_fnc_addSquadManagerActionsToClass";
         };
 
     };
-
-
 
 
 

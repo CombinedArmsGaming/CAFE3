@@ -23,5 +23,6 @@ class F
 #include "squadMarkers\functions.hpp"
 #include "endings\functions.hpp"
 #include "lootBox\functions.hpp"
+#include "viewDistanceEditor\functions.hpp"
 
 }
