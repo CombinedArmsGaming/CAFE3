@@ -4,6 +4,8 @@ CLIENT_ONLY;
 
 params ["_unit"];
 
+if !(_unit isEqualTo player) exitWith {};
+
 _type = typeOf _unit;
 
 if (isNil "f_arr_viewDistanceActionClasses") then {f_arr_viewDistanceActionClasses = [];};
@@ -15,13 +17,22 @@ _createViewNode =
 {
     params ["_type"];
 
+    #ifdef VIEWDISTANCE_EDITOR_WHITELISTING
+        _condition =
+        {
+            (_player isEqualTo _target) and {_player getVariable ["f_var_allowViewDistanceEditing", false]}
+        };
+    #else
+        _condition = {true};
+    #endif
+
     _action =
     [
         "CA_ViewDistanceAction",
         "Set View Distance",
         "\A3\ui_f\data\igui\cfg\simpleTasks\types\scout_ca.paa",
         {createDialog "CA2_ViewDistance_Dialog";},
-        {true},
+        _condition,
         {},
         [],
         "",

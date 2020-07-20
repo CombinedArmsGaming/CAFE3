@@ -2,6 +2,8 @@
 
 params ["_unit"];
 
+if !(_unit isEqualTo player) exitWith {};
+
 _type = typeOf _unit;
 
 if (isNil "f_arr_squadManagerActionClasses") then {f_arr_squadManagerActionClasses = [];};
@@ -9,13 +11,13 @@ if (_type in f_arr_squadManagerActionClasses) exitWith {};
 
 f_arr_squadManagerActionClasses pushBack _type;
 
-_createMusicNode =
+_createSquadNode =
 {
     params ["_type"];
 
     _condition =
     {
-        player isEqualTo _target
+        _player isEqualTo _target
     };
 
 
@@ -32,7 +34,7 @@ _createMusicNode =
             "Show Respawn Menu",
             "\A3\ui_f\data\igui\cfg\simpleTasks\types\getin_ca.paa",
             {createDialog "RespawnWavesDialog";},
-            {player getVariable ["f_var_canUseRespawnMenu", false]},
+            {_player getVariable ["f_var_canUseRespawnMenu", false]},
             {},
             [],
             "",
@@ -53,7 +55,7 @@ _createMusicNode =
             "Edit Squad Markers",
             "\A3\ui_f\data\igui\cfg\simpleTasks\types\move_ca.paa",
             {createDialog "CA2_SquadMarker_Dialog";},
-            {(leader group player) isEqualTo player},
+            {(leader group _player) isEqualTo _player},
             {},
             [],
             "",
@@ -115,4 +117,4 @@ _createMusicNode =
 };
 
 
-[_type] call _createMusicNode;
+[_type] call _createSquadNode;
