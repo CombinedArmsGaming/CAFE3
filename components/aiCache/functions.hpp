@@ -8,4 +8,5 @@ class aiCache
     class uncacheGroup{};
     class updatePlayerClusters{};
     class displayClusters{};
+    class doCivPopCacheIteration{};
 };

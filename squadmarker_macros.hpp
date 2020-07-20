@@ -39,13 +39,15 @@
 #define SUPPLY      "res\images\squadMarkers\squad_supply.paa"
 #define UNKNOWN     "res\images\squadMarkers\squad_unknown.paa"
 
-#define SQUAD_VAR(NAME) (allGroups param [(allGroups findIf {groupId _x isEqualTo #NAME}), grpNull])
+#define GET_SQUAD(NAME) (allGroups param [(allGroups findIf {groupId _x isEqualTo #NAME}), grpNull])
+#define GET_SQUAD_ON_SIDE(NAME,SIDE) (allGroups param [(allGroups findIf {(groupId _x isEqualTo #NAME) and {side _x isEqualTo SIDE}}), grpNull])
 
 #define SQUAD_VAL(VARNAME) STRING(CONCAT(f_var_squadMarker_,VARNAME))
-#define SET_SQUAD_VAL(NAME,VALNAME,VALUE) SQUAD_VAR(NAME) setVariable [SQUAD_VAL(VALNAME), VALUE, true]
+#define SET_SQUAD_VAL(NAME,VALNAME,VALUE) GET_SQUAD(NAME) setVariable [SQUAD_VAL(VALNAME), VALUE, true]
 #define SET_SQUAD_VAL_DIRECT(GROUP,VALNAME,VALUE) GROUP setVariable [SQUAD_VAL(VALNAME), VALUE, true]
 
 #define SET_SQUAD_IMPORTANT(NAME,VALUE) SET_SQUAD_VAL(NAME,Important,VALUE)
+#define SET_SQUAD_IMPORTANT_DIRECT(GROUP,VALUE) SET_SQUAD_VAL_DIRECT(GROUP,Important,VALUE)
 
 #define SET_SQUAD_VISIBILITY(NAME,VISIBLE) SET_SQUAD_VAL(NAME,Visible,VISIBLE)
 #define SET_SQUAD_VISIBILITY_DIRECT(GROUP,VISIBLE) SET_SQUAD_VAL_DIRECT(GROUP,Visible,VISIBLE)

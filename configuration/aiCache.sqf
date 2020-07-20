@@ -5,6 +5,10 @@
 // The range outside of which to cache units, in metres.
 f_param_caching = 1000;
 
+// The range for caching civilian presence modules.
+// Civilians spawn at a rate of 1 per second, if you have high-population cities you should make this radius a little larger to compensate for spawn delay.
+f_param_caching_civpop = 1000;
+
 // The caching mode to use.  Options are:
 // AI_CACHE_ALL,
 // AI_CACHE_EXCEPT_DRIVERS,

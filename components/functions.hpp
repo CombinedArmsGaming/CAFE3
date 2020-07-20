@@ -26,3 +26,12 @@ class F
 #include "viewDistanceEditor\functions.hpp"
 
 }
+
+class BIS
+{
+	class overrides
+	{
+		file = "components\miscShared";
+		class moduleCivilianPresence{};
+	};
+};

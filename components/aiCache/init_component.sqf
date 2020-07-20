@@ -26,6 +26,7 @@ if (isServer) then
 
     } forEach _playableGroups;
 
+    f_arr_civPopModules = allMissionObjects "ModuleCivilianPresence_F";
 
     f_handle_aiCache = [] spawn
     {
@@ -34,6 +35,7 @@ if (isServer) then
             [] call f_fnc_excludePlayerGroupsFromCache;
             [] call f_fnc_updatePlayerClusters;
             [] call f_fnc_doAiCacheIteration;
+            [] call f_fnc_doCivPopCacheIteration;
 
 #ifdef ENABLE_DEBUG
             [] call f_fnc_displayClusters;
