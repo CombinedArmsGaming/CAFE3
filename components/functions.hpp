@@ -24,6 +24,7 @@ class F
 #include "endings\functions.hpp"
 #include "lootBox\functions.hpp"
 #include "viewDistanceEditor\functions.hpp"
+#include "downtime\functions.hpp"
 
 }
 

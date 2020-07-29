@@ -22,7 +22,3 @@ f_var_playerHasBeenKilled = true;
 f_var_playerOriginalGroup = group player;
 
 [_corpse] joinSilent grpNull;
-
-
-// Enter spectator
-[true] call ace_spectator_fnc_setSpectator;

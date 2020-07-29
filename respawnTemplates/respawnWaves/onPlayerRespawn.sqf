@@ -18,8 +18,7 @@ LOCAL_ONLY(_unit);
 _doRespawn =
 {
     params ["_unit", "_corpse", "_isJip"];
-    [_unit, _corpse] spawn _applyOldLoadout;
-    [false] call ace_spectator_fnc_setSpectator;
+    //[_unit, _corpse] spawn _applyOldLoadout;
 
     if ((_isJip and IS_TRUE(f_var_JIPTeleport)) or ((!_isJip) and IS_TRUE(f_var_RespawnTeleport))) then
     {
@@ -27,6 +26,9 @@ _doRespawn =
     };
 
     #include "..\parts\zeusAdditions_onRespawn.sqf"
+
+    [_unit, true] call f_fnc_activatePlayer;
+    f_var_playerHasBeenKilled = false;
 
 };
 
@@ -46,7 +48,6 @@ if (time < 30) exitWith
 WAIT_UNTIL_PLAYER_EXISTS();
 
 _hasBeenKilled = missionNamespace getVariable ["f_var_playerHasBeenKilled", false];
-f_var_playerHasBeenKilled = false;
 
 DEBUG_FORMAT1_LOG("[RespawnWaves] Player has been killed?: %1",_hasBeenKilled)
 
@@ -122,12 +123,8 @@ if (_hasBeenKilled) then
     _tpHandle = [_spawnAt] spawn _tryTeleport;
 
     waitUntil { scriptDone _tpHandle };
-    [_unit, true] call f_fnc_activatePlayer;
-    [false] call ace_spectator_fnc_setSpectator;
 
-    #include "..\parts\zeusAdditions_onRespawn.sqf"
-
-    // [_unit] call f_fnc_paradropUnit;
+    [_unit, _corpse, true] call _doRespawn;
 
     DEBUG_PRINT_LOG("[RespawnWaves] All done.")
 
