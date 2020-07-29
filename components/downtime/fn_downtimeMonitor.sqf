@@ -9,7 +9,14 @@ waitUntil
     waitUntil { sleep 0.1; PLAYER_IS_DOWN };
 
     SHOULD_CONTINUE = true;
-    [] spawn f_fnc_downtimeSpectate;
+
+    _startedTime = time;
+    waitUntil { (!IS_UNCONSCIOUS(player)) or {time - _startedTime > DOWNTIME_SNOOZE_TIME} };
+
+    if (PLAYER_IS_DOWN) then
+    {
+        [] spawn f_fnc_downtimeSpectate;
+    };    
 
     waitUntil {sleep 0.1; !PLAYER_IS_DOWN};
 
