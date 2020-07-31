@@ -356,6 +356,13 @@ class CfgMusic
 #include "dialogs.hpp"
 
 
+class RscTitles
+{
+#include "titles.hpp"
+}
+
+
+
 
 // Makes splendid camera still show chat after quitting splendid camera.
 class Extended_DisplayUnload_EventHandlers

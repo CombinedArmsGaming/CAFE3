@@ -45,4 +45,6 @@ if (isNull _spawnAt) then
 };
 
 
+systemChat "Your reinforcements will arrive in five seconds, stand by...";
+
 [_spawnAt, _side] remoteExec ["f_fnc_respawnWaveServer", 2];

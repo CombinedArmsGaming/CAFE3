@@ -33,6 +33,9 @@ if (isNull _respawnGroup) then
     _respawnGroup = createGroup _side;
     _respawnGroup setGroupIdGlobal [_squadName];
     _respawnGroup deleteGroupWhenEmpty false;
+
+    // TODO :: Group joining issues.  Maybe the group doesn't get propagated in time.  Let's test.
+    sleep 5;
 };
 
 

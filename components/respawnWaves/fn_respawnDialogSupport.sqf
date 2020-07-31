@@ -31,7 +31,7 @@ while {true} do
     _waves ctrlSetText ('Waves left: ' + str RESPAWN_WAVES(_side));
     _noplayers ctrlSetText (str (count _specPlayers) + ' players are waiting.');
 
-    _time = (RESPAWN_WAVE_DURATION(_side) + RESPAWN_WAVE_COOLDOWN(_side) + LAST_RESPAWN_TIME(_side) - time);
+    _time = TIME_UNTIL_RESPAWN_READY(_side);
 
     if (0 > _time) then
     {
@@ -39,21 +39,7 @@ while {true} do
     }
     else
     {
-        // 2020-06-06 TODO :: Split out into helper func if needed elsewhere.
-        _timeString = "";
-
-        if (_time > (60*60)) then
-        {
-            _timeString = format ["%1h %2m %3s", floor (_time / (60*60)), floor ((_time / 60) mod 60), floor (_time mod 60)];
-        };
-        if ((_timeString isEqualTo "") and {_time > 60}) then
-        {
-            _timeString = format ["%1m %2s", floor ((_time / 60) mod 60), floor (_time mod 60)];
-        }
-        else
-        {
-            _timeString = format ["%1s", floor _time];
-        };
+        _timeString = [_time] call f_fnc_formatTimeDuration;
 
         _timer ctrlSetText (_timeString + ' until wave available');
 

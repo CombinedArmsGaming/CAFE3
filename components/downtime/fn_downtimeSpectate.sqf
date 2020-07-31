@@ -11,9 +11,29 @@ _whenGhost =
     [player, "CA2_Downtime"] call ace_common_fnc_hideUnit;
     [player, "CA2_Downtime"] call ace_common_fnc_muteUnit;
 
+    if (PLAYER_IS_GHOST) then
+    {
+        "CA2_CutDowntime" cutRsc ["CA2_DowntimeDead", "PLAIN", -1, false];
+    };
+
 };
 
 _whenAlive =
+{
+    player allowDamage true;
+    player setVariable ["ace_medical_allowDamage", true];
+
+    [player, "CA2_Downtime"] call ace_common_fnc_unhideUnit;
+    [player, "CA2_Downtime"] call ace_common_fnc_unmuteUnit;
+
+    if (IS_UNCONSCIOUS(player)) then
+    {
+        "CA2_CutDowntime" cutRsc ["CA2_DowntimeUnconscious", "PLAIN", -1, false];
+    };
+
+};
+
+_whenDone =
 {
     player allowDamage true;
     player setVariable ["ace_medical_allowDamage", true];
@@ -35,10 +55,7 @@ if !(SHOULD_CONTINUE) exitWith {};
 
 _isGhost = PLAYER_IS_GHOST;
 
-if (_isGhost) then
-{
-    [] call _whenGhost;
-};
+[] call (if (PLAYER_IS_GHOST) then {_whenGhost} else {_whenAlive});
 
 
 waitUntil
@@ -54,6 +71,6 @@ waitUntil
 };
 
 
-[] call _whenAlive;
+[] call _whenDone;
 
 [false, true, false] call ace_spectator_fnc_setSpectator;
