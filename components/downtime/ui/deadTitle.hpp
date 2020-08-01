@@ -1,9 +1,5 @@
 #include "../ui_macros.hpp"
 
-////////////////////////////////////////////////////////
-// GUI EDITOR OUTPUT START (by Bubbus, v1.063, #Qerehi)
-////////////////////////////////////////////////////////
-
 class CA2_DowntimeDead
 {
     idd = 13174;
@@ -24,7 +20,7 @@ class CA2_DowntimeDead
         	idc = 1000;
             style = ST_CENTER;
         	text = "You have";
-            font = "PuristaBold"
+            font = "PuristaBold";
         	x = 7.5 * GUI_GRID_W + GUI_GRID_X;
         	y = 7 * GUI_GRID_H + GUI_GRID_Y;
         	w = 25 * GUI_GRID_W;

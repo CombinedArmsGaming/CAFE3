@@ -24,7 +24,7 @@ else
     }
     else
     {
-        _text = "Respawn is available to leaders.";
+        _text = "Respawn waves are available to leaders.";
     };
 
 };

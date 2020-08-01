@@ -1,3 +1,5 @@
+#include "../ui_macros.hpp"
+
 class CA2_DowntimeUnconscious
 {
     idd = -1;
@@ -5,7 +7,7 @@ class CA2_DowntimeUnconscious
 	movingEnable = false;
 	enableSimulation = true;
 
-    fadein = 0;
+    fadein = 1;
     duration = 4;
 	fadeout = 2;
 
@@ -17,7 +19,7 @@ class CA2_DowntimeUnconscious
         	idc = 1000;
             style = ST_CENTER;
         	text = "You are";
-            font = "PuristaBold"
+            font = "PuristaBold";
         	x = 7.5 * GUI_GRID_W + GUI_GRID_X;
         	y = 7 * GUI_GRID_H + GUI_GRID_Y;
         	w = 25 * GUI_GRID_W;
@@ -30,7 +32,7 @@ class CA2_DowntimeUnconscious
         	idc = 1001;
             style = ST_CENTER;
         	text = "Unconscious";
-            font = "PuristaBold"
+            font = "PuristaBold";
         	x = 7.5 * GUI_GRID_W + GUI_GRID_X;
         	y = 9 * GUI_GRID_H + GUI_GRID_Y;
         	w = 25 * GUI_GRID_W;
