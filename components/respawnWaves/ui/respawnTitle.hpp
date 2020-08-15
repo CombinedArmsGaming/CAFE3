@@ -11,7 +11,7 @@ class CA2_RespawnTitle
     duration = 7;
 	fadeout = 3;
 
-    onLoad = "_this call f_fnc_respawnTitle_onLoad;"
+    onLoad = "_this call f_fnc_respawnTitle_onLoad;";
 
     class ControlsBackground
     {

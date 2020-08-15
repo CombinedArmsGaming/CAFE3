@@ -11,7 +11,7 @@ class CA2_DowntimeDead
     duration = 4;
 	fadeout = 3;
 
-    onLoad = "_this call f_fnc_downtimeDead_onLoad;"
+    onLoad = "_this call f_fnc_downtimeDead_onLoad;";
 
     class ControlsBackground
     {
