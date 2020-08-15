@@ -2,6 +2,8 @@
 
 params ["_entry", "_output"];
 
+DEBUG_FORMAT1_LOG("Visiting loot list (%1)",(_entry select 0))
+
 _values = [];
 _weights = [];
 

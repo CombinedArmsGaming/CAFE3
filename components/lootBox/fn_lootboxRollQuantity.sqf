@@ -14,8 +14,8 @@ else
     {
         if (count _quantities == 2) then
         {
-            _range = (_quantities select 0 + _quantities select 1);
-            _quantity = 1 + floor ((random _range) - (_quantities select 0));
+            _range = (_quantities select 1) - (_quantities select 0);
+            _quantity = (_quantities select 0) + (round (random _range));
         }
         else
         {

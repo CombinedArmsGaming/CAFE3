@@ -3,6 +3,10 @@
 params ["_container", "_loot"];
 
 _lootbox = LOOTBOX_VAR_DYNAMIC(_loot);
+if (_lootbox isEqualTo []) exitWith
+{
+	DEBUG_FORMAT1_LOG("Lootbox '%1' does not exist.",_loot)
+};
 
 _output = [];
 _stack = [];
