@@ -13,36 +13,52 @@ if (_posOrObject isEqualTo []) then
 
 
 
+_squadMode = RESPAWN_SQUAD_MODE(_side);
 
-_squads = RESPAWN_WAVE_SQUADS(_side);
-_squadName = "";
-if (count _squads <= 0) then
+_respawnGroupId = switch (_squadMode) do
 {
-    _squadName = "Reinforcements";
-}
-else
-{
-    _squadName = _squads deleteAt 0;
+    case (RESPAWN_REJOIN_OLD_SQUAD):
+    {
+        ORIGINAL_SQUAD
+    };
+
+    case (RESPAWN_JOIN_REINFORCEMENT_SQUAD):
+    {
+        _squads = RESPAWN_WAVE_SQUADS(_side);
+        _squadName = "";
+
+        if (count _squads <= 0) then
+        {
+            _squadName = "Reinforcements";
+        }
+        else
+        {
+            _squadName = _squads deleteAt 0;
+        };
+
+        _groups = allGroups;
+        _respawnGroup = _groups param [_groups findIf {(toLower groupId _x) isEqualTo (toLower _squadName)}, grpNull];
+
+        if (isNull _respawnGroup) then
+        {
+            _respawnGroup = createGroup [_side, false];
+            _respawnGroup setGroupIdGlobal [_squadName];
+
+        };
+
+        _squadName
+
+    };
+
 };
 
-_groups = allGroups;
-_respawnGroup = _groups param [_groups findIf {(toLower groupId _x) isEqualTo (toLower _squadName)}, grpNull];
 
-if (isNull _respawnGroup) then
-{
-    _respawnGroup = createGroup _side;
-    _respawnGroup setGroupIdGlobal [_squadName];
-    _respawnGroup deleteGroupWhenEmpty false;
-
-    // TODO :: Group joining issues.  Maybe the group doesn't get propagated in time.  Let's test.
-    sleep 5;
-};
 
 
 
 SET_RESPAWN_WAVE_READY(_side,false);
 
-_waveArray = [true, _posOrObject, _respawnGroup, time];
+_waveArray = [true, _posOrObject, _respawnGroupId, time];
 SET_RESPAWN_WAVE(_side,_waveArray);
 
 _curWaves = RESPAWN_WAVES(_side);

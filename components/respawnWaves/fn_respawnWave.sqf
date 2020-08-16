@@ -44,7 +44,8 @@ if (isNull _spawnAt) then
     _spawnAt = RESPAWN_MARKER_POS(_side);
 };
 
-
+// Originally introduced to test group propagation latency.  The delay feels nice.  Keeping it.
 systemChat "Your reinforcements will arrive in five seconds, stand by...";
+uiSleep 5;
 
 [_spawnAt, _side] remoteExec ["f_fnc_respawnWaveServer", 2];

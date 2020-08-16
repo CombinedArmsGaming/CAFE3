@@ -2,6 +2,7 @@ class respawnWaves
 {
     file = "components\respawnWaves";
     class respawnWave{};
+    class forceRespawnWave{};
     class respawnWaveServer{};
     class respawnDialogSupport{};
 };

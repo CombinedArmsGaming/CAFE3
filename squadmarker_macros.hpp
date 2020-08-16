@@ -40,7 +40,10 @@
 #define UNKNOWN     "res\images\squadMarkers\squad_unknown.paa"
 
 #define GET_SQUAD(NAME) (allGroups param [(allGroups findIf {groupId _x isEqualTo #NAME}), grpNull])
+#define GET_SQUAD_DYNAMIC(NAME) (allGroups param [(allGroups findIf {groupId _x isEqualTo NAME}), grpNull])
+
 #define GET_SQUAD_ON_SIDE(NAME,SIDE) (allGroups param [(allGroups findIf {(groupId _x isEqualTo #NAME) and {side _x isEqualTo SIDE}}), grpNull])
+#define GET_SQUAD_ON_SIDE_DYNAMIC(NAME,SIDE) (allGroups param [(allGroups findIf {(groupId _x isEqualTo NAME) and {side _x isEqualTo SIDE}}), grpNull])
 
 #define SQUAD_VAL(VARNAME) STRING(CONCAT(f_var_squadMarker_,VARNAME))
 #define SET_SQUAD_VAL(NAME,VALNAME,VALUE) GET_SQUAD(NAME) setVariable [SQUAD_VAL(VALNAME), VALUE, true]

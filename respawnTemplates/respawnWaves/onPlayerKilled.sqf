@@ -19,6 +19,6 @@ WAIT_UNTIL_PLAYER_EXISTS();
 DEBUG_PRINT_LOG("[RespawnWaves] Player exists, entering spectator...")
 
 f_var_playerHasBeenKilled = true;
-f_var_playerOriginalGroup = group player;
+f_var_playerOriginalGroupName = groupId (group _corpse);
 
 [_corpse] joinSilent grpNull;

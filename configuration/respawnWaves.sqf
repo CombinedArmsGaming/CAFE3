@@ -26,6 +26,12 @@
     SET_RESPAWN_WAVE_COOLDOWN(SIDE,SECONDS)
     The minimum duration between a side's respawn waves - this is counted between the end of the last wave and the start of the next wave.
 
+    SET_RESPAWN_SQUAD_MODE(SIDE,MODE)
+    Configure how respawned players join squads.  Available modes:
+
+        RESPAWN_REJOIN_OLD_SQUAD         - Respawned players will rejoin their old squad, even if it has been totally wiped out.
+        RESPAWN_JOIN_REINFORCEMENT_SQUAD - Respawned players will join a new reinforcement squad, as defined by SET_RESPAWN_WAVE_SQUADS.
+
     SET_RESPAWN_WAVE_SQUADS(SIDE,SQUADS)
     Sets a list of squad names that reinforcements will be placed into.  Each squad name will be used in list-order.
     If squad names run out, all future reinforcements will be placed in a default reinforcement squad.
@@ -44,12 +50,13 @@
 
 // BLUFOR config.
 SET_RESPAWN_MODE(west,RESPAWN_MODE_BASE);
+SET_RESPAWN_SQUAD_MODE(west,RESPAWN_JOIN_REINFORCEMENT_SQUAD);
 SET_RESPAWN_WAVES(west,5);
 SET_RESPAWN_WAVE_DURATION(west,60);
 SET_RESPAWN_WAVE_COOLDOWN(west,300);
 SET_RESPAWN_WAVE_READY(west,true);
 
-// Important: Place anything with a comma into a separate line.  This is a technical limitation.
+// Important: Place anything with a comma inside it into a separate line.  This is a technical limitation.
 _squads = ["DELTA","ECHO","FOXTROT","GOLF","HOTEL"];
 SET_RESPAWN_WAVE_SQUADS(west,_squads);
 

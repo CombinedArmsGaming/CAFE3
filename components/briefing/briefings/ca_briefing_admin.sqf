@@ -7,11 +7,15 @@ _briefing = _briefing + "
 |- <execute expression="" [] execvm 'components\briefing\briefings\part_briefing_admin.sqf' "">
 Give self F3 admin menu</execute><br/>
 <font size='18'>Respawn system</font><br/><br/>
-<font size='14'>Note that the marker will only be moved if respawn mode is set to 2 (spawn on co)</font><br/><br/>
-|- <execute expression=""hint 'Wave spawned!'; [] remoteExec ['f_fnc_respawnWaveServer', 2];"">
-Force respawn wave to happen even with 0 waves (Doesn't move respawn marker)</execute><br/>
-|- <execute expression=""hint 'Wave spawned!'; [] call f_fnc_respawnwave;"">
-Spawn respawn wave(Move respawn marker)</execute><br/>
+
+|- <execute expression=""hint 'Wave spawned!'; [west] call f_fnc_forceRespawnWave;"">
+Force respawn wave for BLUFOR.</execute><br/><br/>
+|- <execute expression=""hint 'Wave spawned!'; [east] call f_fnc_forceRespawnWave;"">
+Force respawn wave for OPFOR.</execute><br/><br/>
+|- <execute expression=""hint 'Wave spawned!'; [independent] call f_fnc_forceRespawnWave;"">
+Force respawn wave for INDFOR.</execute><br/><br/>
+|- <execute expression=""hint 'Wave spawned!'; [civilian] call f_fnc_forceRespawnWave;"">
+Force respawn wave for CIV.</execute><br/><br/>
 ";
 /*
 _briefing = _briefing + "

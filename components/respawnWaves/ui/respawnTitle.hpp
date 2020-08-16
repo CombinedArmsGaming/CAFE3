@@ -18,11 +18,12 @@ class CA2_RespawnTitle
         class WelcomeBack: CA2_DefaultText
         {
         	idc = 1000;
+            style = ST_CENTER;
         	text = "Welcome back.";
             font = "PuristaBold";
-        	x = 11 * GUI_GRID_W + GUI_GRID_X;
+        	x = 9 * GUI_GRID_W + GUI_GRID_X;
         	y = 0.5 * GUI_GRID_H + GUI_GRID_Y;
-        	w = 18 * GUI_GRID_W;
+        	w = 22 * GUI_GRID_W;
         	h = 2.5 * GUI_GRID_H;
         	sizeEx = 3 * GUI_GRID_H;
         };

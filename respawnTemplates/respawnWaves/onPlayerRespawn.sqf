@@ -15,9 +15,42 @@ LOCAL_ONLY(_unit);
 
 
 
+_tryJoinSquad =
+{
+    params ["_unit", "_groupId"];
+
+    _beginTime = time;
+
+    while {(time < _beginTime + 20) and {!((groupId (group _unit)) isEqualTo _groupId)}} do
+    {
+        _side = side _unit;
+        _group = GET_SQUAD_ON_SIDE_DYNAMIC(_groupId,_side);
+        DEBUG_FORMAT3_CHAT("Finding group with id %1 for side %2: %3",_groupId,(str _side),(str _group));
+
+        if EXISTS(_group) then
+        {
+            [_unit] joinSilent _group;
+        };
+
+        sleep 1;
+
+    };
+
+    if !((groupId (group _unit)) isEqualTo _groupId) then
+    {
+        _text = format ["Unable to auto-join squad '%1'.\n\nYou will need to re-join or re-create the squad using 'CA Squad Actions'.", _groupId];
+        cutText [_text, "PLAIN DOWN", 1, true, false];
+
+    };
+
+};
+
+
+
+
 _doRespawn =
 {
-    params ["_unit", "_corpse", "_isJip", "_quiet"];
+    params ["_unit", "_corpse", "_isJip"];
     //[_unit, _corpse] spawn _applyOldLoadout;
 
     if ((_isJip and IS_TRUE(f_var_JIPTeleport)) or ((!_isJip) and IS_TRUE(f_var_RespawnTeleport))) then
@@ -30,11 +63,6 @@ _doRespawn =
     [_unit, true] call f_fnc_activatePlayer;
     f_var_playerHasBeenKilled = false;
 
-    if !(_quiet) then
-    {
-        "CA2_RespawnTitle" cutRsc ["CA2_RespawnTitle", "PLAIN", -1, false];
-    };
-
 };
 
 
@@ -43,7 +71,7 @@ _doRespawn =
 if (time < 30) exitWith
 {
     DEBUG_PRINT_LOG("[RespawnWaves] Time < 30, skipping respawn wave...")
-    [_unit, _corpse, false, true] call _doRespawn;
+    [_unit, _corpse, false] call _doRespawn;
 }; // Apply a grace period at mission start.
 
 
@@ -63,7 +91,7 @@ DEBUG_FORMAT1_LOG("[RespawnWaves] Player has been killed?: %1",_hasBeenKilled)
 if (!_hasBeenKilled) exitWith
 {
     DEBUG_PRINT_LOG("[RespawnWaves] Player was not killed, handling as JIP...")
-    [_unit, _corpse, true, true] call _doRespawn;
+    [_unit, _corpse, true] call _doRespawn;
 
 };
 
@@ -76,18 +104,14 @@ if (_hasBeenKilled) then
 
     [_unit, false] call f_fnc_activatePlayer;
 
-    _side = side _unit;
-    _groupVar = toLower format ["f_group_spectators_%1", _side];
-    _tempGroup = missionNamespace getVariable [_groupVar, grpNull];
-
-    DEBUG_FORMAT1_LOG("[RespawnWaves] Joining player to spectator group: %1",_tempGroup)
-
-    [_unit] joinSilent _tempGroup;
+    [_unit, "Spectators"] spawn _tryJoinSquad;
+    DEBUG_PRINT_LOG("[RespawnWaves] Joining player to spectator group.")
 
     [_unit, _corpse] spawn _applyOldLoadout;
 
     // Wait for respawn to happen
     _waveInfo = false;
+    _side = side _unit;
 
     waitUntil
     {
@@ -105,19 +129,54 @@ if (_hasBeenKilled) then
     DEBUG_PRINT_LOG("[RespawnWaves] Respawn wave enabled, teleporting...")
 
     // Try spawning at designated location, or fallback to base location.
-    _spawnAt = _waveInfo select 1;
-    _joinGroup = _waveInfo select 2;
+    _spawnAt = _waveInfo param [1, []];
+    _joinGroup = _waveInfo param [2, ""];
 
-    if ((typeName _joinGroup isEqualTo typeName grpNull) and {!isNull _joinGroup}) then
+    switch (_joinGroup) do
     {
-        DEBUG_FORMAT1_LOG("[RespawnWaves] Joining player to respawn group: %1",_joinGroup)
-        [_unit] joinSilent _joinGroup;
-    }
-    else
-    {
-        DEBUG_PRINT_LOG("[RespawnWaves] Respawn group was absent, joining player to empty group.")
-        [_unit] joinSilent grpNull;
+        case (ORIGINAL_SQUAD):
+        {
+            _originalGroupId = missionNamespace getVariable ["f_var_playerOriginalGroupName", ""];
+
+            if (_originalGroupId isEqualTo "") then
+            {
+                DEBUG_PRINT_LOG("[RespawnWaves] Respawn group was ORIGINAL_SQUAD, but player does not have an original squad.  Joining player to empty group.")
+                [_unit] joinSilent grpNull;
+            };
+
+            DEBUG_FORMAT1_LOG("[RespawnWaves] Attempting to join player to original group: %1",_originalGroupId)
+            [_unit, _originalGroupId] spawn _tryJoinSquad;
+
+            f_var_respawnTitle_squadMode = "OriginalSquad";
+            f_var_respawnTitle_targetSquad = _originalGroupId;
+            "CA2_RespawnTitle" cutRsc ["CA2_RespawnTitle", "PLAIN", -1, false];
+
+        };
+
+        case (""):
+        {
+            DEBUG_PRINT_LOG("[RespawnWaves] Respawn group was absent, joining player to empty group.")
+            [_unit] joinSilent grpNull;
+
+            f_var_respawnTitle_squadMode = "Error";
+            f_var_respawnTitle_targetSquad = "";
+            "CA2_RespawnTitle" cutRsc ["CA2_RespawnTitle", "PLAIN", -1, false];
+
+        };
+
+        default
+        {
+            DEBUG_FORMAT1_LOG("[RespawnWaves] Attempting to join player to respawn group: %1",_joinGroup)
+            [_unit, _joinGroup] spawn _tryJoinSquad;
+
+            f_var_respawnTitle_squadMode = "RespawnSquad";
+            f_var_respawnTitle_targetSquad = _joinGroup;
+            "CA2_RespawnTitle" cutRsc ["CA2_RespawnTitle", "PLAIN", -1, false];
+
+        };
+
     };
+
 
     if ((_spawnAt isEqualTo []) or {(typeName _spawnAt isEqualTo typeName objNull) and {isNull _spawnAt}}) then
     {
@@ -129,7 +188,7 @@ if (_hasBeenKilled) then
 
     waitUntil { scriptDone _tpHandle };
 
-    [_unit, _corpse, true, false] call _doRespawn;
+    [_unit, _corpse, true] call _doRespawn;
 
     DEBUG_PRINT_LOG("[RespawnWaves] All done.")
 
