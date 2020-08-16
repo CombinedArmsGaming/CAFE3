@@ -17,6 +17,7 @@ if (_exitCode == 1) then
     if !(_newName isEqualTo (groupId _group)) then
     {
         _group setGroupIdGlobal [_newName];
+        [_group] call f_fnc_maintainImportantSquad;
     };
 
 

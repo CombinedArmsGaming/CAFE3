@@ -8,9 +8,16 @@ params ["_display"];
 _group = group player;
 
 _groupText = _display displayCtrl IDC_GROUPPICKER_CURRENTSQUADTEXT;
-_groupText ctrlSetText (groupid _group);
+_groupText ctrlSetText (groupId _group);
 
-_groups = allGroups select { (side _x isEqualTo side _group) and { ((units _x) findIf { isPlayer _x }) >= 0 } };
+_groups = allGroups select
+{
+    ((side _x) isEqualTo (side _group)) and
+    {
+        SQUAD_IS_IMPORTANT(_group)
+        or {((units _x) findIf { isPlayer _x }) >= 0}
+    }
+};
 
 _groupList = _display displayCtrl IDC_GROUPPICKER_SQUADLIST;
 {

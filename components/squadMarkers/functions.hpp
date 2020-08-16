@@ -7,6 +7,7 @@ class squadMarkers
     class getGroupMarker{};
     class initSquadMarkerManager{};
     class addGroupMemberMarkers{};
+    class maintainImportantSquad{};
 };
 class squadMarkersDialog
 {

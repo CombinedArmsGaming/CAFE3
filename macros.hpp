@@ -71,6 +71,7 @@
 #define HASH_FOREACH(NAME,FUNC) [NAME, FUNC] call CBA_fnc_hashEachPair
 
 #define IS_TRUE(VAR) ((!isNil #VAR) and {VAR})
+#define EXISTS(VAR) ((!isNil #VAR) and {!(isNull VAR)})
 
 #define SERVER_ONLY if (!isServer) exitWith {}
 #define CLIENT_ONLY if (!hasInterface) exitWith {}
