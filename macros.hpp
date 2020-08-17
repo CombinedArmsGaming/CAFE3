@@ -81,6 +81,10 @@
 #define CLIENT_WARN(MESSAGE) if (!hasInterface) then { DEBUG_PRINT_LOG(MESSAGE) }
 #define LOCAL_WARN(OBJ, MESSAGE) if !(local OBJ) then { DEBUG_PRINT_LOG(MESSAGE) }
 
+#define SERVER_ONLY_WARN(MESSAGE) if (!isServer) exitWith { DEBUG_PRINT_LOG(MESSAGE) }
+#define CLIENT_ONLY_WARN(MESSAGE) if (!hasInterface) exitWith { DEBUG_PRINT_LOG(MESSAGE) }
+#define LOCAL_ONLY_WARN(OBJ, MESSAGE) if !(local OBJ) exitWith { DEBUG_PRINT_LOG(MESSAGE) }
+
 #define WAIT_UNTIL_SETTINGS_READY() \
 waitUntil                           \
 {                                   \

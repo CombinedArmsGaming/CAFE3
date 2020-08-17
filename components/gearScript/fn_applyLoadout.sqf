@@ -2,8 +2,6 @@
 
 params ["_unit", "_typeofUnit", "_gearVariant"];
 
-LOCAL_ONLY(_unit);
-
 _gearVariant = toLower _gearVariant;
 _typeofUnit = toLower _typeofUnit;
 
