@@ -2,12 +2,6 @@
 
 CLIENT_ONLY;
 
-#ifdef RADIO_TFR
-    if (true) exitWith { "f_fnc_generateRadioList currently only supports ACRE." };
-#endif
-
-#ifdef RADIO_ACRE
-
 params ["_side", ["_scale", 1]];
 
 _sideColour = switch (_side) do
@@ -65,7 +59,7 @@ else
         _longRangeList pushBack format ["Channel #%1: %2", _forEachIndex + 1, _x select 0];
 
     } forEach _longRangeConfig;
-    
+
 };
 
 
@@ -173,5 +167,3 @@ STEP_LEFT
 
 
 missionNamespace setVariable ["f_arr_radioList_markers", _markerNames];
-
-#endif
