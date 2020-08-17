@@ -43,6 +43,7 @@ _respawnGroupId = switch (_squadMode) do
         {
             _respawnGroup = createGroup [_side, false];
             _respawnGroup setGroupIdGlobal [_squadName];
+            SET_SQUAD_IMPORTANT_DIRECT(_respawnGroup,true);
 
         };
 

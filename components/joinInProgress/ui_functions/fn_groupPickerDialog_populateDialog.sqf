@@ -14,7 +14,7 @@ _groups = allGroups select
 {
     ((side _x) isEqualTo (side _group)) and
     {
-        SQUAD_IS_IMPORTANT(_group)
+        SQUAD_IS_IMPORTANT(_x)
         or {((units _x) findIf { isPlayer _x }) >= 0}
     }
 };
