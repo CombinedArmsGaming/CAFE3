@@ -1,15 +1,17 @@
 #include "macros.hpp"
 
-RUN_AS_ASYNC(f_fnc_assignGear);
-
 _unit = _this select 1;
 LOCAL_ONLY(_unit);
 
+RUN_AS_ASYNC(f_fnc_assignGear);
 waitUntil { IS_TRUE(f_var_gearscript_loaded) };
 
 
 _runningAlready = _unit getVariable ["f_var_assignGear_running",false];
-if (_runningAlready) exitWith {};
+if (_runningAlready) exitWith
+{
+    DEBUG_FORMAT1_LOG("[GEARSCRIPT-2]: Exited early because gearscript is running already (Unit %1)",(str _unit))
+};
 
 _unit setVariable ["f_var_assignGear_running", true, true];
 _unit setVariable ["f_var_assignGear_done", false, true];
@@ -39,11 +41,15 @@ _unit setVariable ["f_var_assignGear_Faction", _faction, true];
 
 _gearVariant = [_faction] call f_fnc_factionToGearVariant;
 
-if (_gearVariant == "") exitWith {};
+if (_gearVariant == "") exitWith
+{
+    DEBUG_FORMAT2_LOG("[GEARSCRIPT-2]: Exited early because gear variant could not be resolved (Unit %1, Faction %2)",(str _unit),_faction)
+};
 
 [_unit, _typeofUnit, _gearVariant] call f_fnc_applyLoadout;
 
 
+// TODO 2020-08-17 :: Refactor radios to run on trigger events (squad change, respawn, mission start...)
 if (isPlayer _unit) then
 {
     sleep 1;

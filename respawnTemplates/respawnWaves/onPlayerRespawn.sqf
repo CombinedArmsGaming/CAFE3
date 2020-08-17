@@ -51,7 +51,6 @@ _tryJoinSquad =
 _doRespawn =
 {
     params ["_unit", "_corpse", "_isJip"];
-    //[_unit, _corpse] spawn _applyOldLoadout;
 
     if ((_isJip and IS_TRUE(f_var_JIPTeleport)) or ((!_isJip) and IS_TRUE(f_var_RespawnTeleport))) then
     {

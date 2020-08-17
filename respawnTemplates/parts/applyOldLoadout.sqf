@@ -12,6 +12,6 @@ _applyOldLoadout =
 
     _unit setVariable ["f_var_assignGear_done", false, true];
 
-    [_loadout, player] spawn f_fnc_assignGear;
+    [_loadout, _unit] spawn f_fnc_assignGear;
 
 };
