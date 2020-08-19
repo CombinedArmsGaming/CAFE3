@@ -15,12 +15,7 @@
  * Return Value:
  * Group.
  *
- * Example:
- * [["ftl","r","m","rat","ar","aar"],"SC1_CA",300,"opf_f",east] spawn f_fnc_spawncharge;
- *
  */
-
-RUN_ON_SERVER(f_fnc_spawnCharge,_this);
 
 params ["_unitarray","_position","_attackdistance",["_faction",""],["_side", f_defaultSide]];
 

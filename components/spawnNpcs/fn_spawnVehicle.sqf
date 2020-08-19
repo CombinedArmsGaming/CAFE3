@@ -12,14 +12,9 @@
  * Return Value:
  * Vehicle
  *
- * Example:
- * [player,"C_Quadbike_01_F",0] call f_fnc_spawnvehicle
- *
  */
 
-RUN_ON_SERVER(f_fnc_spawnVehicle,_this);
-
-params ["_position","_vehicletype",["_locknumber",0]];
+params ["_position", "_vehicletype", ["_locknumber",0]];
 
 _posdir = _position call f_fnc_getDirPos;
 _spawnpos = _posdir select 0;
@@ -34,7 +29,5 @@ clearWeaponCargoGlobal _vehicle;
 clearMagazineCargoGlobal _vehicle;
 clearItemCargoGlobal _vehicle;
 clearBackpackCargoGlobal _vehicle;
-
-//[_vehicle] remoteExec ["bub_fnc_addVehicleToZeus", 2];
 
 _vehicle

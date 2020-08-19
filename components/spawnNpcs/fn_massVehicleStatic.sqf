@@ -12,13 +12,10 @@
  * Return Value:
  * Nothing
  *
- * Example:
- * [["SC1_VC_S","SC1_VC_S_1","SC1_VC_S_2","SC1_VC_S_3","SC1_VC_S_4","SC1_VC_S_5"],["ftl","ar","r","r","r"],"C_Offroad_default_F","opf_f",east] spawn f_fnc_massvehiclestatic
- *
  */
 params ["_locationarray","_unitarray","_vehicletype",["_faction",""],["_side", f_defaultside]];
 private ["_group","_grouparray"];
 
 {
-  [_unitarray,_x,_vehicletype,_faction,_side] call f_fnc_spawnvehiclestatic;
+    [_unitarray,_x,_vehicletype,_faction,_side] call f_fnc_spawnvehiclestatic;
 } forEach _locationarray;

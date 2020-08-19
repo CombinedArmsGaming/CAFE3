@@ -14,17 +14,12 @@
  * Return Value:
  * Array of [group,vehicle]
  *
- * Example:
- * [["ftl","r","ar","m"],"SC1_VC_S","C_Offroad_default_F","opf_f",east] spawn f_fnc_spawnvehiclegroup;
- *
  */
 
-RUN_ON_SERVER(f_fnc_spawnVehicleGroup,_this);
+params ["_unitarray", "_position", "_vehicletype", ["_faction",""], ["_side", f_defaultSide], ["_suppressive",false], ["_guerrilla",false], ["_runAfter",[]]];
 
-params ["_unitarray","_position","_vehicletype",["_faction",""],["_side", f_defaultSide]];
-
-_vehicle = [_position,_vehicletype] call f_fnc_spawnVehicle;
-_group = [_unitarray,_position,_faction,_side] call f_fnc_spawnGroup;
+_vehicle = [_position, _vehicletype] call f_fnc_spawnVehicle;
+_group = [_unitarray, _position, _faction, _side, _suppressive, _guerrilla] call f_fnc_spawnGroup;
 
 _units = units _group;
 _assigned = [];
@@ -90,4 +85,8 @@ _gunno = true;
 
 _units orderGetIn true;
 
-[_group,_vehicle]
+
+if ((typeName _runAfter) isEqualTo "CODE") then
+{
+	[_group, _vehicle] call _runAfter;
+};

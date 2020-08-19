@@ -18,53 +18,42 @@
 -------------------------------------------------------------------------------------------------------------------- */
 
 #include "config\macros.hpp"
+#include "macros.hpp"
 
 // Fetch our params
 params ["_roles", "_pos", "_gear", "_side", ["_vehicleClass", ""], ["_enableVCOM", false], ["_guerrillaAI", false], ["_suppressiveAI", false]];
 
-// Don't execute the function if this isn't the server
-if (!isServer) exitWith {};
 
-
-
-
-
-// Set up some variables
 private _group = grpNull;
 private _vehicle = objNull;
 
-// If we have a vehicle, create it along with the units
-if (_vehicleClass != "") then {
-	private _ret = [_roles, _pos, _vehicleClass, _gear, _side] call f_fnc_spawnvehiclegroup;
-	_group = _ret param [0, grpNull];
-	_vehicle = _ret param [1, objNull];
-
-// Otherwise, only create the units
-} else {
-	_group = [_roles, _pos, _gear, _side] call f_fnc_spawngroup;
-};
-
-// Add the units as editable objects
-private _allObjects = (units _group) + [_vehicle];
+if (_vehicleClass != "") then
 {
-	_x addCuratorEditableObjects [_allObjects, true];
-} forEach allCurators;
+	_args = [_roles, _pos, _vehicleClass, _gear, _side, _suppressiveAI, _guerrillaAI, f_fnc_addToCurator];
 
+	if ((_suppressiveAI isEqualType []) or (_guerrillaAI isEqualType [])) then
+	{
+		// Cre8or AI scripts are not HC compatible.
+		TRANSFER_TO_SERVER(f_fnc_spawnVehicleGroup,_args);
+	}
+	else
+	{
+		TRANSFER_TO_HC(f_fnc_spawnVehicleGroup,_args);
+	};
 
+}
+else
+{
+	_args = [_roles, _pos, _gear, _side, _suppressiveAI, _guerrillaAI, f_fnc_addToCurator];
 
+	if ((_suppressiveAI isEqualType []) or (_guerrillaAI isEqualType [])) then
+	{
+		// Cre8or AI scripts are not HC compatible.
+		TRANSFER_TO_SERVER(f_fnc_spawnGroup,_args);
+	}
+	else
+	{
+		TRANSFER_TO_HC(f_fnc_spawnGroup,_args);
+	};
 
-
-// Disable VCOM, if desired
-if (!_enableVCOM) then {
-	_group setVariable [MACRO_VCOM_VARNAME_NOAI, true, true];
-};
-
-// Enable guerrilla AI, if desired
-if (_guerrillaAI isEqualType []) then {
-	([_group] + _guerrillaAI) spawn f_fnc_groupGuerrillaAI;
-};
-
-// Enable suppressive AI, if desired
-if (_suppressiveAI isEqualType []) then {
-	([_group] + _suppressiveAI) spawn f_fnc_groupSuppressiveAI;
 };

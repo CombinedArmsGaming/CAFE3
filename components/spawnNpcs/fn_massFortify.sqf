@@ -11,13 +11,10 @@
  * Return Value:
  * Nothing
  *
- * Example:
- * [["SC1_FT_BF","SC1_FT_BF_1","SC1_FT_BF_2","SC1_FT_BF_3"],["ftl","ar","r","r","r"],"opf_f",east] spawn f_fnc_massfortify
- *
  */
 params ["_locationarray","_unitarray",["_faction",""],["_side", f_defaultside]];
 private ["_group","_grouparray"];
 
 {
-  [_unitarray,_x,_faction,_side] call f_fnc_spawnfortify;
+    [_unitarray,_x,_faction,_side] call f_fnc_spawnfortify;
 } forEach _locationarray;

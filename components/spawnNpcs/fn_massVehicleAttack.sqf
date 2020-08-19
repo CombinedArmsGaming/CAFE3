@@ -13,13 +13,10 @@
  * Return Value:
  * Nothing
  *
- * Example:
- * [["SC1_CA","SC1_CA_1","SC1_CA_2"],["ftl","ar","r","r","r"],"SC1_CA_A","C_Offroad_default_F","opf_f",east] spawn f_fnc_massvehicleattack
- *
  */
 params ["_locationarray","_unitarray","_attackposition","_vehicletype",["_faction",""],["_side", f_defaultside]];
 private ["_group","_grouparray"];
 
 {
- [_unitarray,_x,_attackposition,_vehicletype,_faction,_side] call f_fnc_spawnvehicleattack;
+    [_unitarray,_x,_attackposition,_vehicletype,_faction,_side] call f_fnc_spawnvehicleattack;
 } forEach _locationarray;

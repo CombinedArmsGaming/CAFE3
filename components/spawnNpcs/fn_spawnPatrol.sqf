@@ -14,12 +14,7 @@
  * Return Value:
  * Group.
  *
- * Example:
- * [["ftl","r","m","rat","ar","aar"],"SC1_FT_AP",200,"opf_f",east] spawn f_fnc_spawnpatrol;
- *
  */
-
-RUN_ON_SERVER(f_fnc_spawnPatrol,_this);
 
 params ["_unitarray","_position",["_radius", 200, [2]],["_faction",""],["_side", f_defaultSide]];
 

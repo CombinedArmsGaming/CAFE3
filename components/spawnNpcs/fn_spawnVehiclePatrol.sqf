@@ -15,12 +15,7 @@
  * Return Value:
  * Array of [group,vehicle]
  *
- * Example:
- * [["ftl","r","ar","m"],"SC1_VC_P","C_Offroad_default_F",500,"opf_f",east] spawn f_fnc_spawnvehiclepatrol;
- *
  */
-
-RUN_ON_SERVER(f_fnc_spawnVehiclePatrol,_this);
 
 params ["_unitarray","_position","_vehicletype",["_radius", 200, [2]],["_faction",""],["_side", f_defaultSide]];
 
@@ -71,7 +66,7 @@ _patrolpos = _posdir select 0;
     {
         _wayp = [_group,(currentWaypoint _group)];
         _wayp setWPPos (getpos (leader _group));
-        
+
     };
 
 };

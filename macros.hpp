@@ -108,8 +108,19 @@ if (isNull player) then             \
                                     \
 }
 
+#define TRANSFER_TO_SERVER(FUNC,ARGS) \
+    if (!isServer) exitWith { ARGS remoteExec [#FUNC,2]; }; \
+    ARGS spawn FUNC
+
+#define TRANSFER_TO_HC(FUNC,ARGS) \
+    _shouldExit = [#FUNC, ARGS] call f_fnc_tryRunOnHeadlessClient; \
+    if (_shouldExit) exitWith {}; \
+    ARGS spawn FUNC
 
 #define RUN_ON_SERVER(FUNC,ARGS) if (!isServer) exitWith { ARGS remoteExec [#FUNC,2]; }
+#define RUN_ON_HC(FUNC,ARGS) \
+    _shouldExit = [#FUNC, ARGS] call f_fnc_tryRunOnHeadlessClient; \
+    if (_shouldExit) exitWith {}
 
 #define RUN_LOCAL_TO(OBJ,FUNC,ARGS) \
 if (isNull OBJ) exitwith { DEBUG_FORMAT1_LOG("Tried calling %1 local to a null object.",FUNC) }; \

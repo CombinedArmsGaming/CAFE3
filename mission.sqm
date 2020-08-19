@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1352;
+		nextID=1356;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={131.4695,109.8576,306.27194};
-		dir[]={0.2978172,-0.87821156,0.37445721};
-		up[]={0.54664618,0.4782728,0.6873185};
-		aside[]={0.78272039,-1.4272518e-007,-0.62252092};
+		pos[]={279.41718,146.31683,57.048187};
+		dir[]={-0.081038438,-0.55859983,0.82557595};
+		up[]={-0.054576464,0.82937163,0.55600119};
+		aside[]={0.99531478,2.5852933e-007,0.097701021};
 	};
 };
 binarizationWanted=0;
@@ -3577,7 +3577,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=36;
+		items=39;
 		class Item0
 		{
 			dataType="Logic";
@@ -7598,6 +7598,42 @@ class Mission
 				};
 				nAttributes=1;
 			};
+		};
+		class Item36
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={165.94701,5,281.15302};
+			};
+			isPlayable=1;
+			description="HC-1";
+			id=1352;
+			type="HeadlessClient_F";
+		};
+		class Item37
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={166.694,5,240.49001};
+			};
+			isPlayable=1;
+			description="HC-2";
+			id=1353;
+			type="HeadlessClient_F";
+		};
+		class Item38
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={165.44501,5,202.61501};
+			};
+			isPlayable=1;
+			description="HC-3";
+			id=1354;
+			type="HeadlessClient_F";
 		};
 	};
 	class Connections

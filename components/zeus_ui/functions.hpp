@@ -6,4 +6,5 @@ class zeusui
 	class server_spawnGroup{};
 	class zeusUI{};
 	class isZeusRemoteControlling{};
+	class addToCurator{};
 };

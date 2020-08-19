@@ -13,12 +13,7 @@
  * Return Value:
  * Group.
  *
- * Example:
- * [["ftl","r","m","rat","ar","aar"],"SC1_FT_BF","opf_f",east] spawn f_fnc_spawnfortify;
- *
  */
-
-RUN_ON_SERVER(f_fnc_spawnFortify,_this);
 
 params ["_unitarray","_position",["_faction",""],["_side", f_defaultSide]];
 

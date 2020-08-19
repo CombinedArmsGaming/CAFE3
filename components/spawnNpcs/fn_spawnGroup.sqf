@@ -13,22 +13,16 @@
  * Return Value:
  * Group
  *
- * Example:
- * [["ftl","r","ar","m"],"spawnmarker","opf_f",west] spawn f_fnc_spawngroup;
- * [["ftl","r","ar","m"],player,"opf_f",west] spawn f_fnc_spawngroup;
- * [["ftl","r","ar","m"],[123,67,0],"blu_f",east] spawn f_fnc_spawngroup;
  */
 
-RUN_ON_SERVER(f_fnc_spawnGroup,_this);
-
-params ["_unitarray","_position",["_faction",""],["_side", f_defaultSide]];
-private ["_spawnpos","_unittype","_unit","_group","_posdir","_unittype"];
+params ["_unitarray", "_position", ["_faction",""], ["_side", f_defaultSide], ["_suppressiveAI",false], ["_guerrillaAI",false], ["_runAfter",[]]];
+private ["_spawnpos", "_unittype", "_unit", "_group", "_posdir", "_unittype"];
 
 //Getting a good position from the parsed values
 _posdir = _position call f_fnc_getDirPos;
 _spawnpos = _posdir select 0;
 
-switch(_side) do
+switch (_side) do
 {
 	case west: {_group = createGroup [west,true]; _unittype = "B_Soldier_F";};
 	case east: {_group = createGroup [east,true]; _unittype = "O_Soldier_F";};
@@ -57,9 +51,26 @@ switch(_side) do
 _group setFormation "LINE";
 
 
-_group spawn f_fnc_groupGuerrillaAI;
-_group spawn f_fnc_groupSuppressiveAI;
+if (isServer) then
+{
+	// Enable guerrilla AI, if desired
+	if (_guerrillaAI isEqualType []) then
+	{
+		([_group] + _guerrillaAI) spawn f_fnc_groupGuerrillaAI;
+	};
 
-//[_group] remoteExec ["bub_fnc_addGroupToZeus", 2];
+	// Enable suppressive AI, if desired
+	if (_suppressiveAI isEqualType []) then
+	{
+		([_group] + _suppressiveAI) spawn f_fnc_groupSuppressiveAI;
+	};
+
+};
+
+
+if ((typeName _runAfter) isEqualTo "CODE") then
+{
+	[_group] call _runAfter;
+};
 
 _group

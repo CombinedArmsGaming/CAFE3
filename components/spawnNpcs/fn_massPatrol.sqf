@@ -12,13 +12,10 @@
  * Return Value:
  * Nothing
  *
- * Example:
- * [["SC1_FT_AP","SC1_FT_AP_1","SC1_FT_AP_2","SC1_FT_AP_3","SC1_FT_AP_4"],["ftl","ar","r","r","r"],300,"opf_f",east] spawn f_fnc_masspatrol
- *
  */
 params ["_locationarray","_unitarray",["_radius", 200, [2]],["_faction",""],["_side", f_defaultside]];
 private ["_group","_grouparray"];
 
 {
-  [_unitarray,_x,_radius,_faction,_side] call f_fnc_spawnpatrol;
+    [_unitarray,_x,_radius,_faction,_side] call f_fnc_spawnpatrol;
 } forEach _locationarray;

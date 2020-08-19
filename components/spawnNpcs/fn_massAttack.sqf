@@ -12,13 +12,10 @@
  * Return Value:
  * Nothing
  *
- * Example:
- * [["SC1_CA","SC1_CA_1","SC1_CA_2"],["ftl","ar","r","r","r"],"SC1_CA_A","opf_f",east] spawn f_fnc_massattack
- *
  */
 params ["_locationarray","_unitarray","_attackposition",["_faction",""],["_side", f_defaultside]];
 private ["_group","_grouparray"];
 
 {
-  [_unitarray,_x,_attackposition,_faction,_side] call f_fnc_spawnattack;
+    [_unitarray,_x,_attackposition,_faction,_side] call f_fnc_spawnattack;
 } forEach _locationarray;

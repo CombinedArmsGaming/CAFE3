@@ -3,6 +3,10 @@
 
 DEBUG_PRINT_LOG("initting shared misc")
 
+if (isServer) then
+{
+    [] spawn f_fnc_monitorHeadlessClients;
+};
 
 // For now, "all settings" only includes ACE.
 waitUntil

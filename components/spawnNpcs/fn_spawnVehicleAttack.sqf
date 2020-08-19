@@ -15,12 +15,7 @@
  * Return Value:
  * Array of [group,vehicle]
  *
- * Example:
- * [["ftl","r","ar","m"],"SC1_CA","SC1_CA_A","C_Offroad_default_F","opf_f",east] spawn f_fnc_spawnvehicleattack;
- *
  */
-
-RUN_ON_SERVER(f_fnc_spawnVehicleAttack,_this);
 
 params ["_unitarray","_position","_attackposition","_vehicletype",["_faction",""],["_side", f_defaultSide]];
 

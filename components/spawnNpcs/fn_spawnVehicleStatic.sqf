@@ -14,12 +14,7 @@
  * Return Value:
  * Array of [group,vehicle]
  *
- * Example:
- * [["ftl","r","ar","m"],"SC1_VC_S","C_Offroad_default_F","opf_f",east] spawn f_fnc_spawnvehiclestatic;
- *
  */
-
-RUN_ON_SERVER(f_fnc_spawnVehicleStatic,_this);
 
 params ["_unitarray","_position","_vehicletype",["_faction",""],["_side", f_defaultSide]];
 private ["_grpvehicle","_vehicle","_spawnpos"];
