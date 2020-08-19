@@ -6,7 +6,7 @@
 
 
 // jip check
-if (hasInterface) then
+if (IS_CLIENT) then
 {
 	WAIT_UNTIL_PLAYER_EXISTS();
 };
@@ -16,7 +16,7 @@ _presetSetup = [] call f_fnc_setupRadioPresets;
 
 
 // run client stuff.
-if (hasInterface) then
+if (IS_CLIENT) then
 {
 	waitUntil { IS_TRUE(f_radios_loadedSettings) };
 	// define our languages (need to be the same order for everyone)

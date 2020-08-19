@@ -31,7 +31,7 @@ MISSION_ROOT = call
 
 DEBUG_FORMAT2_LOG("Is CLIENT? %1.  Is SERVER? %2.",hasInterface,isServer)
 
-if (hasInterface) then
+if (IS_CLIENT) then
 {
 	DEBUG_PRINT_LOG("Using CLIENT config and startup groups.")
 

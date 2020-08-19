@@ -1,6 +1,10 @@
 #include "startup\configuration\internals\configMacros.hpp"
 
 
+#define IS_HC (!(hasInterface or isServer))
+#define IS_CLIENT (hasInterface or {IS_HC})
+
+
 // Debugging utilities
 #ifdef ENABLE_DEBUG
 
@@ -11,10 +15,10 @@
 #define DEBUG_FORMAT3_CHAT(STRING, F1, F2, F3) player sideChat format [STRING, str F1, str F2, str F3];
 
 // Client and serverside.
-#define DEBUG_PRINT_LOG(STRING) diag_log STRING;
-#define DEBUG_FORMAT1_LOG(STRING, F1) diag_log format [STRING, str F1];
-#define DEBUG_FORMAT2_LOG(STRING, F1, F2) diag_log format [STRING, str F1, str F2];
-#define DEBUG_FORMAT3_LOG(STRING, F1, F2, F3) diag_log format [STRING, str F1, str F2, str F3];
+#define DEBUG_PRINT_LOG(STRING) if (IS_HC) then {("FROM HC: "+STRING) remoteExec ["diag_log", 2];} else {diag_log STRING};
+#define DEBUG_FORMAT1_LOG(STRING, F1) if (IS_HC) then {(format ["FROM HC: "+STRING, str F1]) remoteExec ["diag_log", 2];} else {diag_log format [STRING, str F1]};
+#define DEBUG_FORMAT2_LOG(STRING, F1, F2) if (IS_HC) then {(format ["FROM HC: "+STRING, str F1, str F2]) remoteExec ["diag_log", 2];} else {diag_log format [STRING, str F1, str F2]};
+#define DEBUG_FORMAT3_LOG(STRING, F1, F2, F3) if (IS_HC) then {(format ["FROM HC: "+STRING, str F1, str F2, str F3]) remoteExec ["diag_log", 2];} else {diag_log format [STRING, str F1, str F2, str F3]};
 
 #else
 
@@ -74,15 +78,15 @@
 #define EXISTS(VAR) ((!isNil #VAR) and {!(isNull VAR)})
 
 #define SERVER_ONLY if (!isServer) exitWith {}
-#define CLIENT_ONLY if (!hasInterface) exitWith {}
+#define CLIENT_ONLY if !IS_CLIENT exitWith {}
 #define LOCAL_ONLY(obj) if !(local obj) exitWith {}
 
 #define SERVER_WARN(MESSAGE) if (!isServer) then { DEBUG_PRINT_LOG(MESSAGE) }
-#define CLIENT_WARN(MESSAGE) if (!hasInterface) then { DEBUG_PRINT_LOG(MESSAGE) }
+#define CLIENT_WARN(MESSAGE) if !IS_CLIENT then { DEBUG_PRINT_LOG(MESSAGE) }
 #define LOCAL_WARN(OBJ, MESSAGE) if !(local OBJ) then { DEBUG_PRINT_LOG(MESSAGE) }
 
 #define SERVER_ONLY_WARN(MESSAGE) if (!isServer) exitWith { DEBUG_PRINT_LOG(MESSAGE) }
-#define CLIENT_ONLY_WARN(MESSAGE) if (!hasInterface) exitWith { DEBUG_PRINT_LOG(MESSAGE) }
+#define CLIENT_ONLY_WARN(MESSAGE) if !IS_CLIENT exitWith { DEBUG_PRINT_LOG(MESSAGE) }
 #define LOCAL_ONLY_WARN(OBJ, MESSAGE) if !(local OBJ) exitWith { DEBUG_PRINT_LOG(MESSAGE) }
 
 #define WAIT_UNTIL_SETTINGS_READY() \
