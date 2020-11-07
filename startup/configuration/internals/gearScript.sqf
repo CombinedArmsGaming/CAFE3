@@ -5,15 +5,8 @@ if (isNil "f_var_gearscript_already_run") then
     #include "..\..\..\gearscript_macros.hpp"
     f_var_gearscript_already_run = true;
 
-    [] spawn
-    {
-        WAIT_UNTIL_MISSION_STARTED();
-
-        #include "..\..\..\configuration\gearScript.sqf"
-
-        f_var_gearscript_loaded = true;
-
-    };
+    #include "..\..\..\configuration\gearScript.sqf"
+    f_var_gearscript_loaded = true;
 
 }
 else
