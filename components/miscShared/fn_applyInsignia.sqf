@@ -5,6 +5,33 @@ params ["_unit"];
 
 LOCAL_ONLY(_unit);
 
+if !EXISTS(f_dict_insigniaColours) then
+{
+    _keyValues =
+    [
+        [str RED,       "insignia_GI_B_RED"],
+        [str ORANGE,    "insignia_GI_B_ORANGE"],
+        [str YELLOW,    "insignia_GI_B_YELLOW"],
+        [str GREEN,     "insignia_GI_B_GREEN"],
+        [str BLUE,      "insignia_GI_B_BLUE"],
+        [str CYAN,      "insignia_GI_B_CYAN"],
+        [str MAGENTA,   "insignia_GI_B_MAGENTA"],
+        [str PINK,      "insignia_GI_B_PINK"],
+        [str PURPLE,    "insignia_GI_B_PURPLE"],
+        [str WHITE,     "insignia_GI_B_WHITE"],
+        [str LIGHTGREY, "insignia_GI_B_LGREY"],
+        [str DARKGREY,  "insignia_GI_B_DGREY"],
+        [str BLACK,     "insignia_GI_B_BLACK"],
+        [str GREY,      "insignia_GI_B_GREY"],
+        [str BROWN,     "insignia_GI_B_BROWN"],
+        [str KHAKI,      "insignia_GI_B_TAN"]
+    ];
+
+    DICT_CREATE_VALS(f_dict_insigniaColours,_keyValues);
+
+};
+
+
 _faction = toLower (faction _unit);
 _unitType = _unit getVariable ["f_var_assignGear", ""];
 
@@ -15,7 +42,8 @@ if !(_unitType isEqualTo "") then
 {
     _insigniaClass = switch (_unitType) do
     {
-    	case "med": { "Patch_Medic" };
+    	case "med": { "insignia_GI_Medic" };
+        case "zeus": { "Curator" };
     	default {""};
     };
 
@@ -27,58 +55,17 @@ if (_insigniaClass isEqualTo "") then
     _group = group _unit;
     _colour = SQUAD_COLOUR(_group);
 
-    if (_colour isEqualTo []) then
+    _insigniaClass = DICT_GET(f_dict_insigniaColours,(str _colour));
+
+    if (_insigniaClass isEqualTo []) then
     {
-        _colour = BLACK;
+        _insigniaClass = DICT_GET(f_dict_insigniaColours,(str BLACK));
     };
 
-    _colourValues =
-    [
-        RED,
-        ORANGE,
-        YELLOW,
-        GREEN,
-        BLUE,
-        CYAN,
-        MAGENTA,
-        PINK,
-        PURPLE,
-        WHITE,
-        LIGHTGREY,
-        DARKGREY,
-        BLACK,
-        GREY,
-        BROWN,
-        KHAKI
-    ];
-
-    _colourPatches =
-    [
-        "Patch_Red",
-        "Patch_Orange",
-        "Patch_Yellow",
-        "Patch_Green",
-        "Patch_Blue",
-        "Patch_Cyan",
-        "Patch_Magenta",
-        "Patch_Pink",
-        "Patch_Purple",
-        "Patch_White",
-        "Patch_Grey",
-        "Patch_Grey",
-        "Patch_Black",
-        "Patch_Grey",
-        "Patch_Brown",
-        "Patch_Khaki"
-    ];
-
+    if (_unitType in ["ftl", "sl", "co", "xo"]) then
     {
-        if (_colour isEqualTo _x) exitWith
-        {
-            _insigniaClass = (_colourPatches select _forEachIndex);
-        };
-
-    } forEach _colourValues;
+        _insigniaClass = _insigniaClass + "_SL";
+    };
 
 };
 
@@ -88,7 +75,7 @@ if (_insigniaClass != "") then
 	private ["_texture", "_cfgTexture"];
 
 	waitUntil
-    {        
+    {
         (uniform _unit) != ""
     };
 
