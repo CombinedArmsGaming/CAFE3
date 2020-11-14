@@ -7,5 +7,8 @@ SERVER_ONLY;
 // Debug settings
 #include "..\internals\debug.sqf"
 
+// Radios
+#include "..\..\..\configuration\radios\acre.sqf"
+
 // Gearscript2
 #include "..\internals\gearScript.sqf"

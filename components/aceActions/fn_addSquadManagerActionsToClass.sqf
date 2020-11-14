@@ -90,6 +90,48 @@ _createSquadNode =
         _children pushBack [_action, [], _target];
 
 
+        // Update group radio channels
+        _action =
+        [
+            "CA2_SetSquadChannels",
+            "Set Squad Radio Channels",
+            "\A3\ui_f\data\igui\cfg\simpleTasks\types\radio_ca.paa",
+            {[_player, true] spawn f_fnc_updateGroupRadioChannels;},
+            {(leader group _player) isEqualTo _player},
+            {},
+            [],
+            "",
+            20,
+            [false,false,false,false,false],
+            {}
+        ];
+
+        _action call ace_interact_menu_fnc_createAction;
+
+        _children pushBack [_action, [], _target];
+
+
+        // Get group radio channels
+        _action =
+        [
+            "CA2_GetSquadChannels",
+            "Get Squad Radio Channels",
+            "\A3\ui_f\data\igui\cfg\simpleTasks\types\radio_ca.paa",
+            {[_player, true] spawn f_fnc_setupRadioChannels;},
+            {true},
+            {},
+            [],
+            "",
+            20,
+            [false,false,false,false,false],
+            {}
+        ];
+
+        _action call ace_interact_menu_fnc_createAction;
+
+        _children pushBack [_action, [], _target];
+
+
         _children
 
     };

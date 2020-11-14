@@ -9,152 +9,88 @@ if (_unit getVariable ["f_var_running_radioChannels", false]) exitWith {};
 _unit setVariable ["f_var_running_radioChannels", true];
 
 
-// ASSIGN DEFAULT CHANNELS TO RADIOS
-// Depending on the squad joined, each radio is assigned a default starting channel
+// Try to inherit radio settings from group if group settings exist.
+// If group settings exist, always use those.
+// If group settings do not exist and player is the group leader, create new group settings.
+// If player is not a leader, wait until group settings exist or circumstances change.
+// If player is part of an AI group, skip radio settings.
+_allDone = false;
+_results = [];
 
-if (!f_radios_settings_acre2_disableRadios) then
+while {!_allDone} do
 {
-	waitUntil
+	_group = group _unit;
+	_leader = leader _group;
+
+	_hasConfig = !((_group getVariable ["f_var_radioSR", ""]) isEqualTo "");
+
+	if (_hasConfig) exitWith
 	{
-		uiSleep 0.1; [_unit] call acre_api_fnc_isInitialized
-	};
-
-	_presetArray = switch (side _unit) do
-	{
-  		case blufor: {f_radios_settings_acre2_sr_groups_blufor};
-	  	case opfor: {f_radios_settings_acre2_sr_groups_opfor};
-	  	case independent: {f_radios_settings_acre2_sr_groups_indfor};
-	  	default {f_radios_settings_acre2_sr_groups_indfor};
-	};
-
-	_presetLRArray = switch (side _unit) do
-	{
-		case blufor: {f_radios_settings_acre2_lr_groups_blufor};
-	  	case opfor: {f_radios_settings_acre2_lr_groups_opfor};
-	  	case independent: {f_radios_settings_acre2_lr_groups_indfor};
-		default {f_radios_settings_acre2_lr_groups_indfor};
-	};
-
-	_radioSR = [f_radios_settings_acre2_standardSHRadio] call acre_api_fnc_getRadioByType;
-	_radioLR = [f_radios_settings_acre2_standardLRRadio] call acre_api_fnc_getRadioByType;
-	_radioExtra = [f_radios_settings_acre2_extraRadio] call acre_api_fnc_getRadioByType;
-	_radioBackpack = [f_radios_settings_acre2_BackpackRadio] call acre_api_fnc_getRadioByType;
-
-	_hasSR = ((!isNil "_radioSR") && {_radioSR != ""});
-	_hasLR = ((!isNil "_radioLR") && {_radioLR != ""});
-	_hasExtra = ((!isNil "_radioExtra") && {_radioExtra != ""});
-	_hasBackpack = ((!isNil "_radioBackpack") && {_radioBackpack != ""});
-
-	_groupID = groupID (group _unit);
-
-	_groupChannelIndex = -1;
-  	_groupLRChannelIndex = -1;
-
-
-	if (_hasSR) then
-	{
-	  	{
-	  		if (_groupID in (_x select 1)) exitWith
-			{
-				 _groupChannelIndex = _forEachIndex;
-			};
-
-	  	} forEach _presetArray;
-
-  	};
-
-
-  	if (_hasLR || _hasExtra) then
-	{
-	  	{
-	  		if (_groupID in (_x select 1)) exitWith
-			{
-				_groupLRChannelIndex = _forEachIndex;
-			};
-
-	  	} forEach _presetLRArray;
-
-  	};
-
-
-	if (_groupChannelIndex == -1 && {_hasSR}) then
-	{
-		DEBUG_FORMAT1_CHAT("[F3 ACRE2] Warning: Unknown group for short-range channel defaults (%1)", _groupID);
-		_groupChannelIndex = 0;
+		_results = [_unit] call f_fnc_copyGroupRadioChannelsToUnit;
+		_allDone = true;
 	};
 
 
-	if (_groupLRChannelIndex == -1 && {(_hasLR || _hasExtra)}) then
+	if (isPlayer _leader and {!(_leader isEqualTo _unit)}) then
 	{
-  		DEBUG_FORMAT1_CHAT("[F3 ACRE2] Warning: Unknown group for long-range channel defaults (%1)", _groupID);
-	  	_groupLRChannelIndex = 0;
-	};
+		DEBUG_FORMAT1_LOG("[Radios] Player is not leader, waiting for group config in '%1'.",(groupId _group))
+		_differentLeader = false;
 
-
-	if (_hasSR) then
-	{
-		DEBUG_FORMAT2_LOG("[Radios] Setting radio channel for '%1' to %2",_radioSR,(_groupChannelIndex + 1))
-
-	    [_radioSR, (_groupChannelIndex + 1)] call acre_api_fnc_setRadioChannel;
-
-	};
-
-
-	if (_hasLR) then
-	{
-		DEBUG_FORMAT2_LOG("[Radios] Setting radio channel for '%1' to %2",_radioLR,(_groupLRChannelIndex + 1))
-
-	    [_radioLR, (_groupLRChannelIndex + 1)] call acre_api_fnc_setRadioChannel;
-
-	};
-
-
-	if (_hasExtra) then
-	{
-		DEBUG_FORMAT2_LOG("[Radios] Setting radio channel for '%1' to %2",_radioExtra,(_groupLRChannelIndex + 1))
-
-	    [_radioExtra, (_groupLRChannelIndex + 1)] call acre_api_fnc_setRadioChannel;
-
-	};
-
-
-	if (_hasBackpack) then
-	{
-		DEBUG_FORMAT2_LOG("[Radios] Setting radio channel for '%1' to %2",_radioExtra,(_groupLRChannelIndex + 1))
-
-	    [_radioBackpack, (_groupLRChannelIndex + 1)] call acre_api_fnc_setRadioChannel;
-
-	};
-
-	if (_message and {_unit isEqualTo player} and {_hasLR or _hasSR or _hasExtra or _hasBackpack}) then
-	{
-		_message = "Your radio channels have been updated";
-
-		if (_hasLR or _hasSR or _hasExtra or _hasBackpack) then
+		waitUntil
 		{
-			_message = _message + " ( ";
+			sleep 0.1;
+			_hasConfig = !((_group getVariable ["f_var_radioSR", ""]) isEqualTo "");
+			_differentLeader = !(_leader isEqualTo (leader group _unit));
+			_differentGroup = !(_group isEqualTo (group _unit));
+
+			(_hasConfig or _differentLeader or _differentGroup)
 		};
 
-		if (_hasSR) then
+		if (_differentGroup) then
 		{
-			_message = _message + (format ["SR:%1 ", (_groupChannelIndex + 1)])
+			DEBUG_FORMAT2_LOG("[Radios] Player group changed while waiting (was %1, now %2).",(groupId _group),(groupId group _unit))
+			_group = group _unit;
 		};
 
-		if (_hasLR or _hasExtra or _hasBackpack) then
+		if (_differentLeader) then
 		{
-			_message = _message + (format ["LR:%1 ", (_groupLRChannelIndex + 1)])
+			DEBUG_FORMAT2_LOG("[Radios] Group leader changed while waiting (was %1, now %2).",_leader,(leader group _unit))
+			_leader = leader group _unit;
 		};
 
-		if (_hasLR or _hasSR or _hasExtra or _hasBackpack) then
+		if (_hasConfig and (!_differentGroup) and (!_differentLeader)) then
 		{
-			_message = _message + ")";
+			DEBUG_FORMAT1_LOG("[Radios] Done waiting for group config, applying to %1.",_unit)
+			_results = [_unit] call f_fnc_copyGroupRadioChannelsToUnit;
+			_allDone = true;
+		};
+	}
+	else
+	{
+		// Player is group leader, else group is led by AI
+		if (player isEqualTo _leader) then
+		{
+			DEBUG_FORMAT1_LOG("[Radios] %1 is leader of their group, creating radio settings.",_unit)
+			_results = [_unit] call f_fnc_setupGroupRadioChannels;
 		};
 
-		_message = _message + ".";
+		_allDone = true;
 
-		"CA2RadioMessage" cutText [_message, "PLAIN DOWN", 1.5];
 	};
 
 };
+
+
+if (_message and {_unit isEqualTo player} and {count _results > 0}) then
+{
+	_displayStrings = _results apply {format ["%1: %2", _x#0, _x#1]};
+
+	_message = "Your radio channels have been updated (";
+    _message = _message + (_displayStrings joinString ", ");
+	_message = _message + ").";
+
+	"CA2RadioMessage" cutText [_message, "PLAIN DOWN", 1.5];
+};
+
 
 _unit setVariable ["f_var_running_radioChannels", false];
