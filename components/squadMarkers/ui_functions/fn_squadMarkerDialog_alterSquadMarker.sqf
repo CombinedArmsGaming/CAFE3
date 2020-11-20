@@ -67,7 +67,9 @@ if !(_iconName isEqualTo "") then
         case "b_antitank": {ANTITANK};
         case "b_heavyantitank": {HEAVYANTITANK};
         case "b_heavyweapons": {HEAVYWEAPONS};
-    default {UNKNOWN};
+
+        default {UNKNOWN};
+        
     };
 
     SET_SQUAD_ICON(_groupId,_icon);
