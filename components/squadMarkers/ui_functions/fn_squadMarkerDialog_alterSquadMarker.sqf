@@ -47,25 +47,29 @@ if !(_iconName isEqualTo "") then
 {
     _icon = switch (_iconName) do
     {
-        case ("Helicopter"): {HELO};
-        case ("Anti-air"): {ANTIAIR};
-        case ("Armor"): {ARMOR};
-        case ("Artillery"): {ARTILLERY};
-        case ("Headquarters"): {HQ};
-        case ("Infantry"): {INFANTRY};
-        case ("Repair"): {REPAIR};
-        case ("Mechanized Inf."): {MECHINF};
-        case ("Medic"): {MEDIC};
-        case ("Mortar"): {MORTAR};
-        case ("Motorized Inf."): {MOTORINF};
-        case ("Naval"): {NAVAL};
-        case ("Plane"): {PLANE};
-        case ("Recon"): {RECON};
-        case ("Supply"): {SUPPLY};
-        case ("Unknown"): {UNKNOWN};
+        case "b_hq": {HQ};
+        case "b_inf": {INFANTRY};
+        case "b_sf": {SPECIALFORCES};
+        case "b_supply": {SUPPLY};
+        case "b_motor_inf": {MOTORINF};
+        case "b_mortar": {MORTAR};
+        case "b_maint": {REPAIR};
+        case "b_eod": {EOD};
+        case "b_med": {MEDIC};
+        case "b_mech_inf": {MECHINF};
+        case "b_armor": {ARMOR};
+        case "b_recon": {RECON};
+        case "b_air": {HELO};
+        case "b_plane": {PLANE};
+        case "b_art": {ARTILLERY};
+        case "b_naval": {NAVAL};
+        case "b_antiair": {ANTIAIR};
+        case "b_antitank": {ANTITANK};
+        case "b_heavyantitank": {HEAVYANTITANK};
+        case "b_heavyweapons": {HEAVYWEAPONS};
 
         default {UNKNOWN};
-
+        
     };
 
     SET_SQUAD_ICON(_groupId,_icon);
