@@ -4,7 +4,7 @@ BEGIN_IDENTITIES;
 
 // // Cor, it's the Empire, innit?
  _speakers = ["male05engb","male04engb","male03engb","male02engb","male01engb"];
- _faces = ["WhiteHead_27","WhiteHead_07","WhiteHead_18","WhiteHead_21","WhiteHead_13"]
+ _faces = ["WhiteHead_27","WhiteHead_07","WhiteHead_18","WhiteHead_21","WhiteHead_13"];
 
 
 CREATE_IDENTITY(east, _speakers, _faces);
