@@ -7,7 +7,7 @@ BEGIN_IDENTITIES;
  //_faces = ["WhiteHead_27","WhiteHead_07","WhiteHead_18","WhiteHead_21","WhiteHead_13"]
 
 
-CREATE_IDENTITY(east)
+CREATE_IDENTITY(east, _speakers, _faces);
 // SPEAKERS(_speakers)
 // //FACES(_faces)
 

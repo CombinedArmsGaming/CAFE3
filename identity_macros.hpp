@@ -2,18 +2,18 @@
 #define BEGIN_IDENTITIES f_identities_registry = []
 #define ADD_IDENTITY_TO_REGISTRY(NAME) f_identities_registry pushBack #NAME
 
-//#define IDENTITY_VAR(NAME) CONCAT(f_identities_,NAME)
+#define IDENTITY_VAR(NAME) CONCAT(f_identities_,NAME)
 
 
-//#define SPEAKERS(NAME) CONCAT(IDENTITY_VAR(NAME),"speakers")
+#define SPEAKERS(NAME) CONCAT(IDENTITY_VAR(NAME),_speakers)
 
 
-//#define FACES(NAME) CONCAT(IDENTITY_VAR(NAME),"faces")
+#define FACES(NAME) CONCAT(IDENTITY_VAR(NAME),_faces)
 
-#define CREATE_IDENTITY(NAME)\
+#define CREATE_IDENTITY(NAME, SPEAKERS, FACES)\
+ 	IDENTITY_VAR(NAME) = [];\
+ 	SPEAKERS(NAME) = [];\
+	FACES(NAME) = [];\
 	ADD_IDENTITY_TO_REGISTRY(NAME)
 
 //#define SET_SIDE_IDENTITY(SIDE, IDENTITY)
-// 	IDENTITY_VAR(NAME) = [];\
-// 	FACES(NAME) = [];\
-// 	SPEAKERS(NAME) = [];\
