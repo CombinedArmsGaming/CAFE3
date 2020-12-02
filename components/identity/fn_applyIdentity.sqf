@@ -2,43 +2,33 @@
 
 params ["_unit"];
 
-DEBUG_FORMAT2_LOG("[IDENTITY]: Attempting to apply identity.")
+//DEBUG_FORMAT2_LOG("[IDENTITY]: Attempting to apply identity.")
 
 
-// if (isPlayer _unit) exitWith {};
+if (isPlayer _unit) exitWith {};
 
-// // ====================================================================================
-
-
-// _faction = toLower (faction _unit);
-
-// if (count _this > 2) then
-// {
-//     _faction = toLower (_this select 2);
-// };
+// ====================================================================================
 
 
-// DEBUG_FORMAT2_LOG("[IDENTITY]: Attempting to apply identity for faction '%1'.",_faction);
+_faction = toLower (faction _unit);
+
+if (count _this > 2) then
+{
+    _faction = toLower (_this select 2);
+};
 
 
-// // ====================================================================================
-
-// _unit setVariable ["f_var_identity_Faction", _faction, true];
-
-// // ====================================================================================
-
-// _identityVariant = [_faction] call f_fnc_factionToIdentityVariant;
-// _identityVariant = "limey";
-// if (_gearVariant == "") exitWith
-// {
-//     DEBUG_FORMAT2_LOG("[IDENTITY]: Exited early because faction variant could not be resolved (Unit %1, Faction %2)",(str _unit),_faction);
-// };
-
-// //_identity = IDENTITY_VAR(_identityVariant);
+DEBUG_FORMAT2_LOG("[IDENTITY]: Attempting to apply identity for faction '%1'.",_faction)
 
 
-// _speaker = selectRandom SPEAKERS(_identityVariant);
-// _face = selectRandom FACES(_identityVariant);
+_sideName = [_faction] call f_fnc_factionToSideName;
+_identity = GET_FACTION_IDENTITY(_sideName);
 
-// _unit setSpeaker _speaker;
-// _unit setFace _face;
+_unit setVariable ["f_var_identity", _identity, true];
+
+
+_speaker = selectRandom (missionNamespace getVariable "f_identities_" + _identity + "_speakers");
+_face = selectRandom (missionNamespace getVariable "f_identities_" + _identity + "_faces");
+
+_unit setSpeaker _speaker;
+_unit setFace _face;
