@@ -1,24 +1,19 @@
-#define FACTION NONE
 
-#define BEGIN_IDENTITIES CONCAT3(f_identities,CONCAT(FACTION,_),registry) = []
-#define ADD_IDENTITY_TO_REGISTRY(NAME) CONCAT3(f_identities,CONCAT(FACTION,_),registry) pushBack #NAME
+#define BEGIN_IDENTITIES f_identities_registry = []
+#define ADD_IDENTITY_TO_REGISTRY(NAME) f_identities_registry pushBack #NAME
 
-#define IDENTITY_VAR(NAME) CONCAT3(f_identities,CONCAT(FACTION,_),NAME)
-
-//#define IDENTITY_VAR_DYNAMIC(SIDE,NAME) (missionNamespace getVariable [format ["f_identities%1_%2", SIDE, NAME], []])
-
-#define IDENTITY_SPEAKER_VAR(NAME,SPEAKER) CONCAT3(IDENTITY_VAR(FACTION),_,SPEAKER)
-#define IDENTITY_FACE_VAR(NAME,FACE) CONCAT3(IDENTITY_VAR(FACTION),_,FACE)
-
-#define SPEAKERS(NAME) LOADOUT_ITEM_VAR(NAME,speakers)
-#define FACES(NAME) LOADOUT_ITEM_VAR(NAME,faces)
+//#define IDENTITY_VAR(NAME) CONCAT(f_identities_,NAME)
 
 
-#define ADD_SPEAKERS(NAME,SPEAKERS) SPEAKERS(NAME) pushBack SPEAKERS
-#define ADD_FACES(NAME,FACES) FACES(NAME) pushBack FACES
+//#define SPEAKERS(NAME) CONCAT(IDENTITY_VAR(NAME),"speakers")
+
+
+//#define FACES(NAME) CONCAT(IDENTITY_VAR(NAME),"faces")
 
 #define CREATE_IDENTITY(NAME)\
-	IDENTITY_VAR(NAME) = [];\
-	SPEAKERS(NAME) = [];\
-	FACES(NAME) = [];\
 	ADD_IDENTITY_TO_REGISTRY(NAME)
+
+//#define SET_SIDE_IDENTITY(SIDE, IDENTITY)
+// 	IDENTITY_VAR(NAME) = [];\
+// 	FACES(NAME) = [];\
+// 	SPEAKERS(NAME) = [];\

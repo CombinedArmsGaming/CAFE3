@@ -11,7 +11,7 @@ if (_faction in ["blu_f", "blu_t_f", "blu_ctrg_f", "blu_gen_f"]) then
 
 if (_faction in ["opf_f", "opf_t_f"]) then
 {
-	_identityVariant = "opfor";
+	_identityVariant = "limey";
 };
 
 if (_faction in ["ind_f", "ind_c_f"]) then
