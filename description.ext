@@ -441,6 +441,11 @@ class Extended_InitPost_EventHandlers
 
 #endif
 
+		class setBlimey
+		{
+			init = "_this call f_fnc_applyIdentity";
+		};
+
 #ifdef ENABLE_VIEWDISTANCE_EDITOR
 
 		class addViewDistanceAction
