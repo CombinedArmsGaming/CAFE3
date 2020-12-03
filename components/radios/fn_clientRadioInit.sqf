@@ -17,6 +17,7 @@ if (f_radios_settings_acre2_disableRadios) exitWith {};
 if (_unit getVariable ["f_var_running_radios", false]) exitWith {};
 _unit setVariable ["f_var_running_radios", true];
 
+WAIT_UNTIL_MISSION_STARTED;
 waitUntil { IS_TRUE(f_radios_ready) };
 waitUntil { alive _unit };
 

@@ -8,10 +8,6 @@ params ["_unit"];
 // At minimum, set radio presets to setup faction split etc.
 [_unit] call f_fnc_clientSetRadioPresets;
 
-// Set language of the units depending on side (BABEL API)
-[_unit] call f_fnc_clientSetLanguages;
-
-
 DEBUG_PRINT_LOG("[Radios] Removing radios from unit.")
 [] call f_fnc_removeRadios;
 

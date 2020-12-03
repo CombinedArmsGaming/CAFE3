@@ -1,5 +1,6 @@
 #include "macros.hpp"
 
+DEBUG_PRINT_LOG("RADIOS2: initting radios")
 
 // jip check
 if (IS_CLIENT) then
@@ -9,7 +10,6 @@ if (IS_CLIENT) then
 
 // setup presets
 _presetSetup = [] call f_fnc_setupRadioPresets;
-
 
 // run client stuff.
 if (IS_CLIENT) then
@@ -25,5 +25,7 @@ if (IS_CLIENT) then
 	[] spawn f_fnc_radioGroupChangeLoop;
 
 	f_radios_ready = true;
+
+	DEBUG_PRINT_LOG("RADIOS2: done with client init")
 
 };

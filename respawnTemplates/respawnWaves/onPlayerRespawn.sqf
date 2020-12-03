@@ -13,6 +13,9 @@ LOCAL_ONLY(_unit);
 #include "..\parts\applyOldLoadout.sqf"
 
 
+// Set language of the units depending on side (BABEL API)
+[_unit] spawn f_fnc_clientSetLanguages;
+
 
 
 _tryJoinSquad =

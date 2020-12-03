@@ -2,6 +2,15 @@
 
 params ["_unit"];
 
+if !((count acre_sys_core_languages) > 0) then
+{
+	waitUntil
+	{
+		uiSleep 0.1;
+		(count acre_sys_core_languages) > 0
+	};
+};
+
 _languages = switch (side _unit) do
 {
 	case blufor: {f_radios_settings_acre2_language_blufor};
