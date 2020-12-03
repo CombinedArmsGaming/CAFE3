@@ -13,6 +13,9 @@
 // AI Caching settings
 #include "..\..\..\configuration\aiCache.sqf"
 
+// Insignia
+#include "..\internals\insigniaDefinition.sqf"
+
 // Gearscript2
 #include "..\internals\gearScript.sqf"
 

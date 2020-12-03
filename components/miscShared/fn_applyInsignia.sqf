@@ -5,7 +5,7 @@ params ["_unit"];
 
 LOCAL_ONLY(_unit);
 
-if !EXISTS(f_dict_insigniaColours) then
+if !EXISTS(f_dict_insignia_colours) then
 {
     _keyValues =
     [
@@ -27,7 +27,7 @@ if !EXISTS(f_dict_insigniaColours) then
         [str KHAKI,      "insignia_GI_B_TAN"]
     ];
 
-    DICT_CREATE_VALS(f_dict_insigniaColours,_keyValues);
+    DICT_CREATE_VALS(f_dict_insignia_colours,_keyValues);
 
 };
 
@@ -55,11 +55,11 @@ if (_insigniaClass isEqualTo "") then
     _group = group _unit;
     _colour = SQUAD_COLOUR(_group);
 
-    _insigniaClass = DICT_GET(f_dict_insigniaColours,(str _colour));
+    _insigniaClass = DICT_GET(f_dict_insignia_colours,(str _colour));
 
     if (_insigniaClass isEqualTo []) then
     {
-        _insigniaClass = DICT_GET(f_dict_insigniaColours,(str BLACK));
+        _insigniaClass = DICT_GET(f_dict_insignia_colours,(str BLACK));
     };
 
     if (_unitType in ["ftl", "sl", "co", "xo"]) then
