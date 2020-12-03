@@ -22,7 +22,22 @@ DEBUG_FORMAT2_LOG("[IDENTITY]: Attempting to apply identity for faction '%1'.",_
 
 
 _sideName = [_faction] call f_fnc_factionToSideName;
+
 _identity = GET_FACTION_IDENTITY(_sideName);
+
+// Below doesn't work and also this apparently fails silently?
+
+// try
+// {
+//     _identity = GET_FACTION_IDENTITY(_sideName);
+// }
+// catch
+// {
+//     DEBUG_FORMAT2_LOG("[IDENTITY]: Failed to find matching identity for side name '%1'.",_sideName);
+//     _unit setVariable ["f_var_identity", "NOT FOUND", true];
+//     systemChat("Got here");
+//     exitWith {};
+// };
 
 _unit setVariable ["f_var_identity", _identity, true];
 
