@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1356;
+		nextID=1357;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={326.74237,162.96709,62.473648};
-		dir[]={-0.33700407,-0.51145732,0.79058409};
-		up[]={-0.20059253,0.8592397,0.47057512};
-		aside[]={0.92000151,3.0064257e-007,0.39217192};
+		pos[]={323.51599,30,236.28601};
+		dir[]={0,-0.70710683,0.70710683};
+		up[]={0,0.70710677,0.70710677};
+		aside[]={0.99999994,0,-0};
 	};
 };
 binarizationWanted=0;
@@ -4757,14 +4757,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={323.51587,5.0014391,261.33557};
+						position[]={323.51599,5.0014391,261.336};
 					};
 					side="West";
 					flags=6;
 					class Attributes
 					{
 						rank="COLONEL";
-						init="call{[""ftl"", this] call f_fnc_assignGear;}";
+						init="call{[""ftl"", this] call f_fnc_assignGear; this setVariable [""f_var_insignia"",""fac""];}";
 						description="Fireteam Leader@BRAVO";
 						isPlayable=1;
 					};
@@ -4916,7 +4916,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={320.74286,5.0014391,254.37061};
+						position[]={320.74301,5.0014391,254.371};
 					};
 					side="West";
 					flags=4;
@@ -5269,7 +5269,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="BRAVO";
+							value="B1";
 						};
 					};
 				};

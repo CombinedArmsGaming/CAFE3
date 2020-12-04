@@ -8,23 +8,35 @@ LOCAL_ONLY(_unit);
 
 _faction = toLower (faction _unit);
 _unitType = _unit getVariable ["f_var_assignGear", ""];
+_insigniaVar = _unit getVariable ["f_var_insignia", ""];
 
 _insigniaClass = "";
 
-
-if !(_unitType isEqualTo "") then
+// Attempt to set insignia from f_var_insignia
+if (!(_insigniaVar isEqualTo "") && (_insigniaClass isEqualTo "" || _insigniaClass isEqualTo [])) then
 {
-    _insigniaClass = switch (_unitType) do
-    {
-    	case "med": { "insignia_GI_Medic" };
-        case "zeus": { "Curator" };
-    	default {""};
-    };
+    _insigniaClass = DICT_GET(f_dict_insignia_custom,(_insigniaVar));
+};
+
+// Attempt to set insignia from unit gearscript role
+if (!(_unitType isEqualTo "" ) && (_insigniaClass isEqualTo "" || _insigniaClass isEqualTo [])) then
+{
+    _insigniaClass = DICT_GET(f_dict_insignia_custom,(_unitType));
+};
+systemChat(str _insigniaClass);
+
+// Attempt to set insignia from unit group name
+if (_insigniaClass isEqualTo "" || _insigniaClass isEqualTo []) then
+{
+    _group = group _unit;
+    _callsign = groupdId (_group _unit);
+    systemChat(str _callsign);
+    _insigniaClass = DICT_GET(f_dict_insignia_custom,(_callsign));
 
 };
 
-
-if (_insigniaClass isEqualTo "") then
+// Fall back on unit group colour
+if (_insigniaClass isEqualTo "" || _insigniaClass isEqualTo []) then
 {
     _group = group _unit;
     _colour = SQUAD_COLOUR(_group);
