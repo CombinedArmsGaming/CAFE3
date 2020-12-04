@@ -23,15 +23,13 @@ if (!(_unitType isEqualTo "" ) && (_insigniaClass isEqualTo "" || _insigniaClass
 {
     _insigniaClass = DICT_GET(f_dict_insignia_custom,(_unitType));
 };
-systemChat(str _insigniaClass);
 
-// Attempt to set insignia from unit group name
+// Attempt to set insignia from unit group callsign
 if (_insigniaClass isEqualTo "" || _insigniaClass isEqualTo []) then
 {
     _group = group _unit;
-    _callsign = groupdId (_group _unit);
-    systemChat(str _callsign);
-    _insigniaClass = DICT_GET(f_dict_insignia_custom,(_callsign));
+    _callsign = groupId (_group);
+   _insigniaClass = DICT_GET(f_dict_insignia_custom,(_callsign));
 
 };
 

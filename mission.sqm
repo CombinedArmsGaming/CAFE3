@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={323.51599,30,236.28601};
-		dir[]={0,-0.70710683,0.70710683};
-		up[]={0,0.70710677,0.70710677};
-		aside[]={0.99999994,0,-0};
+		pos[]={335.85513,28.701956,257.04916};
+		dir[]={0.667319,-0.52310282,0.53017998};
+		up[]={0.4095858,0.85225832,0.32541382};
+		aside[]={0.62207663,-4.5867637e-007,-0.78298533};
 	};
 };
 binarizationWanted=0;
@@ -4764,7 +4764,7 @@ class Mission
 					class Attributes
 					{
 						rank="COLONEL";
-						init="call{[""ftl"", this] call f_fnc_assignGear; this setVariable [""f_var_insignia"",""fac""];}";
+						init="call{[""ftl"", this] call f_fnc_assignGear;}";
 						description="Fireteam Leader@BRAVO";
 						isPlayable=1;
 					};
@@ -5269,7 +5269,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="B1";
+							value="BRAVO";
 						};
 					};
 				};
@@ -6475,14 +6475,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={364.24377,5.0014391,254.58661};
+						position[]={364.24399,5.0014391,254.58701};
 					};
 					side="West";
 					flags=4;
 					class Attributes
 					{
 						rank="MAJOR";
-						init="call{[""co"", this] call f_fnc_assignGear;}";
+						init="call{[""co"", this] call f_fnc_assignGear; this setVariable [""f_var_insignia"",""xo""];}";
 						description="Deputy Commander";
 						isPlayable=1;
 					};
@@ -7128,7 +7128,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={219.39925,5.0014391,253.15973};
+						position[]={219.399,5.0014391,253.16};
 					};
 					side="West";
 					flags=5;
@@ -7136,7 +7136,7 @@ class Mission
 					{
 						skill=1;
 						rank="COLONEL";
-						init="call{[""zeus"", this] call f_fnc_assignGear;" \n "[this] call f_fnc_registerZeusPlayer;}";
+						init="call{[""zeus"", this] call f_fnc_assignGear;" \n "[this] call f_fnc_registerZeusPlayer;  this setVariable [""f_var_insignia"",""god""];}";
 						name="zeus_ply_1";
 						description="Zeus Player 2";
 						isPlayable=1;
