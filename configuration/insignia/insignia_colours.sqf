@@ -1,26 +1,26 @@
 #include "macros.hpp"
+#include "..\..\squadmarker_macros.hpp"
 
 if !EXISTS(f_dict_insignia_colours) then
 {
     _keyValues =
     [
-        ["RED",       "insignia_GI_B_RED"],
-        ["ORANGE",    "insignia_GI_B_ORANGE"],
-        ["YELLOW",    "insignia_GI_B_YELLOW"],
-        ["GREEN",     "insignia_GI_B_GREEN"],
-        ["BLUE",      "insignia_GI_B_BLUE"],
-        ["CYAN",      "insignia_GI_B_CYAN"],
-        ["MAGENTA",   "insignia_GI_B_MAGENTA"],
-        ["PINK",      "insignia_GI_B_PINK"],
-        ["PURPLE",    "insignia_GI_B_PURPLE"],
-        ["WHITE",     "insignia_GI_B_WHITE"],
-        ["LIGHTGREY", "insignia_GI_B_LGREY"],
-        ["DARKGREY",  "insignia_GI_B_DGREY"],
-        ["BLACK",     "insignia_GI_B_BLACK"],
-        ["GREY",      "insignia_GI_B_GREY"],
-        ["BROWN",     "insignia_GI_B_BROWN"],
-        ["KHAKI",      "insignia_GI_B_TAN"]
-
+        [str RED,       "insignia_GI_B_RED"],
+        [str ORANGE,    "insignia_GI_B_ORANGE"],
+        [str YELLOW,    "insignia_GI_B_YELLOW"],
+        [str GREEN,     "insignia_GI_B_GREEN"],
+        [str BLUE,      "insignia_GI_B_BLUE"],
+        [str CYAN,      "insignia_GI_B_CYAN"],
+        [str MAGENTA,   "insignia_GI_B_MAGENTA"],
+        [str PINK,      "insignia_GI_B_PINK"],
+        [str PURPLE,    "insignia_GI_B_PURPLE"],
+        [str WHITE,     "insignia_GI_B_WHITE"],
+        [str LIGHTGREY, "insignia_GI_B_LGREY"],
+        [str DARKGREY,  "insignia_GI_B_DGREY"],
+        [str BLACK,     "insignia_GI_B_BLACK"],
+        [str GREY,      "insignia_GI_B_GREY"],
+        [str BROWN,     "insignia_GI_B_BROWN"],
+        [str KHAKI,      "insignia_GI_B_TAN"]
     ];
 
     DICT_CREATE_VALS(f_dict_insignia_colours,_keyValues);
