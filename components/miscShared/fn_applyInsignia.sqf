@@ -18,6 +18,8 @@ if (!(_insigniaVar isEqualTo "") && (_insigniaClass isEqualTo "" || _insigniaCla
     _insigniaClass = DICT_GET(f_dict_insignia_custom,(_insigniaVar));
 };
 
+#ifdef ENABLE_ADVANCED_INSIGNIA
+
 // Attempt to set insignia from unit gearscript role
 if (!(_unitType isEqualTo "" ) && (_insigniaClass isEqualTo "" || _insigniaClass isEqualTo [])) then
 {
@@ -32,6 +34,8 @@ if (_insigniaClass isEqualTo "" || _insigniaClass isEqualTo []) then
    _insigniaClass = DICT_GET(f_dict_insignia_custom,(_callsign));
 
 };
+
+#endif
 
 // Fall back on unit group colour
 if (_insigniaClass isEqualTo "" || _insigniaClass isEqualTo []) then
