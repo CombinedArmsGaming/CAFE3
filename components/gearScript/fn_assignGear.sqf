@@ -39,7 +39,7 @@ _unit setVariable ["f_var_assignGear_Faction", _faction, true];
 
 // ====================================================================================
 
-_gearVariant = [_faction] call f_fnc_factionToGearVariant;
+_gearVariant = [_faction] call f_fnc_factionToSideName;
 
 if (_gearVariant == "") exitWith
 {

@@ -10,6 +10,9 @@
 // Respawn waves settings
 #include "..\..\..\configuration\respawnWaves.sqf"
 
+// Identity Translation
+#include "..\internals\identityTranslation.sqf"
+
 // Gearscript2
 #include "..\internals\gearScript.sqf"
 

@@ -10,7 +10,7 @@ waitUntil { IS_TRUE(f_var_gearscript_loaded) };
 
 if (_locker getVariable ["f_var_isLoadoutLocker", false] isEqualTo true) exitWith {};
 
-_gearVariant = [_faction] call f_fnc_factionToGearVariant;
+_gearVariant = [_faction] call f_fnc_factionToSideName;
 
 if (_gearVariant isEqualTo "") exitWith {};
 

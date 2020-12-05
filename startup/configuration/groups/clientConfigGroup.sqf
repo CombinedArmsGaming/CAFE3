@@ -13,6 +13,9 @@
 // AI Caching settings
 #include "..\..\..\configuration\aiCache.sqf"
 
+// Identity Translation
+#include "..\internals\identityTranslation.sqf"
+
 // Gearscript2
 #include "..\internals\gearScript.sqf"
 

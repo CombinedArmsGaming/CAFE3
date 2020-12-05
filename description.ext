@@ -441,6 +441,15 @@ class Extended_InitPost_EventHandlers
 
 #endif
 
+#ifdef ENABLE_IDENTITY_REPLACEMENT
+
+		class setIdentity
+		{
+			init = "_this call f_fnc_applyIdentity";
+		};
+
+#endif
+
 #ifdef ENABLE_VIEWDISTANCE_EDITOR
 
 		class addViewDistanceAction
