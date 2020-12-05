@@ -57,7 +57,7 @@ CREATE_IDENTITY(greek,_speakers,_faces);
 _speakers = ["male02per","male03per","male01per"];
 _faces = ["PersianHead_A3_01","PersianHead_A3_02","PersianHead_A3_03"];
 
-CREATE_IDENTITY(iran,_speakers,_faces);
+CREATE_IDENTITY(iranian,_speakers,_faces);
 
 
 // Asian
