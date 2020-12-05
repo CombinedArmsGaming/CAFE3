@@ -3,7 +3,8 @@
 
 params ["_unit"];
 
-LOCAL_ONLY(_unit);
+_message = format ["[INSIGNIA]: Tried to apply insignia to %1 but was not running locally.",_unit];
+LOCAL_ONLY_WARN(_unit, _message);
 
 
 _faction = toLower (faction _unit);
@@ -12,33 +13,47 @@ _insigniaVar = _unit getVariable ["f_var_insignia", ""];
 
 _insigniaClass = "";
 
-// Attempt to set insignia from f_var_insignia
-if (!(_insigniaVar isEqualTo "") && (_insigniaClass isEqualTo "" || _insigniaClass isEqualTo [])) then
-{
-    _insigniaClass = DICT_GET(f_dict_insignia_custom,(_insigniaVar));
-};
 
 #ifdef ENABLE_ADVANCED_INSIGNIA
 
-// Attempt to set insignia from unit gearscript role
-if (!(_unitType isEqualTo "" ) && (_insigniaClass isEqualTo "" || _insigniaClass isEqualTo [])) then
+
+// Attempt to set insignia from f_var_insignia
+if !(_insigniaVar isEqualTo "") then
 {
-    _insigniaClass = DICT_GET(f_dict_insignia_custom,(_unitType));
+    _insigniaClass = DICT_GET_DEFAULT(f_dict_insignia_custom,_insigniaVar,"");
+};
+
+// Attempt to set insignia from unit gearscript role
+if (_insigniaClass isEqualTo "" and {!(_unitType isEqualTo "")}) then
+{
+    _insigniaClass = DICT_GET_DEFAULT(f_dict_insignia_custom,_unitType,"");
 };
 
 // Attempt to set insignia from unit group callsign
-if (_insigniaClass isEqualTo "" || _insigniaClass isEqualTo []) then
+if (_insigniaClass isEqualTo "") then
 {
     _group = group _unit;
-    _callsign = groupId (_group);
-   _insigniaClass = DICT_GET(f_dict_insignia_custom,(_callsign));
+    _callsign = groupId _group;
+   _insigniaClass = DICT_GET_DEFAULT(f_dict_insignia_custom,_callsign,"");
 
 };
 
+
+#else
+
+
+// Attempt to set insignia from f_var_insignia
+if !(_insigniaVar isEqualTo "") then
+{
+    _insigniaClass = DICT_GET_DEFAULT(f_dict_insignia_custom,_insigniaVar,"");
+};
+
+
 #endif
 
+
 // Fall back on unit group colour
-if (_insigniaClass isEqualTo "" || _insigniaClass isEqualTo []) then
+if (_insigniaClass isEqualTo "") then
 {
     _group = group _unit;
     _colour = SQUAD_COLOUR(_group);
@@ -91,7 +106,9 @@ if (_insigniaClass != "") then
 
 	if (_index >= 0) then
     {
+        DEBUG_FORMAT2_LOG("[INSIGNIA]: Setting insignia of %1 to %2",_unit,_insigniaClass)
 		_unit setVariable ["bis_fnc_setUnitInsignia_class", _insigniaClass, true];
+        _unit setVariable ["f_arr_currentInsignia", [_index, _texture], true];
 		_unit setObjectTextureGlobal [_index, _texture];
 	};
 

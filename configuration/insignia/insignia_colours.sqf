@@ -1,4 +1,3 @@
-#include "macros.hpp"
 #include "..\..\squadmarker_macros.hpp"
 
 if !EXISTS(f_dict_insignia_colours) then
@@ -20,7 +19,7 @@ if !EXISTS(f_dict_insignia_colours) then
         [str BLACK,     "insignia_GI_B_BLACK"],
         [str GREY,      "insignia_GI_B_GREY"],
         [str BROWN,     "insignia_GI_B_BROWN"],
-        [str KHAKI,      "insignia_GI_B_TAN"]
+        [str KHAKI,     "insignia_GI_B_TAN"]
     ];
 
     DICT_CREATE_VALS(f_dict_insignia_colours,_keyValues);

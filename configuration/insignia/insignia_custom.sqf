@@ -1,9 +1,8 @@
-#include "macros.hpp"
-
 if !EXISTS(f_dict_insignia_custom) then
 {
     _keyValues =
     [
+        // Unit role patches
         ["med","insignia_GI_Medic"],
         ["sur","insignia_GI_Surgeon"],
         ["sur_alt","insignia_GI_Surgeon_ALT"],
@@ -18,8 +17,8 @@ if !EXISTS(f_dict_insignia_custom) then
         ["log_sl","insignia_GI_LOG_SL"],
         ["log_vic","insignia_GI_LOG_SL_VIC"],
         ["eng","insignia_GI_ENG"],
-        ["eng_sl","insignia_GI_ENG_SL"],       
-        ["eng_vic","insignia_GI_ENG_VIC"],       
+        ["eng_sl","insignia_GI_ENG_SL"],
+        ["eng_vic","insignia_GI_ENG_VIC"],
         ["eod","insignia_GI_EOD"],
         ["fac","insignia_GI_FAC"],
         ["fac_alt","insignia_GI_FAC_ALT"],
@@ -36,6 +35,9 @@ if !EXISTS(f_dict_insignia_custom) then
         ["sf_sl","insignia_GI_SF_SL"],
         ["sf_med","insignia_GI_SF_MED"],
         ["sf_med_alt","insignia_GI_SF_MED_ALT"],
+
+        // Group name patches
+        // Be aware: these are case-sensitive.
         ["god","insignia_GI_ZEUS"],
         ["zeus","insignia_GI_ZEUS"],
         ["GOD","insignia_GI_ZEUS"],
@@ -122,6 +124,8 @@ if !EXISTS(f_dict_insignia_custom) then
     	["ECHO_SL","insignia_GI_INF_Echo_SL"],
     	["FOXTROT","insignia_GI_INF_Foxtrot"],
     	["FOXTROT_SL","insignia_GI_INF_Foxtrot_SL"],
+
+        // CA babyyy
     	["CA","insignia_GI_Patch_Black_Stitched"]
     ];
 

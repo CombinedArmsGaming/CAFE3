@@ -20,4 +20,5 @@ class miscShared
     class formatTimeDuration{};
     class tryRunOnHeadlessClient{};
     class monitorHeadlessClients{};
+    class reapplyInsigniaLocal{};
 };
