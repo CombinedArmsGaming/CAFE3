@@ -16,6 +16,9 @@
 // Identity Translation
 #include "..\internals\identityTranslation.sqf"
 
+// Insignia
+#include "..\internals\insigniaDefinition.sqf"
+
 // Gearscript2
 #include "..\internals\gearScript.sqf"
 

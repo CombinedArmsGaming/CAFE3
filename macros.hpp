@@ -57,6 +57,7 @@
 #define DICT_CREATE(NAME) NAME = createLocation ["CBA_NamespaceDummy", [0,0,0], 0, 0]
 #define DICT_CREATE_VALS(NAME,VALUES) DICT_CREATE(NAME); {NAME setVariable [_x select 0, _x select 1]} foreach VALUES
 #define DICT_GET(NAME,KEY) NAME getVariable [KEY, []]
+#define DICT_GET_DEFAULT(NAME,KEY,DEFAULT) NAME getVariable [KEY, DEFAULT]
 #define DICT_CONTAINS(NAME,KEY) !((NAME getVariable [KEY, "q£fsDSd4&&<"]) isEqualTo "q£fsDSd4&&<")
 #define DICT_SET(NAME,KEY,VALUE) NAME setVariable [KEY, VALUE]
 #define DICT_SET_GLOBAL(NAME,KEY,VALUE) NAME setVariable [KEY, VALUE, true]

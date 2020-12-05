@@ -3,7 +3,7 @@
 
 params ["_unit"];
 
-LOCAL_ONLY(_unit);
+RUN_LOCAL_TO(_unit,f_fnc_addInsigniaMonitor,_this);
 
 if ((_unit getVariable ["f_var_hasInsigniaMonitor", false]) isEqualTo true) exitWith {};
 
@@ -12,6 +12,8 @@ _unit setVariable ["f_var_hasInsigniaMonitor", true, true];
 [_unit] spawn
 {
     params ["_unit"];
+
+    WAIT_UNTIL_MISSION_STARTED;
 
     _unitType = "";
     _group = grpNull;

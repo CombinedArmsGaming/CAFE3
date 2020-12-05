@@ -464,6 +464,12 @@ class Extended_InitPost_EventHandlers
             init = "_this call f_fnc_addSquadManagerActionsToClass";
         };
 
+		// For JIP compatibility with insignias.
+		class reapplyInsigniaLocal
+		{
+            init = "_this call f_fnc_reapplyInsigniaLocal";
+        };
+
     };
 
 

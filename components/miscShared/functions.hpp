@@ -21,4 +21,5 @@ class miscShared
     class tryRunOnHeadlessClient{};
     class monitorHeadlessClients{};
     class factionToSideName{};
+    class reapplyInsigniaLocal{};
 };

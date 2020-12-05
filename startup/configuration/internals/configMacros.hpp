@@ -12,3 +12,5 @@
 #include "..\..\..\configuration\squadMarkers.hpp"
 #include "..\..\..\configuration\viewDistanceEditor.hpp"
 #include "..\..\..\configuration\identityReplacement.hpp"
+#include "..\..\..\configuration\insignia.hpp"
+

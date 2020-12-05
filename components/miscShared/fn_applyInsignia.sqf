@@ -3,63 +3,66 @@
 
 params ["_unit"];
 
-LOCAL_ONLY(_unit);
-
-if !EXISTS(f_dict_insigniaColours) then
-{
-    _keyValues =
-    [
-        [str RED,       "insignia_GI_B_RED"],
-        [str ORANGE,    "insignia_GI_B_ORANGE"],
-        [str YELLOW,    "insignia_GI_B_YELLOW"],
-        [str GREEN,     "insignia_GI_B_GREEN"],
-        [str BLUE,      "insignia_GI_B_BLUE"],
-        [str CYAN,      "insignia_GI_B_CYAN"],
-        [str MAGENTA,   "insignia_GI_B_MAGENTA"],
-        [str PINK,      "insignia_GI_B_PINK"],
-        [str PURPLE,    "insignia_GI_B_PURPLE"],
-        [str WHITE,     "insignia_GI_B_WHITE"],
-        [str LIGHTGREY, "insignia_GI_B_LGREY"],
-        [str DARKGREY,  "insignia_GI_B_DGREY"],
-        [str BLACK,     "insignia_GI_B_BLACK"],
-        [str GREY,      "insignia_GI_B_GREY"],
-        [str BROWN,     "insignia_GI_B_BROWN"],
-        [str KHAKI,      "insignia_GI_B_TAN"]
-    ];
-
-    DICT_CREATE_VALS(f_dict_insigniaColours,_keyValues);
-
-};
+_message = format ["[INSIGNIA]: Tried to apply insignia to %1 but was not running locally.",_unit];
+LOCAL_ONLY_WARN(_unit, _message);
 
 
 _faction = toLower (faction _unit);
 _unitType = _unit getVariable ["f_var_assignGear", ""];
+_insigniaVar = _unit getVariable ["f_var_insignia", ""];
 
 _insigniaClass = "";
 
 
-if !(_unitType isEqualTo "") then
+#ifdef ENABLE_ADVANCED_INSIGNIA
+
+
+// Attempt to set insignia from f_var_insignia
+if !(_insigniaVar isEqualTo "") then
 {
-    _insigniaClass = switch (_unitType) do
-    {
-    	case "med": { "insignia_GI_Medic" };
-        case "zeus": { "Curator" };
-    	default {""};
-    };
+    _insigniaClass = DICT_GET_DEFAULT(f_dict_insignia_custom,_insigniaVar,"");
+};
+
+// Attempt to set insignia from unit gearscript role
+if (_insigniaClass isEqualTo "" and {!(_unitType isEqualTo "")}) then
+{
+    _insigniaClass = DICT_GET_DEFAULT(f_dict_insignia_custom,_unitType,"");
+};
+
+// Attempt to set insignia from unit group callsign
+if (_insigniaClass isEqualTo "") then
+{
+    _group = group _unit;
+    _callsign = groupId _group;
+   _insigniaClass = DICT_GET_DEFAULT(f_dict_insignia_custom,_callsign,"");
 
 };
 
 
+#else
+
+
+// Attempt to set insignia from f_var_insignia
+if !(_insigniaVar isEqualTo "") then
+{
+    _insigniaClass = DICT_GET_DEFAULT(f_dict_insignia_custom,_insigniaVar,"");
+};
+
+
+#endif
+
+
+// Fall back on unit group colour
 if (_insigniaClass isEqualTo "") then
 {
     _group = group _unit;
     _colour = SQUAD_COLOUR(_group);
 
-    _insigniaClass = DICT_GET(f_dict_insigniaColours,(str _colour));
+    _insigniaClass = DICT_GET(f_dict_insignia_colours,(str _colour));
 
     if (_insigniaClass isEqualTo []) then
     {
-        _insigniaClass = DICT_GET(f_dict_insigniaColours,(str BLACK));
+        _insigniaClass = DICT_GET(f_dict_insignia_colours,(str BLACK));
     };
 
     if (_unitType in ["ftl", "sl", "co", "xo"]) then
@@ -103,7 +106,9 @@ if (_insigniaClass != "") then
 
 	if (_index >= 0) then
     {
+        DEBUG_FORMAT2_LOG("[INSIGNIA]: Setting insignia of %1 to %2",_unit,_insigniaClass)
 		_unit setVariable ["bis_fnc_setUnitInsignia_class", _insigniaClass, true];
+        _unit setVariable ["f_arr_currentInsignia", [_index, _texture], true];
 		_unit setObjectTextureGlobal [_index, _texture];
 	};
 
