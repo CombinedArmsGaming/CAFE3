@@ -496,6 +496,20 @@ class Extended_InitPost_EventHandlers
 
 
 
+#ifdef ENABLE_PUSH_BOATS_ACTION
+
+	class Ship
+	{
+		class addPushAction
+		{
+			init = "_this call f_fnc_addPushActionToClass";
+		};
+	}
+
+#endif
+
+
+
 
 /*
 	class Helicopter
