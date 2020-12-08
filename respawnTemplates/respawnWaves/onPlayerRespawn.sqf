@@ -10,7 +10,6 @@ CLIENT_ONLY;
 LOCAL_ONLY(_unit);
 
 #include "..\parts\tryTeleport.sqf"
-#include "..\parts\applyOldLoadout.sqf"
 
 
 // Set language of the units depending on side (BABEL API)
@@ -54,6 +53,9 @@ _tryJoinSquad =
 _doRespawn =
 {
     params ["_unit", "_corpse", "_isJip"];
+
+    #include "..\parts\applyOldLoadout.sqf"
+    [_unit, _corpse] spawn _applyOldLoadout;
 
     if ((_isJip and IS_TRUE(f_var_JIPTeleport)) or ((!_isJip) and IS_TRUE(f_var_RespawnTeleport))) then
     {
@@ -108,8 +110,6 @@ if (_hasBeenKilled) then
 
     [_unit, "Spectators"] spawn _tryJoinSquad;
     DEBUG_PRINT_LOG("[RespawnWaves] Joining player to spectator group.")
-
-    [_unit, _corpse] spawn _applyOldLoadout;
 
     // Wait for respawn to happen
     _waveInfo = false;
