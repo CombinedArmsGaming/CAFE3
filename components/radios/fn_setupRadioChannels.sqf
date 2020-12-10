@@ -1,6 +1,7 @@
 #include "macros.hpp"
 
-params ["_unit", ["_message", false]];
+// _doMessage param takes "never", "onlyOnSuccess", "always".
+params ["_unit", ["_doMessage", "never"]];
 
 RUN_LOCAL_TO(_unit,f_fnc_setupRadioChannels,_this);
 RUN_AS_ASYNC(f_fnc_setupRadioChannels);
@@ -22,11 +23,16 @@ while {!_allDone} do
 	_group = group _unit;
 	_leader = leader _group;
 
-	_hasConfig = !((_group getVariable ["f_var_radioSR", ""]) isEqualTo "");
+	_configIsLoaded = !((_group getVariable ["f_var_hasRadioConfig", ""]) isEqualTo "");
 
-	if (_hasConfig) exitWith
+	if (_configIsLoaded) exitWith
 	{
-		_results = [_unit] call f_fnc_copyGroupRadioChannelsToUnit;
+		_hasConfig = _group getVariable ["f_var_hasRadioConfig", false];
+		if (_hasConfig) then
+		{
+			_results = [_unit] call f_fnc_copyGroupRadioChannelsToUnit;
+		};
+
 		_allDone = true;
 	};
 
@@ -38,12 +44,12 @@ while {!_allDone} do
 
 		waitUntil
 		{
-			sleep 0.1;
-			_hasConfig = !((_group getVariable ["f_var_radioSR", ""]) isEqualTo "");
+			sleep 1;
+			_configIsLoaded = !((_group getVariable ["f_var_hasRadioConfig", ""]) isEqualTo "");
 			_differentLeader = !(_leader isEqualTo (leader group _unit));
 			_differentGroup = !(_group isEqualTo (group _unit));
 
-			(_hasConfig or _differentLeader or _differentGroup)
+			(_configIsLoaded or _differentLeader or _differentGroup)
 		};
 
 		if (_differentGroup) then
@@ -58,10 +64,16 @@ while {!_allDone} do
 			_leader = leader group _unit;
 		};
 
-		if (_hasConfig and (!_differentGroup) and (!_differentLeader)) then
+		if (_configIsLoaded and (!_differentGroup) and (!_differentLeader)) then
 		{
 			DEBUG_FORMAT1_LOG("[Radios] Done waiting for group config, applying to %1.",_unit)
-			_results = [_unit] call f_fnc_copyGroupRadioChannelsToUnit;
+
+			_hasConfig = _group getVariable ["f_var_hasRadioConfig", false];
+			if (_hasConfig) then
+			{
+				_results = [_unit] call f_fnc_copyGroupRadioChannelsToUnit;
+			};
+
 			_allDone = true;
 		};
 	}
@@ -81,15 +93,38 @@ while {!_allDone} do
 };
 
 
-if (_message and {_unit isEqualTo player} and {count _results > 0}) then
+if ((!(_doMessage isEqualTo "never")) and {_unit isEqualTo player}) then
 {
-	_displayStrings = _results apply {format ["%1: %2", _x#0, _x#1]};
+	_message = "";
 
-	_message = "Your radio channels have been updated (";
-    _message = _message + (_displayStrings joinString ", ");
-	_message = _message + ").";
+	if (count _results > 0) then
+	{
+		_displayStrings = _results apply {format ["%1: %2", _x#0, _x#1]};
 
-	"CA2RadioMessage" cutText [_message, "PLAIN DOWN", 1.5];
+		_message = "Your radio channels have been updated (";
+	    _message = _message + (_displayStrings joinString ", ");
+		_message = _message + ").";
+	}
+	else
+	{
+		if (_doMessage isEqualTo "always") then
+		{
+			_message = "Your squad does not have any radio channels set up.";
+			if (_unit isEqualTo (leader group _unit)) then
+			{
+				_message = _message + "\nChoose 'Set Squad Radio Channels' to make your radio settings official.";
+			}
+			else
+			{
+				_message = _message + "\nAsk your team leader to 'Set Squad Radio Channels' in ACE Self-interact.";
+			};
+		};
+	};
+
+	if !(_message isEqualTo "") then
+	{
+		"CA2RadioMessage" cutText [_message, "PLAIN DOWN", 1.5];
+	};
 };
 
 

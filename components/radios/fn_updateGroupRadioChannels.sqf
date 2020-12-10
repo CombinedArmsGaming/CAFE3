@@ -5,10 +5,7 @@ params ["_unit", ["_message", false]];
 if (f_radios_settings_acre2_disableRadios) exitWith
 {
 	_group = group _unit;
-
-	_group setVariable ["f_var_radioSR", -1, true];
-	_group setVariable ["f_var_radioLR", -1, true];
-	_group setVariable ["f_var_radioXLR", -1, true];
+	_group setVariable ["f_var_hasRadioConfig", false, true];
 
 	[]
 };
@@ -17,30 +14,6 @@ if (f_radios_settings_acre2_disableRadios) exitWith
 waitUntil
 {
 	uiSleep 0.1; [_unit] call acre_api_fnc_isInitialized
-};
-
-_presetArray = switch (side _unit) do
-{
-	case blufor: {f_radios_settings_acre2_sr_groups_blufor};
-  	case opfor: {f_radios_settings_acre2_sr_groups_opfor};
-  	case independent: {f_radios_settings_acre2_sr_groups_indfor};
-  	default {f_radios_settings_acre2_sr_groups_indfor};
-};
-
-_presetLRArray = switch (side _unit) do
-{
-	case blufor: {f_radios_settings_acre2_lr_groups_blufor};
-  	case opfor: {f_radios_settings_acre2_lr_groups_opfor};
-  	case independent: {f_radios_settings_acre2_lr_groups_indfor};
-	default {f_radios_settings_acre2_lr_groups_indfor};
-};
-
-_presetXLRArray = switch (side _unit) do
-{
-	case blufor: {f_radios_settings_acre2_xlr_groups_blufor};
-  	case opfor: {f_radios_settings_acre2_xlr_groups_opfor};
-  	case independent: {f_radios_settings_acre2_xlr_groups_indfor};
-	default {f_radios_settings_acre2_xlr_groups_indfor};
 };
 
 
@@ -119,6 +92,9 @@ if (_groupXLRChannelIndex >= 0) then
 	_group setVariable ["f_var_radioXLR", _groupXLRChannelIndex, true];
 	_results pushBack ["XLR", _groupXLRChannelIndex + 1]
 };
+
+
+_group setVariable ["f_var_hasRadioConfig", (count _results > 0), true];
 
 
 if (_message and {_unit isEqualTo player} and {count _results > 0}) then

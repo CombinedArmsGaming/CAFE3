@@ -117,7 +117,7 @@ _createSquadNode =
             "CA2_GetSquadChannels",
             "Get Squad Radio Channels",
             "\A3\ui_f\data\igui\cfg\simpleTasks\types\radio_ca.paa",
-            {[_player, true] spawn f_fnc_setupRadioChannels;},
+            {[_player, "always"] spawn f_fnc_setupRadioChannels;},
             {true},
             {},
             [],

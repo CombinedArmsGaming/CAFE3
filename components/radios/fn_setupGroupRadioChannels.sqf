@@ -5,10 +5,7 @@ params ["_unit"];
 if (f_radios_settings_acre2_disableRadios) exitWith
 {
 	_group = group _unit;
-
-	_group setVariable ["f_var_radioSR", -1, true];
-	_group setVariable ["f_var_radioLR", -1, true];
-	_group setVariable ["f_var_radioXLR", -1, true];
+	_group setVariable ["f_var_hasRadioConfig", false, true];
 
 	[]
 };
@@ -92,6 +89,17 @@ _results = [];
 
 
 
+_hasAnyConfig = (_groupChannelIndex >= 0) or {_groupLRChannelIndex >= 0} or {_groupXLRChannelIndex >= 0};
+
+if !(_hasAnyConfig) exitWith
+{
+	_group setVariable ["f_var_hasRadioConfig", false, true];
+	[]
+};
+
+
+
+
 if (_groupChannelIndex == -1 && {_hasSR}) then
 {
 	DEBUG_FORMAT1_CHAT("[F3 ACRE2] Warning: Unknown group for short-range channel defaults (%1)", _groupID);
@@ -162,5 +170,6 @@ _group = group _unit;
 _group setVariable ["f_var_radioSR", _groupChannelIndex, true];
 _group setVariable ["f_var_radioLR", _groupLRChannelIndex, true];
 _group setVariable ["f_var_radioXLR", _groupXLRChannelIndex, true];
+_group setVariable ["f_var_hasRadioConfig", true, true];
 
 _results

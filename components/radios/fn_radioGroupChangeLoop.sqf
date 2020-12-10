@@ -20,6 +20,6 @@ while {true} do
 
 	};
 
-	[player, true] call f_fnc_setupRadioChannels;
+	[player, "onlyOnSuccess"] call f_fnc_setupRadioChannels;
 
 };

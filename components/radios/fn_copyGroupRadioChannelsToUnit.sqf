@@ -11,6 +11,9 @@ _groupChannelIndex = _group getVariable ["f_var_radioSR", -1];
 _groupLRChannelIndex = _group getVariable ["f_var_radioLR", -1];
 _groupXLRChannelIndex = _group getVariable ["f_var_radioXLR", -1];
 
+_hasAnyConfig = (_groupChannelIndex >= 0) or {_groupLRChannelIndex >= 0} or {_groupXLRChannelIndex >= 0};
+if !(_hasAnyConfig) exitWith {};
+
 
 waitUntil
 {
