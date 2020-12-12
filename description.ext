@@ -1,4 +1,5 @@
 
+#include "macros.hpp"
 #include "startup\configuration\internals\configMacros.hpp"
 #include "startup\configuration\internals\configClasses.hpp"
 
@@ -276,6 +277,24 @@ class Params
 class CfgFunctions
 {
 	#include "components\functions.hpp"
+
+	class CA2Config
+	{
+		class PreInit
+		{
+			class clientConfigGroup
+			{
+				file = "startup\configuration\groups\clientConfigGroup_preInit.sqf";
+				preInit = 1;
+			};
+
+			class serverConfigGroup
+			{
+				file = "startup\configuration\groups\serverConfigGroup_preInit.sqf";
+				preInit = 1;
+			};
+		};
+	};
 };
 
 
@@ -359,7 +378,7 @@ class CfgMusic
 class RscTitles
 {
 #include "titles.hpp"
-}
+};
 
 
 

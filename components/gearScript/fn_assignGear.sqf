@@ -3,8 +3,11 @@
 _unit = _this select 1;
 LOCAL_ONLY(_unit);
 
-RUN_AS_ASYNC(f_fnc_assignGear);
-waitUntil { IS_TRUE(f_var_gearscript_loaded) };
+if !IS_TRUE(f_var_gearscript_loaded) then
+{
+    RUN_AS_ASYNC(f_fnc_assignGear);
+    waitUntil { IS_TRUE(f_var_gearscript_loaded) };
+};
 
 
 _runningAlready = _unit getVariable ["f_var_assignGear_running",false];
@@ -49,13 +52,6 @@ if (_gearVariant == "") exitWith
 [_unit, _typeofUnit, _gearVariant] call f_fnc_applyLoadout;
 
 
-// TODO 2020-08-17 :: Refactor radios to run on trigger events (squad change, respawn, mission start...)
-if (isPlayer _unit) then
-{
-    sleep 1;
-    [_unit] call f_fnc_clientRadioInit;
-};
-
 // ====================================================================================
 
 _unit setVariable ["f_var_assignGear_done", true, true];
@@ -66,4 +62,5 @@ _unit setVariable ["f_var_assignGear_running", false, true];
 if (isPlayer _unit) then
 {
     [_unit] spawn f_fnc_addInsigniaMonitor;
+    [_unit] spawn f_fnc_clientRadioInit;
 };

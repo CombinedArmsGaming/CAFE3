@@ -26,3 +26,10 @@ class gearScriptCrates
     class applyCrateModifications{};
     class addSplintsToCrate{};
 };
+
+class gearScriptRadios
+{
+    file = "components\gearScript\radioSupport";
+    class removeRadioFromItems{};
+    class searchAndDestroyRadios{};
+};

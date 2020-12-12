@@ -1,9 +1,6 @@
 // Client configuration group
 // Includes all config scripts needed for clients.
 
-// Debug settings
-#include "..\internals\debug.sqf"
-
 // Map-click actions
 #include "..\..\..\configuration\mapClick.sqf"
 
@@ -18,9 +15,6 @@
 
 // Insignia
 #include "..\internals\insigniaDefinition.sqf"
-
-// Gearscript2
-#include "..\internals\gearScript.sqf"
 
 // Lootbox
 #include "..\internals\lootBox.sqf"
