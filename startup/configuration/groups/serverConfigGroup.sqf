@@ -7,9 +7,6 @@
 // Respawn waves settings
 #include "..\..\..\configuration\respawnWaves.sqf"
 
-// Identity Translation
-#include "..\internals\identityTranslation.sqf"
-
 // Lootbox
 #include "..\internals\lootBox.sqf"
 

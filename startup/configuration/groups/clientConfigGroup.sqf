@@ -10,12 +10,6 @@
 // AI Caching settings
 #include "..\..\..\configuration\aiCache.sqf"
 
-// Identity Translation
-#include "..\internals\identityTranslation.sqf"
-
-// Insignia
-#include "..\internals\insigniaDefinition.sqf"
-
 // Lootbox
 #include "..\internals\lootBox.sqf"
 

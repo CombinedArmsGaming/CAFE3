@@ -1,15 +1,5 @@
 #include "macros.hpp"
 
-
-// Temporary - won't be needed when radio refactor is merged and pre-init config groups become available.
-RUN_AS_ASYNC(f_fnc_applyIdentity);
-waitUntil
-{
-    sleep 1;
-    IS_TRUE(f_var_identity_loaded)
-};
-
-
 params ["_unit"];
 
 if (isPlayer _unit) exitWith {};
