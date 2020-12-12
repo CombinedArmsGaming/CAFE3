@@ -103,9 +103,9 @@ if (_message and {_unit isEqualTo player} and {count _results > 0}) then
 
 	_message = "Your squad's default radio channels have been changed (";
     _message = _message + (_displayStrings joinString ", ");
-	_message = _message + ").\nSquad members can get these channels automatically by using 'CA Squad Actions'.";
+	_message = _message + ").<br/>Squad members can get these channels automatically by using 'CA Squad Actions'.";
 
-	"CA2RadioMessage" cutText [_message, "PLAIN DOWN", 1.5];
+	[_message] call f_fnc_createSubtitleText;
 };
 
 _results

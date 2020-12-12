@@ -40,8 +40,8 @@ _tryJoinSquad =
 
     if !((groupId (group _unit)) isEqualTo _groupId) then
     {
-        _text = format ["Unable to auto-join squad '%1'.\n\nYou will need to re-join or re-create the squad using 'CA Squad Actions'.", _groupId];
-        cutText [_text, "PLAIN DOWN", 1, true, false];
+        _text = format ["Unable to auto-join squad '%1'.<br/><br/>You will need to re-join or re-create the squad using 'CA Squad Actions'.", _groupId];
+        [_text] call f_fnc_createSubtitleText;
 
     };
 

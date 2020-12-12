@@ -112,18 +112,18 @@ if ((!(_doMessage isEqualTo "never")) and {_unit isEqualTo player}) then
 			_message = "Your squad does not have any radio channels set up.";
 			if (_unit isEqualTo (leader group _unit)) then
 			{
-				_message = _message + "\nChoose 'Set Squad Radio Channels' to make your radio settings official.";
+				_message = _message + "<br/>Choose 'Set Squad Radio Channels' to make your radio settings official.";
 			}
 			else
 			{
-				_message = _message + "\nAsk your team leader to 'Set Squad Radio Channels' in ACE Self-interact.";
+				_message = _message + "<br/>Ask your team leader to 'Set Squad Radio Channels' in ACE Self-interact.";
 			};
 		};
 	};
 
 	if !(_message isEqualTo "") then
 	{
-		"CA2RadioMessage" cutText [_message, "PLAIN DOWN", 1.5];
+		[_message] call f_fnc_createSubtitleText;
 	};
 };
 
