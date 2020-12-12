@@ -3,12 +3,14 @@
 _unit = _this select 1;
 LOCAL_ONLY(_unit);
 
+RUN_AS_ASYNC(f_fnc_assignGear);
+
 if !IS_TRUE(f_var_gearscript_loaded) then
 {
-    RUN_AS_ASYNC(f_fnc_assignGear);
     waitUntil { IS_TRUE(f_var_gearscript_loaded) };
 };
 
+waitUntil {time > 0};
 
 _runningAlready = _unit getVariable ["f_var_assignGear_running",false];
 if (_runningAlready) exitWith
