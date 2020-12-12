@@ -12,5 +12,4 @@ if !(_doNotModifyText) then
     _text = parseText ("<t shadow=""1"" shadowColor=""#000000"" align=""center"" size=""0.8"">" + _text + "</t>");
 };
 
-systemChat str _text;
 _textCtrl ctrlSetStructuredText _text;
