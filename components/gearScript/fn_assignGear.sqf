@@ -5,12 +5,33 @@ LOCAL_ONLY(_unit);
 
 RUN_AS_ASYNC(f_fnc_assignGear);
 
+
+// Resilience against misconfigured loadouts.  Only needs to run before the mission is underway.
+if (time <= 0) then
+{
+    // Immediately set the loadout to a completely blank loadout if the unit is a player.  Prevents an awkward moment where the player is holding default gear.
+    if (isPlayer _unit) then
+    {
+        _unit setUnitLoadout [[],[],[],["U_B_CombatUniform_mcam",[]],[],[],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]];
+
+        // Wait until the mission has started before loading out any units.  Prevents the mission failing to load if loadouts contain missing/misconfigured objects.
+        waitUntil { time > 0 };
+    }
+    else
+    {
+        // If not a player, it isn't as critical that the loadout is applied ASAP.
+        waitUntil { sleep 2; time > 0 };
+    };
+
+};
+
+
+// ====================================================================================
+
 if !IS_TRUE(f_var_gearscript_loaded) then
 {
     waitUntil { IS_TRUE(f_var_gearscript_loaded) };
 };
-
-waitUntil {time > 0};
 
 _runningAlready = _unit getVariable ["f_var_assignGear_running",false];
 if (_runningAlready) exitWith
