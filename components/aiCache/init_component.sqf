@@ -2,7 +2,7 @@
 
 SERVER_ONLY;
 
-DEBUG_PRINT_LOG("initting ai cache new")
+DEBUG_PRINT_LOG("[AICACHE-2]: initting ai cache new")
 
 // Check whether the paramater is defined (or caching switched off)) - if not, just exit
 if (isNil "f_param_caching" || {f_param_caching == 0}) exitWith {};
@@ -13,6 +13,7 @@ WAIT_UNTIL_MISSION_STARTED();
 // Wait up to the desired time into the mission to give AI and players time to settle
 waitUntil {time > f_var_cacheWait};
 
+DEBUG_PRINT_LOG("[AICACHE-2]: doing ai cache new")
 
 if (isServer) then
 {
@@ -65,5 +66,13 @@ if (isServer) then
         } forEach allGroups;
 
     };
+
+    DEBUG_PRINT_LOG("[AICACHE-2]: spawned both loops")
+
+    _shouldUncacheNearZeus = ((f_var_uncacheWhenNear isEqualTo PLAYERS_AND_ZEUS) or {f_var_uncacheWhenNear isEqualTo PLAYERS_AND_DRONES_AND_ZEUS});
+    missionNamespace setVariable ["f_var_uncacheNearZeus", _shouldUncacheNearZeus, true];
+
+    _shouldUncacheNearDrone = ((f_var_uncacheWhenNear isEqualTo PLAYERS_AND_DRONES) or {f_var_uncacheWhenNear isEqualTo PLAYERS_AND_DRONES_AND_ZEUS});
+    missionNamespace setVariable ["f_var_uncacheNearDrones", _shouldUncacheNearDrone, true];
 
 };

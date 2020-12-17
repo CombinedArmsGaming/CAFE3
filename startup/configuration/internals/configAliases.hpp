@@ -17,3 +17,18 @@
 
 // 5 - cache all units, always exclude vehicle crews and leaders.
 #define AI_CACHE_EXCEPT_LEADERS_AND_CREW 5
+
+
+// Note: Units considered for decaching clusters are set using the f_var_uncacheWhenNear variable; possible values:
+
+// 1 - uncache only when near regular players
+#define PLAYERS_ONLY 1
+
+// 2 - uncache when near regular players or zeuses
+#define PLAYERS_AND_ZEUS 2
+
+// 3 - uncache when near players or *connected* drones
+#define PLAYERS_AND_DRONES 3
+
+// 4 - uncache when near regular players, zeuses or *connected* drones
+#define PLAYERS_AND_DRONES_AND_ZEUS 4

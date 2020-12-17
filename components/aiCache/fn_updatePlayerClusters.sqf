@@ -15,6 +15,19 @@ if (isNil "f_arr_aiCaching_playerClustersTemp") then
 };
 
 
+_getPlayerAgenda =
+{
+    _agenda = allPlayers;
+
+    if !(missionNamespace getVariable ["f_var_uncacheNearZeus", true]) then
+    {
+        _agenda = _agenda select {!(_x getVariable ["f_var_isZeus", false])};
+    };
+
+    _agenda
+
+};
+
 
 _isPointWithinCluster =
 {
@@ -100,8 +113,9 @@ _clusterThisPlayer =
 
 
 
-_agenda = allPlayers;
 f_arr_aiCaching_playerClustersTemp = [];
+
+_agenda = [] call _getPlayerAgenda;
 
 {
     _x setVariable ["f_var_aiCaching_cluster", []];
@@ -116,5 +130,15 @@ f_arr_aiCaching_playerClustersTemp = [];
     };
 
 } forEach _agenda;
+
+if (missionNamespace getVariable ["f_var_uncacheNearDrones", false]) then
+{
+    _agenda = allUnitsUAV select {isUAVConnected _x};
+
+    {
+        _cluster = [_x] call _createVehicleCluster;
+		f_arr_aiCaching_playerClustersTemp pushBack _cluster;
+    } forEach _agenda;
+};
 
 f_arr_aiCaching_playerClusters = f_arr_aiCaching_playerClustersTemp;
