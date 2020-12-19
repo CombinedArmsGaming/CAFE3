@@ -1,6 +1,6 @@
 /*
 
-    Define identities via the strucutre below to configure custom soldier faces, voices and names:
+    Define identities via the structure below to configure custom soldier faces, voices and names:
 
     Define array of voices.
         _speakers = ["male05engb","male04engb","male03engb","male02engb","male01engb"];
@@ -18,7 +18,7 @@
             _surnames = ["Bobson", "Johnson", "Davis"];
             _names = [_forenames, _surnames];
 
-    Create the identity, where the first parmeter is the identity name ("brit" below).
+    Create the identity, where the first parameter is the identity name ("brit" below).
         CREATE_IDENTITY(brit,_speakers,_faces,_names);
 
     Finally, assign the identity to a faction in identityAssignment.sqf
