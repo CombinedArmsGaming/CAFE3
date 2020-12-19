@@ -1,24 +1,12 @@
 #include "macros.hpp"
 
-params ["_unit"];
-
-if (isPlayer _unit) exitWith {};
-
-_faction = toLower (faction _unit);
-
 /*
-// For future use - allows faction override, gearscript-style.
-if (count _this > 2) then
-{
-    _faction = toLower (_this select 2);
-};
+    Args:
+        0: Unit to modify
+        1: Name of identity to apply.
 */
 
-_sideName = [_faction] call f_fnc_factionToSideName;
-
-DEBUG_FORMAT1_LOG("[IDENTITY]: Attempting to apply identity for sideName %1.",_sideName)
-
-_identity = GET_FACTION_IDENTITY_DYNAMIC(_sideName);
+params ["_unit", "_identity"];
 
 _unit setVariable ["f_var_identity", _identity, true];
 

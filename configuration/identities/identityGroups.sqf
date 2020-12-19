@@ -28,6 +28,9 @@
     Play the mission, aim at the unit and type this into the console in the ESC menu:
         [face cursorObject, speaker cursorObject]
 
+    You can choose units to ignore this identity replacement process.  To do so, paste this line into their init box:
+        this setVariable ["f_var_ignoreFactionIdentity", true, true];
+
 */
 
 BEGIN_IDENTITIES;

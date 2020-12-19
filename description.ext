@@ -464,7 +464,7 @@ class Extended_InitPost_EventHandlers
 
 		class setIdentity
 		{
-			init = "_this call f_fnc_applyIdentity";
+			init = "_this call f_fnc_applyFactionIdentity";
 		};
 
 #endif
