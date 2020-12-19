@@ -12,14 +12,17 @@
 
 #define GET_FACES_FOR_IDENTITY_DYNAMIC(FACTION) (missionNamespace getVariable ["f_identities_" + FACTION + "_faces", [""]])
 #define GET_SPEAKERS_FOR_IDENTITY_DYNAMIC(FACTION) (missionNamespace getVariable ["f_identities_" + FACTION + "_speakers", [""]])
+#define GET_NAMES_FOR_IDENTITY_DYNAMIC(FACTION) (missionNamespace getVariable ["f_identities_" + FACTION + "_names", "Default"])
 
 #define IDENTITY_VAR(NAME) CONCAT(f_identities_,NAME)
 
 #define SPEAKERS(NAME) CONCAT(IDENTITY_VAR(NAME),_speakers)
 #define FACES(NAME) CONCAT(IDENTITY_VAR(NAME),_faces)
+#define NAMES(NAME) CONCAT(IDENTITY_VAR(NAME),_names)
 
-#define CREATE_IDENTITY(NAME,SPEAKERARRAY,FACEARRAY) \
+#define CREATE_IDENTITY(NAME,SPEAKERARRAY,FACEARRAY,NAMESARRAY) \
  	IDENTITY_VAR(NAME) = []; \
  	SPEAKERS(NAME) = SPEAKERARRAY; \
-	FACES(NAME) = FACEARRAY; \
+    FACES(NAME) = FACEARRAY; \
+	NAMES(NAME) = NAMESARRAY; \
 	ADD_IDENTITY_TO_REGISTRY(NAME)
