@@ -36,8 +36,8 @@ _drawUnitMarker =
 		_baseUnitIcon,
 		[0,0,0,1],
 		_pos,
-		20,
-		20,
+		24,
+		24,
 		_dir
 	];
 
@@ -46,8 +46,8 @@ _drawUnitMarker =
 		_icon,
 		_colour,
 		_pos,
-		16,
-		16,
+		20,
+		20,
 		_dir,
 		_name,
 		2,
