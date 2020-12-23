@@ -15,12 +15,13 @@ if (time <= 0) then
         _unit setUnitLoadout [[],[],[],["U_B_CombatUniform_mcam",[]],[],[],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]];
 
         // Wait until the mission has started before loading out any units.  Prevents the mission failing to load if loadouts contain missing/misconfigured objects.
-        waitUntil { time > 0 };
+        // BUB 2020-12-23 :: Playing with minimum time to apply loadout successfully.  Had some visual glitches with "time > 0", probably arma network bug or w/e.
+        waitUntil { time > 3 };
     }
     else
     {
         // If not a player, it isn't as critical that the loadout is applied ASAP.
-        waitUntil { sleep 2; time > 0 };
+        waitUntil { sleep 3; time > 0 };
     };
 
 };
