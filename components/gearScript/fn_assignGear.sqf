@@ -5,9 +5,26 @@ LOCAL_ONLY(_unit);
 
 RUN_AS_ASYNC(f_fnc_assignGear);
 
+// ====================================================================================
+
+if !IS_TRUE(f_var_gearscript_loaded) then
+{
+    waitUntil { IS_TRUE(f_var_gearscript_loaded) };
+};
+
+_runningAlready = _unit getVariable ["f_var_assignGear_running",false];
+if (_runningAlready) exitWith
+{
+    DEBUG_FORMAT1_LOG("[GEARSCRIPT-2]: Exited early because gearscript is running already (Unit %1)",(str _unit))
+};
+
+_unit setVariable ["f_var_assignGear_running", true, true];
+_unit setVariable ["f_var_assignGear_done", false, true];
+
+// ====================================================================================
 
 // Resilience against misconfigured loadouts.  Only needs to run before the mission is underway.
-if (time <= 0) then
+if (time <= 1) then
 {
     // Immediately set the loadout to a completely blank loadout if the unit is a player.  Prevents an awkward moment where the player is holding default gear.
     if (isPlayer _unit) then
@@ -25,23 +42,6 @@ if (time <= 0) then
     };
 
 };
-
-
-// ====================================================================================
-
-if !IS_TRUE(f_var_gearscript_loaded) then
-{
-    waitUntil { IS_TRUE(f_var_gearscript_loaded) };
-};
-
-_runningAlready = _unit getVariable ["f_var_assignGear_running",false];
-if (_runningAlready) exitWith
-{
-    DEBUG_FORMAT1_LOG("[GEARSCRIPT-2]: Exited early because gearscript is running already (Unit %1)",(str _unit))
-};
-
-_unit setVariable ["f_var_assignGear_running", true, true];
-_unit setVariable ["f_var_assignGear_done", false, true];
 
 
 // ====================================================================================
