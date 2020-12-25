@@ -31,6 +31,8 @@ INIT_COMPONENT(zeus_ui)
 
 INIT_COMPONENT(downtime)
 
+INIT_COMPONENT(zenFunctions)
+
 
 // Gravestones init
 #ifdef ENABLE_GRAVESTONE_CORPSE_MANAGER
