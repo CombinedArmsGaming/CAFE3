@@ -32,7 +32,7 @@ if !(_object isKindOf "AllVehicles") exitWith
 
 if (_object isKindOf "Man") exitWith
 {
-    _vehicle = objectParent _object;
+    _vehicle = vehicle _object;
     _success = false;
 
     _timeOut = time + 30;

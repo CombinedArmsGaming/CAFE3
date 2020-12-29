@@ -1,7 +1,7 @@
 
 #include "macros.hpp"
 CLIENT_ONLY;
-
+RUN_AS_ASYNC(f_fnc_respawnWave);
 
 _side = side player;
 
