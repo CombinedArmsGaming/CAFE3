@@ -23,4 +23,6 @@ class miscShared
     class factionToSideName{};
     class reapplyInsigniaLocal{};
     class getObjectUid{};
+    class createPlayerSpawner{};
+    class addObjectsToAllZeuses{};
 };

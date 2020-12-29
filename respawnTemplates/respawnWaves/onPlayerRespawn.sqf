@@ -142,13 +142,20 @@ if (_hasBeenKilled) then
     {
         sleep 0.5;
 
-        _waveInfo = GET_RESPAWN_WAVE(_side);
+        _hasSpawner = !(isNull (_unit getVariable ["mySpawner", objNull]));
+        if (_hasSpawner) exitWith { true };
 
-        if (_waveInfo isEqualTo []) exitWith {false};
-        if (((count _waveInfo) > 0) and {(_waveInfo select 0) isEqualTo true}) exitWith { true };
+        _waveInfo = GET_RESPAWN_WAVE(_side);
+        _hasWave = ((count _waveInfo) > 0) and {(_waveInfo select 0) isEqualTo true};
+        if (_hasWave) exitWith { true };
 
 		false
 
+    };
+
+    if !((_unit getVariable ["mySpawner", objNull]) isEqualTo objNull) then
+    {
+        _waveInfo = [true, _unit getVariable ["mySpawner", objNull], ORIGINAL_SQUAD, time];
     };
 
     DEBUG_PRINT_LOG("[RespawnWaves] Respawn wave enabled, teleporting...")
@@ -171,12 +178,17 @@ if (_hasBeenKilled) then
             {
                 DEBUG_PRINT_LOG("[RespawnWaves] Respawn group was ORIGINAL_SQUAD, but player does not have an original squad.  Joining player to empty group.")
                 //[_unit] joinSilent grpNull;
+            	["", "Error"] spawn _waitToShowRespawnTitle;
+
+            }
+            else
+            {
+                DEBUG_FORMAT1_LOG("[RespawnWaves] Attempting to join player to original group: %1",_originalGroupId)
+                [_unit, _originalGroupId] spawn _tryJoinSquad;
+
+                [_originalGroupId, "OriginalSquad"] spawn _waitToShowRespawnTitle;
+
             };
-
-            DEBUG_FORMAT1_LOG("[RespawnWaves] Attempting to join player to original group: %1",_originalGroupId)
-            [_unit, _originalGroupId] spawn _tryJoinSquad;
-
-            [_originalGroupId, "OriginalSquad"] spawn _waitToShowRespawnTitle;
 
         };
 
