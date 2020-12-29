@@ -62,8 +62,6 @@ _doRespawn =
         player setVariable ["f_var_mayTeleportToGroup", true, true];
     };
 
-    #include "..\parts\zeusAdditions_onRespawn.sqf"
-
     [_unit, true] call f_fnc_activatePlayer;
     f_var_playerHasBeenKilled = false;
 

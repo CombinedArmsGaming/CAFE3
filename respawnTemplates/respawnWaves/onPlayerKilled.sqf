@@ -9,8 +9,6 @@ DEBUG_PRINT_LOG("[RespawnWaves] Player was killed.")
 CLIENT_ONLY;
 LOCAL_ONLY(_corpse);
 
-#include "..\parts\zeusAdditions_onKilled.sqf"
-
 
 // MAKE SURE THE PLAYER INITIALIZES PROPERLY
 WAIT_UNTIL_PLAYER_EXISTS();
