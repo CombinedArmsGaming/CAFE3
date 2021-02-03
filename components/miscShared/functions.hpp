@@ -25,4 +25,5 @@ class miscShared
     class getObjectUid{};
     class createPlayerSpawner{};
     class addObjectsToAllZeuses{};
+    class addCustomSettings{};
 };

@@ -57,6 +57,16 @@ _whenDone =
 
     "CA2_CutDowntime" cutFadeOut 0;
 
+    isNil
+    {
+        if (IS_UNCONSCIOUS(player)) then
+        {
+            // Need to re-apply the unconscious keyblocker or else unconscious people can wiggle around.
+            // Happens when people opt-out of spectator while it's in effect.
+            ["unconscious", true] call ace_common_fnc_setDisableUserInputStatus;
+        };
+    };
+
 };
 
 
