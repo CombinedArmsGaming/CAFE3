@@ -4,6 +4,7 @@ class downtime
     class downtimeMonitor{};
     class downtimeSpectate{};
     class blockSelfInteractWhileUnconscious{};
+    class blockUnconsciousEffectsWhileDowntimeActive{};
 };
 class downtime_ui
 {
