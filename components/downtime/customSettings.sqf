@@ -12,7 +12,7 @@
 		"Downtime"
 	],
 	false,
-	0,
+	2,
 	nil,
 	false
 
@@ -32,7 +32,7 @@
 		"Downtime"
 	],
 	[16, 180, 16, 0, false],
-	0,
+	2,
 	nil,
 	false
 
