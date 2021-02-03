@@ -4,7 +4,7 @@
 
 #define SHOULD_CONTINUE f_var_downtimeExperienceActive
 
-#define DOWNTIME_SNOOZE_TIME 16
+#define DOWNTIME_SNOOZE_TIME        (["CA2_Downtime_SpectatorWaitTime" call CBA_settings_fnc_get] param [0, 16])
 
 #define HAS_OPTED_OUT               (["CA2_Downtime_OptOut" call CBA_settings_fnc_get] param [0, false])
 #define IS_UNCONSCIOUS(UNIT)        ((UNIT getVariable ["ACE_isUnconscious", false]) and {alive player})

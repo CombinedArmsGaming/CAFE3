@@ -13,7 +13,7 @@ waitUntil
     _startedTime = time;
     waitUntil
     {
-        sleep 0.1;
+        sleep 0.25;
         (!IS_UNCONSCIOUS(player)) or {(time - _startedTime > DOWNTIME_SNOOZE_TIME) and {!HAS_OPTED_OUT}}
     };
 
