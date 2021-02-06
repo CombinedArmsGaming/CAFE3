@@ -37,3 +37,23 @@
 	false
 
 ] call CBA_fnc_addSetting;
+
+
+// Downtime: disable the reminder to unconscious spectators that they can respawn.
+[
+	"CA2_Downtime_NoRespawnReminders",
+	"CHECKBOX",
+	[
+		"Disable spectator respawn reminders",
+		"Disable the text that appears in spectator to let you know when you can manually respawn."
+	],
+	[
+		CATEGORY_NAME,
+		"Downtime"
+	],
+	false,
+	2,
+	nil,
+	false
+
+] call CBA_fnc_addSetting;

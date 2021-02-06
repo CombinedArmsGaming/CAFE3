@@ -26,4 +26,5 @@ class miscShared
     class createPlayerSpawner{};
     class addObjectsToAllZeuses{};
     class addCustomSettings{};
+    class canPlayerOfSideRespawn{};
 };

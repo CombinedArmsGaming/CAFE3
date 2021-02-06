@@ -42,6 +42,30 @@ _whenAlive =
             "CA2_CutDowntime" cutRsc ["CA2_DowntimeUnconscious", "PLAIN", -1, false];
         };
 
+        if !(HAS_DISABLED_RESPAWN_MESSAGE) then
+        {
+            uiSleep 7.5;
+
+            while {IS_TRUE(ace_spectator_isSet)} do
+            {
+                waitUntil
+                {
+                    sleep 1;
+                    ([side group player] call f_fnc_canPlayerOfSideRespawn)
+                };
+
+                "CA2_DowntimeRespawn" cutRsc ["CA2_DowntimeRespawn", "PLAIN", -1, false];
+
+                waitUntil
+                {
+                    sleep 1;
+                    !(([side group player] call f_fnc_canPlayerOfSideRespawn) and {IS_TRUE(ace_spectator_isSet)})
+                };
+
+            };
+
+        };
+
     };
 
 };
@@ -56,6 +80,7 @@ _whenDone =
     [player, "CA2_Downtime"] call ace_common_fnc_unmuteUnit;
 
     "CA2_CutDowntime" cutFadeOut 0;
+    "CA2_DowntimeRespawn" cutFadeOut 0;
 
     isNil
     {
