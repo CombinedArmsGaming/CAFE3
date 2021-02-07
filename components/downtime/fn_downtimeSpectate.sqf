@@ -11,6 +11,8 @@ _whenGhost =
     [player, "CA2_Downtime"] call ace_common_fnc_hideUnit;
     [player, "CA2_Downtime"] call ace_common_fnc_muteUnit;
 
+    [false] call f_fnc_updateDowntimeSpectatorCameraModes;
+
     [] spawn
     {
         uiSleep 1;
@@ -32,6 +34,8 @@ _whenAlive =
 
     [player, "CA2_Downtime"] call ace_common_fnc_unhideUnit;
     [player, "CA2_Downtime"] call ace_common_fnc_unmuteUnit;
+
+    [true] call f_fnc_updateDowntimeSpectatorCameraModes;
 
     [] spawn
     {
@@ -78,6 +82,8 @@ _whenDone =
 
     [player, "CA2_Downtime"] call ace_common_fnc_unhideUnit;
     [player, "CA2_Downtime"] call ace_common_fnc_unmuteUnit;
+
+    [false] call f_fnc_updateDowntimeSpectatorCameraModes;
 
     "CA2_CutDowntime" cutFadeOut 0;
     "CA2_DowntimeRespawn" cutFadeOut 0;

@@ -5,6 +5,7 @@ class downtime
     class downtimeSpectate{};
     class blockSelfInteractWhileUnconscious{};
     class blockUnconsciousEffectsWhileDowntimeActive{};
+    class updateDowntimeSpectatorCameraModes{};
 };
 class downtime_ui
 {
