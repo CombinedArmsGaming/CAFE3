@@ -1,5 +1,7 @@
 #include "macros.hpp"
-
+/*
+Created By: Gibbs
+*/
 params ["_object", "_jammerType", "_jammerRange"];
 
 switch(_jammerType) do
