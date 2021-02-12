@@ -44,4 +44,9 @@ if !(isNil 'zen_custom_modules_fnc_register') then
     ["[CA2] Respawners", "Respawn Random Player (OPFOR)", _spawnerEast] call zen_custom_modules_fnc_register;
     ["[CA2] Respawners", "Respawn Random Player (INDFOR)", _spawnerIndfor] call zen_custom_modules_fnc_register;
     ["[CA2] Respawners", "Respawn Random Player (Civilian)", _spawnerCiv] call zen_custom_modules_fnc_register;
+
+    _woundUnit = {_this#1 call f_fnc_zen_woundUnitRandomly};
+
+    ["[CA2] Misc", "Wound Unit Randomly", _woundUnit] call zen_custom_modules_fnc_register;
+
 };
