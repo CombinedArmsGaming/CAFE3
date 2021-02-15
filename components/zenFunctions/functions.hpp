@@ -4,9 +4,14 @@ class zenFunctions_client
 	class zen_createSpawner{};
 	class zen_moveRespawnMarker{};
 	class zen_setRespawnObject{};
+	class zen_woundUnitRandomly{};
+	class zen_woundUnitRandomlyAdvanced{};
+	class zen_woundGroupRandomly{};
+	class zen_woundGroupRandomlyAdvanced{};
 };
 class zenFunctions_server
 {
 	file = "components\zenFunctions\server";
+	class zen_doWoundUnitRandomly{};
 	class zen_createPlayerSpawner{};	
 };
