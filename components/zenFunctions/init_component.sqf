@@ -45,12 +45,14 @@ if !(isNil 'zen_custom_modules_fnc_register') then
     ["[CA2] Respawners", "Respawn Random Player (INDFOR)", _spawnerIndfor] call zen_custom_modules_fnc_register;
     ["[CA2] Respawners", "Respawn Random Player (Civilian)", _spawnerCiv] call zen_custom_modules_fnc_register;
 
-    _jammerCreate = {[_this#1] call f_fnc_zen_createJammer};
+    if !(isNil 'kyk_ew_fnc_broadcastJammerAdd') then
+    {
+        _jammerCreate = {[_this#1] call f_fnc_zen_createJammer};
 
-    ["[CA2] Electronic Warfare", "Create Jammer", _jammerCreate] call zen_custom_modules_fnc_register;
+        ["[CA2] Electronic Warfare", "Create Jammer", _jammerCreate] call zen_custom_modules_fnc_register;
 
-    _jammerRemove = {[_this#1] call f_fnc_zen_removeJammers};
+        _jammerRemove = {[_this#1] call f_fnc_zen_removeJammers};
 
-    ["[CA2] Electronic Warfare", "Remove Jammer", _jammerRemove] call zen_custom_modules_fnc_register;
-
+        ["[CA2] Electronic Warfare", "Remove Jammer", _jammerRemove] call zen_custom_modules_fnc_register;
+    };
 };

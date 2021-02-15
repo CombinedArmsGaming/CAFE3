@@ -1,3 +1,6 @@
+/*
+	Created By: Gibbs
+*/
 #include "macros.hpp"
 
 params ["_object"];

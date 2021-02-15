@@ -1,7 +1,8 @@
-#include "macros.hpp"
 /*
-Created By: Gibbs
+	Created By: Gibbs
 */
+#include "macros.hpp"
+
 params ["_object"];
 
 if (isNull _object) then

@@ -1,7 +1,5 @@
 #include "macros.hpp"
-/*
-Created By: Gibbs
-*/
+
 params ["_position", ["_side", west]];
 
 systemChat "This spawner will become active in 15 seconds.  Fine tune its position if needed.";
