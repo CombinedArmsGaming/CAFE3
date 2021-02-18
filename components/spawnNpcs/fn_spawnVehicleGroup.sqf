@@ -90,3 +90,5 @@ if ((typeName _runAfter) isEqualTo "CODE") then
 {
 	[_group, _vehicle] call _runAfter;
 };
+
+[_group, _vehicle]
