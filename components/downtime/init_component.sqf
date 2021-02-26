@@ -22,4 +22,5 @@ waitUntil
 DEBUG_PRINT_LOG("finished waiting: downtime")
 
 [] spawn f_fnc_downtimeMonitor;
+[] spawn f_fnc_downtimeRespawnMessageMonitor;
 [] spawn f_fnc_blockSelfInteractWhileUnconscious;
