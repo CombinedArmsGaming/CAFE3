@@ -9,8 +9,16 @@ if (_type in f_arr_unflipActionClasses) exitWith {};
 
 f_arr_unflipActionClasses pushBack _type;
 
+_vehicleMass = getMass _unit;
 
-_actionCode = { [30, _target, { (_this select 0) remoteExec ["f_fnc_unflipVehicle", (_this select 0)]; }, {}, "Un-flipping vehicle..."] call ace_common_fnc_progressBar; };
+_actionCode = if (_vehicleMass > 11000) then
+{
+    { hint "This vehicle is too heavy to un-flip." };
+}
+else
+{
+    { [((getMass _target) * 0.005) max 4, _target, { (_this select 0) remoteExec ["f_fnc_unflipVehicle", (_this select 0)]; }, {}, "Un-flipping vehicle..."] call ace_common_fnc_progressBar; }
+};
 
 _condition =
 {
@@ -19,7 +27,7 @@ _condition =
     _groundVec = surfaceNormal position _vehicle;
 
     (_vecUp vectorDotProduct _groundVec) < 0.5
-
+    
 };
 
 
