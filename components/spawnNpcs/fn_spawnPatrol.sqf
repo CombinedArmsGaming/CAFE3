@@ -22,6 +22,13 @@ _group = [_unitarray,_position,_faction,_side] call f_fnc_spawnGroup;
 _posdir = _position call f_fnc_getDirPos;
 _patrolpos = _posdir select 0;
 
-[_group, _patrolpos,_radius] call CBA_fnc_taskPatrol;
+if !(isNil 'lambs_wp_fnc_taskPatrol') then
+{
+    [_group, _patrolpos, _radius] call lambs_wp_fnc_taskPatrol;
+}
+else
+{
+    [_group, _patrolpos, _radius] call CBA_fnc_taskPatrol;
+};
 
 _group

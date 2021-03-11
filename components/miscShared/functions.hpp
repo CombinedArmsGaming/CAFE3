@@ -27,4 +27,5 @@ class miscShared
     class addObjectsToAllZeuses{};
     class addCustomSettings{};
     class canPlayerOfSideRespawn{};
+    class runHCAware{};
 };

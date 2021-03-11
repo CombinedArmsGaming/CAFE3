@@ -4,6 +4,7 @@ class spawnNpcs
     class spawnAttack{};
     class spawnCharge{};
     class spawnFortify{};
+    class spawnGarrison{};
     class spawnGroup{};
     class spawnPatrol{};
     class spawnVehicle{};
