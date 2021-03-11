@@ -53,7 +53,7 @@ COPY_ADDONS(med,rif);
 
 _baseLoadout = [["arifle_MXC_F","","acc_flashlight","optic_ACO_grn",["30Rnd_65x39_caseless_mag",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",17],[],""],["U_B_CombatUniform_mcam",[["ACRE_PRC343_ID_3",1],["ACRE_PRC148_ID_1",1],["ACE_bloodIV",1],["ACE_Flashlight_XL50",1],["ACE_MapTools",1],["16Rnd_9x21_Mag",1,17]]],["V_PlateCarrier1_rgr",[["ACE_bloodIV",4],["HandGrenade",2,1],["30Rnd_65x39_caseless_mag_Tracer",2,30],["30Rnd_65x39_caseless_mag",5,30],["SmokeShell",2,1]]],["B_Kitbag_mcamo",[["ACE_morphine",15],["ACE_epinephrine",10],["ACE_fieldDressing",10],["ACE_packingBandage",20],["ACE_elasticBandage",20],["ACE_bloodIV_500",3],["ACE_adenosine",5],["ACE_bloodIV",6],["ACE_splint",20],["ACE_tourniquet",10],["ACE_EntrenchingTool",1]]],"H_HelmetB_snakeskin","G_Lowprofile",["Binocular","","","",[],[],""],["ItemMap","ItemGPS","","ItemCompass","ItemWatch","NVGoggles"]];
 
-CREATE_LOADOUT(med,_baseLoadout);
+CREATE_LOADOUT(cls,_baseLoadout);
 COPY_ADDONS(cls,rif);
 
 

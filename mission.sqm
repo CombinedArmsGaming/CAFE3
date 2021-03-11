@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1356;
+		nextID=1381;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={266.3446,143.47784,77.939941};
-		dir[]={0.12708421,-0.59505755,0.79357189};
-		up[]={0.09409482,0.80368304,0.58757102};
-		aside[]={0.98741883,-7.4505806e-009,-0.15812726};
+		pos[]={221.04352,11.917191,248.63087};
+		dir[]={-0.16265586,-0.64796668,0.74410015};
+		up[]={-0.13837446,0.76166761,0.63302034};
+		aside[]={0.97693372,-2.1187589e-008,0.21355176};
 	};
 };
 binarizationWanted=0;
@@ -36,8 +36,8 @@ addons[]=
 	"ace_cargo",
 	"A3_Supplies_F_Orange_Ammoboxes",
 	"AICommand",
-	"3den_Objects",
-	"A3_Structures_F_Bootcamp_VR_Helpers"
+	"A3_Structures_F_Bootcamp_VR_Helpers",
+	"3den_Objects"
 };
 class AddonsMetaData
 {
@@ -114,15 +114,15 @@ class AddonsMetaData
 		};
 		class Item10
 		{
-			className="3den_Objects";
-			name="3den_Objects";
-		};
-		class Item11
-		{
 			className="A3_Structures_F_Bootcamp";
 			name="Arma 3 Bootcamp Update - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
+		};
+		class Item11
+		{
+			className="3den_Objects";
+			name="3den_Objects";
 		};
 	};
 };
@@ -11787,6 +11787,201 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
+				position[]={199.974,5.0005002,192.006};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				name="respawner_west";
+			};
+			id=1347;
+			type="VR_Area_01_square_1x1_yellow_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ObjectTextureCustom0";
+					expression="_this setObjectTextureGlobal [0,_value]";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="#(argb,8,8,3)color(0,0.3,0.6,1,co)";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item32
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={300.008,5.0005002,191.563};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				name="respawner_east";
+			};
+			id=1348;
+			type="VR_Area_01_square_1x1_yellow_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ObjectTextureCustom0";
+					expression="_this setObjectTextureGlobal [0,_value]";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="#(argb,8,8,3)color(0.5,0,0,1,co)";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item33
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={299.98801,5.0005002,293.979};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				name="respawner_civ";
+			};
+			id=1349;
+			type="VR_Area_01_square_1x1_yellow_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ObjectTextureCustom0";
+					expression="_this setObjectTextureGlobal [0,_value]";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="#(argb,8,8,3)color(0.4,0,0.5,1,co)";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item34
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={199.96899,5.0005002,293.98001};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				name="respawner_guer";
+			};
+			id=1350;
+			type="VR_Area_01_square_1x1_yellow_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ObjectTextureCustom0";
+					expression="_this setObjectTextureGlobal [0,_value]";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="#(argb,8,8,3)color(0,0.5,0,1,co)";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item35
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={165.94701,5,281.15302};
+			};
+			name="HC1";
+			isPlayable=1;
+			description="HC1";
+			id=1352;
+			type="HeadlessClient_F";
+		};
+		class Item36
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={166.694,5,240.49001};
+			};
+			name="HC2";
+			isPlayable=1;
+			description="HC2";
+			id=1353;
+			type="HeadlessClient_F";
+		};
+		class Item37
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={165.44501,5,202.61501};
+			};
+			name="HC3";
+			isPlayable=1;
+			description="HC3";
+			id=1354;
+			type="HeadlessClient_F";
+		};
+		class Item38
+		{
+			dataType="Object";
+			class PositionInfo
+			{
 				position[]={217.089,6.0308199,254.39101};
 			};
 			side="Empty";
@@ -11794,6 +11989,7 @@ class Mission
 			class Attributes
 			{
 				init="call{[this, ""blu_f""] call f_fnc_createLoadoutLocker;}";
+				name="LoadoutLocker_BLUFOR";
 			};
 			id=1345;
 			type="Metal_Locker_F";
@@ -11842,7 +12038,7 @@ class Mission
 															"STRING"
 														};
 													};
-													value="RyanZombiesAntiVirusTemporary_Item";
+													value="ACE_Banana";
 												};
 											};
 										};
@@ -11868,201 +12064,6 @@ class Mission
 				};
 				nAttributes=1;
 			};
-		};
-		class Item32
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={199.974,5.0005002,192.006};
-			};
-			side="Empty";
-			flags=5;
-			class Attributes
-			{
-				name="respawner_west";
-			};
-			id=1347;
-			type="VR_Area_01_square_1x1_yellow_F";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ObjectTextureCustom0";
-					expression="_this setObjectTextureGlobal [0,_value]";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="#(argb,8,8,3)color(0,0.3,0.6,1,co)";
-						};
-					};
-				};
-				nAttributes=1;
-			};
-		};
-		class Item33
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={300.008,5.0005002,191.563};
-			};
-			side="Empty";
-			flags=5;
-			class Attributes
-			{
-				name="respawner_east";
-			};
-			id=1348;
-			type="VR_Area_01_square_1x1_yellow_F";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ObjectTextureCustom0";
-					expression="_this setObjectTextureGlobal [0,_value]";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="#(argb,8,8,3)color(0.5,0,0,1,co)";
-						};
-					};
-				};
-				nAttributes=1;
-			};
-		};
-		class Item34
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={299.98801,5.0005002,293.979};
-			};
-			side="Empty";
-			flags=5;
-			class Attributes
-			{
-				name="respawner_civ";
-			};
-			id=1349;
-			type="VR_Area_01_square_1x1_yellow_F";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ObjectTextureCustom0";
-					expression="_this setObjectTextureGlobal [0,_value]";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="#(argb,8,8,3)color(0.4,0,0.5,1,co)";
-						};
-					};
-				};
-				nAttributes=1;
-			};
-		};
-		class Item35
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={199.96899,5.0005002,293.98001};
-			};
-			side="Empty";
-			flags=5;
-			class Attributes
-			{
-				name="respawner_guer";
-			};
-			id=1350;
-			type="VR_Area_01_square_1x1_yellow_F";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ObjectTextureCustom0";
-					expression="_this setObjectTextureGlobal [0,_value]";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="#(argb,8,8,3)color(0,0.5,0,1,co)";
-						};
-					};
-				};
-				nAttributes=1;
-			};
-		};
-		class Item36
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={165.94701,5,281.15302};
-			};
-			name="HC1";
-			isPlayable=1;
-			description="HC1";
-			id=1352;
-			type="HeadlessClient_F";
-		};
-		class Item37
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={166.694,5,240.49001};
-			};
-			name="HC2";
-			isPlayable=1;
-			description="HC2";
-			id=1353;
-			type="HeadlessClient_F";
-		};
-		class Item38
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={165.44501,5,202.61501};
-			};
-			name="HC3";
-			isPlayable=1;
-			description="HC3";
-			id=1354;
-			type="HeadlessClient_F";
 		};
 	};
 	class Connections
