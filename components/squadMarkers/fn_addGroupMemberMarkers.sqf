@@ -24,7 +24,7 @@ _units = [];
 
 
 // Try to match marker colour with squad colour, also marker name.
-_colour = WHITE;
+_colour = COLOUR_WHITE;
 
 if (_visible) then
 {

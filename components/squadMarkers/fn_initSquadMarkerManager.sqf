@@ -65,13 +65,13 @@ waitUntil
                         if !(SQUAD_IS_IMPORTANT(_group)) then
                         {
                             _name = "Allies";
-                            _colour = LIGHTGREY;
+                            _colour = COLOUR_LIGHTGREY;
                         };
 
                     };
 
                     if (_icon isEqualTo "") then {_icon = [_group] call f_fnc_getGroupMarker};
-                    if (_colour isEqualTo []) then {_colour = DEFAULT_COLOUR};
+                    if (_colour isEqualTo []) then {_colour = COLOUR_DEFAULT};
 
                     _newMarkers pushBack [_group, _icon, _name, _colour];
 

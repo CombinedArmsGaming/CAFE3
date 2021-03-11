@@ -18,7 +18,7 @@ _crewSize = count _crew;
 
 if (_crewSize <= 0) exitWith
 {
-    INFANTRY
+    ICON_INFANTRY
 };
 
 
@@ -52,36 +52,36 @@ _hasShip = false; // "Ship_F", "Ship"
 
 if (_hasShip) exitWith
 {
-    NAVAL
+    ICON_NAVAL
 };
 
 if (_hasPlane) exitWith
 {
-    PLANE
+    ICON_PLANE
 };
 
 if (_hasHelo) exitWith
 {
-    HELO
+    ICON_HELO
 };
 
 if (_hasTank) exitWith
 {
     if (_size > _crewSize) then
     {
-        MECHINF
+        ICON_MECHINF
     }
     else
     {
-        ARMOR
+        ICON_ARMOR
     };
 
 };
 
 if (_hasCar) exitWith
 {
-    MOTORINF
+    ICON_MOTORINF
 };
 
 
-UNKNOWN
+ICON_UNKNOWN

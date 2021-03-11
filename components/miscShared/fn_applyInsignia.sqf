@@ -62,7 +62,7 @@ if (_insigniaClass isEqualTo "") then
 
     if (_insigniaClass isEqualTo []) then
     {
-        _insigniaClass = DICT_GET(f_dict_insignia_colours,(str BLACK));
+        _insigniaClass = DICT_GET(f_dict_insignia_colours,(str COLOUR_BLACK));
     };
 
     if (_unitType in ["ftl", "sl", "co", "xo"]) then

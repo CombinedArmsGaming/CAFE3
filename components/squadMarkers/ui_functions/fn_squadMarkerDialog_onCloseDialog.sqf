@@ -24,7 +24,7 @@ if (_exitCode == 1) then
     // Change colour of marker.
     _colourList = _display displayCtrl IDC_SQUADMARKER_DIALOG_COLOURLISTBOX;
     _colourChoice = lbCurSel _colourList;
-    _colourData = f_var_squadMarker_colourData param [_colourChoice, DEFAULT_COLOUR];
+    _colourData = f_var_squadMarker_colourData param [_colourChoice, COLOUR_DEFAULT];
 
     SET_SQUAD_COLOUR_DIRECT(_group,_colourData);
 

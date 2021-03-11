@@ -2,47 +2,47 @@
 #define FACTION NONE
 #define SQUADS f_dict_squadmarkers
 
-#define RED	        [0.9,0,0,1]
-#define ORANGE      [1,0.5,0,1]
-#define YELLOW      [1,1,0,1]
-#define GREEN       [0,1,0,1]
-#define BLUE        [0.2,0.2,1,1]
-#define CYAN        [0,1,1,1]
-#define MAGENTA     [1,0,1,1]
-#define PINK	    [1,0.3,0.4,1]
-#define PURPLE      [0.5,0,1,1]
-#define WHITE       [1,1,1,1]
-#define LIGHTGREY   [0.7,0.7,0.7,1]
-#define DARKGREY    [0.3,0.3,0.3,1]
-#define BLACK	    [0,0,0,1]
-#define GREY	    [0.5,0.5,0.5,1]
-#define BROWN	    [0.5,0.25,0,1]
-#define KHAKI	    [0.5,0.6,0.4,1]
+#define COLOUR_RED	     [0.9,0,0,1]
+#define COLOUR_ORANGE    [1,0.5,0,1]
+#define COLOUR_YELLOW    [1,1,0,1]
+#define COLOUR_GREEN     [0,1,0,1]
+#define COLOUR_BLUE      [0.2,0.2,1,1]
+#define COLOUR_CYAN      [0,1,1,1]
+#define COLOUR_MAGENTA   [1,0,1,1]
+#define COLOUR_PINK	     [1,0.3,0.4,1]
+#define COLOUR_PURPLE    [0.5,0,1,1]
+#define COLOUR_WHITE     [1,1,1,1]
+#define COLOUR_LIGHTGREY [0.7,0.7,0.7,1]
+#define COLOUR_DARKGREY  [0.3,0.3,0.3,1]
+#define COLOUR_BLACK	 [0,0,0,1]
+#define COLOUR_GREY	     [0.5,0.5,0.5,1]
+#define COLOUR_BROWN	 [0.5,0.25,0,1]
+#define COLOUR_KHAKI	 [0.5,0.6,0.4,1]
 
-#define DEFAULT_COLOUR [0.999,1,1,1]
+#define COLOUR_DEFAULT [0.999,1,1,1]
 
 
-#define HELO            "res\images\squadMarkers\squad_air.paa"
-#define ANTIAIR         "res\images\squadMarkers\squad_antiair.paa"
-#define ANTITANK        "res\images\squadMarkers\squad_antitank.paa"
-#define HEAVYANTITANK   "res\images\squadMarkers\squad_heavyantitank.paa"
-#define ARMOR           "res\images\squadMarkers\squad_armor.paa"
-#define ARTILLERY       "res\images\squadMarkers\squad_art.paa"
-#define HEAVYWEAPONS    "res\images\squadMarkers\squad_heavyweapons.paa"
-#define HQ              "res\images\squadMarkers\squad_hq.paa"
-#define INFANTRY        "res\images\squadMarkers\squad_inf.paa"
-#define REPAIR          "res\images\squadMarkers\squad_maint.paa"
-#define EOD             "res\images\squadMarkers\squad_eod.paa"
-#define MECHINF         "res\images\squadMarkers\squad_mech_inf.paa"
-#define MEDIC           "res\images\squadMarkers\squad_med.paa"
-#define MORTAR          "res\images\squadMarkers\squad_mortar.paa"
-#define MOTORINF        "res\images\squadMarkers\squad_motor_inf.paa"
-#define NAVAL           "res\images\squadMarkers\squad_naval.paa"
-#define PLANE           "res\images\squadMarkers\squad_plane.paa"
-#define RECON           "res\images\squadMarkers\squad_recon.paa"
-#define SUPPLY          "res\images\squadMarkers\squad_supply.paa"
-#define SPECIALFORCES   "res\images\squadMarkers\squad_sf.paa"
-#define UNKNOWN         "res\images\squadMarkers\squad_unknown.paa"
+#define ICON_HELO            "res\images\squadMarkers\squad_air.paa"
+#define ICON_ANTIAIR         "res\images\squadMarkers\squad_antiair.paa"
+#define ICON_ANTITANK        "res\images\squadMarkers\squad_antitank.paa"
+#define ICON_HEAVYANTITANK   "res\images\squadMarkers\squad_heavyantitank.paa"
+#define ICON_ARMOR           "res\images\squadMarkers\squad_armor.paa"
+#define ICON_ARTILLERY       "res\images\squadMarkers\squad_art.paa"
+#define ICON_HEAVYWEAPONS    "res\images\squadMarkers\squad_heavyweapons.paa"
+#define ICON_HQ              "res\images\squadMarkers\squad_hq.paa"
+#define ICON_INFANTRY        "res\images\squadMarkers\squad_inf.paa"
+#define ICON_REPAIR          "res\images\squadMarkers\squad_maint.paa"
+#define ICON_EOD             "res\images\squadMarkers\squad_eod.paa"
+#define ICON_MECHINF         "res\images\squadMarkers\squad_mech_inf.paa"
+#define ICON_MEDIC           "res\images\squadMarkers\squad_med.paa"
+#define ICON_MORTAR          "res\images\squadMarkers\squad_mortar.paa"
+#define ICON_MOTORINF        "res\images\squadMarkers\squad_motor_inf.paa"
+#define ICON_NAVAL           "res\images\squadMarkers\squad_naval.paa"
+#define ICON_PLANE           "res\images\squadMarkers\squad_plane.paa"
+#define ICON_RECON           "res\images\squadMarkers\squad_recon.paa"
+#define ICON_SUPPLY          "res\images\squadMarkers\squad_supply.paa"
+#define ICON_SPECIALFORCES   "res\images\squadMarkers\squad_sf.paa"
+#define ICON_UNKNOWN         "res\images\squadMarkers\squad_unknown.paa"
 
 #define GET_SQUAD(NAME) (allGroups param [(allGroups findIf {groupId _x isEqualTo #NAME}), grpNull])
 #define GET_SQUAD_DYNAMIC(NAME) (allGroups param [(allGroups findIf {groupId _x isEqualTo NAME}), grpNull])
