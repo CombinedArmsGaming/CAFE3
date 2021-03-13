@@ -440,6 +440,15 @@ class Extended_PreInit_EventHandlers
 		init = "call compile preprocessFileLineNumbers 'components\miscShared\fn_addCustomSettings.sqf'";
 	};
 
+#ifdef ENABLE_SCALE_SUPPORT
+
+	class AddEdenScaleSupport
+	{
+		init = "call compile preprocessFileLineNumbers 'components\miscShared\fn_edenScaleSupport.sqf'";
+	};
+
+#endif
+
 };
 
 
@@ -536,7 +545,7 @@ class Extended_InitPost_EventHandlers
 		{
 			init = "_this call f_fnc_addPushActionToClass";
 		};
-	}
+	};
 
 #endif
 

@@ -28,4 +28,7 @@ class miscShared
     class addCustomSettings{};
     class canPlayerOfSideRespawn{};
     class runHCAware{};
+    class edenScaleSupport{};
+    class inGameScaleSupport{};
+    class getAllObjectVariablesInNamespace{};
 };
