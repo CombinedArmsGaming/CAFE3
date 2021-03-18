@@ -564,3 +564,27 @@ class Extended_InitPost_EventHandlers
 */
 
 };
+
+
+
+
+// ============================================================================================
+
+
+
+
+class Extended_DisplayLoad_EventHandlers
+{
+    class RscDiary
+	{
+		CA2_SquadMarkers = "[_this#0, (_this#0) displayCtrl 51] call f_fnc_createSquadMarkerHook;";
+        CA2_FireteamMarkers = "[_this#0, (_this#0) displayCtrl 51] call f_fnc_createFireteamMarkerHook;";
+    };
+
+    class RscCustomInfoMiniMap
+	{
+		CA2_SquadMarkers = "[_this#0, (_this#0) displayCtrl 101] call f_fnc_createSquadMarkerHook;";
+	    CA2_FireteamMarkers = "[_this#0, (_this#0) displayCtrl 101] call f_fnc_createFireteamMarkerHook;";
+    };
+
+};

@@ -1,78 +1,40 @@
 #include "macros.hpp"
 
-_keepHookAlive =
-{
-	params ["_hookFactory", "_fncGetControl", "_readableControlName"];
+#ifdef ENABLE_SQUAD_MARKERS
 
-	while {true} do
-	{
-		_hookedCtrl = [] call _fncGetControl;
-		[] call _hookFactory;
+	RUN_AS_ASYNC(f_fnc_createSquadMarkerHook);
+	WAIT_UNTIL_SETTINGS_READY();
 
-		waitUntil
+	params ["_display", "_control"];
+
+	// If ft markers are enabled, wait until this display has ft markers hooked.  Draw calls should occur in inverse order of registration.
+	#ifdef ENABLE_FIRETEAM_MARKERS
+
+		if (_display getVariable ["f_var_ftMarker_eventId", -1] < 0) then
 		{
-			sleep 5;
-			_curCtrl = [] call _fncGetControl;
-			!(_hookedCtrl isEqualTo _curCtrl)
+			DEBUG_FORMAT1_LOG("[SquadMarkers] Waiting for display %1 to get a ft-marker hook registered.",_display)
+			waitUntil
+			{
+				uiSleep 1;
+				_display getVariable ["f_var_ftMarker_eventId", -1] >= 0
+			};
 		};
 
-		DEBUG_FORMAT2_LOG("[SquadMarkers] Detected change in control for %1 at time %2, creating new hook.",_readableControlName,time)
+	#endif
 
-		if !(isNull _hookedCtrl) then
-		{
-			_hookedCtrl ctrlRemoveEventHandler ["Draw", f_var_ftMarkersDrawHandlerId_RscDiary];
-		};
-	};
-};
-
-
-
-
-_createMapHook =
-{
-	waitUntil
+	if (_display getVariable ["f_var_squadMarker_eventId", -1] >= 0) exitWith
 	{
-		sleep 1;
-		_display = (uiNamespace getVariable "RscDiary");
-		!( (isNull _display) or {isNull (_display displayCtrl 51)} )
+		DEBUG_FORMAT2_LOG("[SquadMarkers] Aborted creating handler on display %1 with control %2 because it was already registered.",_display,_control)
 	};
 
-	DEBUG_PRINT_LOG("[SquadMarkers] Creating handler for map.")
+	DEBUG_FORMAT2_LOG("[SquadMarkers] Creating handler on display %1 with control %2.",_display,_control)
 
-	f_var_squadMarkersDrawHandlerId_RscDiary = ((uiNamespace getVariable "RscDiary") displayCtrl 51) ctrlAddEventHandler
+	_eventId = _control ctrlAddEventHandler
 	[
 		"Draw",
 		"_this call f_fnc_drawSquadMarkers"
 	];
 
-};
+	_display setVariable ["f_var_squadMarker_eventId", _eventId];
 
-_getMap = { ((uiNamespace getVariable "RscDiary") displayCtrl 51) };
-
-[_createMapHook, _getMap, "Map"] spawn _keepHookAlive;
-
-
-
-
-_createGpsHook =
-{
-	waitUntil
-	{
-		sleep 1;
-		_display = (uiNamespace getVariable "RscCustomInfoMiniMap");
-		!( (isNull _display) or {isNull (_display displayCtrl 101)} )
-	};
-
-	DEBUG_PRINT_LOG("[SquadMarkers] Creating handler for GPS.")
-
-	f_var_squadMarkersDrawHandlerId_RscCustomInfoMiniMap = ((uiNamespace getVariable "RscCustomInfoMiniMap") displayCtrl 101) ctrlAddEventHandler
-	[
-		"Draw",
-		"_this call f_fnc_drawSquadMarkers"
-	];
-
-};
-
-_getGps = { ((uiNamespace getVariable "RscCustomInfoMiniMap") displayCtrl 101) };
-
-[_createGpsHook, _getGps, "GPS"] spawn _keepHookAlive;
+#endif
