@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1381;
+		nextID=1386;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={221.04352,11.917191,248.63087};
-		dir[]={-0.16265586,-0.64796668,0.74410015};
-		up[]={-0.13837446,0.76166761,0.63302034};
-		aside[]={0.97693372,-2.1187589e-008,0.21355176};
+		pos[]={216.07881,13.604071,230.48064};
+		dir[]={0.87457407,-0.36177805,0.32285747};
+		up[]={0.33939052,0.93226415,0.12528929};
+		aside[]={0.34631535,0,-0.93811804};
 	};
 };
 binarizationWanted=0;
@@ -37,13 +37,14 @@ addons[]=
 	"A3_Supplies_F_Orange_Ammoboxes",
 	"AICommand",
 	"A3_Structures_F_Bootcamp_VR_Helpers",
-	"3den_Objects"
+	"3den_Objects",
+	"A3_Supplies_F_AoW_Bags"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=12;
+		items=13;
 		class Item0
 		{
 			className="A3_Modules_F_Curator";
@@ -123,6 +124,13 @@ class AddonsMetaData
 		{
 			className="3den_Objects";
 			name="3den_Objects";
+		};
+		class Item12
+		{
+			className="A3_Supplies_F_AoW";
+			name="Arma 3 Art of War - Ammoboxes and Supplies";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
 		};
 	};
 };
@@ -8003,7 +8011,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=39;
+		items=43;
 		class Item0
 		{
 			dataType="Logic";
@@ -11416,7 +11424,7 @@ class Mission
 						class Attribute0
 						{
 							property="ace_isEngineer";
-							expression="if !(_value == ([0,1] select (_this getUnitTrait 'engineer'))|| {_value == -1}) then {_this setVariable ['ace_isEngineer', _value, true]}";
+							expression="if !(_value == ([0, 1] select (_this getUnitTrait 'engineer')) || {_value == -1}) then {_this setVariable ['ace_isEngineer', _value, true]}";
 							class Value
 							{
 								class data
@@ -11574,7 +11582,7 @@ class Mission
 						class Attribute0
 						{
 							property="ace_isEngineer";
-							expression="if !(_value == ([0,1] select (_this getUnitTrait 'engineer'))|| {_value == -1}) then {_this setVariable ['ace_isEngineer', _value, true]}";
+							expression="if !(_value == ([0, 1] select (_this getUnitTrait 'engineer')) || {_value == -1}) then {_this setVariable ['ace_isEngineer', _value, true]}";
 							class Value
 							{
 								class data
@@ -11761,7 +11769,7 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={225.619,5,239.79601};
+				position[]={225.61845,5,239.84659};
 			};
 			side="Empty";
 			flags=4;
@@ -12064,6 +12072,71 @@ class Mission
 				};
 				nAttributes=1;
 			};
+		};
+		class Item39
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={224.98399,5,239.06};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				name="gravestone_blufor";
+			};
+			id=1381;
+			type="B_AssaultPack_mcamo";
+		};
+		class Item40
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={226.19478,5,239.04036};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				health=0.67981559;
+				name="gravestone_opfor";
+			};
+			id=1382;
+			type="B_AssaultPack_ocamo";
+		};
+		class Item41
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={224.95222,5,240.46481};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				name="gravestone_indfor";
+			};
+			id=1383;
+			type="B_AssaultPack_dgtl";
+		};
+		class Item42
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={226.25972,5,240.47015};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				name="gravestone_civilian";
+			};
+			id=1385;
+			type="B_CivilianBackpack_01_Everyday_IDAP_F";
 		};
 	};
 	class Connections

@@ -4,26 +4,38 @@
 #ifdef ENABLE_GRAVESTONE_CORPSE_MANAGER
 
 
+_setGravestoneType =
+{
+    params ["_objectName", "_outputName"];
+
+    _gravestoneType = "Box_Syndicate_Ammo_F";
+
+    _gravestone = missionNamespace getVariable [_objectName, ""];
+
+    if (typeName _gravestone == "OBJECT") then
+    {
+        if ([_gravestone] call f_fnc_isContainer) then
+        {
+            _gravestoneType = typeOf _gravestone;
+        };
+
+        deleteVehicle _gravestone;
+    };
+
+    missionNamespace setVariable [_outputName, _gravestoneType, true];
+};
+
 if (isServer) then
 {
     DEBUG_PRINT_LOG("initting gravestones")
 
-    _gravestoneType = "Box_Syndicate_Ammo_F";
-
 	[] spawn f_fnc_initGravestoneManager;
 
-    if (!isNil "gravestone" and {typeName gravestone == "OBJECT"}) then
-    {
-        if ([gravestone] call f_fnc_isContainer) then
-        {
-            _gravestoneType = typeOf gravestone;
-        };
-
-        deleteVehicle gravestone;
-    };
-
-    missionNamespace setVariable ["f_var_gravestoneTypeName", _gravestoneType, true];
-
+    ["gravestone",          "f_var_gravestoneTypeName"]          call _setGravestoneType;
+    ["gravestone_blufor",   "f_var_gravestoneTypeName_blufor"]   call _setGravestoneType;
+    ["gravestone_opfor",    "f_var_gravestoneTypeName_opfor"]    call _setGravestoneType;
+    ["gravestone_indfor",   "f_var_gravestoneTypeName_indfor"]   call _setGravestoneType;
+    ["gravestone_civilian", "f_var_gravestoneTypeName_civilian"] call _setGravestoneType;
 };
 
 

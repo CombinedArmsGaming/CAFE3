@@ -8,21 +8,51 @@ _createGravestone =
     params ["_corpse"];
 
     _corpsePos = getPosASL _corpse vectorAdd [0,0,0.5];
-    _corpseDir = vectorDir _corpse;
     _groundNormal = surfaceNormal _corpsePos;
 
     _grave = objNull;
     _corpseParent = objectParent _corpse;
+    _corpseBackpack = backpack _corpse;
+
+    _backpack = if (_corpseBackpack isNotEqualTo "") then
+    {
+        _corpseBackpack
+    }
+    else
+    {
+        _faction = _corpse getVariable ["f_var_assignGear_sideName", ""];
+
+        if (_faction isEqualTo "") then
+        {
+            f_var_gravestoneTypeName
+        }
+        else
+        {
+            missionNamespace getVariable ["f_var_gravestoneTypeName_" + _faction, f_var_gravestoneTypeName]
+        };
+    };
 
     if !(isNull _corpseParent) then
     {
-        _grave = f_var_gravestoneTypeName createVehicle [0,0,0];
+        _grave = _backpack createVehicle [0,0,0];
         _grave setVehiclePosition [(getpos _corpseParent), [], 10, "NONE"];
     }
     else
     {
-        _grave = f_var_gravestoneTypeName createVehicle _corpsePos;
-        _grave setVectorDirAndUp [_corpseDir,_groundNormal];
+        _graveDir = vectorNormalized [(random 2) - 1, (random 2) - 1, 0];
+        _grave = _backpack createVehicle _corpsePos;
+        _grave setVectorDirAndUp [[1,0,0], _groundNormal];
+    };
+
+    _graveParent = objectParent _grave;
+
+    if !(isNull _graveParent) then
+    {
+        _graveParent setDir (random 360);
+    }
+    else
+    {
+        _grave setDir (random 360);
     };
 
     // Required check for if chosen gravestone is a backpack/vest/etc.  Thanks Cre8or.
@@ -33,6 +63,7 @@ _createGravestone =
         _grave = _innerContainers select 0 select 1;
     };
 
+    _grave setDir (random 360);
     _grave allowDamage false;
     _grave setVariable ["ace_cookoff_enable", false, true];
 
