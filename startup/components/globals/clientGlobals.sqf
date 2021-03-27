@@ -3,37 +3,41 @@
 
 #include "macros.hpp"
 
-INIT_COMPONENT(squadMarkers)
+// 	F3 - Fireteam Member Markers
+// 	Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
+//LOAD_GLOBALS(ftMemberMarkers)
+
+LOAD_GLOBALS(squadMarkers)
 
 // F3 - Briefing
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
-INIT_COMPONENT(briefing)
+//LOAD_GLOBALS(briefing)
 
 // F3 - Safe start
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
-//INIT_COMPONENT(safeStart)
+//LOAD_GLOBALS(safeStart)
 
 // F3 - Radio Systems Support
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
-INIT_COMPONENT(radios)
+//LOAD_GLOBALS(radios)
 
-INIT_COMPONENT(miscClient)
+//LOAD_GLOBALS(miscClient)
 
-INIT_COMPONENT(miscShared)
+//LOAD_GLOBALS(miscShared)
 
-INIT_COMPONENT(respawnWaves)
+//LOAD_GLOBALS(respawnWaves)
 
-INIT_COMPONENT(zeus_ui)
+//LOAD_GLOBALS(zeus_ui)
 
-INIT_COMPONENT(downtime)
+//LOAD_GLOBALS(downtime)
 
-INIT_COMPONENT(zenFunctions)
+//LOAD_GLOBALS(zenFunctions)
 
 
 // Gravestones init
 #ifdef ENABLE_GRAVESTONE_CORPSE_MANAGER
 
-INIT_COMPONENT(gravestones)
+//LOAD_GLOBALS(gravestones)
 
 #endif
 
@@ -41,6 +45,6 @@ INIT_COMPONENT(gravestones)
 // View distance editor
 #ifdef ENABLE_VIEWDISTANCE_EDITOR
 
-INIT_COMPONENT(viewDistanceEditor)
+//LOAD_GLOBALS(viewDistanceEditor)
 
 #endif

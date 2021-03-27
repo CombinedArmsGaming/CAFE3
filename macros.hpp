@@ -50,6 +50,9 @@
 #define RUN_ONLY_ONCE_ASYNC(PATH,VAR) if (isNil #VAR) then { VAR = [] execVM PATH; };
 #define RUN_FUNC_ONCE_ASYNC(FUNC) if (isNil #CONCAT(f_script,FUNC)) then { CONCAT(f_script,FUNC) = [] spawn FUNC; };
 
+#define RUN_ONLY_ONCE(PATH,VAR) if (isNil #VAR) then { VAR = true; call compile preprocessFile PATH; };
+#define RUN_FUNC_ONCE(FUNC) if (isNil #CONCAT(f_script,FUNC)) then { CONCAT(f_script,FUNC) = true; [] call FUNC; };
+
 // String-keyed dictionary convenience macros
 #define DICT_CREATE_GLOBAL(NAME) \
     _tempDict = createLocation ["CBA_NamespaceDummy", [0,0,0], 0, 0] \
@@ -135,7 +138,8 @@ if (!(local OBJ)) exitWith { ARGS remoteExec [#FUNC,OBJ]; }
 #define RUN_AS_ASYNC(FUNC) if (!canSuspend) exitWith { _this spawn FUNC }
 
 
-#define INIT_COMPONENT(COMPNAME) RUN_ONLY_ONCE_ASYNC('components\COMPNAME\init_component.sqf',CONCAT(f_script_,COMPNAME))
+#define INIT_COMPONENT(COMPNAME) RUN_ONLY_ONCE_ASYNC('components\COMPNAME\init_component.sqf',CONCAT(f_script_init_,COMPNAME))
+#define LOAD_GLOBALS(COMPNAME) RUN_ONLY_ONCE('components\COMPNAME\globals.sqf',CONCAT(f_script_globals_,COMPNAME))
 
 #define FULL_KILL_LOG_KEY_SERVER 'f_var_killTracking_##KILL_LOG_NAME##'
 #define FULL_KILL_LOG_KEY_CLIENT 'f_var_killTracking_##KILL_LOG_NAME##_received'

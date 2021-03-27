@@ -8,6 +8,7 @@ class squadMarkers
     class initSquadMarkerManager{};
     class addGroupMemberMarkers{};
     class maintainImportantSquad{};
+    class squadMarkerArtilleryComputerManager{};
 };
 class squadMarkersDialog
 {

@@ -94,7 +94,7 @@ waitUntil
     f_arr_squadMarkers = _newMarkers;
     f_arr_unitMarkers = _newUnitMarkers;
 
-    sleep 1;
+    uiSleep 1;
 	false
 
 };
