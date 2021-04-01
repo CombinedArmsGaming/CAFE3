@@ -19,7 +19,7 @@ _uid = _unit call f_fnc_getObjectUid;
 _name = [_names, _uid] call f_fnc_generateName;
 
 _unit setSpeaker (_speakers select (floor (_uid random (count _speakers))));
-_objectUid = _objectUid * 2;
+_uid = _uid * 2;
 _unit setFace (_faces select (floor (_uid random (count _faces))));
 
 _unit setName _name;
