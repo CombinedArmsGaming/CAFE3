@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1386;
+		nextID=1397;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={216.07881,13.604071,230.48064};
-		dir[]={0.87457407,-0.36177805,0.32285747};
-		up[]={0.33939052,0.93226415,0.12528929};
-		aside[]={0.34631535,0,-0.93811804};
+		pos[]={237.98036,59.277851,196.94539};
+		dir[]={0.81204975,-0.56167179,-0.15852027};
+		up[]={0.55127615,0.82734972,-0.10761508};
+		aside[]={-0.19159763,3.7148129e-007,-0.98148912};
 	};
 };
 binarizationWanted=0;
@@ -28,9 +28,6 @@ addons[]=
 {
 	"A3_Modules_F_Curator_Curator",
 	"A3_Ui_F",
-	"ace_weather",
-	"ace_repair",
-	"ace_finger",
 	"A3_Characters_F",
 	"A3_Weapons_F_Ammoboxes",
 	"ace_cargo",
@@ -44,7 +41,7 @@ class AddonsMetaData
 {
 	class List
 	{
-		items=13;
+		items=10;
 		class Item0
 		{
 			className="A3_Modules_F_Curator";
@@ -61,71 +58,50 @@ class AddonsMetaData
 		};
 		class Item2
 		{
-			className="ace_weather";
-			name="ACE3 - Weather";
-			author="ACE-Team";
-			url="http://ace3mod.com/";
-		};
-		class Item3
-		{
-			className="ace_repair";
-			name="ACE3 - Repair";
-			author="ACE-Team";
-			url="http://ace3mod.com/";
-		};
-		class Item4
-		{
-			className="ace_finger";
-			name="ACE3 - Finger";
-			author="ACE-Team";
-			url="http://ace3mod.com/";
-		};
-		class Item5
-		{
 			className="A3_Characters_F";
 			name="Arma 3 Alpha - Characters and Clothing";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item6
+		class Item3
 		{
 			className="A3_Weapons_F";
 			name="Arma 3 Alpha - Weapons and Accessories";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item7
+		class Item4
 		{
 			className="ace_cargo";
 			name="ACE3 - Cargo";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item8
+		class Item5
 		{
 			className="A3_Supplies_F_Orange";
 			name="Arma 3 Orange - Ammoboxes and Supplies";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item9
+		class Item6
 		{
 			className="AICommand";
 			name="AICommand";
 		};
-		class Item10
+		class Item7
 		{
 			className="A3_Structures_F_Bootcamp";
 			name="Arma 3 Bootcamp Update - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item11
+		class Item8
 		{
 			className="3den_Objects";
 			name="3den_Objects";
 		};
-		class Item12
+		class Item9
 		{
 			className="A3_Supplies_F_AoW";
 			name="Arma 3 Art of War - Ammoboxes and Supplies";
@@ -4636,7 +4612,7 @@ class CustomAttributes
 																"SCALAR"
 															};
 														};
-														value=5.9749198;
+														value=10;
 													};
 												};
 												class Item1
@@ -8011,13 +7987,13 @@ class Mission
 	};
 	class Entities
 	{
-		items=43;
+		items=50;
 		class Item0
 		{
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={214.21284,5,283.00757};
+				position[]={195.46185,5,249.50781};
 			};
 			init="call{this addCuratorEditableObjects [(vehicles + allUnits),true];}";
 			id=106;
@@ -8127,7 +8103,7 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={214.21284,5,203.0076};
+				position[]={195.80508,5,229.42871};
 			};
 			init="call{this addCuratorEditableObjects [(vehicles + allUnits),true];}";
 			id=107;
@@ -8265,314 +8241,6 @@ class Mission
 			id=1105;
 		};
 		class Item6
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={253.3071,5,242.8653};
-			};
-			id=1110;
-			type="ace_weather_ModuleSettings";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ace_weather_ModuleSettings_enabled";
-					expression="_this setVariable ['enabled',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"BOOL"
-								};
-							};
-							value=0;
-						};
-					};
-				};
-				class Attribute1
-				{
-					property="ace_weather_ModuleSettings_windSimulation";
-					expression="_this setVariable ['windSimulation',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"BOOL"
-								};
-							};
-							value=0;
-						};
-					};
-				};
-				class Attribute2
-				{
-					property="ace_weather_ModuleSettings_updateInterval";
-					expression="_this setVariable ['updateInterval',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"SCALAR"
-								};
-							};
-							value=60;
-						};
-					};
-				};
-				nAttributes=3;
-			};
-		};
-		class Item7
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={234.21263,5,243.00793};
-			};
-			id=1112;
-			type="ACE_moduleRepairSettings";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ACE_moduleRepairSettings_fullRepairLocation";
-					expression="_this setVariable ['fullRepairLocation',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"SCALAR"
-								};
-							};
-							value=2;
-						};
-					};
-				};
-				class Attribute1
-				{
-					property="ACE_moduleRepairSettings_engineerSetting_fullRepair";
-					expression="_this setVariable ['engineerSetting_fullRepair',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"SCALAR"
-								};
-							};
-							value=2;
-						};
-					};
-				};
-				class Attribute2
-				{
-					property="ACE_moduleRepairSettings_engineerSetting_Repair";
-					expression="_this setVariable ['engineerSetting_Repair',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"SCALAR"
-								};
-							};
-							value=0;
-						};
-					};
-				};
-				class Attribute3
-				{
-					property="ACE_moduleRepairSettings_consumeItem_ToolKit";
-					expression="_this setVariable ['consumeItem_ToolKit',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"SCALAR"
-								};
-							};
-							value=0;
-						};
-					};
-				};
-				class Attribute4
-				{
-					property="ACE_moduleRepairSettings_repairDamageThreshold";
-					expression="_this setVariable ['repairDamageThreshold',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"SCALAR"
-								};
-							};
-							value=0.60000002;
-						};
-					};
-				};
-				class Attribute5
-				{
-					property="ACE_moduleRepairSettings_wheelRepairRequiredItems";
-					expression="_this setVariable ['wheelRepairRequiredItems',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"SCALAR"
-								};
-							};
-							value=0;
-						};
-					};
-				};
-				class Attribute6
-				{
-					property="ACE_moduleRepairSettings_repairDamageThreshold_Engineer";
-					expression="_this setVariable ['repairDamageThreshold_Engineer',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"SCALAR"
-								};
-							};
-							value=0.40000001;
-						};
-					};
-				};
-				class Attribute7
-				{
-					property="ACE_moduleRepairSettings_engineerSetting_Wheel";
-					expression="_this setVariable ['engineerSetting_Wheel',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"SCALAR"
-								};
-							};
-							value=0;
-						};
-					};
-				};
-				class Attribute8
-				{
-					property="ACE_moduleRepairSettings_addSpareParts";
-					expression="_this setVariable ['addSpareParts',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"BOOL"
-								};
-							};
-							value=1;
-						};
-					};
-				};
-				nAttributes=9;
-			};
-		};
-		class Item8
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={274.21289,5,243.00757};
-			};
-			id=1113;
-			type="ace_finger_moduleSettings";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ace_finger_moduleSettings_maxRange";
-					expression="_this setVariable ['maxRange',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"SCALAR"
-								};
-							};
-							value=10;
-						};
-					};
-				};
-				class Attribute1
-				{
-					property="ace_finger_moduleSettings_enabled";
-					expression="_this setVariable ['enabled',_value,true];";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"BOOL"
-								};
-							};
-							value=1;
-						};
-					};
-				};
-				nAttributes=2;
-			};
-		};
-		class Item9
 		{
 			dataType="Group";
 			side="West";
@@ -9122,7 +8790,7 @@ class Mission
 				nAttributes=2;
 			};
 		};
-		class Item10
+		class Item7
 		{
 			dataType="Object";
 			class PositionInfo
@@ -9139,7 +8807,7 @@ class Mission
 			id=1143;
 			type="Box_NATO_WpsSpecial_F";
 		};
-		class Item11
+		class Item8
 		{
 			dataType="Object";
 			class PositionInfo
@@ -9179,7 +8847,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item12
+		class Item9
 		{
 			dataType="Group";
 			side="West";
@@ -9729,7 +9397,7 @@ class Mission
 				nAttributes=2;
 			};
 		};
-		class Item13
+		class Item10
 		{
 			dataType="Object";
 			class PositionInfo
@@ -9746,7 +9414,7 @@ class Mission
 			id=1152;
 			type="Box_NATO_WpsSpecial_F";
 		};
-		class Item14
+		class Item11
 		{
 			dataType="Object";
 			class PositionInfo
@@ -9786,7 +9454,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item15
+		class Item12
 		{
 			dataType="Group";
 			side="West";
@@ -10336,7 +10004,7 @@ class Mission
 				nAttributes=2;
 			};
 		};
-		class Item16
+		class Item13
 		{
 			dataType="Object";
 			class PositionInfo
@@ -10353,7 +10021,7 @@ class Mission
 			id=1161;
 			type="Box_NATO_WpsSpecial_F";
 		};
-		class Item17
+		class Item14
 		{
 			dataType="Object";
 			class PositionInfo
@@ -10393,7 +10061,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item18
+		class Item15
 		{
 			dataType="Object";
 			class PositionInfo
@@ -10410,7 +10078,7 @@ class Mission
 			id=1171;
 			type="Box_NATO_WpsSpecial_F";
 		};
-		class Item19
+		class Item16
 		{
 			dataType="Object";
 			class PositionInfo
@@ -10450,12 +10118,12 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item20
+		class Item17
 		{
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={212.33986,5,239.95361};
+				position[]={195.86482,5,239.43799};
 			};
 			init="call{this addCuratorEditableObjects [(vehicles + allUnits),true];}";
 			id=1177;
@@ -10560,16 +10228,16 @@ class Mission
 				nAttributes=5;
 			};
 		};
-		class Item21
+		class Item18
 		{
 			dataType="Marker";
-			position[]={251.84935,35.716721,270.31976};
+			position[]={248.81859,35.716721,268.68256};
 			name="radio_list";
 			type="Empty";
 			id=1226;
 			atlOffset=30.716721;
 		};
-		class Item22
+		class Item19
 		{
 			dataType="Trigger";
 			position[]={253.701,5,351.11499};
@@ -10581,7 +10249,7 @@ class Mission
 			id=1282;
 			type="EmptyDetectorAreaR50";
 		};
-		class Item23
+		class Item20
 		{
 			dataType="Object";
 			class PositionInfo
@@ -10620,7 +10288,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item24
+		class Item21
 		{
 			dataType="Object";
 			class PositionInfo
@@ -10659,7 +10327,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item25
+		class Item22
 		{
 			dataType="Object";
 			class PositionInfo
@@ -10698,7 +10366,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item26
+		class Item23
 		{
 			dataType="Object";
 			class PositionInfo
@@ -10737,7 +10405,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item27
+		class Item24
 		{
 			dataType="Group";
 			side="West";
@@ -11391,7 +11059,7 @@ class Mission
 				nAttributes=2;
 			};
 		};
-		class Item28
+		class Item25
 		{
 			dataType="Group";
 			side="West";
@@ -11403,7 +11071,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={220.94,5.0014391,258.86298};
+						position[]={205.0723,5.0014391,242.67059};
 					};
 					side="West";
 					flags=7;
@@ -11562,7 +11230,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={219.399,5.0014391,253.16};
+						position[]={203.5313,5.0014391,236.96762};
 					};
 					side="West";
 					flags=5;
@@ -11764,12 +11432,12 @@ class Mission
 				nAttributes=2;
 			};
 		};
-		class Item29
+		class Item26
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={225.61845,5,239.84659};
+				position[]={249.25305,5,241.55707};
 			};
 			side="Empty";
 			flags=4;
@@ -11780,7 +11448,7 @@ class Mission
 			id=1337;
 			type="B_Kitbag_rgr";
 		};
-		class Item30
+		class Item27
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -11790,7 +11458,7 @@ class Mission
 			id=1338;
 			type="AdvancedAICommand_Commanders";
 		};
-		class Item31
+		class Item28
 		{
 			dataType="Object";
 			class PositionInfo
@@ -11829,7 +11497,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item32
+		class Item29
 		{
 			dataType="Object";
 			class PositionInfo
@@ -11868,7 +11536,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item33
+		class Item30
 		{
 			dataType="Object";
 			class PositionInfo
@@ -11907,7 +11575,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item34
+		class Item31
 		{
 			dataType="Object";
 			class PositionInfo
@@ -11946,12 +11614,12 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item35
+		class Item32
 		{
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={165.94701,5,281.15302};
+				position[]={166.80219,5,252.08203};
 			};
 			name="HC1";
 			isPlayable=1;
@@ -11959,7 +11627,7 @@ class Mission
 			id=1352;
 			type="HeadlessClient_F";
 		};
-		class Item36
+		class Item33
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -11972,12 +11640,12 @@ class Mission
 			id=1353;
 			type="HeadlessClient_F";
 		};
-		class Item37
+		class Item34
 		{
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={165.44501,5,202.61501};
+				position[]={166.63057,5,227.5415};
 			};
 			name="HC3";
 			isPlayable=1;
@@ -11985,12 +11653,12 @@ class Mission
 			id=1354;
 			type="HeadlessClient_F";
 		};
-		class Item38
+		class Item35
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={217.089,6.0308199,254.39101};
+				position[]={203.87274,6.0308199,251.93115};
 			};
 			side="Empty";
 			flags=4;
@@ -12073,12 +11741,12 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item39
+		class Item36
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={224.98399,5,239.06};
+				position[]={248.61859,5,240.77048};
 			};
 			side="Empty";
 			flags=4;
@@ -12089,12 +11757,12 @@ class Mission
 			id=1381;
 			type="B_AssaultPack_mcamo";
 		};
-		class Item40
+		class Item37
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={226.19478,5,239.04036};
+				position[]={249.82938,5,240.75084};
 			};
 			side="Empty";
 			flags=4;
@@ -12106,12 +11774,12 @@ class Mission
 			id=1382;
 			type="B_AssaultPack_ocamo";
 		};
-		class Item41
+		class Item38
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={224.95222,5,240.46481};
+				position[]={248.58682,5,242.17529};
 			};
 			side="Empty";
 			flags=4;
@@ -12122,12 +11790,12 @@ class Mission
 			id=1383;
 			type="B_AssaultPack_dgtl";
 		};
-		class Item42
+		class Item39
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={226.25972,5,240.47015};
+				position[]={249.89432,5,242.18063};
 			};
 			side="Empty";
 			flags=4;
@@ -12137,6 +11805,116 @@ class Mission
 			};
 			id=1385;
 			type="B_CivilianBackpack_01_Everyday_IDAP_F";
+		};
+		class Item40
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={205.62302,5,191.42236};
+			};
+			title="Respawner Objects";
+			description="See the ""respawnWaves.sqf"" configuration file. " \n "" \n "If it is configured to Base Respawn (a.k.a. RESPAWN_MODE_BASE), then all dead players will respawn at this marker object." \n "" \n "In Zeus, you can move this object around to change where people spawn." \n "" \n "You can also set a vehicle, plane, or any player as a Respawner Object by using the in-game Zeus module.";
+			id=1386;
+		};
+		class Item41
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={206.3414,5,199.92285};
+			};
+			title="Respawn Marker";
+			description="If the Respawner Object has been deleted or the framework doesn't know where to spawn players, they will respawn at this marker." \n "" \n "Place it somewhere safe (inside a HQ for example).";
+			id=1387;
+		};
+		class Item42
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={211.00452,5,251.88818};
+			};
+			title="Loadout Lockers";
+			description="When in-game, Loadout Lockers will let you choose loadouts for a specific faction.  This one is set to give you BLUFOR loadouts." \n "" \n "You can make Loadout Lockers for other factions by copy-pasting this locker and changing ""blu_f"" inside the Init Field to ""opf_f"", ""ind_f"" or ""civ_f"".";
+			id=1388;
+		};
+		class Item43
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={256.36032,5,268.84375};
+			};
+			title="Radio List";
+			description="This marker creates an auto-generated list of radio channels.  It will show up in-game in the Map screen." \n "" \n "You can move this marker around to move the list.  You can also scale this marker up and down to change the size of the list.";
+			id=1389;
+		};
+		class Item44
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={293.04199,5,253.356};
+			};
+			title="Loot Crates";
+			description="Loot Crates contain random items, like in RPG games (Skyrim, Borderlands etc.)." \n "" \n "You can set-up loot-tables in the ""lootBox.sqf"" configuration file.  This is currently considered an advanced feature because loot-tables are not simple to set up.  If you have any issues, ask Bubbus for help.";
+			id=1390;
+		};
+		class Item45
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={262.73801,5,352.22699};
+			};
+			title="Zeus-proof Triggers";
+			description="This trigger is configured to ignore any Zeuses which fly into it, but any normal player who steps inside is still counted.  " \n "" \n "You can copy-paste this trigger if you need more than one.";
+			id=1391;
+		};
+		class Item46
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={255.94266,5,241.02686};
+			};
+			title="Gravestones";
+			description="When any unit is deleted, they will be turned into a Gravestone.  These can be any kind of container, but by default they are configured to be backpacks." \n "" \n "You can change the Gravestone that appears for BLUFOR by deleting the backpack here, and then naming a container to ""gravestone_blufor"".  The same rule applies to other factions." \n "" \n "You can control the Gravestone system's rules by using the ""gravestones.hpp"" configuration file.";
+			id=1392;
+		};
+		class Item47
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={339.24246,5,289.34619};
+			};
+			title="Squad Markers";
+			description="See the ""squadMarkers"" folder inside the configuration folder." \n "" \n "Squad markers are given to each squad inside that file.  If you want to add new squads, you can set their Callsign in this editor, and then use that exact same Callsign in the ""squadMarkers_blufor.sqf"" file to set up their colour, icon and more.  The same rule applies to different factions." \n "" \n "For more help, see the ""squadMarkers_blufor.sqf"" file for instructions and a default example.";
+			id=1393;
+		};
+		class Item48
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={339.80969,5,226.65234};
+			};
+			title="Gearscript";
+			description="Gearscript in this framework is provided by ACE Arsenal.  To add new loadouts, simply go into ACE Arsenal and make them.  " \n "" \n "Once you've finished a loadout, press ""EXPORT"" and go to the ""loadouts"" configuration folder.  You can paste the loadout code into any of the gear files to set up that unit." \n "" \n "When you paste the loadout, make sure you don't delete the semi-colon ("";"") at the end of each line." \n "" \n "Each Gearscript file also comes with helpful commands to add randomisation and set-up resupply crates.  For help and examples, see the ""gear_blufor.sqf"" configuration file.";
+			id=1394;
+		};
+		class Item49
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={338.36978,5,256.40332};
+			};
+			title="Identities";
+			description="This framework provides a system for setting the identities of each side.  For example, you can set the enemy to be ""tanoan"", ""greek"", and they will look and sound the part." \n "" \n "To see all available identites, see the ""identityGroups.sqf"" configuration file inside the ""identities"" folder." \n "" \n "To set-up identities for each side, see the ""identityAssignment.sqf"" configuration file.";
+			id=1395;
 		};
 	};
 	class Connections
