@@ -95,7 +95,7 @@ f_radios_settings_acre2_lr_groups_indfor = f_radios_settings_acre2_lr_groups_blu
 // Extra-long-range channels.
 // These are shared with long-range (LR) radios and backpack radios.
 // Duplicate these channels in the LR list, but only assign members here for extra-long-range radios.
-// These channels are normally used for company-level communication or higher.
+// These channels are normally used for platoon-level communication or higher.
 // Examples: Ground command net composed of CO, ASL, BSL, CSL.  Vehicle net composed of XO/VC, A-Vic, B-Vic, CAS.  Liason net composed of CO, INDFOR CO.
 f_radios_settings_acre2_xlr_groups_blufor =
 [

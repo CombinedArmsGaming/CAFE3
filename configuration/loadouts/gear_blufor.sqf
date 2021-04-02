@@ -4,19 +4,83 @@
 BEGIN_LOADOUTS;
 
 
+/*
+
+    Gearscript configuration - BLUFOR faction.
+
+    Instructions on how to use this file can be found in the "gearscript_readme.txt" file.
+    Commands are described in the "gearscript_readme.txt" file.  They are repeated here without the descriptions for your convenience.
+
+    -------------------------------------------------
+
+    Available commands FOR UNIT LOADOUTS:
+
+    CREATE_LOADOUT(UNIT_NAME,<ACE Arsenal code>);
+    COPY_LOADOUT(FROM,TO);
+
+    ADD_HAT(UNIT_NAME,"Hat Classname");
+    ADD_UNIFORM(UNIT_NAME,"Uniform Classname");
+    ADD_VEST(UNIT_NAME,"Vest Classname");
+    ADD_BACKPACK(UNIT_NAME,"Backpack Classname");
+
+    COPY_ADDONS(FROM,TO);
+
+    CLEAR_HATS(UNIT_NAME);
+    CLEAR_UNIFORM(UNIT_NAME);
+    CLEAR_VEST(UNIT_NAME);
+    CLEAR_BACKPACK(UNIT_NAME);
+
+    CLEAR_ADDONS(UNIT_NAME);
+
+    ADD_VARIANT(UNIT_NAME,<ACE Arsenal code>);
+
+    -------------------------------------------------
+
+    Available commands FOR RE-SUPPLY CRATES:
+
+    CREATE_CRATE(NAME);
+
+    ADD_ITEMS_TO_CRATE(CRATE,"Item Name",AMOUNT);
+
+    ADD_RIFLE_TO_CRATE(CRATE,UNIT_NAME,AMOUNT);
+    ADD_RIFLE_AMMO_TO_CRATE(CRATE,UNIT_NAME,AMOUNT);
+    ADD_RIFLE_GRENADES_TO_CRATE(CRATE,NAME,AMOUNT);
+
+    ADD_PISTOL_TO_CRATE(CRATE,UNIT_NAME,AMOUNT);
+    ADD_PISTOL_AMMO_TO_CRATE(CRATE,UNIT_NAME,AMOUNT);
+
+    ADD_LAUNCHER_TO_CRATE(CRATE,UNIT_NAME,AMOUNT);
+    ADD_LAUNCHER_AMMO_TO_CRATE(CRATE,UNIT_NAME,AMOUNT);
+
+    ADD_BANDAGES_TO_CRATE(CRATE,AMOUNT);
+    ADD_SPLINTS_TO_CRATE(CRATE,AMOUNT);
+    ADD_MEDS_TO_CRATE(CRATE,AMOUNT);
+    ADD_BLOOD_TO_CRATE(CRATE,AMOUNT);
+
+    ADD_BACKPACKS_TO_CRATE(CRATE,UNIT_NAME,AMOUNT);
+
+    FINALIZE_CRATE(NAME);
+
+    -------------------------------------------------
+
+    INFO: All lines should end with a semi-colon (;).  When copy-pasting and adding new commands, make sure you do not accidentally delete or forget to add semi-colons.
+    For examples on how to use the gearscript system, see below for a default "NATO 2035" loadout.  There are extra details in comments below to explain things.
+
+*/
+
 
 
 // Rifleman Loadout
 
 _baseLoadout = [["arifle_MX_F","","acc_flashlight","optic_Holosight",["30Rnd_65x39_caseless_mag",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",17],[],""],["U_B_CombatUniform_mcam",[["ACE_tourniquet",2],["ACE_packingBandage",3],["ACE_elasticBandage",3],["ACE_morphine",2],["ACE_epinephrine",1],["ACE_splint",2],["ACE_Flashlight_XL50",1],["ACRE_PRC343_ID_1",1],["16Rnd_9x21_Mag",1,17],["SmokeShell",2,1]]],["V_PlateCarrier2_rgr",[["HandGrenade",4,1],["30Rnd_65x39_caseless_mag_Tracer",3,30],["30Rnd_65x39_caseless_mag",7,30]]],["B_AssaultPack_rgr",[["ACE_salineIV",1],["ACE_EntrenchingTool",1],["30Rnd_65x39_caseless_mag_Tracer",1,30]]],"H_HelmetB_snakeskin","G_Lowprofile",[],["ItemMap","","","ItemCompass","ItemWatch","NVGoggles"]];
 
-CREATE_LOADOUT(rif,_baseLoadout);
+CREATE_LOADOUT(rif,_baseLoadout);   // Riflemen will now have the loadout from the line above.
 
-ADD_UNIFORM(rif,"U_B_CombatUniform_mcam");
-ADD_UNIFORM(rif,"U_B_CombatUniform_mcam");
+ADD_UNIFORM(rif,"U_B_CombatUniform_mcam");  // Add a random uniform or t-shirt.
+ADD_UNIFORM(rif,"U_B_CombatUniform_mcam");  // Units are twice as likely to have a uniform than a t-shirt because this line has been copied.
 ADD_UNIFORM(rif,"U_B_CombatUniform_mcam_tshirt");
 
-ADD_HAT(rif,"H_HelmetB_snakeskin");
+ADD_HAT(rif,"H_HelmetB_snakeskin"); // Add a random helmet to all riflemen.
 ADD_HAT(rif,"H_HelmetB_grass");
 ADD_HAT(rif,"H_HelmetB");
 
@@ -33,12 +97,12 @@ CREATE_LOADOUT(co,_baseLoadout);
 _baseLoadout = [["arifle_MX_GL_F","","acc_flashlight","optic_Holosight",["30Rnd_65x39_caseless_mag",30],["3Rnd_HE_Grenade_shell",3],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",17],[],""],["U_B_CombatUniform_mcam",[["ACE_elasticBandage",3],["ACE_morphine",2],["ACE_packingBandage",3],["ACE_tourniquet",2],["ACRE_PRC343_ID_3",1],["ACRE_PRC148_ID_1",1],["ACE_splint",2],["ACE_epinephrine",1],["ACRE_PRC152",1]]],["V_PlateCarrierGL_mtp",[["ACE_Flashlight_XL50",1],["ACE_MapTools",1],["HandGrenade",2,1],["SmokeShell",4,1],["30Rnd_65x39_caseless_mag_Tracer",3,30],["30Rnd_65x39_caseless_mag",6,30],["16Rnd_9x21_Mag",1,17]]],["B_AssaultPack_rgr",[["3Rnd_HE_Grenade_shell",4,3],["3Rnd_Smoke_Grenade_shell",3,3],["3Rnd_SmokeRed_Grenade_shell",2,3],["3Rnd_SmokeBlue_Grenade_shell",2,3],["SmokeShellRed",1,1],["SmokeShellBlue",2,1]]],"H_HelmetB_snakeskin","G_Lowprofile",["Binocular","","","",[],[],""],["ItemMap","ItemGPS","","ItemCompass","ItemWatch","NVGoggles"]];
 
 CREATE_LOADOUT(ftl,_baseLoadout);
-COPY_ADDONS(ftl,rif);
+COPY_ADDONS(ftl,rif);   // FTLs will now get the random uniforms and hats from the Rifleman class.
 
 
 // Squad lead Loadout
 
-COPY_LOADOUT(sl,ftl);
+COPY_LOADOUT(sl,ftl);   // SLs will be identical to FTLs.  Because FTLs get the random Rifleman stuff, SLs will get it too.
 
 
 // Medic Loadout
@@ -106,38 +170,39 @@ COPY_ADDONS(zeus,rif);
 
 
 // Small crate loadout
-CREATE_CRATE(small);
+CREATE_CRATE(small);  // The name of this crate is "small".  You will need to use this name in all the commands below.
+                      // INFO: the name of this crate in-game will be "crate_small".
 
-ADD_RIFLE_TO_CRATE(small,rif,2);
-ADD_LAUNCHER_TO_CRATE(small,lat,2);
-ADD_PISTOL_TO_CRATE(small,rif,2);
+ADD_RIFLE_TO_CRATE(small,rif,2);    // This crate now contains two of the Rifleman's rifles in it.
+ADD_LAUNCHER_TO_CRATE(small,lat,2); // This crate now contains two of the LAT soldier's launchers in it.
+ADD_PISTOL_TO_CRATE(small,rif,2);   // Two of the Rifleman's pistols.  If the Rifleman doesn't have a pistol, you can choose it from other units (for example, ftl or co).
 
-ADD_PISTOL_AMMO_TO_CRATE(small,rif,6);
-ADD_RIFLE_AMMO_TO_CRATE(small,rif,30);
-ADD_RIFLE_AMMO_TO_CRATE(small,ar,6);
-ADD_RIFLE_AMMO_TO_CRATE(small,crew,2);
-ADD_RIFLE_GRENADES_TO_CRATE(small,ftl,4);
+ADD_RIFLE_AMMO_TO_CRATE(small,rif,30); // This crate now contains two rifle magazines in it, which the Rifleman can use.
+ADD_PISTOL_AMMO_TO_CRATE(small,rif,6); // This crate now contains two of the Rifleman's pistol magazines in it.
+ADD_RIFLE_AMMO_TO_CRATE(small,ar,6);   // These commands copy whatever magazine is loaded into the weapon in ACE Arsenal.
+ADD_RIFLE_AMMO_TO_CRATE(small,crew,2); // So if nothing appears, make sure your loadout has a magazine loaded into its gun.
+ADD_RIFLE_GRENADES_TO_CRATE(small,ftl,4);  // Grenade launcher rounds work too!
 
-ADD_ITEMS_TO_CRATE(small,"30Rnd_65x39_caseless_mag_Tracer",10);
+ADD_ITEMS_TO_CRATE(small,"30Rnd_65x39_caseless_mag_Tracer",10); // The Rifleman has normal bullets loaded into his gun.  To add Tracer rounds into this box, we can use this command.
 ADD_ITEMS_TO_CRATE(small,"100Rnd_65x39_caseless_mag_Tracer",3);
 
-ADD_ITEMS_TO_CRATE(small,"3Rnd_Smoke_Grenade_shell",4);
-ADD_ITEMS_TO_CRATE(small,"3Rnd_SmokeRed_Grenade_shell",2);
-ADD_ITEMS_TO_CRATE(small,"3Rnd_SmokeBlue_Grenade_shell",2);
+ADD_ITEMS_TO_CRATE(small,"3Rnd_Smoke_Grenade_shell",4); // The FTL has explosive grenades loaded by default, to add smoke rounds we can use this command.
+ADD_ITEMS_TO_CRATE(small,"3Rnd_SmokeRed_Grenade_shell",2); // If your gearscript uses different ammo, you can select it in ACE Arsenal and use CTRL+C to get the right Classname.
+ADD_ITEMS_TO_CRATE(small,"3Rnd_SmokeBlue_Grenade_shell",2); // Then you can use CTRL+V to paste into the quote-marks here.
 
 ADD_ITEMS_TO_CRATE(small,"SmokeShellRed",2);
 ADD_ITEMS_TO_CRATE(small,"SmokeShellBlue",2);
 ADD_ITEMS_TO_CRATE(small,"SmokeShell",6);
 
 ADD_ITEMS_TO_CRATE(small,"HandGrenade",6);
-ADD_ITEMS_TO_CRATE(small,"ACE_SpareBarrel",1);
+ADD_ITEMS_TO_CRATE(small,"ACE_SpareBarrel",1);  // to go into battle with a machinegun and not get it red-hot is blasphemous.
 
-ADD_BANDAGES_TO_CRATE(small,20);
+ADD_BANDAGES_TO_CRATE(small,20); // This will automatically add a mixture of different bandages into the crate.
 ADD_SPLINTS_TO_CRATE(small,15);
-ADD_MEDS_TO_CRATE(small,15);
-ADD_BLOOD_TO_CRATE(small,8);
+ADD_MEDS_TO_CRATE(small,15); // This will automatically add a mixture of different auto-injectors into the crate.
+ADD_BLOOD_TO_CRATE(small,8); // This will add eight 1000ml bags of blood.
 
-ADD_BACKPACKS_TO_CRATE(small,rif,2);
+ADD_BACKPACKS_TO_CRATE(small,rif,2);  // We can also add two of the Rifleman's backpacks in here, in case someone loses theirs or needs to carry extra things.
 
 ADD_ITEMS_TO_CRATE(small,"ACRE_PRC343",6);
 ADD_ITEMS_TO_CRATE(small,"ACRE_PRC152",2);
