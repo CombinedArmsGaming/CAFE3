@@ -1,25 +1,25 @@
 #include "macros.hpp"
-CLIENT_ONLY;
 
-// Credits: PabstMirror
-waitUntil { !(isNil "BIS_fnc_init") };
-sleep 10;
+RUN_ON_SERVER(f_fnc_doSongIntro,_this);
+RUN_AS_ASYNC(f_fnc_doSongIntro);
 
-[] spawn
+sleep 3;
+
+// Uncomment and modify to add music if desired
+//["DF2Music01", 0, .6] remoteExec ["BIS_fnc_playMusic"];
+
+// Uncomment and modify to time titles to music for cool points
+//uisleep 7.3;
+
+
 {
-    waitUntil { player == player };
-    waitUntil { time > 2 };
 
-    _msg = (getPos player) call BIS_fnc_locationDescription;
-    _msg = _msg + format ["<br/>%1/%2/%3", (date select 0), (date select 1), (date select 2)];
-    _msg = _msg + format ["<br/>%1", ([dayTime, "HH:MM"] call BIS_fnc_timeToString)];
+    _line1 = parseText format ["<br/><t font='PuristaBold' size='1.6'>%1</t>", (getPos player) call BIS_fnc_locationDescription];
+    _line2 = parseText format ["<br/><t size='1'>%1/%2/%3</t>", (date select 0), (date select 1), (date select 2)];
+    _line3 = parseText format ["<br/><t size='1'>%1</t>", ([dayTime, "HH:MM"] call BIS_fnc_timeToString)];
 
-    [
-        _msg,
-        [safezoneX + safezoneW - 0.8, 0.50],
-        [safezoneY + safezoneH - 0.8, 0.7],
-        5,
-        0.5
-    ] spawn BIS_fnc_dynamicText;
+    _titleText = composeText [_line1, _line2, _line3];
 
-};
+    [_titleText, true, nil, 9.5, 1, 0] call BIS_fnc_textTiles;
+}
+ remoteExec ["bis_fnc_call"];
