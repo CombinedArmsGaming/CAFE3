@@ -6,7 +6,7 @@ CLIENT_ONLY;
 DEBUG_PRINT_LOG("initting client misc")
 
 
-[] spawn f_fnc_pmMissionIntro;
+call f_fnc_pmMissionIntro;
 
 
 [] spawn
