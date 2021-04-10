@@ -1,7 +1,7 @@
 #include "macros.hpp"
 
-RUN_ON_SERVER(f_fnc_doSongIntro,_this);
-RUN_AS_ASYNC(f_fnc_doSongIntro);
+RUN_ON_SERVER(f_fnc_pmMissionIntro,_this);
+RUN_AS_ASYNC(f_fnc_pmMissionIntro);
 
 sleep 3;
 
@@ -20,6 +20,6 @@ sleep 3;
 
     _titleText = composeText [_line1, _line2, _line3];
 
-    [_titleText, true, nil, 9.5, 1, 0] call BIS_fnc_textTiles;
+    [_titleText, true, nil, 7.5, 1, 0] call BIS_fnc_textTiles;
 }
  remoteExec ["bis_fnc_call"];
