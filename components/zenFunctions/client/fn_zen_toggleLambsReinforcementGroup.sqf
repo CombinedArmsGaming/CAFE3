@@ -32,4 +32,5 @@ else
         systemChat format ["Enabled LAMBS Reinforcement for group %1.", groupId(_group)];
 
     };    
+    
 };
