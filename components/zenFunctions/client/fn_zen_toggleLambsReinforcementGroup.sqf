@@ -7,10 +7,6 @@
 params ["_object"];
 
 if (isNull _object) exitWith { true };
-// {
-//     systemChat "No object selected!";
-
-// };
 _group = group _object;
 if (isNull _group) then
 {
