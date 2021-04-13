@@ -45,6 +45,8 @@ if !(isNil 'zen_custom_modules_fnc_register') then
     ["[CA2] Respawners", "Respawn Random Player (INDFOR)", _spawnerIndfor] call zen_custom_modules_fnc_register;
     ["[CA2] Respawners", "Respawn Random Player (Civilian)", _spawnerCiv] call zen_custom_modules_fnc_register;
 
+    // Jammer Modules
+
     if !(isNil 'kyk_ew_fnc_broadcastJammerAdd') then
     {
         _jammerCreate = {[_this#1] call f_fnc_zen_createJammer};
@@ -56,6 +58,14 @@ if !(isNil 'zen_custom_modules_fnc_register') then
         ["[CA2] Electronic Warfare", "Remove Jammer", _jammerRemove] call zen_custom_modules_fnc_register;
     };
     
+    // Create Lambs Reinforcement Toggle
+
+    _toggleLambsReinforcement = {[_this#1] call f_fnc_zen_toggleLambsReinforcementGroup};
+
+    ["[CA2] LAMBS", "Toggle LAMBS Reinforcement", _toggleLambsReinforcement] call zen_custom_modules_fnc_register;
+
+    // Wound Randomly Modules
+
     _woundUnit = {_this#1 call f_fnc_zen_woundUnitRandomly};
 
     ["[CA2] Misc", "Wound Unit Randomly", _woundUnit] call zen_custom_modules_fnc_register;
@@ -71,4 +81,5 @@ if !(isNil 'zen_custom_modules_fnc_register') then
     _woundUnit = {_this#1 call f_fnc_zen_woundGroupRandomlyAdvanced};
 
     ["[CA2] Misc", "Wound Group (Advanced)", _woundUnit] call zen_custom_modules_fnc_register;
+
 };

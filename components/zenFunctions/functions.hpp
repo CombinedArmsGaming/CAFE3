@@ -6,6 +6,7 @@ class zenFunctions_client
 	class zen_setRespawnObject{};
 	class zen_removeJammers{};
 	class zen_createJammer{};
+	class zen_toggleLambsReinforcementGroup{};
 	class zen_woundUnitRandomly{};
 	class zen_woundUnitRandomlyAdvanced{};
 	class zen_woundGroupRandomly{};
