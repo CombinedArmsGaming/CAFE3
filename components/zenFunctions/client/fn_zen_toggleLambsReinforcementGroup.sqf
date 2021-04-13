@@ -16,6 +16,7 @@ else
 {
     // Get current value (would do in the if statement but it gave me an error, whatever)
     _currentValue = _group getVariable["lambs_danger_enableGroupReinforce", true];
+
     // If the variable is already set
     if(_currentValue) then
     {
