@@ -18,7 +18,7 @@ else
     _currentValue = _group getVariable["lambs_danger_enableGroupReinforce", true];
 
     // If the variable is already set
-    if(_currentValue) then
+    if (_currentValue) then
     {
         // Disable it
         _group setVariable ["lambs_danger_enableGroupReinforce", false, true];
