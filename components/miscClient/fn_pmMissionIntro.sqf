@@ -18,10 +18,10 @@ sleep 3;
 // You can edit existing lines in the [CONFIG_FILE_NAME] file.
 
 {
-    _line1 = parseText format ["<br/><t font='PuristaBold' size='2'>%1</t>", getMissionConfigValue ["onLoadName","Mission Name"]];
-    _line2 = parseText format ["<br/><t font='PuristaBold' size='1.3'>%1</t>", getMissionConfigValue ["onLoadMission","Mission Description"]];
-    _line3 = parseText format ["<br/><t font='PuristaBold' size='1.2'>By %1</t>", getMissionConfigValue ["author","Mission Maker"]];
-    _line4 = parseText format ["<br/><t size='1'>%1 | %2/%3/%4</t>", ([dayTime, "HH:MM"] call BIS_fnc_timeToString), (date select 0), (date select 1), (date select 2)];
+    _line1 = parseText format ["<br/><t font='PuristaBold' size='1.6'>%1</t>", getMissionConfigValue ["onLoadName","Mission Name"]];
+    _line2 = parseText format ["<br/><t font='PuristaBold' size='1'>%1</t>", getMissionConfigValue ["onLoadMission","Mission Description"]];
+    _line3 = parseText format ["<br/><t font='PuristaBold' size='.8'>By %1</t>", getMissionConfigValue ["author","Mission Maker"]];
+    _line4 = parseText format ["<br/><t size='.7'>%1 | %2/%3/%4</t>", ([dayTime, "HH:MM"] call BIS_fnc_timeToString), (date select 0), (date select 1), (date select 2)];
    
     // "Old" version of mission titles
     // _line1 = parseText format ["<br/><t font='PuristaBold' size='1.8'>%1</t>", getMissionConfigValue ["onLoadName","Mission Name"]];
@@ -33,6 +33,6 @@ sleep 3;
 
     _titleText = composeText [_line1, _line2, _line3, _line4];
 
-    [_titleText, [1,1,1.5,1], nil, 7.5, 1.5, 0] call BIS_fnc_textTiles;
+    [_titleText, true, nil, 7.5, 1.5, 0] call BIS_fnc_textTiles;
 }
  remoteExec ["bis_fnc_call"];
