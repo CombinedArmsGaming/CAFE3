@@ -1,7 +1,8 @@
 class miscClient
 {
     file = "components\miscClient";
-    class pmMissionIntro{};
+    class sitautionInfoIntro{};
+    class tilesMissionIntro{};
     class paradropUnit{};
     class setRating{};
     class say3D{};
