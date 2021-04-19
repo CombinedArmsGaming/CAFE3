@@ -11,7 +11,7 @@
 
 
 // Show the 'classic' place-and-time display to players when they start the mission.
-// This will appear in the middle-right of the screen.
+// This is a separate intro from the rest of this config file, and will appear in the middle-right of the screen.
 f_var_showClassicIntroAtStart = true;
 
 
@@ -25,10 +25,10 @@ f_var_showClassicIntroAtStart = true;
 */
 f_var_missionIntro_type = MISSIONINTRO_DEFAULT;
 
-// Amount of time that the intro should stay on-screen.
+// Amount of time that the intro should stay on-screen (in seconds).
 f_var_missionIntro_duration = 8.7;
 
-// Amount of time it takes for the intro to fade in and fade back out.
+// Amount of time it takes for the intro to fade in and fade back out (in seconds).
 f_var_missionIntro_fadeInTime = 1.5;
 
 // Adjust the position and size of the intro's "view box".  Useful if your mission intro is too long or tall.
