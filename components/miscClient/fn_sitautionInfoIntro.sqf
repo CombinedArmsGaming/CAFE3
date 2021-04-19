@@ -11,7 +11,7 @@ CLIENT_ONLY;
     waitUntil { speed player > 1 };
 
     _msg = (getPos player) call BIS_fnc_locationDescription;
-    _msg = _msg + format ["%4%5/%2%3/%1", date select 0, ["", "0"] select (date select 1 < 10), date select 1, ["", "0"] select (date select 2 < 10), date select 2];
+    _msg = _msg + format ["<br/>%4%5/%2%3/%1", date select 0, ["", "0"] select (date select 1 < 10), date select 1, ["", "0"] select (date select 2 < 10), date select 2];
     _msg = _msg + format ["<br/>%1", ([dayTime, "HH:MM"] call BIS_fnc_timeToString)];
 
     [

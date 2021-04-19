@@ -14,17 +14,17 @@ _textArray = switch (f_var_missionIntro_type) do
     case (MISSIONINTRO_FULL):
     {
         [
-            [MISSION_NAME, "PuristaBold", 2],
-            [MISSION_SUBTITLE, "PuristaBold", 1.3],
-            [["By ", MISSION_AUTHOR], "PuristaBold", 1.2],
-            [[MISSION_DATE_AND_TIME], "RobotoCondensed", 1]
+            [MISSION_NAME, "PuristaBold", 1.5],
+            [MISSION_SUBTITLE, "PuristaBold", 1.1],
+            [["By ", MISSION_AUTHOR], "PuristaBold", 0.8],
+            [[MISSION_DATE_AND_TIME], "RobotoCondensed", 0.7]
         ]
     };
 
     case (MISSIONINTRO_DEFAULT):
     {
         [
-            [MISSION_NAME, "PuristaBold", 2],
+            [MISSION_NAME, "PuristaBold", 1.6],
             [MISSION_SUBTITLE, "RobotoCondensed", 1]
         ]
     };
@@ -59,10 +59,10 @@ _structuredTextLines = [];
             case (MISSION_NAME):          { getMissionConfigValue ["onLoadName","Mission Name"] };
             case (MISSION_SUBTITLE):      { getMissionConfigValue ["onLoadMission","Mission Description"] };
             case (MISSION_AUTHOR):        { getMissionConfigValue ["author","Mission Maker"] };
-            case (MISSION_DATE):          { format ["%4%5/%2%3/%1", date select 0, ["", "0"] select (date select 1 < 10), date select 1, ["", "0"] select (date select 2 < 10), date select 2] };
+            case (MISSION_DATE):          { format ["%1-%2%3-%4%5", date select 0, ["", "0"] select (date select 1 < 10), date select 1, ["", "0"] select (date select 2 < 10), date select 2] };
             case (MISSION_TIME):          { [dayTime, "HH:MM"] call BIS_fnc_timeToString };
             case (MISSION_LOCATION):      { (getPos player) call BIS_fnc_locationDescription };
-            case (MISSION_DATE_AND_TIME): { format ["%4%5/%2%3/%1, %6", date select 0, ["", "0"] select (date select 1 < 10), date select 1, ["", "0"] select (date select 2 < 10), date select 2, [dayTime, "HH:MM"] call BIS_fnc_timeToString] };
+            case (MISSION_DATE_AND_TIME): { format ["%1-%2%3-%4%5, %6", date select 0, ["", "0"] select (date select 1 < 10), date select 1, ["", "0"] select (date select 2 < 10), date select 2, [dayTime, "HH:MM"] call BIS_fnc_timeToString] };
             default {_x};
         };
 
@@ -71,8 +71,6 @@ _structuredTextLines = [];
     } forEach _text;
 
     _textOut = format ["<br/><t font='%2' size='%3'>%1</t>", _textSubstituted, _x#1, _x#2];
-
-    systemChat str _textOut;
 
     _structuredTextLines pushBack (parseText _textOut);
 
@@ -90,4 +88,4 @@ if (f_var_missionIntro_shouldChoreograph) then
 };
 
 
-[_titleText, [0.6,0.8,1.5,1], nil, f_var_missionIntro_duration, f_var_missionIntro_fadeInTime, 0] call BIS_fnc_textTiles;
+[_titleText, f_var_missionIntro_positionAndSize, nil, f_var_missionIntro_duration, f_var_missionIntro_fadeInTime, 0] call BIS_fnc_textTiles;
