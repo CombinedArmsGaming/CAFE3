@@ -6,7 +6,10 @@ CLIENT_ONLY;
 DEBUG_PRINT_LOG("initting client misc")
 
 
-[] spawn f_fnc_pmMissionIntro;
+if IS_TRUE(f_var_showClassicIntroAtStart) then
+{
+    [] spawn f_fnc_sitautionInfoIntro;
+};
 
 
 [] spawn

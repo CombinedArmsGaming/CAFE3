@@ -57,7 +57,7 @@ if !(isNil 'zen_custom_modules_fnc_register') then
 
         ["[CA2] Electronic Warfare", "Remove Jammer", _jammerRemove] call zen_custom_modules_fnc_register;
     };
-    
+
     // Create Lambs Reinforcement Toggle
 
     _toggleLambsReinforcement = {[_this#1] call f_fnc_zen_toggleLambsReinforcementGroup};
@@ -82,4 +82,11 @@ if !(isNil 'zen_custom_modules_fnc_register') then
 
     ["[CA2] Misc", "Wound Group (Advanced)", _woundUnit] call zen_custom_modules_fnc_register;
 
+
+    // Show mission titles (and play music if configured).
+
+    _playIntro = { [] call f_fnc_zen_playIntro };
+
+    ["[CA2] Misc", "Play Mission Intro", _playIntro] call zen_custom_modules_fnc_register;
+    
 };

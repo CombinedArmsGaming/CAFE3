@@ -11,12 +11,13 @@ class zenFunctions_client
 	class zen_woundUnitRandomlyAdvanced{};
 	class zen_woundGroupRandomly{};
 	class zen_woundGroupRandomlyAdvanced{};
+	class zen_playIntro{};
 };
 class zenFunctions_server
 {
 	file = "components\zenFunctions\server";
 	class zen_doWoundUnitRandomly{};
-	class zen_createPlayerSpawner{};	
+	class zen_createPlayerSpawner{};
 	class zen_doRemoveJammers{};
 	class zen_doCreateJammer{};
 };

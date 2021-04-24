@@ -18,3 +18,6 @@ CLIENT_ONLY;
 
 // Identity Translation
 #include "..\internals\identityTranslation.sqf"
+
+// Custom intro
+#include "..\internals\missionIntro.sqf"
