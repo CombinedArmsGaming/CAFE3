@@ -27,7 +27,7 @@ f_var_missionIntro_type = MISSIONINTRO_DEFAULT;
 
 
 // Amount of time that the intro should stay on-screen (in seconds).
-f_var_missionIntro_duration = 8.7;
+f_var_missionIntro_duration = 9.5;
 
 
 // Amount of time it takes for the intro to fade in and fade back out (in seconds).
@@ -74,4 +74,4 @@ f_var_missionIntro_choreographWith = "LeadTrack01_F";
 
 
 // Choose how many seconds to wait into the music before showing the intro text.
-f_var_missionIntro_choreographDelay = 11;
+f_var_missionIntro_choreographDelay = 10.5;
