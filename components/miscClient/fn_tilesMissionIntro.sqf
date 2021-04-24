@@ -32,15 +32,6 @@ _textArray = switch (f_var_missionIntro_type) do
 };
 
 
-#define MISSION_NAME "#MishName"
-#define MISSION_SUBTITLE "#MishTitle"
-#define MISSION_AUTHOR "#MishMaker"
-#define MISSION_DATE "#MishDate"
-#define MISSION_TIME "#MishTime"
-#define MISSION_LOCATION "#MishLocation"
-#define MISSION_DATE_AND_TIME "#MishDateTime"
-
-
 _structuredTextLines = [];
 
 {

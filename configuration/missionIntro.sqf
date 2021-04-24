@@ -25,17 +25,21 @@ f_var_showClassicIntroAtStart = true;
 */
 f_var_missionIntro_type = MISSIONINTRO_DEFAULT;
 
+
 // Amount of time that the intro should stay on-screen (in seconds).
 f_var_missionIntro_duration = 8.7;
 
+
 // Amount of time it takes for the intro to fade in and fade back out (in seconds).
 f_var_missionIntro_fadeInTime = 1.5;
+
 
 // Adjust the position and size of the intro's "view box".  Useful if your mission intro is too long or tall.
 // Set this to true to use the defaults (fine for most cases).
 // Otherwise, set it to an array: [offset from left, offset from top, width of box, height of box].
 f_var_missionIntro_positionAndSize = true;
 // f_var_missionIntro_positionAndSize = [0.6,0.8,1.5,1];
+
 
 /*
     If you have chosen MISSIONINTRO_CUSTOM, use the array below to customise your intro.
@@ -63,9 +67,11 @@ f_arr_missionIntroLines =
 // If you want to time your intro with some music, set this to true.
 f_var_missionIntro_shouldChoreograph = false;
 
+
 // Choose the music to play with your intro.  It should be put into the CfgMusic section of the description.ext file.
 // You can also use music from Arma itself.  Use the "utils" command in the mission editor console to get started.
 f_var_missionIntro_choreographWith = "LeadTrack01_F";
+
 
 // Choose how many seconds to wait into the music before showing the intro text.
 f_var_missionIntro_choreographDelay = 11;
