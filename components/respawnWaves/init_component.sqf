@@ -53,7 +53,7 @@ if (hasInterface) then
 	{
 		waitUntil
 		{
-			_canRespawn = (rank player == 'COLONEL');
+			_canRespawn = ((leader group player) isEqualTo player);
 
 			if !(_canRespawn) then
 			{

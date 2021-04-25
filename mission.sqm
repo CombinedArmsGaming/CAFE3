@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={192.36499,34.420055,144.73004};
-		dir[]={0.48439476,-0.21327446,0.84845489};
-		up[]={0.1057419,0.97699231,0.18521512};
-		aside[]={0.86843556,0,-0.49580199};
+		pos[]={150.56223,65.759132,169.95898};
+		dir[]={0.68015999,-0.49636564,0.53947383};
+		up[]={0.38889685,0.86810541,0.30845702};
+		aside[]={0.62143087,-6.6822395e-008,-0.78348821};
 	};
 };
 binarizationWanted=0;
@@ -8252,13 +8252,13 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={325.56787,5.0014391,292.9986};
+						position[]={325.56799,5.0014391,292.99899};
 					};
 					side="West";
 					flags=6;
 					class Attributes
 					{
-						rank="COLONEL";
+						rank="SERGEANT";
 						init="call{[""ftl"", this] call f_fnc_assignGear;}";
 						description="Fireteam Leader@ALPHA";
 						isPlayable=1;
@@ -8332,12 +8332,13 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={326.70386,5.0014391,288.1546};
+						position[]={326.70401,5.0014391,288.155};
 					};
 					side="West";
 					flags=4;
 					class Attributes
 					{
+						rank="CORPORAL";
 						init="call{[""ar"", this] call f_fnc_assignGear;}";
 						description="Autorifleman";
 						isPlayable=1;
@@ -8411,12 +8412,13 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={322.79486,5.0014391,286.03357};
+						position[]={322.79501,5.0014391,286.034};
 					};
 					side="West";
 					flags=4;
 					class Attributes
 					{
+						rank="SERGEANT";
 						init="call{[""med"", this] call f_fnc_assignGear;}";
 						description="Medic";
 						isPlayable=1;
@@ -8509,7 +8511,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={316.81885,5.0014391,287.09961};
+						position[]={316.819,5.0014391,287.09998};
 					};
 					side="West";
 					flags=4;
@@ -8667,12 +8669,13 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={321.60785,5.0014391,290.2616};
+						position[]={321.608,5.0014391,290.26199};
 					};
 					side="West";
 					flags=4;
 					class Attributes
 					{
+						rank="CORPORAL";
 						init="call{[""lat"", this] call f_fnc_assignGear;}";
 						description="Anti-tank";
 						isPlayable=1;
@@ -8859,13 +8862,13 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={323.51587,5.0014391,261.33557};
+						position[]={323.51599,5.0014391,261.336};
 					};
 					side="West";
 					flags=6;
 					class Attributes
 					{
-						rank="COLONEL";
+						rank="SERGEANT";
 						init="call{[""ftl"", this] call f_fnc_assignGear;}";
 						description="Fireteam Leader@BRAVO";
 						isPlayable=1;
@@ -8945,6 +8948,7 @@ class Mission
 					flags=4;
 					class Attributes
 					{
+						rank="CORPORAL";
 						init="call{[""ar"", this] call f_fnc_assignGear;}";
 						description="Autorifleman";
 						isPlayable=1;
@@ -9018,12 +9022,13 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={320.74286,5.0014391,254.37061};
+						position[]={320.74301,5.0014391,254.371};
 					};
 					side="West";
 					flags=4;
 					class Attributes
 					{
+						rank="SERGEANT";
 						init="call{[""med"", this] call f_fnc_assignGear;}";
 						description="Medic";
 						isPlayable=1;
@@ -9280,6 +9285,7 @@ class Mission
 					flags=4;
 					class Attributes
 					{
+						rank="CORPORAL";
 						init="call{[""lat"", this] call f_fnc_assignGear;}";
 						description="Anti-tank";
 						isPlayable=1;
@@ -9472,7 +9478,7 @@ class Mission
 					flags=6;
 					class Attributes
 					{
-						rank="COLONEL";
+						rank="SERGEANT";
 						init="call{[""ftl"", this] call f_fnc_assignGear;}";
 						description="Fireteam Leader@CHARLIE";
 						isPlayable=1;
@@ -9552,6 +9558,7 @@ class Mission
 					flags=4;
 					class Attributes
 					{
+						rank="CORPORAL";
 						init="call{[""ar"", this] call f_fnc_assignGear;}";
 						description="Autorifleman";
 						isPlayable=1;
@@ -9631,6 +9638,7 @@ class Mission
 					flags=4;
 					class Attributes
 					{
+						rank="SERGEANT";
 						init="call{[""med"", this] call f_fnc_assignGear;}";
 						description="Medic";
 						isPlayable=1;
@@ -9887,6 +9895,7 @@ class Mission
 					flags=4;
 					class Attributes
 					{
+						rank="CORPORAL";
 						init="call{[""lat"", this] call f_fnc_assignGear;}";
 						description="Anti-tank";
 						isPlayable=1;
@@ -10417,13 +10426,13 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={363.47083,5.0014391,259.68958};
+						position[]={363.47101,5.0014391,259.69};
 					};
 					side="West";
 					flags=6;
 					class Attributes
 					{
-						rank="COLONEL";
+						rank="LIEUTENANT";
 						init="call{[""co"", this] call f_fnc_assignGear;}";
 						description="Commander@COMMAND";
 						isPlayable=1;
@@ -10497,13 +10506,13 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={359.48047,5.0014391,256.79962};
+						position[]={359.48001,5.0014391,256.79999};
 					};
 					side="West";
 					flags=4;
 					class Attributes
 					{
-						rank="MAJOR";
+						rank="SERGEANT";
 						init="call{[""fac"", this] call f_fnc_assignGear;}";
 						description="Forward Air Controller";
 						isPlayable=1;
@@ -10577,13 +10586,13 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={364.24377,5.0014391,254.58661};
+						position[]={364.24399,5.0014391,254.58701};
 					};
 					side="West";
 					flags=4;
 					class Attributes
 					{
-						rank="MAJOR";
+						rank="LIEUTENANT";
 						init="call{[""co"", this] call f_fnc_assignGear;}";
 						description="Deputy Commander";
 						isPlayable=1;
@@ -10657,13 +10666,13 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={358.98383,5.0014391,248.6886};
+						position[]={358.98401,5.0014391,248.68901};
 					};
 					side="West";
 					flags=4;
 					class Attributes
 					{
-						rank="MAJOR";
+						rank="SERGEANT";
 						init="call{[""med"", this] call f_fnc_assignGear;}";
 						description="Assistant Medic";
 						isPlayable=1;
@@ -10756,13 +10765,13 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={360.58087,5.0014391,252.57758};
+						position[]={360.58099,5.0014391,252.578};
 					};
 					side="West";
 					flags=4;
 					class Attributes
 					{
-						rank="MAJOR";
+						rank="LIEUTENANT";
 						init="call{[""med"", this] call f_fnc_assignGear;}";
 						description="Medic";
 						isPlayable=1;
@@ -10855,13 +10864,12 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={356.66187,5.0014391,258.23059};
+						position[]={356.66199,5.0014391,258.23099};
 					};
 					side="West";
 					flags=4;
 					class Attributes
 					{
-						rank="MAJOR";
 						init="call{[""gren"", this] call f_fnc_assignGear;}";
 						description="Grenadier";
 						isPlayable=1;
@@ -10935,13 +10943,13 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={366.97986,5.0014391,253.66156};
+						position[]={366.98001,5.0014391,253.662};
 					};
 					side="West";
 					flags=4;
 					class Attributes
 					{
-						rank="MAJOR";
+						rank="CORPORAL";
 						init="call{[""mk"", this] call f_fnc_assignGear;}";
 						description="Marksman";
 						isPlayable=1;
