@@ -3,6 +3,7 @@
 params ["_map"];
 
 if !(alive player) exitWith {};
+if !IS_TRUE(f_var_allSettingsReady) exitWith {};
 
 _group = (units player) select {alive _x};
 _baseIcon = "\A3\ui_f\data\map\vehicleicons\iconMan_ca.paa";

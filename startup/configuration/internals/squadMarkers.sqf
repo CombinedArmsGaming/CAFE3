@@ -14,6 +14,8 @@ if (isNil "f_var_squadMarkers_already_run") then
         #include "..\..\..\configuration\squadMarkers\squadMarkers_opfor.sqf"
         #include "..\..\..\configuration\squadMarkers\squadMarkers_indfor.sqf"
         #include "..\..\..\configuration\squadMarkers\squadMarkers_civ.sqf"
+
+        f_var_squadMarkers_configLoaded = true;
     };
 
 }
