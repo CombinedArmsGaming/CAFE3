@@ -43,7 +43,7 @@ case "ui_spawn": {
 				private _pos = screenToWorld [0.5, 0.5];
 
 				// Set up our preset variables
-				private _enableVCOM = false;
+				private _enableAdvancedAI = false;
 				private _guerrillaAI = false;
 				private _suppressiveAI = false;
 
@@ -71,7 +71,7 @@ case "ui_spawn": {
 						];
 					};
 
-					_enableVCOM = missionNamespace getVariable [MACRO_VARNAME_PRESET_VCOM, false];
+					_enableAdvancedAI = missionNamespace getVariable [MACRO_VARNAME_PRESET_ADVANCEDAI, false];
 
 				// Otherwise, fetch the selected preset
 				} else {
@@ -80,7 +80,7 @@ case "ui_spawn": {
 					private _presetNamespace = _allPresetsNamespace getVariable [_allPresetsVars select (_presetIndex - 1), locationNull];
 
 					// Fetch the settings from the selected preset
-					_enableVCOM = _presetNamespace getVariable [MACRO_VARNAME_PRESET_VCOM, false];
+					_enableAdvancedAI = _presetNamespace getVariable [MACRO_VARNAME_PRESET_ADVANCEDAI, false];
 					_guerrillaAI = _presetNamespace getVariable [MACRO_VARNAME_PRESET_GAI, []];
 					_suppressiveAI = _presetNamespace getVariable [MACRO_VARNAME_PRESET_SAI, []];
 				};
@@ -88,7 +88,7 @@ case "ui_spawn": {
 
 				// Tell the server to spawn the group
 				f_fnc_server_spawnGroup = compile preprocessFileLineNumbers "components\zeus_ui\fn_server_spawnGroup.sqf";
-				[_roles, _pos, _gear, _side, _vehicleClass, _enableVCOM, _guerrillaAI, _suppressiveAI] remoteExec ["f_fnc_server_spawnGroup", 2, false];
+				[_roles, _pos, _gear, _side, _vehicleClass, _enableAdvancedAI, _guerrillaAI, _suppressiveAI] remoteExec ["f_fnc_server_spawnGroup", 2, false];
 			};
 		};
 	};

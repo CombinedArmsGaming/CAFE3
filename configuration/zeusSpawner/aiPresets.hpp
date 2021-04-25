@@ -29,13 +29,13 @@ class CA_ZeusUI_AI_Presets
 	class Vanilla
 	{
 		presetName = "Vanilla A3";		// The name of the preset that will be visible in the Zeus UI.
-		enableVCOM = 0;				// 1 means VCOM will be enabled on spawned units, 0 means it will be disabled
+		enableAdvancedAI = 0;				// 1 means Advanced AI will be enabled on spawned units, 0 means it will be disabled
 	};
 
-	class gAI_sAI_VCOM_DefaultsOnly
+	class gAI_sAI_ADVANCEDAI_DefaultsOnly
 	{
-		presetName = "gAI + sAI + VCOM (with default values)";
-		enableVCOM = 1;
+		presetName = "gAI + sAI + Advanced AI (with default values)";
+		enableAdvancedAI = 1;
 
 		class GuerrillaAI			// If this class is present, guerrilla AI will be enabled. Without any further settings, the script will use the default values (see further below).
 		{					// Alternatively (if there were any settings here), you can comment out/remove individual settings to apply default values for them specifically.
@@ -49,7 +49,7 @@ class CA_ZeusUI_AI_Presets
 	class Assault
 	{
 		presetName = "Element - Assault";
-		enableVCOM = 1;					// Enable VCOM
+		enableAdvancedAI = 1;					// Enable Advanced AI
 
 		class GuerrillaAI
 		{
@@ -67,7 +67,7 @@ class CA_ZeusUI_AI_Presets
 	class CoveringFire
 	{
 		presetName = "Element - Covering Fire";
-		enableVCOM = 1;					// Enable VCOM
+		enableAdvancedAI = 1;					// Enable Advanced AI
 
 		// No guerrilla AI, because we don't want units with this preset to move - they should only stay in one position and lay down suppressive fire.
 

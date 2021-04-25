@@ -95,7 +95,7 @@ private _allPresetsVars = [];
 
 	// Fetch the preset's settings
 	private _presetName = [_x, "presetName", ""] call BIS_fnc_returnConfigEntry;
-	private _enableVCOM = (([_x, "enableVCOM", 0] call BIS_fnc_returnConfigEntry) > 0);
+	private _enableAdvancedAI = (([_x, "enableAdvancedAI", 0] call BIS_fnc_returnConfigEntry) > 0);
 
 	// Check if this preset uses guerrilla AI
 	private _guerrillaAI = false;
@@ -159,7 +159,7 @@ private _allPresetsVars = [];
 	// Fill the preset namespace with data
 	_presetNamespace setVariable [MACRO_VARNAME_PRESET_GAI, _guerrillaAI];
 	_presetNamespace setVariable [MACRO_VARNAME_PRESET_SAI, _suppressiveAI];
-	_presetNamespace setVariable [MACRO_VARNAME_PRESET_VCOM, _enableVCOM];
+	_presetNamespace setVariable [MACRO_VARNAME_PRESET_ADVANCEDAI, _enableAdvancedAI];
 
 	// Save the preset namespace
 	_allPresetsVars pushBack _presetName;

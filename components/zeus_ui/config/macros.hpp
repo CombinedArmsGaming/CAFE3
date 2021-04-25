@@ -55,9 +55,9 @@
 	#define MACRO_IDC_PRESETS_SAI_SUPPRESSIONDURATIONMUL_TEXT               2205
 	#define MACRO_IDC_PRESETS_SAI_USEANIMS_CHECKBOX                         2206
 
-	// Presets - VCOM
-	#define MACRO_IDC_PRESETS_VCOM_CHECKBOX                                 2300
-	#define MACRO_IDC_PRESETS_VCOM_SETTINGS_COVER                           2301
+	// Presets - Advanced AI
+	#define MACRO_IDC_PRESETS_ADVANCEDAI_CHECKBOX                                 2300
+	#define MACRO_IDC_PRESETS_ADVANCEDAI_SETTINGS_COVER                           2301
 
 
 
@@ -139,7 +139,7 @@
 	#define MACRO_VARNAME_PRESET_SAI_SUPPRESSIONMUL                         "ca_zeusUI_preset_sAI_suppressionMul"
 	#define MACRO_VARNAME_PRESET_SAI_SUPPRESSIONDURATIONMUL                 "ca_zeusUI_preset_sAI_suppressionDurationMul"
 	#define MACRO_VARNAME_PRESET_SAI_USEANIMS                               "ca_zeusUI_preset_sAI_useAnims"
-	#define MACRO_VARNAME_PRESET_VCOM                                       "ca_zeusUI_preset_VCOM"
+	#define MACRO_VARNAME_PRESET_ADVANCEDAI                                 "ca_zeusUI_preset_advancedAI"
 
 	// Namespaces
 	#define MACRO_VARNAME_NAMESPACE_CATEGORIES                              "ca_zeusUI_categories"

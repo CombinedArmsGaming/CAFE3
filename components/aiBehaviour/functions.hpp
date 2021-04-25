@@ -8,4 +8,6 @@ class aiBehaviour
     class unitSuppressiveAI{};
     class unitStartSeated{};
     class veryImportantPrisoner{};
+    class disableAdvancedAI{};
+    class makeSentryGroup{};
 };

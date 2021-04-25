@@ -34,13 +34,13 @@ case "ui_checkbox_changed": {
 			missionNamespace setVariable [MACRO_VARNAME_PRESET_SAI, _isChecked, false];
 		};
 
-		case MACRO_IDC_PRESETS_VCOM_CHECKBOX: {
+		case MACRO_IDC_PRESETS_ADVANCEDAI_CHECKBOX: {
 
 			// Change the colour of the settings cover control
-			_ctrlSettingsCover = _zeusUI_presetsCtrlGrp controlsGroupCtrl MACRO_IDC_PRESETS_VCOM_SETTINGS_COVER;
+			_ctrlSettingsCover = _zeusUI_presetsCtrlGrp controlsGroupCtrl MACRO_IDC_PRESETS_ADVANCEDAI_SETTINGS_COVER;
 
 			// Save the new value
-			missionNamespace setVariable [MACRO_VARNAME_PRESET_VCOM, _isChecked, false];
+			missionNamespace setVariable [MACRO_VARNAME_PRESET_ADVANCEDAI, _isChecked, false];
 		};
 
 		case MACRO_IDC_PRESETS_GAI_FLANKONLY_CHECKBOX: {

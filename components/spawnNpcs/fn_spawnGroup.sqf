@@ -15,7 +15,7 @@
  *
  */
 
-params ["_unitarray", "_position", ["_faction",""], ["_side", f_defaultSide], ["_suppressiveAI",false], ["_guerrillaAI",false], ["_runAfter",[]]];
+params ["_unitarray", "_position", ["_faction",""], ["_side", f_defaultSide], ["_suppressiveAI",false], ["_guerrillaAI",false], ["_enableAdvancedAI",true], ["_runAfter",[]]];
 private ["_spawnpos", "_unittype", "_unit", "_group", "_posdir", "_unittype"];
 
 //Getting a good position from the parsed values
@@ -65,6 +65,12 @@ if (isServer) then
 		([_group] + _suppressiveAI) spawn f_fnc_groupSuppressiveAI;
 	};
 
+};
+
+
+if !(_enableAdvancedAI) then
+{
+	[_group] call f_fnc_disableAdvancedAI;
 };
 
 

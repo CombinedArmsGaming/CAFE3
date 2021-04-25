@@ -10,7 +10,7 @@
 		2:	<STRING>	Faction of the group, as used in F3
 		3:	<SIDE>		Side of the group to be spawned (west, east, resistance, civilian)
 		4:	<STRING>	(optional) Class of the vehicle to spawn
-		5:	<BOOL>		(optional) Whether or not to enable VCOM AI
+		5:	<BOOL>		(optional) Whether or not to enable Advanced AI
 		6:	<ARRAY>		(optional) Array with Guerrilla AI relevant settings; set to false to ignore
 		7:	<ARRAY>		(optional) Array with Suppressive AI relevant settings; set to false to ignore
 	Returns:
@@ -21,7 +21,7 @@
 #include "macros.hpp"
 
 // Fetch our params
-params ["_roles", "_pos", "_gear", "_side", ["_vehicleClass", ""], ["_enableVCOM", false], ["_guerrillaAI", false], ["_suppressiveAI", false]];
+params ["_roles", "_pos", "_gear", "_side", ["_vehicleClass", ""], ["_enableAdvancedAI", false], ["_guerrillaAI", false], ["_suppressiveAI", false]];
 
 
 private _group = grpNull;
@@ -29,7 +29,7 @@ private _vehicle = objNull;
 
 if (_vehicleClass != "") then
 {
-	_args = [_roles, _pos, _vehicleClass, _gear, _side, _suppressiveAI, _guerrillaAI, f_fnc_addToCurator];
+	_args = [_roles, _pos, _vehicleClass, _gear, _side, _suppressiveAI, _guerrillaAI, _enableAdvancedAI, f_fnc_addToCurator];
 
 	if ((_suppressiveAI isEqualType []) or (_guerrillaAI isEqualType [])) then
 	{
@@ -44,7 +44,7 @@ if (_vehicleClass != "") then
 }
 else
 {
-	_args = [_roles, _pos, _gear, _side, _suppressiveAI, _guerrillaAI, f_fnc_addToCurator];
+	_args = [_roles, _pos, _gear, _side, _suppressiveAI, _guerrillaAI, _enableAdvancedAI, f_fnc_addToCurator];
 
 	if ((_suppressiveAI isEqualType []) or (_guerrillaAI isEqualType [])) then
 	{

@@ -831,10 +831,10 @@ case "ui_init": {
 				] call _createCtrl;
 
 				// -----------------------------------------------------------------------------------------------------------------------------
-				// VCOM - Settings Cover
-				private _ctrlBox_VCOM_settingsCover = [
+				// Advanced AI - Settings Cover
+				private _ctrlBox_ADVANCEDAI_settingsCover = [
 					"Box",
-					MACRO_IDC_PRESETS_VCOM_SETTINGS_COVER,
+					MACRO_IDC_PRESETS_ADVANCEDAI_SETTINGS_COVER,
 					safeZoneW * MACRO_POS_GAP_X,
 					safeZoneH * (MACRO_POS_MAIN_GAP_DRAGGING_Y + MACRO_POS_PRESETS_SETTING_GAP_Y * 2 + MACRO_POS_GAP_Y * 12 + MACRO_POS_PRESETS_SETTING_HEIGHT * 11),
 					safeZoneW * (MACRO_POS_PRESETS_WIDTH - MACRO_POS_GAP_X * 2),
@@ -843,7 +843,7 @@ case "ui_init": {
 					SQUARE(MACRO_COLOUR_RED_DIM)
 				] call _createCtrl;
 
-				// VCOM Checkbox Text
+				// Advanced AI Checkbox Text
 				[
 					"Text",
 					-1,
@@ -852,13 +852,13 @@ case "ui_init": {
 					safeZoneW * (MACRO_POS_PRESETS_WIDTH - MACRO_POS_GAP_X * 2),
 					safeZoneH * MACRO_POS_CHECKBOX_HEIGHT,
 					_zeusUI_presetsCtrlGrp,
-					"Enable VCOM:"
+					"Enable Advanced AI:"
 				] call _createCtrl;
 
-				// VCOM Checkbox
-				private _ctrlCB_VCOM = [
+				// Advanced AI Checkbox
+				private _ctrlCB_ADVANCEDAI = [
 					"CheckBox",
-					MACRO_IDC_PRESETS_VCOM_CHECKBOX,
+					MACRO_IDC_PRESETS_ADVANCEDAI_CHECKBOX,
 					safeZoneW * (MACRO_POS_PRESETS_WIDTH - MACRO_POS_CHECKBOX_WIDTH - MACRO_POS_GAP_X),
 					safeZoneH * (MACRO_POS_MAIN_GAP_DRAGGING_Y + MACRO_POS_PRESETS_SETTING_GAP_Y * 2 + MACRO_POS_GAP_Y * 12 + MACRO_POS_PRESETS_SETTING_HEIGHT * 11),
 					safeZoneW * MACRO_POS_CHECKBOX_WIDTH,
@@ -896,7 +896,7 @@ case "ui_init": {
 					_ctrlCB_GAI_flankOnly,
 					_ctrlCB_SAI,
 					_ctrlCB_SAI_useAnims,
-					_ctrlCB_VCOM
+					_ctrlCB_ADVANCEDAI
 				];
 
 				// Load the previous settings
@@ -904,7 +904,7 @@ case "ui_init": {
 				["ui_checkbox_changed", [_ctrlCB_GAI_flankOnly,		missionNamespace getVariable [MACRO_VARNAME_PRESET_GAI_FLANKONLY, false]]] call f_fnc_zeusUI;
 				["ui_checkbox_changed", [_ctrlCB_SAI,			missionNamespace getVariable [MACRO_VARNAME_PRESET_SAI, false]]] call f_fnc_zeusUI;
 				["ui_checkbox_changed", [_ctrlCB_SAI_useAnims,		missionNamespace getVariable [MACRO_VARNAME_PRESET_SAI_USEANIMS, false]]] call f_fnc_zeusUI;
-				["ui_checkbox_changed", [_ctrlCB_VCOM,			missionNamespace getVariable [MACRO_VARNAME_PRESET_VCOM, false]]] call f_fnc_zeusUI;
+				["ui_checkbox_changed", [_ctrlCB_ADVANCEDAI,			missionNamespace getVariable [MACRO_VARNAME_PRESET_ADVANCEDAI, false]]] call f_fnc_zeusUI;
 
 				["ui_textbox_changed", [_ctrlTextBox_GAI_maxApproachVariation, nil, nil, nil, nil,	missionNamespace getVariable [MACRO_VARNAME_PRESET_GAI_MAXAPPROACHVARIATION, 45]]] call f_fnc_zeusUI;
 				["ui_textbox_changed", [_ctrlTextBox_GAI_minApproachDistance, nil, nil, nil, nil,	missionNamespace getVariable [MACRO_VARNAME_PRESET_GAI_MINAPPROACHDISTANCE, 50]]] call f_fnc_zeusUI;
