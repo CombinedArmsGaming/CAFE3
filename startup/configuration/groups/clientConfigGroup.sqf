@@ -24,3 +24,6 @@
 
 // Ending music settings
 #include "..\..\..\configuration\endingMusic.sqf"
+
+// Squad markers
+#include "..\internals\squadMarkers.sqf"

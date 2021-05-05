@@ -14,5 +14,4 @@
 #include "..\..\..\configuration\spawnNpcs.sqf"
 
 // Squad markers
-#include "..\..\..\configuration\mapMarkers.hpp"
 #include "..\internals\squadMarkers.sqf"
