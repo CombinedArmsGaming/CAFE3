@@ -109,3 +109,39 @@ _faces = ["WhiteHead_10","WhiteHead_03","WhiteHead_08","WhiteHead_15","LivonianH
 _names = "EnochMen";
 
 CREATE_IDENTITY(polish,_speakers,_faces,_names);
+
+// Add GM identities
+if !(isNil 'gm_core_characters_fnc_uc_getRankTexture') then
+{
+
+// GM German
+_speakers = ["gm_voice_male_deu_01","gm_voice_male_deu_02","gm_voice_male_deu_03","gm_voice_male_deu_04","gm_voice_male_deu_05","gm_voice_male_deu_06","gm_voice_male_deu_07","gm_voice_male_deu_08","gm_voice_male_deu_09"];
+_faces = ["gm_face_whiteHead_01","gm_face_whiteHead_02","gm_WhiteHead_01_camo_01","gm_WhiteHead_01_camo_02","gm_WhiteHead_02_camo_01","gm_WhiteHead_02_camo_02","gm_WhiteHead_03_camo_01","gm_WhiteHead_03_camo_02","gm_WhiteHead_04_camo_01","gm_WhiteHead_04_camo_02","gm_WhiteHead_05_camo_01","gm_WhiteHead_05_camo_02","gm_WhiteHead_06_camo_01","gm_WhiteHead_06_camo_02","gm_WhiteHead_07_camo_01","gm_WhiteHead_07_camo_02","gm_WhiteHead_08_camo_01","gm_WhiteHead_08_camo_02","gm_WhiteHead_09_camo_01","gm_WhiteHead_09_camo_02","gm_WhiteHead_10_camo_01","gm_WhiteHead_10_camo_02","gm_WhiteHead_11_camo_01","gm_WhiteHead_11_camo_02","gm_WhiteHead_12_camo_01","gm_WhiteHead_12_camo_02","gm_WhiteHead_13_camo_01","gm_WhiteHead_13_camo_02","gm_WhiteHead_14_camo_01","gm_WhiteHead_14_camo_02","gm_WhiteHead_15_camo_01","gm_WhiteHead_15_camo_02","gm_WhiteHead_15_camo_02","gm_WhiteHead_16_camo_02","gm_WhiteHead_17_camo_01","gm_WhiteHead_17_camo_02","gm_WhiteHead_18_camo_01","gm_WhiteHead_18_camo_02","gm_WhiteHead_19_camo_01","gm_WhiteHead_19_camo_02","gm_WhiteHead_20_camo_01","gm_WhiteHead_20_camo_02","gm_WhiteHead_21_camo_01","gm_WhiteHead_21_camo_02"];
+_names = "gm_names_deu_male";
+
+CREATE_IDENTITY(gm_german,_speakers,_faces,_names);
+
+// GM Danish
+// GM doesn't add Danish voices???
+_speakers = ["gm_voice_male_deu_01","gm_voice_male_deu_02","gm_voice_male_deu_03","gm_voice_male_deu_04","gm_voice_male_deu_05","gm_voice_male_deu_06","gm_voice_male_deu_07","gm_voice_male_deu_08","gm_voice_male_deu_09"];
+// Faces are shared amongst GM factions
+_faces = ["gm_face_whiteHead_01","gm_face_whiteHead_02","gm_WhiteHead_01_camo_01","gm_WhiteHead_01_camo_02","gm_WhiteHead_02_camo_01","gm_WhiteHead_02_camo_02","gm_WhiteHead_03_camo_01","gm_WhiteHead_03_camo_02","gm_WhiteHead_04_camo_01","gm_WhiteHead_04_camo_02","gm_WhiteHead_05_camo_01","gm_WhiteHead_05_camo_02","gm_WhiteHead_06_camo_01","gm_WhiteHead_06_camo_02","gm_WhiteHead_07_camo_01","gm_WhiteHead_07_camo_02","gm_WhiteHead_08_camo_01","gm_WhiteHead_08_camo_02","gm_WhiteHead_09_camo_01","gm_WhiteHead_09_camo_02","gm_WhiteHead_10_camo_01","gm_WhiteHead_10_camo_02","gm_WhiteHead_11_camo_01","gm_WhiteHead_11_camo_02","gm_WhiteHead_12_camo_01","gm_WhiteHead_12_camo_02","gm_WhiteHead_13_camo_01","gm_WhiteHead_13_camo_02","gm_WhiteHead_14_camo_01","gm_WhiteHead_14_camo_02","gm_WhiteHead_15_camo_01","gm_WhiteHead_15_camo_02","gm_WhiteHead_15_camo_02","gm_WhiteHead_16_camo_02","gm_WhiteHead_17_camo_01","gm_WhiteHead_17_camo_02","gm_WhiteHead_18_camo_01","gm_WhiteHead_18_camo_02","gm_WhiteHead_19_camo_01","gm_WhiteHead_19_camo_02","gm_WhiteHead_20_camo_01","gm_WhiteHead_20_camo_02","gm_WhiteHead_21_camo_01","gm_WhiteHead_21_camo_02"];
+_names = "gm_names_dan_male";
+
+CREATE_IDENTITY(gm_danish,_speakers,_faces,_names);
+
+};
+
+// Add SOG identities
+if !(isNil 'SOG_FUNCTION_HERE') then
+{
+
+// // SOG Vietnamese
+// _speakers = ["gm_voice_male_deu_01","gm_voice_male_deu_02","gm_voice_male_deu_03","gm_voice_male_deu_04","gm_voice_male_deu_05","gm_voice_male_deu_06","gm_voice_male_deu_07","gm_voice_male_deu_08","gm_voice_male_deu_09"];
+// _faces = ["gm_face_whiteHead_01","gm_face_whiteHead_02","gm_WhiteHead_01_camo_01","gm_WhiteHead_01_camo_02","gm_WhiteHead_02_camo_01","gm_WhiteHead_02_camo_02","gm_WhiteHead_03_camo_01","gm_WhiteHead_03_camo_02","gm_WhiteHead_04_camo_01","gm_WhiteHead_04_camo_02","gm_WhiteHead_05_camo_01","gm_WhiteHead_05_camo_02","gm_WhiteHead_06_camo_01","gm_WhiteHead_06_camo_02","gm_WhiteHead_07_camo_01","gm_WhiteHead_07_camo_02","gm_WhiteHead_08_camo_01","gm_WhiteHead_08_camo_02","gm_WhiteHead_09_camo_01","gm_WhiteHead_09_camo_02","gm_WhiteHead_10_camo_01","gm_WhiteHead_10_camo_02","gm_WhiteHead_11_camo_01","gm_WhiteHead_11_camo_02","gm_WhiteHead_12_camo_01","gm_WhiteHead_12_camo_02","gm_WhiteHead_13_camo_01","gm_WhiteHead_13_camo_02","gm_WhiteHead_14_camo_01","gm_WhiteHead_14_camo_02","gm_WhiteHead_15_camo_01","gm_WhiteHead_15_camo_02","gm_WhiteHead_15_camo_02","gm_WhiteHead_16_camo_02","gm_WhiteHead_17_camo_01","gm_WhiteHead_17_camo_02","gm_WhiteHead_18_camo_01","gm_WhiteHead_18_camo_02","gm_WhiteHead_19_camo_01","gm_WhiteHead_19_camo_02","gm_WhiteHead_20_camo_01","gm_WhiteHead_20_camo_02","gm_WhiteHead_21_camo_01","gm_WhiteHead_21_camo_02"];
+// _names = "gm_names_deu_male";
+
+// CREATE_IDENTITY(sog_vietnamese,_speakers,_faces,_names);
+
+
+};
