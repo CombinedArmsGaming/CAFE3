@@ -18,14 +18,14 @@ BEGIN_LOADOUTS;
     Available commands FOR UNIT LOADOUTS:
 
     CREATE_LOADOUT(UNIT_NAME,<ACE Arsenal code>);
-    COPY_LOADOUT(FROM,TO);
+    COPY_LOADOUT(TO,FROM);
 
     ADD_HAT(UNIT_NAME,"Hat Classname");
     ADD_UNIFORM(UNIT_NAME,"Uniform Classname");
     ADD_VEST(UNIT_NAME,"Vest Classname");
     ADD_BACKPACK(UNIT_NAME,"Backpack Classname");
 
-    COPY_ADDONS(FROM,TO);
+    COPY_ADDONS(TO,FROM);
 
     CLEAR_HATS(UNIT_NAME);
     CLEAR_UNIFORM(UNIT_NAME);

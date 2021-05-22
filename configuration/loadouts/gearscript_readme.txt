@@ -14,7 +14,7 @@ CREATE_LOADOUT(UNIT_NAME,<ACE Arsenal code>);
 -   Assigns the ACE Arsenal loadout to the unit.
     For example, you can create a Rifleman loadout and assign it to the unit-name "rif".  The rif class will now be available at Loadout Lockers in-game.
 
-COPY_LOADOUT(FROM,TO);
+COPY_LOADOUT(TO,FROM);
 -   Copies a loadout from one unit-type to another unit-type.  Useful if you want to give the same loadout to FTLs and SLs, etc.
 
 ADD_HAT(UNIT_NAME,"Hat Classname");
@@ -28,7 +28,7 @@ ADD_VEST(UNIT_NAME,"Vest Classname");
 ADD_BACKPACK(UNIT_NAME,"Backpack Classname");
 -   These all work the same as the ADD_HAT command.  The only difference is that they randomise uniforms, vests and backpacks.
 
-COPY_ADDONS(FROM,TO);
+COPY_ADDONS(TO,FROM);
 -   Copies all of the "random lists" from one unit-type to another unit-type.
     This is useful for adding random uniforms, hats etc to all of your units without having to do lots of repeated work.
 -   For example:
