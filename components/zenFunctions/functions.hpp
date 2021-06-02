@@ -13,6 +13,12 @@ class zenFunctions_client
 	class zen_woundGroupRandomlyAdvanced{};
 	class zen_playIntro{};
 };
+class zenFunctions_contextMenu
+{
+	file = "components\zenFunctions\contextMenu";
+	class zen_woundUnitRandomlyContextAction{};
+	class zen_woundGroupRandomlyContextAction{};
+};
 class zenFunctions_server
 {
 	file = "components\zenFunctions\server";
