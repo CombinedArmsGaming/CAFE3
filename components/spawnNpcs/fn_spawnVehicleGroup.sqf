@@ -37,6 +37,7 @@ _gunno = true;
         if (!_check) then
         {
             _x assignAsCommander _vehicle;
+            _x moveInCommander _vehicle;
             _assigned pushBackUnique _x;
             _comno = false;
 
@@ -51,6 +52,7 @@ _gunno = true;
         if (!_check) then
         {
             _x assignAsDriver _vehicle;
+            _x moveInDriver _vehicle;
             _assigned pushBackUnique _x;
             _drino = false;
 
@@ -65,6 +67,7 @@ _gunno = true;
         if (!_check) then
         {
             _x assignAsGunner _vehicle;
+            _x moveInGunner _vehicle;
             _assigned pushBackUnique _x;
             _gunno = false;
 
@@ -77,6 +80,7 @@ _gunno = true;
     if (!_check) then
     {
         _x assignAsCargo _vehicle;
+        _x moveInAny _vehicle;
         _assigned pushBackUnique _x;
 
     };
