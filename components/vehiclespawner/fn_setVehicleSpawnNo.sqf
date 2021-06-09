@@ -13,7 +13,7 @@ else
 	_vicClass = _vic getVariable "f_var_vicToSpawn";
 	_newspawnamount = _vic getVariable "f_var_spawnamount";
 
-	if(isNil "_newspawnamount")exitWith{systemChat "Non Logi-Vehicle selected."};
+	if(isNil "_newspawnamount") exitWith {systemChat "Non Logi-Vehicle selected."};
 
 	_name = (getText(configFile >> "CfgVehicles" >> _vicClass >> "displayName"));
 

@@ -1,6 +1,6 @@
 /*  Script to create an action on an object which allows to spawn in new vehicles.
 
-	Vehicle will spawn approx. 5 meters to the right of the spawner object.
+	Vehicle will spawn in a 30m radius around the Spawner in a space ARMA considers safe
 
 	Author: Joecuronium
 
@@ -11,15 +11,15 @@
 
 */	
 #include "macros.hpp";
-SERVER_ONLY;
+
 
 params ["_spawner", "_vehicle", ["_amount",5]];
 
 
 
 
-_spawner setVariable["f_var_spawnamount", _amount, false]; //set Variables on the spawner: how much it can spawn
-_spawner setVariable["f_var_vicToSpawn", _vehicle, false]; //and what to spawn. This stays persistent on the vehicle and can be changed midmission
+_spawner setVariable["f_var_spawnamount", _amount, true]; //set Variables on the spawner: how much it can spawn
+_spawner setVariable["f_var_vicToSpawn", _vehicle, true]; //and what to spawn. This stays persistent on the vehicle and can be changed midmission
 
 
 _spawnscript = {					//script that gets run on action
@@ -44,7 +44,7 @@ _spawnscript = {					//script that gets run on action
 
 		_vicClass = (_spawnvic getVariable "f_var_vicToSpawn");	//get the classname to spawn
 
-		systemChat "Spawning, keep clear of right side!";
+		systemChat format ["Spawning %1", (getText(configFile >> "CfgVehicles" >> _vicClass >> "displayName"))];
 
 		_spawnedvic = createVehicle [_vicClass, [0,0,0]];	//spawn in vehicle
 
@@ -53,16 +53,15 @@ _spawnscript = {					//script that gets run on action
 		sleep 5;
 
 		_spawndir = getDir _spawnvic;						//teleport the spawned vic next to the spawner, copying the direction in the process
-		_spawnpos = _spawnvic modelToWorld [5,0,0];
 		_spawnedvic setDir _spawndir;
-		_spawnedvic setPos _spawnpos;
+		_spawnedvic setVehiclePosition [_spawnvic, [], 30, "NONE"];
 
-
+		playSound3D ["A3\Sounds_F\sfx\alarm_independent.wss",_spawnedvic];
 		
 		_amount = _spawnvic getVariable "f_var_spawnamount";     
 		_amount = (_amount - 1);	
 
-		_spawnvic setVariable["f_var_spawnamount", _amount];       
+		_spawnvic setVariable["f_var_spawnamount", _amount, true];       
 
 		systemChat format ["%1 delivered, left to spawn: %2", (getText(configFile >> "CfgVehicles" >> _vicClass >> "displayName")), _amount]; //output the vehicles left to spawn
 
