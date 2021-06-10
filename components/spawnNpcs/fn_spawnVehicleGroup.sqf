@@ -118,11 +118,15 @@ if (_reinfExists) then
         }forEach _reinf;
 
         _unloadPos = _vehicle modelToWorld [0,100,0];
-        _movePos = _vehicle modelToWorld [25,50,0];
+        
         _reinfPos = _vehicle modelToWorld [0,200,0];
         _wp = _group addWaypoint [_unloadPos,0,0];
         _wp setWaypointType "TR UNLOAD";
-        [_group, 1]setWaypointPosition [_movePos,0];
+
+        if (!_gunno) then                       //Check if vehicle has Gunner, if yes, it holds at unloadPos, if no it returns to spawn (doesn't always work because ARMA)
+        {
+            deleteWaypoint[_group,1];
+        };
 
         _wp = _reinfgroup addWaypoint [_reinfPos,0,0];
         deleteWaypoint [_reinfgroup, 1];
