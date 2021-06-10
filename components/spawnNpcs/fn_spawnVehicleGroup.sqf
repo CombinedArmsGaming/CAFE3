@@ -16,12 +16,14 @@
  *
  */
 
-params ["_unitarray", "_position", "_vehicletype", ["_faction",""], ["_side", f_defaultSide], ["_suppressive",false], ["_guerrilla",false], ["_enableAdvancedAI",true], ["_runAfter",[]]];
+params ["_unitarray", "_position", "_vehicletype", ["_faction",""], ["_side", f_defaultSide], ["_suppressive",false], ["_guerrilla",false], ["_enableAdvancedAI",true], ["_runAfter",[]], ["_reinforcementarray", []]];
 
 _vehicle = [_position, _vehicletype] call f_fnc_spawnVehicle;
 _group = [_unitarray, _position, _faction, _side, _suppressive, _guerrilla, _enableAdvancedAI] call f_fnc_spawnGroup;
+_reinfgroup = [_reinforcementarray, _position, _faction, _side, _suppressive, _guerrilla, _enableAdvancedAI] call f_fnc_spawnGroup;
 
 _units = units _group;
+_reinf = units _reinfgroup;
 _assigned = [];
 
 _comno = true;
@@ -88,6 +90,21 @@ _gunno = true;
 } forEach _units;
 
 _units orderGetIn true;
+
+{
+
+    _check = (_x in _assigned);
+
+    if (!_check) then
+    {
+        _x assignAsCargo _vehicle;
+        _x moveInAny _vehicle;
+        _assigned pushBackUnique _x;
+
+    };
+
+
+}forEach _reinf;
 
 
 if ((typeName _runAfter) isEqualTo "CODE") then

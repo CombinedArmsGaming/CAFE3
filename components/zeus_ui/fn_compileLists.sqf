@@ -54,9 +54,11 @@ private _allCategoriesVars = [];
 		private _unitName = [_x, "unitName", ""] call BIS_fnc_returnConfigEntry;
 		private _unitVehicle = [_x, "vehicle", ""] call BIS_fnc_returnConfigEntry;
 		private _unitRoles = [_x, "units", []] call BIS_fnc_returnConfigEntry;
+		private _reinfRoles = [_x, "reinforcements", []] call BIS_fnc_returnConfigEntry;
 
 		// Fill the data of the namespace
 		_unitNamespace setVariable [MACRO_VARNAME_UNIT_ROLES, _unitRoles];
+		_unitNamespace setVariable [MACRO_VARNAME_REINFORCEMENT_ROLES, _reinfRoles];
 		_unitNamespace setVariable [MACRO_VARNAME_UNIT_VEHICLE, _unitVehicle];
 
 		// Save the unit namespace
