@@ -18,12 +18,15 @@
 
 params ["_unitarray", "_position", "_vehicletype", ["_faction",""], ["_side", f_defaultSide], ["_suppressive",false], ["_guerrilla",false], ["_enableAdvancedAI",true], ["_runAfter",[]], ["_reinforcementarray", []]];
 
+
+_reinfExists = ((count _reinforcementarray) > 0);
+
 _vehicle = [_position, _vehicletype] call f_fnc_spawnVehicle;
 _group = [_unitarray, _position, _faction, _side, _suppressive, _guerrilla, _enableAdvancedAI] call f_fnc_spawnGroup;
-_reinfgroup = [_reinforcementarray, _position, _faction, _side, _suppressive, _guerrilla, _enableAdvancedAI] call f_fnc_spawnGroup;
+
+
 
 _units = units _group;
-_reinf = units _reinfgroup;
 _assigned = [];
 
 _comno = true;
@@ -91,20 +94,45 @@ _gunno = true;
 
 _units orderGetIn true;
 
+
+
+if (_reinfExists) then
 {
 
-    _check = (_x in _assigned);
+        _reinfgroup = [_reinforcementarray, _position, _faction, _side, _suppressive, _guerrilla, _enableAdvancedAI] call f_fnc_spawnGroup;
+        _reinf = units _reinfgroup;
 
-    if (!_check) then
-    {
-        _x assignAsCargo _vehicle;
-        _x moveInAny _vehicle;
-        _assigned pushBackUnique _x;
+        {
 
-    };
+              _check = (_x in _assigned);
+
+                if (!_check) then
+                {
+                      _x assignAsCargo _vehicle;
+                      _x moveInAny _vehicle;
+                      _assigned pushBackUnique _x;
+
+                };
 
 
-}forEach _reinf;
+        }forEach _reinf;
+
+        _unloadPos = _vehicle modelToWorld [0,100,0];
+        _movePos = _vehicle modelToWorld [25,50,0];
+        _reinfPos = _vehicle modelToWorld [0,200,0];
+        _wp = _group addWaypoint [_unloadPos,0,0];
+        _wp setWaypointType "TR UNLOAD";
+        [_group, 1]setWaypointPosition [_movePos,0];
+
+        _wp = _reinfgroup addWaypoint [_reinfPos,0,0];
+        deleteWaypoint [_reinfgroup, 1];
+
+        if ((typeName _runAfter) isEqualTo "CODE") then
+        {
+	        [_reinfgroup]call _runAfter;
+        };
+
+};
 
 
 if ((typeName _runAfter) isEqualTo "CODE") then

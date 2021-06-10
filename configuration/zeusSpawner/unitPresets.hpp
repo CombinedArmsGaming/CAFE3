@@ -78,7 +78,6 @@ class CA_ZeusUI_Units
 			unitName = "AMV-7 Marshall";
 			vehicle = "B_APC_Wheeled_01_cannon_F";
 			units[] = {"crew", "crew", "crew"};
-			reinforcements[] = {"rif", "rif", "rif"}; 	//This is the reinforcement group to be spawned. They will occupy the cargo spaces of the vehicle.
 		};
 
 		class IFV6C_Panther
@@ -93,6 +92,14 @@ class CA_ZeusUI_Units
 			unitName = "Hunter HMG";
 			vehicle = "B_MRAP_01_HMG_F";
 			units[] = {"crew", "crew", "crew"};
+		};
+
+		class AMV_7_Reinforcements
+		{
+			unitName = "AMV-7 Marshall + Fireteam 4x"
+			vehicle = "B_APC_Wheeled_01_cannon_F";
+			units[] = {"crew", "crew", "crew"};
+			reinforcements[] = {"ftl", "ar", "aar", "lat"}; //When defined, this group spawns in the cargo space of the vehicle. The vehicle gets a TR unload waypoint and a Move waypoint, the group a Move waypoint.
 		};
 	};
 
