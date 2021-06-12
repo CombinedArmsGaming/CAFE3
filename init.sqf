@@ -41,9 +41,11 @@ if (IS_CLIENT) then
 
 	#include "startup\configuration\groups\clientConfigGroup.sqf"
 
+    missionNamespace setVariable ["f_var_frameworkSettingsReady_client", true];
+
 	#include "startup\components\groups\clientStartupGroup.sqf"
 
-	missionNamespace setVariable ["f_var_initClient", true, true];
+	missionNamespace setVariable ["f_var_initClient", true];
 
 };
 
@@ -56,6 +58,8 @@ if (isServer) then
 	#include "customStartup_server.sqf"
 
 	#include "startup\configuration\groups\serverConfigGroup.sqf"
+
+    missionNamespace setVariable ["f_var_frameworkSettingsReady_server", true, true];
 
 	#include "startup\components\groups\serverStartupGroup.sqf"
 
