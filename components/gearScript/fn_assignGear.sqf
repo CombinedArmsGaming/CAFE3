@@ -1,9 +1,15 @@
 #include "macros.hpp"
 
-_unit = _this select 1;
-LOCAL_ONLY(_unit);
-
 RUN_AS_ASYNC(f_fnc_assignGear);
+
+_unit = _this select 1;
+
+if !(isServer) then
+{
+    waitUntil {local player};
+};
+
+LOCAL_ONLY(_unit);
 
 // ====================================================================================
 
