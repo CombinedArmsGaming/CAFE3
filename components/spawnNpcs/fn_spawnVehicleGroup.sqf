@@ -95,10 +95,14 @@ _gunno = true;
 _units orderGetIn true;
 
 
+private _returnList = [_group, _vehicle];
+
 if (_reinforcementsExist) then
 {
     _reinforcementsGroup = [_reinforcementarray, _position, _faction, _side, _suppressive, _guerrilla, _enableAdvancedAI] call f_fnc_spawnGroup;
     _reinforcementUnits = units _reinforcementsGroup;
+
+    _returnList = _returnList + [_reinforcementsGroup];
 
     {
         _check = (_x in _assigned);
@@ -132,7 +136,7 @@ if (_reinforcementsExist) then
 
 if ((typeName _runAfter) isEqualTo "CODE") then
 {
-	[_group, _vehicle, _reinforcementsGroup] call _runAfter;
+	_returnList call _runAfter;
 };
 
-[_group, _vehicle, _reinforcementsGroup]
+_returnList
