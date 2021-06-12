@@ -28,13 +28,13 @@ class CA_ZeusUI_Units
 			unitName = "BLUFOR Fireteam 4x";
 			units[] = {"ftl", "ar", "lat", "rif"};
 		};
-		
+
 		class Squad_6x
 		{
 			unitName = "BLUFOR Squad 6x";
 			units[] = {"ftl", "ar", "aar", "lat", "rif", "mk"};	// This spawns a full 6-man fireteam. You can have as many or as few units in a squad as you want.
 		};
-		
+
 		class Section_9x
 		{
 			unitName = "BLUFOR Section 9x";
@@ -52,7 +52,7 @@ class CA_ZeusUI_Units
 			unitName = "BLUFOR AR Team";
 			units[] = {"aar", "ar"};
 		};
-		
+
 		class MK_Team
 		{
 			unitName = "BLUFOR MK Team";
@@ -80,6 +80,14 @@ class CA_ZeusUI_Units
 			units[] = {"crew", "crew", "crew"};
 		};
 
+		class AMV_7_Reinforcements
+		{
+			unitName = "AMV-7 Marshall + Squad 6x"
+			vehicle = "B_APC_Wheeled_01_cannon_F";
+			units[] = {"crew", "crew", "crew"};
+			reinforcements[] = {"ftl", "ar", "aar", "lat", "rif", "mk"}; // When defined, this group spawns in the cargo space of the vehicle. The vehicle gets a TR unload waypoint and a Move waypoint, the group a Move waypoint.
+		};
+
 		class IFV6C_Panther
 		{
 			unitName = "IFV-6C Panther";
@@ -87,11 +95,27 @@ class CA_ZeusUI_Units
 			units[] = {"crew", "crew", "crew"};
 		};
 
+		class IFV6C_Panther_Reinforcements
+		{
+			unitName = "IFV-6C Panther + Squad 6x";
+			vehicle = "B_APC_Tracked_01_rcws_F";
+			units[] = {"crew", "crew", "crew"};
+			reinforcements[] = {"ftl", "ar", "aar", "lat", "rif", "mk"};
+		};
+
 		class Hunter_HMG
 		{
 			unitName = "Hunter HMG";
 			vehicle = "B_MRAP_01_HMG_F";
-			units[] = {"crew", "crew", "crew"};
+			units[] = {"ftl", "rif", "rif"};
+		};
+
+		class HEMTT_Reinforcements
+		{
+			unitName = "HEMTT Transport + Section 9x";
+			vehicle = "B_Truck_01_covered_F";
+			units[] = {"rif", "rif"};
+			reinforcements[] = {"ftl", "ar", "aar", "lat", "med", "mk", "rif", "rif", "rif"};
 		};
 	};
 
@@ -113,13 +137,13 @@ class CA_ZeusUI_Units
 			unitName = "OPFOR Fireteam 4x";
 			units[] = {"ftl", "ar", "lat", "rif"};
 		};
-		
+
 		class Squad_6x
 		{
 			unitName = "OPFOR Squad 6x";
 			units[] = {"ftl", "ar", "aar", "lat", "rif", "mk"};	// This spawns a full 6-man fireteam. You can have as many or as few units in a squad as you want.
 		};
-		
+
 		class Section_9x
 		{
 			unitName = "OPFOR Section 9x";
@@ -137,7 +161,7 @@ class CA_ZeusUI_Units
 			unitName = "OPFOR AR Team";
 			units[] = {"aar", "ar"};
 		};
-		
+
 		class MK_Team
 		{
 			unitName = "OPFOR MK Team";
@@ -165,6 +189,14 @@ class CA_ZeusUI_Units
 			units[] = {"crew", "crew", "crew"};
 		};
 
+		class MSE3_Marid_Reinforcements
+		{
+			unitName = "MSE-3 Marid + Squad 6x";
+			vehicle = "O_APC_Wheeled_02_rcws_F";
+			units[] = {"crew", "crew", "crew"};
+			reinforcements[] = {"ftl", "ar", "aar", "lat", "rif", "mk"};
+		};
+
 		class BTRK_Kamysh
 		{
 			unitName = "BTR-K Kamysh";
@@ -172,11 +204,27 @@ class CA_ZeusUI_Units
 			units[] = {"crew", "crew", "crew"};
 		};
 
+		class BTRK_Kamysh_Reinforcements
+		{
+			unitName = "BTR-K Kamysh + Squad 6x";
+			vehicle = "O_APC_Tracked_02_cannon_F";
+			units[] = {"crew", "crew", "crew"};
+			reinforcements[] = {"ftl", "ar", "aar", "lat", "rif", "mk"};
+		};
+
 		class Ifrit_HMG
 		{
 			unitName = "Ifrit HMG";
 			vehicle = "O_MRAP_02_HMG_F";
-			units[] = {"crew", "crew", "crew"};
+			units[] = {"ftl", "rif", "rif"};
+		};
+
+		class Tempest_Reinforcements
+		{
+			unitName = "Tempest Transport + Section 9x";
+			vehicle = "O_Truck_03_covered_F";
+			units[] = {"rif", "rif"};
+			reinforcements[] = {"ftl", "ar", "aar", "lat", "med", "mk", "rif", "rif", "rif"};
 		};
 	};
 
@@ -198,13 +246,13 @@ class CA_ZeusUI_Units
 			unitName = "INDFOR Fireteam 4x";
 			units[] = {"ftl", "ar", "lat", "rif"};
 		};
-		
+
 		class Squad_6x
 		{
 			unitName = "INDFOR Squad 6x";
 			units[] = {"ftl", "ar", "aar", "lat", "rif", "mk"};	// This spawns a full 6-man fireteam. You can have as many or as few units in a squad as you want.
 		};
-		
+
 		class Section_9x
 		{
 			unitName = "INDFOR Section 9x";
@@ -222,7 +270,7 @@ class CA_ZeusUI_Units
 			unitName = "INDFOR AR Team";
 			units[] = {"aar", "ar"};
 		};
-		
+
 		class MK_Team
 		{
 			unitName = "INDFOR MK Team";
@@ -250,6 +298,14 @@ class CA_ZeusUI_Units
 			units[] = {"crew", "crew", "crew"};
 		};
 
+		class AFV4_Gorgon_Reinforcements
+		{
+			unitName = "AFV-4 Gorgon + Squad 6x";
+			vehicle = "I_APC_Wheeled_03_cannon_F";
+			units[] = {"crew", "crew", "crew"};
+			reinforcements[] = {"ftl", "ar", "aar", "lat", "rif", "mk"};
+		};
+
 		class FV720_Mora
 		{
 			unitName = "FV-720 Mora";
@@ -257,11 +313,27 @@ class CA_ZeusUI_Units
 			units[] = {"crew", "crew", "crew"};
 		};
 
+		class FV720_Mora_Reinforcements
+		{
+			unitName = "FV-720 Mora + Squad 6x";
+			vehicle = "I_APC_tracked_03_cannon_F";
+			units[] = {"crew", "crew", "crew"};
+			reinforcements[] = {"ftl", "ar", "aar", "lat", "rif", "mk"};
+		};
+
 		class Strider_HMG
 		{
 			unitName = "Strider HMG";
 			vehicle = "I_MRAP_03_hmg_F";
-			units[] = {"crew", "crew", "crew"};
+			units[] = {"ftl", "rif", "rif"};
+		};
+
+		class Zamak_Reinforcements
+		{
+			unitName = "Zamak Transport + Section 9x";
+			vehicle = "I_Truck_02_covered_F";
+			units[] = {"rif", "rif"};
+			reinforcements[] = {"ftl", "ar", "aar", "lat", "med", "mk", "rif", "rif", "rif"};
 		};
 	};
 };
