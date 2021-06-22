@@ -14,13 +14,20 @@
  *
  */
 
-params ["_position", "_vehicletype", ["_locknumber",0]];
+params ["_position", "_vehicletype", ["_locknumber",0], "_dir"];
 
 _posdir = _position call f_fnc_getDirPos;
 _spawnpos = _posdir select 0;
-_dir = _posdir select 1;
 
-_vehicle = createVehicle  [_vehicletype, _spawnpos, [], 15, "NONE"];
+_isAir = _vehicletype isKindOf "Air";
+_placement = "NONE";
+
+if (_isAir) then {
+    _spawnpos set [2, 100];
+    _placement = "FLY";
+};
+
+_vehicle = createVehicle  [_vehicletype, _spawnpos, [], 15, _placement];
 _vehicle setDir _dir;
 
 _vehicle lock _locknumber;
@@ -30,4 +37,6 @@ clearMagazineCargoGlobal _vehicle;
 clearItemCargoGlobal _vehicle;
 clearBackpackCargoGlobal _vehicle;
 
-_vehicle
+_returnList = [_vehicle, _isAir];
+
+_returnList
