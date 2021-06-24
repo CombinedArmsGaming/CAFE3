@@ -14,12 +14,11 @@
  *
  */
 
-params ["_position", "_vehicletype", ["_locknumber",0]];
+params ["_position", "_vehicletype", ["_locknumber",0], "_dir"];
 
 _posdir = _position call f_fnc_getDirPos;
 _spawnpos = _posdir select 0;
 
-_dir = getDir curatorCamera;
 
 _vehicle = createVehicle  [_vehicletype, _spawnpos, [], 15, "NONE"];
 _vehicle setDir _dir;

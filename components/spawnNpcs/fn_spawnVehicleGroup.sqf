@@ -16,12 +16,12 @@
  *
  */
 
-params ["_unitarray", "_position", "_vehicletype", ["_faction",""], ["_side", f_defaultSide], ["_suppressive",false], ["_guerrilla",false], ["_enableAdvancedAI",true], ["_runAfter",[]], ["_reinforcementarray", []]];
+params ["_unitarray", "_position", "_vehicletype", ["_faction",""], ["_side", f_defaultSide], ["_suppressive",false], ["_guerrilla",false], ["_enableAdvancedAI",true], ["_runAfter",[]], ["_reinforcementarray", []], "_dir"];
 
 
 _reinforcementsExist = ((count _reinforcementarray) > 0);
 
-_vehicle = [_position, _vehicletype] call f_fnc_spawnVehicle;
+_vehicle = [_position, _vehicletype, 0, _dir] call f_fnc_spawnVehicle;
 _group = [_unitarray, _position, _faction, _side, _suppressive, _guerrilla, _enableAdvancedAI] call f_fnc_spawnGroup;
 
 
