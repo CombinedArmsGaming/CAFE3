@@ -109,3 +109,13 @@ _faces = ["WhiteHead_10","WhiteHead_03","WhiteHead_08","WhiteHead_15","LivonianH
 _names = "EnochMen";
 
 CREATE_IDENTITY(polish,_speakers,_faces,_names);
+
+
+// Latino
+_speakers = ["male02engfre","male01engfre"];
+_faces = ["GreekHead_A3_06","GreekHead_A3_04","Ioannou","GreekHead_A3_05","GreekHead_A3_01","GreekHead_A3_02","GreekHead_A3_09","GreekHead_A3_03","GreekHead_A3_08","Mavros","GreekHead_A3_07"];
+_forenames = ["Esteban", "Julio", "Jesús", "Javier", "Antonio", "Daniel", "Gabriel", "Luca", "José", "Alejandro", "Luis", "Juan", "Francisco", "Miguel", "Pedro", "Ángel"];
+ _surnames = ["Jimenez", "Guiterrez", "Hernandez", "Estade", "Riart" ,"Toni", "Aguilar", "Castellanos", "Enriquez", "Ibarra", "Molina"];
+_names = [_forenames, _surnames];
+
+CREATE_IDENTITY(latino,_speakers,_faces,_names);
