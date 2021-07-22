@@ -1,7 +1,6 @@
 class vehiclespawner
 {
-    file = "components\vehiclespawner";
-    class vehiclespawner{};
+    file = "components\vehicleSpawner";
+    class vehicleSpawner{};
     class setVehicleSpawnNo{};
 };
-

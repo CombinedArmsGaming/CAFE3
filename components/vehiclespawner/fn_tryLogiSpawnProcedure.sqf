@@ -12,7 +12,7 @@
 */
 #include "macros.hpp";
 
-params ["_spawner", "_vehicle", ["_amount",5]];
+params ["_spawner", "_vehicle"];
 
 _spawner setVariable ["f_var_spawnamount", _amount, true]; //set Variables on the spawner: how much it can spawn
 _spawner setVariable ["f_var_vicToSpawn", _vehicle, true]; //and what to spawn. This stays persistent on the vehicle and can be changed midmission
