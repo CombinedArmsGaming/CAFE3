@@ -40,7 +40,7 @@ playSound3D ["A3\Sounds_F\sfx\alarm_independent.wss", _logiVic];
 private _spawnedVic = createVehicle [_spawnType, [0,0,0]]; //spawn in vehicle
 _spawnedVic allowDamage false; //prevent unwanted blowing up
 
-sleep 5;
+sleep 6;
 
 private _spawnDir = getDir _logiVic; //teleport the spawned vic next to the spawner, copying the direction in the process
 _spawnedVic setDir _spawnDir;
@@ -65,7 +65,7 @@ if (_gearscriptType isNotEqualTo "") then
 
 	if (_faction isEqualTo "") then
 	{
-		DEBUG_LOG_CHAT("[LOGI-VICS]: Faction not specified for logi vic '%1', defaulting to 'blu_f'.")
+		DEBUG_PRINT_CHAT("[LOGI-VICS]: Faction not specified for logi vic '%1', defaulting to 'blu_f'.")
 		_faction = "blu_f";
 	};
 

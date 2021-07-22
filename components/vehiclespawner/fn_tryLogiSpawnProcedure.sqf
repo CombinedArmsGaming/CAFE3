@@ -19,6 +19,8 @@ RUN_AS_ASYNC(f_fnc_tryLogiSpawnProcedure);
 
 params ["_logiVic", "_spawnIndex"];
 
+systemChat (str _this);
+
 private _type = _logiVic getVariable [LOGIVIC_VAR_DYNAMIC(_spawnIndex,"type"), ""];
 private _remaining = _logiVic getVariable [LOGIVIC_VAR_DYNAMIC(_spawnIndex,"amount"), 0];
 private _gear = _logiVic getVariable [LOGIVIC_VAR_DYNAMIC(_spawnIndex,"gear"), ""];

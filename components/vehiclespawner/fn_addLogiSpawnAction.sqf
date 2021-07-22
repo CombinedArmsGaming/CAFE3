@@ -16,7 +16,12 @@ private _vicArrays = GET_VEHICLES_DYNAMIC(_logiType);
 private _vicArray = _vicArrays # _spawnIndex;
 private _spawnType = _vicArray#0;
 
-private _actionCode = {[_target, _actionParams#0] call f_fnc_tryLogiSpawnProcedure};
+private _actionCode = 
+{
+	params ["_target", "_player", "_params"];
+	
+	[_target, _params#0] call f_fnc_tryLogiSpawnProcedure
+};
 
 private _conditionCode =
 {
@@ -27,8 +32,7 @@ private _modifierCode =
 {
 	params ["_target", "_player", "_params", "_actionData"];
 
-	private _spawnType = _actionData#0;
-	private _spawnIndex = _actionData#1;
+	private _spawnIndex = _params#0;
 
 	private _type = _target getVariable [LOGIVIC_VAR_DYNAMIC(_spawnIndex,"type"), ""];
 	private _remaining = _target getVariable [LOGIVIC_VAR_DYNAMIC(_spawnIndex,"amount"), 0];
