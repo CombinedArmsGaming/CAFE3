@@ -15,7 +15,7 @@
 
 params ["_player", "_logiVic"];
 
-private _logiType = GET_LOGITYPE(_vehicle);
+private _logiType = GET_LOGITYPE(_logiVic);
 
 if (_logiType isEqualTo "") exitWith {false};
 
@@ -24,8 +24,8 @@ private _roles = GET_ROLES_DYNAMIC(_logiType);
 
 if (_roles isNotEqualTo []) then
 {
-	private _playerRole = _player getVariable ["f_var_assignGear", ""];
-	_failedCheck = _playerRole in _roles;
+	private _playerRole = toLower (_player getVariable ["f_var_assignGear", ""]);
+	_failedCheck = !(_playerRole in _roles);
 };
 
 if (_failedCheck) exitWith {false};
@@ -34,8 +34,8 @@ private _groups = GET_GROUPS_DYNAMIC(_logiType);
 
 if (_groups isNotEqualTo []) then
 {
-	private _playerGroup = groupId group _player;
-	_failedCheck = _playerGroup in _groups;
+	private _playerGroup = toLower (groupId group _player);
+	_failedCheck = !(_playerGroup in _groups);
 };
 
 (!_failedCheck)

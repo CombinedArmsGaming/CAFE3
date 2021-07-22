@@ -4,8 +4,9 @@
 	Author: Bubbus and Joecuronium
 
 	Passable arguments:
-	0: object to create action on
-	1: logi type - as defined in the logi configuration.
+	0: logi type - as defined in the logi configuration.
+	1: spawn index - numeric ideitifier of the object to spawn.  ordered by configuration order.
+	2: object to create action on
 */
 
 #include "macros.hpp"
@@ -19,13 +20,15 @@ private _spawnType = _vicArray#0;
 private _actionCode = 
 {
 	params ["_target", "_player", "_params"];
-	
+
 	[_target, _params#0] call f_fnc_tryLogiSpawnProcedure
 };
 
 private _conditionCode =
 {
-	([_player, _target] call f_fnc_canPlayerUseLogi) and {[_target, _actionParams#0] call f_fnc_canLogiSpawnVehicle}
+	params ["_target", "_player", "_params"];
+
+	([_player, _target] call f_fnc_canPlayerUseLogi) and {[_target, _params#0] call f_fnc_canLogiSpawnVehicle}
 };
 
 private _modifierCode =
@@ -44,7 +47,7 @@ private _modifierCode =
 	}
 	else
 	{
-		format ["Deploy '%1' with '%3' (%2 remaining)", GET_VEHICLE_DISPLAY_NAME(_type), _remaining, _gear];
+		format ["Deploy '%1' with '%3' gear (%2 remaining)", GET_VEHICLE_DISPLAY_NAME(_type), _remaining, _gear];
 	};
 
 	_actionData set [1, _newDisplayText];

@@ -1,5 +1,5 @@
 /*
-	Script to create an action on an object which allows to spawn in new vehicles.
+	Script to initialise a vehicle as a logi vic.  Allows the spawning of configured objects from it by authorised players.
 
 	Author: Bubbus and Joecuronium
 

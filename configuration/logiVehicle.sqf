@@ -35,6 +35,7 @@ SET_FACTION(example,"blu_f");
 // Allow only the command group to use this vehicle.
 // If you don't add any groups then the vehicle can be used by every group.
 ADD_GROUP(example,"Command");
+ADD_GROUP(example,"Zeus");
 
 // Allow only people with "logi", "eng" or "zeus" gearscript to use this vehicle.
 // If you don't add any roles then the vehicle can be used by every role.

@@ -1,13 +1,11 @@
-/*  Script to create an action on an object which allows to spawn in new vehicles.
+/*  
+	Attempt to spawn an object at a logi vic.  Decrement the remaining stock only if the object survives the spawning process.
 
-	Vehicle will spawn in a 30m radius around the Spawner in a space ARMA considers safe
-
-	Author: Joecuronium
+	Author: Joecuronium and Bubbus
 
 	Passable arguments:
-	0: object to create action on
-	1: kind of vehicle that should be able spawned in
-	2: how many vehicles should be available (optional, defaults to 5)
+	0: Logi vic to use to spawn an object.
+	1: The spawn index of the object to use - ordered by config order.
 
 	Returns:
 	true iff an object was successfully spawned and did not immediately die.
@@ -18,8 +16,6 @@
 RUN_AS_ASYNC(f_fnc_tryLogiSpawnProcedure);
 
 params ["_logiVic", "_spawnIndex"];
-
-systemChat (str _this);
 
 private _type = _logiVic getVariable [LOGIVIC_VAR_DYNAMIC(_spawnIndex,"type"), ""];
 private _remaining = _logiVic getVariable [LOGIVIC_VAR_DYNAMIC(_spawnIndex,"amount"), 0];
