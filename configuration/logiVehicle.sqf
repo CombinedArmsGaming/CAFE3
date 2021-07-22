@@ -29,6 +29,9 @@ ADD_VEHICLE(example,"ACE_Wheel",6);
 // This special command lets you give gearscript to a vehicle (for example, ammo crates).
 ADD_VEHICLE_WITH_GEAR(example,"Box_NATO_Equip_F",5,"crate_small");
 
+// Set the faction of the logi vehicle.  Used to choose the right gear in the command above.
+SET_FACTION(example,"blu_f");
+
 // Allow only the command group to use this vehicle.
 // If you don't add any groups then the vehicle can be used by every group.
 ADD_GROUP(example,"Command");

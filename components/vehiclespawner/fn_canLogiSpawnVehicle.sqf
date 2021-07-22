@@ -13,9 +13,9 @@
 
 */
 
-#include "macros.hpp";
+#include "macros.hpp"
 
-params ["_vehicle", "_spawnType"];
+params ["_vehicle", "_spawnIndex"];
 
 private _logiType = GET_LOGITYPE(_vehicle);
 private _logiVics = GET_VEHICLES_DYNAMIC(_logiType);
@@ -26,10 +26,15 @@ if (_logiVics isEqualTo []) exitWith
 	false
 };
 
-private _vicArrays = GET_VEHICLES_DYNAMIC(_logiType);
-private _vicIndex = _vicArrays findIf {_x#0 isEqualTo _spawnType};
+if ((count _logiVics) < (_spawnIndex - 1)) exitWith
+{
+	DEBUG_FORMAT2_LOG("[LOGI-VICS]: Invalid spawn index '%2' for logi type '%1'.",_logiType,_spawnIndex)
+	false
+};
 
-if (_vicIndex < 0) exitWith {false}
+private _vicArray = _logiVics # _spawnIndex;
+private _remaining = _vicArray#1;
 
-private _vicArray = _vicArrays # _vicIndex;
-private _remaining
+if (_remaining <= 0) exitWith {false};
+
+true

@@ -8,7 +8,7 @@
 	1: logi type - as defined in the logi configuration.
 */
 
-#include "macros.hpp";
+#include "macros.hpp"
 
 params ["_vehicle", "_logiType"];
 
@@ -17,7 +17,7 @@ if !IS_REGISTERED_LOGI(_logiType) exitWith
 	DEBUG_FORMAT2_LOG("[LOGI-VICS]: Tried to apply an unknown logi config '%1' to a vehicle '%2'.",_logiType,_vehicle)
 };
 
-private _vehiclesArray = GET_VEHICLES(_logiType);
+private _vehiclesArray = GET_VEHICLES_DYNAMIC(_logiType);
 
 
 if (isServer) then

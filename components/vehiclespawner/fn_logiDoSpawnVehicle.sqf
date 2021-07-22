@@ -1,49 +1,77 @@
 /*
-	Script to create an action on an object which allows to spawn in new vehicles.
+	Script to create a new object from a logi vic.
 
-	Vehicle will spawn in a 30m radius around the Spawner in a space ARMA considers safe
+	Object will spawn in a 30m radius around the logi vic in a space ARMA considers safe.
 
-	Author: Joecuronium
+	Author: Joecuronium and Bubbus
 
 	Passable arguments:
-	0: object to create action on
-	1: kind of vehicle that should be able spawned in
-	2: how many vehicles should be available (optional, defaults to 5)
+	0: Class of object to create.
+	1: Logi vic to spawn object from.
+	2: Gearscript to apply to the object.
 
+	Returns:
+	true iff object was sucessfully spawned (e.g. was created and did not explode).
 */
-#include "macros.hpp";
 
-params ["_vicToSpawn", "_objToSpawnNear"];
+#include "macros.hpp"
 
-_vicDisplayName = GET_VEHICLE_DISPLAY_NAME(_vicToSpawn);
+RUN_AS_ASYNC(f_fnc_logiDoSpawnVehicle);
 
-systemChat format ["Spawning %1", _vicDisplayName];
+params ["_spawnType", "_logiVic", "_gearscriptType"];
 
-_spawnedvic = createVehicle [_vicToSpawn, [0,0,0]]; //spawn in vehicle
-_spawnedvic allowDamage false; //prevent unwanted blowing up
+if LOGIVIC_IS_SPAWNING(_logiVic) exitWith {false};
+SET_LOGIVIC_SPAWNING(_logiVic,true);
+
+private _vicDisplayName = GET_VEHICLE_DISPLAY_NAME(_spawnType);
+
+private _message = if (_gearscriptType isEqualTo "") then
+{
+	format ["Deploying %1...", _vicDisplayName]
+}
+else
+{
+	format ["Deploying %1 (with '%2')...", _vicDisplayName, _gearscriptType]
+};
+
+systemChat _message;
+playSound3D ["A3\Sounds_F\sfx\alarm_independent.wss", _logiVic];
+
+private _spawnedVic = createVehicle [_spawnType, [0,0,0]]; //spawn in vehicle
+_spawnedVic allowDamage false; //prevent unwanted blowing up
 
 sleep 5;
 
-_spawndir = getDir _objToSpawnNear; //teleport the spawned vic next to the spawner, copying the direction in the process
-_spawnedvic setDir _spawndir;
-_spawnedvic setVehiclePosition [_objToSpawnNear, [], 30, "NONE"];
+private _spawnDir = getDir _logiVic; //teleport the spawned vic next to the spawner, copying the direction in the process
+_spawnedVic setDir _spawnDir;
+_spawnedVic setVehiclePosition [_logiVic, [], 30, "NONE"];
 
-playSound3D ["A3\Sounds_F\sfx\alarm_independent.wss", _spawnedvic];
+sleep 2;
 
-sleep 10;
+_spawnedVic allowDamage true;
 
-_spawnedvic allowDamage true;
+sleep 3;
 
+if !(alive _spawnedVic) exitWith 
+{	
+	SET_LOGIVIC_SPAWNING(_logiVic,false);
+	false
+};
 
+if (_gearscriptType isNotEqualTo "") then
+{
+	private _logiType = GET_LOGITYPE(_logiVic);
+	private _faction = GET_FACTION_DYNAMIC(_logiType);
 
+	if (_faction isEqualTo "") then
+	{
+		DEBUG_LOG_CHAT("[LOGI-VICS]: Faction not specified for logi vic '%1', defaulting to 'blu_f'.")
+		_faction = "blu_f";
+	};
 
+	[_gearscriptType, _spawnedVic, _faction] call f_fnc_assignGear;
+};
 
+SET_LOGIVIC_SPAWNING(_logiVic,false);
 
-
-
-
-
-_actionToBeAdded = [(format["Spawn_Vehicle_%1", _i]),(format["Spawn %1" , (getText(configFile >> "CfgVehicles" >> _vehicle >> "displayName"))]),"",_spawnscript,{true}]call ace_interact_menu_fnc_createAction; //create the needed ace action
-
-
-[_spawner, 0 , ["ACE_MainActions"], _actionToBeAdded]call ace_interact_menu_fnc_addActionToObject; //add it to the called object
+true

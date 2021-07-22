@@ -11,7 +11,7 @@
 	true iff player is allowed to use the logi vehicle.
 */
 
-#include "macros.hpp";
+#include "macros.hpp"
 
 params ["_player", "_logiVic"];
 
