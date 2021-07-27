@@ -85,7 +85,7 @@ class CA_ZeusUI_Units
 			unitName = "AMV-7 Marshall + Squad 6x"
 			vehicle = "B_APC_Wheeled_01_cannon_F";
 			units[] = {"crew", "crew", "crew"};
-			reinforcements[] = {"ftl", "ar", "aar", "lat", "rif", "mk"}; // When defined, this group spawns in the cargo space of the vehicle. The vehicle gets a TR unload waypoint and a Move waypoint, the group a Move waypoint.
+			reinforcements[] = {"ftl", "ar", "aar", "lat", "rif", "mk"}; // When defined, this group spawns in the cargo space of the vehicle. The vehicle gets a TR unload waypoint and a RTB waypoint (only if it's unarmed), the group a Move waypoint. The vehicle will also despawn on RTB. If the vehicle is a Heli, it will spawn flying and always RTB
 		};
 
 		class IFV6C_Panther
