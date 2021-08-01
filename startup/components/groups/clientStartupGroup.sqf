@@ -29,7 +29,7 @@ INIT_COMPONENT(downtime)
 
 INIT_COMPONENT(zenFunctions)
 
-INIT_COMPONENT(vehiclespawner)
+INIT_COMPONENT(logiVehicle)
 
 
 // Gravestones init

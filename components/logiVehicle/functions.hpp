@@ -1,6 +1,6 @@
-class vehicleSpawner
+class logiVehicle
 {
-    file = "components\vehicleSpawner";
+    file = "components\logiVehicle";
     class addLogiSpawnAction{};
     class canLogiSpawnVehicle{};
     class canPlayerUseLogi{};
