@@ -18,22 +18,27 @@
 
 RUN_AS_ASYNC(f_fnc_logiDoSpawnVehicle);
 
-params ["_spawnType", "_logiVic", "_gearscriptType"];
+params ["_spawnType", "_logiVic", "_gearscriptType", "_text"];
 
 if LOGIVIC_IS_SPAWNING(_logiVic) exitWith {false};
 SET_LOGIVIC_SPAWNING(_logiVic,true);
 
 
 // Display system chat message to confirm spawn is commencing.
-private _vicDisplayName = GET_VEHICLE_DISPLAY_NAME(_spawnType);
-
-private _message = if (_gearscriptType isEqualTo "") then
+private _message = if (_text isNotEqualTo "") then
 {
-	format ["Deploying '%1'...", _vicDisplayName]
+	format ["Deploying '%1'...", _text]
 }
 else
 {
-	format ["Deploying '%1' (with '%2' gear)...", _vicDisplayName, _gearscriptType]
+	if (_gearscriptType isEqualTo "") then
+	{
+		format ["Deploying '%1'...", GET_VEHICLE_DISPLAY_NAME(_type)]
+	}
+	else
+	{
+		format ["Deploying '%1' with '%2' gear...", GET_VEHICLE_DISPLAY_NAME(_type), _gear]
+	}
 };
 
 systemChat _message;
@@ -41,22 +46,24 @@ playSound3D ["A3\Sounds_F\sfx\alarm_independent.wss", _logiVic];
 
 
 // Commence spawning - spawn vic at origin then move into position after warning delay.
-private _spawnedVic = createVehicle [_spawnType, [0,0,0]]; //spawn in vehicle
-_spawnedVic allowDamage false; //prevent unwanted blowing up
-
-sleep 6;
-
-private _spawnDir = getDir _logiVic; //teleport the spawned vic next to the spawner, copying the direction in the process
-_spawnedVic setDir _spawnDir;
-_spawnedVic setVehiclePosition [_logiVic, [], 30, "NONE"];
+private _spawnedVic = createVehicle [_spawnType, [0,0,0]]; // Spawn in vehicle
+_spawnedVic allowDamage false; // Prevent unwanted blowing up
 
 _spawnedVic spawn
 {
+	sleep 3;
     clearWeaponCargoGlobal _this;
     clearMagazineCargoGlobal _this;
     clearItemCargoGlobal _this;
     clearBackpackCargoGlobal _this;
 };
+
+sleep 6;
+
+// Teleport the spawned vic next to the spawner, copying the direction in the process
+private _spawnDir = getDir _logiVic;
+_spawnedVic setDir _spawnDir;
+_spawnedVic setVehiclePosition [_logiVic, [], 30, "NONE"];
 
 
 // Wait for vic to settle in place, then enable damage to see if it will blow up regardless.
@@ -68,8 +75,8 @@ sleep 3;
 
 
 // If vehicle has not survived then exit early.
-if !(alive _spawnedVic) exitWith 
-{	
+if !(alive _spawnedVic) exitWith
+{
 	SET_LOGIVIC_SPAWNING(_logiVic,false);
 	false
 };

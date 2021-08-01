@@ -10,6 +10,9 @@
 
 #include "macros.hpp"
 
+SERVER_ONLY;
+RUN_AS_ASYNC(f_fnc_setLogiVehicle);
+
 params ["_vehicle", "_logiType"];
 
 if !IS_REGISTERED_LOGI(_logiType) exitWith
@@ -17,37 +20,52 @@ if !IS_REGISTERED_LOGI(_logiType) exitWith
 	DEBUG_FORMAT2_LOG("[LOGI-VICS]: Tried to apply an unknown logi config '%1' to a vehicle '%2'.",_logiType,_vehicle)
 };
 
-private _vehiclesArray = GET_VEHICLES_DYNAMIC(_logiType);
 
+private _existingLogiType = GET_LOGITYPE(_vehicle);
 
-if (isServer) then
+if ((_existingLogiType isNotEqualTo "") and {_existingLogiType isNotEqualTo _logiType}) exitWith
 {
-	SET_LOGITYPE(_vehicle,_logiType);
-
-	{
-		private _vicType = _x#0;
-		private _amount = _x#1;
-		private _gear = _x param [2, ""];
-
-		_vehicle setVariable [LOGIVIC_VAR_DYNAMIC(_forEachIndex,"type"), _vicType, true];
-		_vehicle setVariable [LOGIVIC_VAR_DYNAMIC(_forEachIndex,"amount"), _amount, true];
-		_vehicle setVariable [LOGIVIC_VAR_DYNAMIC(_forEachIndex,"gear"), _gear, true];
-
-	} forEach _vehiclesArray;
-
+	DEBUG_FORMAT2_LOG("[LOGI-VICS]: Tried to apply logi config '%1' to a vehicle already configured as '%2'.  This is not currently supported.",_logiType,_existingLogiType)
 };
 
 
-if (IS_PLAYER) then
+private _vehiclesArray = GET_VEHICLES_DYNAMIC(_logiType);
+
+SET_LOGITYPE(_vehicle,_logiType);
+
 {
-	[_logiType, _vehiclesArray, _vehicle] spawn
+	private _vicType = _x#0;
+	private _amount = _x#1;
+	private _gear = _x param [2, ""];
+	private _text = _x param [3, ""];
+
+	_vehicle setVariable [LOGIVIC_VAR_DYNAMIC(_forEachIndex,"type"), _vicType, true];
+	_vehicle setVariable [LOGIVIC_VAR_DYNAMIC(_forEachIndex,"amount"), _amount, true];
+	_vehicle setVariable [LOGIVIC_VAR_DYNAMIC(_forEachIndex,"gear"), _gear, true];
+	_vehicle setVariable [LOGIVIC_VAR_DYNAMIC(_forEachIndex,"text"), _text, true];
+
+} forEach _vehiclesArray;
+
+
+// If this vehicle was not already a logi vic, add the user actions and ACE config to it.
+if (_existingLogiType isEqualTo "") exitWith
+{
+	[_vehicle, -10] call ace_refuel_fnc_makeSource;
+	_vehicle setVariable ['ace_isRepairVehicle', true, true];
+	[_vehicle, 10000] call ace_rearm_fnc_makeSource;
+
+	_vehicle spawn
 	{
-		params ["_logiType", "_vehiclesArray", "_vehicle"];
-
+		while {alive _this} do
 		{
-			[_logiType, _forEachIndex, _vehicle] call f_fnc_addLogiSpawnAction;
+			_this setVariable ["ace_rearm_currentSupply", 10000, true];
+			sleep 10;
+		};
+		
+	};
 
-		} forEach _vehiclesArray;
-	}
+	// Wait a while to ensure that networked vars have propagated.
+	sleep 2;
 
+	_this remoteExec ["f_fnc_setLogiVehiclePlayer", 0, _vehicle];
 };

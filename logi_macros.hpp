@@ -26,8 +26,16 @@
 #define SET_VEHICLES(NAME,VICSARRAY) SET_VAR(LOGIVIC_VAR(NAME,Vics),VICSARRAY,false)
 #define GET_VEHICLES(NAME) GET_VAR(LOGIVIC_VAR(NAME,Vics),[])
 #define GET_VEHICLES_DYNAMIC(VAR) GET_VAR_DYNAMIC(LOGIVIC_VAR_DYNAMIC(VAR,"Vics"),[])
-#define ADD_VEHICLE(NAME,VICTYPE,AMOUNT) GET_VAR(LOGIVIC_VAR(NAME,Vics),[]) pushBack [VICTYPE, AMOUNT]
-#define ADD_VEHICLE_WITH_GEAR(NAME,VICTYPE,AMOUNT,GEAR) GET_VAR(LOGIVIC_VAR(NAME,Vics),[]) pushBack [VICTYPE, AMOUNT, GEAR]
+
+#define ADD_VEHICLE(NAME,VICTYPE,AMOUNT)                        \
+    _logiVicToAdd = [VICTYPE, AMOUNT, "", ""];                  \
+    GET_VAR(LOGIVIC_VAR(NAME,Vics),[]) pushBack _logiVicToAdd
+
+#define ADD_VEHICLE_WITH_GEAR(NAME,VICTYPE,AMOUNT,GEAR)         \
+    _logiVicToAdd = [VICTYPE, AMOUNT, GEAR, ""];                \
+    GET_VAR(LOGIVIC_VAR(NAME,Vics),[]) pushBack _logiVicToAdd
+
+#define SET_CUSTOM_NAME(NAME) _logiVicToAdd set [3, NAME]
 
 #define ROLES_VAR(NAME) LOGIVIC_VAR(NAME,Roles)
 #define SET_ROLES(NAME,ROLESARRAY) SET_VAR(LOGIVIC_VAR(NAME,Roles),(ROLESARRAY apply {toLower _x}),false)

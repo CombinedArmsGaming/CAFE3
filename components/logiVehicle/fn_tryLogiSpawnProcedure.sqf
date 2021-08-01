@@ -1,4 +1,4 @@
-/*  
+/*
 	Attempt to spawn an object at a logi vic.  Decrement the remaining stock only if the object survives the spawning process.
 
 	Author: Joecuronium and Bubbus
@@ -20,6 +20,7 @@ params ["_logiVic", "_spawnIndex"];
 private _type = _logiVic getVariable [LOGIVIC_VAR_DYNAMIC(_spawnIndex,"type"), ""];
 private _remaining = _logiVic getVariable [LOGIVIC_VAR_DYNAMIC(_spawnIndex,"amount"), 0];
 private _gear = _logiVic getVariable [LOGIVIC_VAR_DYNAMIC(_spawnIndex,"gear"), ""];
+private _text = _logiVic getVariable [LOGIVIC_VAR_DYNAMIC(_spawnIndex,"text"), ""];
 
 if (_remaining <= 0) exitWith
 {
@@ -27,7 +28,7 @@ if (_remaining <= 0) exitWith
 	false
 };
 
-private _spawnSuccess = [_type, _logiVic, _gear] call f_fnc_logiDoSpawnVehicle;
+private _spawnSuccess = [_type, _logiVic, _gear, _text] call f_fnc_logiDoSpawnVehicle;
 
 if (_spawnSuccess) then
 {
