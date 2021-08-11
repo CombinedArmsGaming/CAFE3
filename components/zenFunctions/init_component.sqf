@@ -88,5 +88,10 @@ if !(isNil 'zen_custom_modules_fnc_register') then
     _playIntro = { [] call f_fnc_zen_playIntro };
 
     ["[CA2] Misc", "Play Mission Intro", _playIntro] call zen_custom_modules_fnc_register;
-    
+
+
+    // Logistics.
+
+    ["[CA2] Logistics", "Create / restock logi vehicle", f_fnc_zen_makeLogiVehicle] call zen_custom_modules_fnc_register;
+
 };

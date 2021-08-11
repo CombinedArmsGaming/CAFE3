@@ -12,6 +12,7 @@ class zenFunctions_client
 	class zen_woundGroupRandomly{};
 	class zen_woundGroupRandomlyAdvanced{};
 	class zen_playIntro{};
+	class zen_makeLogiVehicle{};
 };
 class zenFunctions_server
 {
