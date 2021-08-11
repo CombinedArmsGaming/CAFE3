@@ -10,6 +10,7 @@
 
 	Returns:
 	The action array.
+
 */
 
 #include "macros.hpp"

@@ -1,12 +1,12 @@
 /*
-	Script to create an action on an object which allows to spawn in new vehicles.
+	Script to create logi action on an object which allows to spawn in new vehicles.
 
 	Author: Bubbus and Joecuronium
 
 	Passable arguments:
-	0: logi type - as defined in the logi configuration.
-	1: spawn index - numeric ideitifier of the object to spawn.  ordered by configuration order.
-	2: object to create action on
+	0: object to create action on
+	1: logi type - as defined in the logi configuration.
+
 */
 
 #include "macros.hpp"

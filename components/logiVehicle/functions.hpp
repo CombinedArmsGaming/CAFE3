@@ -8,6 +8,5 @@ class logiVehicle
     class logiDoSpawnVehicle{};
     class setLogiVehicle{};
     class setLogiVehiclePlayer{};
-    class setLogiVehicleSpawnsRemaining{};
     class tryLogiSpawnProcedure{};
 };

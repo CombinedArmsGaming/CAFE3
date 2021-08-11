@@ -9,9 +9,11 @@
 	0: Class of object to create.
 	1: Logi vic to spawn object from.
 	2: Gearscript to apply to the object.
+	3: The name of the object, to be displayed to the user.
 
 	Returns:
 	true iff object was sucessfully spawned (e.g. was created and did not explode).
+
 */
 
 #include "macros.hpp"

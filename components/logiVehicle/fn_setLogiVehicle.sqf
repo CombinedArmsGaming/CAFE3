@@ -6,6 +6,7 @@
 	Passable arguments:
 	0: object to create action on
 	1: logi type - as defined in the logi configuration.
+
 */
 
 #include "macros.hpp"
@@ -61,7 +62,7 @@ if (_existingLogiType isEqualTo "") exitWith
 			_this setVariable ["ace_rearm_currentSupply", 10000, true];
 			sleep 10;
 		};
-		
+
 	};
 
 	// Wait a while to ensure that networked vars have propagated.

@@ -9,6 +9,7 @@
 
 	Returns:
 	true iff an object was successfully spawned and did not immediately die.
+
 */
 
 #include "macros.hpp"
