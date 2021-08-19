@@ -25,6 +25,7 @@ _group setVariable ["f_cached", true, true];
             if !(_isLeader or _isDriver) then
             {
                 _x enableSimulationGlobal false;
+                _x hideObjectGlobal true;
             };
 
         };
@@ -37,6 +38,7 @@ _group setVariable ["f_cached", true, true];
             if !(_isCrew) then
             {
                 _x enableSimulationGlobal false;
+                _x hideObjectGlobal true;
             };
 
         };
@@ -50,6 +52,7 @@ _group setVariable ["f_cached", true, true];
             if !(_isLeader or _isCrew) then
             {
                 _x enableSimulationGlobal false;
+                _x hideObjectGlobal true;
             };
 
         };
@@ -62,6 +65,7 @@ _group setVariable ["f_cached", true, true];
             if !(_isDriver) then
             {
                 _x enableSimulationGlobal false;
+                _x hideObjectGlobal true;
             };
 
         };
@@ -69,6 +73,7 @@ _group setVariable ["f_cached", true, true];
         case AI_CACHE_ALL:
         {
             _x enableSimulationGlobal false;
+            _x hideObjectGlobal true;
         };
 
         default
@@ -77,20 +82,6 @@ _group setVariable ["f_cached", true, true];
         };
 
     };
-
-
-    // All unit's are hidden
-    _x hideObjectGlobal true;
-
-    if (_aggressiveness == 3) then
-    {
-        if (vehicle _x isEqualTo _x) then
-        {
-            (vehicle _x) hideObjectGlobal true
-        };
-
-    };
-
 
     sleep 0.1;
 
