@@ -110,6 +110,12 @@ class AddonsMetaData
 		};
 	};
 };
+dlcs[]=
+{
+	"ORANGE",
+	"3den_objects_mod",
+	"AoW"
+};
 randomSeed=1116085;
 class ScenarioData
 {
@@ -7993,9 +7999,9 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={180.24098,5,251.94238};
+				position[]={180.241,5,251.942};
 			};
-			init="call{this addCuratorEditableObjects [(vehicles + allUnits),true];}";
+			init="this addCuratorEditableObjects [(vehicles + allUnits),true];";
 			id=106;
 			type="ModuleCurator_F";
 			class CustomAttributes
@@ -8103,9 +8109,9 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={180.3213,5,262.34766};
+				position[]={180.321,5,262.34799};
 			};
-			init="call{this addCuratorEditableObjects [(vehicles + allUnits),true];}";
+			init="this addCuratorEditableObjects [(vehicles + allUnits),true];";
 			id=107;
 			type="ModuleCurator_F";
 			class CustomAttributes
@@ -8259,7 +8265,7 @@ class Mission
 					class Attributes
 					{
 						rank="SERGEANT";
-						init="call{[""ftl"", this] call f_fnc_assignGear;}";
+						init="[""ftl"", this] call f_fnc_assignGear;";
 						description="Fireteam Leader@ALPHA";
 						isPlayable=1;
 					};
@@ -8339,7 +8345,7 @@ class Mission
 					class Attributes
 					{
 						rank="CORPORAL";
-						init="call{[""ar"", this] call f_fnc_assignGear;}";
+						init="[""ar"", this] call f_fnc_assignGear;";
 						description="Autorifleman";
 						isPlayable=1;
 					};
@@ -8419,7 +8425,7 @@ class Mission
 					class Attributes
 					{
 						rank="SERGEANT";
-						init="call{[""med"", this] call f_fnc_assignGear;}";
+						init="[""med"", this] call f_fnc_assignGear;";
 						description="Medic";
 						isPlayable=1;
 					};
@@ -8517,7 +8523,7 @@ class Mission
 					flags=4;
 					class Attributes
 					{
-						init="call{[""mk"", this] call f_fnc_assignGear;}";
+						init="[""mk"", this] call f_fnc_assignGear;";
 						description="Marksman";
 						isPlayable=1;
 					};
@@ -8590,13 +8596,13 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={328.21088,5.0014391,283.02661};
+						position[]={328.211,5.0014391,283.02698};
 					};
 					side="West";
 					flags=4;
 					class Attributes
 					{
-						init="call{[""aar"", this] call f_fnc_assignGear;}";
+						init="[""aar"", this] call f_fnc_assignGear;";
 						description="Assistant AR";
 						isPlayable=1;
 					};
@@ -8676,7 +8682,7 @@ class Mission
 					class Attributes
 					{
 						rank="CORPORAL";
-						init="call{[""lat"", this] call f_fnc_assignGear;}";
+						init="[""lat"", this] call f_fnc_assignGear;";
 						description="Anti-tank";
 						isPlayable=1;
 					};
@@ -8755,7 +8761,7 @@ class Mission
 				class Attribute0
 				{
 					property="groupID";
-					expression="[_this, _value] call CBA_fnc_setCallsign";
+					expression="                            if (isNil 'CBA_fnc_setCallsign') then {                                _this setGroupID [_value];                            } else {                                [_this, _value] call CBA_fnc_setCallsign;                            };                        ";
 					class Value
 					{
 						class data
@@ -8798,14 +8804,14 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={323.41168,5.1867056,294.81482};
+				position[]={323.41199,5.1867056,294.815};
 				angles[]={0,1.4853275,0};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
-				init="call{[""crate_small"", this, ""blu_f""] call f_fnc_assignGear;}";
+				init="[""crate_small"", this, ""blu_f""] call f_fnc_assignGear;";
 			};
 			id=1143;
 			type="Box_NATO_WpsSpecial_F";
@@ -8815,14 +8821,14 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={321.89154,5.8924227,293.99286};
+				position[]={321.892,5.8924227,293.99301};
 				angles[]={0,0.90228283,0};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
-				init="call{[""crate_med"", this, ""blu_f""] call f_fnc_assignGear;}";
+				init="[""crate_med"", this, ""blu_f""] call f_fnc_assignGear;";
 			};
 			id=1144;
 			type="B_supplyCrate_F";
@@ -8843,7 +8849,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],true]";
+							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],false]";
 						};
 					};
 				};
@@ -8869,7 +8875,7 @@ class Mission
 					class Attributes
 					{
 						rank="SERGEANT";
-						init="call{[""ftl"", this] call f_fnc_assignGear;}";
+						init="[""ftl"", this] call f_fnc_assignGear;";
 						description="Fireteam Leader@BRAVO";
 						isPlayable=1;
 					};
@@ -8942,14 +8948,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={324.65186,5.0014391,256.49158};
+						position[]={324.65201,5.0014391,256.49197};
 					};
 					side="West";
 					flags=4;
 					class Attributes
 					{
 						rank="CORPORAL";
-						init="call{[""ar"", this] call f_fnc_assignGear;}";
+						init="[""ar"", this] call f_fnc_assignGear;";
 						description="Autorifleman";
 						isPlayable=1;
 					};
@@ -9029,7 +9035,7 @@ class Mission
 					class Attributes
 					{
 						rank="SERGEANT";
-						init="call{[""med"", this] call f_fnc_assignGear;}";
+						init="[""med"", this] call f_fnc_assignGear;";
 						description="Medic";
 						isPlayable=1;
 					};
@@ -9121,13 +9127,13 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={314.76685,5.0014391,255.43658};
+						position[]={314.767,5.0014391,255.437};
 					};
 					side="West";
 					flags=4;
 					class Attributes
 					{
-						init="call{[""mk"", this] call f_fnc_assignGear;}";
+						init="[""mk"", this] call f_fnc_assignGear;";
 						description="Marksman";
 						isPlayable=1;
 					};
@@ -9200,13 +9206,13 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={326.15887,5.0014391,251.36359};
+						position[]={326.159,5.0014391,251.364};
 					};
 					side="West";
 					flags=4;
 					class Attributes
 					{
-						init="call{[""aar"", this] call f_fnc_assignGear;}";
+						init="[""aar"", this] call f_fnc_assignGear;";
 						description="Assistant AR";
 						isPlayable=1;
 					};
@@ -9279,14 +9285,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={319.55487,5.0014391,258.59857};
+						position[]={319.55499,5.0014391,258.599};
 					};
 					side="West";
 					flags=4;
 					class Attributes
 					{
 						rank="CORPORAL";
-						init="call{[""lat"", this] call f_fnc_assignGear;}";
+						init="[""lat"", this] call f_fnc_assignGear;";
 						description="Anti-tank";
 						isPlayable=1;
 					};
@@ -9365,7 +9371,7 @@ class Mission
 				class Attribute0
 				{
 					property="groupID";
-					expression="[_this, _value] call CBA_fnc_setCallsign";
+					expression="                            if (isNil 'CBA_fnc_setCallsign') then {                                _this setGroupID [_value];                            } else {                                [_this, _value] call CBA_fnc_setCallsign;                            };                        ";
 					class Value
 					{
 						class data
@@ -9408,14 +9414,14 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={321.35962,5.1867056,263.15204};
+				position[]={321.35999,5.1867056,263.15201};
 				angles[]={0,1.4853275,0};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
-				init="call{[""crate_small"", this, ""blu_f""] call f_fnc_assignGear;}";
+				init="[""crate_small"", this, ""blu_f""] call f_fnc_assignGear;";
 			};
 			id=1152;
 			type="Box_NATO_WpsSpecial_F";
@@ -9425,14 +9431,14 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={319.83948,5.8924227,262.33008};
+				position[]={319.83899,5.8924227,262.32999};
 				angles[]={0,0.90228283,0};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
-				init="call{[""crate_med"", this, ""blu_f""] call f_fnc_assignGear;}";
+				init="[""crate_med"", this, ""blu_f""] call f_fnc_assignGear;";
 			};
 			id=1153;
 			type="B_supplyCrate_F";
@@ -9453,7 +9459,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],true]";
+							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],false]";
 						};
 					};
 				};
@@ -9472,14 +9478,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={322.64087,5.0014391,228.93158};
+						position[]={322.64099,5.0014391,228.93201};
 					};
 					side="West";
 					flags=6;
 					class Attributes
 					{
 						rank="SERGEANT";
-						init="call{[""ftl"", this] call f_fnc_assignGear;}";
+						init="[""ftl"", this] call f_fnc_assignGear;";
 						description="Fireteam Leader@CHARLIE";
 						isPlayable=1;
 					};
@@ -9552,14 +9558,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={323.77686,5.0014391,224.08759};
+						position[]={323.77701,5.0014391,224.088};
 					};
 					side="West";
 					flags=4;
 					class Attributes
 					{
 						rank="CORPORAL";
-						init="call{[""ar"", this] call f_fnc_assignGear;}";
+						init="[""ar"", this] call f_fnc_assignGear;";
 						description="Autorifleman";
 						isPlayable=1;
 					};
@@ -9632,14 +9638,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={319.86786,5.0014391,221.96558};
+						position[]={319.86801,5.0014391,221.966};
 					};
 					side="West";
 					flags=4;
 					class Attributes
 					{
 						rank="SERGEANT";
-						init="call{[""med"", this] call f_fnc_assignGear;}";
+						init="[""med"", this] call f_fnc_assignGear;";
 						description="Medic";
 						isPlayable=1;
 					};
@@ -9731,13 +9737,13 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={313.89087,5.0014391,223.03259};
+						position[]={313.89099,5.0014391,223.033};
 					};
 					side="West";
 					flags=4;
 					class Attributes
 					{
-						init="call{[""mk"", this] call f_fnc_assignGear;}";
+						init="[""mk"", this] call f_fnc_assignGear;";
 						description="Marksman";
 						isPlayable=1;
 					};
@@ -9810,13 +9816,13 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={325.28387,5.0014391,218.95959};
+						position[]={325.284,5.0014391,218.96001};
 					};
 					side="West";
 					flags=4;
 					class Attributes
 					{
-						init="call{[""aar"", this] call f_fnc_assignGear;}";
+						init="[""aar"", this] call f_fnc_assignGear;";
 						description="Assistant AR";
 						isPlayable=1;
 					};
@@ -9889,14 +9895,14 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={318.67987,5.0014391,226.1936};
+						position[]={318.67999,5.0014391,226.194};
 					};
 					side="West";
 					flags=4;
 					class Attributes
 					{
 						rank="CORPORAL";
-						init="call{[""lat"", this] call f_fnc_assignGear;}";
+						init="[""lat"", this] call f_fnc_assignGear;";
 						description="Anti-tank";
 						isPlayable=1;
 					};
@@ -9975,7 +9981,7 @@ class Mission
 				class Attribute0
 				{
 					property="groupID";
-					expression="[_this, _value] call CBA_fnc_setCallsign";
+					expression="                            if (isNil 'CBA_fnc_setCallsign') then {                                _this setGroupID [_value];                            } else {                                [_this, _value] call CBA_fnc_setCallsign;                            };                        ";
 					class Value
 					{
 						class data
@@ -10018,14 +10024,14 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={320.48419,5.1867056,230.74744};
+				position[]={320.48401,5.1867056,230.74699};
 				angles[]={0,1.4853275,0};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
-				init="call{[""crate_small"", this, ""blu_f""] call f_fnc_assignGear;}";
+				init="[""crate_small"", this, ""blu_f""] call f_fnc_assignGear;";
 			};
 			id=1161;
 			type="Box_NATO_WpsSpecial_F";
@@ -10035,14 +10041,14 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={318.96405,5.8924227,229.92548};
+				position[]={318.96399,5.8924227,229.925};
 				angles[]={0,0.90228283,0};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
-				init="call{[""crate_med"", this, ""blu_f""] call f_fnc_assignGear;}";
+				init="[""crate_med"", this, ""blu_f""] call f_fnc_assignGear;";
 			};
 			id=1162;
 			type="B_supplyCrate_F";
@@ -10063,7 +10069,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],true]";
+							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],false]";
 						};
 					};
 				};
@@ -10075,14 +10081,14 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={361.19757,5.1867056,261.35858};
+				position[]={361.198,5.1867056,261.35901};
 				angles[]={0,1.4853275,0};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
-				init="call{[""crate_small"", this, ""blu_f""] call f_fnc_assignGear;}";
+				init="[""crate_small"", this, ""blu_f""] call f_fnc_assignGear;";
 			};
 			id=1171;
 			type="Box_NATO_WpsSpecial_F";
@@ -10092,14 +10098,14 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={359.67743,5.8924227,260.53662};
+				position[]={359.677,5.8924227,260.53699};
 				angles[]={0,0.90228283,0};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
-				init="call{[""crate_med"", this, ""blu_f""] call f_fnc_assignGear;}";
+				init="[""crate_med"", this, ""blu_f""] call f_fnc_assignGear;";
 			};
 			id=1172;
 			type="B_supplyCrate_F";
@@ -10120,7 +10126,7 @@ class Mission
 									"STRING"
 								};
 							};
-							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],true]";
+							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],false]";
 						};
 					};
 				};
@@ -10132,9 +10138,9 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={180.64395,5,241.87256};
+				position[]={180.644,5,241.873};
 			};
-			init="call{this addCuratorEditableObjects [(vehicles + allUnits),true];}";
+			init="this addCuratorEditableObjects [(vehicles + allUnits),true];";
 			id=1177;
 			type="ModuleCurator_F";
 			class CustomAttributes
@@ -10252,7 +10258,7 @@ class Mission
 			position[]={253.701,5,351.11499};
 			class Attributes
 			{
-				condition="call{thisList call f_fnc_ignoreZeus}";
+				condition="thisList call f_fnc_ignoreZeus";
 				activationBy="ANY";
 			};
 			id=1282;
@@ -10263,13 +10269,13 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={286.22809,5.8924227,259.73706};
+				position[]={286.228,5.8924227,259.737};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
-				init="call{[this, ""weapons""] call f_fnc_assignLoot;}";
+				init="[this, ""weapons""] call f_fnc_assignLoot;";
 			};
 			id=1308;
 			type="C_IDAP_supplyCrate_F";
@@ -10302,13 +10308,13 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={286.57715,5.8924227,255.72797};
+				position[]={286.577,5.8924227,255.728};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
-				init="call{[this, ""weapons""] call f_fnc_assignLoot;}";
+				init="[this, ""weapons""] call f_fnc_assignLoot;";
 			};
 			id=1309;
 			type="C_IDAP_supplyCrate_F";
@@ -10341,13 +10347,13 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={287.33679,5.8924227,251.30542};
+				position[]={287.33701,5.8924227,251.30499};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
-				init="call{[this, ""weapons""] call f_fnc_assignLoot;}";
+				init="[this, ""weapons""] call f_fnc_assignLoot;";
 			};
 			id=1310;
 			type="C_IDAP_supplyCrate_F";
@@ -10380,13 +10386,13 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={287.61249,5.8924227,247.36304};
+				position[]={287.612,5.8924227,247.36301};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
-				init="call{[this, ""weapons""] call f_fnc_assignLoot;}";
+				init="[this, ""weapons""] call f_fnc_assignLoot;";
 			};
 			id=1311;
 			type="C_IDAP_supplyCrate_F";
@@ -10433,7 +10439,7 @@ class Mission
 					class Attributes
 					{
 						rank="LIEUTENANT";
-						init="call{[""co"", this] call f_fnc_assignGear;}";
+						init="[""co"", this] call f_fnc_assignGear;";
 						description="Commander@COMMAND";
 						isPlayable=1;
 					};
@@ -10513,7 +10519,7 @@ class Mission
 					class Attributes
 					{
 						rank="SERGEANT";
-						init="call{[""fac"", this] call f_fnc_assignGear;}";
+						init="[""fac"", this] call f_fnc_assignGear;";
 						description="Forward Air Controller";
 						isPlayable=1;
 					};
@@ -10593,7 +10599,7 @@ class Mission
 					class Attributes
 					{
 						rank="LIEUTENANT";
-						init="call{[""co"", this] call f_fnc_assignGear;}";
+						init="[""co"", this] call f_fnc_assignGear;";
 						description="Deputy Commander";
 						isPlayable=1;
 					};
@@ -10673,7 +10679,7 @@ class Mission
 					class Attributes
 					{
 						rank="SERGEANT";
-						init="call{[""med"", this] call f_fnc_assignGear;}";
+						init="[""med"", this] call f_fnc_assignGear;";
 						description="Assistant Medic";
 						isPlayable=1;
 					};
@@ -10772,7 +10778,7 @@ class Mission
 					class Attributes
 					{
 						rank="LIEUTENANT";
-						init="call{[""med"", this] call f_fnc_assignGear;}";
+						init="[""med"", this] call f_fnc_assignGear;";
 						description="Medic";
 						isPlayable=1;
 					};
@@ -10870,7 +10876,7 @@ class Mission
 					flags=4;
 					class Attributes
 					{
-						init="call{[""gren"", this] call f_fnc_assignGear;}";
+						init="[""gren"", this] call f_fnc_assignGear;";
 						description="Grenadier";
 						isPlayable=1;
 					};
@@ -10950,7 +10956,7 @@ class Mission
 					class Attributes
 					{
 						rank="CORPORAL";
-						init="call{[""mk"", this] call f_fnc_assignGear;}";
+						init="[""mk"", this] call f_fnc_assignGear;";
 						description="Marksman";
 						isPlayable=1;
 					};
@@ -11029,7 +11035,7 @@ class Mission
 				class Attribute0
 				{
 					property="groupID";
-					expression="[_this, _value] call CBA_fnc_setCallsign";
+					expression="                            if (isNil 'CBA_fnc_setCallsign') then {                                _this setGroupID [_value];                            } else {                                [_this, _value] call CBA_fnc_setCallsign;                            };                        ";
 					class Value
 					{
 						class data
@@ -11079,7 +11085,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={191.7552,5.0014391,252.27264};
+						position[]={191.755,5.0014391,252.27301};
 					};
 					side="West";
 					flags=7;
@@ -11087,7 +11093,7 @@ class Mission
 					{
 						skill=1;
 						rank="COLONEL";
-						init="call{[""zeus"", this] call f_fnc_assignGear;}";
+						init="[""zeus"", this] call f_fnc_assignGear;";
 						name="zeus_ply";
 						description="Zeus Player@Zeus";
 						isPlayer=1;
@@ -11238,7 +11244,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={191.90739,5.0014391,241.92256};
+						position[]={191.907,5.0014391,241.923};
 					};
 					side="West";
 					flags=5;
@@ -11246,7 +11252,7 @@ class Mission
 					{
 						skill=1;
 						rank="COLONEL";
-						init="call{[""zeus"", this] call f_fnc_assignGear;}";
+						init="[""zeus"", this] call f_fnc_assignGear;";
 						name="zeus_ply_1";
 						description="Zeus Player 2";
 						isPlayable=1;
@@ -11402,7 +11408,7 @@ class Mission
 				class Attribute0
 				{
 					property="groupID";
-					expression="[_this, _value] call CBA_fnc_setCallsign";
+					expression="                            if (isNil 'CBA_fnc_setCallsign') then {                                _this setGroupID [_value];                            } else {                                [_this, _value] call CBA_fnc_setCallsign;                            };                        ";
 					class Value
 					{
 						class data
@@ -11666,13 +11672,13 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={203.87274,6.0308199,251.93115};
+				position[]={203.873,6.0308199,251.931};
 			};
 			side="Empty";
 			flags=4;
 			class Attributes
 			{
-				init="call{[this, ""blu_f""] call f_fnc_createLoadoutLocker;}";
+				init="[this, ""blu_f""] call f_fnc_createLoadoutLocker;";
 				name="LoadoutLocker_BLUFOR";
 			};
 			id=1345;
