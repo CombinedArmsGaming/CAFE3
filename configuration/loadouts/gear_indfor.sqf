@@ -107,7 +107,7 @@ CREATE_LOADOUT(med,_baseLoadout);
 COPY_ADDONS(med,rif);
 
 
-// Combat Lifeasver Loadout
+// Combat Lifeserver Loadout
 
 _baseLoadout = [["arifle_Mk20C_F","","acc_flashlight","optic_Aco",["30Rnd_556x45_Stanag",30],[],""],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_I_CombatUniform_shortsleeve",[["ACRE_PRC343_ID_15",1],["ACRE_PRC148_ID_3",1],["ACRE_PRC152",1],["ACE_bloodIV",1],["ACE_bloodIV_500",1]]],["V_PlateCarrierIA1_dgtl",[["ACE_bloodIV",3],["ACE_bloodIV_500",1],["SmokeShell",4,1],["30Rnd_556x45_Stanag",5,30],["30Rnd_556x45_Stanag_Tracer_Yellow",2,30],["9Rnd_45ACP_Mag",2,8]]],["B_Kitbag_rgr",[["ACE_morphine",15],["ACE_epinephrine",10],["ACE_fieldDressing",10],["ACE_packingBandage",20],["ACE_elasticBandage",20],["ACE_bloodIV_500",5],["ACE_adenosine",5],["ACE_bloodIV",8],["ACE_splint",20],["ACE_tourniquet",10],["ACE_surgicalKit",1],["ACE_EntrenchingTool",1]]],"H_HelmetIA_net","G_Lowprofile",["Binocular","","","",[],[],""],["ItemMap","ItemGPS","","ItemCompass","ItemWatch","NVGoggles_INDEP"]];
 

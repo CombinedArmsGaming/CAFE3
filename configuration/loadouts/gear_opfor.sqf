@@ -104,7 +104,7 @@ CREATE_LOADOUT(med,_baseLoadout);
 COPY_ADDONS(med,rif);
 
 
-// Combat Lifeasver Loadout
+// Combat Lifeasser Loadout
 
 _baseLoadout = [["arifle_Katiba_C_F","","acc_flashlight","optic_Aco",["30Rnd_65x39_caseless_green",30],[],""],[],["hgun_Rook40_F","","","",["16Rnd_9x21_Mag",17],[],""],["U_O_CombatUniform_ocamo",[["ACE_bloodIV",1],["ACE_bloodIV_500",1],["ACRE_PRC343_ID_18",1],["ACRE_PRC152_ID_1",1],["ACRE_PRC148_ID_4",1]]],["V_HarnessO_brn",[["ACE_bloodIV",4],["HandGrenade",2,1],["SmokeShell",4,1],["30Rnd_65x39_caseless_green",5,30],["30Rnd_65x39_caseless_green_mag_Tracer",2,30],["16Rnd_9x21_Mag",1,17]]],["B_Kitbag_cbr",[["ACE_morphine",15],["ACE_epinephrine",10],["ACE_fieldDressing",10],["ACE_packingBandage",20],["ACE_elasticBandage",20],["ACE_bloodIV_500",5],["ACE_adenosine",5],["ACE_bloodIV",8],["ACE_splint",20],["ACE_tourniquet",10],["ACE_surgicalKit",1],["ACE_EntrenchingTool",1]]],"H_HelmetO_ocamo","G_Combat",[],["ItemMap","ItemGPS","","ItemCompass","ItemWatch","NVGoggles"]];
 
