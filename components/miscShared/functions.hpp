@@ -31,4 +31,5 @@ class miscShared
     class edenScaleSupport{};
     class inGameScaleSupport{};
     class getAllObjectVariablesInNamespace{};
+    class getUnitConfiguredSide{};
 };

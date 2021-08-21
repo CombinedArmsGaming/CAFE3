@@ -23,7 +23,7 @@ LOAD_GLOBALS(squadMarkers)
 
 //LOAD_GLOBALS(miscClient)
 
-//LOAD_GLOBALS(miscShared)
+LOAD_GLOBALS(miscShared)
 
 //LOAD_GLOBALS(respawnWaves)
 
