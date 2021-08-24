@@ -1,4 +1,4 @@
-#include "macros.hpp"
+#include "../macros.hpp"
 
 params ["_unit"];
 
@@ -8,5 +8,5 @@ if (isNull _unit) then
 }
 else
 {
-	[_unit] remoteExec ["f_fnc_zen_doWoundUnitRandomly", 2];
+	[_unit] remoteExec ["f_fnc_woundUnitRandomly", 2];
 };

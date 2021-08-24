@@ -32,4 +32,5 @@ class miscShared
     class inGameScaleSupport{};
     class getAllObjectVariablesInNamespace{};
     class getUnitConfiguredSide{};
+    class woundUnitRandomly{};
 };

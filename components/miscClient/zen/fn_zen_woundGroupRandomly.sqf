@@ -1,4 +1,4 @@
-#include "macros.hpp"
+#include "../macros.hpp"
 
 params ["_unit"];
 
@@ -10,7 +10,7 @@ else
 {
 	_group = group _unit;
 	{
-		[_x] remoteExec ["f_fnc_zen_doWoundUnitRandomly", 2];
+		[_x] remoteExec ["f_fnc_woundUnitRandomly", 2];
 	} foreach units _group;
 
 };

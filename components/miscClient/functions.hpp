@@ -16,3 +16,12 @@ class miscClient_ui
     class subtitleText_onLoad{};
     class createSubtitleText{};
 };
+class miscClient_zen
+{
+    file = "components\miscClient\zen";
+    class zen_playIntro{};
+	class zen_woundUnitRandomly{};
+	class zen_woundUnitRandomlyAdvanced{};
+	class zen_woundGroupRandomly{};
+	class zen_woundGroupRandomlyAdvanced{};
+};
