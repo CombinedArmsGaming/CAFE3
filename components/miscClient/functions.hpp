@@ -23,5 +23,8 @@ class miscClient_zen
 	class zen_woundUnitRandomly{};
 	class zen_woundUnitRandomlyAdvanced{};
 	class zen_woundGroupRandomly{};
-	class zen_woundGroupRandomlyAdvanced{};
+    class zen_woundGroupRandomlyAdvanced{};
+    class zen_toggleLambsReinforcementGroup{};
+    class zen_createJammer{};
+	class zen_removeJammers{};
 };
