@@ -1,5 +1,7 @@
 #include "macros.hpp"
 
+CLIENT_ONLY;
+
 params ["_position", "_object"];
 
 if (isNull _object) exitWith

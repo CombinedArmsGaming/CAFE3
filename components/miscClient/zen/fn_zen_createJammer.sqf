@@ -1,7 +1,9 @@
 /*
 	Created By: Gibbs
 */
-#include "macros.hpp"
+#include "../macros.hpp"
+
+CLIENT_ONLY;
 
 params ["_object"];
 
@@ -21,6 +23,7 @@ else
 		_dialogValues params ["_jammerType", "_jammerRange"];
 		_args params ["_object"];
 		[_object, _jammerType, _jammerRange] remoteExec ["f_fnc_addJammerToObject", 2];
+	    ["Adding jammer to '%1'.", _object] call zen_common_fnc_showMessage;
 	},
 	{},
 	[_object]] call zen_dialog_fnc_create;

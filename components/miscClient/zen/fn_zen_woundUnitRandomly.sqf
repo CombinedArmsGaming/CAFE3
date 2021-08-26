@@ -1,10 +1,12 @@
 #include "../macros.hpp"
 
+CLIENT_ONLY;
+
 params ["_unit"];
 
 if (isNull _unit) then
 {
-    systemChat "No unit found to wound.";
+    ["No unit found to wound."] call zen_common_fnc_showMessage;
 }
 else
 {

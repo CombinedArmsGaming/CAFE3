@@ -1,8 +1,10 @@
-#include "macros.hpp"
+#include "../macros.hpp"
 
 // By: Gibbs!
 
 // Toggles LAMBS Reinforcement on/off for the selected group.
+
+CLIENT_ONLY;
 
 params ["_object"];
 
