@@ -2,9 +2,9 @@ call
 {
     [
         "[CA2] Logistics",
-        "Assign / restock logi vehicle",
-        f_fnc_zen_makeLogiVehicle
+        "Create / refill supply crate",
+        f_fnc_zen_createSupplyCrate
 
     ] call zen_custom_modules_fnc_register;
-    
+
 };
