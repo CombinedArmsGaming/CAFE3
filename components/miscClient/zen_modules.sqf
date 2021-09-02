@@ -87,16 +87,19 @@ call
 
 
     // Create Lambs Reinforcement Toggle
-    // BUB 2021-08-25 TODO :: Wrap this in a LAMBS detecting block like with KYK EW below.
 
-    private _toggleLambsReinforcement = { [_this#1] call f_fnc_zen_toggleLambsReinforcementGroup };
+    if IS_TRUE(lambs_danger) then
+    {
+        private _toggleLambsReinforcement = { [_this#1] call f_fnc_zen_toggleLambsReinforcementGroup };
 
-    [
-        "[CA2] LAMBS",
-        "Toggle LAMBS Reinforcement",
-        _toggleLambsReinforcement
+        [
+            "[CA2] LAMBS",
+            "Toggle LAMBS Reinforcement",
+            _toggleLambsReinforcement
 
-    ] call zen_custom_modules_fnc_register;
+        ] call zen_custom_modules_fnc_register;
+
+    };
 
 
     // Jammer Modules
