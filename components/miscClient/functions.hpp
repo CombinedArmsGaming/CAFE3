@@ -27,5 +27,7 @@ class miscClient_zen
     class zen_toggleLambsReinforcementGroup{};
     class zen_createJammer{};
 	class zen_removeJammers{};
-	class zen_immersiveRevive{};
+    class zen_immersiveRevive{};
+    class zen_healWounds{};
+	class zen_fixOverdose{};
 };

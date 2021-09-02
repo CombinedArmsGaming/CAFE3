@@ -35,4 +35,6 @@ class miscShared
     class addJammerToObject{};
     class removeJammersFromObject{};
     class immersiveRevive{};
+    class healWounds{};
+    class fixOverdose{};
 };

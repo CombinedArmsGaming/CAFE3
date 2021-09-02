@@ -66,6 +66,26 @@ call
     ] call zen_custom_modules_fnc_register;
 
 
+    private _healWounds = { [_this#1] call f_fnc_zen_healWounds };
+
+    [
+        _category,
+        "Heal Wounds Only (Unit)",
+        _healWounds
+
+    ] call zen_custom_modules_fnc_register;
+
+
+    private _fixOverdose = { [_this#1] call f_fnc_zen_fixOverdose };
+
+    [
+        _category,
+        "Fix Overdose (Unit)",
+        _fixOverdose
+
+    ] call zen_custom_modules_fnc_register;
+
+
     // Create Lambs Reinforcement Toggle
     // BUB 2021-08-25 TODO :: Wrap this in a LAMBS detecting block like with KYK EW below.
 
@@ -105,5 +125,5 @@ call
         ] call zen_custom_modules_fnc_register;
 
     };
-    
+
 };
