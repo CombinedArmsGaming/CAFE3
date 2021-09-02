@@ -56,6 +56,16 @@ call
     ] call zen_custom_modules_fnc_register;
 
 
+    private _immersiveHeal = { [_this#1] call f_fnc_zen_immersiveRevive };
+
+    [
+        _category,
+        "Immersive Revive (Unit)",
+        _immersiveHeal
+
+    ] call zen_custom_modules_fnc_register;
+
+
     // Create Lambs Reinforcement Toggle
     // BUB 2021-08-25 TODO :: Wrap this in a LAMBS detecting block like with KYK EW below.
 

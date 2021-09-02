@@ -34,4 +34,5 @@ class miscShared
     class woundUnitRandomly{};
     class addJammerToObject{};
     class removeJammersFromObject{};
+    class immersiveRevive{};
 };
