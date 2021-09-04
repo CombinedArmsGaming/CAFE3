@@ -1,4 +1,6 @@
-#include "macros.hpp"
+#include "../macros.hpp"
+
+SERVER_ONLY;
 
 params ["_position", ["_side", west]];
 

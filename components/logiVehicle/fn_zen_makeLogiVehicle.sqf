@@ -1,5 +1,6 @@
 #include "macros.hpp"
-#include "../../../logi_macros.hpp"
+
+CLIENT_ONLY;
 
 params ["_position", "_object"];
 

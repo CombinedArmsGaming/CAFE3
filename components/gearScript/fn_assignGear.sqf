@@ -103,5 +103,8 @@ if (isPlayer _unit) then
 }
 else
 {
-    [_unit, _gearVariant] call f_fnc_applyFactionIdentity;
+    if (_unit isKindOf "CAManBase") then
+    {
+        [_unit, _gearVariant] call f_fnc_applyFactionIdentity;
+    };
 };

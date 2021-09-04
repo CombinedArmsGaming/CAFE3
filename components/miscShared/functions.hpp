@@ -23,7 +23,6 @@ class miscShared
     class factionToSideName{};
     class reapplyInsigniaLocal{};
     class getObjectUid{};
-    class createPlayerSpawner{};
     class addObjectsToAllZeuses{};
     class addCustomSettings{};
     class canPlayerOfSideRespawn{};
@@ -32,4 +31,10 @@ class miscShared
     class inGameScaleSupport{};
     class getAllObjectVariablesInNamespace{};
     class getUnitConfiguredSide{};
+    class woundUnitRandomly{};
+    class addJammerToObject{};
+    class removeJammersFromObject{};
+    class immersiveRevive{};
+    class healWounds{};
+    class fixOverdose{};
 };

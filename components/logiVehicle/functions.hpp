@@ -10,3 +10,8 @@ class logiVehicle
     class setLogiVehiclePlayer{};
     class tryLogiSpawnProcedure{};
 };
+class logiVehicle_zen
+{
+    file = "components\logiVehicle";
+	class zen_makeLogiVehicle{};
+};

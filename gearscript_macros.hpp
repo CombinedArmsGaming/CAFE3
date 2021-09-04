@@ -1,16 +1,25 @@
 
 #define FACTION NONE
 
-#define BEGIN_LOADOUTS CONCAT3(f_loadouts_,CONCAT(FACTION,_),registry) = []
-#define ADD_LOADOUT_TO_REGISTRY(NAME) CONCAT3(f_loadouts_,CONCAT(FACTION,_),registry) pushBack #NAME
-
 #define LOADOUT_VAR(NAME) CONCAT3(f_loadouts_,CONCAT(FACTION,_),NAME)
 #define LOADOUT_VAR_DYNAMIC(SIDE,NAME) (missionNamespace getVariable [format ["f_loadouts_%1_%2", SIDE, NAME], []])
 
-#define LOADOUT_ITEM_VAR(NAME,ITEM) CONCAT3(LOADOUT_VAR(NAME),_,ITEM)
-#define LOADOUT_ITEM_VAR_DYNAMIC(SIDE,NAME,ITEM) (missionNamespace getVariable [format ["f_loadouts_%1_%2_%3", SIDE, NAME, ITEM], []])
+#define LOADOUT_REGISTRY LOADOUT_VAR(registry)
+#define CRATE_REGISTRY LOADOUT_VAR(crateRegistry)
 
 #define LOADOUT_REGISTRY_DYNAMIC(SIDE) (missionNamespace getVariable [format ["f_loadouts_%1_registry", SIDE], []])
+#define CRATE_REGISTRY_DYNAMIC(SIDE) (missionNamespace getVariable [format ["f_loadouts_%1_crateRegistry", SIDE], []])
+
+#define BEGIN_LOADOUTS \
+    LOADOUT_REGISTRY = []; \
+    CRATE_REGISTRY = []
+
+#define CRATE(NAME) CONCAT(crate_,NAME)
+#define ADD_LOADOUT_TO_REGISTRY(NAME) LOADOUT_REGISTRY pushBack #NAME
+#define ADD_CRATE_TO_REGISTRY(NAME) CRATE_REGISTRY pushBack STRING(CRATE(NAME))
+
+#define LOADOUT_ITEM_VAR(NAME,ITEM) CONCAT3(LOADOUT_VAR(NAME),_,ITEM)
+#define LOADOUT_ITEM_VAR_DYNAMIC(SIDE,NAME,ITEM) (missionNamespace getVariable [format ["f_loadouts_%1_%2_%3", SIDE, NAME, ITEM], []])
 
 #define HATS_DYNAMIC(SIDE,NAME) LOADOUT_ITEM_VAR_DYNAMIC(SIDE,NAME,"hats")
 #define VESTS_DYNAMIC(SIDE,NAME) LOADOUT_ITEM_VAR_DYNAMIC(SIDE,NAME,"vest")
@@ -68,12 +77,13 @@
 
 
 
-
-#define CRATE_VAR(NAME) LOADOUT_VAR(CONCAT(crate_,NAME))
+#define CRATE_VAR(NAME) LOADOUT_VAR(CRATE(NAME))
 #define CRATE_VAR_DYNAMIC(SIDE,NAME) (missionNamespace getVariable [format ["f_loadouts_%1_crate_%2", SIDE, NAME], []])
 #define CRATE_VAR_EXISTS(SIDE,NAME) !(isNil format ["f_loadouts_%1_crate_%2", SIDE, NAME])
 
-#define CREATE_CRATE(NAME) CRATE_VAR(NAME) = []
+#define CREATE_CRATE(NAME) \
+    CRATE_VAR(NAME) = [];  \
+    ADD_CRATE_TO_REGISTRY(NAME)
 
 #define ADD_ITEMS_TO_CRATE(CRATE,ITEM,AMOUNT) [#FACTION,#CRATE,ITEM,AMOUNT] call f_fnc_addItemsToCrate
 

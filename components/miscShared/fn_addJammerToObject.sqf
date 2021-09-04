@@ -5,7 +5,7 @@
 
 params ["_object", "_jammerType", "_jammerRange"];
 
-switch(_jammerType) do
+switch (_jammerType) do
 {
 	case 0:
 	{
@@ -18,7 +18,7 @@ switch(_jammerType) do
 	case 2:
 	{
 		[_object, 0, _jammerRange, 0, 0, 0, 0] call kyk_ew_fnc_broadcastJammerAdd;
-	};	
+	};
 	case 3:
 	{
 		[_object, 0, 0, _jammerRange, 0, 0, 0] call kyk_ew_fnc_broadcastJammerAdd;
@@ -26,7 +26,7 @@ switch(_jammerType) do
 	case 4:
 	{
 		[_object, 0, 0, 0, _jammerRange, 0, 0] call kyk_ew_fnc_broadcastJammerAdd;
-	};	
+	};
 	case 5:
 	{
 		[_object, 0, 0, 0, 0, _jammerRange, 0] call kyk_ew_fnc_broadcastJammerAdd;
@@ -34,5 +34,5 @@ switch(_jammerType) do
 	case 6:
 	{
 		[_object, 0, 0, 0, 0, 0, _jammerRange] call kyk_ew_fnc_broadcastJammerAdd;
-	};	
+	};
 };

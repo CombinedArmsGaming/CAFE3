@@ -1,10 +1,12 @@
-#include "macros.hpp"
+#include "../macros.hpp"
+
+CLIENT_ONLY;
 
 params ["_unit"];
 
 if (isNull _unit) then
 {
-    systemChat "No unit found to wound.";
+    ["No unit found to wound."] call zen_common_fnc_showMessage;
 }
 else
 {
@@ -19,7 +21,7 @@ else
 		params ["_dialogValues", "_args"];
 		_dialogValues params ["_maxWounds", "_forceWoundTypes", "_forceWoundLocations", "_damageRange"];
 		_args params ["_unit"];
-		[_unit, _maxWounds, _forceWoundTypes, _forceWoundLocations, _damageRange] remoteExec ["f_fnc_zen_doWoundUnitRandomly", 2];
+		[_unit, _maxWounds, _forceWoundTypes, _forceWoundLocations, _damageRange] remoteExec ["f_fnc_woundUnitRandomly", 2];
 
 	},
 	{},

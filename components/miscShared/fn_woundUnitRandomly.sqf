@@ -10,9 +10,9 @@
   4: The range of damage to inflict, Gaussian distro [min, mid, max] <ARRAY<NUMBER, 3>> (default [0, 0.5, 1])
 
   Example Usage:
-  [player] call f_fnc_doWoundunitrandomly
-  [player, 3, ["stab"]] call f_fnc_doWoundunitrandomly
-  [player, 3, nil, ["head", "body"], [0.5, 0.6, 0.9]] call f_fnc_doWoundunitrandomly
+  [player] call f_fnc_woundUnitRandomly
+  [player, 3, ["stab"]] call f_fnc_woundUnitRandomly
+  [player, 3, nil, ["head", "body"], [0.5, 0.6, 0.9]] call f_fnc_woundUnitRandomly
 
 */
 
