@@ -11,5 +11,4 @@ _anchors pushBack _anchor;
 missionNamespace setVariable ["f_var_aiCaching_anchors", _anchors];
 
 [_anchor] remoteExec ["f_fnc_applyCachingAnchorVisibility", 0, _anchor];
-
-["Caching Anchor created.  Nearby AI groups will stay un-cached until it is deleted."] call zen_common_fnc_showMessage;
+[_anchor] call f_fnc_addObjectsToAllZeuses;
