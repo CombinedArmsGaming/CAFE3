@@ -8,7 +8,7 @@
         * Attempts to alter their vitals so they will reliably wake up and then not fall unconscious again immediately.
         * Wakes then up.
 
-    This function uses threshold values from ACE medical, which may be subject to change.  
+    This function uses threshold values from ACE medical, which may be subject to change.
     If ACE medical has changed sunstantially since this function was written, it may no longer work properly.
 
  */
@@ -45,7 +45,7 @@ if !IS_UNCONSCIOUS(_unit) exitWith {};
 DEBUG_FORMAT1_LOG("[REVIVE]: Attempting to revive unit '%1'...",_unit)
 
 // Following example from ACE's fullHeal function, Need to remove cardiac arrest before anything else.
-if IN_CRDC_ARRST(_unit) then 
+if IN_CRDC_ARRST(_unit) then
 {
     ["ace_medical_CPRSucceeded", _unit] call CBA_fnc_localEvent;
 };
@@ -69,14 +69,14 @@ private _shouldResetMeds = _anyDuplicateMeds or _tookMorphineAndAdenosine;
 
 // Enough info gathered, start reviving unit.
 if (_shouldReplaceBlood) then
-{    
+{
     DEBUG_FORMAT2_LOG("[REVIVE]: Replacing blood: (before: %1, after: %2)",_bloodVolume,_bloodAmountAfterRevive)
     _unit setVariable [STRING(VAR_BLOOD_VOL), _bloodAmountAfterRevive, true];
     _unit setVariable [STRING(VAR_HEMORRHAGE), 3, true];
 };
 
 if (_shouldResetMeds) then
-{    
+{
     DEBUG_FORMAT2_LOG("[REVIVE]: Resetting meds (duplicates: %1, heartstopper combo: %2)",_anyDuplicateMeds,_tookMorphineAndAdenosine)
     _unit setVariable [STRING(VAR_MEDICATIONS), [], true];
 };
@@ -84,11 +84,12 @@ if (_shouldResetMeds) then
 
 private "_wounds";
 private _removalAttempts = 0;
+private _removedWoundBodyParts = [];
 
 // The harder part is to slow down bleeding if the bleed-rate is too high to keep the heart pumping.  We have to heal wounds to do this.
 // For some reason, using ACE's bandageLocal function was not working at all so sadly we will delete the wounds instead.
 // To protect against this not working somehow, we limit iterations to 10.  If the unit is particularly messed up, this may need to be run a few times.
-while 
+while
 {
     _removalAttempts = _removalAttempts + 1;
     private _bleedRate = GET_WOUND_BLEEDING(_unit) max 0.001;
@@ -104,10 +105,12 @@ do
 {
     _wounds = GET_OPEN_WOUNDS(_unit);
     private _woundIndexToRemove = floor random count _wounds;
+    private _wound = _wounds # _woundIndexToRemove;
 
     DEBUG_FORMAT2_LOG("[REVIVE]: Removing wound %1 (attempt %2)...",_woundIndexToRemove,_removalAttempts)
     _wounds set [_woundIndexToRemove, objNull];
     _wounds = _wounds - [objNull];
+    _removedWoundBodyParts pushBackUnique (_wound # 1);
 
     _unit setVariable [STRING(VAR_OPEN_WOUNDS), _wounds, false];
     [_unit] call ace_medical_status_fnc_updateWoundBloodLoss;
@@ -118,6 +121,40 @@ do
 if (!isNil '_wounds') then
 {
     _unit setVariable [STRING(VAR_OPEN_WOUNDS), _wounds, true];
+    [_unit] call ace_medical_engine_fnc_updateDamageEffects;
+
+    // This section is adapted from ace_medical_treatment_fnc_bandageLocal.
+    if IS_TRUE(ace_medical_treatment_clearTraumaAfterBandage) then
+    {
+        {
+            private _bodyPartToCheck = _x;
+            private _foundWoundOnPart = _wounds findIf
+            {
+                _x params ["", "_xBodyPartN", "_xAmountOf"];
+                (_bodyPartToCheck == _xBodyPartN) && {_xAmountOf > 0}
+            };
+
+            if (_foundWoundOnPart == -1) then
+            {
+                private _bodyPartDamage = _patient getVariable ["ace_medical_bodyPartDamage", [0,0,0,0,0,0]];
+
+                _bodyPartDamage set [_partIndex, 0];
+                _patient setVariable ["ace_medical_bodyPartDamage", _bodyPartDamage, true];
+
+                switch (_partIndex) do
+                {
+                    case 0: { [_patient, true, false, false, false] call ace_medical_engine_fnc_updateBodyPartVisuals; };
+                    case 1: { [_patient, false, true, false, false] call ace_medical_engine_fnc_updateBodyPartVisuals; };
+                    case 2;
+                    case 3: { [_patient, false, false, true, false] call ace_medical_engine_fnc_updateBodyPartVisuals; };
+                    default { [_patient, false, false, false, true] call ace_medical_engine_fnc_updateBodyPartVisuals; };
+                };
+
+            };
+
+        } forEach _removedWoundBodyParts;
+
+    };
 };
 
 // Reset cardiac vitals, they may drift away from these values after wake-up but this function should ensure the unit has plenty of time to get treatment.
