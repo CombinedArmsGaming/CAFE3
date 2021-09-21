@@ -106,8 +106,8 @@ f_radios_settings_acre2_xlr_groups_blufor =
     ["HOTLINE ZEUS",    []]
 ];
 
-f_radios_settings_acre2_xlr_groups_opfor = f_radios_settings_acre2_lr_groups_blufor;
-f_radios_settings_acre2_xlr_groups_indfor = f_radios_settings_acre2_lr_groups_blufor;
+f_radios_settings_acre2_xlr_groups_opfor = f_radios_settings_acre2_xlr_groups_blufor;
+f_radios_settings_acre2_xlr_groups_indfor = f_radios_settings_acre2_xlr_groups_blufor;
 
 // ====================================================================================
 // MISC ACRE2 settings, these are all set the ACRE2 defaults

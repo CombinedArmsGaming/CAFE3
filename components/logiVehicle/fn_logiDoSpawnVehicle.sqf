@@ -73,6 +73,10 @@ sleep 2;
 
 _spawnedVic allowDamage true;
 
+_spawnedVic engineOn true;
+
+
+
 sleep 3;
 
 
@@ -83,6 +87,11 @@ if !(alive _spawnedVic) exitWith
 	false
 };
 
+private _sign = "Sign_Arrow_Large_Pink_F" createVehicleLocal (getPos _spawnedVic);
+private _sign2 = "Sign_Arrow_Direction_Pink_F" createVehicleLocal (getPos _logiVic);
+
+_sign setPos (_spawnedVic modelToWorld [0,0,1]);
+_sign2 setPos (_logiVic modelToWorld [0,0,1]);
 
 // If vehicle has survived, fill it with any specified gear.
 if (_gearscriptType isNotEqualTo "") then
@@ -97,6 +106,24 @@ if (_gearscriptType isNotEqualTo "") then
 	};
 
 	[_gearscriptType, _spawnedVic, _faction] call f_fnc_assignGear;
+};
+
+
+
+[_sign, _sign2]spawn
+{
+	params ["_sign", "_sign2"];
+
+
+		_dir = _sign2 getDir _sign;
+		_sign2 setDir _dir;
+
+		sleep 10;
+	
+
+	deleteVehicle _sign;
+	deleteVehicle _sign2;
+
 };
 
 

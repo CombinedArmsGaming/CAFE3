@@ -56,7 +56,7 @@
 	force ace_medical_treatment_treatmentTimeBodyBag = 10;
 	force ace_medical_treatment_treatmentTimeCPR = 12;
 	force ace_medical_treatment_treatmentTimeIV = 8;
-	force ace_medical_treatment_treatmentTimeTourniquet = 30;
+	force ace_medical_treatment_treatmentTimeTourniquet = 3;
 	force ace_medical_treatment_treatmentTimeSplint = 7;
 	force ace_medical_treatment_woundReopenChance = 0.2;
 	force ace_medical_treatment_woundStitchTime = 2.5;
@@ -113,7 +113,7 @@
 	force ace_medical_treatment_treatmentTimeBodyBag = 10;
 	force ace_medical_treatment_treatmentTimeCPR = 12;
 	force ace_medical_treatment_treatmentTimeIV = 8;
-	force ace_medical_treatment_treatmentTimeTourniquet = 40;
+	force ace_medical_treatment_treatmentTimeTourniquet = 3;
 	force ace_medical_treatment_treatmentTimeSplint = 7;
 	force ace_medical_treatment_woundStitchTime = 2.5;
 	force ace_medical_treatment_advancedBandages = 2;
@@ -169,7 +169,7 @@
 	force ace_medical_treatment_treatmentTimeBodyBag = 10;
 	force ace_medical_treatment_treatmentTimeCPR = 12;
 	force ace_medical_treatment_treatmentTimeIV = 8;
-	force ace_medical_treatment_treatmentTimeTourniquet = 50;
+	force ace_medical_treatment_treatmentTimeTourniquet = 3;
 	force ace_medical_treatment_treatmentTimeSplint = 7;
 	force ace_medical_treatment_woundReopenChance = 0.2;
 	force ace_medical_treatment_woundStitchTime = 2.5;
