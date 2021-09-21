@@ -31,6 +31,7 @@ _vehicle = createVehicle  [_vehicletype, _spawnpos, [], 15, _placement];
 _vehicle setDir _dir;
 
 _vehicle lock _locknumber;
+_vehicle setUnloadInCombat [false, false];
 
 clearWeaponCargoGlobal _vehicle;
 clearMagazineCargoGlobal _vehicle;

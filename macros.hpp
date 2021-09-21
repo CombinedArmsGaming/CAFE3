@@ -53,32 +53,6 @@
 #define RUN_ONLY_ONCE(PATH,VAR) if (isNil #VAR) then { VAR = true; call compile preprocessFile PATH; };
 #define RUN_FUNC_ONCE(FUNC) if (isNil #CONCAT(f_script,FUNC)) then { CONCAT(f_script,FUNC) = true; [] call FUNC; };
 
-// String-keyed dictionary convenience macros
-#define DICT_CREATE_GLOBAL(NAME) \
-    _tempDict = createLocation ["CBA_NamespaceDummy", [0,0,0], 0, 0] \
-    missionNamespace setVariable [#NAME, _tempDict, true];
-
-#define DICT_CREATE(NAME) NAME = createLocation ["CBA_NamespaceDummy", [0,0,0], 0, 0]
-#define DICT_CREATE_VALS(NAME,VALUES) DICT_CREATE(NAME); {NAME setVariable [_x select 0, _x select 1]} foreach VALUES
-#define DICT_GET(NAME,KEY) NAME getVariable [KEY, []]
-#define DICT_GET_DEFAULT(NAME,KEY,DEFAULT) NAME getVariable [KEY, DEFAULT]
-#define DICT_CONTAINS(NAME,KEY) !((NAME getVariable [KEY, "q£fsDSd4&&<"]) isEqualTo "q£fsDSd4&&<")
-#define DICT_SET(NAME,KEY,VALUE) NAME setVariable [KEY, VALUE]
-#define DICT_SET_GLOBAL(NAME,KEY,VALUE) NAME setVariable [KEY, VALUE, true]
-#define DICT_DELETE(NAME,KEY) NAME setVariable [KEY, nil]
-#define DICT_REMOVE(NAME,KEY) DICT_DELETE(NAME,KEY)
-#define DICT_FOREACH(NAME,FUNC) {private _key = _x; private _value = DICT_GET(NAME,_x); call _code;} forEach (allVariables NAME)
-
-// CBA hash convenience macros
-#define HASH_CREATE(NAME) NAME = [] call CBA_fnc_hashCreate
-#define HASH_CREATE_VALS(NAME,VALUES) NAME = [VALUES] call CBA_fnc_hashCreate
-#define HASH_GET(NAME,KEY) [NAME, KEY] call CBA_fnc_hashGet
-#define HASH_CONTAINS(NAME,KEY) [NAME, KEY] call CBA_fnc_hashHasKey
-#define HASH_SET(NAME,KEY,VALUE) [NAME, KEY, VALUE] call CBA_fnc_hashSet
-#define HASH_DELETE(NAME,KEY) [NAME, KEY] call CBA_fnc_hashRem
-#define HASH_REMOVE(NAME,KEY) HASH_DELETE(NAME,KEY)
-#define HASH_FOREACH(NAME,FUNC) [NAME, FUNC] call CBA_fnc_hashEachPair
-
 #define IS_TRUE(VAR) ((!isNil #VAR) and {VAR})
 #define EXISTS(VAR) ((!isNil #VAR) and {!(isNull VAR)})
 

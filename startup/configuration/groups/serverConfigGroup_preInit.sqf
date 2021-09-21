@@ -18,3 +18,6 @@ SERVER_ONLY;
 
 // Identity Translation
 #include "..\internals\identityTranslation.sqf"
+
+// Logi vics
+#include "..\internals\logiVehicle.sqf"
