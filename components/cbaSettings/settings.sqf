@@ -23,7 +23,7 @@
 	force ace_medical_ivFlowRate = 3.5;
 	force ace_medical_limping = 1;
 	force ace_medical_painCoefficient = 0.5;
-	force ace_medical_playerDamageThreshold = 1;
+	force ace_medical_playerDamageThreshold = 1.5;
 	force ace_medical_spontaneousWakeUpChance = 0.9;
 	force ace_medical_spontaneousWakeUpEpinephrineBoost = 1;
 	force ace_medical_statemachine_AIUnconsciousness = false;
@@ -80,7 +80,7 @@
 	force ace_medical_ivFlowRate = 3.5;
 	force ace_medical_limping = 1;
 	force ace_medical_painCoefficient = 0.5;
-	force ace_medical_playerDamageThreshold = 1;
+	force ace_medical_playerDamageThreshold = 1.5;
 	force ace_medical_spontaneousWakeUpChance = 0.9;
 	force ace_medical_spontaneousWakeUpEpinephrineBoost = 1;
 	force ace_medical_statemachine_AIUnconsciousness = false;
@@ -136,7 +136,7 @@
 	force ace_medical_ivFlowRate = 3.5;
 	force ace_medical_limping = 1;
 	force ace_medical_painCoefficient = 0.5;
-	force ace_medical_playerDamageThreshold = 1;
+	force ace_medical_playerDamageThreshold = 1.5;
 	force ace_medical_spontaneousWakeUpChance = 0.9;
 	force ace_medical_spontaneousWakeUpEpinephrineBoost = 1;
 	force ace_medical_statemachine_AIUnconsciousness = false;
