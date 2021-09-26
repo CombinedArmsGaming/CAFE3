@@ -10,5 +10,5 @@ if !(CRATE_VAR_EXISTS(_side,_crateName)) exitWith
 
 _crateArray = CRATE_VAR_DYNAMIC(_side,_crateName);
 
-DEBUG_FORMAT3_LOG("[GEARSCRIPT-2]: Adding %1 1L saline-bags to crate type %2 for side %3.",_amount,_crateName,_side)
-_crateArray pushBack ["ACE_salineIV", _amount];
+DEBUG_FORMAT3_LOG("[GEARSCRIPT-2]: Adding %1 1L blood-bags to crate type %2 for side %3.",_amount,_crateName,_side)
+_crateArray pushBack ["ACE_bloodIV", _amount];

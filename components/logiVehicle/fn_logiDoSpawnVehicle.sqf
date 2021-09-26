@@ -75,8 +75,6 @@ _spawnedVic allowDamage true;
 
 _spawnedVic engineOn true;
 
-
-
 sleep 3;
 
 
@@ -87,11 +85,15 @@ if !(alive _spawnedVic) exitWith
 	false
 };
 
+
+//Create helper signs local to the player who called the funtion to help with locating the spawned entity
 private _sign = "Sign_Arrow_Large_Pink_F" createVehicleLocal (getPos _spawnedVic);
 private _sign2 = "Sign_Arrow_Direction_Pink_F" createVehicleLocal (getPos _logiVic);
 
 _sign setPos (_spawnedVic modelToWorld [0,0,1]);
 _sign2 setPos (_logiVic modelToWorld [0,0,1]);
+
+
 
 // If vehicle has survived, fill it with any specified gear.
 if (_gearscriptType isNotEqualTo "") then
@@ -109,20 +111,19 @@ if (_gearscriptType isNotEqualTo "") then
 };
 
 
-
+//Set the direction of the helper-signs and delete them after 10 seconds.
 [_sign, _sign2]spawn
 {
 	params ["_sign", "_sign2"];
 
 
-		_dir = _sign2 getDir _sign;
-		_sign2 setDir _dir;
+	_dir = _sign2 getDir _sign;
+	_sign2 setDir _dir;
 
-		sleep 10;
+	sleep 10;
 	
 
-	deleteVehicle _sign;
-	deleteVehicle _sign2;
+	[{deleteVehicle (_this select 0); deleteVehicle (_this select 1);}, [_sign,_sign2],10] call CBA_fnc_waitAndExecute;
 
 };
 
