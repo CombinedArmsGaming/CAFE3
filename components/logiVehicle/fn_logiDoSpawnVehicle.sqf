@@ -112,20 +112,10 @@ if (_gearscriptType isNotEqualTo "") then
 
 
 //Set the direction of the helper-signs and delete them after 10 seconds.
-[_sign, _sign2]spawn
-{
-	params ["_sign", "_sign2"];
+_dir = _sign2 getDir _sign;
+_sign2 setDir _dir;
 
-
-	_dir = _sign2 getDir _sign;
-	_sign2 setDir _dir;
-
-	sleep 10;
-	
-
-	[{deleteVehicle (_this select 0); deleteVehicle (_this select 1);}, [_sign,_sign2],10] call CBA_fnc_waitAndExecute;
-
-};
+[{deleteVehicle (_this#0); deleteVehicle (_this#1);}, [_sign, _sign2], 10] call CBA_fnc_waitAndExecute;
 
 
 // Notify that spawning has completed.
