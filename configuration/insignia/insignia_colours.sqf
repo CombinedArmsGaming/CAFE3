@@ -22,6 +22,6 @@ if !EXISTS(f_dict_insignia_colours) then
         [str COLOUR_KHAKI,     "insignia_GI_B_TAN"]
     ];
 
-    DICT_CREATE_VALS(f_dict_insignia_colours,_keyValues);
+    f_dict_insignia_colours = createHashMapFromArray _keyValues;
 
 };

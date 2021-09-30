@@ -118,10 +118,18 @@ COPY_LOADOUT(sl,ftl);
 
 // Medic Loadout
 
-_baseLoadout = [["arifle_TRG20_F","","acc_flashlight","optic_ACO_grn",["30Rnd_556x45_Stanag",30],[],""],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_BG_Guerilla1_1",[["ACRE_PRC343_ID_18",1],["ACRE_PRC152",1],["ACRE_PRC148",1],["ACE_bloodIV_500",1]]],["V_TacVest_oli",[["ACE_Flashlight_XL50",1],["ACE_MapTools",1],["ACE_bloodIV",2],["ACE_bloodIV_500",1],["SmokeShell",4,1],["9Rnd_45ACP_Mag",2,8],["30Rnd_556x45_Stanag_Tracer_Yellow",5,30]]],["B_Kitbag_rgr",[["ACE_morphine",15],["ACE_epinephrine",10],["ACE_fieldDressing",10],["ACE_packingBandage",20],["ACE_elasticBandage",20],["ACE_bloodIV_500",3],["ACE_adenosine",5],["ACE_bloodIV",5],["ACE_splint",20],["ACE_tourniquet",10],["FSGm_ItemMedicBagMil",1],["ACE_personalAidKit",1],["ACE_surgicalKit",1],["ACE_EntrenchingTool",1]]],"H_Shemag_olive","",[],["ItemMap","","","ItemCompass","ItemWatch",""]];
+_baseLoadout = [["arifle_TRG20_F","","acc_flashlight","optic_ACO_grn",["30Rnd_556x45_Stanag",30],[],""],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_BG_Guerilla1_1",[["ACRE_PRC343_ID_18",1],["ACRE_PRC152",1],["ACRE_PRC148",1],["ACE_bloodIV_500",1]]],["V_TacVest_oli",[["ACE_Flashlight_XL50",1],["ACE_MapTools",1],["ACE_bloodIV",2],["ACE_bloodIV_500",1],["SmokeShell",4,1],["9Rnd_45ACP_Mag",2,8],["30Rnd_556x45_Stanag_Tracer_Yellow",5,30]]],["B_Kitbag_rgr",[["ACE_morphine",15],["ACE_epinephrine",10],["ACE_fieldDressing",10],["ACE_packingBandage",20],["ACE_elasticBandage",20],["ACE_bloodIV_500",3],["ACE_adenosine",5],["ACE_bloodIV",5],["ACE_splint",20],["ACE_tourniquet",10],["FSGm_ItemMedicBagMil",1],["ACE_personalAidKit",1],["ACE_surgicalKit",1],["ACE_EntrenchingTool",1]]],"H_Shemag_olive","",["Binocular","","","",[],[],""],["ItemMap","","","ItemCompass","ItemWatch",""]];
 
 CREATE_LOADOUT(med,_baseLoadout);
 COPY_ADDONS(med,rif);
+
+
+// Combat Lifesaver Loadout
+
+_baseLoadout = [["arifle_TRG20_F","","acc_flashlight","optic_ACO_grn",["30Rnd_556x45_Stanag",30],[],""],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_BG_Guerilla1_1",[["ACRE_PRC343_ID_18",1],["ACRE_PRC152",1],["ACRE_PRC148",1],["ACE_bloodIV_500",1]]],["V_TacVest_oli",[["ACE_Flashlight_XL50",1],["ACE_MapTools",1],["ACE_bloodIV",2],["ACE_bloodIV_500",1],["SmokeShell",4,1],["9Rnd_45ACP_Mag",2,8],["30Rnd_556x45_Stanag_Tracer_Yellow",5,30]]],["B_Kitbag_rgr",[["ACE_morphine",15],["ACE_epinephrine",10],["ACE_fieldDressing",10],["ACE_packingBandage",20],["ACE_elasticBandage",20],["ACE_adenosine",5],["ACE_bloodIV",8],["ACE_splint",20],["ACE_tourniquet",10],["ACE_surgicalKit",1],["ACE_EntrenchingTool",1],["ACE_bloodIV_500",5]]],"H_Shemag_olive","",[],["ItemMap","","","ItemCompass","ItemWatch",""]];
+
+CREATE_LOADOUT(cls,_baseLoadout);
+COPY_ADDONS(cls,rif);
 
 
 // Autorifleman Loadout
@@ -161,6 +169,13 @@ COPY_ADDONS(mk,rif);
 _baseLoadout = [["SMG_02_F","","acc_flashlight","optic_ACO_grn_smg",["30Rnd_9x21_Mag_SMG_02",30],[],""],[],[],["U_C_WorkerCoveralls",[["ACE_elasticBandage",3],["ACE_packingBandage",3],["ACRE_PRC148_ID_2",1],["ACRE_PRC343_ID_15",1],["ACRE_PRC152_ID_1",1]]],["V_BandollierB_khk",[["ACE_epinephrine",1],["ACE_morphine",1],["SmokeShell",4,1],["30Rnd_9x21_Mag_SMG_02",4,30]]],["B_AssaultPack_rgr",[["ToolKit",1],["ACE_EntrenchingTool",1]]],"H_HelmetCrew_I","",[],["ItemMap","ItemGPS","ItemRadioAcreFlagged","ItemCompass","ItemWatch",""]];
 
 CREATE_LOADOUT(crew,_baseLoadout);
+
+
+// Engineer/logi Loadout
+
+_baseLoadout = [["arifle_TRG20_F","","acc_flashlight","optic_ACO_grn",["30Rnd_556x45_Stanag",30],[],""],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_BG_Guerilla1_1",[["ACRE_PRC343_ID_18",1],["ACRE_PRC152",1],["ACRE_PRC148",1],["ACE_bloodIV_500",1]]],["V_TacVest_oli",[["ACE_Flashlight_XL50",1],["ACE_MapTools",1],["ACE_bloodIV",2],["ACE_bloodIV_500",1],["SmokeShell",4,1],["9Rnd_45ACP_Mag",2,8],["30Rnd_556x45_Stanag_Tracer_Yellow",5,30]]],["B_AssaultPack_khk",[["ToolKit",1],["ACE_EntrenchingTool",1]]],"H_Bandanna_sgg","",["Binocular","","","",[],[],""],["ItemMap","","","ItemCompass","ItemWatch",""]];
+
+CREATE_LOADOUT(eng,_baseLoadout);
 
 
 // Small crate loadout

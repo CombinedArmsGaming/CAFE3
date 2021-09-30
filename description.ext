@@ -72,6 +72,10 @@ disabledAI = true;
 
 // ============================================================================================
 
+cba_settings_hasSettingsFile = 1;
+
+// ============================================================================================
+
 
 #ifdef ENABLE_GRAVESTONE_CORPSE_MANAGER
 
@@ -474,15 +478,6 @@ class Extended_InitPost_EventHandlers
 		{
             init = "_this call f_fnc_addInventoryActionToClass";
         };
-
-#endif
-
-#ifdef ENABLE_IDENTITY_REPLACEMENT
-
-		class setIdentity
-		{
-			init = "_this call f_fnc_applyFactionIdentity";
-		};
 
 #endif
 

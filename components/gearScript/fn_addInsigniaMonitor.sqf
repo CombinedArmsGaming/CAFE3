@@ -15,17 +15,17 @@ _unit setVariable ["f_var_hasInsigniaMonitor", true, true];
 
     WAIT_UNTIL_MISSION_STARTED;
 
-    _unitType = "";
-    _group = grpNull;
-    _groupColour = [];
-    _uniform = "";
+    private _unitType = "";
+    private _group = grpNull;
+    private _groupColour = [];
+    private _uniform = "";
 
     while {alive _unit} do
     {
-        _newUnitType = _unit getVariable ["f_var_assignGear", ""];
-        _newGroup = group _unit;
-        _newColour = SQUAD_COLOUR(_newGroup);
-        _newUniform = uniform _unit;
+        private _newUnitType = _unit getVariable ["f_var_assignGear", ""];
+        private _newGroup = group _unit;
+        private _newColour = SQUAD_COLOUR(_newGroup);
+        private _newUniform = uniform _unit;
 
         if !((_unitType isEqualTo _newUnitType) and {_group isEqualTo _newGroup} and {_groupColour isEqualTo _newColour} and {_uniform isEqualTo _newUniform}) then
         {
@@ -37,7 +37,7 @@ _unit setVariable ["f_var_hasInsigniaMonitor", true, true];
         _groupColour = +_newColour;
         _uniform = _newUniform;
 
-        sleep 1;
+        sleep 5;
 
     };
 

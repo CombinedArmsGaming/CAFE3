@@ -16,15 +16,16 @@
  *
  */
 
-params ["_unitarray", "_position", "_vehicletype", ["_faction",""], ["_side", f_defaultSide], ["_suppressive",false], ["_guerrilla",false], ["_enableAdvancedAI",true], ["_runAfter",[]], ["_reinforcementarray", []]];
+params ["_unitarray", "_position", "_vehicletype", ["_faction",""], ["_side", f_defaultSide], ["_suppressive",false], ["_guerrilla",false], ["_enableAdvancedAI",true], ["_runAfter",[]], ["_reinforcementarray", []], ["_dir",0]];
 
 
 _reinforcementsExist = ((count _reinforcementarray) > 0);
 
-_vehicle = [_position, _vehicletype] call f_fnc_spawnVehicle;
+_spawnVicArray = [_position, _vehicletype, 0, _dir] call f_fnc_spawnVehicle;
 _group = [_unitarray, _position, _faction, _side, _suppressive, _guerrilla, _enableAdvancedAI] call f_fnc_spawnGroup;
 
-
+_vehicle = _spawnVicArray select 0;
+_isAir = _spawnVicArray select 1;
 
 _units = units _group;
 _assigned = [];
@@ -116,16 +117,21 @@ if (_reinforcementsExist) then
 
     } forEach _reinforcementUnits;
 
-    _unloadPos = _vehicle modelToWorld [0,100,0];
-    _reinfPos = _vehicle modelToWorld [0,200,0];
+    _unloadPos = _vehicle modelToWorld [0,1000,0];
+    _reinfPos = _vehicle modelToWorld [0,1100,0];
 
     _crewWaypoint = _group addWaypoint [_unloadPos, 0, 0];
     _crewWaypoint setWaypointType "TR UNLOAD";
 
-    //Check if vehicle has Gunner, if yes, it holds at unloadPos, if no it returns to spawn (doesn't always work because ARMA)
-    if (!_gunno) then
+    //Check if vehicle has Gunner, if yes, it holds at unloadPos, if no it returns to spawn (doesn't always work because ARMA). Helicopters always return to spawn. Upon return, vehicle is despawned
+   
+      deleteWaypoint [_group,1];
+
+    if (_isAir || _gunno) then
     {
-        deleteWaypoint [_group,1];
+        _returnWaypoint = _group addWaypoint [_position, 0, 1];
+        _returnWaypoint setWaypointStatements ["true", "deleteVehicle vehicle this; {deleteVehicle _x} forEach thisList"];
+        _returnWaypoint setWaypointTimeout [5, 7.5, 10];
     };
 
     _squadWaypoint = _reinforcementsGroup addWaypoint [_reinfPos, 0, 0];
