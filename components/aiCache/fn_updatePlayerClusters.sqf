@@ -17,7 +17,7 @@ if (isNil "f_arr_aiCaching_playerClustersTemp") then
 
 _getPlayerAgenda =
 {
-    _agenda = allPlayers;
+    private _agenda = allPlayers;
 
     if !(missionNamespace getVariable ["f_var_uncacheNearZeus", true]) then
     {
@@ -33,8 +33,8 @@ _isPointWithinCluster =
 {
     params ["_point", "_cluster"];
 
-    _centroid = _cluster select 0;
-    _distance = _centroid distance2D _point;
+    private _centroid = _cluster select 0;
+    private _distance = _centroid distance2D _point;
 
     (_distance <= f_var_aiCaching_clusterRadius)
 
@@ -46,15 +46,15 @@ _addPlayerToCluster =
 {
     params ["_ply", "_cluster"];
 
-    _centroid = _cluster select 0;
-    _playerList = _cluster select 1;
+    private _centroid = _cluster select 0;
+    private _playerList = _cluster select 1;
 
     _playerList pushBack _ply;
-    _x setVariable ["f_var_aiCaching_cluster", _cluster];
+    _ply setVariable ["f_var_aiCaching_cluster", _cluster];
 
-    _count = count _playerList;
+    private _count = count _playerList;
 
-    _centroid = (_centroid vectorMultiply ((_count-1) / _count)) vectorAdd (getPos _ply vectorMultiply (1 / _count));
+    _centroid = (_centroid vectorMultiply ((_count-1) / _count)) vectorAdd ((getPos _ply) vectorMultiply (1 / _count));
 
     _cluster set [0, _centroid];
 
@@ -66,10 +66,10 @@ _createVehicleCluster =
 {
     params ["_ply"];
 
-    _vehicle = vehicle _ply;
-    _cluster = [[0,0,0], [], _vehicle];
+    private _vehicle = vehicle _ply;
+    private _cluster = [[0,0,0], [], _vehicle];
 
-    _crew = crew _vehicle;
+    private _crew = crew _vehicle;
 
     {
         [_x, _cluster] call _addPlayerToCluster;
@@ -87,14 +87,15 @@ _clusterThisPlayer =
 
     if (vehicle _ply != _ply) exitWith
     {
-        _cluster = [_ply] call _createVehicleCluster;
+        private _cluster = [_ply] call _createVehicleCluster;
 		f_arr_aiCaching_playerClustersTemp pushBack _cluster;
+
 		_cluster
     };
 
-    _pos = getPos _ply;
+    private _pos = getPos _ply;
 
-    _cluster =
+    private _cluster =
     {
         if ([_pos, _x] call _isPointWithinCluster) exitWith { _x };
     } forEach f_arr_aiCaching_playerClustersTemp;
@@ -115,14 +116,14 @@ _clusterThisPlayer =
 
 f_arr_aiCaching_playerClustersTemp = [];
 
-_agenda = [] call _getPlayerAgenda;
+private _agenda = [] call _getPlayerAgenda;
 
 {
     _x setVariable ["f_var_aiCaching_cluster", []];
 } forEach _agenda;
 
 {
-    _playerCluster = _x getVariable ["f_var_aiCaching_cluster", []];
+    private _playerCluster = _x getVariable ["f_var_aiCaching_cluster", []];
 
     if (_playerCluster isEqualTo []) then
     {
@@ -133,12 +134,21 @@ _agenda = [] call _getPlayerAgenda;
 
 if (missionNamespace getVariable ["f_var_uncacheNearDrones", false]) then
 {
-    _agenda = allUnitsUAV select {isUAVConnected _x};
+    private _agenda = allUnitsUAV select {isUAVConnected _x};
 
     {
-        _cluster = [_x] call _createVehicleCluster;
+        private _cluster = [_x] call _createVehicleCluster;
 		f_arr_aiCaching_playerClustersTemp pushBack _cluster;
+
     } forEach _agenda;
+
 };
+
+private _anchors = missionNamespace getVariable ["f_var_aiCaching_anchors", []];
+
+{
+    f_arr_aiCaching_playerClustersTemp pushBack [[0,0,0], [], _x];
+
+} forEach _anchors;
 
 f_arr_aiCaching_playerClusters = f_arr_aiCaching_playerClustersTemp;

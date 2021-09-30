@@ -6,20 +6,23 @@ CLIENT_ONLY;
 
 waitUntil
 {
-    waitUntil { sleep 1; IS_UNCONSCIOUS(player) };
+    waitUntil { sleep 1; IS_TRUE(ace_spectator_isSet) };
 
-    _cancelledEffect = false;
+    private _cancelledEffect = false;
 
-    while { IS_UNCONSCIOUS(player) and {IS_TRUE(ace_spectator_isSet)} } do
+    while {IS_TRUE(ace_spectator_isSet)} do
     {
-        if ((!(isNil 'ace_medical_feedback_ppUnconsciousBlackout')) and {ppEffectEnabled ace_medical_feedback_ppUnconsciousBlackout}) then
+        if IS_UNCONSCIOUS(player) then
         {
-            ace_medical_feedback_ppUnconsciousBlur     ppEffectEnable false;
-            ace_medical_feedback_ppUnconsciousBlackout ppEffectEnable false;
-            _cancelledEffect = true;
+            if ((!(isNil 'ace_medical_feedback_ppUnconsciousBlackout')) and {ppEffectEnabled ace_medical_feedback_ppUnconsciousBlackout}) then
+            {
+                ace_medical_feedback_ppUnconsciousBlur     ppEffectEnable false;
+                ace_medical_feedback_ppUnconsciousBlackout ppEffectEnable false;
+                _cancelledEffect = true;
+            };
         };
 
-        uiSleep 0.1;
+        uiSleep 0.5;
 
     };
 

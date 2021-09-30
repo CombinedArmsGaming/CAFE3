@@ -21,7 +21,7 @@
 #include "macros.hpp"
 
 // Fetch our params
-params ["_roles", "_pos", "_gear", "_side", ["_vehicleClass", ""], ["_enableAdvancedAI", false], ["_guerrillaAI", false], ["_suppressiveAI", false], ["_reinforcements", []]];
+params ["_roles", "_pos", "_gear", "_side", ["_vehicleClass", ""], ["_enableAdvancedAI", false], ["_guerrillaAI", false], ["_suppressiveAI", false], ["_reinforcements", []], ["_dir", 0]];
 
 
 private _group = grpNull;
@@ -29,7 +29,7 @@ private _vehicle = objNull;
 
 if (_vehicleClass != "") then
 {
-	_args = [_roles, _pos, _vehicleClass, _gear, _side, _suppressiveAI, _guerrillaAI, _enableAdvancedAI, f_fnc_addToCurator, _reinforcements];
+	_args = [_roles, _pos, _vehicleClass, _gear, _side, _suppressiveAI, _guerrillaAI, _enableAdvancedAI, f_fnc_addToCurator, _reinforcements, _dir];
 
 	if ((_suppressiveAI isEqualType []) or (_guerrillaAI isEqualType [])) then
 	{

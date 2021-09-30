@@ -17,7 +17,7 @@
 
 //LOAD_GLOBALS(respawnWaves)
 
-//LOAD_GLOBALS(miscShared)
+LOAD_GLOBALS(miscShared)
 
 
 // Kill tracker init
