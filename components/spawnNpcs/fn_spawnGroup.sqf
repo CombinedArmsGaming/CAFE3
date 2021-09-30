@@ -22,13 +22,28 @@ private ["_spawnpos", "_unittype", "_unit", "_group", "_posdir", "_unittype"];
 _posdir = _position call f_fnc_getDirPos;
 _spawnpos = _posdir select 0;
 
+	
+#ifdef CA2_SOGMISSION
+
+	private _unitW = "vn_b_men_army_15";
+	private _unitE = "vn_o_men_nva_02";
+	private _unitI = "vn_i_men_army_15";
+
+#else
+
+	private _unitW = "B_Soldier_F";
+	private _unitE = "O_Soldier_F";
+	private _unitI = "I_Soldier_F";
+
+#endif
+
+
 switch (_side) do
 {
-	case west: {_group = createGroup [west,true]; _unittype = "B_Soldier_F";};
-	case east: {_group = createGroup [east,true]; _unittype = "O_Soldier_F";};
-	case independent: {_group = createGroup [independent,true]; _unittype = "I_Soldier_F";};
+	case west: {_group = createGroup [west,true]; _unittype = _unitW;};
+	case east: {_group = createGroup [east,true]; _unittype = _unitE;};
+	case independent: {_group = createGroup [independent,true]; _unittype = _unitI;};
 	default {_group = createGroup [east,true]};
-
 };
 
 
