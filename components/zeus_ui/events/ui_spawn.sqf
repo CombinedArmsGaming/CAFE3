@@ -25,6 +25,7 @@ case "ui_spawn": {
 
 		// Fetch the roles list and the vehicle (if we have one)
 		private _roles = _unitNamespace getVariable [MACRO_VARNAME_UNIT_ROLES, []];
+		private _reinforcementRoles = _unitNamespace getVariable [MACRO_VARNAME_REINFORCEMENT_ROLES, []];
 		private _vehicleClass = _unitNamespace getVariable [MACRO_VARNAME_UNIT_VEHICLE, ""];
 
 		// Only continue if we have valid data to spawn anything with
@@ -85,10 +86,10 @@ case "ui_spawn": {
 					_suppressiveAI = _presetNamespace getVariable [MACRO_VARNAME_PRESET_SAI, []];
 				};
 
+				_dir = getDir curatorCamera;
 
 				// Tell the server to spawn the group
-				f_fnc_server_spawnGroup = compile preprocessFileLineNumbers "components\zeus_ui\fn_server_spawnGroup.sqf";
-				[_roles, _pos, _gear, _side, _vehicleClass, _enableAdvancedAI, _guerrillaAI, _suppressiveAI] remoteExec ["f_fnc_server_spawnGroup", 2, false];
+				[_roles, _pos, _gear, _side, _vehicleClass, _enableAdvancedAI, _guerrillaAI, _suppressiveAI, _reinforcementRoles, _dir] remoteExec ["f_fnc_server_spawnGroup", 2, false];
 			};
 		};
 	};

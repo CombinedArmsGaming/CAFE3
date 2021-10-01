@@ -225,7 +225,7 @@ class CfgDebriefing
 
 	class End6
 	{
-		title = "Ending #6";
+		title = "Mission Broke";
 		subtitle = "";
 		description = "Please post to the AAR thread!";
 		// pictureBackground = "";
@@ -350,23 +350,18 @@ class CfgSounds
 
 // Custom Music - Can generally be stopped, but plays globally. Cannot be played in 3D
 // from an object but is affected by the Music volume slider.
-/*
 class CfgMusic
 {
 	tracks[]={};
 
-	class MarsIntro
+	class FourStringEnding
 	{
-		name = "";
-		sound[] = {"filename.ogg", db+0, 1.0};
+		name = "FourStringEnding";
+		sound[] = {"\res\sounds\FourStringEnding.ogg",db+1, 1};
 	};
-	class Ludwig9
-	{
-		name = "";
-		sound[] = {"filename.ogg", db+10, 1.0};
-	};
+
 };
-*/
+
 
 
 // ============================================================================================
@@ -479,15 +474,6 @@ class Extended_InitPost_EventHandlers
 		{
             init = "_this call f_fnc_addInventoryActionToClass";
         };
-
-#endif
-
-#ifdef ENABLE_IDENTITY_REPLACEMENT
-
-		class setIdentity
-		{
-			init = "_this call f_fnc_applyFactionIdentity";
-		};
 
 #endif
 

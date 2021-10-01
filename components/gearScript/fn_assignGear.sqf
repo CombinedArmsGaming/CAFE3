@@ -1,9 +1,15 @@
 #include "macros.hpp"
 
-_unit = _this select 1;
-LOCAL_ONLY(_unit);
-
 RUN_AS_ASYNC(f_fnc_assignGear);
+
+_unit = _this select 1;
+
+if !(isServer) then
+{
+    waitUntil {local player};
+};
+
+LOCAL_ONLY(_unit);
 
 // ====================================================================================
 
@@ -46,7 +52,7 @@ if (time <= 1) then
 
 // ====================================================================================
 
-_typeofUnit = toLower (_this select 0);
+_typeOfUnit = toLower (_this select 0);
 
 _faction = toLower (faction _unit);
 
@@ -56,17 +62,23 @@ if (count _this > 2) then
 };
 
 
-DEBUG_FORMAT2_LOG("[GEARSCRIPT-2]: Attempting to apply '%1' loadout for faction '%2'.",_typeofUnit,_faction)
+DEBUG_FORMAT2_LOG("[GEARSCRIPT-2]: Attempting to apply '%1' loadout for faction '%2'.",_typeOfUnit,_faction)
 
 
 // ====================================================================================
 
-_unit setVariable ["f_var_assignGear", _typeofUnit, true];
+_unit setVariable ["f_var_assignGear", _typeOfUnit, true];
 _unit setVariable ["f_var_assignGear_Faction", _faction, true];
 
 // ====================================================================================
 
 _gearVariant = [_faction] call f_fnc_factionToSideName;
+
+if (_gearVariant isEqualTo _faction) then
+{
+    _gearVariant = [_unit] call f_fnc_getUnitConfiguredSide;
+};
+
 _unit setVariable ["f_var_assignGear_sideName", _gearVariant, true];
 
 if (_gearVariant == "") exitWith
@@ -74,7 +86,7 @@ if (_gearVariant == "") exitWith
     DEBUG_FORMAT2_LOG("[GEARSCRIPT-2]: Exited early because gear variant could not be resolved (Unit %1, Faction %2)",(str _unit),_faction)
 };
 
-[_unit, _typeofUnit, _gearVariant] call f_fnc_applyLoadout;
+[_unit, _typeOfUnit, _gearVariant] call f_fnc_applyLoadout;
 
 
 // ====================================================================================
@@ -88,4 +100,11 @@ if (isPlayer _unit) then
 {
     [_unit] spawn f_fnc_addInsigniaMonitor;
     [_unit] spawn f_fnc_clientRadioInit;
+}
+else
+{
+    if (_unit isKindOf "CAManBase") then
+    {
+        [_unit, _gearVariant] call f_fnc_applyFactionIdentity;
+    };
 };

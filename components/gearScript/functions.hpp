@@ -33,3 +33,11 @@ class gearScriptRadios
     class removeRadioFromItems{};
     class searchAndDestroyRadios{};
 };
+
+class gearScript_zen
+{
+    file = "components\gearScript\zen";
+    class zen_createSupplyCrate{};
+    class zen_createSupplyCrate_followUpDialog{};
+    class zen_createSupplyCrate_performAction{};
+};

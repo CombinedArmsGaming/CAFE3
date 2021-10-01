@@ -11,9 +11,7 @@ if !EXISTS(_group) exitWith
     DEBUG_PRINT_CHAT("Tried to register an important squad that does not exist.")
 };
 
-DICT_CREATE(_squadDict);
-
-//missionNamespace setVariable [SQUAD_STATE_BACKUP_NAME(_groupId), _squadDict];
+private _squadDict = createHashMap;
 
 [_group, _squadDict] spawn
 {
@@ -30,26 +28,36 @@ DICT_CREATE(_squadDict);
             _visible = SQUAD_VISIBLE(_group);
             _specialists = SQUAD_SPECIALISTS(_group);
 
-            DICT_SET(_squadDict,"name",_groupId);
-            DICT_SET(_squadDict,"side",_side);
-            DICT_SET(_squadDict,"colour",_colour);
-            DICT_SET(_squadDict,"icon",_icon);
-            DICT_SET(_squadDict,"visible",_visible);
-            DICT_SET(_squadDict,"specialists",_specialists);
+            _squadDict set ["name", _groupId];
+            _squadDict set ["side", _side];
+            _squadDict set ["colour", _colour];
+            _squadDict set ["icon", _icon];
+            _squadDict set ["visible", _visible];
+            _squadDict set ["specialists", _specialists];
 
             sleep 5;
 
         };
 
-        _groupId = DICT_GET(_squadDict,"name");
-        _side = DICT_GET(_squadDict,"side");
-        _colour = DICT_GET(_squadDict,"colour");
-        _icon = DICT_GET(_squadDict,"icon");
-        _visible = DICT_GET(_squadDict,"visible");
-        _specialists = DICT_GET(_squadDict,"specialists");
+        _groupId =     _squadDict getOrDefault ["name", ""];
+        _side =        _squadDict getOrDefault ["side", sideUnknown];
+        _colour =      _squadDict getOrDefault ["colour", COLOUR_DEFAULT];
+        _icon =        _squadDict getOrDefault ["icon", ""];
+        _visible =     _squadDict getOrDefault ["visible", true];
+        _specialists = _squadDict getOrDefault ["specialists", []];
+
+        if (_side isEqualTo sideUnknown) exitWith
+        {
+            DEBUG_FORMAT1_LOG("[SquadMarkers]: Failed to recreate group %1 due to unknown side.",_groupId)
+        };
 
         _group = createGroup [_side, false];
-        _group setGroupIdGlobal [_groupId];
+
+        if (_groupId isNotEqualTo "") then
+        {
+            _group setGroupIdGlobal [_groupId];
+        };
+
         SET_SQUAD_VAL_DIRECT(_group,Important,true);
         SET_SQUAD_COLOUR_DIRECT(_group,_colour);
         SET_SQUAD_ICON_DIRECT(_group,_icon);

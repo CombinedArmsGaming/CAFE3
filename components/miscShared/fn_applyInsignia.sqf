@@ -3,39 +3,37 @@
 
 params ["_unit"];
 
-_message = format ["[INSIGNIA]: Tried to apply insignia to %1 but was not running locally.",_unit];
+private _message = format ["[INSIGNIA]: Tried to apply insignia to %1 but was not running locally.",_unit];
 LOCAL_ONLY_WARN(_unit, _message);
 
 
-_faction = toLower (faction _unit);
-_unitType = _unit getVariable ["f_var_assignGear", ""];
-_insigniaVar = _unit getVariable ["f_var_insignia", ""];
+private _faction = toLower (faction _unit);
+private _unitType = _unit getVariable ["f_var_assignGear", ""];
+private _insigniaVar = _unit getVariable ["f_var_insignia", ""];
 
-_insigniaClass = "";
+private _insigniaClass = "";
 
 
 #ifdef ENABLE_ADVANCED_INSIGNIA
 
 
 // Attempt to set insignia from f_var_insignia
-if !(_insigniaVar isEqualTo "") then
+if (_insigniaVar isNotEqualTo "") then
 {
-    _insigniaClass = DICT_GET_DEFAULT(f_dict_insignia_custom,_insigniaVar,"");
+    _insigniaClass = f_dict_insignia_custom getOrDefault [_insigniaVar, ""];
 };
 
 // Attempt to set insignia from unit gearscript role
-if (_insigniaClass isEqualTo "" and {!(_unitType isEqualTo "")}) then
+if ((_insigniaClass isEqualTo "") and {_unitType isNotEqualTo ""}) then
 {
-    _insigniaClass = DICT_GET_DEFAULT(f_dict_insignia_custom,_unitType,"");
+    _insigniaClass = f_dict_insignia_custom getOrDefault [_unitType, ""];
 };
 
 // Attempt to set insignia from unit group callsign
 if (_insigniaClass isEqualTo "") then
 {
-    _group = group _unit;
-    _callsign = groupId _group;
-   _insigniaClass = DICT_GET_DEFAULT(f_dict_insignia_custom,_callsign,"");
-
+    private _callsign = groupId _group;
+    _insigniaClass = f_dict_insignia_custom getOrDefault [_callsign, ""];
 };
 
 
@@ -43,9 +41,9 @@ if (_insigniaClass isEqualTo "") then
 
 
 // Attempt to set insignia from f_var_insignia
-if !(_insigniaVar isEqualTo "") then
+if (_insigniaVar isNotEqualTo "") then
 {
-    _insigniaClass = DICT_GET_DEFAULT(f_dict_insignia_custom,_insigniaVar,"");
+    _insigniaClass = f_dict_insignia_custom getOrDefault [_insigniaVar, ""];
 };
 
 
@@ -55,17 +53,17 @@ if !(_insigniaVar isEqualTo "") then
 // Fall back on unit group colour
 if (_insigniaClass isEqualTo "") then
 {
-    _group = group _unit;
-    _colour = SQUAD_COLOUR(_group);
+    private _group = group _unit;
+    private _colour = SQUAD_COLOUR(_group);
 
-    _insigniaClass = DICT_GET(f_dict_insignia_colours,(str _colour));
+    _insigniaClass = f_dict_insignia_colours getOrDefault [(str _colour), ""];
 
-    if (_insigniaClass isEqualTo []) then
+    if (_insigniaClass isEqualTo "") then
     {
-        _insigniaClass = DICT_GET(f_dict_insignia_colours,(str COLOUR_BLACK));
+        _insigniaClass = f_dict_insignia_colours getOrDefault [(str COLOUR_BLACK), ""];
     };
 
-    if (_unitType in ["ftl", "sl", "co", "xo"]) then
+    if ((_insigniaClass isNotEqualTo "") and {_unitType in ["ftl", "sl", "co", "xo"]}) then
     {
         _insigniaClass = _insigniaClass + "_SL";
     };
@@ -73,31 +71,31 @@ if (_insigniaClass isEqualTo "") then
 };
 
 
-if (_insigniaClass != "") then
+if (_insigniaClass isNotEqualTo "") then
 {
-	private ["_texture", "_cfgTexture"];
+    DEBUG_FORMAT2_LOG("[INSIGNIA]: Found insignia '%2' for unit %1.",_unit,_insigniaClass)
 
 	waitUntil
     {
-        (uniform _unit) != ""
+        (uniform _unit) isNotEqualTo ""
     };
 
 	// Replicate behaviour of setInsignia
-	_cfgTexture = [["CfgUnitInsignia", _insigniaClass], configFile] call bis_fnc_loadClass;
+	private _cfgTexture = [["CfgUnitInsignia", _insigniaClass], configFile] call bis_fnc_loadClass;
 
-	if (_cfgTexture == configFile) exitWith
+	if (_cfgTexture isEqualTo configFile) exitWith
     {
-        DEBUG_FORMAT1_LOG("'%1' not found in CfgUnitInsignia",_insigniaClass)
+        DEBUG_FORMAT1_LOG("[INSIGNIA]: '%1' not found in CfgUnitInsignia",_insigniaClass)
         false
     };
 
-	_texture = getText (_cfgTexture >> "texture");
-    _uniformInfos = getArray (configFile >> "CfgVehicles" >> getText (configFile >> "CfgWeapons" >> uniform _unit >> "ItemInfo" >> "uniformClass") >> "hiddenSelections");
+	private _texture = getText (_cfgTexture >> "texture");
+    private _uniformInfos = getArray (configFile >> "CfgVehicles" >> getText (configFile >> "CfgWeapons" >> uniform _unit >> "ItemInfo" >> "uniformClass") >> "hiddenSelections");
 
-	_index = -1;
+	private _index = -1;
 
 	{
-		if (_x == "insignia") exitwith
+		if (_x isEqualTo "insignia") exitwith
         {
             _index = _forEachIndex;
         };
@@ -112,4 +110,8 @@ if (_insigniaClass != "") then
 		_unit setObjectTextureGlobal [_index, _texture];
 	};
 
+}
+else
+{
+    DEBUG_FORMAT1_LOG("[INSIGNIA]: Failed to find an insignia for unit %1.",_unit)
 };

@@ -23,4 +23,4 @@ f_var_endingMusic_end2 = nil;
 f_var_endingMusic_end3 = nil;
 f_var_endingMusic_end4 = nil;
 f_var_endingMusic_end5 = nil;
-f_var_endingMusic_end6 = nil;
+f_var_endingMusic_end6 = "FourStringEnding";

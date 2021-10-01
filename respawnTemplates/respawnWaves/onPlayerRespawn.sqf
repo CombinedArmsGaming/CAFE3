@@ -11,6 +11,7 @@ LOCAL_ONLY(_unit);
 
 // MAKE SURE THE PLAYER INITIALIZES PROPERLY
 WAIT_UNTIL_PLAYER_EXISTS();
+waitUntil {local player};
 
 #include "..\parts\tryTeleport.sqf"
 
@@ -22,7 +23,7 @@ WAIT_UNTIL_PLAYER_EXISTS();
 
 _tryJoinSquad =
 {
-    params ["_unit", "_groupId"];
+    params ["_unit", "_groupId", "_cancelIfAlive"];
 
     _side = side _unit;
     _foundGroup = grpNull;
@@ -30,6 +31,9 @@ _tryJoinSquad =
     waitUntil
     {
         sleep 1;
+
+        if (_cancelIfAlive and {!IS_TRUE(f_var_playerHasBeenKilled)}) exitWith {true};
+
         _group = GET_SQUAD_ON_SIDE_DYNAMIC(_groupId,_side);
 
         if !(_group isEqualTo grpNull) exitWith
@@ -43,6 +47,8 @@ _tryJoinSquad =
 
     sleep 2;
 
+    if (_cancelIfAlive and {!IS_TRUE(f_var_playerHasBeenKilled)}) exitWith {};
+
     [_unit] joinSilent _foundGroup;
 
     sleep 2;
@@ -50,6 +56,9 @@ _tryJoinSquad =
     if !((groupId (group _unit)) isEqualTo _groupId) then
     {
         sleep 10;
+
+        if (_cancelIfAlive and {!IS_TRUE(f_var_playerHasBeenKilled)}) exitWith {};
+
         _text = format ["Unable to auto-join squad '%1'.<br/><br/>You will need to re-join or re-create the squad using 'CA Squad Actions'.", _groupId];
         [_text] call f_fnc_createSubtitleText;
 
@@ -129,7 +138,7 @@ if (_hasBeenKilled) then
 {
     DEBUG_PRINT_LOG("[RespawnWaves] Player was killed, adding to respawn wave...")
     DEBUG_PRINT_LOG("[RespawnWaves] Joining player to spectator group.")
-    [_unit, "Spectators"] spawn _tryJoinSquad;
+    [_unit, "Spectators", true] spawn _tryJoinSquad;
     sleep 2;
 
     [_unit, false] call f_fnc_activatePlayer;
@@ -184,7 +193,7 @@ if (_hasBeenKilled) then
             else
             {
                 DEBUG_FORMAT1_LOG("[RespawnWaves] Attempting to join player to original group: %1",_originalGroupId)
-                [_unit, _originalGroupId] spawn _tryJoinSquad;
+                [_unit, _originalGroupId, false] spawn _tryJoinSquad;
 
                 [_originalGroupId, "OriginalSquad"] spawn _waitToShowRespawnTitle;
 
@@ -204,7 +213,7 @@ if (_hasBeenKilled) then
         default
         {
             DEBUG_FORMAT1_LOG("[RespawnWaves] Attempting to join player to respawn group: %1",_joinGroup)
-            [_unit, _joinGroup] spawn _tryJoinSquad;
+            [_unit, _joinGroup, false] spawn _tryJoinSquad;
 
             [_joinGroup, "RespawnSquad"] spawn _waitToShowRespawnTitle;
 

@@ -103,6 +103,8 @@ waitUntil
 				_camPos = getPos curatorCamera;
 				player setPos _camPos;
 				zeus_camPosLast = _camPos;
+				_camDir = getDir curatorCamera;
+				player setDir _camDir;
 
 				sleep 0.25;
 

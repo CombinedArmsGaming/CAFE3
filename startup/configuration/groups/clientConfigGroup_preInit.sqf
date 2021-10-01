@@ -21,3 +21,6 @@ CLIENT_ONLY;
 
 // Custom intro
 #include "..\internals\missionIntro.sqf"
+
+// Logi vics
+#include "..\internals\logiVehicle.sqf"
