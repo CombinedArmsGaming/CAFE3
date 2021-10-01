@@ -4,17 +4,17 @@ params ["_faction"];
 _identity = _faction;
 
 
-if (_faction in ["blu_f", "blu_t_f", "blu_ctrg_f", "blu_gen_f"]) then
+if (_faction in ["blu_f", "blu_t_f", "blu_ctrg_f", "blu_gen_f", "b_macv"]) then
 {
     _identity = "blufor";
 };
 
-if (_faction in ["opf_f", "opf_t_f"]) then
+if (_faction in ["opf_f", "opf_t_f", "o_pavn"]) then
 {
 	_identity = "opfor";
 };
 
-if (_faction in ["ind_f", "ind_c_f"]) then
+if (_faction in ["ind_f", "ind_c_f", "i_arvn"]) then
 {
     _identity = "indfor";
 };

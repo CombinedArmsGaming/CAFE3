@@ -9,7 +9,6 @@ if (isNil "f_var_identity_already_run") then
     #include "..\..\..\configuration\identities\identityAssignment.sqf"
 
     f_var_identity_loaded = true;
-
 }
 else
 {
