@@ -33,7 +33,7 @@ private _spawnSuccess = [_type, _logiVic, _gear, _text] call f_fnc_logiDoSpawnVe
 
 if (_spawnSuccess) then
 {
-	_logiVic setVariable [LOGIVIC_VAR_DYNAMIC(_spawnIndex,"amount"), (_remaining - 1)];
+	_logiVic setVariable [LOGIVIC_VAR_DYNAMIC(_spawnIndex,"amount"), (_remaining - 1), true];
 };
 
 _spawnSuccess

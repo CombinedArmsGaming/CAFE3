@@ -110,6 +110,16 @@ _names = "EnochMen";
 
 CREATE_IDENTITY(polish,_speakers,_faces,_names);
 
+// "Spanish"
+_speakers = ["male02engfre","male01engfre"];
+_faces = ["GreekHead_A3_06","GreekHead_A3_04","Ioannou","GreekHead_A3_05","GreekHead_A3_01","GreekHead_A3_02","GreekHead_A3_09","GreekHead_A3_03","GreekHead_A3_08","Mavros","GreekHead_A3_07"];
+_forenames = ["Esteban", "Julio", "Jesús", "Javier", "Antonio", "Daniel", "Gabriel", "Luca", "José", "Alejandro", "Luis", "Juan", "Francisco", "Miguel", "Pedro", "Ángel"];
+ _surnames = ["Jimenez", "Guiterrez", "Hernandez", "Estade", "Riart" ,"Toni", "Aguilar", "Castellanos", "Enriquez", "Ibarra", "Molina"];
+_names = [_forenames, _surnames];
+
+CREATE_IDENTITY(latino,_speakers,_faces,_names);
+
+
 // Add GM identities
 if !(isNil 'gm_core_characters_fnc_uc_getRankTexture') then
 {
@@ -147,16 +157,21 @@ _names = "gm_names_dan_male";
 CREATE_IDENTITY(gm_danish_camo,_speakers,_faces,_names);
 };
 
-// Add SOG identities
-// if !(isNil 'SOG_FUNCTION_HERE') then
-// {
-//
-// // SOG Vietnamese
-// _speakers = ["gm_voice_male_deu_01","gm_voice_male_deu_02","gm_voice_male_deu_03","gm_voice_male_deu_04","gm_voice_male_deu_05","gm_voice_male_deu_06","gm_voice_male_deu_07","gm_voice_male_deu_08","gm_voice_male_deu_09"];
-// _faces = ["gm_face_whiteHead_01","gm_face_whiteHead_02","gm_WhiteHead_01_camo_01","gm_WhiteHead_01_camo_02","gm_WhiteHead_02_camo_01","gm_WhiteHead_02_camo_02","gm_WhiteHead_03_camo_01","gm_WhiteHead_03_camo_02","gm_WhiteHead_04_camo_01","gm_WhiteHead_04_camo_02","gm_WhiteHead_05_camo_01","gm_WhiteHead_05_camo_02","gm_WhiteHead_06_camo_01","gm_WhiteHead_06_camo_02","gm_WhiteHead_07_camo_01","gm_WhiteHead_07_camo_02","gm_WhiteHead_08_camo_01","gm_WhiteHead_08_camo_02","gm_WhiteHead_09_camo_01","gm_WhiteHead_09_camo_02","gm_WhiteHead_10_camo_01","gm_WhiteHead_10_camo_02","gm_WhiteHead_11_camo_01","gm_WhiteHead_11_camo_02","gm_WhiteHead_12_camo_01","gm_WhiteHead_12_camo_02","gm_WhiteHead_13_camo_01","gm_WhiteHead_13_camo_02","gm_WhiteHead_14_camo_01","gm_WhiteHead_14_camo_02","gm_WhiteHead_15_camo_01","gm_WhiteHead_15_camo_02","gm_WhiteHead_15_camo_02","gm_WhiteHead_16_camo_02","gm_WhiteHead_17_camo_01","gm_WhiteHead_17_camo_02","gm_WhiteHead_18_camo_01","gm_WhiteHead_18_camo_02","gm_WhiteHead_19_camo_01","gm_WhiteHead_19_camo_02","gm_WhiteHead_20_camo_01","gm_WhiteHead_20_camo_02","gm_WhiteHead_21_camo_01","gm_WhiteHead_21_camo_02"];
-// _names = "gm_names_deu_male";
-//
-// CREATE_IDENTITY(sog_vietnamese,_speakers,_faces,_names);
-//
-//
-//};
+
+//CDLC Identities
+//DO NOT USE THESE WITHOUT THE CORRESPONDING DLCS LOADED OR BAD THINGS WILL HAPPEN!
+
+//[S.O.G. Prairie Fire CDLC]Vietnamese
+_speakers = ["VIE"];
+_faces = ["vn_b_AsianHead_A3_04_10","vn_o_AsianHead_A3_07_01","vn_o_AsianHead_A3_01_02","vn_o_AsianHead_A3_05_01","vn_o_AsianHead_A3_03_02","vn_o_AsianHead_A3_02_01"];
+_names = "VietMen";
+
+CREATE_IDENTITY(vietnamese,_speakers,_faces,_names);
+
+//[S.O.G. Prairie Fire CDLC]American
+_speakers = ["male12eng","male02eng","male07eng","male08eng","male05eng","male04eng","male01eng","male06eng","male03eng","male10eng","male09eng","male11eng"];
+_faces = ["vn_b_WhiteHead_20_01","vn_b_WhiteHead_16_02","vn_b_WhiteHead_02_02","vn_b_WhiteHead_08_01","vn_b_WhiteHead_03_01","WhiteHead_07","Barklem","vn_b_WhiteHead_17_03","vn_b_WhiteHead_12_02","vn_b_WhiteHead_18_03","vn_b_WhiteHead_09_01","vn_b_WhiteHead_10_02","vn_b_WhiteHead_11_01","vn_b_WhiteHead_15_02","GreekHead_A3_08","GreekHead_A3_09","GreekHead_A3_05","vn_b_AfricanHead_02_01","vn_b_AfricanHead_03_02","WhiteHead_14","WhiteHead_21","WhiteHead_19","WhiteHead_06","vn_b_WhiteHead_01_03","vn_b_WhiteHead_04_01","WhiteHead_05","AfricanHead_01","WhiteHead_13"];
+_names = "macvmen";
+
+CREATE_IDENTITY(macv,_speakers,_faces,_names);
+

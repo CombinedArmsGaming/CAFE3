@@ -13,3 +13,4 @@
 #include "..\..\..\configuration\identityReplacement.hpp"
 #include "..\..\..\configuration\insignia.hpp"
 #include "..\..\..\configuration\objectScaling.hpp"
+#include "..\..\..\configuration\sogConfig.hpp"
