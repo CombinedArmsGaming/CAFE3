@@ -7,4 +7,6 @@ class zeusui
 	class zeusUI{};
 	class isZeusRemoteControlling{};
 	class addToCurator{};
+	class addZeusAcreActions{};
+	class initializeOldZeusBehaviour{};
 };

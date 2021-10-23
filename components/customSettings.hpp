@@ -3,3 +3,4 @@
 // Settings should be defined in a "customSettings.sqf" file in each component, and then included here.
 
 #include "downtime\customSettings.sqf"
+#include "zeus_ui\customSettings.sqf"
