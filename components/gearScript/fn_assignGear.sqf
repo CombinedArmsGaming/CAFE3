@@ -105,6 +105,6 @@ else
 {
     if (_unit isKindOf "CAManBase") then
     {
-        [_unit, _gearVariant] call f_fnc_applyFactionIdentity;
+        [_unit, _gearVariant] remoteExec ["f_fnc_applyFactionIdentity"];
     };
 };
