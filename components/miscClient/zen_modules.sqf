@@ -86,22 +86,6 @@ call
     ] call zen_custom_modules_fnc_register;
 
 
-    // Create Lambs Reinforcement Toggle
-
-    if IS_TRUE(lambs_danger) then
-    {
-        private _toggleLambsReinforcement = { [_this#1] call f_fnc_zen_toggleLambsReinforcementGroup };
-
-        [
-            "[CA2] LAMBS",
-            "Toggle LAMBS Reinforcement",
-            _toggleLambsReinforcement
-
-        ] call zen_custom_modules_fnc_register;
-
-    };
-
-
     // Jammer Modules
 
     if !(isNil 'kyk_ew_fnc_broadcastJammerAdd') then
