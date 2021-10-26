@@ -12,8 +12,8 @@
 
 BEGIN_IDENTITY_ASSIGNMENT;
 
-SET_FACTION_IDENTITY(opfor,british);
-SET_FACTION_IDENTITY(blufor,asian);
+SET_FACTION_IDENTITY(opfor,iranian);
+SET_FACTION_IDENTITY(blufor,american);
 SET_FACTION_IDENTITY(indfor,greek);
-SET_FACTION_IDENTITY(guerrilla,russian);
-SET_FACTION_IDENTITY(civilian,french);
+SET_FACTION_IDENTITY(guerrilla,greek);
+SET_FACTION_IDENTITY(civilian,greek);
