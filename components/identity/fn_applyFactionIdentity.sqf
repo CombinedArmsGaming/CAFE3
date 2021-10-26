@@ -18,4 +18,6 @@ if (_sideName isEqualTo "") then
 
 private _identity = GET_FACTION_IDENTITY_DYNAMIC(_sideName);
 
-[_unit, _identity] call f_fnc_applyIdentity;
+_unit setVariable ["f_var_identity", _identity, true];
+
+[_unit, _identity] remoteExecCall ["f_fnc_applyIdentity", 0, false];

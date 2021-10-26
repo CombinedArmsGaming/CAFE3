@@ -9,5 +9,5 @@
 */
 
 // Enables identity replacements for all units except for players.
-// To disable identity replacements for all units, comment-out or delete the line below INSTEAD of setting it to 0.
-#define ENABLE_IDENTITY_REPLACEMENT 1
+// To disable identity replacements for all units, comment-out or delete the line below.
+#define ENABLE_IDENTITY_REPLACEMENT

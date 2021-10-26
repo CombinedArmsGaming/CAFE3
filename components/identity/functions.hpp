@@ -4,4 +4,5 @@ class identity
     class applyFactionIdentity{};
     class applyIdentity{};
     class generateName{};
+    class applyAllUnitIdentities{};
 };
