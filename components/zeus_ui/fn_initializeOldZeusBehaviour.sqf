@@ -2,7 +2,7 @@
 	Author:		Cre8or + Bubbus
 	Modified by: Joecuronium
 	Description:
-		Initializes "old" Zeus behaviour (i.e. Zeus player glued to the camera)
+		Depreciated! In here for legacy reasons, will be removed on release!
 	Arguments:
 		(nothing)
 	Returns:
