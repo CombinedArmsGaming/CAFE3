@@ -111,7 +111,7 @@ private _script =
 {
 	_player setVariable ["f_var_turnZeusInvisible", true, true];
 	_player setCaptive true; //Disables AI seeing the Zeus player as hostile when talking in direct speech while hidden
-	[_player, false] remoteExec ["f_fnc_activatePlayer", 2]; 
+	[_player, false] remoteExecCall ["f_fnc_activatePlayer", 2]; 
 
 	["Zeus unit now being hidden"] call zen_common_fnc_showMessage;
 };
@@ -132,7 +132,7 @@ private _script =
 {
 	_player setVariable ["f_var_turnZeusInvisible", false, true];
 	_player setCaptive false; //Disables AI seeing the Zeus player as hostile when talking in direct speech while hidden
-	[_player, true] remoteExec ["f_fnc_activatePlayer", 2]; 
+	[_player, true] remoteExecCall ["f_fnc_activatePlayer", 2]; 
 
 	["Zeus Unit now visible"] call zen_common_fnc_showMessage;
 };

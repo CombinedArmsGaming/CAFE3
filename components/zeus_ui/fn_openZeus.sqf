@@ -16,7 +16,7 @@ CLIENT_ONLY;
 if(player getVariable ["f_var_turnZeusInvisible", true])then
 {
 	player setCaptive true; //Disables AI seeing the Zeus player as hostile when talking in direct speech while hidden
-	[player, false] remoteExec ["f_fnc_activatePlayer", 2]; 
+	[player, false] remoteExecCall ["f_fnc_activatePlayer", 2]; 
 };
 
 []spawn //you need to wait for Zeus to actually be open to create the dialog

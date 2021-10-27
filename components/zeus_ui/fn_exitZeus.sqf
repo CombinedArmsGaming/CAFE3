@@ -35,5 +35,5 @@ if(player getVariable ["f_var_zeusTeleportToCam", true]) then
 if(player getVariable ["f_var_turnZeusInvisible", true]) then
 {
 	player setCaptive false;
-	[player, true] remoteExec ["f_fnc_activatePlayer", 2]; 
+	[player, true] remoteExecCall ["f_fnc_activatePlayer", 2]; 
 };
