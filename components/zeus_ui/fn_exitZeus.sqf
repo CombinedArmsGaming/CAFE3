@@ -13,6 +13,8 @@
 
 CLIENT_ONLY;
 
+if(!(player getVariable ["f_var_isZeus",false])) exitWith {}; //Fallback in case the script execution is run on the wrong machine
+
 if(player getVariable ["f_var_zeusTeleportToCam", true]) then
 {
 	

@@ -13,6 +13,8 @@
 
 CLIENT_ONLY;
 
+if(!(player getVariable ["f_var_isZeus",false])) exitWith {}; //Fallback in case the script execution is run on the wrong machine
+
 if(player getVariable ["f_var_turnZeusInvisible", true])then
 {
 	player setCaptive true; //Disables AI seeing the Zeus player as hostile when talking in direct speech while hidden
