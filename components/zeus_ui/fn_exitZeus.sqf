@@ -27,10 +27,6 @@ if(player getVariable ["f_var_zeusTeleportToCam", true]) then
 	player setPosASL _posGround;
 
 	player setDir _dir;
-
-	player setCaptive false;
-
-	[player, true] remoteExecCall ["f_fnc_activatePlayer", 2]; 
 };
 
 
