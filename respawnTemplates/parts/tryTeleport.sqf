@@ -4,11 +4,23 @@ _tryTeleport =
 
     _onTeleportFailure =
     {
-        DEBUG_FORMAT1_LOG("[RespawnWaves] Failed to teleport to location, defaulting to location of %1.",RESPAWN_MARKER_POS((side player)))
-        _basePos = RESPAWN_MARKER_POS((side player));
-        [player, _basePos] spawn f_fnc_teleportPlayer;
+        params ["_unit", "_posAtlOrObject"];
 
-        _text = format ["Unable to teleport to the proper location.<br/><br/>You will need to find transportation to the AO or ping Zeus.", _groupId];
+        private _respawner = RESPAWN_ENTITY(side player);
+
+        if EXISTS(_respawner) then
+        {
+            DEBUG_FORMAT2_LOG("[RespawnWaves] Failed to teleport to %2, defaulting to respawner entity '%1'.",_respawner,_posAtlOrObject)
+            [player, _respawner] spawn f_fnc_teleportPlayer;
+        }
+        else
+        {
+            DEBUG_FORMAT2_LOG("[RespawnWaves] Failed to teleport to %2, defaulting to location of %1.",RESPAWN_MARKER_POS((side player)),_posAtlOrObject)
+            _basePos = RESPAWN_MARKER_POS((side player));
+            [player, _basePos] spawn f_fnc_teleportPlayer;
+        };        
+
+        _text = "Unable to teleport to the proper location.<br/><br/>You will need to find transportation to the AO or ping Zeus.";
         [_text] call f_fnc_createSubtitleText;
 
     };

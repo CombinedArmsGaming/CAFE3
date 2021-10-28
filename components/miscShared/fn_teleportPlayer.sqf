@@ -4,7 +4,7 @@ RUN_AS_ASYNC(f_fnc_teleportPlayer);
 
 // 2020-06-02 TODO :: Add "loud/quiet" parameter to provide feedback to the user / target depending on current state.
 
-params ["_unit", "_posAtlOrObject", ["_onFailure", []]];
+params ["_unit", "_posAtlOrObject", ["_onFailure", {}]];
 
 
 if (typeName _posAtlOrObject == typeName []) exitWith
@@ -17,7 +17,7 @@ if (typeName _posAtlOrObject == typeName []) exitWith
 if !(typeName _posAtlOrObject == typeName objNull) exitWith
 {
     DEBUG_FORMAT1_LOG("[TeleportPlayer] f_fnc_teleportPlayer was called with %1 which is not an array or object.",_posAtlOrEntity)
-    if (typeName _onFailure == "CODE") then _onFailure;
+    _this call _onFailure;
 };
 
 
@@ -63,10 +63,10 @@ if (_object isKindOf "Man") exitWith
     };
 
 
-    if (!_success and {typeName _onFailure == "CODE"}) then
+    if (!_success) then
     {
         DEBUG_PRINT_LOG("[TeleportPlayer] Failed to move to target: executing fallback code.")
-        [] call _onFailure;
+        _this call _onFailure;
     }
 
 };
@@ -91,8 +91,8 @@ waitUntil
 };
 
 
-if (!_success and {typeName _onFailure == "CODE"}) then
+if (!_success) then
 {
     DEBUG_PRINT_LOG("[TeleportPlayer] Failed to move to target: executing fallback code.")
-    [] call _onFailure;
+    _this call _onFailure;
 }

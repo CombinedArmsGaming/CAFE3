@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={202.40784,46.85965,131.52609};
-		dir[]={0.43788877,-0.3408567,0.8319121};
-		up[]={0.15876564,0.94011492,0.30162728};
-		aside[]={0.88490599,1.587905e-007,-0.46578252};
+		pos[]={188.78079,46.85965,94.456337};
+		dir[]={0.42801413,-0.24195674,0.87078345};
+		up[]={0.10673296,0.97028428,0.21714482};
+		aside[]={0.89744878,-5.3667463e-008,-0.44112071};
 	};
 };
 binarizationWanted=0;
@@ -39,6 +39,7 @@ addons[]=
 	"ace_explosives",
 	"A3_Soft_F_Gamma_Truck_01",
 	"A3_Soft_F_Exp_Truck_01",
+	"Blastcore_MainCore",
 	"ace_refuel",
 	"ace_repair"
 };
@@ -46,7 +47,7 @@ class AddonsMetaData
 {
 	class List
 	{
-		items=15;
+		items=16;
 		class Item0
 		{
 			className="A3_Modules_F_Curator";
@@ -136,12 +137,17 @@ class AddonsMetaData
 		};
 		class Item13
 		{
+			className="Blastcore_MainCore";
+			name="Blastcore_MainCore";
+		};
+		class Item14
+		{
 			className="ace_refuel";
 			name="ACE3 - Refuel";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item14
+		class Item15
 		{
 			className="ace_repair";
 			name="ACE3 - Repair";
@@ -8239,7 +8245,26 @@ class CustomAttributes
 				};
 			};
 		};
-		nAttributes=2;
+		class Attribute2
+		{
+			property="cba_settings_hasSettingsFile";
+			expression="false";
+			class Value
+			{
+				class data
+				{
+					class type
+					{
+						type[]=
+						{
+							"BOOL"
+						};
+					};
+					value=1;
+				};
+			};
+		};
+		nAttributes=3;
 	};
 };
 class Mission
