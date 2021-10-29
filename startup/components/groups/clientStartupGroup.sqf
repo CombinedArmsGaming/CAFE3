@@ -49,6 +49,6 @@ INIT_COMPONENT(viewDistanceEditor)
 // Identity replacements
 #ifdef ENABLE_IDENTITY_REPLACEMENT
 
-RUN_FUNC_ONCE(f_fnc_applyAllUnitIdentities)
+RUN_FUNC_ONCE(f_fnc_applyExistingUnitIdentities)
 
 #endif
