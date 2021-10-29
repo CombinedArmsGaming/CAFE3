@@ -28,9 +28,6 @@ private ["_identity"];
 
 	if (_identity != "") then {
 		[_x, _identity] call f_fnc_applyIdentity;
-
-		systemChat format ["Handled %1", name _x];
-		diag_log format ["[CRE] Handled %1", name _x];
 	};
 
 } forEach (
