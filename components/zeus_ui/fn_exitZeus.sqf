@@ -28,7 +28,7 @@ private _script =
 {
 	params["_pos", "_dir"];
 	
-	if((cameraOn != vehicle player) || !(player getVariable ["f_var_zeusTeleportToCam", true])) exitWith {systemChat "Exit into remote control.";}; //Check if exiting into RC or if tp is disabled (Unsure if working)
+	if((cameraOn != vehicle player) || !(player getVariable ["f_var_zeusTeleportToCam", true])) exitWith {}; //Check if exiting into RC or if tp is disabled
 
 	private _posGround = ((lineIntersectsSurfaces [_pos, _pos vectorAdd [0, 0, -100], player]) param [0, []]) param [0, []];
 
@@ -42,7 +42,7 @@ private _script =
 
 private _script =
 {
-	if((cameraOn != vehicle player) || (player getVariable ["f_var_turnZeusInvisible", true])) exitWith {systemChat "Exit into remote control.";}; //Check if exiting into RC or if invisibility is disabled (Unsure if working)
+	if((cameraOn != vehicle player) || (player getVariable ["f_var_turnZeusInvisible", true])) exitWith {systemChat "Exit into remote control.";}; //Check if exiting into RC or if invisibility is disabled
 	player setCaptive false;
 	[player, true] remoteExecCall ["f_fnc_activatePlayer", 2]; 
 };

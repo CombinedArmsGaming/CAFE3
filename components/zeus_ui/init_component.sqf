@@ -2,9 +2,8 @@
 
 CLIENT_ONLY;
 
-DEBUG_PRINT_LOG("initting zeus_ui")
+DEBUG_PRINT_LOG("[Zeus] Initting Zeus components")
 
-//[] spawn f_fnc_detectZeusDisplay; THIS COMMENT WILL BE DELETED ON RELEASE
 
 waitUntil
 {

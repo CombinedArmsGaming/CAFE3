@@ -58,7 +58,7 @@ private _actionToBeAdded =
 [["ACE_ZeusActions", "ACRE_ZeusEars"], _actionToBeAdded] call ace_interact_menu_fnc_addActionToZeus;
 
 
-//CA2 Zeus actions ndoe
+//CA2 Zeus actions node
 private _zeusNode = [
         "CA2_Zeus",
         "CA2 Zeus Menu",
