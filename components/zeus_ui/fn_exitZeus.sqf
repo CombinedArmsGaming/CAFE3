@@ -42,7 +42,7 @@ private _script =
 
 private _script =
 {
-	if((cameraOn != vehicle player) || (player getVariable ["f_var_turnZeusInvisible", true])) exitWith {systemChat "Exit into remote control.";}; //Check if exiting into RC or if invisibility is disabled
+	if((cameraOn != vehicle player) || !(player getVariable ["f_var_turnZeusInvisible", true])) exitWith {}; //Check if exiting into RC or if invisibility is disabled
 	player setCaptive false;
 	[player, true] remoteExecCall ["f_fnc_activatePlayer", 2]; 
 };
