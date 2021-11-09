@@ -15,11 +15,6 @@ CLIENT_ONLY;
 
 if(!(player getVariable ["f_var_isZeus",false])) exitWith {}; //Fallback in case the script execution is run on the wrong machine
 
-//Initialize default behaviour
-[] call acre_sys_zeus_fnc_handleZeusSpeakPress; 
-player setVariable ["f_var_zeusTeleportToCam", true, true];
-player setVariable ["f_var_turnZeusInvisible", true, true];
-
 
 //ACRE actions
 private _script =
@@ -148,5 +143,9 @@ private _actionToBeAdded =
 
 [["ACE_ZeusActions", "CA2_Zeus"], _actionToBeAdded] call ace_interact_menu_fnc_addActionToZeus;
 
+//Initialize default behaviour
+[] call acre_sys_zeus_fnc_handleZeusSpeakPress; 
+player setVariable ["f_var_zeusTeleportToCam", true, true];
+player setVariable ["f_var_turnZeusInvisible", true, true];
 
 DEBUG_PRINT_LOG("[Zeus] Init complete");
