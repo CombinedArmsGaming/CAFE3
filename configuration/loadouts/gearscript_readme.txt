@@ -34,7 +34,7 @@ COPY_ADDONS(TO,FROM);
 -   For example:
         Create a Rifleman loadout with a lot of good randomisation options.
         Create a new Anti-tank loadout.
-        COPY_ADDONS(rif,lat);
+        COPY_ADDONS(lat,rif);
         The Anti-tank loadout now has all of the Rifleman's randomisation.
 
 CLEAR_HATS(UNIT_NAME);
