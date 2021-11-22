@@ -1,16 +1,17 @@
-# Readme
+# CA2 Mission Framework
 
-READ ME!
+A framework for creating ARMA 3 missions with as little fuss as possible.
 
-# Contribution Guidelines
+Contains many features to help make excellent missions without the confusion.  To see what's on offer, load up this mission in the mission editor and look inside the `configuration` folder.
 
-## Code Contributions
-To contribute code to the framework, create a fork of the repository to work in. Once you've made your changes, submit a pull request to this repo. Please follow the guidelines set in the pull request template. It will then be reviewed by framework curators.
+We're always looking for new ways to make high-quality missions easier to make.  If you have any ideas - or if you've had any trouble - please let us know on the Issues page.
+
 
 ## Bug Reports & Feature Requests
 To report a bug or request a feature, first check the [Issue Tracker](https://github.com/Bubbus/F3_CA_BUB/issues) to see if a relevant issue already exists.
 
 If not, please [submit an issue](https://github.com/Bubbus/F3_CA_BUB/issues/new), taking care to following the guidelines set in the template. All issues should be titled as follows: `[Category] Title` such as `[Bug] Respawning Breaks on Server` or `[Feature Request] Implement 'Skill Issue' Emote`.
 
-## Contact Us
-If you'd like to reach out to us directly, or get in on the action, [join us on the Combined Arms Discord.](https://discord.gg/7jhcqFuGfb)
+
+## Code Contributions
+All help is welcome, thank you!  Please refer to [contributing.md](https://github.com/Bubbus/F3_CA_BUB/blob/release/contributing.md) for the latest contribution guidance.
