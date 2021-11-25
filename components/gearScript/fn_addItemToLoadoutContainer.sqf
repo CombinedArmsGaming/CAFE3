@@ -24,14 +24,16 @@ private _magConfig = (configFile >> "CfgMagazines" >> _itemName);
 
 if !(isNull _magConfig) then
 {
-    private _ammoCount = _magConfig >> "count";
+    private _ammoCount = getNumber (_magConfig >> "count");
     _itemToAdd = [_itemName, _itemAmount, _ammoCount];
 };
 
 {    
-    private _container = _x # _containerIndex;
-    private _contents = _container # 1;
-
-    _contents pushBack _itemToAdd;
+    private _container = _x # _containerIndex;    
+    if (_container isNotEqualTo []) then
+    {
+        private _contents = _container # 1;
+        _contents pushBack _itemToAdd;
+    };
     
 } forEach _loadoutVariants;

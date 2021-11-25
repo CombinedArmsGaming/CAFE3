@@ -44,20 +44,30 @@ private _removeItem =
     private _loadout = _x;
 
     private _uniform = _loadout#3;
-    private _uniformContent = _uniform#1;
+    if (_uniform isNotEqualTo []) then
+    {
+        private _uniformContent = _uniform#1;
+        private _cleanUniformContent = [_uniformContent, _itemName] call _removeItem;
+        
+        _uniform set [1, _cleanUniformContent];
+    };
 
     private _vest = _loadout#4;
-    private _vestContent = _vest#1;
+    if (_vest isNotEqualTo []) then
+    {
+        private _vestContent = _vest#1;
+        private _cleanVestContent = [_vestContent, _itemName] call _removeItem;
+        
+        _vest set [1, _cleanVestContent];
+    };
 
     private _backpack = _loadout#5;
-    private _backpackContent = _backpack#1;
-
-    private _cleanUniformContent = [_uniformContent, _itemName] call _removeItem;
-    private _cleanVestContent = [_vestContent, _itemName] call _removeItem;
-    private _cleanBackpackContent = [_backpackContent, _itemName] call _removeItem;
-
-    _uniform set [1, _cleanUniformContent];
-    _vest set [1, _cleanVestContent];
-    _backpack set [1, _cleanBackpackContent];
+    if (_backpack isNotEqualTo []) then
+    {
+        private _backpackContent = _backpack#1;
+        private _cleanBackpackContent = [_backpackContent, _itemName] call _removeItem;
+        
+        _backpack set [1, _cleanBackpackContent];
+    };
     
 } forEach _loadoutVariants;
