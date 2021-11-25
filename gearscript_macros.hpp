@@ -113,4 +113,27 @@
 
 #define REMOVE_ITEM_FROM_LOADOUT(NAME,ITEMNAME) [#FACTION,#NAME,ITEMNAME] call f_fnc_removeItemFromLoadout
 
+#define ADD_MAP_ITEM(NAME,ITEMNAME) [#FACTION,#NAME,0,ITEMNAME] call f_fnc_addLinkedItemToLoadout
+#define ADD_MAP(NAME) ADD_MAP_ITEM(NAME,"ItemMap")
+#define REMOVE_MAP_ITEM(NAME) [#FACTION,#NAME,0] call f_fnc_removeLinkedItemFromLoadout
+#define REMOVE_MAP(NAME) REMOVE_MAP_ITEM(NAME)
+
+#define ADD_TERMINAL(NAME,ITEMNAME) [#FACTION,#NAME,1,ITEMNAME] call f_fnc_addLinkedItemToLoadout
+#define ADD_GPS(NAME) ADD_TERMINAL(NAME,"ItemGPS")
+#define REMOVE_TERMINAL(NAME) [#FACTION,#NAME,1] call f_fnc_removeLinkedItemFromLoadout
+#define REMOVE_GPS(NAME) REMOVE_TERMINAL(NAME)
+
+#define ADD_COMPASS_ITEM(NAME,ITEMNAME) [#FACTION,#NAME,3,ITEMNAME] call f_fnc_addLinkedItemToLoadout
+#define ADD_COMPASS(NAME) ADD_COMPASS_ITEM(NAME,"ItemCompass")
+#define REMOVE_COMPASS_ITEM(NAME) [#FACTION,#NAME,3] call f_fnc_removeLinkedItemFromLoadout
+#define REMOVE_COMPASS(NAME) REMOVE_COMPASS_ITEM(NAME)
+
+#define ADD_WATCH_ITEM(NAME,ITEMNAME) [#FACTION,#NAME,4,ITEMNAME] call f_fnc_addLinkedItemToLoadout
+#define ADD_WATCH(NAME) ADD_WATCH_ITEM(NAME,"ItemWatch")
+#define REMOVE_WATCH_ITEM(NAME) [#FACTION,#NAME,4] call f_fnc_removeLinkedItemFromLoadout
+#define REMOVE_WATCH(NAME) REMOVE_WATCH_ITEM(NAME)
+
+#define ADD_NVG(NAME,ITEMNAME) [#FACTION,#NAME,5,ITEMNAME] call f_fnc_addLinkedItemToLoadout
+#define REMOVE_NVG(NAME) [#FACTION,#NAME,5] call f_fnc_removeLinkedItemFromLoadout
+
 #define FINALIZE_CRATE(NAME) [CRATE_VAR(NAME)] call f_fnc_applyCrateModifications

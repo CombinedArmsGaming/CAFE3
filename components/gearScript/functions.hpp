@@ -3,11 +3,13 @@ class gearScript
     file = "components\gearScript";
     class addInsigniaMonitor{};
     class addItemToLoadoutContainer{};
+    class addLinkedItemToLoadout{};
     class applyLoadout{};
     class applyLoadoutModifications{};
     class assignGear{};
     class createLoadoutLocker{};
     class removeItemFromLoadout{};
+    class removeLinkedItemFromLoadout{};
 };
 
 class gearScriptCrates

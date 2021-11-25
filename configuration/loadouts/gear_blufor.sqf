@@ -50,6 +50,23 @@ BEGIN_LOADOUTS;
 
     REMOVE_ITEM_FROM_LOADOUT(UNIT_NAME,"Item Name");
 
+    ADD_MAP(UNIT_NAME);
+    REMOVE_MAP(UNIT_NAME);
+
+    ADD_GPS(UNIT_NAME);
+    ADD_TERMINAL(UNIT_NAME,"Item Name");
+    REMOVE_TERMINAL(UNIT_NAME);
+
+    ADD_COMPASS(UNIT_NAME);
+    REMOVE_COMPASS(UNIT_NAME);
+
+    ADD_WATCH(UNIT_NAME);
+    ADD_WATCH_ITEM(UNIT_NAME,"Item Name");
+    REMOVE_WATCH(UNIT_NAME);
+
+    ADD_NVG(UNIT_NAME,"Item Name");
+    REMOVE_NVG(UNIT_NAME);
+
     -------------------------------------------------
 
     Available commands FOR RE-SUPPLY CRATES:

@@ -96,6 +96,32 @@ REMOVE_ITEM_FROM_LOADOUT(UNIT_NAME,"Item Name");
 -   Removes every item of this kind from the unit's clothing (uniform, vest, backpack).
     Does not remove clothing, held weapons, magazines from weapons etc.
 
+ADD_MAP(UNIT_NAME);
+REMOVE_MAP(UNIT_NAME);
+-   Adds or removes the "ItemMap" object for the given unit.
+
+ADD_GPS(UNIT_NAME);
+-   Adds the "ItemGPS" object for the given unit.
+
+ADD_TERMINAL(UNIT_NAME,"Item Name");
+REMOVE_TERMINAL(UNIT_NAME);
+-   Adds or removes a terminal item for the given unit (GPS, UAV terminal etc).
+
+ADD_COMPASS(UNIT_NAME);
+REMOVE_COMPASS(UNIT_NAME);
+-   Adds or removes the "ItemCompass" object for the given unit.
+
+ADD_WATCH(UNIT_NAME);
+-   Adds the "ItemWatch" object for the given unit.
+
+ADD_WATCH_ITEM(UNIT_NAME,"Item Name");
+REMOVE_WATCH(UNIT_NAME);
+-   Adds or removes a watch item for the given unit (Watch, Chemical detector etc).
+
+ADD_NVG(UNIT_NAME,"Item Name");
+REMOVE_NVG(UNIT_NAME);
+-   Adds or removes night-vision goggles for the given unit.
+
 -------------------------------------------------
 
 Available commands FOR RE-SUPPLY CRATES:
