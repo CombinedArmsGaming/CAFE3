@@ -2,9 +2,8 @@
 
 CLIENT_ONLY;
 
-DEBUG_PRINT_LOG("initting zeus_ui")
+DEBUG_PRINT_LOG("[Zeus] Initting Zeus components")
 
-[] spawn f_fnc_detectZeusDisplay;
 
 waitUntil
 {
@@ -19,3 +18,5 @@ player setVariable ["f_var_isZeus", true, true];
 
 player addCuratorEditableObjects [(vehicles + allUnits), true];
 player removeCuratorEditableObjects [player, true];
+
+[] call f_fnc_addZeusActions;
