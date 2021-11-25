@@ -50,11 +50,11 @@
 	#include "spectate_full.sqf"
 
 #endif
-	
+
 
 //Logistics
 
-#ifdef CA2_LOGISTICS 1
+#ifdef CA2_LOGISTICS
 
 	#include "logistics_settings.sqf"
 
@@ -67,7 +67,3 @@
 	#include "acre_settings.sqf"
 
 #endif
-
-
-
-

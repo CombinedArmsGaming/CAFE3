@@ -5,4 +5,4 @@ This file allows the missionmaker to define the mission as one using the S.O.G. 
 */
 
 //Uncomment the line below to activate this feature
-//#define CA2_SOGMISSION 1
+//#define CA2_SOGMISSION
