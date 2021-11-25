@@ -8,8 +8,6 @@
 
 params ["_unit", "_identity"];
 
-_unit setVariable ["f_var_identity", _identity, true];
-
 _speakers = GET_SPEAKERS_FOR_IDENTITY_DYNAMIC(_identity);
 _faces = GET_FACES_FOR_IDENTITY_DYNAMIC(_identity);
 _names = GET_NAMES_FOR_IDENTITY_DYNAMIC(_identity);
