@@ -36,6 +36,22 @@ BEGIN_LOADOUTS;
 
     -------------------------------------------------
 
+    Available commands for editing UNIT LOADOUTS:
+    (These commands can cause OVERLOADED LOADOUTS)
+
+    ADD_ITEM_TO_UNIFORM(UNIT_NAME,"Item Name");
+    ADD_ITEMS_TO_UNIFORM(UNIT_NAME,"Item Name",AMOUNT);
+
+    ADD_ITEM_TO_VEST(UNIT_NAME,"Item Name");
+    ADD_ITEMS_TO_VEST(UNIT_NAME,"Item Name",AMOUNT);
+
+    ADD_ITEM_TO_BACKPACK(UNIT_NAME,"Item Name");
+    ADD_ITEMS_TO_BACKPACK(UNIT_NAME,"Item Name",AMOUNT);
+
+    REMOVE_ITEM_FROM_LOADOUT(UNIT_NAME,"Item Name");
+
+    -------------------------------------------------
+
     Available commands FOR RE-SUPPLY CRATES:
 
     CREATE_CRATE(NAME);
@@ -90,15 +106,6 @@ ADD_HAT(rif,"H_HelmetB");
 _baseLoadout = [["arifle_MXC_F","","acc_flashlight","optic_ACO_grn",["30Rnd_65x39_caseless_mag",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",17],[],""],["U_B_CombatUniform_mcam",[["ACE_elasticBandage",3],["ACE_morphine",2],["ACE_packingBandage",3],["ACE_tourniquet",2],["ACRE_PRC343_ID_3",1],["ACRE_PRC148_ID_1",1],["ACE_splint",2],["ACE_epinephrine",1],["ACRE_PRC152",1]]],["V_PlateCarrier1_rgr",[["ACE_MapTools",1],["ACE_Flashlight_XL50",1],["HandGrenade",2,1],["SmokeShell",2,1],["30Rnd_65x39_caseless_mag_Tracer",4,30],["30Rnd_65x39_caseless_mag",4,30],["SmokeShellBlue",2,1],["SmokeShellRed",2,1],["16Rnd_9x21_Mag",1,17]]],["B_AssaultPack_khk",[["NVGoggles",1]]],"H_MilCap_mcamo","G_Tactical_Clear",["Rangefinder","","","",[],[],""],["ItemMap","ItemGPS","","ItemCompass","ItemWatch",""]];
 
 CREATE_LOADOUT(co,_baseLoadout);
-
-
-// test guy
-
-_baseLoadout = [["arifle_MX_ACO_pointer_F","","acc_pointer_IR","optic_Aco",["30Rnd_65x39_caseless_mag",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",17],[],""],["U_B_CombatUniform_mcam",[["FirstAidKit",1],["ACE_ATragMX",1],["30Rnd_65x39_caseless_mag",2,30]]],["V_PlateCarrier1_rgr",[["ACE_bloodIV_250",2],["ACE_elasticBandage",1],["30Rnd_65x39_caseless_mag",9,30],["16Rnd_9x21_Mag",2,17],["HandGrenade",2,1],["SmokeShell",1,1],["SmokeShellGreen",1,1],["Chemlight_green",2,1]]],["B_AssaultPack_mcamo_Ammo",[["FirstAidKit",4],["30Rnd_65x39_caseless_mag",6,30],["100Rnd_65x39_caseless_mag",1,100],["NLAW_F",1,1],["HandGrenade",2,1],["MiniGrenade",2,1],["1Rnd_HE_Grenade_shell",3,1],["3Rnd_HE_Grenade_shell",1,3],["10Rnd_338_Mag",2,10],["20Rnd_762x51_Mag",2,20]]],"H_HelmetB_grass","G_Aviator",[],["ItemMap","","ItemRadio","ItemCompass","ItemWatch","NVGoggles"]];
-
-CREATE_LOADOUT(testguy,_baseLoadout);
-REMOVE_ITEM_FROM_LOADOUT(testguy,"ACE_ATragMX");
-ADD_ITEMS_TO_VEST(testguy,"ACE_Banana",10);
 
 
 // Fireteam lead Loadout

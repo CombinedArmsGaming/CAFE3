@@ -68,6 +68,34 @@ ADD_VARIANT(UNIT_NAME,<ACE Arsenal code>);
     ADD_VARIANT(rif,<ACE Arsenal code>);
     All riflemen will now randomly have an AK-47 or M-16 rifle.
 
+
+-------------------------------------------------
+
+Available commands for editing UNIT LOADOUTS:
+
+These commands can cause OVERLOADED LOADOUTS.  
+This means that units may start with more items than they can technically carry, and if they drop any items they will not be able to pick them up again.
+It's always better to use ACE Arsenal to design and edit your loadouts.  Use these commands with care.
+
+ADD_ITEM_TO_UNIFORM(UNIT_NAME,"Item Name");
+ADD_ITEMS_TO_UNIFORM(UNIT_NAME,"Item Name",AMOUNT);
+-   Add an item to the unit's uniform.  If the uniform is full, it will be overloaded with this item.
+    This command only supports regular items and magazines.  It does not support weapons, clothing items etc.
+
+ADD_ITEM_TO_VEST(UNIT_NAME,"Item Name");
+ADD_ITEMS_TO_VEST(UNIT_NAME,"Item Name",AMOUNT);
+-   Add an item to the unit's vest.  If the vest is full, it will be overloaded with this item.
+    This command only supports regular items and magazines.  It does not support weapons, clothing items etc.   
+
+ADD_ITEM_TO_BACKPACK(UNIT_NAME,"Item Name");
+ADD_ITEMS_TO_BACKPACK(UNIT_NAME,"Item Name",AMOUNT);
+-   Add an item to the unit's backpack.  If the backpack is full, it will be overloaded with this item.
+    This command only supports regular items and magazines.  It does not support weapons, clothing items etc.
+
+REMOVE_ITEM_FROM_LOADOUT(UNIT_NAME,"Item Name");
+-   Removes every item of this kind from the unit's clothing (uniform, vest, backpack).
+    Does not remove clothing, held weapons, magazines from weapons etc.
+
 -------------------------------------------------
 
 Available commands FOR RE-SUPPLY CRATES:
