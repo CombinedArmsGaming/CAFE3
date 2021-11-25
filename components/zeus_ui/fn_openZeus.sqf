@@ -32,4 +32,5 @@ if(player getVariable ["f_var_turnZeusInvisible", true])then
 
 	// Start the custom Zeus UI
 	["ui_init"] call f_fnc_zeusUI;
+	[] call acre_sys_zeus_fnc_handleZeusSpeakPress; //Fallback in case the variable goes missing
 };
