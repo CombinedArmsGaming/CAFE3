@@ -6,7 +6,7 @@
 
     For example:
     SET_FACTION_IDENTITY(opfor,british);
-    
+
 */
 
 

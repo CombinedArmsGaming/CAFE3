@@ -44,3 +44,11 @@ INIT_COMPONENT(gravestones)
 INIT_COMPONENT(viewDistanceEditor)
 
 #endif
+
+
+// Identity replacements
+#ifdef ENABLE_IDENTITY_REPLACEMENT
+
+RUN_FUNC_ONCE(f_fnc_applyExistingUnitIdentities)
+
+#endif

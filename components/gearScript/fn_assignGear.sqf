@@ -103,8 +103,12 @@ if (isPlayer _unit) then
 }
 else
 {
-    if (_unit isKindOf "CAManBase") then
-    {
-        [_unit, _gearVariant] remoteExec ["f_fnc_applyFactionIdentity"];
-    };
+    #ifdef ENABLE_IDENTITY_REPLACEMENT
+
+	if (_unit isKindOf "CAManBase") then
+	{
+	    [_unit, _gearVariant] call f_fnc_applyFactionIdentity;
+	};
+
+    #endif
 };

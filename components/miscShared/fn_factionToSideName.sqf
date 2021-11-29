@@ -1,6 +1,8 @@
 
 params ["_faction"];
 
+_faction = toLower _faction;	// "in" compares case-sensitive, meaning {"BLU_F" in ["blu_f"]} returns false.
+				// We don't want this check to fail though, so let's ignore the casing instead.
 _identity = _faction;
 
 
