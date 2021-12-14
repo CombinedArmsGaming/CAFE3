@@ -56,7 +56,7 @@ private _actionToBeAdded =
 //CAFE3 Zeus actions node
 private _zeusNode = [
         "CAFE3_Zeus",
-        "CAFE3_Zeus",
+        "CAFE3 Zeus Menu",
         "",
         {},
         {true}
