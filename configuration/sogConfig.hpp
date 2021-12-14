@@ -1,5 +1,5 @@
 /*
-CA2 S.O.G. Compat system
+CAFE3 S.O.G. Compat system
 Author: Joecuronium
 This file allows the missionmaker to define the mission as one using the S.O.G. P.F. CDLC, which enables the usage of the ambient callout modules and identities present in the DLC.
 */

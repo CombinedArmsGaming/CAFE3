@@ -5,7 +5,7 @@ call
     private _playIntro = { [] call f_fnc_zen_playIntro };
 
     [
-        "[CA2] Misc",
+        "[CAFE3] Misc",
         "Play Mission Intro",
         _playIntro
 
@@ -14,7 +14,7 @@ call
 
     // Wound Randomly Modules
 
-    private _category = "[CA2] Medical";
+    private _category = "[CAFE3] Medical";
 
     private _woundUnit = { [_this#1] call f_fnc_zen_woundUnitRandomly };
 
@@ -90,7 +90,7 @@ call
 
     if !(isNil 'kyk_ew_fnc_broadcastJammerAdd') then
     {
-        _category = "[CA2] Electronic Warfare";
+        _category = "[CAFE3] Electronic Warfare";
 
         private _jammerCreate = { [_this#1] call f_fnc_zen_createJammer };
 

@@ -1,4 +1,4 @@
-# CA2 Mission Framework
+# Combined Arms Framework Edition 3 (CAFE3)
 
 A framework for creating ARMA 3 missions with as little fuss as possible.
 
