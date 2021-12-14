@@ -23,7 +23,7 @@ class EditorData
 	};
 };
 binarizationWanted=0;
-sourceName="CA2";
+sourceName="CAFE3_Zeus";
 addons[]=
 {
 	"A3_Modules_F_Curator_Curator",
