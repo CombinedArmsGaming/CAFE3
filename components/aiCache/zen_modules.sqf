@@ -3,7 +3,7 @@ call
     // AI Caching Anchors
 
     [
-        "[CA2] Misc",
+        "[CAFE3] Misc",
         "Create AI Caching Anchor",
         f_fnc_zen_createAiCachingAnchor
 

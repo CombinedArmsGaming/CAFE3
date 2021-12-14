@@ -1,7 +1,7 @@
 call
 {
     [
-        "[CA2] Logistics",
+        "[CAFE3] Logistics",
         "Create / refill supply crate",
         f_fnc_zen_createSupplyCrate
 

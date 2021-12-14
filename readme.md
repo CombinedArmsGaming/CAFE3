@@ -1,4 +1,4 @@
-# CA2 Mission Framework
+# Combined Arms Framework Edition 3 (CAFE3)
 
 A framework for creating ARMA 3 missions with as little fuss as possible.
 
@@ -10,7 +10,7 @@ We're always looking for new ways to make high-quality missions easier to make. 
 ## Bug Reports & Feature Requests
 To report a bug or request a feature, first check the [Issue Tracker](https://github.com/Bubbus/F3_CA_BUB/issues) to see if a relevant issue already exists.
 
-If not, please [submit an issue](https://github.com/Bubbus/F3_CA_BUB/issues/new), taking care to following the guidelines set in the template. All issues should be titled as follows: `[Category] Title` such as `[Bug] Respawning Breaks on Server` or `[Feature Request] Implement 'Skill Issue' Emote`.
+If not, please [submit an issue](https://github.com/Bubbus/F3_CA_BUB/issues/new/choose), taking care to following the guidelines set in the template you choose. All issues should be titled as follows: `[Category] Title` such as `[Bug] Respawning Breaks on Server` or `[Feature Request] Implement 'Skill Issue' Emote`.
 
 
 ## Code Contributions
