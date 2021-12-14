@@ -30,11 +30,11 @@
 	Be sure to only uncomment one line in this category.
 */
 
-// CA2 downtime spectate cam modes. If this setting is enabled, unconscious players are restricted to 1PP and 3PP, dead players have all spectate modes.
+// CAFE3 downtime spectate cam modes. If this setting is enabled, unconscious players are restricted to 1PP and 3PP, dead players have all spectate modes.
 // To disable this, comment-out or delete the line below.
 #define CA2_SPECTATE_LIMITED
 
-// CA2 downtime spectate cam modes. If this setting is enabled, all spectate modes will be available to unconscious and dead players.
+// CAFE3 downtime spectate cam modes. If this setting is enabled, all spectate modes will be available to unconscious and dead players.
 // To disable this, comment-out or delete the line below. Be sure to only uncomment one line per category.
 // #define CA2_SPECTATE_FULL
 
@@ -42,7 +42,7 @@
 /*
 	LOGISTICS SETTINGS
 */
-// CA2 ideal logistics settings (this will set-up logistics for best use with the CA2 built-in logi-suite).
+// CAFE3 ideal logistics settings (this will set-up logistics for best use with the CAFE3 built-in logi-suite).
 // To disable this, comment-out or delete the line below.
 #define CA2_LOGISTICS
 

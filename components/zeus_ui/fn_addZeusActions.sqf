@@ -53,10 +53,10 @@ private _actionToBeAdded =
 [["ACE_ZeusActions", "ACRE_ZeusEars"], _actionToBeAdded] call ace_interact_menu_fnc_addActionToZeus;
 
 
-//CA2 Zeus actions node
+//CAFE3 Zeus actions node
 private _zeusNode = [
-        "CA2_Zeus",
-        "CA2 Zeus Menu",
+        "CAFE3_Zeus",
+        "CAFE3_Zeus",
         "",
         {},
         {true}
@@ -80,7 +80,7 @@ private _actionToBeAdded =
 	{!(_player getVariable ["f_var_zeusTeleportToCam", false])}
 ] call ace_interact_menu_fnc_createAction;
 
-[["ACE_ZeusActions", "CA2_Zeus"], _actionToBeAdded] call ace_interact_menu_fnc_addActionToZeus;
+[["ACE_ZeusActions", "CAFE3_Zeus"], _actionToBeAdded] call ace_interact_menu_fnc_addActionToZeus;
 
 
 private _zeusNoTeleport =
@@ -98,7 +98,7 @@ private _actionToBeAdded =
 	{(_player getVariable ["f_var_zeusTeleportToCam", false])}
 ] call ace_interact_menu_fnc_createAction;
 
-[["ACE_ZeusActions", "CA2_Zeus"], _actionToBeAdded] call ace_interact_menu_fnc_addActionToZeus;
+[["ACE_ZeusActions", "CAFE3_Zeus"], _actionToBeAdded] call ace_interact_menu_fnc_addActionToZeus;
 
 
 //Zeus hiding options
@@ -120,7 +120,7 @@ private _actionToBeAdded =
 	{!(_player getVariable ["f_var_turnZeusInvisible", false])}
 ] call ace_interact_menu_fnc_createAction;
 
-[["ACE_ZeusActions", "CA2_Zeus"], _actionToBeAdded] call ace_interact_menu_fnc_addActionToZeus;
+[["ACE_ZeusActions", "CAFE3_Zeus"], _actionToBeAdded] call ace_interact_menu_fnc_addActionToZeus;
 
 
 private _noTurnZeusInvisible =
@@ -141,7 +141,7 @@ private _actionToBeAdded =
 	{(_player getVariable ["f_var_turnZeusInvisible", false])}
 ] call ace_interact_menu_fnc_createAction;
 
-[["ACE_ZeusActions", "CA2_Zeus"], _actionToBeAdded] call ace_interact_menu_fnc_addActionToZeus;
+[["ACE_ZeusActions", "CAFE3_Zeus"], _actionToBeAdded] call ace_interact_menu_fnc_addActionToZeus;
 
 // Initialize default behaviour
 [] call acre_sys_zeus_fnc_handleZeusSpeakPress; 

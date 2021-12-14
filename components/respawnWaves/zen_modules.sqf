@@ -1,6 +1,6 @@
 call
 {
-    private _category = "[CA2] Respawners";
+    private _category = "[CAFE3] Respawners";
 
     // Set respawner object (for each side).
 
