@@ -1,7 +1,7 @@
 /*
 
     Logistics vehicle configuration
-    Inspired by CAFE_CA's logi vic system.  Initial work by Joecuronium, expanded by Bubbus.
+    Inspired by F3_CA's logi vic system.  Initial work by Joecuronium, expanded by Bubbus.
 
     This file allows you to configure logistics vehicles for your mission.
     Logistics vehicles can be used to spawn-in new assets for your players.  It may be operated by anyone in a certain group, or anyone of a certain role.

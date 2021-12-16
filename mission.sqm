@@ -23,7 +23,7 @@ class EditorData
 	};
 };
 binarizationWanted=0;
-sourceName="CAFE_CA_BUB";
+sourceName="CAFE3";
 addons[]=
 {
 	"A3_Modules_F_Curator_Curator",
@@ -165,11 +165,11 @@ dlcs[]=
 randomSeed=1116085;
 class ScenarioData
 {
-	overviewText="Made with the CAFE_CA Mission Development Framework.";
-	overviewTextLocked="Made with the CAFE_CA Mission Development Framework.";
+	overviewText="Made with the CAFE3 Mission Development Framework.";
+	overviewTextLocked="Made with the CAFE3 Mission Development Framework.";
 	overViewPicture="ca_logo_large.jpg";
 	overViewPictureLocked="ca_logo_large.jpg";
-	onLoadMission="Made with the CAFE_CA Mission Development Framework.";
+	onLoadMission="Made with the CAFE3 Mission Development Framework.";
 	loadScreen="ca_logo_large.jpg";
 };
 class CustomAttributes
