@@ -29,7 +29,7 @@ _cre = player createDiaryRecord ["diary", ["Credits","
 <br/>
 *** Insert mission credits here. ***
 <br/><br/>
-Made with CAFE3 (https://github.com/CombinedArmsGaming/CAFE3/)
+Made with CAFE3 (https://github.com/CombinedArmsGaming/CAFE3)
 "]];
 
 // ====================================================================================
