@@ -337,3 +337,17 @@ class CA_ZeusUI_Units
 		};
 	};
 };
+
+	class Civilian_units //If you are in need of civilians being spawned, e.g. for story purposes, this is the category to define them in. 
+	{
+		categoryName = "Civilian";
+		gear = "civ_f";
+		side = "civilian";
+
+		// Units definition
+		class IDAP_Medic
+		{
+			unitName = "IDAP";		// This is the name of the unit which will be shown in-game.
+			units[] = {"idap_medic"};			// Do not forget to actually define the gear in 'configuration\loadouts\gear_civilian.sqf' and the identity in configuration\identity\identity_assignment.sqf
+		};
+	};

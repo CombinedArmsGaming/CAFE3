@@ -43,6 +43,7 @@ switch (_side) do
 	case west: {_group = createGroup [west,true]; _unittype = _unitW;};
 	case east: {_group = createGroup [east,true]; _unittype = _unitE;};
 	case independent: {_group = createGroup [independent,true]; _unittype = _unitI;};
+	case civilian: {_group = createGroup [civilian,true]; _unittype = "C_man_1";};
 	default {_group = createGroup [east,true]};
 };
 
