@@ -376,7 +376,16 @@ class CfgMusic
 
 class RscTitles
 {
-#include "titles.hpp"
+
+	// Empty title
+        class Default {
+                idd = -1;
+                fadeIn = 0;
+                fadeOut = 0;
+                duration = 0;
+        };
+
+	#include "titles.hpp"
 };
 
 
@@ -390,7 +399,7 @@ class Extended_DisplayUnload_EventHandlers
         ca_fixcamera = "showChat true";
     };
 
-	class RscDisplayCurator 
+	class RscDisplayCurator
 	{
 		clientDisplayUnload = "[] call f_fnc_exitZeus;";
 	};
@@ -581,7 +590,7 @@ class Extended_DisplayLoad_EventHandlers
 	    CA2_FireteamMarkers = "[_this#0, (_this#0) displayCtrl 101] call f_fnc_createFireteamMarkerHook;";
     };
 
-	class RscDisplayCurator 
+	class RscDisplayCurator
 	{
 		clientDisplayLoad = "[] call f_fnc_openZeus;";
 	};

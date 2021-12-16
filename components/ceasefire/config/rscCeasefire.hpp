@@ -72,6 +72,7 @@ class CAFE_RscCeasefire {
 			class controls {
 
 				class Background : CAFE_Ceasefire_RscBox {
+					idc = MACRO_IDC_CF_BACKGROUND;
 					w = MACRO_POS_CF_WIDTH * safeZoneW;
 					h = MACRO_POS_CF_HEIGHT * safeZoneW;
 					colorBackground[] = CURLY(MACRO_COLOUR_BACKGROUND);
@@ -122,6 +123,7 @@ class CAFE_RscCeasefire {
 
 				// Outline
 				class Outline : CAFE_Ceasefire_RscOutline {
+					idc = MACRO_IDC_CF_OUTLINE;
 					w = MACRO_POS_CF_WIDTH * safeZoneW;
 					h = MACRO_POS_CF_HEIGHT * safeZoneW;
 					colorText[] = CURLY(MACRO_COLOUR_A100_WHITE);
