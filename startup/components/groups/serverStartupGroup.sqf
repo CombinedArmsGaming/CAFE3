@@ -7,6 +7,9 @@
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 //INIT_COMPONENT(safeStart)
 
+// Ceasefire
+INIT_COMPONENT(ceasefire)
+
 // F3 - AI Caching
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 INIT_COMPONENT(aiCache)
