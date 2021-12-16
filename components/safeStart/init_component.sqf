@@ -1,5 +1,5 @@
-// F3 - Safe Start
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
+// CAFE - Safe Start
+// Credits: Please see the CAFE online manual (https://github.com/CombinedArmsGaming/CAFE3/wiki)
 // ====================================================================================
 //	This script inits the Mission Timer and the Safe Start, has the server setup the publicVariable
 //      while the client waits, sets units invincibility and displays hints, then disables it.

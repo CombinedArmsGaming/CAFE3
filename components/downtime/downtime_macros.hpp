@@ -6,11 +6,11 @@
 #define CAM_ARGS_1PPONLY                "FirstPersonOnly"
 #define CAM_ARGS_3PPONLY                "ThirdPersonOnly"
 
-#define DOWNTIME_SNOOZE_TIME            (["CA2_Downtime_SpectatorWaitTime" call CBA_settings_fnc_get] param [0, 16])
-#define DOWNTIME_CAMERA_OPTIONS         (["CA2_Downtime_SpectatorCameraModes" call CBA_settings_fnc_get] param [0, CAM_ARGS_ALL])
+#define DOWNTIME_SNOOZE_TIME            (["CAFE_Downtime_SpectatorWaitTime" call CBA_settings_fnc_get] param [0, 16])
+#define DOWNTIME_CAMERA_OPTIONS         (["CAFE_Downtime_SpectatorCameraModes" call CBA_settings_fnc_get] param [0, CAM_ARGS_ALL])
 
-#define HAS_OPTED_OUT                   (["CA2_Downtime_OptOut" call CBA_settings_fnc_get] param [0, false])
-#define HAS_DISABLED_RESPAWN_MESSAGE    (["CA2_Downtime_NoRespawnReminders" call CBA_settings_fnc_get] param [0, false])
+#define HAS_OPTED_OUT                   (["CAFE_Downtime_OptOut" call CBA_settings_fnc_get] param [0, false])
+#define HAS_DISABLED_RESPAWN_MESSAGE    (["CAFE_Downtime_NoRespawnReminders" call CBA_settings_fnc_get] param [0, false])
 
 #define IS_UNCONSCIOUS(UNIT)            ((UNIT getVariable ["ACE_isUnconscious", false]) and {alive player})
 #define PLAYER_IS_AWAITING_RESPAWN      (missionNamespace getVariable ["f_var_playerHasBeenKilled", false])

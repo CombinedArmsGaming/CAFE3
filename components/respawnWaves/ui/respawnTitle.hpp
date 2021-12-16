@@ -1,6 +1,6 @@
 #include "../ui_macros.hpp"
 
-class CA2_RespawnTitle
+class CAFE_RespawnTitle
 {
     idd = 13176;
 
@@ -15,7 +15,7 @@ class CA2_RespawnTitle
 
     class ControlsBackground
     {
-        class WelcomeBack: CA2_DefaultText
+        class WelcomeBack: CAFE_DefaultText
         {
         	idc = 1000;
             style = ST_CENTER;
@@ -28,7 +28,7 @@ class CA2_RespawnTitle
         	sizeEx = 3 * GUI_GRID_H;
         };
 
-        class InfoText: CA2_DefaultStructuredText
+        class InfoText: CAFE_DefaultStructuredText
         {
         	idc = IDC_RESPAWNTITLE_INFOTEXT;
         	text = "";

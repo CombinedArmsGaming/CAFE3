@@ -13,13 +13,13 @@
 #define DEBUG_PRINT_CHAT(STRING) player sideChat STRING;
 #define DEBUG_FORMAT1_CHAT(STRING, F1) player sideChat format [STRING, str F1];
 #define DEBUG_FORMAT2_CHAT(STRING, F1, F2) player sideChat format [STRING, str F1, str F2];
-#define DEBUG_FORMAT3_CHAT(STRING, F1, F2, F3) player sideChat format [STRING, str F1, str F2, str F3];
+#define DEBUG_FORMAT3_CHAT(STRING, F1, F2, CAFE) player sideChat format [STRING, str F1, str F2, str CAFE];
 
 // Client and serverside.
 #define DEBUG_PRINT_LOG(STRING) if (IS_HC) then {("FROM HC: "+STRING) remoteExec ["diag_log", 2];} else {diag_log STRING};
 #define DEBUG_FORMAT1_LOG(STRING, F1) if (IS_HC) then {(format ["FROM HC: "+STRING, str F1]) remoteExec ["diag_log", 2];} else {diag_log format [STRING, str F1]};
 #define DEBUG_FORMAT2_LOG(STRING, F1, F2) if (IS_HC) then {(format ["FROM HC: "+STRING, str F1, str F2]) remoteExec ["diag_log", 2];} else {diag_log format [STRING, str F1, str F2]};
-#define DEBUG_FORMAT3_LOG(STRING, F1, F2, F3) if (IS_HC) then {(format ["FROM HC: "+STRING, str F1, str F2, str F3]) remoteExec ["diag_log", 2];} else {diag_log format [STRING, str F1, str F2, str F3]};
+#define DEBUG_FORMAT3_LOG(STRING, F1, F2, CAFE) if (IS_HC) then {(format ["FROM HC: "+STRING, str F1, str F2, str CAFE]) remoteExec ["diag_log", 2];} else {diag_log format [STRING, str F1, str F2, str CAFE]};
 
 #else
 
@@ -27,13 +27,13 @@
 #define DEBUG_PRINT_CHAT(STRING)
 #define DEBUG_FORMAT1_CHAT(STRING, F1)
 #define DEBUG_FORMAT2_CHAT(STRING, F1, F2)
-#define DEBUG_FORMAT3_CHAT(STRING, F1, F2, F3)
+#define DEBUG_FORMAT3_CHAT(STRING, F1, F2, CAFE)
 
 // Client and serverside.
 #define DEBUG_PRINT_LOG(STRING)
 #define DEBUG_FORMAT1_LOG(STRING, F1)
 #define DEBUG_FORMAT2_LOG(STRING, F1, F2)
-#define DEBUG_FORMAT3_LOG(STRING, F1, F2, F3)
+#define DEBUG_FORMAT3_LOG(STRING, F1, F2, CAFE)
 
 #endif
 

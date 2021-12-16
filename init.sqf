@@ -2,15 +2,15 @@
 
 // ====================================================================================
 
-// F3 - Disable Saving and Auto Saving
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
+// CAFE - Disable Saving and Auto Saving
+// Credits: Please see the CAFE online manual (https://github.com/CombinedArmsGaming/CAFE3/wiki)
 
 enableSaving [false, false];
 
 // ====================================================================================
 
-// F3 - Mute Orders and Reports
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
+// CAFE - Mute Orders and Reports
+// Credits: Please see the CAFE online manual (https://github.com/CombinedArmsGaming/CAFE3/wiki)
 
 enableSentences false;
 
