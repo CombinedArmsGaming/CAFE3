@@ -13,6 +13,9 @@ INIT_COMPONENT(briefing)
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 //INIT_COMPONENT(safeStart)
 
+// Ceasefire
+INIT_COMPONENT(ceasefire)
+
 // F3 - Radio Systems Support
 // Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
 INIT_COMPONENT(radios)

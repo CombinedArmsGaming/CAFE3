@@ -2,7 +2,6 @@
 
 #include "../../macros.hpp"
 
-SERVER_ONLY;
 DEBUG_PRINT_LOG("Initialising Ceasefire")
 
 
@@ -15,6 +14,9 @@ if (isNil "cafe_ceasefire_active") then {cafe_ceasefire_active = false};
 
 
 
+
+// The remainder of this function shall be executed by the server only
+SERVER_ONLY;
 
 private _initialDuration = CEASEFIRE_DURATION_ON_MISSION_START;
 
