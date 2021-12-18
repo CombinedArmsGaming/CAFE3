@@ -31,7 +31,13 @@ if (!hasInterface) exitWith {};
 
 // Set up some variables
 private _ply = player;
+private _fnc_removeProjectile = {
+	params ["_unit", "", "", "", "", "", "_projectile", ""];
+
+	deleteVehicle _projectile;
+};
 if (isNil "cafe_ceasefire_playerFireEH") then {cafe_ceasefire_playerFireEH = -1};
+if (isNil "cafe_ceasefire_ace_playerFireEH") then {cafe_ceasefire_ace_playerFireEH = -1};
 
 
 
@@ -46,16 +52,18 @@ _this call f_fnc_client_ceasefireUI;
 
 // CLientside ceasefire handling
 _ply removeEventHandler ["FiredMan", cafe_ceasefire_playerFireEH];
+["ace_firedPlayer", cafe_ceasefire_ace_playerFireEH] call CBA_fnc_removeEventHandler;
+
 cafe_ceasefire_playerFireEH = -1;
+cafe_ceasefire_ace_playerFireEH = -1;
 
 if (_enabled) then {
 
 	// Remove projectiles
-	cafe_ceasefire_playerFireEH = _ply addEventHandler ["FiredMan", {
-		params ["_unit", "", "", "", "", "", "_projectile", ""];
+	cafe_ceasefire_playerFireEH = _ply addEventHandler ["FiredMan", _fnc_removeProjectile];
 
-		deleteVehicle _projectile;
-	}];
+	// Catch ACE throwing
+	cafe_ceasefire_ace_playerFireEH = ["ace_firedPlayer", _fnc_removeProjectile] call CBA_fnc_addEventHandler;
 };
 
 // Invincibility

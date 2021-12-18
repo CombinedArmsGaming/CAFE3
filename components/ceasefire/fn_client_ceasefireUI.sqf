@@ -26,8 +26,15 @@ params [
 // If this function is not executing on a player machine, exit
 if (!hasInterface) exitWith {};
 
+private _UI = uiNamespace getVariable ["CAFE_RscCeasefire", displayNull];
+
 if (!_enabled) exitWith {
 	"CAFE_RscCeasefire" cutFadeOut 0;
+
+	// Play an exit sound if the UI was open
+	if (!isNull _UI) then {
+		playSound "HintCollapse";
+	};
 };
 
 
@@ -35,14 +42,15 @@ if (!_enabled) exitWith {
 
 
 // Initialise the UI
-private _UI = uiNamespace getVariable ["CAFE_RscCeasefire", displayNull];
-
 if (isNull _UI) then {
 	"CAFE_RscCeasefire" cutRsc ["CAFE_RscCeasefire", "PLAIN"];
 	_UI = uiNamespace getVariable ["CAFE_RscCeasefire", displayNull];
 
 	// Set the pixel precision mode on some controls
 	(_UI displayCtrl MACRO_IDC_CF_OUTLINE) ctrlSetPixelPrecision 2;
+
+	_UI setVariable ["startTime", CBA_missionTime];
+	playSound "HintExpand"
 };
 
 (_UI displayCtrl MACRO_IDC_CF_COUNTDOWN) ctrlShow (_endTime >= 0);
@@ -79,11 +87,21 @@ cafe_ceasefire_client_UI_EH = addMissionEventHandler ["Draw3D", {
 
 		if (_countdown < 10) then {
 			_ctrlCountdown ctrlSetTextColor SQUARE(MACRO_COLOUR_A100_RED);
+
+			// Play a sound on every passing second
+			private _secondsPrev = _UI getVariable ["secondsPrev", 0];
+			if (_seconds != _secondsPrev) then {
+				playSound "readoutClick";
+
+				_UI setVariable ["secondsPrev", _seconds];
+			};
 		} else {
 			_ctrlCountdown ctrlSetTextColor SQUARE(MACRO_COLOUR_A100_WHITE);
 		};
 	};
 
+	private _startTime = _UI getVariable ["startTime", 0];
+	private _easeIn = ((_startTime - CBA_missionTime) * 2 + 1) max 0;
 	private _cam = missionnamespace getvariable ["BIS_fnc_camera_cam",objnull];
 	private _pos = ctrlPosition _ctrlGroup;
 
@@ -96,7 +114,7 @@ cafe_ceasefire_client_UI_EH = addMissionEventHandler ["Draw3D", {
 		private _zeusUI = findDisplay 312;
 
 		if (isNull _zeusUI) then {
-			_pos set [1, safeZoneY];
+			_pos set [1, safeZoneY - MACRO_POS_CF_HEIGHT * safeZoneW * _easeIn];
 		} else {
 			_pos set [1, safeZoneY + safeZoneH - MACRO_POS_CF_HEIGHT * safeZoneW];
 		};
