@@ -376,15 +376,6 @@ class CfgMusic
 
 class RscTitles
 {
-
-	// Empty title
-        class Default {
-                idd = -1;
-                fadeIn = 0;
-                fadeOut = 0;
-                duration = 0;
-        };
-
 	#include "titles.hpp"
 };
 

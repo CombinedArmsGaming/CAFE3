@@ -27,7 +27,7 @@ params [
 if (!hasInterface) exitWith {};
 
 if (!_enabled) exitWith {
-	"CAFE_RscCeasefire" cutRsc ["Default", "PLAIN"];
+	"CAFE_RscCeasefire" cutFadeOut 0;
 };
 
 
@@ -61,22 +61,47 @@ removeMissionEventHandler ["Draw3D", cafe_ceasefire_client_UI_EH];
 cafe_ceasefire_client_UI_EH = addMissionEventHandler ["Draw3D", {
 
 	private _UI = uiNamespace getVariable ["CAFE_RscCeasefire", displayNull];
-	private _ctrlCountdown = _UI displayCtrl MACRO_IDC_CF_COUNTDOWN;
-
+	private _ctrlGroup = _UI displayCtrl MACRO_IDC_CF_CTRLGROUP;
 	private _endTime = _UI getVariable ["endTime", 0];
-	private _countdown = ((_endTime - CBA_missionTime) min 5999) max 0;
 
-	private _seconds = floor (_countdown mod 60);
-	private _minutes = floor (_countdown / 60);
+	// Update the countdown
+	if (_endTime >= 0) then {
+		private _ctrlCountdown = _UI displayCtrl MACRO_IDC_CF_COUNTDOWN;
+		private _countdown = ((_endTime - CBA_missionTime) min 5999) max 0;
 
-	_strMinutes = str (100 + _minutes) select [1, 2];
-	_strSeconds = str (100 + _seconds) select [1, 2];
+		private _seconds = floor (_countdown mod 60);
+		private _minutes = floor (_countdown / 60);
 
-	_ctrlCountdown ctrlSetText format ["%1:%2", _strMinutes, _strSeconds];
+		_strMinutes = str (100 + _minutes) select [1, 2];
+		_strSeconds = str (100 + _seconds) select [1, 2];
 
-	if (_countdown < 10) then {
-		_ctrlCountdown ctrlSetTextColor SQUARE(MACRO_COLOUR_A100_RED);
-	} else {
-		_ctrlCountdown ctrlSetTextColor SQUARE(MACRO_COLOUR_A100_WHITE);
+		_ctrlCountdown ctrlSetText format ["%1:%2", _strMinutes, _strSeconds];
+
+		if (_countdown < 10) then {
+			_ctrlCountdown ctrlSetTextColor SQUARE(MACRO_COLOUR_A100_RED);
+		} else {
+			_ctrlCountdown ctrlSetTextColor SQUARE(MACRO_COLOUR_A100_WHITE);
+		};
 	};
+
+	private _cam = missionnamespace getvariable ["BIS_fnc_camera_cam",objnull];
+	private _pos = ctrlPosition _ctrlGroup;
+
+	// Hide the ceasefire UI while using the debug camera (useful for screenshots)
+	if (alive _cam) then {
+		_pos set [1, safeZoneY - MACRO_POS_CF_HEIGHT * safeZoneW];
+
+	// Otherwise, offset the ceasefire UI if the Zeus interface is open (prevents overlapping)
+	} else {
+		private _zeusUI = findDisplay 312;
+
+		if (isNull _zeusUI) then {
+			_pos set [1, safeZoneY];
+		} else {
+			_pos set [1, safeZoneY + safeZoneH - MACRO_POS_CF_HEIGHT * safeZoneW];
+		};
+	};
+
+	_ctrlGroup ctrlSetPosition _pos;
+	_ctrlGroup ctrlCommit 0;
 }];

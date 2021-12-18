@@ -62,4 +62,6 @@ if (_enabled) then {
 _ply allowDamage (!_enabled);
 
 // Captivity
-_ply setCaptive _enabled;
+if !(_ply getVariable ["f_var_turnZeusInvisible", false]) then {
+	_ply setCaptive _enabled;
+};
