@@ -20,7 +20,13 @@ SERVER_ONLY;
 
 private _initialDuration = CEASEFIRE_DURATION_ON_MISSION_START;
 
+#ifdef CEASEFIRE_JUSTIFICATION_ON_MISSION_START
+	private _justification = CEASEFIRE_JUSTIFICATION_ON_MISSION_START;
+#else
+	private _justification = "";
+#endif
+
 // Only call the ceasefire function if we need to (might help improve performance on mission init)
 if (_initialDuration > 0) then {
-	[true, _initialDuration] call f_fnc_ceasefire;
+	[true, _initialDuration, _justification] call f_fnc_ceasefire;
 };
