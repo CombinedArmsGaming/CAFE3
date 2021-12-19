@@ -4,8 +4,6 @@ class F
 #include "briefing\functions.hpp"
 #include "ceasefire\functions.hpp"
 #include "ftMemberMarkers\functions.hpp"
-#include "safeStart\functions.hpp"
-#include "safeEnd\functions.hpp"
 #include "aiCache\functions.hpp"
 #include "aiDriver\functions.hpp"
 #include "radios\functions.hpp"

@@ -3,10 +3,6 @@
 
 #include "macros.hpp"
 
-// F3 - Safe start
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
-//INIT_COMPONENT(safeStart)
-
 // Ceasefire
 INIT_COMPONENT(ceasefire)
 
