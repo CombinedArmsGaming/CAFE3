@@ -13,7 +13,7 @@ class CA_ZeusUI_Units
 	class BLUFOR_Infantry
 	{
 		categoryName = "BLUFOR Infantry";			// This is the name of the category which you will see in-game.
-		gear = "blu_f";					// This is the faction code as used in the F3 framework. Here, "blu_f", means the gear will be taken from the BLUFOR gearscript (aka BLUFOR).
+		gear = "blu_f";					// This is the faction code as used in the CAFE framework. Here, "blu_f", means the gear will be taken from the BLUFOR gearscript (aka BLUFOR).
 		side = "west";					// "west" means the units will bear allegiance to the western side (aka BLUFOR). Available options are: "west", "east", "resistance" and "civilian".
 
 		// Units definition

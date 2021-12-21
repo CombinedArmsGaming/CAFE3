@@ -6,7 +6,7 @@
 
 
 
-class CA2_DefaultStructuredText
+class CAFE_DefaultStructuredText
 {
 	access = 0;
 	colorText[] = {1,1,1,1};
@@ -37,7 +37,7 @@ class CA2_DefaultStructuredText
 
 
 
-class CA2_DefaultListBox : RscListBox
+class CAFE_DefaultListBox : RscListBox
 {
 	access = 0;
 	arrowEmpty = "#(argb,8,8,3)color(1,1,1,1)";
@@ -86,7 +86,7 @@ class CA2_DefaultListBox : RscListBox
 
 
 
-class CA2_DefaultEdit : RscEdit
+class CAFE_DefaultEdit : RscEdit
 {
 	access = 0;
 	autocomplete = "";
@@ -122,7 +122,7 @@ class CA2_DefaultEdit : RscEdit
 
 
 
-class CA2_DefaultButton : RscButton
+class CAFE_DefaultButton : RscButton
 {
     access = 0;
     borderSize = 0;
@@ -161,7 +161,7 @@ class CA2_DefaultButton : RscButton
 
 
 
-class CA2_DefaultText : RscText
+class CAFE_DefaultText : RscText
 {
     access = 0;
     colorBackground[] = {0,0,0,0};
@@ -191,7 +191,7 @@ class CA2_DefaultText : RscText
 
 
 
-class CA2_DefaultTextCheckBox
+class CAFE_DefaultTextCheckBox
 {
 	idc = -1;
 	type = 7;
@@ -224,7 +224,7 @@ class CA2_DefaultTextCheckBox
 
 
 
-class CA2_DefaultSlider
+class CAFE_DefaultSlider
 {
 	access = 0;
 	color[] = {1,1,1,0.8};
@@ -244,7 +244,7 @@ class CA2_DefaultSlider
 
 
 
-class CA2_DefaultCombo
+class CAFE_DefaultCombo
 {
 	access = 0;
 	arrowEmpty = "\A3\ui_f\data\GUI\RscCommon\rsccombo\arrow_combo_ca.paa";

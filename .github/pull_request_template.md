@@ -9,7 +9,7 @@ _Please provide a changelog & any additional relevant information for end users.
 ## IMPORTANT
 
 - [ ] The Release Notes section below must be filled out appropriately to explain the changes made in this PR. This section will be used in Framework Changelogs.
-- [ ] If the contribution affects [the wiki](https://github.com/Bubbus/F3_CA_BUB/wiki), please include your changes in this pull request so the wiki is consistently updated.
-- [ ] [Contribution Guidelines](https://github.com/Bubbus/F3_CA_BUB/blob/release/contributing.md) are read, understood and applied.
+- [ ] If the contribution affects [the wiki](https://github.com/CombinedArmsGaming/CAFE3/wiki), please include your changes in this pull request so the wiki is consistently updated.
+- [ ] [Contribution Guidelines](https://github.com/CombinedArmsGaming/CAFE3/blob/release/contributing.md) are read, understood and applied.
 - [ ] Title of this PR uses our standard template `[Descriptor] - Add|Fix|Improve|Change|Make|Remove {changes}`.
 

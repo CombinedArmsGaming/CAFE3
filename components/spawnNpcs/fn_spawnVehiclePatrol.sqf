@@ -5,11 +5,11 @@
  * Spawns a vehicle that patrols an area in a radius from spawnpoint.
  *
  * Arguments:
- * 0: F3 group array
+ * 0: CAFE group array
  * 1: Spawn position, marker, object, group, location, array
  * 2: Vehicle classname
  * 2: radius of area to patrol eg 200
- * 3: Faction of group used in F3 Assigngear.
+ * 3: Faction of group used in CAFE Assigngear.
  * 4: Side of units spawned, west east independent
  *
  * Return Value:

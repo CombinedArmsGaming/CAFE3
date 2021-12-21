@@ -1,6 +1,6 @@
 #include "../ui_macros.hpp"
 
-class CA2_DowntimeUnconscious
+class CAFE_DowntimeUnconscious
 {
     idd = -1;
 
@@ -14,7 +14,7 @@ class CA2_DowntimeUnconscious
 
     class ControlsBackground
     {
-        class YouAre: CA2_DefaultText
+        class YouAre: CAFE_DefaultText
         {
         	idc = 1000;
             style = ST_CENTER;
@@ -27,7 +27,7 @@ class CA2_DowntimeUnconscious
         	sizeEx = 2 * GUI_GRID_H;
         };
 
-        class Unconscious: CA2_DefaultText
+        class Unconscious: CAFE_DefaultText
         {
         	idc = 1001;
             style = ST_CENTER;
@@ -40,7 +40,7 @@ class CA2_DowntimeUnconscious
         	sizeEx = 3 * GUI_GRID_H;
         };
 
-        class Welcome: CA2_DefaultText
+        class Welcome: CAFE_DefaultText
         {
         	idc = 1002;
             style = ST_CENTER;

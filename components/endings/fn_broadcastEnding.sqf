@@ -1,7 +1,7 @@
 #include "macros.hpp"
 
-// F3 - Multiplayer Ending Controller
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
+// CAFE - Multiplayer Ending Controller
+// Credits: Please see the CAFE online manual (https://github.com/CombinedArmsGaming/CAFE3/wiki)
 // ====================================================================================
 
 SERVER_ONLY;

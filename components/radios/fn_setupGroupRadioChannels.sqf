@@ -102,21 +102,21 @@ if !(_hasAnyConfig) exitWith
 
 if (_groupChannelIndex == -1 && {_hasSR}) then
 {
-	DEBUG_FORMAT1_CHAT("[F3 ACRE2] Warning: Unknown group for short-range channel defaults (%1)", _groupID);
+	DEBUG_FORMAT1_CHAT("[CAFE ACRE2] Warning: Unknown group for short-range channel defaults (%1)", _groupID);
 	_groupChannelIndex = 0;
 };
 
 
 if (_groupLRChannelIndex == -1 && {(_hasLR)}) then
 {
-	DEBUG_FORMAT1_CHAT("[F3 ACRE2] Warning: Unknown group for long-range channel defaults (%1)", _groupID);
+	DEBUG_FORMAT1_CHAT("[CAFE ACRE2] Warning: Unknown group for long-range channel defaults (%1)", _groupID);
   	_groupLRChannelIndex = 0;
 };
 
 
 if (_groupXLRChannelIndex == -1 && {(_hasExtra)}) then
 {
-	DEBUG_FORMAT1_CHAT("[F3 ACRE2] Warning: Unknown group for extra-long-range channel defaults (%1)", _groupID);
+	DEBUG_FORMAT1_CHAT("[CAFE ACRE2] Warning: Unknown group for extra-long-range channel defaults (%1)", _groupID);
   	_groupXLRChannelIndex = 0;
 };
 
