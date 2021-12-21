@@ -21,7 +21,7 @@ while {true} do
 
             if (IS_UNCONSCIOUS(player)) then
             {
-                "CA2_DowntimeRespawn" cutRsc ["CA2_DowntimeRespawn", "PLAIN", -1, false];
+                "CAFE_DowntimeRespawn" cutRsc ["CAFE_DowntimeRespawn", "PLAIN", -1, false];
             };
 
             waitUntil

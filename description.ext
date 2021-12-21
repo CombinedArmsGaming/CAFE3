@@ -39,15 +39,15 @@ loadScreen = "ca_logo_large.jpg";
 
 enableDebugConsole = 1;
 
-// F3 - Debug variable, needs to exist pre-init.
+// CAFE - Debug variable, needs to exist pre-init.
 #include "startup\configuration\internals\debug.sqf"
 
 
 // ============================================================================================
 
 
-// F3 - Respawn Settings
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
+// CAFE - Respawn Settings
+// Credits: Please see the CAFE online manual (https://github.com/CombinedArmsGaming/CAFE3/wiki)
 // 1	|	Respawn as Bird (for normal mission, no reinforcements).
 // 2	|	Respawn on death location without gear, used in special missions.
 // 3	|	Respawn at base marker (used when reinforcements are an option).
@@ -120,7 +120,7 @@ class cfgNotifications
 		priority = 9;
 	};
 
-	// Notifications for the F3 Safe Start Component
+	// Notifications for the CAFE Safe Start Component
 	class SafeStart
 	{
 		title = "SAFE START";
@@ -139,7 +139,7 @@ class cfgNotifications
 		priority = 1;
 	};
 
-	// Notification for the F3 Mapclick Teleport component
+	// Notification for the CAFE Mapclick Teleport component
 	class MapClickTeleport
 	{
 		title= "NOTE";
@@ -149,7 +149,7 @@ class cfgNotifications
 		priority = 5;
 	};
 
-	// Notification for the F3 Mapclick Supply Drop component
+	// Notification for the CAFE Mapclick Supply Drop component
 	class MapClickSupplyDrop
 	{
 		title= "NOTE";
@@ -159,7 +159,7 @@ class cfgNotifications
 		priority = 5;
 	};
 
-	// Notification for the F3 JIP Component
+	// Notification for the CAFE JIP Component
 	class JIP
 	{
 		title= "REINFORCEMENTS";
@@ -251,7 +251,7 @@ class CfgRespawnTemplates
 		onPlayerRespawn = "f_fnc_CamInit";
 	};
 
-	// F3 JIP Menu
+	// CAFE JIP Menu
 	class f_JIP
 	{
 		onPlayerRespawn = "f\JIP\f_JIP_playerRespawn.sqf";
@@ -282,7 +282,7 @@ class CfgFunctions
 {
 	#include "components\functions.hpp"
 
-	class CA2Config
+	class CAFEConfig
 	{
 		class PreInit
 		{
@@ -571,14 +571,14 @@ class Extended_DisplayLoad_EventHandlers
 {
     class RscDiary
 	{
-		CA2_SquadMarkers = "[_this#0, (_this#0) displayCtrl 51] call f_fnc_createSquadMarkerHook;";
-        CA2_FireteamMarkers = "[_this#0, (_this#0) displayCtrl 51] call f_fnc_createFireteamMarkerHook;";
+		CAFE_SquadMarkers = "[_this#0, (_this#0) displayCtrl 51] call f_fnc_createSquadMarkerHook;";
+        CAFE_FireteamMarkers = "[_this#0, (_this#0) displayCtrl 51] call f_fnc_createFireteamMarkerHook;";
     };
 
     class RscCustomInfoMiniMap
 	{
-		CA2_SquadMarkers = "[_this#0, (_this#0) displayCtrl 101] call f_fnc_createSquadMarkerHook;";
-	    CA2_FireteamMarkers = "[_this#0, (_this#0) displayCtrl 101] call f_fnc_createFireteamMarkerHook;";
+		CAFE_SquadMarkers = "[_this#0, (_this#0) displayCtrl 101] call f_fnc_createSquadMarkerHook;";
+	    CAFE_FireteamMarkers = "[_this#0, (_this#0) displayCtrl 101] call f_fnc_createFireteamMarkerHook;";
     };
 
 	class RscDisplayCurator 

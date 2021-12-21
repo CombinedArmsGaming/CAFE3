@@ -4,8 +4,8 @@
  *
  * Arguments:
  * 0: Spawn positions, marker, object, group, location, array
- * 1: F3 group array
- * 3: Faction of group used in F3 Assigngear.
+ * 1: CAFE group array
+ * 3: Faction of group used in CAFE Assigngear.
  * 4: Side of units spawned, west east independent
  *
  * Return Value:
