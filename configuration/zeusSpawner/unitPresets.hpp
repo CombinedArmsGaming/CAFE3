@@ -12,15 +12,15 @@ class CA_ZeusUI_Units
 	// Category definition
 	class BLUFOR_Infantry
 	{
-		categoryName = "BLUFOR Infantry";			// This is the name of the category which you will see in-game.
-		gear = "blu_f";					// This is the faction code as used in the CAFE framework. Here, "blu_f", means the gear will be taken from the BLUFOR gearscript (aka BLUFOR).
-		side = "west";					// "west" means the units will bear allegiance to the western side (aka BLUFOR). Available options are: "west", "east", "resistance" and "civilian".
+		categoryName = "BLUFOR Infantry"; // This is the name of the category which you will see in-game.
+		gear = "blu_f";                   // This is the faction code as used in the CAFE framework. Here, "blu_f", means the gear will be taken from the BLUFOR gearscript (aka BLUFOR).
+		side = "west";                    // "west" means the units will bear allegiance to the western side (aka BLUFOR). Available options are: "west", "east", "resistance" and "civilian".
 
 		// Units definition
 		class Rifleman
 		{
-			unitName = "BLUFOR Rifleman";		// This is the name of the squad which will be shown in-game.
-			units[] = {"rif"};			// This is the squad which will spawn - this just spawns one rifleman.
+			unitName = "BLUFOR Rifleman"; // This is the name of the squad which will be shown in-game.
+			units[] = {"rif"};            // This is the squad which will spawn - this just spawns one rifleman.
 		};
 
 		class Fireteam_4x
@@ -32,7 +32,7 @@ class CA_ZeusUI_Units
 		class Squad_6x
 		{
 			unitName = "BLUFOR Squad 6x";
-			units[] = {"ftl", "ar", "aar", "lat", "rif", "mk"};	// This spawns a full 6-man fireteam. You can have as many or as few units in a squad as you want.
+			units[] = {"ftl", "ar", "aar", "lat", "rif", "mk"}; // This spawns a full 6-man fireteam. You can have as many or as few units in a squad as you want.
 		};
 
 		class Section_9x
@@ -68,12 +68,12 @@ class CA_ZeusUI_Units
 
 		class M2A4_Slammer_UP
 		{
-			unitName = "M2A4 Slammer UP";		// This is the name of the vehicle which will be shown in-game.
-			vehicle = "B_MBT_01_TUSK_F";		// This is the classname of the vehicle. You can get it by right-clicking a vehicle in 3DEN and selecting "Log > Log classes to clipboard"
-			units[] = {"crew", "crew", "crew"};		// This is the crew of the vehicle.  The first unit in the list is always the commander.
+			unitName = "M2A4 Slammer UP";       // This is the name of the vehicle which will be shown in-game.
+			vehicle = "B_MBT_01_TUSK_F";        // This is the classname of the vehicle. You can get it by right-clicking a vehicle in 3DEN and selecting "Log > Log classes to clipboard"
+			units[] = {"crew", "crew", "crew"}; // This is the crew of the vehicle.  The first unit in the list is always the commander.
 		};
 
-		class AMV7_Marshall		// Classnames can't contain '-'
+		class AMV7_Marshall // Classnames can't contain '-'
 		{
 			unitName = "AMV-7 Marshall";
 			vehicle = "B_APC_Wheeled_01_cannon_F";
@@ -119,6 +119,9 @@ class CA_ZeusUI_Units
 		};
 	};
 
+
+
+
 	class OPFOR_Infantry
 	{
 		categoryName = "OPFOR Infantry";
@@ -128,8 +131,8 @@ class CA_ZeusUI_Units
 		// Units definition
 		class Rifleman
 		{
-			unitName = "OPFOR Rifleman";		// This is the name of the squad which will be shown in-game.
-			units[] = {"rif"};			// This is the squad which will spawn - this just spawns one rifleman.
+			unitName = "OPFOR Rifleman"; // This is the name of the squad which will be shown in-game.
+			units[] = {"rif"};           // This is the squad which will spawn - this just spawns one rifleman.
 		};
 
 		class Fireteam_4x
@@ -141,7 +144,7 @@ class CA_ZeusUI_Units
 		class Squad_6x
 		{
 			unitName = "OPFOR Squad 6x";
-			units[] = {"ftl", "ar", "aar", "lat", "rif", "mk"};	// This spawns a full 6-man fireteam. You can have as many or as few units in a squad as you want.
+			units[] = {"ftl", "ar", "aar", "lat", "rif", "mk"}; // This spawns a full 6-man fireteam. You can have as many or as few units in a squad as you want.
 		};
 
 		class Section_9x
@@ -175,7 +178,7 @@ class CA_ZeusUI_Units
 		gear = "opf_f";
 		side = "east";
 
-		class T100_Varsuk		// Classnames can't contain '-'
+		class T100_Varsuk // Classnames can't contain '-'
 		{
 			unitName = "T-100 Varsuk";
 			vehicle = "O_MBT_02_cannon_F";
@@ -228,6 +231,9 @@ class CA_ZeusUI_Units
 		};
 	};
 
+
+
+
 	class INDFOR_Infantry
 	{
 		categoryName = "INDFOR Infantry";
@@ -237,8 +243,8 @@ class CA_ZeusUI_Units
 		// Units definition
 		class Rifleman
 		{
-			unitName = "INDFOR Rifleman";		// This is the name of the squad which will be shown in-game.
-			units[] = {"rif"};			// This is the squad which will spawn - this just spawns one rifleman.
+			unitName = "INDFOR Rifleman"; // This is the name of the squad which will be shown in-game.
+			units[] = {"rif"};            // This is the squad which will spawn - this just spawns one rifleman.
 		};
 
 		class Fireteam_4x
@@ -250,7 +256,7 @@ class CA_ZeusUI_Units
 		class Squad_6x
 		{
 			unitName = "INDFOR Squad 6x";
-			units[] = {"ftl", "ar", "aar", "lat", "rif", "mk"};	// This spawns a full 6-man fireteam. You can have as many or as few units in a squad as you want.
+			units[] = {"ftl", "ar", "aar", "lat", "rif", "mk"}; // This spawns a full 6-man fireteam. You can have as many or as few units in a squad as you want.
 		};
 
 		class Section_9x
@@ -284,7 +290,7 @@ class CA_ZeusUI_Units
 		gear = "ind_f";
 		side = "resistance";
 
-		class MBT52_Kuma		// Classnames can't contain '-'
+		class MBT52_Kuma // Classnames can't contain '-'
 		{
 			unitName = "MBT-52 Kuma";
 			vehicle = "I_MBT_03_cannon_F";
@@ -336,4 +342,24 @@ class CA_ZeusUI_Units
 			reinforcements[] = {"ftl", "ar", "aar", "lat", "med", "mk", "rif", "rif", "rif"};
 		};
 	};
+
+
+
+
+	//If you are in need of civilians being spawned, e.g. for story purposes, this is the category to define them in. 
+	class Civilian_Units 
+	{
+		categoryName = "Civilian";
+		gear = "civ_f";
+		side = "civilian";
+
+		// Units definition
+		class IDAP_Medic
+		{
+			unitName = "IDAP Medic";  // This is the name of the unit which will be shown in-game.
+			units[] = {"idap_medic"}; // Do not forget to actually define the gear in 'configuration\loadouts\gear_civilian.sqf' and the identity in 'configuration\identity\identity_assignment.sqf'.
+		};
+	};
 };
+
+
