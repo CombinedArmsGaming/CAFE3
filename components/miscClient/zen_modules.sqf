@@ -65,6 +65,28 @@ call
 
     ] call zen_custom_modules_fnc_register;
 
+    //Immersive Revive actions
+    private _immersiveReviveCode =
+    {
+        [_this#5] call f_fnc_zen_immersiveRevive;
+    };
+
+    private _immersiveReviveCondition =
+    {
+        (_objects findIf {isPlayer _x} != -1);
+    };
+
+    private _immersiveReviveAction =
+    [
+        "immersiveRevive",
+        "[CAFE3] Immersive Revive",
+        "\x\ZEN\addons\context_actions\ui\medical_cross_ca.paa",
+        _immersiveReviveCode,
+        _immersiveReviveCondition
+    ] call zen_context_menu_fnc_createAction;
+
+    [_immersiveReviveAction, ["HealUnits"], 0] call zen_context_menu_fnc_addAction;
+
 
     private _healWounds = { [_this#1] call f_fnc_zen_healWounds };
 
