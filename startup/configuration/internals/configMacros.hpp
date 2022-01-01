@@ -6,6 +6,7 @@
 #include "configAliases.hpp"
 #include "..\..\..\configuration\debug.hpp"
 #include "..\..\..\configuration\aceActions.hpp"
+#include "..\..\..\configuration\ceasefire.hpp"
 #include "..\..\..\configuration\killTracking.hpp"
 #include "..\..\..\configuration\gravestones.hpp"
 #include "..\..\..\configuration\mapMarkers.hpp"

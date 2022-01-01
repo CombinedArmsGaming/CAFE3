@@ -120,25 +120,6 @@ class cfgNotifications
 		priority = 9;
 	};
 
-	// Notifications for the CAFE Safe Start Component
-	class SafeStart
-	{
-		title = "SAFE START";
-		description = "%1";
-		iconPicture="\A3\UI_F\data\IGUI\Cfg\Actions\settimer_ca.paa";
-		duration = 10;
-		priority = 0;
-	};
-
-	class SafeStartMissionStarting
-	{
-		title = "SAFE START";
-		description = "%1";
-		iconPicture="\A3\UI_F\data\IGUI\Cfg\Actions\settimer_ca.paa";
-		duration = 3;
-		priority = 1;
-	};
-
 	// Notification for the CAFE Mapclick Teleport component
 	class MapClickTeleport
 	{
@@ -376,7 +357,7 @@ class CfgMusic
 
 class RscTitles
 {
-#include "titles.hpp"
+	#include "titles.hpp"
 };
 
 
@@ -390,7 +371,7 @@ class Extended_DisplayUnload_EventHandlers
         ca_fixcamera = "showChat true";
     };
 
-	class RscDisplayCurator 
+	class RscDisplayCurator
 	{
 		clientDisplayUnload = "[] call f_fnc_exitZeus;";
 	};
@@ -581,7 +562,7 @@ class Extended_DisplayLoad_EventHandlers
 	    CAFE_FireteamMarkers = "[_this#0, (_this#0) displayCtrl 101] call f_fnc_createFireteamMarkerHook;";
     };
 
-	class RscDisplayCurator 
+	class RscDisplayCurator
 	{
 		clientDisplayLoad = "[] call f_fnc_openZeus;";
 	};

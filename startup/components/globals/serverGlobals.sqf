@@ -3,10 +3,6 @@
 
 #include "macros.hpp"
 
-// CAFE - Safe start
-// Credits: Please see the CAFE online manual (https://github.com/CombinedArmsGaming/CAFE3/wiki)
-//LOAD_GLOBALS(safeStart)
-
 // CAFE - AI Caching
 // Credits: Please see the CAFE online manual (https://github.com/CombinedArmsGaming/CAFE3/wiki)
 //LOAD_GLOBALS(aiCache)

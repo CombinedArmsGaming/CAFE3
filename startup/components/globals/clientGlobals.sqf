@@ -13,10 +13,6 @@ LOAD_GLOBALS(squadMarkers)
 // Credits: Please see the CAFE online manual (https://github.com/CombinedArmsGaming/CAFE3/wiki)
 //LOAD_GLOBALS(briefing)
 
-// CAFE - Safe start
-// Credits: Please see the CAFE online manual (https://github.com/CombinedArmsGaming/CAFE3/wiki)
-//LOAD_GLOBALS(safeStart)
-
 // CAFE - Radio Systems Support
 // Credits: Please see the CAFE online manual (https://github.com/CombinedArmsGaming/CAFE3/wiki)
 //LOAD_GLOBALS(radios)

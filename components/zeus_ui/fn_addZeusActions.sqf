@@ -106,7 +106,7 @@ private _turnZeusInvisible =
 {
 	_player setVariable ["f_var_turnZeusInvisible", true, true];
 	_player setCaptive true; // Disables AI seeing the Zeus player as hostile when talking in direct speech while hidden
-	[_player, false] remoteExecCall ["f_fnc_activatePlayer", 2]; 
+	[_player, false] remoteExecCall ["f_fnc_activatePlayer", 2];
 
 	["Zeus unit now being hidden"] call zen_common_fnc_showMessage;
 };
@@ -126,8 +126,11 @@ private _actionToBeAdded =
 private _noTurnZeusInvisible =
 {
 	_player setVariable ["f_var_turnZeusInvisible", false, true];
-	_player setCaptive false; // Disables AI seeing the Zeus player as hostile when talking in direct speech while hidden
-	[_player, true] remoteExecCall ["f_fnc_activatePlayer", 2]; 
+
+	if (!cafe_ceasefire_active) then {	// Disables AI seeing the Zeus player as hostile when talking in direct speech while hidden
+		_player setCaptive false;
+	};
+	[_player, true] remoteExecCall ["f_fnc_activatePlayer", 2];
 
 	["Zeus Unit now visible"] call zen_common_fnc_showMessage;
 };
@@ -144,7 +147,7 @@ private _actionToBeAdded =
 [["ACE_ZeusActions", "CAFE3_Zeus"], _actionToBeAdded] call ace_interact_menu_fnc_addActionToZeus;
 
 // Initialize default behaviour
-[] call acre_sys_zeus_fnc_handleZeusSpeakPress; 
+[] call acre_sys_zeus_fnc_handleZeusSpeakPress;
 player setVariable ["f_var_zeusTeleportToCam", true, true];
 player setVariable ["f_var_turnZeusInvisible", true, true];
 
