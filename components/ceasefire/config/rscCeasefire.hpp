@@ -1,4 +1,3 @@
-
 #include "macros.hpp"
 
 
@@ -33,16 +32,6 @@ class CAFE_Ceasefire_RscPicture : RscPicture {
 	y = 0;
 	w = 0;
 	h = 0;
-};
-
-class CAFE_Ceasefire_RscOutline : RscBox {
-	style = ST_WITH_RECT;
-	shadow = 0;
-	x = 0;
-	y = 0;
-	w = 0;
-	h = 0;
-	colorBackground[] = CURLY(MACRO_COLOUR_A0);
 };
 
 
@@ -119,14 +108,6 @@ class CAFE_RscCeasefire {
 				// Icon right
 				class Icon_Right : Icon_Left {
 					x = (MACRO_POS_CF_WIDTH + MACRO_POS_CF_ICON_GAP - MACRO_POS_CF_ICON_WIDTH) * safeZoneW;
-				};
-
-				// Outline
-				class Outline : CAFE_Ceasefire_RscOutline {
-					idc = MACRO_IDC_CF_OUTLINE;
-					w = MACRO_POS_CF_WIDTH * safeZoneW;
-					h = MACRO_POS_CF_HEIGHT * safeZoneW;
-					colorText[] = CURLY(MACRO_COLOUR_A100_WHITE);
 				};
 			};
                 };

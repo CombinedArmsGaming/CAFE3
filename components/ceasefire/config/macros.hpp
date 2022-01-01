@@ -16,7 +16,6 @@
 	#define MACRO_IDC_CF_CTRLGROUP                                          100
 	#define MACRO_IDC_CF_COUNTDOWN                                          101
 	#define MACRO_IDC_CF_DESCRIPTION                                        102
-	#define MACRO_IDC_CF_OUTLINE                                            103
 
 
 

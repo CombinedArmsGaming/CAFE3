@@ -46,9 +46,6 @@ if (isNull _UI) then {
 	"CAFE_RscCeasefire" cutRsc ["CAFE_RscCeasefire", "PLAIN"];
 	_UI = uiNamespace getVariable ["CAFE_RscCeasefire", displayNull];
 
-	// Set the pixel precision mode on some controls
-	(_UI displayCtrl MACRO_IDC_CF_OUTLINE) ctrlSetPixelPrecision 2;
-
 	_UI setVariable ["startTime", CBA_missionTime];
 	playSound "HintExpand"
 };
