@@ -8,7 +8,7 @@
  * 0: array of units
  * 1: start position
  * 2: marker, position or location to attack. If marker is type of area, then it will use that instead.
- * 3: Faction of group used in F3 Assigngear.
+ * 3: Faction of group used in CAFE Assigngear.
  * 4: Side of units spawned, west east independent
  *
  * Return Value:

@@ -37,7 +37,7 @@
 
 //Limited
 
-#ifdef CA2_SPECTATE_LIMITED
+#ifdef CAFE_SPECTATE_LIMITED
 
 	#include "spectate_limited.sqf"
 
@@ -45,7 +45,7 @@
 
 //Full
 
-#ifdef CA2_SPECTATE_FULL
+#ifdef CAFE_SPECTATE_FULL
 
 	#include "spectate_full.sqf"
 
@@ -54,7 +54,7 @@
 
 //Logistics
 
-#ifdef CA2_LOGISTICS
+#ifdef CAFE_LOGISTICS
 
 	#include "logistics_settings.sqf"
 

@@ -11,5 +11,5 @@ isNil
 {
     uiNamespace setVariable ["f_var_subtitleText", _text];
     uiNamespace setVariable ["f_var_subtitleTextIsStructured", _doNotModifyText];
-    "CA2_SubtitleText" cutRsc ["CA2_SubtitleText", "PLAIN", -1, false];
+    "CAFE_SubtitleText" cutRsc ["CAFE_SubtitleText", "PLAIN", -1, false];
 }

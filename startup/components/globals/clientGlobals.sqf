@@ -3,18 +3,18 @@
 
 #include "macros.hpp"
 
-// 	F3 - Fireteam Member Markers
-// 	Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
+// 	CAFE - Fireteam Member Markers
+// 	Credits: Please see the CAFE online manual (https://github.com/CombinedArmsGaming/CAFE3/wiki)
 //LOAD_GLOBALS(ftMemberMarkers)
 
 LOAD_GLOBALS(squadMarkers)
 
-// F3 - Briefing
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
+// CAFE - Briefing
+// Credits: Please see the CAFE online manual (https://github.com/CombinedArmsGaming/CAFE3/wiki)
 //LOAD_GLOBALS(briefing)
 
-// F3 - Radio Systems Support
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
+// CAFE - Radio Systems Support
+// Credits: Please see the CAFE online manual (https://github.com/CombinedArmsGaming/CAFE3/wiki)
 //LOAD_GLOBALS(radios)
 
 //LOAD_GLOBALS(miscClient)

@@ -5,15 +5,15 @@
 
 INIT_COMPONENT(squadMarkers)
 
-// F3 - Briefing
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
+// CAFE - Briefing
+// Credits: Please see the CAFE online manual (https://github.com/CombinedArmsGaming/CAFE3/wiki)
 INIT_COMPONENT(briefing)
 
 // Ceasefire
 INIT_COMPONENT(ceasefire)
 
-// F3 - Radio Systems Support
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
+// CAFE - Radio Systems Support
+// Credits: Please see the CAFE online manual (https://github.com/CombinedArmsGaming/CAFE3/wiki)
 INIT_COMPONENT(radios)
 
 INIT_COMPONENT(miscClient)

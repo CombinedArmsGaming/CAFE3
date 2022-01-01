@@ -8,8 +8,8 @@ _whenGhost =
     player allowDamage false;
     player setVariable ["ace_medical_allowDamage", false];
 
-    [player, "CA2_Downtime"] call ace_common_fnc_hideUnit;
-    [player, "CA2_Downtime"] call ace_common_fnc_muteUnit;
+    [player, "CAFE_Downtime"] call ace_common_fnc_hideUnit;
+    [player, "CAFE_Downtime"] call ace_common_fnc_muteUnit;
 
     [false] call f_fnc_updateDowntimeSpectatorCameraModes;
 
@@ -19,7 +19,7 @@ _whenGhost =
 
         if (PLAYER_IS_GHOST) then
         {
-            "CA2_CutDowntime" cutRsc ["CA2_DowntimeDead", "PLAIN", -1, false];
+            "CAFE_CutDowntime" cutRsc ["CAFE_DowntimeDead", "PLAIN", -1, false];
         };
 
     };
@@ -32,8 +32,8 @@ _whenAlive =
     player allowDamage true;
     player setVariable ["ace_medical_allowDamage", true];
 
-    [player, "CA2_Downtime"] call ace_common_fnc_unhideUnit;
-    [player, "CA2_Downtime"] call ace_common_fnc_unmuteUnit;
+    [player, "CAFE_Downtime"] call ace_common_fnc_unhideUnit;
+    [player, "CAFE_Downtime"] call ace_common_fnc_unmuteUnit;
 
     [true] call f_fnc_updateDowntimeSpectatorCameraModes;
 
@@ -43,7 +43,7 @@ _whenAlive =
 
         if (IS_UNCONSCIOUS(player)) then
         {
-            "CA2_CutDowntime" cutRsc ["CA2_DowntimeUnconscious", "PLAIN", -1, false];
+            "CAFE_CutDowntime" cutRsc ["CAFE_DowntimeUnconscious", "PLAIN", -1, false];
         };
 
     };
@@ -56,13 +56,13 @@ _whenDone =
     player allowDamage true;
     player setVariable ["ace_medical_allowDamage", true];
 
-    [player, "CA2_Downtime"] call ace_common_fnc_unhideUnit;
-    [player, "CA2_Downtime"] call ace_common_fnc_unmuteUnit;
+    [player, "CAFE_Downtime"] call ace_common_fnc_unhideUnit;
+    [player, "CAFE_Downtime"] call ace_common_fnc_unmuteUnit;
 
     [false] call f_fnc_updateDowntimeSpectatorCameraModes;
 
-    "CA2_CutDowntime" cutFadeOut 0;
-    "CA2_DowntimeRespawn" cutFadeOut 0;
+    "CAFE_CutDowntime" cutFadeOut 0;
+    "CAFE_DowntimeRespawn" cutFadeOut 0;
 
     isNil
     {
