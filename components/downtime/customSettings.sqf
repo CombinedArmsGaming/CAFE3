@@ -3,7 +3,7 @@
 
 // Downtime: opt-out of the spectator cam when you go unconscious.  Does not affect spectator upon death.
 [
-	"CA2_Downtime_OptOut",
+	"CAFE_Downtime_OptOut",
 	"CHECKBOX",
 	[
 		"Opt-out of unconscious spectator",
@@ -23,7 +23,7 @@
 
 // Downtime: customise the time it takes to enter spectator after going unconscious.
 [
-	"CA2_Downtime_SpectatorWaitTime",
+	"CAFE_Downtime_SpectatorWaitTime",
 	"SLIDER",
 	[
 		"Seconds until unconscious spectator",
@@ -43,7 +43,7 @@
 
 // Downtime: disable the reminder to unconscious spectators that they can respawn.
 [
-	"CA2_Downtime_NoRespawnReminders",
+	"CAFE_Downtime_NoRespawnReminders",
 	"CHECKBOX",
 	[
 		"Disable spectator respawn reminders",
@@ -63,7 +63,7 @@
 
 // Downtime: configure camera modes that unconscious spectators can use.
 [
-	"CA2_Downtime_SpectatorCameraModes",
+	"CAFE_Downtime_SpectatorCameraModes",
 	"LIST",
 	[
 		"Restrict unconscious spectator cameras",

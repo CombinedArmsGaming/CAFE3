@@ -6,12 +6,12 @@
 // Ceasefire
 INIT_COMPONENT(ceasefire)
 
-// F3 - AI Caching
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
+// CAFE - AI Caching
+// Credits: Please see the CAFE online manual (https://github.com/CombinedArmsGaming/CAFE3/wiki)
 INIT_COMPONENT(aiCache)
 
-// F3 - Radio Systems Support
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
+// CAFE - Radio Systems Support
+// Credits: Please see the CAFE online manual (https://github.com/CombinedArmsGaming/CAFE3/wiki)
 INIT_COMPONENT(radios)
 
 INIT_COMPONENT(respawnWaves)

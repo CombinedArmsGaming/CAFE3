@@ -16,14 +16,14 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={188.78079,46.85965,94.456337};
-		dir[]={0.42801413,-0.24195674,0.87078345};
-		up[]={0.10673296,0.97028428,0.21714482};
-		aside[]={0.89744878,-5.3667463e-008,-0.44112071};
+		pos[]={172.11345,349.72708,8.1485958};
+		dir[]={0.39585978,-0.79724497,0.45574248};
+		up[]={0.52280509,0.60365516,0.60189044};
+		aside[]={0.75496709,-1.1362135e-007,-0.65576738};
 	};
 };
 binarizationWanted=0;
-sourceName="CAFE3_Zeus";
+sourceName="CAFE3";
 addons[]=
 {
 	"A3_Modules_F_Curator_Curator",
@@ -165,11 +165,11 @@ dlcs[]=
 randomSeed=1116085;
 class ScenarioData
 {
-	overviewText="Made with the F3_CA Mission Development Framework.";
-	overviewTextLocked="Made with the F3_CA Mission Development Framework.";
+	overviewText="Made with the CAFE3 Mission Development Framework.";
+	overviewTextLocked="Made with the CAFE3 Mission Development Framework.";
 	overViewPicture="ca_logo_large.jpg";
 	overViewPictureLocked="ca_logo_large.jpg";
-	onLoadMission="Made with the F3_CA Mission Development Framework.";
+	onLoadMission="Made with the CAFE3 Mission Development Framework.";
 	loadScreen="ca_logo_large.jpg";
 };
 class CustomAttributes
@@ -2054,7 +2054,7 @@ class CustomAttributes
 													"STRING"
 												};
 											};
-											value="ca2_downtime_spectatorcameramodes";
+											value="cafe_downtime_spectatorcameramodes";
 										};
 									};
 									class Item131
@@ -8305,6 +8305,7 @@ class Mission
 			init="this addCuratorEditableObjects [(vehicles + allUnits),true];";
 			id=106;
 			type="ModuleCurator_F";
+			atlOffset=-285.41577;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -8415,6 +8416,7 @@ class Mission
 			init="this addCuratorEditableObjects [(vehicles + allUnits),true];";
 			id=107;
 			type="ModuleCurator_F";
+			atlOffset=-287.72192;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -8522,6 +8524,7 @@ class Mission
 			name="respawn_west";
 			type="Empty";
 			id=1102;
+			atlOffset=-277.30817;
 		};
 		class Item3
 		{
@@ -8530,6 +8533,7 @@ class Mission
 			name="respawn_east";
 			type="Empty";
 			id=1103;
+			atlOffset=-292.14087;
 		};
 		class Item4
 		{
@@ -8538,6 +8542,7 @@ class Mission
 			name="respawn_guer";
 			type="Empty";
 			id=1104;
+			atlOffset=-295.96756;
 		};
 		class Item5
 		{
@@ -8546,6 +8551,7 @@ class Mission
 			name="respawn_civ";
 			type="Empty";
 			id=1105;
+			atlOffset=-314.16452;
 		};
 		class Item6
 		{
@@ -8563,6 +8569,7 @@ class Mission
 			};
 			id=1143;
 			type="Box_NATO_WpsSpecial_F";
+			atlOffset=-313.22311;
 		};
 		class Item7
 		{
@@ -8580,6 +8587,7 @@ class Mission
 			};
 			id=1144;
 			type="B_supplyCrate_F";
+			atlOffset=-313.09341;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -8620,6 +8628,7 @@ class Mission
 			};
 			id=1152;
 			type="Box_NATO_WpsSpecial_F";
+			atlOffset=-308.58002;
 		};
 		class Item9
 		{
@@ -8637,6 +8646,7 @@ class Mission
 			};
 			id=1153;
 			type="B_supplyCrate_F";
+			atlOffset=-308.27222;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -8677,6 +8687,7 @@ class Mission
 			};
 			id=1161;
 			type="Box_NATO_WpsSpecial_F";
+			atlOffset=-301.09344;
 		};
 		class Item11
 		{
@@ -8694,6 +8705,7 @@ class Mission
 			};
 			id=1162;
 			type="B_supplyCrate_F";
+			atlOffset=-300.89139;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -8734,6 +8746,7 @@ class Mission
 			};
 			id=1171;
 			type="Box_NATO_WpsSpecial_F";
+			atlOffset=-307.17419;
 		};
 		class Item13
 		{
@@ -8751,6 +8764,7 @@ class Mission
 			};
 			id=1172;
 			type="B_supplyCrate_F";
+			atlOffset=-306.99451;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -8785,6 +8799,7 @@ class Mission
 			init="this addCuratorEditableObjects [(vehicles + allUnits),true];";
 			id=1177;
 			type="ModuleCurator_F";
+			atlOffset=-283.32962;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -8892,7 +8907,7 @@ class Mission
 			name="radio_list";
 			type="Empty";
 			id=1226;
-			atlOffset=30.716721;
+			atlOffset=-273.15112;
 		};
 		class Item16
 		{
@@ -8905,6 +8920,7 @@ class Mission
 			};
 			id=1282;
 			type="EmptyDetectorAreaR50";
+			atlOffset=-307.40601;
 		};
 		class Item17
 		{
@@ -8921,6 +8937,7 @@ class Mission
 			};
 			id=1308;
 			type="C_IDAP_supplyCrate_F";
+			atlOffset=-306.94861;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -8960,6 +8977,7 @@ class Mission
 			};
 			id=1309;
 			type="C_IDAP_supplyCrate_F";
+			atlOffset=-305.9382;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -8999,6 +9017,7 @@ class Mission
 			};
 			id=1310;
 			type="C_IDAP_supplyCrate_F";
+			atlOffset=-304.88696;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -9038,6 +9057,7 @@ class Mission
 			};
 			id=1311;
 			type="C_IDAP_supplyCrate_F";
+			atlOffset=-303.96411;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -9077,6 +9097,7 @@ class Mission
 			};
 			id=1337;
 			type="B_Kitbag_rgr";
+			atlOffset=-296.25281;
 		};
 		class Item22
 		{
@@ -9087,6 +9108,7 @@ class Mission
 			};
 			id=1338;
 			type="AdvancedAICommand_Commanders";
+			atlOffset=-282.98712;
 		};
 		class Item23
 		{
@@ -9103,6 +9125,7 @@ class Mission
 			};
 			id=1347;
 			type="VR_Area_01_square_1x1_yellow_F";
+			atlOffset=-275.22333;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -9142,6 +9165,7 @@ class Mission
 			};
 			id=1348;
 			type="VR_Area_01_square_1x1_yellow_F";
+			atlOffset=-290.0936;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -9181,6 +9205,7 @@ class Mission
 			};
 			id=1349;
 			type="VR_Area_01_square_1x1_yellow_F";
+			atlOffset=-313.69666;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -9220,6 +9245,7 @@ class Mission
 			};
 			id=1350;
 			type="VR_Area_01_square_1x1_yellow_F";
+			atlOffset=-295.76898;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -9256,6 +9282,7 @@ class Mission
 			description="HC1";
 			id=1352;
 			type="HeadlessClient_F";
+			atlOffset=-283.06839;
 		};
 		class Item28
 		{
@@ -9269,6 +9296,7 @@ class Mission
 			description="HC2";
 			id=1353;
 			type="HeadlessClient_F";
+			atlOffset=-281.26361;
 		};
 		class Item29
 		{
@@ -9282,6 +9310,7 @@ class Mission
 			description="HC3";
 			id=1354;
 			type="HeadlessClient_F";
+			atlOffset=-279.21127;
 		};
 		class Item30
 		{
@@ -9299,6 +9328,7 @@ class Mission
 			};
 			id=1345;
 			type="Metal_Locker_F";
+			atlOffset=-291.17264;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -9386,6 +9416,7 @@ class Mission
 			};
 			id=1381;
 			type="B_AssaultPack_mcamo";
+			atlOffset=-295.93219;
 		};
 		class Item32
 		{
@@ -9403,6 +9434,7 @@ class Mission
 			};
 			id=1382;
 			type="B_AssaultPack_ocamo";
+			atlOffset=-296.02823;
 		};
 		class Item33
 		{
@@ -9419,6 +9451,7 @@ class Mission
 			};
 			id=1383;
 			type="B_AssaultPack_dgtl";
+			atlOffset=-296.40601;
 		};
 		class Item34
 		{
@@ -9435,6 +9468,7 @@ class Mission
 			};
 			id=1385;
 			type="B_CivilianBackpack_01_Everyday_IDAP_F";
+			atlOffset=-296.51871;
 		};
 		class Item35
 		{
@@ -9446,6 +9480,7 @@ class Mission
 			title="Gearscript";
 			description="Gearscript in this framework is provided by ACE Arsenal.  To add new loadouts, simply go into ACE Arsenal and make them.  " \n "" \n "Once you've finished a loadout, press ""EXPORT"" and go to the ""loadouts"" configuration folder.  You can paste the loadout code into any of the gear files to set up that unit." \n "" \n "When you paste the loadout, make sure you don't delete the semi-colon ("";"") at the end of each line." \n "" \n "Each Gearscript file also comes with helpful commands to add randomisation and set-up resupply crates.  For help and examples, see the ""gear_blufor.sqf"" configuration file.";
 			id=1394;
+			atlOffset=-299.71527;
 		};
 		class Item36
 		{
@@ -9457,6 +9492,7 @@ class Mission
 			title="Gravestones";
 			description="When any unit is deleted, they will be turned into a Gravestone.  These can be any kind of container, but by default they are configured to be backpacks." \n "" \n "You can change the Gravestone that appears for BLUFOR by deleting the backpack here, and then naming a container to ""gravestone_blufor"".  The same rule applies to other factions." \n "" \n "You can control the Gravestone system's rules by using the ""gravestones.hpp"" configuration file.";
 			id=1392;
+			atlOffset=-297.13901;
 		};
 		class Item37
 		{
@@ -9468,6 +9504,7 @@ class Mission
 			title="Identities";
 			description="This framework provides a system for setting the identities of each side.  For example, you can set the enemy to be ""tanoan"", ""greek"", and they will look and sound the part." \n "" \n "To see all available identites, see the ""identityGroups.sqf"" configuration file inside the ""identities"" folder." \n "" \n "To set-up identities for each side, see the ""identityAssignment.sqf"" configuration file.";
 			id=1395;
+			atlOffset=-307.40555;
 		};
 		class Item38
 		{
@@ -9479,6 +9516,7 @@ class Mission
 			title="Loadout Lockers";
 			description="When in-game, Loadout Lockers will let you choose loadouts for a specific faction.  This one is set to give you BLUFOR loadouts." \n "" \n "You can make Loadout Lockers for other factions by copy-pasting this locker and changing ""blu_f"" inside the Init Field to ""opf_f"", ""ind_f"" or ""civ_f"".";
 			id=1388;
+			atlOffset=-292.44174;
 		};
 		class Item39
 		{
@@ -9490,6 +9528,7 @@ class Mission
 			title="Loot Crates";
 			description="Loot Crates contain random items, like in RPG games (Skyrim, Borderlands etc.)." \n "" \n "You can set-up loot-tables in the ""lootBox.sqf"" configuration file.  This is currently considered an advanced feature because loot-tables are not simple to set up.  If you have any issues, ask Bubbus for help.";
 			id=1390;
+			atlOffset=-305.68872;
 		};
 		class Item40
 		{
@@ -9501,6 +9540,7 @@ class Mission
 			title="Making new squads";
 			description="The best way to make a new squad is to copy-paste one of the existing ones.  This will keep their gearscript lines and role names intact." \n "" \n "It's also a good idea to create compositions for new squads, enemy patrols etc.  This can massively speed up the creation of new missions.";
 			id=1397;
+			atlOffset=-308.37909;
 		};
 		class Item41
 		{
@@ -9512,6 +9552,7 @@ class Mission
 			title="Radio List";
 			description="This marker creates an auto-generated list of radio channels.  It will show up in-game in the Map screen." \n "" \n "You can move this marker around to move the list.  You can also scale this marker up and down to change the size of the list.";
 			id=1389;
+			atlOffset=-305.43076;
 		};
 		class Item42
 		{
@@ -9523,6 +9564,7 @@ class Mission
 			title="Respawn Marker";
 			description="If the Respawner Object has been deleted or the framework doesn't know where to spawn players, they will respawn at this marker." \n "" \n "Place it somewhere safe (inside a HQ for example).";
 			id=1387;
+			atlOffset=-279.83591;
 		};
 		class Item43
 		{
@@ -9534,6 +9576,7 @@ class Mission
 			title="Respawner Objects";
 			description="See the ""respawnWaves.sqf"" configuration file. " \n "" \n "If it is configured to Base Respawn (a.k.a. RESPAWN_MODE_BASE), then all dead players will respawn at this object." \n "" \n "In Zeus, you can move this object around to change where people spawn." \n "" \n "You can also set a vehicle, plane, or any player as a Respawner Object by using the in-game Zeus module.";
 			id=1386;
+			atlOffset=-277.55527;
 		};
 		class Item44
 		{
@@ -9545,6 +9588,7 @@ class Mission
 			title="Squad Markers";
 			description="See the ""squadMarkers"" folder inside the configuration folder." \n "" \n "Squad markers are given to each squad inside that file.  If you want to add new squads, you can set their Callsign in this editor, and then use that exact same Callsign in the ""squadMarkers_blufor.sqf"" file to set up their colour, icon and more.  The same rule applies to different factions." \n "" \n "For more help, see the ""squadMarkers_blufor.sqf"" file for instructions and a default example.";
 			id=1393;
+			atlOffset=-312.73022;
 		};
 		class Item45
 		{
@@ -9556,6 +9600,7 @@ class Mission
 			title="Too many blue bubbles?";
 			description="You can delete all of these comments easily by finding the Comments folder in the panel on the left." \n "" \n "Click, Shift+Click, Delete.";
 			id=1398;
+			atlOffset=-308.86087;
 		};
 		class Item46
 		{
@@ -9567,6 +9612,7 @@ class Mission
 			title="Zeus-proof Triggers";
 			description="This trigger is configured to ignore any Zeuses which fly into it, but any normal player who steps inside is still counted.  " \n "" \n "You can copy-paste this trigger if you need more than one.";
 			id=1391;
+			atlOffset=-308.82141;
 		};
 		class Item47
 		{
@@ -9593,12 +9639,13 @@ class Mission
 					};
 					id=1454;
 					type="B_officer_F";
+					atlOffset=-306.4599;
 					class CustomAttributes
 					{
 						class Attribute0
 						{
 							property="acex_headless_blacklist";
-							expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+							expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
 							class Value
 							{
 								class data
@@ -9673,12 +9720,13 @@ class Mission
 					};
 					id=1455;
 					type="B_officer_F";
+					atlOffset=-305.11472;
 					class CustomAttributes
 					{
 						class Attribute0
 						{
 							property="acex_headless_blacklist";
-							expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+							expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
 							class Value
 							{
 								class data
@@ -9753,12 +9801,13 @@ class Mission
 					};
 					id=1456;
 					type="B_officer_F";
+					atlOffset=-304.64505;
 					class CustomAttributes
 					{
 						class Attribute0
 						{
 							property="acex_headless_blacklist";
-							expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+							expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
 							class Value
 							{
 								class data
@@ -9833,12 +9882,13 @@ class Mission
 					};
 					id=1457;
 					type="B_medic_F";
+					atlOffset=-305.70612;
 					class CustomAttributes
 					{
 						class Attribute0
 						{
 							property="acex_headless_blacklist";
-							expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+							expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
 							class Value
 							{
 								class data
@@ -9932,12 +9982,13 @@ class Mission
 					};
 					id=1458;
 					type="B_medic_F";
+					atlOffset=-306.30789;
 					class CustomAttributes
 					{
 						class Attribute0
 						{
 							property="acex_headless_blacklist";
-							expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+							expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
 							class Value
 							{
 								class data
@@ -10031,12 +10082,13 @@ class Mission
 					};
 					id=1488;
 					type="B_engineer_F";
+					atlOffset=-305.02371;
 					class CustomAttributes
 					{
 						class Attribute0
 						{
 							property="acex_headless_blacklist";
-							expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+							expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
 							class Value
 							{
 								class data
@@ -10111,12 +10163,13 @@ class Mission
 					};
 					id=1492;
 					type="B_engineer_F";
+					atlOffset=-304.41776;
 					class CustomAttributes
 					{
 						class Attribute0
 						{
 							property="acex_headless_blacklist";
-							expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+							expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
 							class Value
 							{
 								class data
@@ -10179,6 +10232,7 @@ class Mission
 				name="COMMAND";
 			};
 			id=1453;
+			atlOffset=-306.4599;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -10203,7 +10257,7 @@ class Mission
 				class Attribute1
 				{
 					property="acex_headless_blacklist";
-					expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+					expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
 					class Value
 					{
 						class data
@@ -10247,12 +10301,13 @@ class Mission
 					};
 					id=1462;
 					type="B_Soldier_TL_F";
+					atlOffset=-313.16064;
 					class CustomAttributes
 					{
 						class Attribute0
 						{
 							property="acex_headless_blacklist";
-							expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+							expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
 							class Value
 							{
 								class data
@@ -10327,12 +10382,13 @@ class Mission
 					};
 					id=1463;
 					type="B_medic_F";
+					atlOffset=-312.61938;
 					class CustomAttributes
 					{
 						class Attribute0
 						{
 							property="acex_headless_blacklist";
-							expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+							expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
 							class Value
 							{
 								class data
@@ -10426,12 +10482,13 @@ class Mission
 					};
 					id=1464;
 					type="B_soldier_AR_F";
+					atlOffset=-312.81821;
 					class CustomAttributes
 					{
 						class Attribute0
 						{
 							property="acex_headless_blacklist";
-							expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+							expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
 							class Value
 							{
 								class data
@@ -10505,12 +10562,13 @@ class Mission
 					};
 					id=1465;
 					type="B_soldier_AAR_F";
+					atlOffset=-312.5899;
 					class CustomAttributes
 					{
 						class Attribute0
 						{
 							property="acex_headless_blacklist";
-							expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+							expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
 							class Value
 							{
 								class data
@@ -10584,12 +10642,13 @@ class Mission
 					};
 					id=1466;
 					type="B_soldier_M_F";
+					atlOffset=-312.61697;
 					class CustomAttributes
 					{
 						class Attribute0
 						{
 							property="acex_headless_blacklist";
-							expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+							expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
 							class Value
 							{
 								class data
@@ -10664,12 +10723,13 @@ class Mission
 					};
 					id=1467;
 					type="B_soldier_LAT_F";
+					atlOffset=-312.80392;
 					class CustomAttributes
 					{
 						class Attribute0
 						{
 							property="acex_headless_blacklist";
-							expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+							expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
 							class Value
 							{
 								class data
@@ -10732,6 +10792,7 @@ class Mission
 				name="ALPHA";
 			};
 			id=1461;
+			atlOffset=-313.16064;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -10756,7 +10817,7 @@ class Mission
 				class Attribute1
 				{
 					property="acex_headless_blacklist";
-					expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+					expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
 					class Value
 					{
 						class data
@@ -10800,12 +10861,13 @@ class Mission
 					};
 					id=1469;
 					type="B_Soldier_TL_F";
+					atlOffset=-308.16705;
 					class CustomAttributes
 					{
 						class Attribute0
 						{
 							property="acex_headless_blacklist";
-							expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+							expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
 							class Value
 							{
 								class data
@@ -10880,12 +10942,13 @@ class Mission
 					};
 					id=1470;
 					type="B_medic_F";
+					atlOffset=-306.77936;
 					class CustomAttributes
 					{
 						class Attribute0
 						{
 							property="acex_headless_blacklist";
-							expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+							expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
 							class Value
 							{
 								class data
@@ -10979,12 +11042,13 @@ class Mission
 					};
 					id=1471;
 					type="B_soldier_AR_F";
+					atlOffset=-306.81454;
 					class CustomAttributes
 					{
 						class Attribute0
 						{
 							property="acex_headless_blacklist";
-							expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+							expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
 							class Value
 							{
 								class data
@@ -11058,12 +11122,13 @@ class Mission
 					};
 					id=1472;
 					type="B_soldier_AAR_F";
+					atlOffset=-306.10126;
 					class CustomAttributes
 					{
 						class Attribute0
 						{
 							property="acex_headless_blacklist";
-							expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+							expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
 							class Value
 							{
 								class data
@@ -11137,12 +11202,13 @@ class Mission
 					};
 					id=1473;
 					type="B_soldier_M_F";
+					atlOffset=-307.44122;
 					class CustomAttributes
 					{
 						class Attribute0
 						{
 							property="acex_headless_blacklist";
-							expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+							expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
 							class Value
 							{
 								class data
@@ -11217,12 +11283,13 @@ class Mission
 					};
 					id=1474;
 					type="B_soldier_LAT_F";
+					atlOffset=-307.49472;
 					class CustomAttributes
 					{
 						class Attribute0
 						{
 							property="acex_headless_blacklist";
-							expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+							expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
 							class Value
 							{
 								class data
@@ -11285,6 +11352,7 @@ class Mission
 				name="BRAVO";
 			};
 			id=1468;
+			atlOffset=-308.16705;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -11309,7 +11377,7 @@ class Mission
 				class Attribute1
 				{
 					property="acex_headless_blacklist";
-					expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+					expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
 					class Value
 					{
 						class data
@@ -11353,12 +11421,13 @@ class Mission
 					};
 					id=1476;
 					type="B_Soldier_TL_F";
+					atlOffset=-300.68387;
 					class CustomAttributes
 					{
 						class Attribute0
 						{
 							property="acex_headless_blacklist";
-							expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+							expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
 							class Value
 							{
 								class data
@@ -11433,12 +11502,13 @@ class Mission
 					};
 					id=1477;
 					type="B_medic_F";
+					atlOffset=-298.8674;
 					class CustomAttributes
 					{
 						class Attribute0
 						{
 							property="acex_headless_blacklist";
-							expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+							expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
 							class Value
 							{
 								class data
@@ -11532,12 +11602,13 @@ class Mission
 					};
 					id=1478;
 					type="B_soldier_AR_F";
+					atlOffset=-299.5871;
 					class CustomAttributes
 					{
 						class Attribute0
 						{
 							property="acex_headless_blacklist";
-							expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+							expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
 							class Value
 							{
 								class data
@@ -11611,12 +11682,13 @@ class Mission
 					};
 					id=1479;
 					type="B_soldier_AAR_F";
+					atlOffset=-298.59711;
 					class CustomAttributes
 					{
 						class Attribute0
 						{
 							property="acex_headless_blacklist";
-							expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+							expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
 							class Value
 							{
 								class data
@@ -11690,12 +11762,13 @@ class Mission
 					};
 					id=1480;
 					type="B_soldier_M_F";
+					atlOffset=-298.42587;
 					class CustomAttributes
 					{
 						class Attribute0
 						{
 							property="acex_headless_blacklist";
-							expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+							expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
 							class Value
 							{
 								class data
@@ -11770,12 +11843,13 @@ class Mission
 					};
 					id=1481;
 					type="B_soldier_LAT_F";
+					atlOffset=-299.78748;
 					class CustomAttributes
 					{
 						class Attribute0
 						{
 							property="acex_headless_blacklist";
-							expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+							expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
 							class Value
 							{
 								class data
@@ -11838,6 +11912,7 @@ class Mission
 				name="CHARLIE";
 			};
 			id=1475;
+			atlOffset=-300.68387;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -11862,7 +11937,7 @@ class Mission
 				class Attribute1
 				{
 					property="acex_headless_blacklist";
-					expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+					expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
 					class Value
 					{
 						class data
@@ -11909,6 +11984,7 @@ class Mission
 					};
 					id=1483;
 					type="B_Soldier_A_F";
+					atlOffset=-288.30237;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -12009,7 +12085,7 @@ class Mission
 						class Attribute5
 						{
 							property="acex_headless_blacklist";
-							expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+							expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
 							class Value
 							{
 								class data
@@ -12067,6 +12143,7 @@ class Mission
 					};
 					id=1484;
 					type="B_Soldier_A_F";
+					atlOffset=-286.29233;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -12167,7 +12244,7 @@ class Mission
 						class Attribute5
 						{
 							property="acex_headless_blacklist";
-							expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+							expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
 							class Value
 							{
 								class data
@@ -12211,6 +12288,7 @@ class Mission
 				name="ZEUS";
 			};
 			id=1482;
+			atlOffset=-288.30237;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -12235,7 +12313,7 @@ class Mission
 				class Attribute1
 				{
 					property="acex_headless_blacklist";
-					expression="_this setVariable [""acex_headless_blacklist"",_value,true]";
+					expression="_this setVariable [""acex_headless_blacklist"", _value, true]";
 					class Value
 					{
 						class data
@@ -12269,6 +12347,7 @@ class Mission
 			};
 			id=1485;
 			type="B_Truck_01_fuel_F";
+			atlOffset=-283.39569;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -12303,6 +12382,7 @@ class Mission
 			title="Logistics Vehicles";
 			description="This HEMTT is configured to allow an engineer in the command group to spawn new vehicles from it." \n "" \n "You can change the configuration and the permissions around it.  See the ""logiVehicles.sqf"" file in the configuration folder for more information.";
 			id=1486;
+			atlOffset=-284.53784;
 		};
 	};
 };

@@ -101,7 +101,7 @@ _waitToShowRespawnTitle =
 
     f_var_respawnTitle_squadMode = _mode;
     f_var_respawnTitle_targetSquad = _groupId;
-    "CA2_RespawnTitle" cutRsc ["CA2_RespawnTitle", "PLAIN", -1, false];
+    "CAFE_RespawnTitle" cutRsc ["CAFE_RespawnTitle", "PLAIN", -1, false];
 };
 
 

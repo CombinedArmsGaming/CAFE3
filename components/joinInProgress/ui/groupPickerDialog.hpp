@@ -1,6 +1,6 @@
 #include "../ui_macros.hpp"
 
-class CA2_GroupPicker_Dialog
+class CAFE_GroupPicker_Dialog
 {
 	idd = IDD_GROUPPICKER_DIALOG;
     enableSimulation = 1;
@@ -11,7 +11,7 @@ class CA2_GroupPicker_Dialog
 
 	class ControlsBackground
     {
-		class CA2_GroupPicker_Background: CA2_DefaultText
+		class CAFE_GroupPicker_Background: CAFE_DefaultText
 		{
 			idc = 1000;
 			x = 13 * GUI_GRID_W + GUI_GRID_X;
@@ -21,7 +21,7 @@ class CA2_GroupPicker_Dialog
 			colorBackground[] = {0,0,0,0.5};
 		};
 
-		class CA2_GroupPicker_ButtonsBackground: CA2_DefaultText
+		class CAFE_GroupPicker_ButtonsBackground: CAFE_DefaultText
 		{
 			idc = 1007;
 			x = 13 * GUI_GRID_W + GUI_GRID_X;
@@ -31,7 +31,7 @@ class CA2_GroupPicker_Dialog
 			colorBackground[] = {0,0,0,0.5};
 		};
 
-		class CA2_GroupPicker_Feedback: CA2_DefaultText
+		class CAFE_GroupPicker_Feedback: CAFE_DefaultText
 		{
 			idc = 1008;
 			text = "Experimental squad menu.  Feedback?  Tell Bubbus.";
@@ -48,7 +48,7 @@ class CA2_GroupPicker_Dialog
 
 	class Controls
     {
-		class CA2_GroupPicker_Title: CA2_DefaultText
+		class CAFE_GroupPicker_Title: CAFE_DefaultText
 		{
 			idc = 1001;
 			text = "Squad selection menu.";
@@ -59,7 +59,7 @@ class CA2_GroupPicker_Dialog
 			sizeEx = 1.3 * GUI_GRID_H;
 		};
 
-		class CA2_GroupPicker_CurrentSquadTitle: CA2_DefaultText
+		class CAFE_GroupPicker_CurrentSquadTitle: CAFE_DefaultText
 		{
 			idc = 1002;
 			text = "You are in:";
@@ -70,7 +70,7 @@ class CA2_GroupPicker_Dialog
 			sizeEx = 0.7 * GUI_GRID_H;
 		};
 
-		class CA2_GroupPicker_CurrentSquadText: CA2_DefaultText
+		class CAFE_GroupPicker_CurrentSquadText: CAFE_DefaultText
 		{
 			idc = IDC_GROUPPICKER_CURRENTSQUADTEXT;
 			text = "%1";
@@ -81,7 +81,7 @@ class CA2_GroupPicker_Dialog
 			sizeEx = 0.7 * GUI_GRID_H;
 		};
 
-		class CA2_GroupPicker_SquadListTitle: CA2_DefaultText
+		class CAFE_GroupPicker_SquadListTitle: CAFE_DefaultText
 		{
 			idc = 1004;
 			text = "Available squads:";
@@ -91,7 +91,7 @@ class CA2_GroupPicker_Dialog
 			h = 1 * GUI_GRID_H;
 		};
 
-		class CA2_GroupPicker_SquadListSubtitle: CA2_DefaultText
+		class CAFE_GroupPicker_SquadListSubtitle: CAFE_DefaultText
 		{
 			idc = 1005;
 			text = "(Sorted by number of members.  AI squads not included.)";
@@ -102,7 +102,7 @@ class CA2_GroupPicker_Dialog
 			sizeEx = 0.6 * GUI_GRID_H;
 		};
 
-		class CA2_GroupPicker_SquadList: CA2_DefaultListBox
+		class CAFE_GroupPicker_SquadList: CAFE_DefaultListBox
 		{
 			idc = IDC_GROUPPICKER_SQUADLIST;
 			x = 14 * GUI_GRID_W + GUI_GRID_X;
@@ -112,7 +112,7 @@ class CA2_GroupPicker_Dialog
 			sizeEx = 0.7 * GUI_GRID_H;
 		};
 
-		class CA2_GroupPicker_TeleportTitle: CA2_DefaultText
+		class CAFE_GroupPicker_TeleportTitle: CAFE_DefaultText
 		{
 			idc = 1006;
 			text = "Teleport to squad:";
@@ -122,7 +122,7 @@ class CA2_GroupPicker_Dialog
 			h = 1 * GUI_GRID_H;
 		};
 
-		class CA2_GroupPicker_TeleportCheckbox: CA2_DefaultTextCheckBox
+		class CAFE_GroupPicker_TeleportCheckbox: CAFE_DefaultTextCheckBox
 		{
 			idc = IDC_GROUPPICKER_TELEPORTCHECKBOX;
 			text = "Yes";
@@ -135,7 +135,7 @@ class CA2_GroupPicker_Dialog
 			style = 2;
 		};
 
-		class CA2_GroupPicker_ConfirmButton: CA2_DefaultButton
+		class CAFE_GroupPicker_ConfirmButton: CAFE_DefaultButton
 		{
 			idc = 1600;
 			text = "Confirm";
@@ -146,7 +146,7 @@ class CA2_GroupPicker_Dialog
             onButtonClick = "closeDialog 1";
 		};
 
-		class CA2_GroupPicker_CancelButton: CA2_DefaultButton
+		class CAFE_GroupPicker_CancelButton: CAFE_DefaultButton
 		{
 			idc = 1601;
 			text = "Cancel";
