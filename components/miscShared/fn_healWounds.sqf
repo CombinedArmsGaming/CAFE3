@@ -19,7 +19,7 @@
 #define GET_OPEN_WOUNDS(unit)           (unit getVariable [STRING(VAR_OPEN_WOUNDS), []])
 
 params ["_unit", ["_woundsToHeal", 10, [0]]];
-RUN_LOCAL_TO(_unit,_this,f_fnc_healWounds);
+RUN_LOCAL_TO(_unit,f_fnc_healWounds,_this);
 
 private "_wounds";
 private _removalIteration = 0;
