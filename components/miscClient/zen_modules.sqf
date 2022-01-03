@@ -11,6 +11,15 @@ call
 
     ] call zen_custom_modules_fnc_register;
 
+    
+    private _disableAI = { [_this#1] call f_fnc_zen_toggleAIPath };
+
+    [
+        "[CAFE3] Misc",
+        "Toggle AI Pathing ability",
+        _disableAI
+
+    ] call zen_custom_modules_fnc_register;
 
     // Wound Randomly Modules
 
@@ -87,7 +96,7 @@ call
 
     [_immersiveReviveAction, ["HealUnits"], 0] call zen_context_menu_fnc_addAction;
 
-
+    //Heal wounds
     private _healWounds = { [_this#1] call f_fnc_zen_healWounds };
 
     [

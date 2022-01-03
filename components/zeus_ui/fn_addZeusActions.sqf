@@ -148,4 +148,8 @@ private _actionToBeAdded =
 player setVariable ["f_var_zeusTeleportToCam", true, true];
 player setVariable ["f_var_turnZeusInvisible", true, true];
 
+//Ending action dialog
+
+
+
 DEBUG_PRINT_LOG("[Zeus] Init complete");
