@@ -37,4 +37,5 @@ class miscShared
     class immersiveRevive{};
     class healWounds{};
     class fixOverdose{};
+    class keepUnitHealthy{};
 };
