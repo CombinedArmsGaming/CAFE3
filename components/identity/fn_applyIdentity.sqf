@@ -22,3 +22,5 @@ _unit setFace (_faces select (floor (_uid random (count _faces))));
 
 _unit setName _name;
 _unit setNameSound "";
+
+[_unit] call ace_common_fnc_setName;
