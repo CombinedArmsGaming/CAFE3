@@ -25,9 +25,9 @@ DEBUG_FORMAT2_CHAT("DEBUG (f_fnc_mpEndReciever): _ending = %1, _state = %2",_end
 
 //Check for custom code and execute it
 
-private _isTherecode = isText (missionConfigFile >> "CfgDebriefing" >> _ending >> "code");
+private _isThereCustomEndingCodePresentInThisEnding = isText (missionConfigFile >> "CfgDebriefing" >> _ending >> "code");
 
-if (_isThereCode) then
+if (_isThereCustomEndingCodePresentInThisEnding) then
 {
 	private _code = getText (missionConfigFile >> "CfgDebriefing" >> _ending >> "code");
 
@@ -37,9 +37,9 @@ if (_isThereCode) then
 
 //Check for custom Music and perform the ending
 
-private _isThereMusic = isText (missionConfigFile >> "CfgDebriefing" >> _ending >> "music");
+private _isThereMusicInThisCustomEnding = isText (missionConfigFile >> "CfgDebriefing" >> _ending >> "music");
 
-if (_isThereMusic) then
+if (_isThereMusicInThisCustomEnding) then
 {
 	private _endingMusic = getText (missionConfigFile >> "CfgDebriefing" >> _ending >> "music"); //Get music class
 
