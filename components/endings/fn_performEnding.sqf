@@ -1,7 +1,6 @@
 #include "macros.hpp"
 
-// F3 - Multiplayer Ending Controller
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
+// CAFE3 - Multiplayer Ending Controller
 // ====================================================================================
 
 // DECLARE VARIABLES AND FUNCTIONS
@@ -24,94 +23,38 @@ if (isServer) then
 
 DEBUG_FORMAT2_CHAT("DEBUG (f_fnc_mpEndReciever): _ending = %1, _state = %2",_ending,_state)
 
-// ====================================================================================
+//Check for custom code and execute it
 
-// CLEAN-UP OBJECTIVES & TRIGGER CUT-SCENES ETC.
-// This is an opportunity to set all objectives to pass/fail, trigger cut-scenes etc.
-// depending on the ending that has been selected. Initially, we identify the desired
-// ending using the parsed value. By default allowed values are: 1,2,3,4,5,6.
+private _isTherecode = isText (missionConfigFile >> "CfgDebriefing" >> _ending >> "code");
 
-
-switch (_ending) do
+if (_isThereCode) then
 {
-// Ending #1
-	case 1:
-	{
-// Place any custom code for ending #1 after this line:
+	private _code = getText (missionConfigFile >> "CfgDebriefing" >> _ending >> "code");
 
-
-
-// Do not allow custom code for ending #1 to continue after this comment.
-	};
-// Ending #2
-	case 2:
-	{
-// Place any custom code for ending #2 after this line:
-
-
-
-// Do not allow custom code for ending #2 to continue after this comment.
-	};
-// Ending #3
-	case 3:
-	{
-// Place any custom code for ending #3 after this line:
-
-
-
-// Do not allow custom code for ending #3 to continue after this comment.
-	};
-// Ending #4
-	case 4:
-	{
-// Place any custom code for ending #4 after this line:
-
-
-
-// Do not allow custom code for ending #4 to continue after this comment.
-	};
-// Ending #5
-	case 5:
-	{
-// Place any custom code for ending #5 after this line:
-
-
-
-// Do not allow custom code for ending #5 to continue after this comment.
-	};
-// Ending #6
-	case 6:
-	{
-// Place any custom code for ending #6 after this line:
-
-
-
-// Do not allow custom code for ending #6 to continue after this comment.
-	};
-
-// Default
-	default {
-
-	};
+	call compile _code;
 };
 
 
-_endingMusic = missionNamespace getVariable [format ["f_var_endingMusic_end%1", _ending], nil];
-_ending = format ["end%1", _ending];
+//Check for custom Music and perform the ending
 
-if (isNil "_endingMusic") then
+private _isThereMusic = isText (missionConfigFile >> "CfgDebriefing" >> _ending >> "music");
+
+if (_isThereMusic) then
 {
-	[_ending, _state] spawn BIS_fnc_endMission;
-}
-else
-{
+	private _endingMusic = getText (missionConfigFile >> "CfgDebriefing" >> _ending >> "music"); //Get music class
+
 	[_ending, _state, true, false] spawn BIS_fnc_endMission;
 
 	if !(_endingMusic isEqualTo "") then
 	{
 		playMusic _endingMusic;
 	};
+}
+else
+{
+	[_ending, _state] spawn BIS_fnc_endMission;
 };
+
 
 
 // ====================================================================================

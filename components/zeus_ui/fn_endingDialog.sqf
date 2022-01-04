@@ -1,29 +1,33 @@
 #include "macros.hpp"
 
-private _endingArray = configClasses (missionConfigFile >> "CfgDebriefing");
+private _endingArray = "true" configClasses (missionConfigFile >> "CfgDebriefing"); //Gather all endings
 
-private _endingNumbers = [];
+private _endingClasses = [];
 private _endingTitles = [];
 
 {
 	private _title = getText (_x >> "Title");
+
+	_endingTitles pushBackUnique _title;
   
-	private _index = _endingTitles pushBackUnique _title;
+	private _class = configName (_x);
   
-	_endingNumbers pushBackUnique (_index + 1);
-}forEach _endingArray;
+	_endingClasses pushBackUnique _class;
+	
+}forEach _endingArray;						//iterate Endings and populate dialog arrays
+
 
 ["Ending Dialog",
 [
-	["COMBO", "Choose Ending:",[_endingNumbers, _endingTitles,0]]
+	["COMBO", "Choose Ending:",[_endingClasses, _endingTitles,0]]
 ],
 {
-	params ["_dialogValues"]
-	_dialogValues params ["_endingNumber"];
+	params ["_dialogValues"];
+	_dialogValues params ["_endingClass"];
   
-  	["Executing Ending %1", _endingNumber]call zen_common_fnc_showMessage;
+  	["Executing Ending %1", _endingClass]call zen_common_fnc_showMessage;
   
- 	 [_endingNumber] remoteExecCall ['f_fnc_broadcastEnding', 2];
+ 	 [_endingClass] remoteExecCall ['f_fnc_broadcastEnding', 2];
 },
 {},
 []]call zen_dialog_fnc_create;
