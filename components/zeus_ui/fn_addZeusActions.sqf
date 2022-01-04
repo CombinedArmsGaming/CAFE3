@@ -143,6 +143,24 @@ private _actionToBeAdded =
 
 [["ACE_ZeusActions", "CAFE3_Zeus"], _actionToBeAdded] call ace_interact_menu_fnc_addActionToZeus;
 
+
+//Ending Dialog
+private _endingDialog =
+{
+	[]call f_fnc_endingDialog;
+};
+
+private _actionToBeAdded =
+[
+	"endingDialog",
+	"Endings Dialog",
+	"",
+	_endingDialog,
+	{true}
+] call ace_interact_menu_fnc_createAction;
+
+[["ACE_ZeusActions", "CAFE3_Zeus"], _actionToBeAdded] call ace_interact_menu_fnc_addActionToZeus;
+
 // Initialize default behaviour
 [] call acre_sys_zeus_fnc_handleZeusSpeakPress; 
 player setVariable ["f_var_zeusTeleportToCam", true, true];
