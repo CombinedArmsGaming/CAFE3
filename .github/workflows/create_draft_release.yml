@@ -15,11 +15,10 @@ jobs:
         - 12
     steps: 
     - uses: phish108/autotag-action@1.1.37
-      env:
-        bump: 'minor'
+      with:
+        bump: minor
         dry-run: true
         with-v: true
-      with:
         github-token: ${{ secrets.GITHUB_TOKEN}}
   build:
     runs-on: ubuntu-latest
