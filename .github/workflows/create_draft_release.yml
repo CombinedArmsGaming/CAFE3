@@ -19,13 +19,13 @@ jobs:
           tag_prefix: 'v'
           dry_run: false
           github_token: ${{ secrets.GITHUB_TOKEN }}    
+      - run: echo ${{ steps.tag_version.outputs.new_tag }}
   archive_release:
     runs-on: ubuntu-latest
     needs: tag_release
     steps:
     - run: echo ${{ needs.tag_release.outputs.new_tag }}
-    - run: echo 'test'
-    - run: echo "test"
+    - run: echo test
     - uses: actions/checkout@master
     - name: Archive Release
       uses: thedoctor0/zip-release@master
