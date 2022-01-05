@@ -20,22 +20,16 @@ jobs:
           dry_run: false
           github_token: ${{ secrets.GITHUB_TOKEN }}    
       - run: echo ${{ steps.tag_version.outputs.new_tag }}
-  archive_release:
-    runs-on: ubuntu-latest
-    needs: tag_release
-    steps:
-    - run: echo ${{ needs.tag_release.steps.tag_version.outputs.new_tag }}
-    - run: echo test
-    - uses: actions/checkout@master
-    - name: Archive Release
-      uses: thedoctor0/zip-release@master
-      with:
-        type: 'zip'
-        filename: ${{ format('CAFE3_{0}.zip', needs.tag_release.steps.tag_version.outputs.new_tag) }}
-        exclusions: '*.git*'
+      - uses: actions/checkout@master
+      - name: Archive Release
+        uses: thedoctor0/zip-release@master
+        with:
+          type: 'zip'
+          filename: ${{ format('CAFE3_{0}.zip', steps.tag_version.outputs.new_tag) }}
+          exclusions: '*.git*'  
   draft_release:
     runs-on: ubuntu-latest
-    needs: [tag_release, archive_release]
+    needs: tag_release
     permissions:
       contents: write
     steps:
