@@ -10,7 +10,7 @@ while {true} do
     _display = findDisplay 1996;
     _lb1ctrl = _display displayCtrl 1500;
 
-    _side = side player;
+    _side = side group player;
     _groupVar = toLower format ["f_group_spectators_%1", _side];
     _specGroup = missionNamespace getVariable [_groupVar, grpNull];
 
