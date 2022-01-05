@@ -28,14 +28,13 @@ jobs:
         with:
           type: 'zip'
           filename: ${{ format('CAFE3_{0}.zip', steps.tag_version.outputs.new_tag) }}
-          directory: './'
           exclusions: '*.git*'  
       - uses: actions/checkout@v2
       - name: Draft Release  
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ steps.tag_version.outputs.new_tag }}
-          artifacts: ${{ format('./CAFE3_{0}.zip', steps.tag_version.outputs.new_tag) }}
+          artifacts: ${{ format('*/CAFE3_{0}.zip', steps.tag_version.outputs.new_tag) }}
           draft: true
           generateReleaseNotes: true
           token: ${{ secrets.GITHUB_TOKEN }}
