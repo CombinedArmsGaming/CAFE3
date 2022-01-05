@@ -29,12 +29,11 @@ jobs:
           type: 'zip'
           filename: ${{ format('CAFE3_{0}.zip', steps.tag_version.outputs.new_tag) }}
           exclusions: '*.git*'  
+      - name: Draft Release    
       - uses: actions/checkout@v2
-      - name: Draft Release
       - uses: ncipollo/release-action@v1
-        env:
-          tag: 1.4.0
         with:
+          tag: steps.tag_version.outputs.new_tag
           artifacts: ${{ format('CAFE3_{0}.zip', steps.tag_version.outputs.new_tag) }}
           draft: true
           generateReleaseNotes: true
