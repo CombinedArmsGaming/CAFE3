@@ -29,5 +29,5 @@ jobs:
       uses: thedoctor0/zip-release@master
       with:
         type: 'zip'
-        filename: ${{ "CAFE_Release_" + steps.tag.outputs.new-tag + ".zip" }}
+        filename: ${{ format('CAFE_Release_{0}.zip', steps.tag.outputs.new-tag) }}
         exclusions: '*.git*'
