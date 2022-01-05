@@ -13,13 +13,14 @@ jobs:
       matrix:
         node-version: 
         - 12
+    env:
+      bump: minor
+      with-v: true
     steps: 
     - uses: phish108/autotag-action@1.1.37
       with:
-        bump: minor
-        dry-run: true
+        dry-run: false
         github-token: ${{ secrets.GITHUB_TOKEN}}
-        with-v: true
   archive_release:
     runs-on: ubuntu-latest
     steps:
@@ -30,3 +31,16 @@ jobs:
         type: 'zip'
         filename: ${{ format('CAFE3_{0}.zip', steps.tag.outputs.new-tag) }}
         exclusions: '*.git*'
+  draft_release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: ${{ format('CAFE3_{0}.zip', steps.tag.outputs.new-tag) }}
+          tag: steps.tag.outputs.new-tag
+          draft: true
+          generateReleaseNotes: true
+          token: ${{ secrets.GITHUB_TOKEN }}
