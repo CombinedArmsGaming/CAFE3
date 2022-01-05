@@ -9,10 +9,10 @@ jobs:
   tag_release:
       runs-on: ubuntu-latest
       steps:
-      - name: Bump version and push tag
       - uses: actions/checkout@v2
-      - uses: mathieudutour/github-tag-action@v6.0   
         id: tag_version
+      - name: Bump version and push tag
+      - uses: mathieudutour/github-tag-action@v6.0   
         with:
           default_bump: 'minor'
           default_prerelease_bump: 'minor'
