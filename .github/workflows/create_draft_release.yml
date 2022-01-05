@@ -24,14 +24,16 @@ jobs:
     - run: echo ${{ steps.tag_version.outputs.new_tag }}
     - uses: actions/checkout@master
     - name: Archive Release
+      id: archive_release
       uses: thedoctor0/zip-release@master
       with:
         type: 'zip'
         filename: ${{ format('CAFE3_{0}.zip', steps.tag_version.outputs.new_tag) }}
         exclusions: '*.git*'
-    - name: Create draft release
     - uses: actions/checkout@v2
     - uses: ncipollo/release-action@v1
+    - name: Create draft release    
+      id: draft_release
       with:
         tag: ${{ steps.tag_version.outputs.new_tag }}
         artifacts: ${{ format('CAFE3_{0}.zip', steps.tag_version.outputs.new_tag) }}
