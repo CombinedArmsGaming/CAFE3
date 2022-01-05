@@ -147,7 +147,7 @@ private _actionToBeAdded =
 //Ending Dialog
 private _endingDialog =
 {
-	[]call f_fnc_endingDialog;
+	[] call f_fnc_endingDialog;
 };
 
 private _actionToBeAdded =
@@ -165,9 +165,5 @@ private _actionToBeAdded =
 [] call acre_sys_zeus_fnc_handleZeusSpeakPress; 
 player setVariable ["f_var_zeusTeleportToCam", true, true];
 player setVariable ["f_var_turnZeusInvisible", true, true];
-
-//Ending action dialog
-
-
 
 DEBUG_PRINT_LOG("[Zeus] Init complete");
