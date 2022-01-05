@@ -1,0 +1,33 @@
+name: Create Draft Release
+on:
+  push:
+    branches: [ release ]
+
+  workflow_dispatch:
+
+
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: 
+        - 12
+    steps: 
+    - uses: phish108/autotag-action@1.1.37
+      env:
+        bump: 'minor'
+        dry-run: true
+        with-v: true
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN}}
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@release
+    - name: Archive Release
+      uses: thedoctor0/zip-release@master
+      with:
+        type: 'zip'
+        filename: ${{ "CAFE_Release_" + steps.tag.outputs.new-tag + ".zip" }}
+        exclusions: '*.git*'
