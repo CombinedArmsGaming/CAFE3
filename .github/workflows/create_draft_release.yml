@@ -29,9 +29,9 @@ jobs:
           type: 'zip'
           filename: ${{ format('CAFE3_{0}.zip', steps.tag_version.outputs.new_tag) }}
           exclusions: '*.git*'  
-      - name: Draft Release    
       - uses: actions/checkout@v2
-      - uses: ncipollo/release-action@v1
+      - name: Draft Release  
+        uses: ncipollo/release-action@v1
         with:
           tag: ${{ steps.tag_version.outputs.new_tag }}
           artifacts: ${{ format('CAFE3_{0}.zip', steps.tag_version.outputs.new_tag) }}
