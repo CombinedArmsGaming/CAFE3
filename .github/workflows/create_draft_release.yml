@@ -34,7 +34,7 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ steps.tag_version.outputs.new_tag }}
-          artifacts: ${{ format('CAFE3_{0}.zip', steps.tag_version.outputs.new_tag) }}
+          artifacts: ${{ format('./CAFE3_{0}.zip', steps.tag_version.outputs.new_tag) }}
           draft: true
           generateReleaseNotes: true
           token: ${{ secrets.GITHUB_TOKEN }}
