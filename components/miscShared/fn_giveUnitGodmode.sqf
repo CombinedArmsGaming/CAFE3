@@ -1,40 +1,30 @@
-//	Zeus extensions for CA, by Bubbus.
-//
-//  Gives godmode to the passed unit.
-//  NOTE: Godmode is not 100% effective and will fail to things like artillery, ACE backblast etc.
-//  These kinds of damage ignore whether they should do damage, and just deal the damage anyway.
-//
-//  PARAMETERS:
-//
-//		_unit
-//			The unit to give godmode to.
-//
-
 #include "macros.hpp"
 
-params ["_unit"];
+/*
+	fn_giveUnitGodmode
+		By Bubbus
+
+	Attempt to give godmode to a unit.  May fail to certain scenarios, does not prevent forced death via setDamage.
+
+	Args:
+		_unit (Object, Local)
+		Unit to give godmode to.
+
+		_keepHealthy (Boolean)
+		Choose whether to apply a "keep-healthy" loop to the unit.  Helps protect against forced damage.
+
+	Effect: Global
+
+*/
+
+params ["_unit", ["_keepHealthy", false]];
 
 LOCAL_ONLY(_unit);
 
 [_unit, false] remoteExec ["allowDamage", 0, true];
 _unit setVariable ["ace_medical_allowDamage", false, true];
 
-[_unit, ["HandleDamage", {false}]] remoteExec ["addEventHandler", 0, true];
-
-
-if (isPlayer _unit) then
+if (_keepHealthy) then
 {
-	[_unit] spawn
-	{
-		params ["_unit"];
-
-		while {(!(isNull _unit)) and {alive _unit}} do
-		{
-			[_unit] call ace_medical_treatment_fnc_fullHealLocal;
-			[_unit, false] call ace_medical_fnc_setUnconscious;
-			sleep 1;
-		};
-
-	};
-
+	[_unit] spawn f_fnc_keepUnitHealthy;
 };

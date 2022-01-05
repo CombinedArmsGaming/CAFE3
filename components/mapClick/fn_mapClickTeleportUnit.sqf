@@ -1,5 +1,5 @@
-// F3 - Mission Maker Teleport
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
+// CAFE - Mission Maker Teleport
+// Credits: Please see the CAFE online manual (https://github.com/CombinedArmsGaming/CAFE3/wiki)
 // ====================================================================================
 
 // DECLARE VARIABLES AND FUNCTIONS

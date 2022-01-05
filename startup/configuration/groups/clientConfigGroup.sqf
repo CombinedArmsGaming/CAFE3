@@ -4,9 +4,6 @@
 // Map-click actions
 #include "..\..\..\configuration\mapClick.sqf"
 
-// Debug settings
-#include "..\..\..\configuration\safeStart.sqf"
-
 // AI Caching settings
 #include "..\..\..\configuration\aiCache.sqf"
 

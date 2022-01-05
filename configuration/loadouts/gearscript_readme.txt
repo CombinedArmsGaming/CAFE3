@@ -68,6 +68,60 @@ ADD_VARIANT(UNIT_NAME,<ACE Arsenal code>);
     ADD_VARIANT(rif,<ACE Arsenal code>);
     All riflemen will now randomly have an AK-47 or M-16 rifle.
 
+
+-------------------------------------------------
+
+Available commands for editing UNIT LOADOUTS:
+
+These commands can cause OVERLOADED LOADOUTS.  
+This means that units may start with more items than they can technically carry, and if they drop any items they will not be able to pick them up again.
+It's always better to use ACE Arsenal to design and edit your loadouts.  Use these commands with care.
+
+ADD_ITEM_TO_UNIFORM(UNIT_NAME,"Item Name");
+ADD_ITEMS_TO_UNIFORM(UNIT_NAME,"Item Name",AMOUNT);
+-   Add an item to the unit's uniform.  If the uniform is full, it will be overloaded with this item.
+    This command only supports regular items and magazines.  It does not support weapons, clothing items etc.
+
+ADD_ITEM_TO_VEST(UNIT_NAME,"Item Name");
+ADD_ITEMS_TO_VEST(UNIT_NAME,"Item Name",AMOUNT);
+-   Add an item to the unit's vest.  If the vest is full, it will be overloaded with this item.
+    This command only supports regular items and magazines.  It does not support weapons, clothing items etc.   
+
+ADD_ITEM_TO_BACKPACK(UNIT_NAME,"Item Name");
+ADD_ITEMS_TO_BACKPACK(UNIT_NAME,"Item Name",AMOUNT);
+-   Add an item to the unit's backpack.  If the backpack is full, it will be overloaded with this item.
+    This command only supports regular items and magazines.  It does not support weapons, clothing items etc.
+
+REMOVE_ITEM_FROM_LOADOUT(UNIT_NAME,"Item Name");
+-   Removes every item of this kind from the unit's clothing (uniform, vest, backpack).
+    Does not remove clothing, held weapons, magazines from weapons etc.
+
+ADD_MAP(UNIT_NAME);
+REMOVE_MAP(UNIT_NAME);
+-   Adds or removes the "ItemMap" object for the given unit.
+
+ADD_GPS(UNIT_NAME);
+-   Adds the "ItemGPS" object for the given unit.
+
+ADD_TERMINAL(UNIT_NAME,"Item Name");
+REMOVE_TERMINAL(UNIT_NAME);
+-   Adds or removes a terminal item for the given unit (GPS, UAV terminal etc).
+
+ADD_COMPASS(UNIT_NAME);
+REMOVE_COMPASS(UNIT_NAME);
+-   Adds or removes the "ItemCompass" object for the given unit.
+
+ADD_WATCH(UNIT_NAME);
+-   Adds the "ItemWatch" object for the given unit.
+
+ADD_WATCH_ITEM(UNIT_NAME,"Item Name");
+REMOVE_WATCH(UNIT_NAME);
+-   Adds or removes a watch item for the given unit (Watch, Chemical detector etc).
+
+ADD_NVG(UNIT_NAME,"Item Name");
+REMOVE_NVG(UNIT_NAME);
+-   Adds or removes night-vision goggles for the given unit.
+
 -------------------------------------------------
 
 Available commands FOR RE-SUPPLY CRATES:

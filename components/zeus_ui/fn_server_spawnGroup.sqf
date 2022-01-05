@@ -5,9 +5,9 @@
 		All spawned units and vehicles will be added as editable objects to all curators.
 		This functions is designed to be executed on the server (e.g. via remoteExec).
 	Arguments:
-		0:      <ARRAY>		Array of F3-compatible roles for the units to be spawned
+		0:      <ARRAY>		Array of CAFE-compatible roles for the units to be spawned
 		1:	<ARRAY>		Spawn position of the units
-		2:	<STRING>	Faction of the group, as used in F3
+		2:	<STRING>	Faction of the group, as used in CAFE
 		3:	<SIDE>		Side of the group to be spawned (west, east, resistance, civilian)
 		4:	<STRING>	(optional) Class of the vehicle to spawn
 		5:	<BOOL>		(optional) Whether or not to enable Advanced AI
