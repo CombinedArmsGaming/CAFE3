@@ -7,7 +7,7 @@ on:
 
 
 jobs:
-  tag:
+  tag_release:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -16,17 +16,17 @@ jobs:
     steps: 
     - uses: phish108/autotag-action@1.1.37
       with:
-        bump: "minor"
+        bump: minor
         dry-run: true
-        with-v: "true"
         github-token: ${{ secrets.GITHUB_TOKEN}}
-  build:
+        with-v: true
+  archive_release:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@release
+    - uses: actions/checkout@master
     - name: Archive Release
       uses: thedoctor0/zip-release@master
       with:
         type: 'zip'
-        filename: ${{ format('CAFE_Release_{0}.zip', steps.tag.outputs.new-tag) }}
+        filename: ${{ format('CAFE3_{0}.zip', steps.tag.outputs.new-tag) }}
         exclusions: '*.git*'
