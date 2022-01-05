@@ -8,6 +8,8 @@ on:
 jobs:
   tag_release:
       runs-on: ubuntu-latest
+      permissions:
+        contents: write
       steps:
       - uses: actions/checkout@v2
       - name: Bump version and push tag
@@ -27,18 +29,13 @@ jobs:
           type: 'zip'
           filename: ${{ format('CAFE3_{0}.zip', steps.tag_version.outputs.new_tag) }}
           exclusions: '*.git*'  
-  draft_release:
-    runs-on: ubuntu-latest
-    needs: tag_release
-    permissions:
-      contents: write
-    steps:
       - uses: actions/checkout@v2
+      - name: Draft Release
       - uses: ncipollo/release-action@v1
         env:
-          tag: ${{ needs.tag_release.outputs.new_tag }}
+          tag: 1.4.0
         with:
-          artifacts: ${{ format('CAFE3_{0}.zip', needs.tag_release.steps.tag_version.outputs.new_tag) }}
+          artifacts: ${{ format('CAFE3_{0}.zip', steps.tag_version.outputs.new_tag) }}
           draft: true
           generateReleaseNotes: true
           token: ${{ secrets.GITHUB_TOKEN }}
