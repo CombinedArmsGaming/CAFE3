@@ -15,8 +15,8 @@ jobs:
         id: tag_version
         uses: mathieudutour/github-tag-action@v6.0
         with:
-          default_bump: minor
-          tag_prefix: v
+          default_bump: 'minor'
+          tag_prefix: 'v'
           dry_run: true
           github_token: ${{ secrets.GITHUB_TOKEN }}    
   archive_release:
