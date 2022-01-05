@@ -8,19 +8,17 @@ on:
 
 jobs:
   tag_release:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: 
-        - 12
-    env:
-      bump: minor
-      with-v: true
-    steps: 
-    - uses: phish108/autotag-action@1.1.37
-      with:
-        dry-run: false
-        github-token: ${{ secrets.GITHUB_TOKEN}}
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v2
+      - name: Bump version and push tag
+        id: tag_version
+        uses: mathieudutour/github-tag-action@v6.0
+        with:
+          default_bump: minor
+          tag_prefix: v
+          dry_run: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}    
   archive_release:
     runs-on: ubuntu-latest
     steps:
@@ -29,7 +27,7 @@ jobs:
       uses: thedoctor0/zip-release@master
       with:
         type: 'zip'
-        filename: ${{ format('CAFE3_{0}.zip', steps.tag.outputs.new-tag) }}
+        filename: ${{ format('CAFE3_{0}.zip', tag_release.outputs.new_tag) }}
         exclusions: '*.git*'
   draft_release:
     runs-on: ubuntu-latest
@@ -39,8 +37,8 @@ jobs:
       - uses: actions/checkout@v2
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: ${{ format('CAFE3_{0}.zip', steps.tag.outputs.new-tag) }}
-          tag: steps.tag.outputs.new-tag
+          artifacts: ${{ format('CAFE3_{0}.zip', tag_release.outputs.new_tag) }}
+          tag: ${{ tag_release.outputs.new_tag }}
           draft: true
           generateReleaseNotes: true
           token: ${{ secrets.GITHUB_TOKEN }}
