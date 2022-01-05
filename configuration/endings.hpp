@@ -67,7 +67,7 @@ class MissionBroke
 	subtitle = "";
 	description = "Sorry!";
 	music = "FourStringEnding";				//Music will play
-	code = systemChat "Mission Broke";		//Code will run
+	code = "systemChat 'Mission Broke'";    // Code will run - should be a string.
 
 	// pictureBackground = "";
 	// picture = "";
