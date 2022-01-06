@@ -36,7 +36,7 @@ if (IS_PLAYER) then
             _locker addAction
             [
                 format ["<t color='#999999'>Take loadout:</t> <t color='#ff8800'>%1</t>", _xCaps],
-                format [_codeTemplate, _x, _gearVariant],
+                format [_codeTemplate, _x, _faction],
                 nil,
                 1.5,
                 false,
@@ -60,6 +60,7 @@ if (isServer) then
         case ("blufor"):      {"Land_TentSolar_01_folded_bluewhite_F"};
         case ("opfor"):       {"Land_TentSolar_01_folded_redwhite_F"};
         case ("indfor"):      {"Land_TentSolar_01_folded_olive_F"};
+        case ("guerrilla"):   {"Land_TentSolar_01_folded_olive_F"};
         case ("civilian"):    {"Land_TentSolar_01_folded_sand_F"};
         default               {"RoadCone_L_F"};
     };

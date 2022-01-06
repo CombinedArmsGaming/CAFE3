@@ -3,7 +3,7 @@
 CLIENT_ONLY;
 RUN_AS_ASYNC(f_fnc_respawnWave);
 
-_side = side player;
+_side = side group player;
 
 if (RESPAWN_MODE(_side) == RESPAWN_MODE_DISABLED) exitWith
 {

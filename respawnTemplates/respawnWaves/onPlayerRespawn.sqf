@@ -25,7 +25,7 @@ _tryJoinSquad =
 {
     params ["_unit", "_groupId", "_cancelIfAlive"];
 
-    _side = side _unit;
+    _side = side group _unit;
     _foundGroup = grpNull;
 
     waitUntil
@@ -101,7 +101,7 @@ _waitToShowRespawnTitle =
 
     f_var_respawnTitle_squadMode = _mode;
     f_var_respawnTitle_targetSquad = _groupId;
-    "CA2_RespawnTitle" cutRsc ["CA2_RespawnTitle", "PLAIN", -1, false];
+    "CAFE_RespawnTitle" cutRsc ["CAFE_RespawnTitle", "PLAIN", -1, false];
 };
 
 
@@ -145,7 +145,7 @@ if (_hasBeenKilled) then
 
     // Wait for respawn to happen
     _waveInfo = false;
-    _side = side _unit;
+    _side = side group _unit;
 
     waitUntil
     {

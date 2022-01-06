@@ -6,7 +6,7 @@ _unit = player;
 [_x] spawn
 {
     waitUntil { time > 3 };
-    systemChat format["[F3 ACRE2] Warning: No room to add radio '%1', report this to the mission maker. You now have a scroll-wheel action to get this radio.",_this select 0];
+    systemChat format["[CAFE ACRE2] Warning: No room to add radio '%1', report this to the mission maker. You now have a scroll-wheel action to get this radio.",_this select 0];
 
 };
 
@@ -27,7 +27,7 @@ _actionFnc =
     }
     else
     {
-        systemChat format ["[F3 ACRE2] Warning: No room to add radio '%1', remove more stuff and try again", _radioToGive];
+        systemChat format ["[CAFE ACRE2] Warning: No room to add radio '%1', remove more stuff and try again", _radioToGive];
     };
 
 };

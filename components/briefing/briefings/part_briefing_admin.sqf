@@ -1,5 +1,5 @@
-// F3 - Briefing
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
+// CAFE - Briefing
+// Credits: Please see the CAFE online manual (https://github.com/CombinedArmsGaming/CAFE3/wiki)
 // ====================================================================================
 
 // ADD MISSION MAKER NOTES SECTIONS
@@ -37,83 +37,6 @@ if (_customText != "") then
 
 // ====================================================================================
 
-// ENDINGS
-// This block of code collects all valid endings and formats them properly
-
-_title = [];
-_ending = [];
-_endings = [];
-
-_i = 1;
-
-while {true} do
-{
-	_title = getText (missionconfigfile >> "CfgDebriefing" >> format ["end%1",_i] >> "title");
-	_description = getText (missionconfigfile >> "CfgDebriefing" >> format ["end%1",_i] >> "description");
-
-	if (_title == "") exitWith {};
-
-	_ending = [_i,_title,_description];
-	_endings append ([_ending]);
-	_i = _i + 1;
-
-};
-
-// Create the briefing section to display the endings
-
-_briefing = _briefing + "
-<font size='18'>ENDINGS</font><br/>
-These endings are available. To trigger an ending click on its link.<br/><br/>
-";
-
-{
-	_end = _this select 0;
-	_briefing = _briefing + format [
-	"<execute expression=""[%1] remoteExec ['f_fnc_broadcastEnding', 2];"">'end%1'</execute> - %2:<br/>
-	%3<br/><br/>"
-	,_x select 0,_x select 1,_x select 2];
-
-} forEach _endings;
-
-// ====================================================================================
-
-// SAFE START SECTION
-
-_briefing = _briefing + "
-<font size='18'>SAFE START CONTROL</font><br/>
-|- <execute expression=""f_var_mission_timer = f_var_mission_timer + 1; publicVariable 'f_var_mission_timer'; hintsilent format ['Mission Timer: %1',f_var_mission_timer];"">
-Increase Safe Start timer by 1 minute</execute><br/>
-
-|- <execute expression=""f_var_mission_timer = f_var_mission_timer - 1; publicVariable 'f_var_mission_timer'; hintsilent format ['Mission Timer: %1',f_var_mission_timer];"">
-Decrease Safe Start timer by 1 minute</execute><br/>
-
-|- <execute expression=""[[[],'components\safeStart\init_component.sqf'],'BIS_fnc_execVM',true]  call BIS_fnc_MP;
-hintsilent 'Safe Start started!';"">
-Begin Safe Start timer</execute><br/>
-
-|- <execute expression=""f_var_mission_timer = -1; publicVariable 'f_var_mission_timer';
-[['SafeStartMissionStarting',['Mission starting now!']],'bis_fnc_showNotification',true] call BIS_fnc_MP;
-[[false],'f_fnc_safety',playableUnits + switchableUnits] call BIS_fnc_MP;
-hintsilent 'Safe Start ended!';"">
-End Safe Start timer</execute><br/>
-
-|- <execute expression=""[[true],'f_fnc_safety',playableUnits + switchableUnits] call BIS_fnc_MP;
-hintsilent 'Safety on!' "">
-Force safety on for all players</execute><br/>
-
-|- <execute expression=""[[false],'f_fnc_safety',playableUnits + switchableUnits] call BIS_fnc_MP;
-hintsilent 'Safety off!' "">
-Force safety off for all players</execute><br/>
-
-|- <execute expression=""[] spawn f_fnc_mapClickSupplyDropUnit;
-"">
-Map Click Supply Drop</execute><br/>
-
-<br/>
-";
-
-// ====================================================================================
-
 // ADD ZEUS SUPPORT SECTION
 
 _briefing = _briefing + "
@@ -142,23 +65,6 @@ if (isNull (getAssignedCuratorLogic player)) then {hintsilent 'Assign ZEUS first
 <br/>
 ";
 
-
-// ====================================================================================
-// ADD SAFE END
-
-
-_briefing = _briefing + "
-<font size='18'>SAFE END</font><br/>
-Moves all players to location on map click, automatically spaced out in a square.
-Makes players/vehicles invincible for 5 min and restores them to full health.
-Vehicles unable to fit are added to zeus while the players are moved. <br/>
-
-|- <execute expression=""[] spawn f_fnc_safeEndStart;
-hintsilent 'Click on the location in the map';"">Execute Safe End</execute><br/>
-
-|- <execute expression="" onMapSingleClick '';
-hintsilent 'Map Click Canceled!';"">Cancel Map Click</execute><br/>
-";
 
 
 // ====================================================================================

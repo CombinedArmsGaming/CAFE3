@@ -3,9 +3,9 @@
 
 _briefing = "";
 _briefing = _briefing + "
-<font size='18'>F3 admin menu</font><br/><br/>
+<font size='18'>CAFE admin menu</font><br/><br/>
 |- <execute expression="" [] execvm 'components\briefing\briefings\part_briefing_admin.sqf' "">
-Give self F3 admin menu</execute><br/>
+Give self CAFE admin menu</execute><br/>
 <font size='18'>Respawn system</font><br/><br/>
 
 |- <execute expression=""hint 'Wave spawned!'; [west] call f_fnc_forceRespawnWave;"">

@@ -4,9 +4,9 @@
  *
  * Arguments:
  * 0: An array of markers ["mkr","mkr_1","mkr_2","mkr_3"]
- * 1: array of units according to F3 ["ftl","r","ar","aar","rat"]
+ * 1: array of units according to CAFE ["ftl","r","ar","aar","rat"]
  * 2: Vehicle classname
- * 3: Faction of group used in F3 Assigngear.
+ * 3: Faction of group used in CAFE Assigngear.
  * 4: Side of units spawned, west east independent
  *
  * Return Value:

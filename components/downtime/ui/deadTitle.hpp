@@ -1,6 +1,6 @@
 #include "../ui_macros.hpp"
 
-class CA2_DowntimeDead
+class CAFE_DowntimeDead
 {
     idd = 13174;
 
@@ -15,7 +15,7 @@ class CA2_DowntimeDead
 
     class ControlsBackground
     {
-        class YouAre: CA2_DefaultText
+        class YouAre: CAFE_DefaultText
         {
         	idc = 1000;
             style = ST_CENTER;
@@ -28,7 +28,7 @@ class CA2_DowntimeDead
         	sizeEx = 2 * GUI_GRID_H;
         };
 
-        class Dead: CA2_DefaultText
+        class Dead: CAFE_DefaultText
         {
         	idc = 1001;
             style = ST_CENTER;
@@ -42,7 +42,7 @@ class CA2_DowntimeDead
         	sizeEx = 3 * GUI_GRID_H;
         };
 
-        class Subtitle: CA2_DefaultText
+        class Subtitle: CAFE_DefaultText
         {
         	idc = IDC_DOWNTIMEDEAD_SUBTITLE;
             style = ST_CENTER;

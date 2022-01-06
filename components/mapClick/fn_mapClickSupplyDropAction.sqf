@@ -1,6 +1,6 @@
 #include "macros.hpp"
-// F3 - Mission Maker Supply Drop
-// Credits: Created by Volc, from the F3 mapClickTeleport script, and the dropit script by Kronzky http://www.kronzky.info/
+// CAFE - Mission Maker Supply Drop
+// Credits: Created by Volc, from the CAFE mapClickTeleport script, and the dropit script by Kronzky http://www.kronzky.info/
 // ====================================================================================
 
 CLIENT_ONLY;

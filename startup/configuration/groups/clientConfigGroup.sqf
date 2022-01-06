@@ -4,9 +4,6 @@
 // Map-click actions
 #include "..\..\..\configuration\mapClick.sqf"
 
-// Debug settings
-#include "..\..\..\configuration\safeStart.sqf"
-
 // AI Caching settings
 #include "..\..\..\configuration\aiCache.sqf"
 
@@ -21,9 +18,6 @@
 
 // Respawn waves settings
 #include "..\..\..\configuration\respawnWaves.sqf"
-
-// Ending music settings
-#include "..\..\..\configuration\endingMusic.sqf"
 
 // Squad markers
 #include "..\internals\squadMarkers.sqf"
