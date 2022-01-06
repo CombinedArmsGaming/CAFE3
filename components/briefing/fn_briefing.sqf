@@ -17,7 +17,7 @@ WAIT_UNTIL_SETTINGS_READY();
 // The following code detects what side the player's slot belongs to, and stores
 // it in the private variable _unitSide
 
-_unitSide = side player;
+_unitSide = side group player;
 
 DEBUG_FORMAT1_CHAT("DEBUG (briefing.sqf): Player faction: %1", _unitSide)
 

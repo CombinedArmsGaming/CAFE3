@@ -5,7 +5,7 @@ This file allows the missionmaker to define custom endings.
 
 EXAMPLE:
 
-class End1 
+class End1
 {
 	title = "Ending #1";	//Main title that shows up on ending
 	subtitle = ""; 			//Smaller subtitle
@@ -22,13 +22,13 @@ class End1
 
 */
 
-class End1 
+class End1
 {
-	title = "Ending #1"; 
-	subtitle = ""; 
-	description = "Please post to the AAR thread!"; 
+	title = "Ending #1";
+	subtitle = "";
+	description = "Please post to the AAR thread!";
 	//music = ""; //Standard music will play
-	//code = {}; 
+	//code = {};
 
 	// pictureBackground = "";
 	// picture = "";
@@ -67,7 +67,7 @@ class MissionBroke
 	subtitle = "";
 	description = "Sorry!";
 	music = "FourStringEnding";				//Music will play
-	code = "systemChat 'Mission Broke'";    // Code will run - should be a string.
+	//code = "systemChat 'Mission Broke'";    // Code will run - should be a string.
 
 	// pictureBackground = "";
 	// picture = "";
