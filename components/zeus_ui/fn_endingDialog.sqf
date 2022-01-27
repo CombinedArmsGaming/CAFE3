@@ -3,12 +3,16 @@
 private _endingArray = "true" configClasses (missionConfigFile >> "CfgDebriefing"); //Gather all endings
 
 private _endingClasses = [];
-private _endingTitles = [];
+private _endingNames = [];
 
 {
 	private _title = getText (_x >> "Title");
 
-	_endingTitles pushBackUnique _title;
+	private _subtitle = getText (_x >> "subtitle");
+
+	private _name = _title + " - " + _subtitle;
+
+	_endingNames pushBackUnique _name;
   
 	private _class = configName (_x);
   
@@ -19,7 +23,7 @@ private _endingTitles = [];
 
 ["Ending Dialog",
 	[
-		["COMBO", "Choose Ending:",[_endingClasses, _endingTitles,0]]
+		["COMBO", "Choose Ending:",[_endingClasses, _endingNames,0]]
 	],
 	{
 		params ["_dialogValues"];
