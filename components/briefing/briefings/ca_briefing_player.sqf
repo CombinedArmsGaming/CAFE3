@@ -15,6 +15,6 @@ Give self admin menu</execute><br/>
 
 // CREATE DIARY ENTRY
 
-player createDiaryRecord ["diary", ["CA Player Controls",_briefing]];
+player createDiaryRecord ["CAFE", ["CA Player Controls",_briefing]];
 
 // ====================================================================================
