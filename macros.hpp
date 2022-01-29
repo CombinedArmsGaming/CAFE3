@@ -1,4 +1,5 @@
 #include "startup\configuration\internals\configMacros.hpp"
+#include "version.hpp"
 
 
 #define IS_HC (!(hasInterface or isServer))

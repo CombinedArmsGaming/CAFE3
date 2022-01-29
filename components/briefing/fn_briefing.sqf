@@ -11,6 +11,11 @@ DEBUG_PRINT_LOG("running f_briefing")
 WAIT_UNTIL_PLAYER_EXISTS();
 WAIT_UNTIL_SETTINGS_READY();
 
+
+// Add framework briefing panel.
+#include "briefings\ca_briefing_framework.sqf";
+
+
 // ====================================================================================
 
 // DETECT PLAYER FACTION
