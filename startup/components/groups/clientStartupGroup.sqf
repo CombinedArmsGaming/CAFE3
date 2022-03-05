@@ -20,8 +20,6 @@ INIT_COMPONENT(miscClient)
 
 INIT_COMPONENT(miscShared)
 
-INIT_COMPONENT(respawnWaves)
-
 INIT_COMPONENT(zeus_ui)
 
 INIT_COMPONENT(downtime)

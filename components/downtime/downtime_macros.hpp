@@ -16,6 +16,6 @@
 #define PLAYER_IS_AWAITING_RESPAWN      (missionNamespace getVariable ["f_var_playerHasBeenKilled", false])
 #define PLAYER_IS_DOWN                  (IS_UNCONSCIOUS(player) or {!alive player} or {PLAYER_IS_AWAITING_RESPAWN})
 #define PLAYER_IS_GHOST                 (PLAYER_IS_AWAITING_RESPAWN and {alive player})
-#define SHOULD_DO_DOWNTIME              ((IS_UNCONSCIOUS(player) and {!HAS_OPTED_OUT}) or {!alive player} or {PLAYER_IS_AWAITING_RESPAWN})
+#define SHOULD_DO_DOWNTIME              (IS_UNCONSCIOUS(player) and {!HAS_OPTED_OUT})
 
 #define GET_SPECTATOR_CAM_ARGS(MODE)    (missionNamespace getVariable [format ["f_var_downtime_spectatorModes_%1", MODE], f_var_downtime_spectatorModes_AllowAll])
