@@ -47,12 +47,15 @@ enableDebugConsole = 1;
 
 
 // CAFE - Respawn Settings
-
 respawn = "BASE";
 respawnDelay = 20;
 respawnOnStart = 1;
-respawnTemplates[] = {"MenuPosition", "MenuInventory", "Spectator"};
+respawnTemplates[] = {"MenuPosition", "Spectator", "CAFE_Loadout"};
 respawnDialog = 1;
+
+
+// CAFE - Respawn system includes.
+#include "components\respawn\cfgRespawnTemplates.hpp"
 
 
 // ============================================================================================
@@ -153,15 +156,6 @@ class CfgDebriefing
 {
 	#include "configuration\endings.hpp"
 };
-
-
-// ============================================================================================
-
-
-//class CfgRespawnTemplates
-//{
-
-//};
 
 
 // ============================================================================================

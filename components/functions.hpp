@@ -21,6 +21,7 @@ class F
 #include "miscClient\functions.hpp"
 #include "miscShared\functions.hpp"
 #include "radios\functions.hpp"
+#include "respawn\functions.hpp"
 #include "spawnNpcs\functions.hpp"
 #include "squadMarkers\functions.hpp"
 #include "viewDistanceEditor\functions.hpp"
