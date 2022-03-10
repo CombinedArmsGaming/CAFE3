@@ -48,9 +48,9 @@ enableDebugConsole = 1;
 
 // CAFE - Respawn Settings
 respawn = "BASE";
-respawnDelay = 20;
+respawnDelay = 5;
 respawnOnStart = 1;
-respawnTemplates[] = {"MenuPosition", "Spectator", "CAFE_Loadout"};
+respawnTemplates[] = {"MenuPosition", "Spectator", "CAFE_Loadout", "CAFE_Squad"};
 respawnDialog = 1;
 
 

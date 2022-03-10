@@ -1,4 +1,10 @@
-#include "..\macros.hpp"
+#include "macros.hpp"
+
+/*
+	CAFE Loadout on-respawn script.
+
+	Make sure the player receives a gearscripted loadout upon respawn.
+*/
 
 params ["_newUnit", "_oldUnit", "_respawn", "_respawnDelay"];
 
