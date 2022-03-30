@@ -8,4 +8,5 @@ class zeusui
 	class addZeusActions{};
 	class exitZeus{};
 	class openZeus{};
+	class endingDialog{};
 };

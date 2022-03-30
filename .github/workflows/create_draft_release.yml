@@ -1,0 +1,37 @@
+name: Create Draft Release
+on:
+  push:
+    branches: [ release ]
+
+  workflow_dispatch:
+
+jobs:
+  get_release_tag:
+      runs-on: ubuntu-latest
+      permissions:
+        contents: write
+      steps:
+      - uses: actions/checkout@v2
+      - name: Get latest version tag
+        id: tag_version
+        uses: actions-ecosystem/action-get-latest-tag@v1
+        with:
+          semver_only: true
+          with_initial_version: false  
+      - run: echo ${{ steps.tag_version.outputs.tag }}
+      - uses: actions/checkout@master
+      - name: Archive Release
+        uses: thedoctor0/zip-release@master
+        with:
+          type: 'zip'
+          filename: ${{ format('CAFE3_{0}.zip', steps.tag_version.outputs.tag) }}
+          directory: ./
+          exclusions: '*.git*'  
+      - name: Draft Release  
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.tag_version.outputs.tag }}
+          artifacts: ${{ format('*CAFE3_{0}.zip', steps.tag_version.outputs.tag) }}
+          draft: true
+          generateReleaseNotes: true
+          token: ${{ secrets.GITHUB_TOKEN }}

@@ -3,7 +3,7 @@
 params ["_unit"];
 
 
-_sideObits = switch (side _unit) do
+_sideObits = switch (side group _unit) do
 {
     case west:          { f_var_obituaries_blufor };
     case east:          { f_var_obituaries_opfor };

@@ -11,7 +11,7 @@ if !((count acre_sys_core_languages) > 0) then
 	};
 };
 
-_languages = switch (side _unit) do
+_languages = switch (side group _unit) do
 {
 	case blufor: {f_radios_settings_acre2_language_blufor};
 	case opfor: {f_radios_settings_acre2_language_opfor};

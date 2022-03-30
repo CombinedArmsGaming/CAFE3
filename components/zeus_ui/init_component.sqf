@@ -14,7 +14,7 @@ waitUntil
 player setVariable ["f_var_isKillLogRecipient", true, true];
 player setVariable ["f_var_isZeus", true, true];
 
-[player] call f_fnc_giveUnitGodmode;
+[player, true] call f_fnc_giveUnitGodmode;
 
 player addCuratorEditableObjects [(vehicles + allUnits), true];
 player removeCuratorEditableObjects [player, true];

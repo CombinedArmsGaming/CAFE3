@@ -38,7 +38,8 @@ if (_exitCode == 1) then
     _selectedIdx = lbCurSel _groupList;
     _selectedGroupName = _groupList lbData _selectedIdx;
 
-    _groups = allGroups select {(side _x) isEqualTo (side player)};
+    private _playerSide = side group player;
+    _groups = allGroups select {(side _x) isEqualTo _playerSide};
 
     _selectedGroup = _groups param [_groups findIf {(groupId _x) isEqualTo _selectedGroupName}, grpNull];
 

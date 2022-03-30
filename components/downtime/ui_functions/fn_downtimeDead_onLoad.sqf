@@ -4,7 +4,7 @@ params ["_display"];
 
 _subtitle = _display displayCtrl IDC_DOWNTIMEDEAD_SUBTITLE;
 _text = "";
-_side = side player;
+_side = side group player;
 
 _respawnsLeft = RESPAWN_WAVES(_side);
 

@@ -37,46 +37,6 @@ if (_customText != "") then
 
 // ====================================================================================
 
-// ENDINGS
-// This block of code collects all valid endings and formats them properly
-
-_title = [];
-_ending = [];
-_endings = [];
-
-_i = 1;
-
-while {true} do
-{
-	_title = getText (missionconfigfile >> "CfgDebriefing" >> format ["end%1",_i] >> "title");
-	_description = getText (missionconfigfile >> "CfgDebriefing" >> format ["end%1",_i] >> "description");
-
-	if (_title == "") exitWith {};
-
-	_ending = [_i,_title,_description];
-	_endings append ([_ending]);
-	_i = _i + 1;
-
-};
-
-// Create the briefing section to display the endings
-
-_briefing = _briefing + "
-<font size='18'>ENDINGS</font><br/>
-These endings are available. To trigger an ending click on its link.<br/><br/>
-";
-
-{
-	_end = _this select 0;
-	_briefing = _briefing + format [
-	"<execute expression=""[%1] remoteExec ['f_fnc_broadcastEnding', 2];"">'end%1'</execute> - %2:<br/>
-	%3<br/><br/>"
-	,_x select 0,_x select 1,_x select 2];
-
-} forEach _endings;
-
-// ====================================================================================
-
 // ADD ZEUS SUPPORT SECTION
 
 _briefing = _briefing + "
@@ -111,6 +71,6 @@ if (isNull (getAssignedCuratorLogic player)) then {hintsilent 'Assign ZEUS first
 
 // CREATE DIARY ENTRY
 
-player createDiaryRecord ["diary", ["Admin",_briefing]];
+player createDiaryRecord ["CAFE", ["Admin",_briefing]];
 
 // ====================================================================================

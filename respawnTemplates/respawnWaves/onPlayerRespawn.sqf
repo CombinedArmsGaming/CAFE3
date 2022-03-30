@@ -25,7 +25,7 @@ _tryJoinSquad =
 {
     params ["_unit", "_groupId", "_cancelIfAlive"];
 
-    _side = side _unit;
+    _side = side group _unit;
     _foundGroup = grpNull;
 
     waitUntil
@@ -145,7 +145,7 @@ if (_hasBeenKilled) then
 
     // Wait for respawn to happen
     _waveInfo = false;
-    _side = side _unit;
+    _side = side group _unit;
 
     waitUntil
     {

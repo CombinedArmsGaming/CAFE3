@@ -29,4 +29,5 @@ class miscClient_zen
     class zen_immersiveRevive{};
     class zen_healWounds{};
 	class zen_fixOverdose{};
+    class zen_toggleAIPath{};
 };

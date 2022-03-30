@@ -38,7 +38,7 @@
 #define IN_CRDC_ARRST(unit)             (unit getVariable [STRING(VAR_CRDC_ARRST), false])
 
 params ["_unit"];
-RUN_LOCAL_TO(_unit,_this,f_fnc_immersiveRevive);
+RUN_LOCAL_TO(_unit,f_fnc_immersiveRevive,_this);
 
 if !IS_UNCONSCIOUS(_unit) exitWith {};
 

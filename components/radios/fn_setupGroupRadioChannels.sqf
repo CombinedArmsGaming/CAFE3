@@ -16,7 +16,7 @@ waitUntil
 	uiSleep 0.1; [_unit] call acre_api_fnc_isInitialized
 };
 
-_presetArray = switch (side _unit) do
+_presetArray = switch (side group _unit) do
 {
 	case blufor: {f_radios_settings_acre2_sr_groups_blufor};
   	case opfor: {f_radios_settings_acre2_sr_groups_opfor};
@@ -24,7 +24,7 @@ _presetArray = switch (side _unit) do
   	default {f_radios_settings_acre2_sr_groups_indfor};
 };
 
-_presetLRArray = switch (side _unit) do
+_presetLRArray = switch (side group _unit) do
 {
 	case blufor: {f_radios_settings_acre2_lr_groups_blufor};
   	case opfor: {f_radios_settings_acre2_lr_groups_opfor};
@@ -32,7 +32,7 @@ _presetLRArray = switch (side _unit) do
 	default {f_radios_settings_acre2_lr_groups_indfor};
 };
 
-_presetXLRArray = switch (side _unit) do
+_presetXLRArray = switch (side group _unit) do
 {
 	case blufor: {f_radios_settings_acre2_xlr_groups_blufor};
   	case opfor: {f_radios_settings_acre2_xlr_groups_opfor};
