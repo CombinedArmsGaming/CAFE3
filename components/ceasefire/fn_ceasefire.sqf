@@ -32,9 +32,10 @@ if (!isServer) exitWith {};
 
 
 // Set up some variables
+if (isNil "cafe_ceasefire_active") then {cafe_ceasefire_active = false};
 if (isNil "cafe_ceasefire_server_EH") then {cafe_ceasefire_server_EH = -1};
 if (isNil "cafe_ceasefire_server_sideRelations") then {cafe_ceasefire_server_sideRelations = []};
-private _ceaseFireStateChanged = (cafe_ceasefire_active != _enabled);
+private _ceasefireStateChanged = (cafe_ceasefire_active != _enabled);
 
 cafe_ceasefire_active = _enabled;
 cafe_ceasefire_endTime = [-1, CBA_missionTime + _duration] select (_duration > 0);
@@ -62,7 +63,7 @@ publicVariable "cafe_ceasefire_active";
 
 
 
-if (_ceaseFireStateChanged) then {
+if (_ceasefireStateChanged) then {
 
 	// Enforce the ceasefire via side relations
 	if (_enabled) then {
