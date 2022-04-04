@@ -15,6 +15,8 @@
 
 LOAD_GLOBALS(miscShared)
 
+LOAD_GLOBALS(gearScript)
+
 
 // Kill tracker init
 #ifdef ENABLE_KILL_TRACKING

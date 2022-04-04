@@ -45,3 +45,10 @@ class gearScript_zen
     class zen_createSupplyCrate_followUpDialog{};
     class zen_createSupplyCrate_performAction{};
 };
+
+class gearScript_gunbag
+{
+    file = "components\gearScript\gunbag";
+    class getWeaponStateFromClassName{};
+    class setGunbagVariableState{};
+};

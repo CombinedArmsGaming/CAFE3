@@ -21,6 +21,8 @@ LOAD_GLOBALS(squadMarkers)
 
 LOAD_GLOBALS(miscShared)
 
+LOAD_GLOBALS(gearScript)
+
 //LOAD_GLOBALS(respawnWaves)
 
 //LOAD_GLOBALS(zeus_ui)
