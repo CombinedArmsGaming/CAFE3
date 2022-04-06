@@ -186,6 +186,17 @@ CREATE_LOADOUT(mk,_baseLoadout);
 COPY_ADDONS(mk,rif);
 
 
+// Sniper Loadout
+
+_baseLoadout = [["srifle_LRR_F","","","optic_LRPS",["7Rnd_408_Mag",7],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",17],[],""],["U_B_CombatUniform_mcam",[["ACE_elasticBandage",3],["ACE_morphine",2],["ACE_epinephrine",1],["ACE_packingBandage",3],["ACE_tourniquet",2],["ACE_RangeCard",1],["ACRE_PRC343_ID_3",1],["ACE_Flashlight_XL50",1],["ACE_MapTools",1],["ACE_splint",2],["ACE_Kestrel4500",1],["ACE_microDAGR",1],["16Rnd_9x21_Mag",1,17]]],["V_TacChestrig_oli_F",[["optic_NVS",1],["HandGrenade",2,1],["SmokeShell",4,1],["7Rnd_408_Mag",6,7],["16Rnd_9x21_Mag",1,17]]],["ace_gunbag_Tan",[["30Rnd_65x39_caseless_mag",3,30],["30Rnd_65x39_caseless_mag_Tracer",1,30],["NVGoggles",1]]],"H_Booniehat_mcamo","G_Lowprofile",["ACE_Vector","","","",[],[],""],["ItemMap","","","ItemCompass","ItemWatch",""]];
+
+CREATE_LOADOUT(sniper,_baseLoadout);
+
+_gunbagLoadout = [["arifle_MXC_F","muzzle_snds_65_TI_blk_F","acc_pointer_IR","optic_Aco",["30Rnd_65x39_caseless_mag",30],[],""],[],[],[],[],[],"","",[],["","","","","",""]];
+
+PUT_GUN_IN_GUNBAG(sniper,_gunbagLoadout);
+
+
 // Crewman Loadout
 
 _baseLoadout = [["SMG_01_F","","acc_flashlight_smg_01","optic_ACO_grn_smg",["30Rnd_45ACP_Mag_SMG_01",25],[],""],[],[],["U_B_HeliPilotCoveralls",[["ACE_elasticBandage",3],["ACE_morphine",2],["ACE_epinephrine",1],["ACE_packingBandage",3],["ACE_tourniquet",2],["ACE_splint",2],["ACRE_PRC343_ID_1",1],["ACRE_PRC148_ID_2",1],["ACRE_PRC152_ID_2",1]]],["V_Chestrig_oli",[["ACE_MapTools",1],["ACE_Flashlight_XL50",1],["SmokeShell",4,1],["30Rnd_45ACP_Mag_SMG_01",5,25],["SmokeShellBlue",1,1],["SmokeShellRed",1,1]]],["B_FieldPack_oli",[["ToolKit",1],["ACE_EntrenchingTool",1]]],"H_HelmetCrew_B","G_Combat",["Binocular","","","",[],[],""],["ItemMap","ItemGPS","","ItemCompass","ItemWatch","NVGoggles_INDEP"]];

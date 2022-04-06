@@ -6,7 +6,7 @@ params [["_weapon", nil, [""]]];
 if (isNil "_weapon") throw "_weapon must not be nil.";
 
 private _weaponClass = configFile >> "CfgWeapons" >> _weapon;
-if (isNil "_weapon") throw "_weapon must be a subclass of CfgWeapons.";
+if (isNil "_weapon") then {throw format ["_weapon (%1) must be a subclass of CfgWeapons.", _weapon]};
 
 private _baseWeapon = getText (_weaponClass >> "baseWeapon");
 

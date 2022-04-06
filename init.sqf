@@ -35,8 +35,6 @@ if (IS_CLIENT) then
 {
 	DEBUG_PRINT_LOG("Using CLIENT groups.")
 
-    #include "startup\components\globals\clientGlobals.sqf"
-
 	#include "customStartup_client.sqf"
 
 	#include "startup\configuration\groups\clientConfigGroup.sqf"
@@ -52,8 +50,6 @@ if (IS_CLIENT) then
 if (isServer) then
 {
 	DEBUG_PRINT_LOG("Using SERVER groups.")
-
-    #include "startup\components\globals\serverGlobals.sqf"
 
 	#include "customStartup_server.sqf"
 

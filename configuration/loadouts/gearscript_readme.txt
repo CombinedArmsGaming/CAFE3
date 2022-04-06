@@ -68,6 +68,15 @@ ADD_VARIANT(UNIT_NAME,<ACE Arsenal code>);
     ADD_VARIANT(rif,<ACE Arsenal code>);
     All riflemen will now randomly have an AK-47 or M-16 rifle.
 
+PUT_GUN_IN_GUNBAG(UNIT_NAME,<contents>)
+-   Allows the backpack of the given unit to be turned into an ACE gunbag, with the given contents placed inside.
+    The contents can be:
+    -   ACE Arsenal code:
+        An example of this exists in the default BLUFOR 'sniper' loadout.
+    -   Weapon config class-name:
+        An example of this exists in the default INDFOR 'sniper' loadout.
+        You can get the class-name of any weapon by clicking on it in ACE arsenal and then pressing CTRL+C (gets copied to clipboard).
+        There are advanced weapon classes which have scopes, bipods etc pre-applied.  You can find them in the CfgWeapons config.  If you don't know how to find these, it may be better to use the ACE Arsenal approach.
 
 -------------------------------------------------
 
