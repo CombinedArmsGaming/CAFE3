@@ -47,3 +47,12 @@ class ace_medical_feedback
 		class effectUnconscious{};
 	};
 };
+
+class ace_gunbag
+{
+	class overrides
+	{
+		file = "components\gearscript\gunbag";
+		class hasGunbag{};
+	};
+};

@@ -1,6 +1,8 @@
 #include "macros.hpp"
 SERVER_ONLY;
 
+#include "..\..\components\globals\serverGlobals.sqf"
+
 // Server configuration group
 // Includes all config scripts needed for the server.
 
