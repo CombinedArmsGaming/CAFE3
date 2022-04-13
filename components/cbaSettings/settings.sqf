@@ -67,3 +67,11 @@
 	#include "acre_settings.sqf"
 
 #endif
+
+//ACE Adv. Car Damage
+
+#ifdef DISABLE_ACE_CAR_DAMAGE
+
+	#include "ace_vic_settings.sqf"
+
+#endif
