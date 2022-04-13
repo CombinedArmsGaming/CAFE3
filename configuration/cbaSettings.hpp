@@ -60,6 +60,6 @@
 	ACE SETTINGS
 */
 
-// ACE advanced vehicle damage.
-// To enable advanced vehicle damage, comment-out or delete the line below.
-#define DISABLE_ACE_VEHICLE_DAMAGE
+// ACE advanced car damage.
+// To enable advanced car damage, comment-out or delete the line below.
+#define DISABLE_ACE_CAR_DAMAGE

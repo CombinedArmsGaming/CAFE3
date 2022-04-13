@@ -68,9 +68,9 @@
 
 #endif
 
-//ACE Adv. Vehicle Damage
+//ACE Adv. Car Damage
 
-#ifdef DISABLE_ACE_VEHICLE_DAMAGE
+#ifdef DISABLE_ACE_CAR_DAMAGE
 
 	#include "ace_vic_settings.sqf"
 
