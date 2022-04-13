@@ -54,3 +54,12 @@
 // ACRE terrain loss.
 // To enable terrain-loss, comment-out or delete the line below.
 #define DISABLE_ACRE_TERRAIN_LOSS
+
+
+/*
+	ACE SETTINGS
+*/
+
+// ACE advanced vehicle damage.
+// To enable advanced vehicle damage, comment-out or delete the line below.
+#define DISABLE_ACE_VEHICLE_DAMAGE
