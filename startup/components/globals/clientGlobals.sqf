@@ -6,3 +6,5 @@
 LOAD_GLOBALS(squadMarkers)
 
 LOAD_GLOBALS(miscShared)
+
+LOAD_GLOBALS(respawn)

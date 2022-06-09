@@ -26,6 +26,8 @@ INIT_COMPONENT(downtime)
 
 INIT_COMPONENT(zenFunctions)
 
+INIT_COMPONENT(respawn)
+
 
 // Gravestones init
 #ifdef ENABLE_GRAVESTONE_CORPSE_MANAGER

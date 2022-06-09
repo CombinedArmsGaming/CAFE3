@@ -48,12 +48,15 @@ enableDebugConsole = 1;
 
 // CAFE - Respawn Settings
 respawn = "BASE";
-respawnDialog = 1;
+respawnDialog = 0;
 
-respawnTemplatesWest[] = RESPAWN_MODES_BLUFOR;
-respawnTemplatesEast[] = RESPAWN_MODES_OPFOR;
-respawnTemplatesGuer[] = RESPAWN_MODES_INDFOR;
-respawnTemplatesCiv[]  = RESPAWN_MODES_CIVILIAN;
+respawnDelay = 10;
+respawnOnStart = 0;
+
+respawnTemplatesWest[] = RESPAWN_MODE_BLUFOR;
+respawnTemplatesEast[] = RESPAWN_MODE_OPFOR;
+respawnTemplatesGuer[] = RESPAWN_MODE_INDFOR;
+respawnTemplatesCiv[]  = RESPAWN_MODE_CIVILIAN;
 
 
 // CAFE - Respawn system includes.

@@ -4,3 +4,5 @@
 #include "macros.hpp"
 
 LOAD_GLOBALS(miscShared)
+
+LOAD_GLOBALS(respawn)
