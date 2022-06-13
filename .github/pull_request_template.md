@@ -8,6 +8,7 @@ _Please provide a changelog & any additional relevant information for end users.
 
 ## IMPORTANT
 
+- [ ] Testing has been completed as neccessary, depending on the nature & impact of the changes.
 - [ ] The Release Notes section below must be filled out appropriately to explain the changes made in this PR. This section will be used in Framework Changelogs.
 - [ ] If the contribution affects [the wiki](https://github.com/CombinedArmsGaming/CAFE3/wiki), please include your changes in this pull request so the wiki is consistently updated.
 - [ ] [Contribution Guidelines](https://github.com/CombinedArmsGaming/CAFE3/blob/release/contributing.md) are read, understood and applied.
