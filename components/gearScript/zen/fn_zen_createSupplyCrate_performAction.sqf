@@ -25,5 +25,5 @@ if (isNull _unit) then
 else
 {
     ["Replacing inventory of '%1' with contents of '%2'.", _unit, _chosenGear] call zen_common_fnc_showMessage;
-    [_chosenGear, _unit, _chosenFaction] remoteExecCall ["f_fnc_assignGear", _unit];
+    [_chosenGear, _unit, _chosenFaction] remoteExec ["f_fnc_assignGear", _unit];
 };
