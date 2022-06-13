@@ -166,7 +166,7 @@ COPY_ADDONS(aar,rif);
 
 // Light anti-tank Loadout
 
-_baseLoadout = [["arifle_Mk20C_F","","acc_flashlight","optic_Aco",["30Rnd_556x45_Stanag",30],[],""],["ACE_launch_NLAW_ready_F","","","",["NLAW_F",1],[],""],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_I_CombatUniform_shortsleeve",[["ACE_elasticBandage",3],["ACE_epinephrine",1],["ACE_morphine",2],["ACE_packingBandage",3],["ACRE_PRC343_ID_18",1],["ACE_tourniquet",2],["ACE_splint",2],["ACE_Flashlight_XL50",1],["ACE_MapTools",1],["9Rnd_45ACP_Mag",1,8]]],["V_PlateCarrierIA1_dgtl",[["HandGrenade",2,1],["SmokeShell",2,1],["30Rnd_556x45_Stanag_Tracer_Yellow",2,30],["30Rnd_556x45_Stanag",8,30]]],["B_AssaultPack_dgtl",[["ACE_salineIV",1]]],"H_HelmetIA_net","G_Lowprofile",[],["ItemMap","","","ItemCompass","ItemWatch","NVGoggles_INDEP"]];
+_baseLoadout = [["arifle_Mk20C_F","","acc_flashlight","optic_Aco",["30Rnd_556x45_Stanag",30],[],""],["launch_NLAW_F","","","",[],[],""],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_I_CombatUniform_shortsleeve",[["ACE_elasticBandage",3],["ACE_epinephrine",1],["ACE_morphine",2],["ACE_packingBandage",3],["ACRE_PRC343_ID_18",1],["ACE_tourniquet",2],["ACE_splint",2],["ACE_Flashlight_XL50",1],["ACE_MapTools",1],["9Rnd_45ACP_Mag",1,8]]],["V_PlateCarrierIA1_dgtl",[["HandGrenade",2,1],["SmokeShell",2,1],["30Rnd_556x45_Stanag_Tracer_Yellow",2,30],["30Rnd_556x45_Stanag",8,30]]],["B_AssaultPack_dgtl",[["ACE_salineIV",1]]],"H_HelmetIA_net","G_Lowprofile",[],["ItemMap","","","ItemCompass","ItemWatch","NVGoggles_INDEP"]];
 
 CREATE_LOADOUT(lat,_baseLoadout);
 COPY_ADDONS(lat,rif);
