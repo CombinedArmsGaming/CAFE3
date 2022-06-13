@@ -35,6 +35,10 @@ if (_typeofUnit find "crate_" == 0) exitWith
 
         } forEach _crateArray;
 
+        private _oldLoad = loadAbs _unit;
+
+        _unit setMaxLoad (_oldLoad * 1.25);
+
     }
     else
     {
