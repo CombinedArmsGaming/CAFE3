@@ -27,6 +27,26 @@ _createSquadNode =
 
         _children = [];
 
+        // Respawn menu action
+        _action =
+        [
+            "CAFE_RespawnMenu",
+            "Show Respawn Menu",
+            "\A3\ui_f\data\igui\cfg\simpleTasks\types\getin_ca.paa",
+            {createDialog "CAFE_TriggerRespawnWave_Dialog";},
+            {_player getVariable ["f_var_canUseRespawnMenu", false]},
+            {},
+            [],
+            "",
+            20,
+            [false,false,false,false,false],
+            {}
+        ];
+
+        _action call ace_interact_menu_fnc_createAction;
+
+        _children pushBack [_action, [], _target];
+
 
         // Squad marker menu action
         _action =

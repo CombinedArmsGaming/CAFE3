@@ -7,4 +7,6 @@ class CfgRespawnTemplates
 	#include "timed\respawnTemplates.hpp"
 
 	#include "wave\respawnTemplates.hpp"
+
+	#include "triggeredWave\respawnTemplates.hpp"
 }
