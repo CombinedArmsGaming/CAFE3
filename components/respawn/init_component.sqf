@@ -141,4 +141,27 @@ if (hasInterface) then
     
     [] call f_fnc_updateCanUseRespawnMenu;
 
+
+    // Try to fix issue where if a player dies during unconsciousness, all mouse + keyboard input gets locked up.
+    // Appears to be a timing issue - caused by downtime-spectator closing after player has died and entered respawn screen.
+    // Note: player is technically not alive until respawned, as opposed to old respawn behaviour.
+    // BUB 2022-08-09 TODO :: Try a more elegant solution by moving downtime system toward eventing instead of polling.
+    [
+        "ace_killed", 
+        {
+            [
+                {
+                    if ((_this#0) isEqualTo player) then 
+                    {
+                        ["unconscious", false] call ace_common_fnc_setDisableUserInputStatus;
+                    };
+                },
+            
+                _this,            
+                1
+            
+            ] call CBA_fnc_waitAndExecute;            
+        }
+    ] call CBA_fnc_addEventHandler;
+
 };

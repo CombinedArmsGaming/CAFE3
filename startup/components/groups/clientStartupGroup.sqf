@@ -28,6 +28,8 @@ INIT_COMPONENT(zenFunctions)
 
 INIT_COMPONENT(respawn)
 
+INIT_COMPONENT(joinInProgress)
+
 
 // Gravestones init
 #ifdef ENABLE_GRAVESTONE_CORPSE_MANAGER
