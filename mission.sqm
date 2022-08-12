@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=1493;
+		nextID=1494;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={192.56636,56.192032,108.11068};
-		dir[]={0.36540064,-0.35723498,0.85957289};
-		up[]={0.13975573,0.93401456,0.3287631};
-		aside[]={0.92029929,1.4901161e-008,-0.39121515};
+		pos[]={240.14539,99.70607,88.864609};
+		dir[]={0.022160936,-0.61081654,0.79146558};
+		up[]={0.017095979,0.79177129,0.6105783};
+		aside[]={0.99961078,9.7636075e-008,-0.027989274};
 	};
 };
 binarizationWanted=0;
@@ -32,7 +32,6 @@ addons[]=
 	"ace_cargo",
 	"A3_Supplies_F_Orange_Ammoboxes",
 	"AICommand",
-	"A3_Structures_F_Bootcamp_VR_Helpers",
 	"A3_Characters_F",
 	"3den_Objects",
 	"A3_Supplies_F_AoW_Bags",
@@ -47,7 +46,7 @@ class AddonsMetaData
 {
 	class List
 	{
-		items=16;
+		items=15;
 		class Item0
 		{
 			className="A3_Modules_F_Curator";
@@ -74,7 +73,7 @@ class AddonsMetaData
 			className="ace_cargo";
 			name="ACE3 - Cargo";
 			author="ACE-Team";
-			url="http://ace3mod.com/";
+			url="https://ace3.acemod.org/";
 		};
 		class Item4
 		{
@@ -90,69 +89,62 @@ class AddonsMetaData
 		};
 		class Item6
 		{
-			className="A3_Structures_F_Bootcamp";
-			name="Arma 3 Bootcamp Update - Buildings and Structures";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item7
-		{
 			className="A3_Characters_F";
 			name="Arma 3 Alpha - Characters and Clothing";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item8
+		class Item7
 		{
 			className="3den_Objects";
 			name="3den_Objects";
 		};
-		class Item9
+		class Item8
 		{
 			className="A3_Supplies_F_AoW";
 			name="Arma 3 Art of War - Ammoboxes and Supplies";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item10
+		class Item9
 		{
 			className="ace_explosives";
 			name="ACE3 - Explosives";
 			author="ACE-Team";
-			url="http://ace3mod.com/";
+			url="https://ace3.acemod.org/";
 		};
-		class Item11
+		class Item10
 		{
 			className="A3_Soft_F_Gamma";
 			name="Arma 3 - Unarmored Land Vehicles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item12
+		class Item11
 		{
 			className="A3_Soft_F_Exp";
 			name="Arma 3 Apex - Unarmored Land Vehicles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item13
+		class Item12
 		{
 			className="Blastcore_MainCore";
 			name="Blastcore_MainCore";
 		};
-		class Item14
+		class Item13
 		{
 			className="ace_refuel";
 			name="ACE3 - Refuel";
 			author="ACE-Team";
-			url="http://ace3mod.com/";
+			url="https://ace3.acemod.org/";
 		};
-		class Item15
+		class Item14
 		{
 			className="ace_repair";
 			name="ACE3 - Repair";
 			author="ACE-Team";
-			url="http://ace3mod.com/";
+			url="https://ace3.acemod.org/";
 		};
 	};
 };
@@ -8294,7 +8286,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=54;
+		items=50;
 		class Item0
 		{
 			dataType="Logic";
@@ -9090,162 +9082,6 @@ class Mission
 		};
 		class Item23
 		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={199.974,5.0005002,192.006};
-			};
-			side="Empty";
-			flags=5;
-			class Attributes
-			{
-				name="respawner_west";
-			};
-			id=1347;
-			type="VR_Area_01_square_1x1_yellow_F";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ObjectTextureCustom0";
-					expression="_this setObjectTextureGlobal [0,_value]";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="#(argb,8,8,3)color(0,0.3,0.6,1,co)";
-						};
-					};
-				};
-				nAttributes=1;
-			};
-		};
-		class Item24
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={300.008,5.0005002,191.563};
-			};
-			side="Empty";
-			flags=5;
-			class Attributes
-			{
-				name="respawner_east";
-			};
-			id=1348;
-			type="VR_Area_01_square_1x1_yellow_F";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ObjectTextureCustom0";
-					expression="_this setObjectTextureGlobal [0,_value]";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="#(argb,8,8,3)color(0.5,0,0,1,co)";
-						};
-					};
-				};
-				nAttributes=1;
-			};
-		};
-		class Item25
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={299.98801,5.0005002,293.979};
-			};
-			side="Empty";
-			flags=5;
-			class Attributes
-			{
-				name="respawner_civ";
-			};
-			id=1349;
-			type="VR_Area_01_square_1x1_yellow_F";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ObjectTextureCustom0";
-					expression="_this setObjectTextureGlobal [0,_value]";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="#(argb,8,8,3)color(0.4,0,0.5,1,co)";
-						};
-					};
-				};
-				nAttributes=1;
-			};
-		};
-		class Item26
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={199.96899,5.0005002,293.98001};
-			};
-			side="Empty";
-			flags=5;
-			class Attributes
-			{
-				name="respawner_guer";
-			};
-			id=1350;
-			type="VR_Area_01_square_1x1_yellow_F";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ObjectTextureCustom0";
-					expression="_this setObjectTextureGlobal [0,_value]";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="#(argb,8,8,3)color(0,0.5,0,1,co)";
-						};
-					};
-				};
-				nAttributes=1;
-			};
-		};
-		class Item27
-		{
 			dataType="Logic";
 			class PositionInfo
 			{
@@ -9257,7 +9093,7 @@ class Mission
 			id=1352;
 			type="HeadlessClient_F";
 		};
-		class Item28
+		class Item24
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -9270,7 +9106,7 @@ class Mission
 			id=1353;
 			type="HeadlessClient_F";
 		};
-		class Item29
+		class Item25
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -9283,7 +9119,7 @@ class Mission
 			id=1354;
 			type="HeadlessClient_F";
 		};
-		class Item30
+		class Item26
 		{
 			dataType="Object";
 			class PositionInfo
@@ -9371,7 +9207,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item31
+		class Item27
 		{
 			dataType="Object";
 			class PositionInfo
@@ -9387,7 +9223,7 @@ class Mission
 			id=1381;
 			type="B_AssaultPack_mcamo";
 		};
-		class Item32
+		class Item28
 		{
 			dataType="Object";
 			class PositionInfo
@@ -9404,7 +9240,7 @@ class Mission
 			id=1382;
 			type="B_AssaultPack_ocamo";
 		};
-		class Item33
+		class Item29
 		{
 			dataType="Object";
 			class PositionInfo
@@ -9420,7 +9256,7 @@ class Mission
 			id=1383;
 			type="B_AssaultPack_dgtl";
 		};
-		class Item34
+		class Item30
 		{
 			dataType="Object";
 			class PositionInfo
@@ -9436,7 +9272,7 @@ class Mission
 			id=1385;
 			type="B_CivilianBackpack_01_Everyday_IDAP_F";
 		};
-		class Item35
+		class Item31
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -9447,7 +9283,7 @@ class Mission
 			description="Gearscript in this framework is provided by ACE Arsenal.  To add new loadouts, simply go into ACE Arsenal and make them.  " \n "" \n "Once you've finished a loadout, press ""EXPORT"" and go to the ""loadouts"" configuration folder.  You can paste the loadout code into any of the gear files to set up that unit." \n "" \n "When you paste the loadout, make sure you don't delete the semi-colon ("";"") at the end of each line." \n "" \n "Each Gearscript file also comes with helpful commands to add randomisation and set-up resupply crates.  For help and examples, see the ""gear_blufor.sqf"" configuration file.";
 			id=1394;
 		};
-		class Item36
+		class Item32
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -9458,7 +9294,7 @@ class Mission
 			description="When any unit is deleted, they will be turned into a Gravestone.  These can be any kind of container, but by default they are configured to be backpacks." \n "" \n "You can change the Gravestone that appears for BLUFOR by deleting the backpack here, and then naming a container to ""gravestone_blufor"".  The same rule applies to other factions." \n "" \n "You can control the Gravestone system's rules by using the ""gravestones.hpp"" configuration file.";
 			id=1392;
 		};
-		class Item37
+		class Item33
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -9469,7 +9305,7 @@ class Mission
 			description="This framework provides a system for setting the identities of each side.  For example, you can set the enemy to be ""tanoan"", ""greek"", and they will look and sound the part." \n "" \n "To see all available identites, see the ""identityGroups.sqf"" configuration file inside the ""identities"" folder." \n "" \n "To set-up identities for each side, see the ""identityAssignment.sqf"" configuration file.";
 			id=1395;
 		};
-		class Item38
+		class Item34
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -9480,7 +9316,7 @@ class Mission
 			description="When in-game, Loadout Lockers will let you choose loadouts for a specific faction.  This one is set to give you BLUFOR loadouts." \n "" \n "You can make Loadout Lockers for other factions by copy-pasting this locker and changing ""blu_f"" inside the Init Field to ""opf_f"", ""ind_f"" or ""civ_f"".";
 			id=1388;
 		};
-		class Item39
+		class Item35
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -9491,7 +9327,7 @@ class Mission
 			description="Loot Crates contain random items, like in RPG games (Skyrim, Borderlands etc.)." \n "" \n "You can set-up loot-tables in the ""lootBox.sqf"" configuration file.  This is currently considered an advanced feature because loot-tables are not simple to set up.  If you have any issues, ask Bubbus for help.";
 			id=1390;
 		};
-		class Item40
+		class Item36
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -9502,7 +9338,7 @@ class Mission
 			description="The best way to make a new squad is to copy-paste one of the existing ones.  This will keep their gearscript lines and role names intact." \n "" \n "It's also a good idea to create compositions for new squads, enemy patrols etc.  This can massively speed up the creation of new missions.";
 			id=1397;
 		};
-		class Item41
+		class Item37
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -9513,29 +9349,18 @@ class Mission
 			description="This marker creates an auto-generated list of radio channels.  It will show up in-game in the Map screen." \n "" \n "You can move this marker around to move the list.  You can also scale this marker up and down to change the size of the list.";
 			id=1389;
 		};
-		class Item42
+		class Item38
 		{
 			dataType="Comment";
 			class PositionInfo
 			{
-				position[]={206.3414,5,199.92285};
+				position[]={205.65401,5,201.24823};
 			};
-			title="Respawn Marker";
-			description="If the Respawner Object has been deleted or the framework doesn't know where to spawn players, they will respawn at this marker." \n "" \n "Place it somewhere safe (inside a HQ for example).";
-			id=1387;
-		};
-		class Item43
-		{
-			dataType="Comment";
-			class PositionInfo
-			{
-				position[]={205.623,5,191.422};
-			};
-			title="Respawner Objects";
-			description="See the ""respawnWaves.sqf"" configuration file. " \n "" \n "If it is configured to Base Respawn (a.k.a. RESPAWN_MODE_BASE), then all dead players will respawn at this object." \n "" \n "In Zeus, you can move this object around to change where people spawn." \n "" \n "You can also set a vehicle, plane, or any player as a Respawner Object by using the in-game Zeus module.";
+			title="Respawns";
+			description="CAFE now uses the default Arma Respawn system.  You can create new respawn points with the ""Respawn Position"" module." \n "" \n "Arma will always create respawn positions at the ""respawn_west"" marker (etc).  These can be removed if desired.";
 			id=1386;
 		};
-		class Item44
+		class Item39
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -9546,7 +9371,7 @@ class Mission
 			description="See the ""squadMarkers"" folder inside the configuration folder." \n "" \n "Squad markers are given to each squad inside that file.  If you want to add new squads, you can set their Callsign in this editor, and then use that exact same Callsign in the ""squadMarkers_blufor.sqf"" file to set up their colour, icon and more.  The same rule applies to different factions." \n "" \n "For more help, see the ""squadMarkers_blufor.sqf"" file for instructions and a default example.";
 			id=1393;
 		};
-		class Item45
+		class Item40
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -9557,7 +9382,7 @@ class Mission
 			description="You can delete all of these comments easily by finding the Comments folder in the panel on the left." \n "" \n "Click, Shift+Click, Delete.";
 			id=1398;
 		};
-		class Item46
+		class Item41
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -9568,7 +9393,7 @@ class Mission
 			description="This trigger is configured to ignore any Zeuses which fly into it, but any normal player who steps inside is still counted.  " \n "" \n "You can copy-paste this trigger if you need more than one.";
 			id=1391;
 		};
-		class Item47
+		class Item42
 		{
 			dataType="Group";
 			side="West";
@@ -10184,7 +10009,7 @@ class Mission
 				class Attribute0
 				{
 					property="groupID";
-					expression="                            if (isNil 'CBA_fnc_setCallsign') then {                                _this setGroupID [_value];                            } else {                                [_this, _value] call CBA_fnc_setCallsign;                            };                        ";
+					expression=" if (isNil 'CBA_fnc_setCallsign') then { _this setGroupID [_value]; } else { [_this, _value] call CBA_fnc_setCallsign; }; ";
 					class Value
 					{
 						class data
@@ -10222,7 +10047,7 @@ class Mission
 				nAttributes=2;
 			};
 		};
-		class Item48
+		class Item43
 		{
 			dataType="Group";
 			side="West";
@@ -10737,7 +10562,7 @@ class Mission
 				class Attribute0
 				{
 					property="groupID";
-					expression="                            if (isNil 'CBA_fnc_setCallsign') then {                                _this setGroupID [_value];                            } else {                                [_this, _value] call CBA_fnc_setCallsign;                            };                        ";
+					expression=" if (isNil 'CBA_fnc_setCallsign') then { _this setGroupID [_value]; } else { [_this, _value] call CBA_fnc_setCallsign; }; ";
 					class Value
 					{
 						class data
@@ -10775,7 +10600,7 @@ class Mission
 				nAttributes=2;
 			};
 		};
-		class Item49
+		class Item44
 		{
 			dataType="Group";
 			side="West";
@@ -11290,7 +11115,7 @@ class Mission
 				class Attribute0
 				{
 					property="groupID";
-					expression="                            if (isNil 'CBA_fnc_setCallsign') then {                                _this setGroupID [_value];                            } else {                                [_this, _value] call CBA_fnc_setCallsign;                            };                        ";
+					expression=" if (isNil 'CBA_fnc_setCallsign') then { _this setGroupID [_value]; } else { [_this, _value] call CBA_fnc_setCallsign; }; ";
 					class Value
 					{
 						class data
@@ -11328,7 +11153,7 @@ class Mission
 				nAttributes=2;
 			};
 		};
-		class Item50
+		class Item45
 		{
 			dataType="Group";
 			side="West";
@@ -11843,7 +11668,7 @@ class Mission
 				class Attribute0
 				{
 					property="groupID";
-					expression="                            if (isNil 'CBA_fnc_setCallsign') then {                                _this setGroupID [_value];                            } else {                                [_this, _value] call CBA_fnc_setCallsign;                            };                        ";
+					expression=" if (isNil 'CBA_fnc_setCallsign') then { _this setGroupID [_value]; } else { [_this, _value] call CBA_fnc_setCallsign; }; ";
 					class Value
 					{
 						class data
@@ -11881,7 +11706,7 @@ class Mission
 				nAttributes=2;
 			};
 		};
-		class Item51
+		class Item46
 		{
 			dataType="Group";
 			side="West";
@@ -12216,7 +12041,7 @@ class Mission
 				class Attribute0
 				{
 					property="groupID";
-					expression="                            if (isNil 'CBA_fnc_setCallsign') then {                                _this setGroupID [_value];                            } else {                                [_this, _value] call CBA_fnc_setCallsign;                            };                        ";
+					expression=" if (isNil 'CBA_fnc_setCallsign') then { _this setGroupID [_value]; } else { [_this, _value] call CBA_fnc_setCallsign; }; ";
 					class Value
 					{
 						class data
@@ -12254,7 +12079,7 @@ class Mission
 				nAttributes=2;
 			};
 		};
-		class Item52
+		class Item47
 		{
 			dataType="Object";
 			class PositionInfo
@@ -12266,6 +12091,7 @@ class Mission
 			class Attributes
 			{
 				init="[this, ""example""] call f_fnc_setLogiVehicle;";
+				name="logi_truck";
 			};
 			id=1485;
 			type="B_Truck_01_fuel_F";
@@ -12293,7 +12119,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item53
+		class Item48
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -12303,6 +12129,17 @@ class Mission
 			title="Logistics Vehicles";
 			description="This HEMTT is configured to allow an engineer in the command group to spawn new vehicles from it." \n "" \n "You can change the configuration and the permissions around it.  See the ""logiVehicles.sqf"" file in the configuration folder for more information.";
 			id=1486;
+		};
+		class Item49
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={205.536,5,192.689};
+			};
+			title="Advanced respawns";
+			description="CAFE offers a ""respawn manager"" system to let you choose when respawn points appear or disappear.  Visit the ""respawnLocations.sqf"" file in the ""configuration"" folder to learn more." \n "" \n "(You can also do this in the editor with a ""Respawn Position"" module and a trigger.)";
+			id=1493;
 		};
 	};
 };

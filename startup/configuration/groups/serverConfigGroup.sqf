@@ -12,3 +12,6 @@
 
 // Squad markers
 #include "..\internals\squadMarkers.sqf"
+
+// Respawn locations
+#include "..\..\..\configuration\respawnLocations.sqf"

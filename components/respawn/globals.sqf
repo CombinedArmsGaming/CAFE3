@@ -5,5 +5,5 @@ f_var_respawnDelay_opfor = RESPAWN_DELAY_OPFOR;
 f_var_respawnDelay_indfor = RESPAWN_DELAY_INDFOR;
 f_var_respawnDelay_civ = RESPAWN_DELAY_CIVILIAN;
 
-// Format of entries should be "string location ID" : ["string location ID", <actual location>, <respawn target>, <respawn ID>]
-f_var_respawnLocationsMap = createHashMap;
+// Lookup of all respawn targets which the framework needs to run pollers on.  Map will be automatically managed by the respawn manager.
+f_var_respawnPollersMap = createHashMap;
