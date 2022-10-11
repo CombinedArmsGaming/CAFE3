@@ -4,7 +4,7 @@
 
 params ["_loadout"];
 
-if (count _loadout < 3) then
+if (count _loadout != 10) then
 {
 	_loadout = _loadout#0;
 };
