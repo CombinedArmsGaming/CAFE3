@@ -4,7 +4,7 @@
 
 params ["_loadout"];
 
-if (count _loadout < 3) then //hotfix to check if the gearstring is the new version, converting it into the old workable version
+if (count _loadout != 10) then
 {
 	_loadout = _loadout#0;
 };
