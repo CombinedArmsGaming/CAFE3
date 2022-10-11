@@ -14,11 +14,8 @@
 
 // CA Medical settings (Reopening ON, 80% slower reopening).
 // To enable this, uncomment the line below.
-#define CA_MEDICAL_ADVANCED_80
+#define CA_MEDICAL_ADVANCED
 
-// CA Medical settings (Reopening ON, 95% slower reopening).
-// To enable this, uncomment the line below.
-// #define CA_MEDICAL_ADVANCED_95
 
 // CA Medical settings (Reopening OFF).
 // To enable this, uncomment the line below.
