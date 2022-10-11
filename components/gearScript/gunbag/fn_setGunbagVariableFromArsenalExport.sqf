@@ -12,6 +12,11 @@ if (typeName _contents isEqualTo "STRING") exitWith
 	[_faction, _unitName, _contents] call f_fnc_setGunbagVariableState;
 };
 
+if (count _contents != 10) then
+{
+	_contents = _contents#0;
+};
+
 if (count _contents < 1) then {throw format ["_contents for gunbag contents is empty. (unit %1, side %2).", _unitName, _faction]};
 
 private _rifle = _contents # 0;
