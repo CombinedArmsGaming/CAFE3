@@ -17,7 +17,7 @@ if (!alive _unit
 
 // If they have insufficient blood, we cannot PAK.
 private _requiredBloodVolume = _defaultBloodVolume * (_minBloodPAK / 100);
-if ((_unit getVariable ["ace_medical_bloodVolume", 0])  < _requiredBloodVolume) exitWith {false};
+if ((_unit getVariable ["ace_medical_bloodVolume", 0]) < _requiredBloodVolume) exitWith {false};
 
 // Unit must not have fractures
 if((_unit getVariable ["ace_medical_fractures", []]) isNotEqualTo []) exitWith {false};
