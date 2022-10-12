@@ -1,9 +1,4 @@
 
-if (isNil "f_var_originalFunction_isInStableCondition") then
-{
-    // Why isn't this easier to do in SQF?  Why does it have to be so brittle?  what the christ
-    f_var_originalFunction_isInStableCondition = compile preprocessFileLineNumbers "z\ace\addons\medical_status\functions\fnc_isInStableCondition.sqf";
-};
 
 params ["_unit"];
 
