@@ -23,7 +23,7 @@ if ((_unit getVariable ["ace_medical_bloodVolume", 0])  < _requiredBloodVolume) 
 if((_unit getVariable ["ace_medical_fractures", []]) isNotEqualTo []) exitWith {false};
 
 // Unit must not be in pain
-if ((_unit getVariable ["ace_medical_inPain", false])) exitWith {false};
+if (_unit getVariable ["ace_medical_inPain", false]) exitWith {false};
 
 
 // If there are any bandaged wounds, they have not been stitched.
