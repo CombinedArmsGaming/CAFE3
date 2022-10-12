@@ -32,7 +32,7 @@ private _hasUnstitchedWounds = (_unit getVariable ["ace_medical_bandagedWounds",
 // If there are any bandageable wounds that are open, there are open wounds. _x select 3 > 0 Discards any non-bleeding wounds, such as bruises.
 private _hasOpenWounds = (((_unit getVariable ["ace_medical_openWounds", []] findIf {_x select 2 > 0 && _x select 3 > 0} ) != -1 ));
 
-if(_hasOpenWounds || _hasUnstitchedWounds) exitWith {false};
+if (_hasOpenWounds or _hasUnstitchedWounds) exitWith {false};
 
 
 true
