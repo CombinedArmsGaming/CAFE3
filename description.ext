@@ -182,15 +182,9 @@ class CfgFunctions
 	{
 		class PreInit
 		{
-			class clientConfigGroup
+			class startup_preInit
 			{
-				file = "startup\configuration\groups\clientConfigGroup_preInit.sqf";
-				preInit = 1;
-			};
-
-			class serverConfigGroup
-			{
-				file = "startup\configuration\groups\serverConfigGroup_preInit.sqf";
+				file = "startup\startup_preInit.sqf";
 				preInit = 1;
 			};
 		};
