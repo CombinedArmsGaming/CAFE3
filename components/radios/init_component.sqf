@@ -2,12 +2,6 @@
 
 DEBUG_PRINT_LOG("RADIOS2: initting radios")
 
-// jip check
-if (IS_CLIENT) then
-{
-	WAIT_UNTIL_PLAYER_EXISTS();
-};
-
 // setup presets
 _presetSetup = [] call f_fnc_setupRadioPresets;
 
@@ -25,6 +19,16 @@ if (IS_CLIENT) then
 	[] spawn f_fnc_radioGroupChangeLoop;
 
 	f_radios_ready = true;
+
+	WAIT_UNTIL_PLAYER_EXISTS();
+
+	player addEventHandler ["Respawn", 
+	{
+		params ["_unit", "_corpse"];
+		[_unit] call f_fnc_clientSetLanguages;
+	}];
+	
+	[player] call f_fnc_clientSetLanguages;
 
 	DEBUG_PRINT_LOG("RADIOS2: done with client init")
 
