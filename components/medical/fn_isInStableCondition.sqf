@@ -21,7 +21,7 @@ if ((_unit getVariable ["ace_medical_bloodVolume", 0]) < _requiredBloodVolume) e
 
 // Unit must not have fractures
 private _fractures = _unit getVariable ["ace_medical_fractures", []];
-if ((_fractures findIf {_x isNotEqualTo 0}) != -1) exitWith {false};
+if ((_fractures findIf {_x isEqualTo 1}) != -1) exitWith {false};
 
 // Unit must not be in pain
 if (_unit getVariable ["ace_medical_inPain", false]) exitWith {false};
