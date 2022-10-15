@@ -28,7 +28,7 @@
 //
 // _isCreatedWhen = {!(alive logi_truck)};
 // _isRemovedWhen = {false}; // Is never removed.
-// [respawn_east, "LOGI REVENGE SPAWNPOINT", west, _isCreatedWhen, _isRemovedWhen] call f_fnc_setRespawnLocation;
+// ["respawn_east", "LOGI REVENGE SPAWNPOINT", west, _isCreatedWhen, _isRemovedWhen] call f_fnc_setRespawnLocation;
 
 
 // Advanced example: creates a respawn for BLUFOR which only appears whenever the logi truck is close to it.
@@ -37,4 +37,4 @@
 // _isCreatedWhen = { (logi_truck distance _myRespawnPosition) <= 50 };
 // _isRemovedWhen = { (logi_truck distance _myRespawnPosition) > 50 };
 // _isRepeatable = true;
-// [respawn_east, "Logi close enough spawnpoint", west, _isCreatedWhen, _isRemovedWhen, _isRepeatable] call f_fnc_setRespawnLocation;
+// ["respawn_east", "Logi close enough spawnpoint", west, _isCreatedWhen, _isRemovedWhen, _isRepeatable] call f_fnc_setRespawnLocation;
