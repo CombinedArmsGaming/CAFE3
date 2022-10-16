@@ -48,6 +48,16 @@ class ace_medical_feedback
 	};
 };
 
+
+class ace_medical_status
+{
+	class overrides
+	{
+		file = "components\medical";
+		class isInStableCondition{};
+	}
+};
+
 class ace_gunbag
 {
 	class overrides
