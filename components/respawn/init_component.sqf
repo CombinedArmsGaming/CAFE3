@@ -167,4 +167,37 @@ if (hasInterface) then
         }
     ] call CBA_fnc_addEventHandler;
 
+
+    // Work around an issue where a player can get locked into an unrecoverable state
+    // when they go back to the map respawn screen from the spectate respawn screen.
+    f_fnc_disableReturnFromSpectateScreen = 
+    {
+        private _returnToMapButton = uiNamespace getVariable ["bis_rscrespawncontrolsspectate_ctrlbuttonspectate", controlNull];
+
+        if (!isNull _returnToMapButton) then
+        {
+            _returnToMapButton ctrlEnable false;
+            _returnToMapButton ctrlShow false;
+        };
+
+        // Wait until element needs modification again.
+        [
+            {
+                private _returnToMapButton = uiNamespace getVariable ["bis_rscrespawncontrolsspectate_ctrlbuttonspectate", controlNull];
+                (!isNull _returnToMapButton) and {(ctrlEnabled _returnToMapButton) or {ctrlShown _returnToMapButton}}
+            },
+            f_fnc_disableReturnFromSpectateScreen,
+            []
+        ] call CBA_fnc_waitUntilAndExecute;
+    };
+
+    // Wait until element has been created, then disable it.
+    [
+        {
+            !isNull (uiNamespace getVariable ["bis_rscrespawncontrolsspectate_ctrlbuttonspectate", controlNull]);
+        },
+        f_fnc_disableReturnFromSpectateScreen,
+        []
+    ] call CBA_fnc_waitUntilAndExecute;
+
 };

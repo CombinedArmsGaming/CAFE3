@@ -2,6 +2,9 @@
 
 params [["_object", nil, [objNull]], ["_target", missionNamespace], ["_respawnName", "", [""]], ["_condition", "true", [""]]];
 
+diag_log "WOWEE 1";
+diag_log str _this;
+
 if (isNull _object) exitWith {};
 
 if (isServer) then
@@ -32,6 +35,9 @@ CLIENT_ONLY;
 	{
 		params ["_object", "_target", "_respawnName", "_condition"];
 
+		diag_log "WOWEE 2";
+		diag_log str _this;	
+
 		_object addAction
 		[
 			"Redeploy to new location",
@@ -39,18 +45,18 @@ CLIENT_ONLY;
 				[] call f_fnc_doRedeployAction;
 			},
 			nil,		// arguments
-			2,		// priority
+			2,			// priority
 			true,		// showWindow
 			true,		// hideOnUse
 			"",			// shortcut
-			_condition, 	// condition
+			_condition, // condition
 			10,			// radius
 			false		// unconscious
 		];
 	},
 
 	// Arguments
-	_this,
+	[_object, _target, _respawnName, _condition],
 
 	// Timeout (secs)
 	-1
