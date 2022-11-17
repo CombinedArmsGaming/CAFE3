@@ -1,2 +1,2 @@
 // Enables debugging
-#define ENABLE_DEBUG
+// #define ENABLE_DEBUG

@@ -11,4 +11,6 @@ class CfgRespawnTemplates
 	#include "triggeredWave\respawnTemplates.hpp"
 
 	#include "wave\respawnTemplates.hpp"
+
+	#include "weaponSafety\respawnTemplates.hpp"
 }
