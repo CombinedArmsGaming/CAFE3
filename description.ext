@@ -475,4 +475,9 @@ class Extended_DisplayLoad_EventHandlers
 	{
 		clientDisplayLoad = "[] call f_fnc_openZeus;";
 	};
+
+	class RscDisplayEGSpectator
+	{
+		CAFE_Respawn_SpectatorTweaks = "_this call f_fnc_respawnSpectatorTweaks;";
+	};
 };

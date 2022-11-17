@@ -4,7 +4,7 @@ class respawn
     class addFreeTicket{};
     class getPlayerRespawnDelay{};
     class isRespawnModeActive{};
-    class moduleRespawnPosition{};
+    class respawnSpectatorTweaks{};
 };
 class respawn_locationSystem
 {
