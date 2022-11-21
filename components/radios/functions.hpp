@@ -9,6 +9,10 @@ class radios
     class giveSideRadio{};
     class performClientRadioInit{};
     class radioGroupChangeLoop{};
+    class registerClientRadioInitListener
+    {
+        preInit=1;
+    };
     class setupGroupRadioChannels{};
     class setupRadioChannels{};
     class setupRadioPresets{};

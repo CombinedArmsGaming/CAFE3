@@ -13,6 +13,16 @@ class gearScript
     class removeLinkedItemFromLoadout{};
 };
 
+class gearScriptInsignia
+{
+    file = "components\gearScript";
+    class addInsigniaMonitor{};
+    class registerInsigniaMonitorListener
+    {
+        preInit=1;
+    };
+};
+
 class gearScriptCrates
 {
     file = "components\gearScript\crateSupport";

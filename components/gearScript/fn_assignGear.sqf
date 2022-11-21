@@ -115,25 +115,5 @@ _unit setVariable ["f_var_assignGear_running", false, true];
 // ====================================================================================
 
 
-// Send events to local and to server.
-["CAFE_GearscriptAssigned_Local", _this] call CBA_fnc_localEvent;
-//["CAFE_GearscriptAssigned_Server", _this] call CBA_fnc_serverEvent;
-
-
-// BUB 2022-11-19 TODO :: Make these event handlers instead.
-if (isPlayer _unit) then
-{
-    [_unit] spawn f_fnc_addInsigniaMonitor;
-    [_unit] spawn f_fnc_clientRadioInit;
-}
-else
-{
-    #ifdef ENABLE_IDENTITY_REPLACEMENT
-
-	if (_unit isKindOf "CAManBase") then
-	{
-	    [_unit, _gearVariant] call f_fnc_applyFactionIdentity;
-	};
-
-    #endif
-};
+// Send events to components which need to react to gearscripting.
+["CAFE_GearscriptAssigned_Local", [_typeOfUnit, _unit, _faction, _gearVariant]] call CBA_fnc_localEvent;
