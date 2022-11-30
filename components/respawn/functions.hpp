@@ -37,3 +37,11 @@ class respawn_redeployment
     class createRedeployObject{};
     class doRedeployAction{};
 };
+class respawn_zen
+{
+    file = "components\respawn\zen";
+    class allowImmediateRespawnLocal{};
+    class zen_allowImmediateRespawn{};
+    class zen_createRespawnPoint{};
+    class zen_changeTickets{};
+};
