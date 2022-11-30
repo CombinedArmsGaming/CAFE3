@@ -33,23 +33,3 @@ setPlayerRespawnTime 1e10;
 	}
 
 ] call CBA_fnc_waitUntilAndExecute;
-
-
-// Wait until respawn-map or respawn-spectator screen is visible, then force on auto-respawn.
-[
-	{		
-		(missionNamespace getVariable ["BIS_RscRespawnControlsMap_shown", false]) or {missionNamespace getVariable ["BIS_RscRespawnControlsSpectate_shown", false]}
-	},
-	{
-		DEBUG_PRINT_CHAT("[TriggeredWaves]: Turning on auto-respawn")
-		uiNamespace setVariable ["BIS_RscRespawnControls_autorespawn", true];
-	},
-	[],
-
-	// Set a timeout of 10s just in case we're in an odd configuration where the respawn menu isn't being used.
-	10,
-	{
-		DEBUG_PRINT_CHAT("[TriggeredWaves]: Auto-respawn setter timed out.")
-	}
-	
-] call CBA_fnc_waitUntilAndExecute;
