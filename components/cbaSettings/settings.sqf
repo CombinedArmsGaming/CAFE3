@@ -10,17 +10,9 @@
 
 //Advanced 80% slower reopening
 
-#ifdef CA_MEDICAL_ADVANCED_80
+#ifdef CA_MEDICAL_ADVANCED
 
-	#include "medical_advanced_80.sqf"
-
-#endif
-
-//Advanced 95% reopening
-
-#ifdef CA_MEDICAL_ADVANCED_95
-
-	#include "medical_advanced_95.sqf"
+	#include "medical_advanced.sqf"
 
 #endif
 
@@ -65,5 +57,13 @@
 #ifdef DISABLE_ACRE_TERRAIN_LOSS
 
 	#include "acre_settings.sqf"
+
+#endif
+
+//ACE Adv. Car Damage
+
+#ifdef DISABLE_ACE_CAR_DAMAGE
+
+	#include "ace_vic_settings.sqf"
 
 #endif

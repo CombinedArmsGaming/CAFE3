@@ -21,7 +21,7 @@ params ["_unitarray", "_position", "_vehicletype", ["_faction",""], ["_side", f_
 
 _reinforcementsExist = ((count _reinforcementarray) > 0);
 
-_spawnVicArray = [_position, _vehicletype, 0, _dir] call f_fnc_spawnVehicle;
+_spawnVicArray = [_position, _vehicletype, 3, _dir] call f_fnc_spawnVehicle;
 _group = [_unitarray, _position, _faction, _side, _suppressive, _guerrilla, _enableAdvancedAI] call f_fnc_spawnGroup;
 
 _vehicle = _spawnVicArray select 0;

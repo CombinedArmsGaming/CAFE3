@@ -47,3 +47,22 @@ class ace_medical_feedback
 		class effectUnconscious{};
 	};
 };
+
+
+class ace_medical_status
+{
+	class overrides
+	{
+		file = "components\medical";
+		class isInStableCondition{};
+	}
+};
+
+class ace_gunbag
+{
+	class overrides
+	{
+		file = "components\gearscript\gunbag";
+		class hasGunbag{};
+	};
+};

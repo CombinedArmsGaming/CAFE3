@@ -1,0 +1,1 @@
+force ace_vehicle_damage_enableCarDamage = false;

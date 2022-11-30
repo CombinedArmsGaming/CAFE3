@@ -166,7 +166,7 @@ COPY_ADDONS(aar,rif);
 
 // Light anti-tank Loadout
 
-_baseLoadout = [["arifle_Mk20C_F","","acc_flashlight","optic_Aco",["30Rnd_556x45_Stanag",30],[],""],["ACE_launch_NLAW_ready_F","","","",["NLAW_F",1],[],""],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_I_CombatUniform_shortsleeve",[["ACE_elasticBandage",3],["ACE_epinephrine",1],["ACE_morphine",2],["ACE_packingBandage",3],["ACRE_PRC343_ID_18",1],["ACE_tourniquet",2],["ACE_splint",2],["ACE_Flashlight_XL50",1],["ACE_MapTools",1],["9Rnd_45ACP_Mag",1,8]]],["V_PlateCarrierIA1_dgtl",[["HandGrenade",2,1],["SmokeShell",2,1],["30Rnd_556x45_Stanag_Tracer_Yellow",2,30],["30Rnd_556x45_Stanag",8,30]]],["B_AssaultPack_dgtl",[["ACE_salineIV",1]]],"H_HelmetIA_net","G_Lowprofile",[],["ItemMap","","","ItemCompass","ItemWatch","NVGoggles_INDEP"]];
+_baseLoadout = [["arifle_Mk20C_F","","acc_flashlight","optic_Aco",["30Rnd_556x45_Stanag",30],[],""],["launch_NLAW_F","","","",[],[],""],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_I_CombatUniform_shortsleeve",[["ACE_elasticBandage",3],["ACE_epinephrine",1],["ACE_morphine",2],["ACE_packingBandage",3],["ACRE_PRC343_ID_18",1],["ACE_tourniquet",2],["ACE_splint",2],["ACE_Flashlight_XL50",1],["ACE_MapTools",1],["9Rnd_45ACP_Mag",1,8]]],["V_PlateCarrierIA1_dgtl",[["HandGrenade",2,1],["SmokeShell",2,1],["30Rnd_556x45_Stanag_Tracer_Yellow",2,30],["30Rnd_556x45_Stanag",8,30]]],["B_AssaultPack_dgtl",[["ACE_salineIV",1]]],"H_HelmetIA_net","G_Lowprofile",[],["ItemMap","","","ItemCompass","ItemWatch","NVGoggles_INDEP"]];
 
 CREATE_LOADOUT(lat,_baseLoadout);
 COPY_ADDONS(lat,rif);
@@ -178,6 +178,16 @@ _baseLoadout = [["srifle_EBR_F","","acc_flashlight","optic_DMS",["20Rnd_762x51_M
 
 CREATE_LOADOUT(mk,_baseLoadout);
 COPY_ADDONS(mk,rif);
+
+
+// Sniper Loadout
+
+_baseLoadout = [["srifle_GM6_F","","","optic_LRPS",["5Rnd_127x108_Mag",5],[],""],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_I_CombatUniform_shortsleeve",[["ACE_elasticBandage",3],["ACE_epinephrine",1],["ACE_morphine",2],["ACE_packingBandage",3],["ACE_RangeCard",1],["ACE_MapTools",1],["ACE_Flashlight_XL50",1],["ACE_splint",2],["ACE_tourniquet",2],["ACRE_PRC343_ID_15",1],["ACE_Kestrel4500",1],["ACE_microDAGR",1],["9Rnd_45ACP_Mag",1,8]]],["V_TacChestrig_oli_F",[["ACRE_PRC343_ID_31",1],["optic_NVS",1],["SmokeShell",4,1],["5Rnd_127x108_Mag",6,5],["9Rnd_45ACP_Mag",1,8]]],["ace_gunbag",[["30Rnd_556x45_Stanag",4,30],["30Rnd_556x45_Stanag_Tracer_Yellow",1,30],["NVGoggles_INDEP",1]]],"H_Booniehat_dgtl","G_Lowprofile",["ACE_Vector","","","",[],[],""],["ItemMap","","","ItemCompass","ItemWatch",""]];
+
+CREATE_LOADOUT(sniper,_baseLoadout);
+COPY_ADDONS(sniper,rif);
+
+PUT_GUN_IN_GUNBAG(sniper,"arifle_Mk20C_ACO_pointer_F");
 
 
 // Crewman Loadout

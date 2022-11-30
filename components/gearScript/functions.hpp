@@ -5,6 +5,7 @@ class gearScript
     class addItemToLoadoutContainer{};
     class addLinkedItemToLoadout{};
     class applyLoadout{};
+    class applyGunbag{};
     class applyLoadoutModifications{};
     class assignGear{};
     class createLoadoutLocker{};
@@ -44,4 +45,12 @@ class gearScript_zen
     class zen_createSupplyCrate{};
     class zen_createSupplyCrate_followUpDialog{};
     class zen_createSupplyCrate_performAction{};
+};
+
+class gearScript_gunbag
+{
+    file = "components\gearScript\gunbag";
+    class getWeaponStateFromClassName{};
+    class setGunbagVariableFromArsenalExport{};
+    class setGunbagVariableState{};
 };

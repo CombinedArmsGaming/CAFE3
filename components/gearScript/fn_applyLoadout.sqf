@@ -35,6 +35,13 @@ if (_typeofUnit find "crate_" == 0) exitWith
 
         } forEach _crateArray;
 
+        //Add Space to drop stuff into the box
+        private _oldLoad = loadAbs _unit;
+
+        private _newLoad = _oldLoad * 1.25;
+
+        [_unit, _newLoad] remoteExecCall ["setMaxLoad", 2];
+
     }
     else
     {

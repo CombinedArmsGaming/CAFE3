@@ -89,6 +89,7 @@ if (_gearVariant == "") exitWith
 };
 
 [_unit, _typeOfUnit, _gearVariant] call f_fnc_applyLoadout;
+[_unit, _typeOfUnit, _gearVariant] call f_fnc_applyGunbag;
 
 // ====================================================================================
 
