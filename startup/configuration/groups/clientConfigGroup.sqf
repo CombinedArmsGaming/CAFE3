@@ -13,11 +13,5 @@
 // NPC spawn scripts
 #include "..\..\..\configuration\spawnNpcs.sqf"
 
-// Player respawn
-#include "..\..\..\configuration\respawn.sqf"
-
-// Respawn waves settings
-#include "..\..\..\configuration\respawnWaves.sqf"
-
 // Squad markers
 #include "..\internals\squadMarkers.sqf"

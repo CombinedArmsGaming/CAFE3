@@ -20,13 +20,15 @@ INIT_COMPONENT(miscClient)
 
 INIT_COMPONENT(miscShared)
 
-INIT_COMPONENT(respawnWaves)
-
 INIT_COMPONENT(zeus_ui)
 
 INIT_COMPONENT(downtime)
 
 INIT_COMPONENT(zenFunctions)
+
+INIT_COMPONENT(respawn)
+
+INIT_COMPONENT(joinInProgress)
 
 
 // Gravestones init

@@ -15,3 +15,4 @@
 #include "..\..\..\configuration\insignia.hpp"
 #include "..\..\..\configuration\objectScaling.hpp"
 #include "..\..\..\configuration\sogConfig.hpp"
+#include "..\..\..\configuration\respawn.hpp"

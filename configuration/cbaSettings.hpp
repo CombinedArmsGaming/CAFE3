@@ -14,11 +14,8 @@
 
 // CA Medical settings (Reopening ON, 80% slower reopening).
 // To enable this, uncomment the line below.
-#define CA_MEDICAL_ADVANCED_80
+#define CA_MEDICAL_ADVANCED
 
-// CA Medical settings (Reopening ON, 95% slower reopening).
-// To enable this, uncomment the line below.
-// #define CA_MEDICAL_ADVANCED_95
 
 // CA Medical settings (Reopening OFF).
 // To enable this, uncomment the line below.
@@ -54,3 +51,12 @@
 // ACRE terrain loss.
 // To enable terrain-loss, comment-out or delete the line below.
 #define DISABLE_ACRE_TERRAIN_LOSS
+
+
+/*
+	ACE SETTINGS
+*/
+
+// ACE advanced car damage.
+// To enable advanced car damage, comment-out or delete the line below.
+#define DISABLE_ACE_CAR_DAMAGE

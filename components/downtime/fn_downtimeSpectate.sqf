@@ -62,7 +62,6 @@ _whenDone =
     [false] call f_fnc_updateDowntimeSpectatorCameraModes;
 
     "CAFE_CutDowntime" cutFadeOut 0;
-    "CAFE_DowntimeRespawn" cutFadeOut 0;
 
     isNil
     {

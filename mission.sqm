@@ -6,24 +6,28 @@ class EditorData
 	scaleGridStep=1;
 	autoGroupingDist=10;
 	toggles=513;
+	mods[]=
+	{
+		"WBK_Zombies_AdvancedEditorSettings"
+	};
 	class ItemIDProvider
 	{
-		nextID=1493;
+		nextID=1565;
 	};
 	class MarkerIDProvider
 	{
-		nextID=5;
+		nextID=7;
 	};
 	class Camera
 	{
-		pos[]={192.56636,56.192032,108.11068};
-		dir[]={0.36540064,-0.3572351,0.85957295};
-		up[]={0.13975579,0.9340145,0.32876322};
-		aside[]={0.92029935,0,-0.39121518};
+		pos[]={178.00185,82.294258,80.690353};
+		dir[]={0.47211882,-0.53882009,0.69769388};
+		up[]={0.30197152,0.84242088,0.44625136};
+		aside[]={0.82820106,-1.4901161e-008,-0.56043106};
 	};
 };
 binarizationWanted=0;
-sourceName="CAFE";
+sourceName="CAFERespawn";
 addons[]=
 {
 	"A3_Modules_F_Curator_Curator",
@@ -32,7 +36,6 @@ addons[]=
 	"ace_cargo",
 	"A3_Supplies_F_Orange_Ammoboxes",
 	"AICommand",
-	"A3_Structures_F_Bootcamp_VR_Helpers",
 	"A3_Characters_F",
 	"3den_Objects",
 	"A3_Supplies_F_AoW_Bags",
@@ -41,13 +44,16 @@ addons[]=
 	"A3_Soft_F_Exp_Truck_01",
 	"Blastcore_MainCore",
 	"ace_refuel",
-	"ace_repair"
+	"ace_repair",
+	"A3_Structures_F_Mil_Flags",
+	"A3_Modules_F_Multiplayer",
+	"A3_Soft_F_Quadbike_01"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=16;
+		items=18;
 		class Item0
 		{
 			className="A3_Modules_F_Curator";
@@ -90,69 +96,83 @@ class AddonsMetaData
 		};
 		class Item6
 		{
-			className="A3_Structures_F_Bootcamp";
-			name="Arma 3 Bootcamp Update - Buildings and Structures";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item7
-		{
 			className="A3_Characters_F";
 			name="Arma 3 Alpha - Characters and Clothing";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item8
+		class Item7
 		{
 			className="3den_Objects";
 			name="3den_Objects";
 		};
-		class Item9
+		class Item8
 		{
 			className="A3_Supplies_F_AoW";
 			name="Arma 3 Art of War - Ammoboxes and Supplies";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item10
+		class Item9
 		{
 			className="ace_explosives";
 			name="ACE3 - Explosives";
 			author="ACE-Team";
 			url="https://ace3.acemod.org/";
 		};
-		class Item11
+		class Item10
 		{
 			className="A3_Soft_F_Gamma";
 			name="Arma 3 - Unarmored Land Vehicles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item12
+		class Item11
 		{
 			className="A3_Soft_F_Exp";
 			name="Arma 3 Apex - Unarmored Land Vehicles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item13
+		class Item12
 		{
 			className="Blastcore_MainCore";
 			name="Blastcore_MainCore";
 		};
-		class Item14
+		class Item13
 		{
 			className="ace_refuel";
 			name="ACE3 - Refuel";
 			author="ACE-Team";
 			url="https://ace3.acemod.org/";
 		};
-		class Item15
+		class Item14
 		{
 			className="ace_repair";
 			name="ACE3 - Repair";
 			author="ACE-Team";
 			url="https://ace3.acemod.org/";
+		};
+		class Item15
+		{
+			className="A3_Structures_F_Mil";
+			name="Arma 3 - Military Buildings and Structures";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item16
+		{
+			className="A3_Modules_F";
+			name="Arma 3 Alpha - Scripted Modules";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item17
+		{
+			className="A3_Soft_F";
+			name="Arma 3 Alpha - Unarmored Land Vehicles";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
 		};
 	};
 };
@@ -204,7 +224,7 @@ class CustomAttributes
 								singleType="ARRAY";
 								class value
 								{
-									items=139;
+									items=135;
 									class Item0
 									{
 										class data
@@ -1285,38 +1305,6 @@ class CustomAttributes
 											value="zhc_dynsim_override";
 										};
 									};
-									class Item135
-									{
-										class data
-										{
-											singleType="STRING";
-											value="ims_bluntweapon";
-										};
-									};
-									class Item136
-									{
-										class data
-										{
-											singleType="STRING";
-											value="ace_marker_flags_placeanywhere";
-										};
-									};
-									class Item137
-									{
-										class data
-										{
-											singleType="STRING";
-											value="ace_overheating_cookoffcoef";
-										};
-									};
-									class Item138
-									{
-										class data
-										{
-											singleType="STRING";
-											value="ace_vehicle_damage_enabled";
-										};
-									};
 								};
 							};
 						};
@@ -1327,7 +1315,7 @@ class CustomAttributes
 								singleType="ARRAY";
 								class value
 								{
-									items=139;
+									items=135;
 									class Item0
 									{
 										class data
@@ -4973,114 +4961,6 @@ class CustomAttributes
 											};
 										};
 									};
-									class Item135
-									{
-										class data
-										{
-											singleType="ARRAY";
-											class value
-											{
-												items=2;
-												class Item0
-												{
-													class data
-													{
-														singleType="BOOL";
-														value=1;
-													};
-												};
-												class Item1
-												{
-													class data
-													{
-														singleType="SCALAR";
-														value=1;
-													};
-												};
-											};
-										};
-									};
-									class Item136
-									{
-										class data
-										{
-											singleType="ARRAY";
-											class value
-											{
-												items=2;
-												class Item0
-												{
-													class data
-													{
-														singleType="BOOL";
-														value=1;
-													};
-												};
-												class Item1
-												{
-													class data
-													{
-														singleType="SCALAR";
-														value=1;
-													};
-												};
-											};
-										};
-									};
-									class Item137
-									{
-										class data
-										{
-											singleType="ARRAY";
-											class value
-											{
-												items=2;
-												class Item0
-												{
-													class data
-													{
-														singleType="SCALAR";
-														value=0;
-													};
-												};
-												class Item1
-												{
-													class data
-													{
-														singleType="SCALAR";
-														value=1;
-													};
-												};
-											};
-										};
-									};
-									class Item138
-									{
-										class data
-										{
-											singleType="ARRAY";
-											class value
-											{
-												items=2;
-												class Item0
-												{
-													class data
-													{
-														singleType="BOOL";
-														value=1;
-													};
-												};
-												class Item1
-												{
-													class data
-													{
-														singleType="SCALAR";
-														value=1;
-													};
-												};
-											};
-										};
-									};
 								};
 							};
 						};
@@ -5152,7 +5032,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=54;
+		items=63;
 		class Item0
 		{
 			dataType="Logic";
@@ -5810,138 +5690,6 @@ class Mission
 		};
 		class Item23
 		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={199.974,5.0005002,192.006};
-			};
-			side="Empty";
-			flags=5;
-			class Attributes
-			{
-				name="respawner_west";
-			};
-			id=1347;
-			type="VR_Area_01_square_1x1_yellow_F";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ObjectTextureCustom0";
-					expression="_this setObjectTextureGlobal [0,_value]";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="#(argb,8,8,3)color(0,0.3,0.6,1,co)";
-						};
-					};
-				};
-				nAttributes=1;
-			};
-		};
-		class Item24
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={300.008,5.0005002,191.563};
-			};
-			side="Empty";
-			flags=5;
-			class Attributes
-			{
-				name="respawner_east";
-			};
-			id=1348;
-			type="VR_Area_01_square_1x1_yellow_F";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ObjectTextureCustom0";
-					expression="_this setObjectTextureGlobal [0,_value]";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="#(argb,8,8,3)color(0.5,0,0,1,co)";
-						};
-					};
-				};
-				nAttributes=1;
-			};
-		};
-		class Item25
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={299.98801,5.0005002,293.979};
-			};
-			side="Empty";
-			flags=5;
-			class Attributes
-			{
-				name="respawner_civ";
-			};
-			id=1349;
-			type="VR_Area_01_square_1x1_yellow_F";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ObjectTextureCustom0";
-					expression="_this setObjectTextureGlobal [0,_value]";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="#(argb,8,8,3)color(0.4,0,0.5,1,co)";
-						};
-					};
-				};
-				nAttributes=1;
-			};
-		};
-		class Item26
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={199.96899,5.0005002,293.98001};
-			};
-			side="Empty";
-			flags=5;
-			class Attributes
-			{
-				name="respawner_guer";
-			};
-			id=1350;
-			type="VR_Area_01_square_1x1_yellow_F";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ObjectTextureCustom0";
-					expression="_this setObjectTextureGlobal [0,_value]";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="#(argb,8,8,3)color(0,0.5,0,1,co)";
-						};
-					};
-				};
-				nAttributes=1;
-			};
-		};
-		class Item27
-		{
 			dataType="Logic";
 			class PositionInfo
 			{
@@ -5953,7 +5701,7 @@ class Mission
 			id=1352;
 			type="HeadlessClient_F";
 		};
-		class Item28
+		class Item24
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -5966,7 +5714,7 @@ class Mission
 			id=1353;
 			type="HeadlessClient_F";
 		};
-		class Item29
+		class Item25
 		{
 			dataType="Logic";
 			class PositionInfo
@@ -5979,7 +5727,7 @@ class Mission
 			id=1354;
 			type="HeadlessClient_F";
 		};
-		class Item30
+		class Item26
 		{
 			dataType="Object";
 			class PositionInfo
@@ -6043,7 +5791,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item31
+		class Item27
 		{
 			dataType="Object";
 			class PositionInfo
@@ -6059,7 +5807,7 @@ class Mission
 			id=1381;
 			type="B_AssaultPack_mcamo";
 		};
-		class Item32
+		class Item28
 		{
 			dataType="Object";
 			class PositionInfo
@@ -6076,7 +5824,7 @@ class Mission
 			id=1382;
 			type="B_AssaultPack_ocamo";
 		};
-		class Item33
+		class Item29
 		{
 			dataType="Object";
 			class PositionInfo
@@ -6092,7 +5840,7 @@ class Mission
 			id=1383;
 			type="B_AssaultPack_dgtl";
 		};
-		class Item34
+		class Item30
 		{
 			dataType="Object";
 			class PositionInfo
@@ -6108,7 +5856,7 @@ class Mission
 			id=1385;
 			type="B_CivilianBackpack_01_Everyday_IDAP_F";
 		};
-		class Item35
+		class Item31
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -6119,7 +5867,7 @@ class Mission
 			description="Gearscript in this framework is provided by ACE Arsenal.  To add new loadouts, simply go into ACE Arsenal and make them.  " \n "" \n "Once you've finished a loadout, press ""EXPORT"" and go to the ""loadouts"" configuration folder.  You can paste the loadout code into any of the gear files to set up that unit." \n "" \n "When you paste the loadout, make sure you don't delete the semi-colon ("";"") at the end of each line." \n "" \n "Each Gearscript file also comes with helpful commands to add randomisation and set-up resupply crates.  For help and examples, see the ""gear_blufor.sqf"" configuration file.";
 			id=1394;
 		};
-		class Item36
+		class Item32
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -6130,7 +5878,7 @@ class Mission
 			description="When any unit is deleted, they will be turned into a Gravestone.  These can be any kind of container, but by default they are configured to be backpacks." \n "" \n "You can change the Gravestone that appears for BLUFOR by deleting the backpack here, and then naming a container to ""gravestone_blufor"".  The same rule applies to other factions." \n "" \n "You can control the Gravestone system's rules by using the ""gravestones.hpp"" configuration file.";
 			id=1392;
 		};
-		class Item37
+		class Item33
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -6141,7 +5889,7 @@ class Mission
 			description="This framework provides a system for setting the identities of each side.  For example, you can set the enemy to be ""tanoan"", ""greek"", and they will look and sound the part." \n "" \n "To see all available identites, see the ""identityGroups.sqf"" configuration file inside the ""identities"" folder." \n "" \n "To set-up identities for each side, see the ""identityAssignment.sqf"" configuration file.";
 			id=1395;
 		};
-		class Item38
+		class Item34
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -6152,7 +5900,7 @@ class Mission
 			description="When in-game, Loadout Lockers will let you choose loadouts for a specific faction.  This one is set to give you BLUFOR loadouts." \n "" \n "You can make Loadout Lockers for other factions by copy-pasting this locker and changing ""blu_f"" inside the Init Field to ""opf_f"", ""ind_f"" or ""civ_f"".";
 			id=1388;
 		};
-		class Item39
+		class Item35
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -6163,7 +5911,7 @@ class Mission
 			description="Loot Crates contain random items, like in RPG games (Skyrim, Borderlands etc.)." \n "" \n "You can set-up loot-tables in the ""lootBox.sqf"" configuration file.  This is currently considered an advanced feature because loot-tables are not simple to set up.  If you have any issues, ask Bubbus for help.";
 			id=1390;
 		};
-		class Item40
+		class Item36
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -6174,7 +5922,7 @@ class Mission
 			description="The best way to make a new squad is to copy-paste one of the existing ones.  This will keep their gearscript lines and role names intact." \n "" \n "It's also a good idea to create compositions for new squads, enemy patrols etc.  This can massively speed up the creation of new missions.";
 			id=1397;
 		};
-		class Item41
+		class Item37
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -6185,29 +5933,29 @@ class Mission
 			description="This marker creates an auto-generated list of radio channels.  It will show up in-game in the Map screen." \n "" \n "You can move this marker around to move the list.  You can also scale this marker up and down to change the size of the list.";
 			id=1389;
 		};
-		class Item42
+		class Item38
 		{
 			dataType="Comment";
 			class PositionInfo
 			{
 				position[]={206.3414,5,199.92285};
 			};
-			title="Respawn Marker";
-			description="If the Respawner Object has been deleted or the framework doesn't know where to spawn players, they will respawn at this marker." \n "" \n "Place it somewhere safe (inside a HQ for example).";
+			title="Respawn Framework";
+			description="Check the ""respawn.hpp"" configuration file to set the respawn mode." \n "" \n "Players can respawn individually, in waves, using tickets etc.";
 			id=1387;
 		};
-		class Item43
+		class Item39
 		{
 			dataType="Comment";
 			class PositionInfo
 			{
-				position[]={205.623,5,191.422};
+				position[]={207.933,5,176.028};
 			};
 			title="Respawner Objects";
-			description="See the ""respawnWaves.sqf"" configuration file. " \n "" \n "If it is configured to Base Respawn (a.k.a. RESPAWN_MODE_BASE), then all dead players will respawn at this object." \n "" \n "In Zeus, you can move this object around to change where people spawn." \n "" \n "You can also set a vehicle, plane, or any player as a Respawner Object by using the in-game Zeus module.";
+			description="See the example respawn locations near this comment. " \n "" \n "You can set vehicles as player respawn locations by Syncing the respawn location to them.  You can also use 'attachTo' with the respawn locations if needed." \n "" \n "You can also make respawn points appear or disappear by linking them to triggers.";
 			id=1386;
 		};
-		class Item44
+		class Item40
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -6218,7 +5966,7 @@ class Mission
 			description="See the ""squadMarkers"" folder inside the configuration folder." \n "" \n "Squad markers are given to each squad inside that file.  If you want to add new squads, you can set their Callsign in this editor, and then use that exact same Callsign in the ""squadMarkers_blufor.sqf"" file to set up their colour, icon and more.  The same rule applies to different factions." \n "" \n "For more help, see the ""squadMarkers_blufor.sqf"" file for instructions and a default example.";
 			id=1393;
 		};
-		class Item45
+		class Item41
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -6229,7 +5977,7 @@ class Mission
 			description="You can delete all of these comments easily by finding the Comments folder in the panel on the left." \n "" \n "Click, Shift+Click, Delete.";
 			id=1398;
 		};
-		class Item46
+		class Item42
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -6240,7 +5988,7 @@ class Mission
 			description="This trigger is configured to ignore any Zeuses which fly into it, but any normal player who steps inside is still counted.  " \n "" \n "You can copy-paste this trigger if you need more than one.";
 			id=1391;
 		};
-		class Item47
+		class Item43
 		{
 			dataType="Group";
 			side="West";
@@ -6252,7 +6000,7 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={363.47101,5.0014391,259.69};
+						position[]={363.1319,5.0014391,258.2887};
 					};
 					side="West";
 					flags=6;
@@ -6744,7 +6492,7 @@ class Mission
 				nAttributes=2;
 			};
 		};
-		class Item48
+		class Item44
 		{
 			dataType="Group";
 			side="West";
@@ -7171,7 +6919,7 @@ class Mission
 				nAttributes=2;
 			};
 		};
-		class Item49
+		class Item45
 		{
 			dataType="Group";
 			side="West";
@@ -7598,7 +7346,7 @@ class Mission
 				nAttributes=2;
 			};
 		};
-		class Item50
+		class Item46
 		{
 			dataType="Group";
 			side="West";
@@ -8025,7 +7773,7 @@ class Mission
 				nAttributes=2;
 			};
 		};
-		class Item51
+		class Item47
 		{
 			dataType="Group";
 			side="West";
@@ -8302,7 +8050,7 @@ class Mission
 				nAttributes=2;
 			};
 		};
-		class Item52
+		class Item48
 		{
 			dataType="Object";
 			class PositionInfo
@@ -8314,6 +8062,7 @@ class Mission
 			class Attributes
 			{
 				init="[this, ""example""] call f_fnc_setLogiVehicle;";
+				name="logi_truck";
 			};
 			id=1485;
 			type="B_Truck_01_fuel_F";
@@ -8335,7 +8084,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item53
+		class Item49
 		{
 			dataType="Comment";
 			class PositionInfo
@@ -8345,6 +8094,649 @@ class Mission
 			title="Logistics Vehicles";
 			description="This HEMTT is configured to allow an engineer in the command group to spawn new vehicles from it." \n "" \n "You can change the configuration and the permissions around it.  See the ""logiVehicles.sqf"" file in the configuration folder for more information.";
 			id=1486;
+		};
+		class Item50
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={200.19876,8.9768047,200.23758};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+				init="[this] call f_fnc_createRedeployObject;";
+			};
+			id=1546;
+			type="Flag_NATO_F";
+		};
+		class Item51
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={208.0135,5,184.16716};
+			};
+			id=1547;
+			type="ModuleRespawnPosition_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ModuleRespawnPosition_F_Marker";
+					expression="_this setVariable ['Marker',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="2";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="ModuleRespawnPosition_F_Name";
+					expression="_this setVariable ['Name',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="Example BLUFOR Respawn";
+						};
+					};
+				};
+				class Attribute2
+				{
+					property="ModuleRespawnPosition_F_Side";
+					expression="_this setVariable ['Side',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="1";
+						};
+					};
+				};
+				class Attribute3
+				{
+					property="ModuleRespawnPosition_F_ShowNotification";
+					expression="_this setVariable ['ShowNotification',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="1";
+						};
+					};
+				};
+				class Attribute4
+				{
+					property="ModuleRespawnPosition_F_Type";
+					expression="_this setVariable ['Type',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="0";
+						};
+					};
+				};
+				nAttributes=5;
+			};
+		};
+		class Item52
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={207.98907,5,168.03354};
+			};
+			id=1548;
+			type="ModuleRespawnPosition_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ModuleRespawnPosition_F_Marker";
+					expression="_this setVariable ['Marker',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="2";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="ModuleRespawnPosition_F_Name";
+					expression="_this setVariable ['Name',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="Example Vehicle-based Respawn";
+						};
+					};
+				};
+				class Attribute2
+				{
+					property="ModuleRespawnPosition_F_Side";
+					expression="_this setVariable ['Side',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="1";
+						};
+					};
+				};
+				class Attribute3
+				{
+					property="ModuleRespawnPosition_F_ShowNotification";
+					expression="_this setVariable ['ShowNotification',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="1";
+						};
+					};
+				};
+				class Attribute4
+				{
+					property="ModuleRespawnPosition_F_Type";
+					expression="_this setVariable ['Type',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="0";
+						};
+					};
+				};
+				nAttributes=5;
+			};
+		};
+		class Item53
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={215.936,5,175.91299};
+			};
+			id=1549;
+			type="ModuleRespawnPosition_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ModuleRespawnPosition_F_Marker";
+					expression="_this setVariable ['Marker',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="2";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="ModuleRespawnPosition_F_Name";
+					expression="_this setVariable ['Name',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="Only appears when logi vic is dead.";
+						};
+					};
+				};
+				class Attribute2
+				{
+					property="ModuleRespawnPosition_F_Side";
+					expression="_this setVariable ['Side',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="1";
+						};
+					};
+				};
+				class Attribute3
+				{
+					property="ModuleRespawnPosition_F_ShowNotification";
+					expression="_this setVariable ['ShowNotification',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="1";
+						};
+					};
+				};
+				class Attribute4
+				{
+					property="ModuleRespawnPosition_F_Type";
+					expression="_this setVariable ['Type',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="0";
+						};
+					};
+				};
+				nAttributes=5;
+			};
+		};
+		class Item54
+		{
+			dataType="Trigger";
+			position[]={215.89928,5,178.00525};
+			class Attributes
+			{
+				condition="!alive logi_truck";
+				sizeA=0;
+				sizeB=0;
+			};
+			id=1550;
+			type="EmptyDetector";
+		};
+		class Item55
+		{
+			dataType="Trigger";
+			position[]={193.91266,5,176.10699};
+			class Attributes
+			{
+				sizeA=5;
+				sizeB=5;
+				sizeC=5;
+				repeatable=1;
+				activationType="NOT PRESENT";
+				activationBy="ANY";
+				isRectangle=1;
+			};
+			id=1551;
+			type="EmptyDetectorArea10x10";
+		};
+		class Item56
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={200.01427,5,176.05339};
+			};
+			id=1552;
+			type="ModuleRespawnPosition_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ModuleRespawnPosition_F_Marker";
+					expression="_this setVariable ['Marker',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="2";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="ModuleRespawnPosition_F_Name";
+					expression="_this setVariable ['Name',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="Only appears when nobody is near.";
+						};
+					};
+				};
+				class Attribute2
+				{
+					property="ModuleRespawnPosition_F_Side";
+					expression="_this setVariable ['Side',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="1";
+						};
+					};
+				};
+				class Attribute3
+				{
+					property="ModuleRespawnPosition_F_ShowNotification";
+					expression="_this setVariable ['ShowNotification',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="1";
+						};
+					};
+				};
+				class Attribute4
+				{
+					property="ModuleRespawnPosition_F_Type";
+					expression="_this setVariable ['Type',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="0";
+						};
+					};
+				};
+				nAttributes=5;
+			};
+		};
+		class Item57
+		{
+			dataType="Marker";
+			position[]={194.59695,5,179.24211};
+			name="toggleableRespawnMarker_1";
+			type="Empty";
+			id=1555;
+		};
+		class Item58
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={194.373,5,179.433};
+			};
+			title="Toggleable respawn points.";
+			description="Sync the respawn location to a trigger!  But be aware: respawn points count as ""Anybody"" for the purposes of activating triggers.  Put the respawn point inside the trigger and see for yourself." \n "" \n "There is an example just beside this, showing how to filter out the respawn point.  Look at the ""Condition"" field." \n "" \n "You don't need the ""Condition"" filter if you use anything other than ""Anybody"" activation.   For example, ""Any player"" and ""BLUFOR"" do not have this issue.";
+			id=1558;
+		};
+		class Item59
+		{
+			dataType="Trigger";
+			position[]={193.92677,5,164.0257};
+			class Attributes
+			{
+				condition="(thisList findIf {side _x isNotEqualTo sideLogic}) < 0";
+				sizeA=5;
+				sizeB=5;
+				sizeC=5;
+				repeatable=1;
+				activationType="NOT PRESENT";
+				activationBy="ANY";
+				isRectangle=1;
+			};
+			id=1559;
+			type="EmptyDetectorArea10x10";
+		};
+		class Item60
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={194.01508,5,166.08011};
+			};
+			id=1560;
+			type="ModuleRespawnPosition_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ModuleRespawnPosition_F_Marker";
+					expression="_this setVariable ['Marker',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="2";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="ModuleRespawnPosition_F_Name";
+					expression="_this setVariable ['Name',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="Nobody is near (ignoring the respawn point itself).";
+						};
+					};
+				};
+				class Attribute2
+				{
+					property="ModuleRespawnPosition_F_Side";
+					expression="_this setVariable ['Side',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="1";
+						};
+					};
+				};
+				class Attribute3
+				{
+					property="ModuleRespawnPosition_F_ShowNotification";
+					expression="_this setVariable ['ShowNotification',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="1";
+						};
+					};
+				};
+				class Attribute4
+				{
+					property="ModuleRespawnPosition_F_Type";
+					expression="_this setVariable ['Type',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="0";
+						};
+					};
+				};
+				nAttributes=5;
+			};
+		};
+		class Item61
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={208.093,65,155.95599};
+			};
+			init="this attachTo [parachuteQuadbike];";
+			id=1563;
+			type="ModuleRespawnPosition_F";
+			atlOffset=60;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ModuleRespawnPosition_F_Marker";
+					expression="_this setVariable ['Marker',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="2";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="ModuleRespawnPosition_F_Name";
+					expression="_this setVariable ['Name',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="Parachute wherever the quadbike goes!";
+						};
+					};
+				};
+				class Attribute2
+				{
+					property="ModuleRespawnPosition_F_Side";
+					expression="_this setVariable ['Side',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="1";
+						};
+					};
+				};
+				class Attribute3
+				{
+					property="ModuleRespawnPosition_F_ShowNotification";
+					expression="_this setVariable ['ShowNotification',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="1";
+						};
+					};
+				};
+				class Attribute4
+				{
+					property="ModuleRespawnPosition_F_Type";
+					expression="_this setVariable ['Type',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="0";
+						};
+					};
+				};
+				nAttributes=5;
+			};
+		};
+		class Item62
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={208.061,6.6262865,155.98801};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				name="parachuteQuadbike";
+			};
+			id=1564;
+			type="B_Quadbike_01_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="[[[[""FirstAidKit""],[4]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+	};
+	class Connections
+	{
+		class LinkIDProvider
+		{
+			nextID=4;
+		};
+		class Links
+		{
+			items=4;
+			class Item0
+			{
+				linkID=0;
+				item0=1548;
+				item1=1485;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item1
+			{
+				linkID=1;
+				item0=1549;
+				item1=1550;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item2
+			{
+				linkID=2;
+				item0=1552;
+				item1=1551;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item3
+			{
+				linkID=3;
+				item0=1560;
+				item1=1559;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
 		};
 	};
 };

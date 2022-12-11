@@ -29,6 +29,6 @@ Spawn big wave on west, east and north hill</execute><br/>
 
 // CREATE DIARY ENTRY
 
-player createDiaryRecord ["diary", ["CA Admin",_briefing]];
+player createDiaryRecord ["CAFE", ["CA Admin",_briefing]];
 
 // ====================================================================================

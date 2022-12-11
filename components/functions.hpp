@@ -1,31 +1,31 @@
 class F
 {
 
-#include "briefing\functions.hpp"
-#include "ceasefire\functions.hpp"
-#include "ftMemberMarkers\functions.hpp"
+#include "aceActions\functions.hpp"
+#include "aiBehaviour\functions.hpp"
 #include "aiCache\functions.hpp"
 #include "aiDriver\functions.hpp"
-#include "radios\functions.hpp"
+#include "briefing\functions.hpp"
+#include "ceasefire\functions.hpp"
+#include "downtime\functions.hpp"
+#include "endings\functions.hpp"
+#include "ftMemberMarkers\functions.hpp"
 #include "gearScript\functions.hpp"
+#include "gravestones\functions.hpp"
+#include "identity\functions.hpp"
+#include "joinInProgress\functions.hpp"
+#include "killTracker\functions.hpp"
+#include "logiVehicle\functions.hpp"
+#include "lootBox\functions.hpp"
+#include "mapClick\functions.hpp"
 #include "miscClient\functions.hpp"
 #include "miscShared\functions.hpp"
-#include "respawnWaves\functions.hpp"
+#include "radios\functions.hpp"
+#include "respawn\functions.hpp"
 #include "spawnNpcs\functions.hpp"
-#include "joinInProgress\functions.hpp"
-#include "mapClick\functions.hpp"
-#include "aiBehaviour\functions.hpp"
-#include "zeus_ui\functions.hpp"
-#include "aceActions\functions.hpp"
-#include "killTracker\functions.hpp"
-#include "gravestones\functions.hpp"
 #include "squadMarkers\functions.hpp"
-#include "endings\functions.hpp"
-#include "lootBox\functions.hpp"
 #include "viewDistanceEditor\functions.hpp"
-#include "downtime\functions.hpp"
-#include "identity\functions.hpp"
-#include "logiVehicle\functions.hpp"
+#include "zeus_ui\functions.hpp"
 
 
 }
@@ -45,5 +45,24 @@ class ace_medical_feedback
 	{
 		file = "components\downtime";
 		class effectUnconscious{};
+	};
+};
+
+
+class ace_medical_status
+{
+	class overrides
+	{
+		file = "components\medical";
+		class isInStableCondition{};
+	}
+};
+
+class ace_gunbag
+{
+	class overrides
+	{
+		file = "components\gearscript\gunbag";
+		class hasGunbag{};
 	};
 };

@@ -14,9 +14,9 @@ INIT_COMPONENT(aiCache)
 // Credits: Please see the CAFE online manual (https://github.com/CombinedArmsGaming/CAFE3/wiki)
 INIT_COMPONENT(radios)
 
-INIT_COMPONENT(respawnWaves)
-
 INIT_COMPONENT(miscShared)
+
+INIT_COMPONENT(respawn)
 
 
 // Kill tracker init

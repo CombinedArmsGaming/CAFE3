@@ -11,6 +11,19 @@ call
 
     ] call zen_custom_modules_fnc_register;
 
+    private _musicMute =
+    {
+        [] spawn 
+        {
+            [3, 0] remoteExecCall ["fadeMusic"];
+            uiSleep 3;
+            [""] remoteExecCall ["playMusic"];
+            uiSleep 1;
+            [0, 1] remoteExecCall ["fadeMusic"];
+        }
+    };
+
+    ["[Audio]", "Mute Music (Fade Out)", _musicMute] call zen_custom_modules_fnc_register;
     
     private _disableAI = { [_this#1] call f_fnc_zen_toggleAIPath };
 

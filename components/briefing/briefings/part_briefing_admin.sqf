@@ -71,6 +71,6 @@ if (isNull (getAssignedCuratorLogic player)) then {hintsilent 'Assign ZEUS first
 
 // CREATE DIARY ENTRY
 
-player createDiaryRecord ["diary", ["Admin",_briefing]];
+player createDiaryRecord ["CAFE", ["Admin",_briefing]];
 
 // ====================================================================================

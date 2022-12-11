@@ -1,4 +1,5 @@
 #include "macros.hpp"
+#include "..\..\respawn_macros.hpp"
 
 params ["_unit"];
 
@@ -27,14 +28,19 @@ _createSquadNode =
 
         _children = [];
 
+        private _shouldShowRespawnDialog = 
+        {
+            (_player getVariable ["f_var_canUseRespawnMenu", false]) and {[RESPAWN_TRIGGERED_WAVE] call f_fnc_isRespawnModeActive}
+        };
+
         // Respawn menu action
         _action =
         [
             "CAFE_RespawnMenu",
             "Show Respawn Menu",
             "\A3\ui_f\data\igui\cfg\simpleTasks\types\getin_ca.paa",
-            {createDialog "RespawnWavesDialog";},
-            {_player getVariable ["f_var_canUseRespawnMenu", false]},
+            {createDialog "CAFE_TriggerRespawnWave_Dialog";},
+            _shouldShowRespawnDialog,
             {},
             [],
             "",

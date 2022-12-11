@@ -1,6 +1,8 @@
 #include "macros.hpp"
 CLIENT_ONLY;
 
+#include "..\..\components\globals\clientGlobals.sqf"
+
 // Client configuration group
 // Includes all config scripts needed for clients.
 
