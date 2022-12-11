@@ -47,19 +47,20 @@ enableDebugConsole = 1;
 
 
 // CAFE - Respawn Settings
-// Credits: Please see the CAFE online manual (https://github.com/CombinedArmsGaming/CAFE3/wiki)
-// 1	|	Respawn as Bird (for normal mission, no reinforcements).
-// 2	|	Respawn on death location without gear, used in special missions.
-// 3	|	Respawn at base marker (used when reinforcements are an option).
-// 4	|	Respawn either in group if an AI slot is filled or as seagull.
-// If 3 is chosen, place down makers with the following names as necessary:
-// respawn_west, respawn_guerilla, respawn_east, respawn_civillian.
-
-respawn = 3; //Suggested NOT to change this
-respawndelay = 3;
-respawnOnStart = 0;
-respawnTemplates[] = {"respawnWaves"};	// remove "f_spectator" when using respawn.
+respawn = "BASE";
 respawnDialog = 0;
+
+respawnDelay = 10;
+respawnOnStart = 0;
+
+respawnTemplatesWest[] = RESPAWN_MODE_BLUFOR;
+respawnTemplatesEast[] = RESPAWN_MODE_OPFOR;
+respawnTemplatesGuer[] = RESPAWN_MODE_INDFOR;
+respawnTemplatesCiv[]  = RESPAWN_MODE_CIVILIAN;
+
+
+// CAFE - Respawn system includes.
+#include "components\respawn\cfgRespawnTemplates.hpp"
 
 
 // ============================================================================================
@@ -165,33 +166,6 @@ class CfgDebriefing
 // ============================================================================================
 
 
-class CfgRespawnTemplates
-{
-	/*
-	class f_Spectator
-	{
-		onPlayerRespawn = "f_fnc_CamInit";
-	};
-
-	// CAFE JIP Menu
-	class f_JIP
-	{
-		onPlayerRespawn = "f\JIP\f_JIP_playerRespawn.sqf";
-	};
-	//*/
-	//*
-	class respawnWaves
-	{
-		onPlayerRespawn = "respawnTemplates\respawnWaves\onPlayerRespawn.sqf";
-	    onPlayerKilled = "respawnTemplates\respawnWaves\onPlayerKilled.sqf";
-	};
-	//*/
-};
-
-
-// ============================================================================================
-
-
 class Params
 {
 	#include "components\missionParameters.hpp"
@@ -208,15 +182,9 @@ class CfgFunctions
 	{
 		class PreInit
 		{
-			class clientConfigGroup
+			class startup_preInit
 			{
-				file = "startup\configuration\groups\clientConfigGroup_preInit.sqf";
-				preInit = 1;
-			};
-
-			class serverConfigGroup
-			{
-				file = "startup\configuration\groups\serverConfigGroup_preInit.sqf";
+				file = "startup\startup_preInit.sqf";
 				preInit = 1;
 			};
 		};
@@ -506,5 +474,10 @@ class Extended_DisplayLoad_EventHandlers
 	class RscDisplayCurator
 	{
 		clientDisplayLoad = "[] call f_fnc_openZeus;";
+	};
+
+	class RscDisplayEGSpectator
+	{
+		CAFE_Respawn_SpectatorTweaks = "_this call f_fnc_respawnSpectatorTweaks;";
 	};
 };
