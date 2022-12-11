@@ -14,5 +14,11 @@ missionNamespace setVariable ["f_var_squad_didFirstSpawn", true];
 
 if ((!didJip) and _didFirstSpawn) exitWith 
 {
+	#ifdef ALLOW_TELEPORT_UPON_RESPAWN
+
+	player setVariable ["f_var_mayTeleportToGroup", true, true];
+
+	#endif
+
 	createDialog "CAFE_GroupPicker_Dialog";
 };
