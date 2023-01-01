@@ -58,5 +58,3 @@ while {true} do
     };
 
 };
-
-systemChat "run thru";
