@@ -32,9 +32,10 @@ private _script =
 
 	private _posGround = ((lineIntersectsSurfaces [_pos, _pos vectorAdd [0, 0, -100], player]) param [0, []]) param [0, []];
 
-	player setPosASL _posGround;
-
-	player setDir _dir;
+	if (_posGround isNotEqualTo []) then {
+		player setPosASL _posGround;
+		player setDir _dir;
+	};
 };
 
 [_condition, _script, [_pos, _dir]] call CBA_fnc_waitUntilAndExecute;
