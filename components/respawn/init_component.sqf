@@ -200,4 +200,52 @@ if (hasInterface) then
         []
     ] call CBA_fnc_waitUntilAndExecute;
 
+
+
+    f_fnc_spectate_forceRadioModSpectateMode = 
+    {
+        params ["_unit"];
+
+        if (["acre_sys_radio"] call ace_common_fnc_isModLoaded) then {[true] call acre_api_fnc_setSpectator};
+        if (["task_force_radio"] call ace_common_fnc_isModLoaded) then {[_unit, true] call TFAR_fnc_forceSpectator};
+
+        // Wait until spectate screen is no longer displayed.
+        [
+            {		
+                !(missionNamespace getVariable ["BIS_RscRespawnControlsSpectate_shown", false])
+            },
+        
+            {
+                params ["_unit"];
+                
+                if (["acre_sys_radio"] call ace_common_fnc_isModLoaded) then {[false] call acre_api_fnc_setSpectator};
+                if (["task_force_radio"] call ace_common_fnc_isModLoaded) then {[_unit, false] call TFAR_fnc_forceSpectator};	
+                
+                [f_fnc_spectate_forceRadioModSpectateModeLoop, _this] call CBA_fnc_execNextFrame;
+            },
+
+            _this
+
+        ] call CBA_fnc_waitUntilAndExecute;
+    };
+
+
+    f_fnc_spectate_forceRadioModSpectateModeLoop = 
+    {
+        [
+            {
+                missionNamespace getVariable ["BIS_RscRespawnControlsSpectate_shown", false]
+            },
+
+            {
+                [f_fnc_spectate_forceRadioModSpectateMode, _this] call CBA_fnc_execNextFrame;
+            },
+
+            [player]
+
+        ] call CBA_fnc_waitUntilAndExecute;
+    };
+
+    [] call f_fnc_spectate_forceRadioModSpectateModeLoop;
+
 };
