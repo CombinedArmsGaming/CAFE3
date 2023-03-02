@@ -202,6 +202,8 @@ if (hasInterface) then
 
 
 
+    // Force ACRE/TFAR spectate talk mode on/off when vanilla spectate screen is on/off.
+    // Monitoring loop pt2 - wait until spectate inactive.
     f_fnc_spectate_forceRadioModSpectateMode = 
     {
         params ["_unit"];
@@ -230,6 +232,8 @@ if (hasInterface) then
     };
 
 
+    // Force ACRE/TFAR spectate talk mode on/off when vanilla spectate screen is on/off.
+    // Monitoring loop pt1 - wait until spectate active.
     f_fnc_spectate_forceRadioModSpectateModeLoop = 
     {
         [
