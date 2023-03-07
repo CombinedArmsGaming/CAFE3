@@ -51,6 +51,6 @@ for "_i" from 0 to _numberOfWounds do
     _damage = random _damageRange;
 
 
-    [_unit, _damage, _woundLocation, _woundType] remoteExec ["ace_medical_fnc_addDamageToUnit", _unit];
+    [_unit, _damage, _woundLocation, _woundType] remoteExecCall ["ace_medical_fnc_addDamageToUnit", _unit];
 
 };
