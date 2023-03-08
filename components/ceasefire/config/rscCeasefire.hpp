@@ -79,7 +79,7 @@ class CAFE_RscCeasefire {
 				class Countdown : CAFE_Ceasefire_RscText {
 					idc = MACRO_IDC_CF_COUNTDOWN;
 					text = "00:00";
-					font = "EtelkaMonospaceProBold";
+					font = "EtelkaMonospacePro";
 					SizeEx = 0.025 * safeZoneW;
 					x = MACRO_POS_CF_ICON_WIDTH * safeZoneW;
 					y = MACRO_POS_CF_HEIGHT * 0.3 * safeZoneW;
