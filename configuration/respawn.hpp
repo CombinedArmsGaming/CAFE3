@@ -6,9 +6,10 @@
     RESPAWN MODES:
         Set a respawn mode for each side.  They can be one of the following:
 
-        RESPAWN_MODE_TIMED                   - A respawn timer for each player individually.
-        RESPAWN_MODE_TIMED_WAVES             - A respawn timer for wave respawns.  Players will respawn at the same time at the configured interval.
         RESPAWN_MODE_TICKETS                 - Ticket-based respawn, from whatever tickets have been configured.
+        RESPAWN_MODE_TIMED                   - A respawn timer for each player individually.
+        RESPAWN_MODE_TIMED_TICKETS           - Like RESPAWN_MODE_TIMED but with tickets also.
+        RESPAWN_MODE_TIMED_WAVES             - A respawn timer for wave respawns.  Players will respawn at the same time at the configured interval.
         RESPAWN_MODE_TIMED_WAVES_TICKETS     - Like RESPAWN_MODE_TIMED_WAVES but with tickets also.
         RESPAWN_MODE_TRIGGERED_WAVES    	 - The classic wave system, triggered by any group leader.
         RESPAWN_MODE_TRIGGERED_WAVES_TICKETS - Like RESPAWN_MODE_TRIGGERED_WAVES, but with tickets also.
