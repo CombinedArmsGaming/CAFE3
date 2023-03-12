@@ -148,7 +148,7 @@ class CAFE_GroupPicker_Dialog
 
 		class CAFE_GroupPicker_CancelButton: CAFE_DefaultButton
 		{
-			idc = 1601;
+			idc = IDC_GROUPPICKER_CANCELBUTTON;
 			text = "Cancel";
 			x = 14 * GUI_GRID_W + GUI_GRID_X;
 			y = 19 * GUI_GRID_H + GUI_GRID_Y;

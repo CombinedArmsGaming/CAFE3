@@ -20,5 +20,6 @@ if (didJip or ((!didJip) and _didFirstSpawn)) exitWith
 
 	#endif
 
+	f_var_groupPicker_disableCancel = true;
 	createDialog "CAFE_GroupPicker_Dialog";
 };

@@ -42,6 +42,7 @@ if (_exitCode == 1) then
     _groups = allGroups select {(side _x) isEqualTo _playerSide};
 
     _selectedGroup = _groups param [_groups findIf {(groupId _x) isEqualTo _selectedGroupName}, grpNull];
+    private _countPriorToJoin = count units _selectedGroup;
 
     if (isNull _selectedGroup) exitWith
     {
@@ -59,7 +60,7 @@ if (_exitCode == 1) then
 
         _isChecked = _teleportCheckbox ctrlChecked 0;
 
-        if (_isChecked) then
+        if (_isChecked and {(_countPriorToJoin > 0) and (leader _selectedGroup isNotEqualTo player)}) then
         {
             [leader _selectedGroup] spawn _doTeleport;
         };
