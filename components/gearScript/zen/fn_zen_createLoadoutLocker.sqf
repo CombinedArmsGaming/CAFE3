@@ -4,7 +4,7 @@ CLIENT_ONLY;
 
 params ["_position", "_unit"];
 
-if ((!isNull _unit) and {_unit isKindOf "CAManBase"}) exitWith
+if (!isNull _unit) exitWith
 {
     ["Cannot use this module on units.  Try on ground, vehicles or containers."] call zen_common_fnc_showMessage;
 };
@@ -13,7 +13,7 @@ private _createLocker =
 {
     params ["_dialogValues", "_args"];
     _dialogValues params ["_chosenFaction"];
-    _args params ["_position", "_unit"];
+    _args params ["_position"];
 
     private _lockerModel = ["Metal_Locker_F", "Land_OfficeCabinet_02_F"] select (isNull (configFile >> "CfgVehicles" >> "Metal_Locker_F"));
     private _locker = _lockerModel createVehicle [0,0,0];
