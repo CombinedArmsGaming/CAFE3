@@ -8,12 +8,15 @@ if (isNil "f_var_squadMarkers_already_run") then
     {
         WAIT_UNTIL_SETTINGS_READY();
 
-        #include "..\..\..\squadmarker_macros.hpp"
+        if (isServer) then
+        {    
+            #include "..\..\..\squadmarker_macros.hpp"
 
-        #include "..\..\..\configuration\squadMarkers\squadMarkers_blufor.sqf"
-        #include "..\..\..\configuration\squadMarkers\squadMarkers_opfor.sqf"
-        #include "..\..\..\configuration\squadMarkers\squadMarkers_indfor.sqf"
-        #include "..\..\..\configuration\squadMarkers\squadMarkers_civ.sqf"
+            #include "..\..\..\configuration\squadMarkers\squadMarkers_blufor.sqf"
+            #include "..\..\..\configuration\squadMarkers\squadMarkers_opfor.sqf"
+            #include "..\..\..\configuration\squadMarkers\squadMarkers_indfor.sqf"
+            #include "..\..\..\configuration\squadMarkers\squadMarkers_civ.sqf"
+        };
 
         f_var_squadMarkers_configLoaded = true;
     };

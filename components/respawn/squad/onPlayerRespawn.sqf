@@ -12,7 +12,7 @@ params ["_newUnit", "_oldUnit", "_respawn", "_respawnDelay"];
 private _didFirstSpawn = missionNamespace getVariable ["f_var_squad_didFirstSpawn", false];
 missionNamespace setVariable ["f_var_squad_didFirstSpawn", true];
 
-if ((!didJip) and _didFirstSpawn) exitWith 
+if (didJip or ((!didJip) and _didFirstSpawn)) exitWith 
 {
 	#ifdef ALLOW_TELEPORT_UPON_RESPAWN
 
@@ -20,5 +20,6 @@ if ((!didJip) and _didFirstSpawn) exitWith
 
 	#endif
 
+	f_var_groupPicker_disableCancel = true;
 	createDialog "CAFE_GroupPicker_Dialog";
 };
