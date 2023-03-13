@@ -37,6 +37,12 @@ COPY_ADDONS(TO,FROM);
         COPY_ADDONS(lat,rif);
         The Anti-tank loadout now has all of the Rifleman's randomisation.
 
+COPY_HATS(TO,FROM);
+COPY_VESTS(TO,FROM);
+COPY_BACKPACKS(TO,FROM);
+-   Copies only the hat, vest or backpack randomisation from one unit-type to another one.
+    This is useful in situations where you only want to copy one type of randomisation from another unit-type.
+
 CLEAR_HATS(UNIT_NAME);
 -   Empties the "random hats" list for the unit.
     This is useful for copying addons from other unit-types, and then changing parts o them around.
@@ -47,11 +53,11 @@ CLEAR_HATS(UNIT_NAME);
         The Machinegunner now has all of the Rifleman's randomisations.
         CLEAR_HATS(lmg);
         ADD_HAT(lmg,"H_Bandanna_cbr");
-        All Machinegunners now have random bandanas, but they still have random uniforms etc.
+        All Machinegunners now have bandanas, but they still have random uniforms etc.
 
-CLEAR_UNIFORM(UNIT_NAME);
-CLEAR_VEST(UNIT_NAME);
-CLEAR_BACKPACK(UNIT_NAME);
+CLEAR_UNIFORMS(UNIT_NAME);
+CLEAR_VESTS(UNIT_NAME);
+CLEAR_BACKPACKS(UNIT_NAME);
 -   These all work the same as the CLEAR_HATS command.  The only difference is that they empty "random lists" for uniforms, vests and backpacks.
 
 CLEAR_ADDONS(UNIT_NAME);
