@@ -42,6 +42,7 @@ class gearScriptRadios
 class gearScript_zen
 {
     file = "components\gearScript\zen";
+    class zen_createLoadoutLocker{};
     class zen_createSupplyCrate{};
     class zen_createSupplyCrate_followUpDialog{};
     class zen_createSupplyCrate_performAction{};
