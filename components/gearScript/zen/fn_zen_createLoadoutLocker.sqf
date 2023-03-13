@@ -6,7 +6,7 @@ params ["_position", "_unit"];
 
 if (!isNull _unit) exitWith
 {
-    ["Cannot use this module on units.  Try on ground, vehicles or containers."] call zen_common_fnc_showMessage;
+    ["Cannot use this module on units.  Try again on an empty space."] call zen_common_fnc_showMessage;
 };
 
 private _createLocker = 
