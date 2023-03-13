@@ -6,6 +6,8 @@ class CfgRespawnTemplates
 
 	#include "squad\respawnTemplates.hpp"
 
+	#include "tickets\respawnTemplates.hpp"
+
 	#include "timed\respawnTemplates.hpp"
 
 	#include "triggeredWave\respawnTemplates.hpp"
