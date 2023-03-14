@@ -4,21 +4,31 @@ CLIENT_ONLY;
 
 params ["_position", "_unit"];
 
-if (!isNull _unit) exitWith
+if ((!isNull _unit) and {_unit getVariable ["f_var_isLoadoutLocker", false]}) exitWith
 {
-    ["Cannot use this module on objects.  Try again on an empty space."] call zen_common_fnc_showMessage;
+    ["This object is already a loadout locker and cannot be reassigned."] call zen_common_fnc_showMessage;
 };
+
 
 private _createLocker = 
 {
     params ["_dialogValues", "_args"];
     _dialogValues params ["_chosenFaction"];
-    _args params ["_position"];
+    _args params ["_position", "_locker"];
 
-    private _lockerModel = ["Metal_Locker_F", "Land_OfficeCabinet_02_F"] select (isNull (configFile >> "CfgVehicles" >> "Metal_Locker_F"));
-    private _locker = _lockerModel createVehicle [0,0,0];
-    _locker setPosASL _position;
+    if (isNull _locker) then
+    {
+        private _lockerModel = ["Metal_Locker_F", "Land_OfficeCabinet_02_F"] select (isNull (configFile >> "CfgVehicles" >> "Metal_Locker_F"));
+        _locker = _lockerModel createVehicle [0,0,0];
+        _locker setPosASL _position;
+    };
 
+    // In case picked object becomes a locker while zeus is in the side selection menu.
+    if (_locker getVariable ["f_var_isLoadoutLocker", false]) exitWith
+    {
+        ["This object is already a loadout locker and cannot be reassigned."] call zen_common_fnc_showMessage;
+    };
+    
     [_locker, _chosenFaction] remoteExec ["f_fnc_createLoadoutLocker", 0, _locker];
 };
 
