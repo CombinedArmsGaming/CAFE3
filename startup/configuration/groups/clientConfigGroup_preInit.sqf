@@ -9,9 +9,6 @@ CLIENT_ONLY;
 // Debug settings
 #include "..\internals\debug.sqf"
 
-// Radios
-#include "..\..\..\configuration\radios\acre.sqf"
-
 // Insignia
 #include "..\internals\insigniaDefinition.sqf"
 

@@ -12,10 +12,6 @@ INIT_COMPONENT(briefing)
 // Ceasefire
 INIT_COMPONENT(ceasefire)
 
-// CAFE - Radio Systems Support
-// Credits: Please see the CAFE online manual (https://github.com/CombinedArmsGaming/CAFE3/wiki)
-INIT_COMPONENT(radios)
-
 INIT_COMPONENT(miscClient)
 
 INIT_COMPONENT(miscShared)

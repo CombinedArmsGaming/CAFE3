@@ -32,13 +32,6 @@ class gearScriptCrates
     class addSplintsToCrate{};
 };
 
-class gearScriptRadios
-{
-    file = "components\gearScript\radioSupport";
-    class removeRadioFromItems{};
-    class searchAndDestroyRadios{};
-};
-
 class gearScript_zen
 {
     file = "components\gearScript\zen";

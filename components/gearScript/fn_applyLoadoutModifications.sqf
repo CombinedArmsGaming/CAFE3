@@ -9,14 +9,8 @@ if (count _loadout != 10) then
 	_loadout = _loadout#0;
 };
 
-_uniform = _loadout#3;
-_vest = _loadout#4;
-_backpack = _loadout#5;
-
-[_uniform] call f_fnc_searchAndDestroyRadios;
-[_vest] call f_fnc_searchAndDestroyRadios;
-[_backpack] call f_fnc_searchAndDestroyRadios;
-
-[_loadout] call f_fnc_removeRadioFromItems;
+// _uniform = _loadout#3;
+// _vest = _loadout#4;
+// _backpack = _loadout#5;
 
 _loadout

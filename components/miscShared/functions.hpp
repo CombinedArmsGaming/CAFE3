@@ -14,7 +14,6 @@ class miscShared
     class makeExplosiveBig{};
     class attachKeepOrient{};
     class activatePlayer{};
-    class radioAlarm{};
 	class giveUnitGodmode{};
     class applyInsignia{};
     class formatTimeDuration{};
