@@ -53,19 +53,20 @@ if (IS_PLAYER) then
 
 _locker setVariable ["f_var_isLoadoutLocker", true];
 
-if (isServer) then
+
+_bagType = switch (_gearVariant) do
 {
-    _bagType = switch (_gearVariant) do
-    {
-        case ("blufor"):      {"Land_TentSolar_01_folded_bluewhite_F"};
-        case ("opfor"):       {"Land_TentSolar_01_folded_redwhite_F"};
-        case ("indfor"):      {"Land_TentSolar_01_folded_olive_F"};
-        case ("guerrilla"):   {"Land_TentSolar_01_folded_olive_F"};
-        case ("civilian"):    {"Land_TentSolar_01_folded_sand_F"};
-        default               {"RoadCone_L_F"};
-    };
-
-    _lockerBag = _bagType createVehicle [0,0,0];
-    _lockerBag attachTo [_locker, [0,0,1]];
-
+    case ("blufor"):      {"Land_TentSolar_01_folded_bluewhite_F"};
+    case ("opfor"):       {"Land_TentSolar_01_folded_redwhite_F"};
+    case ("indfor"):      {"Land_TentSolar_01_folded_olive_F"};
+    case ("guerrilla"):   {"Land_TentSolar_01_folded_olive_F"};
+    case ("civilian"):    {"Land_TentSolar_01_folded_sand_F"};
+    default               {"RoadCone_L_F"};
 };
+
+_lockerBag = _bagType createVehicleLocal [0,0,0];
+
+private _lockerHeightTop = (0 boundingBoxReal _locker) # 1 # 2;
+private _bagHeightBottom = (0 boundingBoxReal _lockerBag) # 0 # 2;
+
+_lockerBag attachTo [_locker, [0,0,_lockerHeightTop - _bagHeightBottom]];
