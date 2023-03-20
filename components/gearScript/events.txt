@@ -1,0 +1,104 @@
+
+GEARSCRIPT EVENTS - Index:
+
+    CA_PreGearscriptCrate_Local
+    CA_PostGearscriptCrate_Local
+    CA_PreGearscriptUnit_Local
+    CA_PostGearscriptUnit_Local
+
+
+---------------------------
+CA_PreGearscriptCrate_Local
+---------------------------
+
+    Local event which runs just before a crate is gearscripted.  Runs local to the crate.
+    Allows modification of the crate contents by altering the provided crate array.
+    Prior-registered handlers may alter the contents that reach your handler.  Be aware of this while writing your handler.
+    The contents can also be empty if the gearscript was not created correctly, or it was simply created empty.
+
+    The crate array format is:
+    [
+        [
+            "itemKind",
+            [
+                "ItemClassName",
+                Amount (int)
+            ]
+        ],
+        ...
+    ]
+
+    Example call site:
+    ["CA_PreGearscriptCrate_Local", [_typeOfUnit, _unit, _faction, +_crateArray]] call CBA_fnc_localEvent;
+
+    _typeOfUnit - String
+        Name of crate type, eg. "crate_small" etc.
+    
+    _unit - Object
+        The crate which will be gearscripted.
+
+    _faction - String
+        The faction that the crate contents come from.
+
+    _crateArray - Array
+        The contents which will be placed into the crate.
+        This will be a copy of the original array.  This allows you to modify the contents.
+        This array is passed by-reference into each handler, so gradual alterations can be performed.
+        If you want to cancel the crate being gearscripted, return an empty array from the handler.
+
+
+---------------------------
+CA_PostGearscriptCrate_Local
+---------------------------
+
+    Identical to the CA_PreGearscriptCrate_Local event, but runs just after the crate is gearscripted.
+    This event cannot be used to modify the loadout.
+
+
+---------------------------
+CA_PreGearscriptUnit_Local
+---------------------------
+
+    Local event which runs just before a unit is gearscripted.  Runs local to the unit.
+    Allows modification of the unit's loadout by altering the provided loadout array.
+    Prior-registered handlers may alter the loadout that reach your handler.  Be aware of this while writing your handler.
+    The contents can also be empty if the gearscript was not created correctly, or it was simply created empty.
+
+    The loadout format is a Unit Loadout Array:
+    https://community.bistudio.com/wiki/Unit_Loadout_Array
+
+    The extended array will be the CBA Extended Loadout add-on array, which will normall take the format of:
+    [["key", (value)], ...]
+
+    If there is no extended array, it will default to an empty array.  This can be used to pass info to further handlers.
+
+    Example call site:
+    ["CA_PreGearscriptUnit_Local", [_typeOfUnit, _unit, _faction, _loadout, _extendedArray]] call CBA_fnc_localEvent;
+
+    _typeOfUnit - String
+        Name of unit type, eg. "rif" etc.
+    
+    _unit - Object
+        The unit which will be gearscripted.
+
+    _faction - String
+        The faction that the loadout came from.
+
+    _loadout - Array
+        The loadout which will be given to the unit.
+        This will be a copy of the original array.  This allows you to modify the contents.
+        This array is passed by-reference into each handler, so gradual alterations can be performed.
+        If you want to cancel the unit being gearscripted, return an empty array from the handler.  
+
+    _extendedArray - Array
+        The extended-info array from a CBA Extended Loadout.
+        This array can contain arbitrary info, but it generally looks like the example above.
+        This array is passed by-reference into each handler, so gradual alterations can be performed.
+
+
+---------------------------
+CA_PostGearscriptUnit_Local
+---------------------------
+
+    Identical to the CA_PreGearscriptUnit_Local event, but runs just after the unit is gearscripted.
+    This event cannot be used to modify the loadout.
