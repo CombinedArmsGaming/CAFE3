@@ -23,3 +23,6 @@ CLIENT_ONLY;
 
 // Logi vics
 #include "..\internals\logiVehicle.sqf"
+
+// Radio
+#include "..\internals\radio.sqf"
