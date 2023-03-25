@@ -1,4 +1,4 @@
-// ACRE integration for MCFW, by Bubbus.
+// ACRE integration for CAFE, by Bubbus.
 
 params ["_unit", "_radios"];
 

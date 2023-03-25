@@ -16,7 +16,7 @@ private _radiosForUnit = [_side, _typeOfUnit, _groupName] call f_fnc_acre_getRad
 diag_log format ["radios are %1", _radiosForUnit];
 if (count _radiosForUnit <= 0) exitWith {};
 
-private _unitGetsBackpackRadio = (_radiosForUnit findIf {_x in f_arr_acre_backpackRadios}) >= 0;
+private _unitGetsBackpackRadio = (_radiosForUnit findIf {(_x#0) in f_arr_acre_backpackRadios}) >= 0;
 
 private _uniform = _loadout # 3;
 private _vest = _loadout # 4;
@@ -39,12 +39,12 @@ if (_vest isEqualTo []) then
     if (_x in f_arr_acre_backpackRadios) then
     {
         diag_log format ["adding to backpack %1", _x];
-        (_backpack#1) pushBack [_x, 1];
+        (_backpack#1) pushBack [_x#0, 1];
     }
     else
     {
         diag_log format ["adding to vest %1", _x];
-        (_vest#1) pushBack [_x, 1];
+        (_vest#1) pushBack [_x#0, 1];
     };
 }
 foreach _radiosForUnit;
