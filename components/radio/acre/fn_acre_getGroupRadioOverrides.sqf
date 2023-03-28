@@ -1,8 +1,7 @@
 // ACRE integration for CAFE, by Bubbus
 
-params ["_unit"];
+params ["_group"];
 
-private _group = group _unit;
 private _groupId = groupId _group;
 
 private _sideName = switch (side _group) do 

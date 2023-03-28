@@ -15,11 +15,8 @@ private _filterOutRadios =
         if !([_name] call acre_api_fnc_isBaseRadio or {[_name] call acre_api_fnc_isRadio}) then
         {
             _retArray pushBack _x;
-        }
-        else
-        {
-            diag_log format ["discarding radio %1", _x];
         };
+
     } forEach (_this#1);
 
     [_this#0, _retArray]
@@ -40,5 +37,3 @@ _loadout set [5, _backpack call _filterOutRadios];
 
 private _assignedItems = _loadout # 9;
 _assignedItems set [2, ""];
-
-diag_log format ["resulting loadout is %1", _loadout];

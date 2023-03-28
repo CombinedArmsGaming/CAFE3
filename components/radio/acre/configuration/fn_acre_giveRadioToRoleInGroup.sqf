@@ -1,7 +1,7 @@
 params ["_radio", "_channelName", "_side", "_role", "_groupName"];
 
 private _multipleGroups = (typeName _groupName isEqualTo "ARRAY");
-private _multipleRoles = (typeName _groupName isEqualTo "ARRAY");
+private _multipleRoles = (typeName _role isEqualTo "ARRAY");
 
 if (_multipleGroups) exitWith
 {

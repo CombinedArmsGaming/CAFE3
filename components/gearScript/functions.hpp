@@ -1,11 +1,11 @@
 class gearScript
 {
     file = "components\gearScript";
-    class addGogglesEventHandler{preInit=1};
+    class addGogglesEventHandler{preInit=1;};
     class addInsigniaMonitor{};
     class addItemToLoadoutContainer{};
     class addLinkedItemToLoadout{};
-    class addMaxLoadEventHandler{preInit=1};
+    class addMaxLoadEventHandler{preInit=1;};
     class alterUnitMaxLoads{};
     class applyGunbag{};
     class applyLoadout{};

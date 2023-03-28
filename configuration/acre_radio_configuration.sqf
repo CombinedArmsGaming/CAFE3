@@ -3,6 +3,13 @@
 
     Use this file to set up a radio net for your mission.  All sides can be configured differently, and all ACRE radios can be used.
 
+    RADIO NAMES REFERENCE:
+
+        The following radios will be added to the unit's vest or uniform:
+            "ACRE_PRC343", "ACRE_PRC152", "ACRE_PRC148", "ACRE_BF888S", "ACRE_SEM52SL"
+        
+        The following radios will be added to the unit's backpack (if the unit has no backpack, one will be given):
+            "ACRE_PRC117F", "ACRE_PRC77", "ACRE_SEM70"
 
     COMMAND ARGUMENTS REFERENCE:
 
@@ -30,6 +37,7 @@
             f_fnc_acre_giveRadioToRoleInGroup
             f_fnc_acre_removeRadioFromAllInRole
             f_fnc_acre_removeRadioFromAllInGroup
+            f_fnc_acre_removeRadioFromRoleInGroup
 
         f_fnc_acre_giveRadioToAllUnits
             Gives a radio tuned to the given channel to every unit on the given side.
@@ -107,7 +115,7 @@ f_var_acre_backpackRadio   = "ACRE_PRC117F"; // Backpack Radio
 f_var_acre_bluforRadioNet   = "BLU NET";
 f_var_acre_opforRadioNet    = "OPF NET";
 f_var_acre_indforRadioNet   = "IND NET";
-f_var_acre_civilianRadioNet = "CIV NET";
+f_var_acre_civRadioNet      = "CIV NET";
 
 
 // Define your radio structure here - see the comment at the top of the file for example usage.
@@ -132,7 +140,8 @@ f_arr_acre_languageMap =
     ["blu", "Friendlese"],
     ["ind", "Foreignese"],
     ["opf", "Enemese"],
-    ["civ", "Civilish"]
+    ["civ", "Civilish"],
+    ["huh", "Some secret 5th language that nobody speaks"]
 ];
 
 
@@ -141,4 +150,4 @@ f_arr_acre_languageMap =
 f_arr_acre_languages_blufor = ["blu"];
 f_arr_acre_languages_opfor = ["ind"];
 f_arr_acre_languages_indfor = ["opf"];
-f_arr_acre_languages_civilian = ["civ"];
+f_arr_acre_languages_civ = ["civ"];

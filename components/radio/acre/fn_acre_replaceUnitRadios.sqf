@@ -11,9 +11,7 @@ params ["_typeOfUnit", "_unit", "_faction", "_loadout", "_extendedArray"];
 private _groupName = groupId group _unit;
 private _side = side group _unit;
 
-diag_log "checking radios";
 private _radiosForUnit = [_side, _typeOfUnit, _groupName] call f_fnc_acre_getRadiosForRoleInGroup;
-diag_log format ["radios are %1", _radiosForUnit];
 if (count _radiosForUnit <= 0) exitWith {};
 
 private _unitGetsBackpackRadio = (_radiosForUnit findIf {(_x#0) in f_arr_acre_backpackRadios}) >= 0;
@@ -38,15 +36,13 @@ if (_vest isEqualTo []) then
 {
     if (_x in f_arr_acre_backpackRadios) then
     {
-        diag_log format ["adding to backpack %1", _x];
         (_backpack#1) pushBack [_x#0, 1];
     }
     else
     {
-        diag_log format ["adding to vest %1", _x];
         (_vest#1) pushBack [_x#0, 1];
     };
 }
 foreach _radiosForUnit;
 
-diag_log format ["final loadout is %1", _loadout];
+[_unit, (_radiosForUnit apply {_x#0})] call f_fnc_acre_configureRadioPresets;

@@ -11,8 +11,8 @@ private _performLanguageAssignment =
 		case blufor: 		{f_arr_acre_languages_blufor};
 		case opfor: 		{f_arr_acre_languages_opfor};
 		case independent: 	{f_arr_acre_languages_indfor};
-		case civilian: 		{f_arr_acre_languages_civilian};
-		default 			{f_arr_acre_languages_civilian};
+		case civilian: 		{f_arr_acre_languages_civ};
+		default 			{f_arr_acre_languages_civ};
 	};
 
 	DEBUG_FORMAT2_LOG("[RADIO-2] Setting languages for player '%1' to %2.",_unit, _languages)

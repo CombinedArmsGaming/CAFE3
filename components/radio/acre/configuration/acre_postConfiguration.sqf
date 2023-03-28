@@ -1,7 +1,6 @@
-[] call f_fnc_initialiseRadioPresets;
+diag_log "[RADIOS-2]: acre_postConfig";
 
-{
-    _x call acre_api_fnc_babelAddLanguageType;
-} foreach f_arr_acre_languageMap;
+[] call f_fnc_acre_initialiseRadioPresets;
+[] call f_fnc_acre_initialiseLanguages;
 
 f_radios_loadedSettings = true;
