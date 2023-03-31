@@ -8,8 +8,6 @@ private _visitedPresetNets = [];
 {
 	_x params ["_side", "_netType", "_channelNames"];
 
-	diag_log format ["[INITRDO]: %1", _x];
-
 	private _sideStr = [_side] call f_fnc_sideToString;
 
 	private _preset = missionNamespace getVariable [format ["f_var_acre_%1RadioNet", _sideStr], ""];
@@ -23,6 +21,8 @@ private _visitedPresetNets = [];
 
 	{
 		private _radioName = _x;
+
+		// Important: if we use a preset without templating it upon one of these defaults, everything breaks.
 		[_radioName, "default2", _preset] call acre_api_fnc_copyPreset;		
 
 		if (_radioName in f_map_acre_channelNameParameters) then
@@ -30,10 +30,11 @@ private _visitedPresetNets = [];
 			private _nameParam = f_map_acre_channelNameParameters getOrDefault [_radioName, "label"];
 			
 			{
-				diag_log format ["[INITRDO2]: %1", [_radioName, _preset, _forEachIndex + 1, _nameParam, _x]];
 				[_radioName, _preset, _forEachIndex + 1, _nameParam, _x] call acre_api_fnc_setPresetChannelField;
 			} forEach _channelNames;
 		};
+
+		f_map_acre_radioNameChannelMap set [_radioName, _channelNames];
 
 	} forEach _radioNames;
 

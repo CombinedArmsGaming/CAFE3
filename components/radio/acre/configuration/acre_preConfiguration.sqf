@@ -1,5 +1,3 @@
-diag_log "[RADIOS-2]: acre_preConfig";
-
 f_map_radioAssignments = createHashMap;
 f_map_radioChannels = createHashMap;
 

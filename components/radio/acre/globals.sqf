@@ -11,4 +11,4 @@ f_map_acre_channelNameParameters = createHashMapFromArray
     ["ACRE_PRC117F", "name"]
 ];
 
-f_var_acre_defaultInsertRadioInto = 4; // 4 = vest index
+f_map_acre_radioNameChannelMap = createHashMap;

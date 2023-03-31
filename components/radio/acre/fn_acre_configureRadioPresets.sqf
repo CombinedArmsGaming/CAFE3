@@ -2,10 +2,7 @@
 
 params ["_unit"];
 
-diag_log format ["[CFGRDO]: %1", _this];
-
 {
-	diag_log format ["[CFGRDO2]: %1", _x];
 	private _radioName = _x;
 
 	private _presetName = if (typeName _x isEqualTo "ARRAY") then
@@ -24,8 +21,7 @@ diag_log format ["[CFGRDO]: %1", _this];
 			default 		 {"default"};
 		}
 	};
-
-	diag_log format ["[CFGRDO3]: %1", [_radioName, _presetName]];
+	
 	[_radioName, _presetName] call acre_api_fnc_setPreset;
 
 } forEach f_arr_acre_allRadios;

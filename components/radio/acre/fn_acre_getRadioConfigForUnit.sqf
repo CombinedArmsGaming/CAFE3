@@ -8,4 +8,10 @@ private _group = group _unit;
 
 private _radiosForUnit = [side _group, _typeOfUnit, groupId _group] call f_fnc_acre_getRadiosForRoleInGroup;
 
-//private _groupRadioOverrides = [_group] call 
+diag_log format ["[GETRDO1] %1", _radiosForUnit];
+
+private _groupRadioOverrides = [_group, _radiosForUnit] call f_fnc_acre_getGroupRadioOverrides;
+
+diag_log format ["[GETRDO2] %1", _groupRadioOverrides];
+
+_groupRadioOverrides
