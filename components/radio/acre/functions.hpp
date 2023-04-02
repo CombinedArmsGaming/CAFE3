@@ -10,6 +10,7 @@ class radio_acre
 	class acre_getAllRadiosForUnit{};
 	class acre_getGroupRadioOverrides{};
 	class acre_getRadioConfigForUnit{};
+	class acre_getRadioList{};
 	class acre_initialiseLanguages{};
 	class acre_initialiseRadioPresets{};
     class acre_removeRadiosFromLoadout{};
