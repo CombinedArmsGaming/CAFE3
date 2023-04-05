@@ -104,30 +104,25 @@ _radioIcon ctrlCommit 0;
 
 f_fnc_radioList_monitorForRefresh = 
 {
-    // Comment description.
     [
-        // Script
         {
             private _compare = [side group player, [side group player] call f_fnc_getRadioList, [player] call f_fnc_getRadioChannelsForUnit];
 
             if ((_this#0) isNotEqualTo _compare) then
             {
-                (_this#1) call f_fnc_refreshRadioList;
+                ((_this#1) + _compare) call f_fnc_refreshRadioList;
             };
 
             [_compare, _this#1] call f_fnc_radioList_monitorForRefresh;
         },
-    
-        // Arguments
         _this,
-    
-        // Delay (secs)
-        10
-    
+        10    
     ] call CBA_fnc_waitAndExecute;
 };
 
+private _groupSide = side group player;
+
 [
-    [side group player, [side group player] call f_fnc_getRadioList, [player] call f_fnc_getRadioChannelsForUnit],
+    [_groupSide, [_groupSide] call f_fnc_getRadioList, [player] call f_fnc_getRadioChannelsForUnit],
     [_titleBar, _radiosTable, _yourRadiosTable]
 ] call f_fnc_radioList_monitorForRefresh;

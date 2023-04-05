@@ -1,14 +1,14 @@
-params ["_titleBar", "_radiosTable", "_yourRadiosTable"];
+params ["_titleBar", "_radiosTable", "_yourRadiosTable", ["_playerSide", ""], ["_radioList", []], ["_yourRadioList", []]];
 
 disableSerialization;
 
+if (_playerSide isEqualTo "") then { _playerSide = side group player };
 
 _radioMod = [] call f_fnc_getRadioModInUse;
-_titleBar ctrlSetText format [" %1: Radio list for %2", _radioMod, toUpper ([side group player] call f_fnc_sidetoString)];
+_titleBar ctrlSetText format [" %1: Radio list for %2", _radioMod, toUpper ([_playerSide] call f_fnc_sidetoString)];
 _titleBar ctrlCommit 0;
 
-
-private _radioList = [side group player] call f_fnc_getRadioList;
+if (_radioList isEqualTo []) then { _radioList = [_playerSide] call f_fnc_getRadioList };
 
 tvClear _radiosTable;
 
@@ -25,7 +25,8 @@ tvClear _radiosTable;
 tvExpandAll _radiosTable;
 
 
-private _yourRadioList = [player] call f_fnc_getRadioChannelsForUnit;
+if (_yourRadioList isEqualTo []) then { _yourRadioList = [player] call f_fnc_getRadioChannelsForUnit };
+
 if (["acre_sys_radio"] call ace_common_fnc_isModLoaded) then 
 {
     _yourRadioList = _yourRadioList apply 
