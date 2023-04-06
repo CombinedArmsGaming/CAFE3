@@ -37,7 +37,7 @@ if (["acre_sys_radio"] call ace_common_fnc_isModLoaded) then
 
 tvClear _yourRadiosTable;
 
-_yourRadiosTable tvAdd [[], "Your default channels:"];
+_yourRadiosTable tvAdd [[], "Your assigned channels:"];
 {
     _yourRadiosTable tvAdd [[0], format ["%1: %2", _x#0, _x#1]];
 } foreach _yourRadioList;

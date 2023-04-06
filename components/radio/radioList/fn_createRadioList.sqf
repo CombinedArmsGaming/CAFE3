@@ -8,9 +8,9 @@ private _idc = 48210;
 private _ctrlGroup = _display ctrlCreate ["RscControlsGroupNoScrollbars", _idc]; _idc = _idc + 1;
 _ctrlGroup ctrlSetPosition 
 [
-    (safeZoneW + safeZoneX) - (safeZoneW * 0.2),
+    (safeZoneW + safeZoneX) - (safeZoneW * 0.227),
     safeZoneY + (safeZoneH * 0.04),
-    safeZoneW * 0.2,
+    safeZoneW * 0.227,
     safeZoneH * 0.853
 ];
 _ctrlGroup ctrlCommit 0;
@@ -23,7 +23,7 @@ _background ctrlSetPosition
 [
     0,
     0,
-    safeZoneW * 0.2,
+    safeZoneW * 0.227,
     safeZoneH * 0.853
 ];
 _background ctrlSetBackgroundColor [0, 0, 0, 0.5];
@@ -39,7 +39,7 @@ _radiosTable ctrlSetPosition
 [
     safeZoneW * 0.025,
     safeZoneH * 0.04,
-    (safeZoneW * 0.2) - (safeZoneW * 0.025),
+    (safeZoneW * 0.227) - (safeZoneW * 0.025),
     (safeZoneH * 0.853) - (safeZoneH * 0.08) - (safeZoneH * 0.2)
 ];
 _radiosTable ctrlCommit 0;
@@ -54,7 +54,7 @@ _yourRadiosTable ctrlSetPosition
 [
     safeZoneW * 0.025,
     (safeZoneH * 0.853) - (safeZoneH * 0.2),
-    (safeZoneW * 0.2) - (safeZoneW * 0.025),
+    (safeZoneW * 0.227) - (safeZoneW * 0.025),
     (safeZoneH * 0.2)
 ];
 _yourRadiosTable ctrlCommit 0;
@@ -66,7 +66,7 @@ _titleBar ctrlSetPosition
 [
     safeZoneW * 0.025,
     0,
-    (safeZoneW * 0.2) - (safeZoneW * 0.025),
+    (safeZoneW * 0.227) - (safeZoneW * 0.025),
     safeZoneH * 0.04
 ];
 _titleBar ctrlSetBackgroundColor [0, 0, 0, 0.5];
