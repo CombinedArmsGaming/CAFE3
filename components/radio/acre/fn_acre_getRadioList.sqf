@@ -1,7 +1,8 @@
 params ["_side"];
 
 private _entries = values f_map_radioChannels;
-_entries = _entries select {_x#0 isEqualTo _side};
+private _preset = [_side] call f_fnc_acre_getPresetForSide;
+_entries = _entries select {_x#0 isEqualTo _preset};
 
 private _retArray = [];
 

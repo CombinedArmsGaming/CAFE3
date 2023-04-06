@@ -1,25 +1,20 @@
 // ACRE integration for CAFE, by Bubbus.
 
-params ["_unit"];
+params ["_unit", "_radioNetOverrides"];
+
+private _radioOverrideMap = createHashMapFromArray _radioNetOverrides;
 
 {
 	private _radioName = _x;
+	private _netOverride = _radioOverrideMap getOrDefault [_radioName, ""];
 
-	private _presetName = if (typeName _x isEqualTo "ARRAY") then
+	private _presetName = if (_netOverride isNotEqualTo "") then
 	{
-		_radioName = _x#0;
-		_x#1
+		_netOverride
 	}
 	else
 	{
-		switch (side group _unit) do
-		{
-			case west: 		 {f_var_acre_bluforRadioNet};
-			case east: 		 {f_var_acre_opforRadioNet};
-			case resistance: {f_var_acre_indforRadioNet};
-			case civilian: 	 {f_var_acre_civRadioNet};
-			default 		 {"default"};
-		}
+		[side group _unit] call f_fnc_acre_getPresetForSide
 	};
 	
 	[_radioName, _presetName] call acre_api_fnc_setPreset;

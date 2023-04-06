@@ -39,6 +39,8 @@
             f_fnc_acre_removeRadioFromAllInGroup
             f_fnc_acre_removeRadioFromRoleInGroup
 
+        These commands can be used in any order - the proper behaviour is figured out by the framework.
+
         f_fnc_acre_giveRadioToAllUnits
             Gives a radio tuned to the given channel to every unit on the given side.
             Args:
@@ -103,31 +105,34 @@
 
 // RADIO STRUCTURE
 
-// REMEMBER - IN ACRE, an ItemRadio will be automatically turned into an ACRE_PRC343!
-f_var_acre_standardSHRadio = "ACRE_PRC343";  // Standard Short-range
-f_var_acre_standardLRRadio = "ACRE_PRC152";  // Standard Long-range
-f_var_acre_extraLRRadio    = "ACRE_PRC148";  // Additional LR radio
-f_var_acre_backpackRadio   = "ACRE_PRC117F"; // Backpack Radio
+// REMEMBER - IN ACRE, an ItemRadio (the vanilla A3 radio) will be automatically turned into an ACRE_PRC343!
+_shortRadio     = "ACRE_PRC343";  // Standard Short-range
+_longRadio      = "ACRE_PRC152";  // Standard Long-range
+_extraLongRadio = "ACRE_PRC148";  // Additional LR radio
+_backpackRadio  = "ACRE_PRC117F"; // Backpack Radio
 
 
 // Defines the radio net each side uses.
 // If you want some sides to share nets, match the nets.
-f_var_acre_bluforRadioNet   = "BLU NET";
-f_var_acre_opforRadioNet    = "OPF NET";
-f_var_acre_indforRadioNet   = "IND NET";
-f_var_acre_civRadioNet      = "CIV NET";
+f_var_acre_bluforRadioNet = "BLU NET";
+f_var_acre_opforRadioNet  = "OPF NET";
+f_var_acre_indforRadioNet = "IND NET";
+f_var_acre_civRadioNet    = "CIV NET";
 
 
 // Define your radio structure here - see the comment at the top of the file for example usage.
 // The default configuration below shows a BLUFOR radio net for a small infantry mission, including a FAC (but no pilot - try adding one!).
-[f_var_acre_standardSHRadio, "ALPHA SR", west, "ALPHA"] call f_fnc_acre_giveRadioToAllInGroup;
-[f_var_acre_standardSHRadio, "BRAVO SR", west, "BRAVO"] call f_fnc_acre_giveRadioToAllInGroup;
-[f_var_acre_standardSHRadio, "CHARLIE SR", west, "CHARLIE"] call f_fnc_acre_giveRadioToAllInGroup;
-[f_var_acre_standardSHRadio, "COMMAND SR", west, "COMMAND"] call f_fnc_acre_giveRadioToAllInGroup;
+[_shortRadio, "ALPHA SR", west, "ALPHA"] call f_fnc_acre_giveRadioToAllInGroup;
+[_shortRadio, "BRAVO SR", west, "BRAVO"] call f_fnc_acre_giveRadioToAllInGroup;
+[_shortRadio, "CHARLIE SR", west, "CHARLIE"] call f_fnc_acre_giveRadioToAllInGroup;
+[_shortRadio, "COMMAND SR", west, "COMMAND"] call f_fnc_acre_giveRadioToAllInGroup;
 
-[f_var_acre_standardLRRadio, "GROUND CMD", west, ["sl", "ftl", "co", "med"]] call f_fnc_acre_giveRadioToAllInRole;
+[_longRadio, "GROUND CMD", west, ["sl", "ftl", "co", "med"]] call f_fnc_acre_giveRadioToAllInRole;
 
-[f_var_acre_backpackRadio, "AIR CMD", west, "fac"] call f_fnc_acre_giveRadioToAllInRole;
+// Be careful - if you use a radio net override, it will affect all radios of that type - if you want to add an impostor radio like below, use a unique kind of radio.
+[_extraLongRadio, ["SUS LR", f_var_acre_opforRadioNet], west, "sus"] call f_fnc_acre_giveRadioToAllInRole;
+
+[_backpackRadio, "AIR CMD", west, "fac"] call f_fnc_acre_giveRadioToAllInRole;
 
 
 // ====================================================================================
@@ -135,7 +140,7 @@ f_var_acre_civRadioNet      = "CIV NET";
 
 // Defines the languages that exist in the mission.
 // String id, String display-name.
-f_arr_acre_languageMap =
+_languageMap =
 [
     ["blu", "Friendlese"],
     ["ind", "Foreignese"],
@@ -147,7 +152,7 @@ f_arr_acre_languageMap =
 
 // Defines the language(s) that players on each side can speak.
 // Needs to match the String id above.  Can use more than one language per side.
-f_arr_acre_languages_blufor = ["blu"];
-f_arr_acre_languages_opfor = ["ind"];
-f_arr_acre_languages_indfor = ["opf"];
-f_arr_acre_languages_civ = ["civ"];
+_bluforLanguage = ["blu"];
+_opforLanguage  = ["ind"];
+_indforLanguage = ["opf"];
+_civLanguage    = ["civ"];

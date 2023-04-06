@@ -10,5 +10,3 @@ f_map_acre_channelNameParameters = createHashMapFromArray
     ["ACRE_PRC148", "label"],
     ["ACRE_PRC117F", "name"]
 ];
-
-f_map_acre_radioNameChannelMap = createHashMap;

@@ -9,8 +9,8 @@ private _configOut = [];
 
 {
 	private _channelOverrideKey = format ["f_var_acre_groupRadio::%1::%2::%3", _sideName, _groupId, _x#0];
-	private _newChannel = missionNamespace getVariable [_channelOverrideKey, _x#1];
-	_configOut pushBack [_x#0, _newChannel];
+	private _newConfig = missionNamespace getVariable [_channelOverrideKey, _x];
+	_configOut pushBack _newConfig;
 
 } foreach _existingConfig;
 

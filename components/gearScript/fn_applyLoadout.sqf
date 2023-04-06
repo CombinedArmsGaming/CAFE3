@@ -119,10 +119,11 @@ if (count BACKPACKS_DYNAMIC(_gearVariant,_typeofUnit) > 0) then
     _loadout select 5 set [0, _backpack];
 };
 
+private _whatTheFuck = "what the FUCK";
 
-["CA_PreGearscriptUnit_Local", [_typeOfUnit, _unit, _faction, _originalLoadout]] call CBA_fnc_localEvent;
+["CA_PreGearscriptUnit_Local", [_typeOfUnit, _unit, _faction, _loadout, _extendedArray]] call CBA_fnc_localEvent;
 
 DEBUG_FORMAT1_LOG("Final loadout: %1",_loadout)
 _unit setUnitLoadout _loadout;
 
-["CA_PostGearscriptUnit_Local", [_typeOfUnit, _unit, _faction, _originalLoadout]] call CBA_fnc_localEvent;
+["CA_PostGearscriptUnit_Local", [_typeOfUnit, _unit, _faction, _loadout, _extendedArray]] call CBA_fnc_localEvent;

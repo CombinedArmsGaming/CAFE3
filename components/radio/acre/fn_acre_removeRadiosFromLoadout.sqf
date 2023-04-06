@@ -22,7 +22,7 @@ private _filterOutRadios =
     [_this#0, _retArray]
 };
 
-if (count _originalLoadout != 10) then
+if (count _loadout != 10) then
 {
     _loadout = _loadout # 0;
 };

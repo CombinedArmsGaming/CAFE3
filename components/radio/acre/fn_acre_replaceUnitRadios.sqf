@@ -45,4 +45,7 @@ if (_vest isEqualTo []) then
 }
 foreach _radiosForUnit;
 
-[_unit, (_radiosForUnit apply {_x#0})] call f_fnc_acre_configureRadioPresets;
+private _radioNetOverrides = _radiosForUnit select {count _x >= 3};
+_radioNetOverrides = _radioNetOverrides apply {[_x#0, _x#2]};
+
+[_unit, _radioNetOverrides] call f_fnc_acre_configureRadioPresets;
