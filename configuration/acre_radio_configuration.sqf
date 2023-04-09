@@ -11,7 +11,7 @@
         The following radios will be added to the unit's backpack (if the unit has no backpack, one will be given):
             "ACRE_PRC117F", "ACRE_PRC77", "ACRE_SEM70"
 
-    COMMAND ARGUMENTS REFERENCE:
+    RADIO COMMAND ARGUMENTS REFERENCE:
 
         _radio - String
             Name of the radio to give to the units.  This is the class-name of the radio.  For examples, see 'components\radio\acre\globals.sqf'.
@@ -28,7 +28,7 @@
         _role - String OR Array of Strings
             The Gearscript role-name that this configuration applies to.  If multiple role names are provided, the configuration applies to all of them.
 
-    COMMAND REFERENCE:
+    RADIO COMMAND REFERENCE:
 
         Summary:
             f_fnc_acre_giveRadioToAllUnits
@@ -100,6 +100,89 @@
                 // Removes a short-range radio from an extremely suspicious individual in the BLUFOR ALPHA group, which was tuned to "ALPHA SR" net.
                 ["ACRE_PRC343", "ALPHA SR", west, "sus", "ALPHA"] call f_fnc_acre_giveRadioToAllInGroup;
 
+    LANGUAGE COMMAND ARGUMENTS REFERENCE:
+
+        _languages - String OR Array of Strings
+            Name of the language(s) to give to the units.  The languages must exist in the '_languageMap'.
+        
+        _side - Side
+            The side which this configuration applies to.  Multiple sides per command are not supported.
+            
+        _groupName - String OR Array of Strings
+            The name of the group that this configuration applies to.  If multiple group names are provided, the configuration applies to all of them.
+
+        _role - String OR Array of Strings
+            The Gearscript role-name that this configuration applies to.  If multiple role names are provided, the configuration applies to all of them.
+
+    LANGUAGE COMMANDS:
+
+        Summary:
+            f_fnc_acre_giveLanguagesToAllInGroup
+            f_fnc_acre_giveLanguagesToAllInRole
+            f_fnc_acre_giveLanguagesToRoleInGroup
+            f_fnc_acre_removeLanguagesFromAllInGroup
+            f_fnc_acre_removeLanguagesFromAllInRole
+            f_fnc_acre_removeLanguagesFromRoleInGroup
+        
+        These commands can be used in any order - the proper behaviour is figured out by the framework.
+        The default language for each side can be changed via the '_bluforLanguage' etc. lines at the bottom of the file.
+
+        f_fnc_acre_giveLanguagesToAllInGroup
+            Gives the language(s) to all units in the given group(s).
+            Args:
+                ["_languages", "_side", "_groupName"]
+            Example:
+                // On the INDFOR side, gives all members of the "ADVISORS" group the BLUFOR language.
+                // Because they are an INDFOR group, they will already have the INDFOR language, so they will speak both.
+                ["blu", independent, "ADVISORS"] call f_fnc_acre_giveLanguagesToAllInGroup;
+
+        f_fnc_acre_giveLanguagesToAllInRole
+            Gives the language(s) to all units with the given role(s).
+            Args:
+                ["_languages", "_side", "_role"]
+            Example:
+                // On the BLUFOR side, gives all interpreters the Civilian language.
+                // Because they are BLUFOR units, they will already have the BLUFOR language, so they will speak both.
+                ["civ", west, "interpreter"] call f_fnc_acre_giveLanguagesToAllInRole;
+
+        f_fnc_acre_giveLanguagesToRoleInGroup
+            Gives the language(s) to the role(s) in the given group(s).
+            Args:
+                ["_languages", "_side", "_role", "_groupName"]
+            Example:
+                // On the BLUFOR side, gives a very suspicious rifleman in CHARLIE the OPFOR language.  Do the same for the CHARLIE FTL.
+                // Because they are BLUFOR units, they will already have the BLUFOR language, so they will speak both.
+                ["opf", west, ["rif", "ftl"], "CHARLIE"] call f_fnc_acre_giveRadioToAllUnits;
+
+        f_fnc_acre_removeLanguagesFromAllInGroup
+            Removes the language(s) from all units in the given group(s).
+            Args:
+                ["_languages", "_side", "_groupName"]
+            Example:
+                // On the BLUFOR side, removes the BLUFOR language from all members of the "LOCALS" group, then gives them the INDFOR language.
+                // Because they are a BLUFOR group, they automatically have the BLUFOR language.  The BLUFOR language needs to be removed so they can speak only INDFOR language.
+                ["blu", west, "LOCALS"] call f_fnc_acre_removeLanguagesFromAllInGroup;
+                ["ind", west, "LOCALS"] call f_fnc_acre_giveLanguagesToAllInGroup;
+
+        f_fnc_acre_removeLanguagesFromAllInRole
+            Removes the language(s) from all units with the given role(s).
+            Args:
+                ["_languages", "_side", "_role"]
+            Example:
+                // On the BLUFOR side, removes the BLUFOR language from the "VIP" role, then gives them the Civilian language.
+                // Because they are a BLUFOR unit, they automatically have the BLUFOR language.  The BLUFOR language needs to be removed so they can speak only INDFOR language.
+                ["blu", west, "vip"] call f_fnc_acre_removeLanguagesFromAllInRole;
+                ["civ", west, "vip"] call f_fnc_acre_giveLanguagesToAllInRole;
+
+        f_fnc_acre_removeLanguagesFromRoleInGroup
+            Removes the language(s) from the role(s) in the given group(s).
+            Args:
+                ["_languages", "_side", "_role", "_groupName"]
+            Example:
+                // On the BLUFOR side, removes the BLUFOR language from the "VIP" role in the "COMMAND" group, then gives them and the "interpreter" the Civilian language.
+                // Because they are a BLUFOR unit, they automatically have the BLUFOR language.  The BLUFOR language needs to be removed so they can speak only INDFOR language.
+                ["blu", west, "vip", "COMMAND"] call f_fnc_acre_removeLanguagesFromRoleInGroup;
+                ["civ", west, ["vip", "interpreter"], "COMMAND"] call f_fnc_acre_giveLanguagesToAllInRole;
 
 */
 
@@ -131,6 +214,7 @@ f_var_acre_civRadioNet    = "CIV NET";
 
 // Be careful - if you use a radio net override, it will affect all radios of that type - if you want to add an impostor radio like below, use a unique kind of radio.
 [_extraLongRadio, ["SUS LR", f_var_acre_opforRadioNet], west, "sus"] call f_fnc_acre_giveRadioToAllInRole;
+[["blu", "opf"], west, "sus"] call f_fnc_acre_giveLanguagesToAllInRole;
 
 [_backpackRadio, "AIR CMD", west, "fac"] call f_fnc_acre_giveRadioToAllInRole;
 

@@ -6,14 +6,7 @@ private _performLanguageAssignment =
 {
 	params ["_role", "_unit", "_faction"];
 
-	_languages = switch (side group _unit) do
-	{
-		case blufor: 		{f_arr_acre_languages_blufor};
-		case opfor: 		{f_arr_acre_languages_opfor};
-		case independent: 	{f_arr_acre_languages_indfor};
-		case civilian: 		{f_arr_acre_languages_civ};
-		default 			{f_arr_acre_languages_civ};
-	};
+	_languages = [side group _unit, _role, groupId group _unit] call f_fnc_acre_getLanguagesForRoleInGroup;
 
 	DEBUG_FORMAT2_LOG("[RADIO-2] Setting languages for player '%1' to %2.",_unit, _languages)
 
