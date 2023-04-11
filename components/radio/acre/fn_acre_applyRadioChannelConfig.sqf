@@ -39,8 +39,22 @@ private _defaultPreset = [side group player] call f_fnc_acre_getPresetForSide;
 		private _radiosEntry = f_map_radioChannels getOrDefault [_radioKey, [_preset, _netType, []]];
 		
 		private _channelList = _radiosEntry#2;
-		private _channelIndex = _channelList find (_config#1);
-		_channelIndex = (_channelIndex + 1) max 1;
+		private _channelIndex = switch (typeName _channelName) do 
+		{
+			case "SCALAR": 
+			{
+				_channelName
+			};
+			case "STRING": 
+			{				
+				private _index = _channelList find (_channelName);
+				(_index + 1) max 1
+			};
+			default 
+			{
+				throw format ["Invalid channel name %1 (type %2)", _channelName, typeName _channelName];
+			};
+		};
 
 		[_radio, _channelIndex] call acre_api_fnc_setRadioChannel;
 		_unvisitedConfigs deleteAt _index;

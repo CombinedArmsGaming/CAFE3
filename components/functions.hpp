@@ -66,3 +66,13 @@ class ace_gunbag
 		class hasGunbag{};
 	};
 };
+
+
+class acre_ace_interact
+{
+	class overrides
+	{
+    	file = "components\radio\acre";
+		class radioListChildrenActions{};
+	}
+}

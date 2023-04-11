@@ -2,9 +2,9 @@
 
 // Takes a loadout and finds all radios in it.
 
-params ["_unit"];
+params ["_unit", ["_convertToBaseRadios", false]];
 
-private _findRadios =
+private _findRadiosNoConvert =
 {
     params ["_container", "_retArray"];
 
@@ -21,6 +21,26 @@ private _findRadios =
 
     _retArray
 };
+
+private _findRadiosAndConvert =
+{
+    params ["_container", "_retArray"];
+
+    if (_container isEqualTo []) exitWith {_retArray};
+
+    {
+        private _name = _x#0;
+        if ([_name] call acre_api_fnc_isBaseRadio or {[_name] call acre_api_fnc_isRadio}) then
+        {
+            _retArray pushBack ([_name] call acre_api_fnc_getBaseRadio);
+        };
+
+    } forEach (_container#1);
+
+    _retArray
+};
+
+private _findRadios = [_findRadiosNoConvert, _findRadiosAndConvert] select _convertToBaseRadios;
 
 private _loadout = getUnitLoadout _unit;
 
