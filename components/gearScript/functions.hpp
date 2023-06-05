@@ -12,6 +12,7 @@ class gearScript
     class applyLoadoutModifications{};
     class assignGear{};
     class createLoadoutLocker{};
+    class reapplyGear{};
     class removeItemFromLoadout{};
     class removeLinkedItemFromLoadout{};
 };

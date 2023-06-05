@@ -64,6 +64,8 @@ CA_PreGearscriptUnit_Local
     Prior-registered handlers may alter the loadout that reach your handler.  Be aware of this while writing your handler.
     The contents can also be empty if the gearscript was not created correctly, or it was simply created empty.
 
+    This event can also be called by a unit being re-gearscripted.  In this case, the _extendedArray will always be empty.  See 'f_fnc_reapplyGear' for context.
+
     The loadout format is a Unit Loadout Array:
     https://community.bistudio.com/wiki/Unit_Loadout_Array
 
