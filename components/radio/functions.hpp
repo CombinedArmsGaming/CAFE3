@@ -17,5 +17,13 @@ class radio_list
     class radioList_onSidebarClick{};
     class refreshRadioList{};
 };
+class radio_zen
+{
+    file = "components\radio\zen";
+    class zen_resetGroupRadioChannels{};
+    class zen_resetGroupRadios{};
+    class zen_resetPlayerRadioChannels{};
+    class zen_resetPlayerRadios{};
+};
 
 #include "acre\functions.hpp"

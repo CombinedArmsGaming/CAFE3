@@ -210,11 +210,7 @@ f_var_acre_civRadioNet    = "CIV NET";
 [_shortRadio, "CHARLIE SR", west, "CHARLIE"] call f_fnc_acre_giveRadioToAllInGroup;
 [_shortRadio, "COMMAND SR", west, "COMMAND"] call f_fnc_acre_giveRadioToAllInGroup;
 
-[_longRadio, "GROUND CMD", west, ["sl", "ftl", "co", "med"]] call f_fnc_acre_giveRadioToAllInRole;
-
-// Be careful - if you use a radio net override, it will affect all radios of that type - if you want to add an impostor radio like below, use a unique kind of radio.
-[_extraLongRadio, ["SUS LR", f_var_acre_opforRadioNet], west, "sus"] call f_fnc_acre_giveRadioToAllInRole;
-[["blu", "opf"], west, "sus"] call f_fnc_acre_giveLanguagesToAllInRole;
+[_longRadio, "GROUND CMD", west, ["sl", "ftl", "co", "med", "fac"]] call f_fnc_acre_giveRadioToAllInRole;
 
 [_backpackRadio, "AIR CMD", west, "fac"] call f_fnc_acre_giveRadioToAllInRole;
 
@@ -223,7 +219,7 @@ f_var_acre_civRadioNet    = "CIV NET";
 // BABEL API
 
 // Defines the languages that exist in the mission.
-// String id, String display-name.
+// [ID, Display-name]
 _languageMap =
 [
     ["blu", "Friendlese"],
@@ -235,7 +231,7 @@ _languageMap =
 
 
 // Defines the language(s) that players on each side can speak.
-// Needs to match the String id above.  Can use more than one language per side.
+// Needs to match one of the IDs above.  Can use more than one language per side.
 _bluforLanguage = ["blu"];
 _opforLanguage  = ["ind"];
 _indforLanguage = ["opf"];

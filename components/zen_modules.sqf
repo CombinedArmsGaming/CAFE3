@@ -4,3 +4,4 @@
 #include "logiVehicle\zen_modules.sqf"
 #include "miscClient\zen_modules.sqf"
 #include "respawn\zen_modules.sqf"
+#include "radio\zen_modules.sqf"
