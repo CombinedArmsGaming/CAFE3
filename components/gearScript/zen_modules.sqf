@@ -15,4 +15,10 @@ call
         f_fnc_zen_createLoadoutLocker
 
     ] call zen_custom_modules_fnc_register;
+
+    [
+        _category,
+        "Assign Loadout",
+        f_fnc_assignGear
+    ] call zen_custom_modules_fnc_register;
 };
