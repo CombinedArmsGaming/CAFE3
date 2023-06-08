@@ -17,3 +17,8 @@ if (["acre_sys_radio"] call ace_common_fnc_isModLoaded) then
 {
 	_this call f_fnc_acre_configureUnitRadios;
 };
+
+if (time > 10) then
+{
+	["Your radio configuration has been changed."] call f_fnc_createSubtitleText;
+};

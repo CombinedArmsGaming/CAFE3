@@ -56,6 +56,10 @@ if (_exitCode == 1) then
     {
         DEBUG_FORMAT1_LOG("[GroupPicker] Forcing Re-gearscript for %1",(str player));
         [player] call f_fnc_reapplyGear;
+    }
+    else
+    {
+        ["", player] call f_fnc_configureUnitRadios;
     };
 
     _allowedToTeleport = player getVariable ["f_var_mayTeleportToGroup", false];

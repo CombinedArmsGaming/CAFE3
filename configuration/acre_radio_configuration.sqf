@@ -212,7 +212,10 @@ f_var_acre_civRadioNet    = "CIV NET";
 
 [_longRadio, "GROUND CMD", west, ["sl", "ftl", "co", "med", "fac"]] call f_fnc_acre_giveRadioToAllInRole;
 
-[_backpackRadio, "AIR CMD", west, "fac"] call f_fnc_acre_giveRadioToAllInRole;
+[_backpackRadio, "AIR CMD", west, ["fac", "zeus"]] call f_fnc_acre_giveRadioToAllInRole;
+
+[_backpackRadio, "GROUND CMD", west, "zeus"] call f_fnc_acre_giveRadioToAllInRole;
+[_shortRadio, "COMMAND SR", west, "zeus"] call f_fnc_acre_giveRadioToAllInRole;
 
 
 // ====================================================================================

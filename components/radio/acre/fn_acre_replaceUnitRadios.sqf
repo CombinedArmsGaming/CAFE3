@@ -17,8 +17,11 @@ if (count _radiosForUnit <= 0) exitWith {};
 private _unitGetsBackpackRadio = (_radiosForUnit findIf {(_x#0) in f_arr_acre_backpackRadios}) >= 0;
 
 private _uniform = _loadout # 3;
+if (isNil '_uniform') then { _uniform = ["U_B_survival_uniform",[]]; _loadout set [3, _uniform]; };
 private _vest = _loadout # 4;
+if (isNil '_vest') then { _vest = []; _loadout set [4, _vest]; };
 private _backpack = _loadout # 5;
+if (isNil '_backpack') then { _backpack = []; _loadout set [5, _backpack]; };
 
 private _allClothes = [_uniform, _vest, _backpack];
 
@@ -34,9 +37,10 @@ if (_vest isEqualTo []) then
 };
 
 {
-    if (_x in f_arr_acre_backpackRadios) then
+    private _radioName = (_x#0);
+    if (_radioName in f_arr_acre_backpackRadios) then
     {
-        (_backpack#1) pushBack [_x#0, 1];
+        (_backpack#1) pushBack [_radioName, 1];
     }
     else
     {

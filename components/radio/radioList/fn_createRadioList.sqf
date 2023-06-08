@@ -32,8 +32,8 @@ uiNamespace setVariable ["f_testCtrl", _background];
 
 
 private _radiosTable = _display ctrlCreate ["RscTreeSearch", _idc, _ctrlGroup]; _idc = _idc + 1;
-_radiosTable ctrlSetFont "EtelkaMonospacePro";
-_radiosTable ctrlSetFontHeight 0.03;
+_radiosTable ctrlSetFont "RobotoCondensed";
+_radiosTable ctrlSetFontHeight 0.032;
 _radiosTable ctrlSetBackgroundColor [0, 0, 0, 0];
 _radiosTable ctrlSetPosition 
 [
@@ -47,8 +47,8 @@ uiNamespace setVariable ["f_test_tv", _radiosTable];
 
 
 private _yourRadiosTable = _display ctrlCreate ["RscTreeSearch", _idc, _ctrlGroup]; _idc = _idc + 1;
-_yourRadiosTable ctrlSetFont "EtelkaMonospacePro";
-_yourRadiosTable ctrlSetFontHeight 0.03;
+_yourRadiosTable ctrlSetFont "RobotoCondensed";
+_yourRadiosTable ctrlSetFontHeight 0.032;
 _yourRadiosTable ctrlSetBackgroundColor [0, 0, 0, 0.5];
 _yourRadiosTable ctrlSetPosition 
 [
