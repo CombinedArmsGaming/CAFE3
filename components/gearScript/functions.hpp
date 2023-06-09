@@ -46,6 +46,7 @@ class gearScript_zen
     class zen_createSupplyCrate{};
     class zen_createSupplyCrate_followUpDialog{};
     class zen_createSupplyCrate_performAction{};
+    class assignGear{};
 };
 
 class gearScript_gunbag
@@ -54,5 +55,4 @@ class gearScript_gunbag
     class getWeaponStateFromClassName{};
     class setGunbagVariableFromArsenalExport{};
     class setGunbagVariableState{};
-    class assignGear{};
 };
