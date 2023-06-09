@@ -54,4 +54,5 @@ class gearScript_gunbag
     class getWeaponStateFromClassName{};
     class setGunbagVariableFromArsenalExport{};
     class setGunbagVariableState{};
+    class assignGear{};
 };
