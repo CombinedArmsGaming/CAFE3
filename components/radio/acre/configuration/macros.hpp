@@ -1,3 +1,3 @@
 #include "../macros.hpp"
 
-#define ALL "V+55*K*L1^ekv3Cb"
+#define RADIOS_SELECTOR_ALL "CAFE3_SPECIAL_VALUE:RADIOS_ALL"

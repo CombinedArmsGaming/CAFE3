@@ -9,7 +9,6 @@ class gearScript
     class alterUnitMaxLoads{};
     class applyGunbag{};
     class applyLoadout{};
-    class applyLoadoutModifications{};
     class assignGear{};
     class createLoadoutLocker{};
     class reapplyGear{};

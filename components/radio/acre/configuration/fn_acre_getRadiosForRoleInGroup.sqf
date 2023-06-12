@@ -9,9 +9,9 @@ private _groupStr = toUpper _groupName;
 private _queryStringsAdd = 
 [
     format ["%1::%2::%3", _sideStr, _groupStr, _roleStr],
-    format ["%1::%2::%3", _sideStr, _groupStr, ALL],
-    format ["%1::%2::%3", _sideStr, ALL, _roleStr],
-    format ["%1::%2::%3", _sideStr, ALL, ALL]
+    format ["%1::%2::%3", _sideStr, _groupStr, RADIOS_SELECTOR_ALL],
+    format ["%1::%2::%3", _sideStr, RADIOS_SELECTOR_ALL, _roleStr],
+    format ["%1::%2::%3", _sideStr, RADIOS_SELECTOR_ALL, RADIOS_SELECTOR_ALL]
 ];
 
 private _radioList = [];

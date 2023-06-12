@@ -15,7 +15,7 @@ if (typeName _role isEqualTo "ARRAY") exitWith
     forEach _role;
 };
 
-private _languagesKey = format ["%1::%2::%3", [_side] call f_fnc_sideToString, ALL, toUpper _role];
+private _languagesKey = format ["%1::%2::%3", [_side] call f_fnc_sideToString, RADIOS_SELECTOR_ALL, toUpper _role];
 
 private _languageList = f_map_languageAssignments getOrDefault [_languagesKey, [], true];
 
