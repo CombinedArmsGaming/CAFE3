@@ -26,7 +26,7 @@ private _assignLoadout =
     _dialogValues params ["_typeOfUnit"];
     _args params ["_position", "_unit"];
 
-    [_typeOfUnit,_unit] call f_fnc_assignGear;
+    [_typeOfUnit,_unit] remoteExec ["f_fnc_assignGear", _unit];
 };
 
 [
