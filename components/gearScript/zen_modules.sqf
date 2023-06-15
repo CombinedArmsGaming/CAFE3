@@ -19,6 +19,6 @@ call
     [
         _category,
         "Assign Loadout",
-        f_fnc_zen_assignGear
+        f_fnc_zen_assignLoadout
     ] call zen_custom_modules_fnc_register;
 };
