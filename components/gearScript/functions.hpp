@@ -46,6 +46,7 @@ class gearScript_zen
     class zen_createSupplyCrate{};
     class zen_createSupplyCrate_followUpDialog{};
     class zen_createSupplyCrate_performAction{};
+    class zen_assignLoadout{};
 };
 
 class gearScript_gunbag
