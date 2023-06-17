@@ -17,40 +17,44 @@ if !(player getVariable ["f_var_isZeus",false]) exitWith {}; // Fallback in case
 
 
 //ACRE actions
-private _talkThroughZeus =
+
+if (["acre_sys_radio"] call ace_common_fnc_isModLoaded) then 
 {
-	[] call acre_sys_zeus_fnc_handleZeusSpeakPress;
-	["Now talking through Zeus camera"] call zen_common_fnc_showMessage;
+	private _talkThroughZeus =
+	{
+		[] call acre_sys_zeus_fnc_handleZeusSpeakPress;
+		["Now talking through Zeus camera"] call zen_common_fnc_showMessage;
+	};
+
+	private _actionToBeAdded =
+	[
+		"TalkThroughZeus",
+		"Switch to Camera Speaker",
+		"",
+		_talkThroughZeus,
+		{!(_player getVariable ["acre_sys_zeus_inZeus", false])}
+	] call ace_interact_menu_fnc_createAction;
+
+	[["ACE_ZeusActions", "ACRE_ZeusEars"], _actionToBeAdded] call ace_interact_menu_fnc_addActionToZeus;
+
+
+	private _talkThroughUnit =
+	{
+		[] call acre_sys_zeus_fnc_handleZeusSpeakPressUp;
+		["Now talking through Unit"] call zen_common_fnc_showMessage;
+	};
+
+	private _actionToBeAdded =
+	[
+		"TalkThroughUnit",
+		"Switch to Unit Speaker",
+		"",
+		_talkThroughUnit,
+		{(_player getVariable ["acre_sys_zeus_inZeus", false])}
+	] call ace_interact_menu_fnc_createAction;
+
+	[["ACE_ZeusActions", "ACRE_ZeusEars"], _actionToBeAdded] call ace_interact_menu_fnc_addActionToZeus;
 };
-
-private _actionToBeAdded =
-[
-	"TalkThroughZeus",
-	"Switch to Camera Speaker",
-	"",
-	_talkThroughZeus,
-	{!(_player getVariable ["acre_sys_zeus_inZeus", false])}
-] call ace_interact_menu_fnc_createAction;
-
-[["ACE_ZeusActions", "ACRE_ZeusEars"], _actionToBeAdded] call ace_interact_menu_fnc_addActionToZeus;
-
-
-private _talkThroughUnit =
-{
-	[] call acre_sys_zeus_fnc_handleZeusSpeakPressUp;
-	["Now talking through Unit"] call zen_common_fnc_showMessage;
-};
-
-private _actionToBeAdded =
-[
-	"TalkThroughUnit",
-	"Switch to Unit Speaker",
-	"",
-	_talkThroughUnit,
-	{(_player getVariable ["acre_sys_zeus_inZeus", false])}
-] call ace_interact_menu_fnc_createAction;
-
-[["ACE_ZeusActions", "ACRE_ZeusEars"], _actionToBeAdded] call ace_interact_menu_fnc_addActionToZeus;
 
 
 //CAFE3 Zeus actions node

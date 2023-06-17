@@ -20,7 +20,7 @@ class F
 #include "mapClick\functions.hpp"
 #include "miscClient\functions.hpp"
 #include "miscShared\functions.hpp"
-#include "radios\functions.hpp"
+#include "radio\functions.hpp"
 #include "respawn\functions.hpp"
 #include "spawnNpcs\functions.hpp"
 #include "squadMarkers\functions.hpp"
@@ -66,3 +66,13 @@ class ace_gunbag
 		class hasGunbag{};
 	};
 };
+
+
+class acre_ace_interact
+{
+	class overrides
+	{
+    	file = "components\radio\acre";
+		class radioListChildrenActions{};
+	}
+}

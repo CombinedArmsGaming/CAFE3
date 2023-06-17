@@ -71,3 +71,19 @@ else
 {
     _teleportCheckbox ctrlSetChecked true;
 };
+
+
+private _cancelDisabled = missionNamespace getVariable ["f_var_groupPicker_disableCancel", false];
+
+if (_cancelDisabled) then
+{
+    private _cancelButton = _display displayCtrl IDC_GROUPPICKER_CANCELBUTTON;
+    _cancelButton ctrlEnable false;
+    missionNamespace setVariable ["f_var_groupPicker_disableCancel", nil];
+};
+
+if (missionNamespace getVariable ["f_var_groupPicker_forceGearscript", false]) then
+{
+    f_var_groupPicker_forceGearscript_internal = true;
+    missionNamespace setVariable ["f_var_groupPicker_forceGearscript", nil];
+};

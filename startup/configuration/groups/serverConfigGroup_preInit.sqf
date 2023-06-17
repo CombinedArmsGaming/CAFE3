@@ -9,9 +9,6 @@ SERVER_ONLY;
 // Debug settings
 #include "..\internals\debug.sqf"
 
-// Radios
-#include "..\..\..\configuration\radios\acre.sqf"
-
 // Insignia
 #include "..\internals\insigniaDefinition.sqf"
 
@@ -23,3 +20,6 @@ SERVER_ONLY;
 
 // Logi vics
 #include "..\internals\logiVehicle.sqf"
+
+// Radio
+#include "..\internals\radio.sqf"

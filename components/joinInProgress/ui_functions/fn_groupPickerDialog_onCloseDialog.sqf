@@ -25,7 +25,8 @@ _doTeleport =
 
 };
 
-
+private _doGearscript = missionNamespace getVariable ["f_var_groupPicker_forceGearscript_internal", false];
+missionNamespace setVariable ["f_var_groupPicker_forceGearscript_internal", nil];
 
 
 if (_exitCode == 2) exitWith {};
@@ -42,6 +43,7 @@ if (_exitCode == 1) then
     _groups = allGroups select {(side _x) isEqualTo _playerSide};
 
     _selectedGroup = _groups param [_groups findIf {(groupId _x) isEqualTo _selectedGroupName}, grpNull];
+    private _countPriorToJoin = count units _selectedGroup;
 
     if (isNull _selectedGroup) exitWith
     {
@@ -50,6 +52,15 @@ if (_exitCode == 1) then
 
     [player] joinSilent _selectedGroup;
 
+    if (_doGearscript) then
+    {
+        DEBUG_FORMAT1_LOG("[GroupPicker] Forcing Re-gearscript for %1",(str player));
+        [player] call f_fnc_reapplyGear;
+    }
+    else
+    {
+        ["", player] call f_fnc_configureUnitRadios;
+    };
 
     _allowedToTeleport = player getVariable ["f_var_mayTeleportToGroup", false];
 
@@ -59,7 +70,7 @@ if (_exitCode == 1) then
 
         _isChecked = _teleportCheckbox ctrlChecked 0;
 
-        if (_isChecked) then
+        if (_isChecked and {(_countPriorToJoin > 0) and (leader _selectedGroup isNotEqualTo player)}) then
         {
             [leader _selectedGroup] spawn _doTeleport;
         };

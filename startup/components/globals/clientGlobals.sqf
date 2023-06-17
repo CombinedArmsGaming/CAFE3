@@ -10,3 +10,5 @@ LOAD_GLOBALS(miscShared)
 LOAD_GLOBALS(respawn)
 
 LOAD_GLOBALS(gearScript)
+
+LOAD_GLOBALS(radio)

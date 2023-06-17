@@ -12,7 +12,7 @@ if (isNull _unit) exitWith
     DEBUG_PRINT_LOG("[Gravestones] Called addToGravestoneManager but the corpse was a null object.")
 };
 
-_shouldCache = _unit getVariable ["f_var_allowGravestone", true] and {(group _unit) getVariable ["f_var_allowGravestone", true]};
+_shouldCache = (_unit getVariable ["f_var_allowGravestone", true]) and {(group _unit) getVariable ["f_var_allowGravestone", true]};
 
 if !(_shouldCache) exitWith
 {
@@ -32,13 +32,17 @@ _netId = _unit call BIS_fnc_netId;
 
 _cacheEntry = [time, _netId, _name, _obituary];
 
-if (isPlayer _unit) exitWith
-{
-    DEBUG_FORMAT1_LOG("[Gravestones] Adding corpse to the priority cache because it was a player: %1",_unit)
+#ifdef GRAVESTONES_USE_PRIORITY_LIST
 
-    _cacheEntry pushBack true;
-	[_cacheEntry, "VIP_CACHE"] call f_fnc_sendUnitToGravestoneCache;
-};
+    if (isPlayer _unit) exitWith
+    {
+        DEBUG_FORMAT1_LOG("[Gravestones] Adding corpse to the priority cache because it was a player: %1",_unit)
+
+        _cacheEntry pushBack true;
+        [_cacheEntry, "VIP_CACHE"] call f_fnc_sendUnitToGravestoneCache;
+    };
+
+#endif
 
 _cacheEntry pushBack false;
 [_cacheEntry, "CACHE"] call f_fnc_sendUnitToGravestoneCache;
