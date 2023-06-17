@@ -81,3 +81,9 @@ if (_cancelDisabled) then
     _cancelButton ctrlEnable false;
     missionNamespace setVariable ["f_var_groupPicker_disableCancel", nil];
 };
+
+if (missionNamespace getVariable ["f_var_groupPicker_forceGearscript", false]) then
+{
+    f_var_groupPicker_forceGearscript_internal = true;
+    missionNamespace setVariable ["f_var_groupPicker_forceGearscript", nil];
+};

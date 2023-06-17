@@ -26,6 +26,7 @@ if !(isNil "_faction") then
         !(_newUnit getVariable ["f_var_assignGear_running", false])
     };
 
-    [_loadout, _newUnit, _faction] call f_fnc_assignGear;
+    private _loadoutArgs = [_loadout, _newUnit, _faction];
+    _loadoutArgs call f_fnc_assignGear;
 };
 

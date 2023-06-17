@@ -463,6 +463,7 @@ class Extended_DisplayLoad_EventHandlers
 	{
 		CAFE_SquadMarkers = "[_this#0, (_this#0) displayCtrl 51] call f_fnc_createSquadMarkerHook;";
         CAFE_FireteamMarkers = "[_this#0, (_this#0) displayCtrl 51] call f_fnc_createFireteamMarkerHook;";
+        CAFE_RadioList = "[_this#0, (_this#0) displayCtrl 51] call f_fnc_createRadioList;";
     };
 
     class RscCustomInfoMiniMap

@@ -1,0 +1,1 @@
+#include "acre\globals.sqf"

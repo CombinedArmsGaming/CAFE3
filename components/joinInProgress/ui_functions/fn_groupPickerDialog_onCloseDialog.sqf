@@ -25,7 +25,8 @@ _doTeleport =
 
 };
 
-
+private _doGearscript = missionNamespace getVariable ["f_var_groupPicker_forceGearscript_internal", false];
+missionNamespace setVariable ["f_var_groupPicker_forceGearscript_internal", nil];
 
 
 if (_exitCode == 2) exitWith {};
@@ -51,6 +52,15 @@ if (_exitCode == 1) then
 
     [player] joinSilent _selectedGroup;
 
+    if (_doGearscript) then
+    {
+        DEBUG_FORMAT1_LOG("[GroupPicker] Forcing Re-gearscript for %1",(str player));
+        [player] call f_fnc_reapplyGear;
+    }
+    else
+    {
+        ["", player] call f_fnc_configureUnitRadios;
+    };
 
     _allowedToTeleport = player getVariable ["f_var_mayTeleportToGroup", false];
 
