@@ -15,7 +15,8 @@ if (_loadoutVariants isEqualTo []) exitWith
 DEBUG_FORMAT3_LOG("[GEARSCRIPT-2]: Removing linked item #%1 from loadout '%2' for side '%3'.",_itemIndex,_unitType,_faction)
 
 {    
-    private _loadout = _x;
+    private _cbaLoadout = [_x] call f_fnc_normaliseCbaExtendedLoadout;
+    private _loadout = _cbaLoadout#0;
 
     private _linkedItems = _loadout#9;
     if (count _linkedItems > _itemIndex) then

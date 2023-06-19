@@ -29,7 +29,10 @@ if !(isNull _magConfig) then
 };
 
 {    
-    private _container = _x # _containerIndex;    
+    private _cbaLoadout = [_x] call f_fnc_normaliseCbaExtendedLoadout;
+    private _loadout = _cbaLoadout#0;
+
+    private _container = _loadout # _containerIndex;    
     if (_container isNotEqualTo []) then
     {
         private _contents = _container # 1;

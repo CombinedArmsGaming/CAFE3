@@ -17,7 +17,8 @@ if (_loadoutVariants isEqualTo []) exitWith
 };
 
 
-_baseVariant = _loadoutVariants select 0;
+_baseVariant = [_loadoutVariants # 0] call f_fnc_normaliseCbaExtendedLoadout;
+_baseVariant = _baseVariant # 0;
 
 if !(typeName _baseVariant == "ARRAY" and {count _baseVariant > 0 and {typeName (_baseVariant select 0) == "ARRAY"}}) exitWith
 {
