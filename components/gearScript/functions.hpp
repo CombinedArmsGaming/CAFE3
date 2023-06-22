@@ -11,6 +11,7 @@ class gearScript
     class applyLoadout{};
     class assignGear{};
     class createLoadoutLocker{};
+    class normaliseCbaExtendedLoadout{};
     class reapplyGear{};
     class removeItemFromLoadout{};
     class removeLinkedItemFromLoadout{};

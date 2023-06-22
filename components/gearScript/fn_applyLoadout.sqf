@@ -73,15 +73,10 @@ if (_loadoutVariants isEqualTo []) exitWith
 
 
 private _originalLoadout = +(selectRandom _loadoutVariants);
-private _loadout = _originalLoadout;
-private _extendedArray = [];
+_originalLoadout = [_originalLoadout] call f_fnc_normaliseCbaExtendedLoadout;
 
-// Check for CBA extended loadout, unwrap if present.
-if (count _originalLoadout != 10) then
-{
-	_loadout = _originalLoadout#0;
-    _extendedArray = _originalLoadout#1;
-};
+private _loadout = _originalLoadout#0;
+private _extendedArray = _originalLoadout#1;
 
 
 if (count HATS_DYNAMIC(_gearVariant,_typeofUnit) > 0) then
