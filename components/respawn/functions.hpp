@@ -46,8 +46,10 @@ class respawn_zen
 };
 class respawn_ui
 {
-    file = "components\respawn\ui";
-    class createSpectatorDowntimeWidget{};
+    file = "components\respawn\ui_functions";
     class addSpectatorDowntimeWidgetEventHandler{preInit=1;};
+    class createSpectatorDowntimeWidget{};
+    class spawnPickerDialog_onCloseDialog{};
+    class spawnPickerDialog_populateDialog{};
     class tryShowSpawnpointDialog{};
 };

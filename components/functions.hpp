@@ -81,7 +81,7 @@ class ace_spectator
 {
     class overrides
     {
-        file = "components\respawn\ui";
+        file = "components\respawn\ui_functions";
         class ui_handleKeyDown{};
     }
 };
