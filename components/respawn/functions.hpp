@@ -4,7 +4,6 @@ class respawn
     class addFreeTicket{};
     class getPlayerRespawnDelay{};
     class isRespawnModeActive{};
-    class respawnSpectatorTweaks{};
 };
 class respawn_locationSystem
 {
@@ -44,4 +43,11 @@ class respawn_zen
     class zen_allowImmediateRespawn{};
     class zen_createRespawnPoint{};
     class zen_changeTickets{};
+};
+class respawn_ui
+{
+    file = "components\respawn\ui";
+    class createSpectatorDowntimeWidget{};
+    class addSpectatorDowntimeWidgetEventHandler{preInit=1;};
+    class tryShowSpawnpointDialog{};
 };
