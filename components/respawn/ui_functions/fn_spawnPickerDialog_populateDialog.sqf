@@ -25,12 +25,13 @@ private _selectedSpawnIdx = _spawns findIf {_x isEqualTo _selectedSpawn};
 
 _spawnList lbSetCurSel (_selectedSpawnIdx max 0);
 
-missionNamespace setVariable ["f_var_spawnPickerDialog_isOpened", true];
+private _ignoreAlive = missionNamespace getVariable ["f_var_spawnPickerDialog_ignoreAlive", false];
+missionNamespace setVariable ["f_var_spawnPickerDialog_ignoreAlive", nil];
 
 // Ensure dialog is closed when player spawns.
 [
     {
-        (alive player) or {!(missionNamespace getVariable ["f_var_spawnPickerDialog_isOpened", false])}
+        ((!_ignoreAlive) and {alive player}) or {!(missionNamespace getVariable ["f_var_spawnPickerDialog_isOpened", false])}
     },
     {
         if (missionNamespace getVariable ["f_var_spawnPickerDialog_isOpened", false]) then
@@ -40,3 +41,5 @@ missionNamespace setVariable ["f_var_spawnPickerDialog_isOpened", true];
     },
     []
 ] call CBA_fnc_waitUntilAndExecute;
+
+missionNamespace setVariable ["f_var_spawnPickerDialog_isOpened", true];
