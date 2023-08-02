@@ -5,6 +5,9 @@ disableSerialization;
 params ["_display", "_exitCode"];
 
 
+missionNamespace setVariable ["f_var_spawnPickerDialog_isOpened", false];
+
+
 if (_exitCode == 2) exitWith {};
 
 

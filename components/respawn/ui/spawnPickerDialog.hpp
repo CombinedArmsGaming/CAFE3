@@ -6,8 +6,8 @@ class CAFE_SpawnPicker_Dialog
     enableSimulation = 1;
     enableDisplay = 1;
 
-    onLoad = "_this execvm 'components\respawn\ui_functions\fn_spawnPickerDialog_populateDialog.sqf';";
-    onUnload = "_this call (compile preprocessfile 'components\respawn\ui_functions\fn_spawnPickerDialog_onCloseDialog.sqf');";
+    onLoad = "_this call f_fnc_spawnPickerDialog_populateDialog;";
+    onUnload = "_this call f_fnc_spawnPickerDialog_onCloseDialog;";
 
 	class ControlsBackground
     {

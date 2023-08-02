@@ -51,5 +51,6 @@ class respawn_ui
     class createSpectatorDowntimeWidget{};
     class spawnPickerDialog_onCloseDialog{};
     class spawnPickerDialog_populateDialog{};
+    class spectatorDowntimeWidget_updateLoop{};
     class tryShowSpawnpointDialog{};
 };

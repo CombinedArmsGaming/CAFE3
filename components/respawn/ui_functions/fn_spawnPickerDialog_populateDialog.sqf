@@ -24,3 +24,19 @@ private _selectedSpawn = missionNamespace getVariable ["f_arr_spawnPickerDialog_
 private _selectedSpawnIdx = _spawns findIf {_x isEqualTo _selectedSpawn};
 
 _spawnList lbSetCurSel (_selectedSpawnIdx max 0);
+
+missionNamespace setVariable ["f_var_spawnPickerDialog_isOpened", true];
+
+// Ensure dialog is closed when player spawns.
+[
+    {
+        (alive player) or {!(missionNamespace getVariable ["f_var_spawnPickerDialog_isOpened", false])}
+    },
+    {
+        if (missionNamespace getVariable ["f_var_spawnPickerDialog_isOpened", false]) then
+        {
+            closeDialog 2;
+        };
+    },
+    []
+] call CBA_fnc_waitUntilAndExecute;

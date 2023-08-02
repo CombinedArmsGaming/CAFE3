@@ -1,5 +1,5 @@
 
-#include "downtime_macros.hpp"
+#include "../../downtime_macros.hpp"
 
 // Downtime: opt-out of the spectator cam when you go unconscious.  Does not affect spectator upon death.
 [

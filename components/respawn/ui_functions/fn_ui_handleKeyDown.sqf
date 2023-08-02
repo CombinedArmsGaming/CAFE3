@@ -177,7 +177,10 @@ if ((_key in (actionKeys "CuratorInterface")) && {!isNull (getAssignedCuratorLog
 
 if ((_key == 0x1F) and {_ctrl isEqualTo true}) exitWith 
 {
-    [] call f_fnc_tryShowSpawnpointDialog;
+    if (!alive player) then
+    {
+        [] call f_fnc_tryShowSpawnpointDialog;
+    };
     true
 };
 
