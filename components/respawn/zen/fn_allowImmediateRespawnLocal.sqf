@@ -5,4 +5,4 @@ if (_ticketsRemaining <= 0) then
     [player, 1, false] call BIS_fnc_respawnTickets;
 };
 
-setPlayerRespawnTime 0;
+setPlayerRespawnTime MINIMUM_RESPAWN_DELAY;

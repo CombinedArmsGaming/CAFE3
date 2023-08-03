@@ -15,7 +15,7 @@ if ((isNil 'f_var_respawn_hadFirstSpawn') and
 	})
 exitWith
 {
-	setPlayerRespawnTime INITIAL_RESPAWN_DELAY;
+	setPlayerRespawnTime (INITIAL_RESPAWN_DELAY max MINIMUM_RESPAWN_DELAY);
 };
 
 setPlayerRespawnTime 1e10;
@@ -24,12 +24,18 @@ setPlayerRespawnTime 1e10;
 [
 	// Condition
 	{
-		(alive player) or {([player] call f_fnc_getRespawnTimestampForTarget) >= CBA_missionTime}
+		(alive player) or 
+		{
+			(([player] call f_fnc_getRespawnTimestampForTarget) >= CBA_missionTime) and 
+			{
+				([player, 0, true] call BIS_fnc_respawnTickets) > 0
+			}
+		}
 	},
 
 	// Script
 	{
-		setPlayerRespawnTime 1;
+		setPlayerRespawnTime MINIMUM_RESPAWN_DELAY;
 	}
 
 ] call CBA_fnc_waitUntilAndExecute;

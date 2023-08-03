@@ -50,17 +50,30 @@ if (_exitCode == 1) then
         hint format ["Unable to join '%1', please try again.", _selectedGroupName];
     };
 
-    [player] joinSilent _selectedGroup;
+    [player] join _selectedGroup;
 
-    if (_doGearscript) then
-    {
-        DEBUG_FORMAT1_LOG("[GroupPicker] Forcing Re-gearscript for %1",(str player));
-        [player] call f_fnc_reapplyGear;
-    }
-    else
-    {
-        ["", player] call f_fnc_configureUnitRadios;
-    };
+    // There may be a delay in the player's group membership changing properly in multiplayer.  Wait for the group membership to change here.
+    [
+        {
+            params ["_doGearscript", "_group"];            
+            (group player) isEqualTo _group
+        },
+
+        {
+            [
+                f_fnc_groupPickerDialog_alignPlayerRadios,
+                _this,
+                1            
+            ] call CBA_fnc_waitAndExecute;
+        },
+
+        [_doGearscript, _selectedGroup],
+    
+        // Timeout (secs)
+        10,
+        f_fnc_groupPickerDialog_alignPlayerRadios
+    
+    ] call CBA_fnc_waitUntilAndExecute;
 
     _allowedToTeleport = player getVariable ["f_var_mayTeleportToGroup", false];
 
