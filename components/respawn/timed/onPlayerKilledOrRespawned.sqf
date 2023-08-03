@@ -15,9 +15,9 @@ if ((isNil 'f_var_respawn_hadFirstSpawn') and
 	})
 exitWith
 {
-	setPlayerRespawnTime INITIAL_RESPAWN_DELAY;
+	setPlayerRespawnTime (INITIAL_RESPAWN_DELAY max MINIMUM_RESPAWN_DELAY);
 };
 
-_respawnDelay = [_newUnit, _respawnDelay] call f_fnc_getPlayerRespawnDelay;
+_respawnDelay = [_newUnit, (_respawnDelay max MINIMUM_RESPAWN_DELAY)] call f_fnc_getPlayerRespawnDelay;
 
 setPlayerRespawnTime _respawnDelay;

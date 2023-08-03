@@ -23,7 +23,7 @@ f_fnc_respawn_tickets_waitForTickets =
 			if (alive player) exitWith {};
 
 			DEBUG_FORMAT1_LOG("[RESPAWN-2] %1 has tickets now - removing the wait.", player)
-			setPlayerRespawnTime 1;
+			setPlayerRespawnTime MINIMUM_RESPAWN_DELAY;
 			[] call f_fnc_respawn_tickets_waitForNoTickets;
 		}
 

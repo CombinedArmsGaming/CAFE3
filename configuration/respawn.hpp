@@ -35,8 +35,8 @@
 // When 'respawnOnStart = 1' in the description.ext file, this is how long players will wait to spawn in when the mission starts.
 #define INITIAL_RESPAWN_DELAY               5
 
-#define RESPAWN_MODE_BLUFOR                 RESPAWN_MODE_TRIGGERED_WAVES_TICKETS
-#define RESPAWN_DELAY_BLUFOR                30
+#define RESPAWN_MODE_BLUFOR                 RESPAWN_MODE_TIMED_WAVES_TICKETS
+#define RESPAWN_DELAY_BLUFOR                10
 #define RESPAWN_SIDE_TICKETS_BLUFOR         30
 #define RESPAWN_PLAYER_TICKETS_BLUFOR       2
        
