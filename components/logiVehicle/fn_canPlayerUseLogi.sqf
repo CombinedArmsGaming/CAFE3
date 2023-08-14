@@ -29,7 +29,7 @@ if (_roles isNotEqualTo []) then
 	_failedCheck = !(_playerRole in _roles);
 };
 
-// Break out check passed
+// Break out if check passed
 if (!_failedCheck) exitWith {true};
 
 private _groups = GET_GROUPS_DYNAMIC(_logiType);
