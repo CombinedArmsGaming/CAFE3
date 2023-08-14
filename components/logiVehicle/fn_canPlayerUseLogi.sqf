@@ -29,7 +29,6 @@ if (_roles isNotEqualTo []) then
 	_failedCheck = !(_playerRole in _roles);
 };
 
-if (_failedCheck) exitWith {false};
 
 private _groups = GET_GROUPS_DYNAMIC(_logiType);
 
