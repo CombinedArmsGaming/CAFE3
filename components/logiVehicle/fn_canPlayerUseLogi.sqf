@@ -20,24 +20,24 @@ private _logiType = GET_LOGITYPE(_logiVic);
 
 if (_logiType isEqualTo "") exitWith {false};
 
-private _failedCheck = false;
+private _passedCheck = true;
 private _roles = GET_ROLES_DYNAMIC(_logiType);
 
 if (_roles isNotEqualTo []) then
 {
 	private _playerRole = toLower (_player getVariable ["f_var_assignGear", ""]);
-	_failedCheck = !(_playerRole in _roles);
+	_passedCheck = (_playerRole in _roles);
 };
 
 // Break out if check passed
-if (!_failedCheck) exitWith {true};
+if (_passedCheck) exitWith {true};
 
 private _groups = GET_GROUPS_DYNAMIC(_logiType);
 
 if (_groups isNotEqualTo []) then
 {
 	private _playerGroup = toLower (groupId group _player);
-	_failedCheck = !(_playerGroup in _groups);
+	_passedCheck = (_playerGroup in _groups);
 };
 
-(!_failedCheck)
+(_passedCheck)
