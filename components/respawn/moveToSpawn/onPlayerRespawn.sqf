@@ -10,8 +10,8 @@
 params ["_newUnit", "_oldUnit", "_respawn", "_respawnDelay"];
 
 // Players shouldn't be moved upon first spawn.
-private _didFirstSpawn = missionNamespace getVariable ["f_var_squad_didFirstSpawn", false];
-missionNamespace setVariable ["f_var_squad_didFirstSpawn", true];
+private _didFirstSpawn = missionNamespace getVariable ["f_var_moveToSpawn_didFirstSpawn", false];
+missionNamespace setVariable ["f_var_moveToSpawn_didFirstSpawn", true];
 
 if (_didFirstSpawn) exitWith 
 {
