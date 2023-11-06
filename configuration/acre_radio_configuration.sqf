@@ -236,6 +236,6 @@ _languageMap =
 // Defines the language(s) that players on each side can speak.
 // Needs to match one of the IDs above.  Can use more than one language per side.
 _bluforLanguage = ["blu"];
-_opforLanguage  = ["ind"];
-_indforLanguage = ["opf"];
+_opforLanguage  = ["opf"];
+_indforLanguage = ["ind"];
 _civLanguage    = ["civ"];
