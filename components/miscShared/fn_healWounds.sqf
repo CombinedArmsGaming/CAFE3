@@ -15,75 +15,109 @@
 
 // These macros are from ACE itself, with minor adjustments to work here.
 // Duplicating macros instead of importing ACE macro file, so if the ACE macro file moves in a future medical rewrite, it doesn't crash Arma here.
+#define BLOOD_LOSS_KNOCK_OUT_THRESHOLD  ace_medical_const_bloodLossKnockOutThreshold
 #define VAR_OPEN_WOUNDS                 ace_medical_openWounds
-#define GET_OPEN_WOUNDS(unit)           (unit getVariable [STRING(VAR_OPEN_WOUNDS), []])
+#define VAR_BODY_PART_DAMAGE            ace_medical_bodyPartDamage
+#define VAR_WOUND_BLEEDING              ace_medical_woundBleeding
+#define ALL_BODY_PARTS                  ["head", "body", "leftarm", "rightarm", "leftleg", "rightleg"]
 
-params ["_unit", ["_woundsToHeal", 10, [0]]];
+params [
+	["_unit", objNull, [objNull]],
+	["_woundsToHeal", 10, [0]],
+	["_healUntilBleedRateNotCritical", false, [false]]
+];
+
 RUN_LOCAL_TO(_unit,f_fnc_healWounds,_this);
 
-private "_wounds";
-private _removalIteration = 0;
-private _removedWoundBodyParts = [];
+private _openWounds = _unit getVariable [STRING(VAR_OPEN_WOUNDS), createHashMap];
+private _woundsQueue = [];
+private _allBodyPartDamages = _unit getVariable [STRING(VAR_BODY_PART_DAMAGE), [0,0,0,0,0,0]];
+private _sortedWounds = [];
+private _bleedRate = _unit getVariable [STRING(VAR_WOUND_BLEEDING), 0];
+private ["_bodyPart", "_bodyPartWounds", "_score"];
 
-while
+scopeName "f_fnc_healWounds_main";
+
+// Get all open wounds
 {
-    _removalIteration = _removalIteration + 1;
-    _wounds = GET_OPEN_WOUNDS(_unit);
+	_bodyPart = _x;
+	_bodyPartWounds = _openWounds getOrDefault [_x, []];
 
-    ((count _wounds) > 0) and (_removalIteration <= _woundsToHeal)
-}
-do
-{
-    private _woundIndexToRemove = floor random count _wounds;
-    private _wound = _wounds # _woundIndexToRemove;
+	{
+		_x params ["", "_amount", "_bleeding", "_damage"];
 
-    DEBUG_FORMAT2_LOG("[REMOVE WOUNDS]: Removing wound %1 (iteration %2)...",_woundIndexToRemove,_removalIteration)
-    _wounds set [_woundIndexToRemove, objNull];
-    _wounds = _wounds - [objNull];
-    _removedWoundBodyParts pushBackUnique (_wound # 1);
+		// When only fixing wounds until the unit's bleeding becomes non-critical, we have to do
+		// some extra work, like estimating the total bleeding rate, and early exiting.
+		if (_healUntilBleedRateNotCritical) then {
 
-    _unit setVariable [STRING(VAR_OPEN_WOUNDS), _wounds, false];
+			// This is not the exact criteria ACE uses to allow wake-up, but it's pretty close.
+			if (_bleedRate < (BLOOD_LOSS_KNOCK_OUT_THRESHOLD / 2) - 0.005) then {
+    				DEBUG_FORMAT2_LOG("[HEAL WOUNDS]: Gathered %1 critical wounds to heal (but could have healed %2)",count _sortedWounds,_woundsToHeal)
 
+				breakTo "f_fnc_healWounds_main";
+			};
+
+			_bleedRate = _bleedRate - _bleeding;
+		};
+
+		// Assign a wound "score" (how significant the wound is). Used for array sorting.
+		// The formula depends on what the priority for the function is (heal just enough to stop the
+		// bleeding rate from being too critical (preventing units to wake up), or heal as many wounds
+		// as requested via the parameters).
+		if (_healUntilBleedRateNotCritical) then {
+			_score = _bleeding;
+		} else {
+			_score = _amount * _bleeding + 0.25 * _damage;
+		};
+
+		_sortedWounds append [[_score] + _x + [_bodyPart]];
+
+	} forEach _bodyPartWounds;
+} forEach keys _openWounds;
+
+// If there are no wounds to be healed, exit early
+if (_sortedWounds isEqualTo []) exitWith {};
+
+_sortedWounds sort false;
+
+// Remove wounds, starting with the most significant ones
+private ["_index", "_wound", "_bodyPartIndex", "_bodyPartDamage"];
+for "_i" from 1 to _woundsToHeal min count _sortedWounds do {
+	(_sortedWounds # (_i - 1)) params ["", "_classID", "_amount", "_bleeding", "_damage", "_bodyPart"];
+
+	_bodyPartWounds = _openWounds getOrDefault [_bodyPart, []];
+	_index = _bodyPartWounds findIf {
+		_classID == _x # 0
+		and {_bleeding == _x # 2}
+		and {_damage == _x # 3}
+	};
+
+	// If we found the concerned wound, remove it
+	if (_index >= 0) then {
+		_bodyPartWounds deleteAt _index;
+		DEBUG_FORMAT3_LOG("[HEAL WOUNDS]: Removing wound %1 on %2 (iteration %3)...",_index,_bodyPart,_i)
+
+		// Lower damage on the body parts with each wound healed
+		if EQUALS(ace_medical_treatment_clearTrauma, 2) then {
+
+			_bodyPartIndex = ALL_BODY_PARTS find _bodyPart;
+			_bodyPartDamage = (_allBodyPartDamages param [_bodyPartIndex, 0]) - (_damage * _amount);
+
+			// Prevent obscenely small damage from lack of floating precision
+			if (_bodyPartDamage < 0.05) then {
+				_allBodyPartDamages set [_bodyPartIndex, 0];
+			} else {
+				_allBodyPartDamages set [_bodyPartIndex, _bodyPartDamage];
+			};
+		};
+
+		_openWounds set [_bodyPart, _bodyPartWounds];
+	};
 };
 
-// Only make the wound changes public after all iterating is done.
-if (!isNil '_wounds') then
-{
-    _unit setVariable [STRING(VAR_OPEN_WOUNDS), _wounds, true];
-    [_unit] call ace_medical_status_fnc_updateWoundBloodLoss;
-    [_unit] call ace_medical_engine_fnc_updateDamageEffects;
+_unit setVariable [STRING(VAR_OPEN_WOUNDS), _openWounds, true];
+_unit setVariable [STRING(VAR_BODY_PART_DAMAGE), _allBodyPartDamages, true];
 
-    // This section is adapted from ace_medical_treatment_fnc_bandageLocal.
-    if IS_TRUE(ace_medical_treatment_clearTraumaAfterBandage) then
-    {
-        {
-            private _bodyPartToCheck = _x;
-            private _foundWoundOnPart = _wounds findIf
-            {
-                _x params ["", "_xBodyPartN", "_xAmountOf"];
-                (_bodyPartToCheck == _xBodyPartN) && {_xAmountOf > 0}
-            };
-
-            if (_foundWoundOnPart == -1) then
-            {
-                private _bodyPartDamage = _patient getVariable ["ace_medical_bodyPartDamage", [0,0,0,0,0,0]];
-
-                _bodyPartDamage set [_partIndex, 0];
-                _patient setVariable ["ace_medical_bodyPartDamage", _bodyPartDamage, true];
-
-                switch (_partIndex) do
-                {
-                    case 0: { [_patient, true, false, false, false] call ace_medical_engine_fnc_updateBodyPartVisuals; };
-                    case 1: { [_patient, false, true, false, false] call ace_medical_engine_fnc_updateBodyPartVisuals; };
-                    case 2;
-                    case 3: { [_patient, false, false, true, false] call ace_medical_engine_fnc_updateBodyPartVisuals; };
-                    default { [_patient, false, false, false, true] call ace_medical_engine_fnc_updateBodyPartVisuals; };
-                };
-
-            };
-
-        } forEach _removedWoundBodyParts;
-
-    };
-
-};
+[_unit] call ace_medical_status_fnc_updateWoundBloodLoss;
+[_unit] call ace_medical_engine_fnc_updateDamageEffects;
+[_unit, true, true, true, true] call ace_medical_engine_fnc_updateBodyPartVisuals;
