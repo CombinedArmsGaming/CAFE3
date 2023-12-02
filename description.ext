@@ -37,7 +37,6 @@ loadScreen = "ca_logo_large.jpg";
 // ============================================================================================
 
 enableDebugConsole = 1;
-allowFunctionsRecompile = __EVAL(is3DENPreview); // Enables using BIS_fnc_recompile from 3DEN preview
 
 // CAFE - Debug variable, needs to exist pre-init.
 #include "startup\configuration\internals\debug.sqf"
