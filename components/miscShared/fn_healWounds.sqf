@@ -53,6 +53,7 @@ scopeName "f_fnc_healWounds_main";
 			// This is not the exact criteria ACE uses to allow wake-up, but it's pretty close.
 			if (_bleedRate < (BLOOD_LOSS_KNOCK_OUT_THRESHOLD / 2) - 0.005) then {
     				DEBUG_FORMAT2_LOG("[HEAL WOUNDS]: Gathered %1 critical wounds to heal (but could have healed %2)",count _sortedWounds,_woundsToHeal)
+    				DEBUG_FORMAT2_CHAT("[HEAL WOUNDS]: Gathered %1 critical wounds to heal (but could have healed %2)",count _sortedWounds,_woundsToHeal)
 
 				breakTo "f_fnc_healWounds_main";
 			};
@@ -94,21 +95,18 @@ for "_i" from 1 to _woundsToHeal min count _sortedWounds do {
 
 	// If we found the concerned wound, remove it
 	if (_index >= 0) then {
-		_bodyPartWounds deleteAt _index;
 		DEBUG_FORMAT3_LOG("[HEAL WOUNDS]: Removing wound %1 on %2 (iteration %3)...",_index,_bodyPart,_i)
+		DEBUG_FORMAT3_CHAT("[HEAL WOUNDS]: Removing wound %1 on %2 (iteration %3)...",_index,_bodyPart,_i)
+		_bodyPartWounds deleteAt _index;
 
-		// Lower damage on the body parts with each wound healed
-		if EQUALS(ace_medical_treatment_clearTrauma, 2) then {
+		_bodyPartIndex = ALL_BODY_PARTS find _bodyPart;
+		_bodyPartDamage = (_allBodyPartDamages param [_bodyPartIndex, 0]) - (_damage * _amount);
 
-			_bodyPartIndex = ALL_BODY_PARTS find _bodyPart;
-			_bodyPartDamage = (_allBodyPartDamages param [_bodyPartIndex, 0]) - (_damage * _amount);
-
-			// Prevent obscenely small damage from lack of floating precision
-			if (_bodyPartDamage < 0.05) then {
-				_allBodyPartDamages set [_bodyPartIndex, 0];
-			} else {
-				_allBodyPartDamages set [_bodyPartIndex, _bodyPartDamage];
-			};
+		// Prevent obscenely small damage from lack of floating precision
+		if (_bodyPartDamage < 0.05) then {
+			_allBodyPartDamages set [_bodyPartIndex, 0];
+		} else {
+			_allBodyPartDamages set [_bodyPartIndex, _bodyPartDamage];
 		};
 
 		_openWounds set [_bodyPart, _bodyPartWounds];

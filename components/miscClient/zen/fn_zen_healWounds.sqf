@@ -17,4 +17,4 @@ if !(alive _unit) exitWith
 private _woundsToHeal = 20;
 ["Healing up to %1 wounds on %2. Repeat if still wounded afterwards.", _woundsToHeal, name _unit] call zen_common_fnc_showMessage;
 
-[_unit, 20] remoteExec ["f_fnc_healWounds", _unit];
+[_unit, _woundsToHeal] remoteExec ["f_fnc_healWounds", _unit];
