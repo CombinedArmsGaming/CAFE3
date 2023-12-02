@@ -1,1 +1,1 @@
-#define CAFE_VERSION 1.6.2
+#define CAFE_VERSION 1.6.3
