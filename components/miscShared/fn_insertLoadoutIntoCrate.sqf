@@ -11,44 +11,21 @@ clearItemCargoGlobal _crate;
 clearBackpackCargoGlobal _crate;
 
 
-_backpacks = [];
-_weapons = [];
-_magazines = [];
-_items = [];
+private _backpacks = [];
+private _weapons = [];
+private _magazines = [];
+private _items = [];
 
 
-_appendWeapon =
+private _appendWeapon =
 {
     params ["_weapons", "_magazines", "_items", "_array"];
 
-    _weapon = _array select 0;
-    _muzzleDevice = _array select 1;
-    _pointer = _array select 2;
-    _optic = _array select 3;
-    _primaryMag = _array select 4;
-
-    _secondaryMag = [];
-    _bipod = "";
-
-    if (count _array < 7) then
-    {
-        _bipod = _array select 5;
-    }
-    else
-    {
-        _secondaryMag = _array select 5;
-        _bipod = _array select 6;
-    };
-
-    _weapons pushBack [_weapon, 1];
-    if (count _primaryMag > 0) then {_magazines pushBack _primaryMag};
-    if (count _secondaryMag > 0) then {_magazines pushBack _secondaryMag};
-    _items append ([_muzzleDevice, _pointer, _optic, _bipod] call BIS_fnc_consolidateArray);
-
+    _weapons pushBack _array;
 };
 
 
-_appendContainer =
+private _appendContainer =
 {
     params ["_backpacks", "_magazines", "_items", "_array"];
 
@@ -78,83 +55,84 @@ _appendContainer =
 };
 
 
-_primaryWeaponArray = _loadout select 0;
+private _primaryWeaponArray = _loadout select 0;
 
 if !(_primaryWeaponArray isEqualTo []) then
 {
-    _array = _primaryWeaponArray;
+    private _array = _primaryWeaponArray;
     [_weapons, _magazines, _items, _array] call _appendWeapon;
 
 };
 
 
-_launcherArray = _loadout select 1;
+private _launcherArray = _loadout select 1;
 
 if !(_launcherArray isEqualTo []) then
 {
-    _array = _launcherArray;
+    private _array = _launcherArray;
     [_weapons, _magazines, _items, _array] call _appendWeapon;
 
 };
 
 
-_secondaryWeaponArray = _loadout select 2;
+private _secondaryWeaponArray = _loadout select 2;
 
 if !(_secondaryWeaponArray isEqualTo []) then
 {
-    _array = _secondaryWeaponArray;
+    private _array = _secondaryWeaponArray;
     [_weapons, _magazines, _items, _array] call _appendWeapon;
 
 };
 
 
-_uniform = _loadout select 3;
+private _uniform = _loadout select 3;
 
 if !(_uniform isEqualTo []) then
 {
-    _array = _uniform;
+    private _array = _uniform;
     [_items, _magazines, _items, _array] call _appendContainer;
 
 };
 
 
-_vest = _loadout select 4;
+private _vest = _loadout select 4;
 
 if !(_vest isEqualTo []) then
 {
-    _array = _vest;
+    private _array = _vest;
     [_items, _magazines, _items, _array] call _appendContainer;
 
 };
 
 
-_backpack = _loadout select 5;
+private _backpack = _loadout select 5;
 
-if !(_backpack isEqualTo []) then
+diag_log format ["%1 vs %2", _backpack#0, typeOf _crate];
+if !((_backpack isEqualTo []) or {(_backpack#0) isEqualTo (typeOf _crate)}) then
 {
-    _array = _backpack;
+    private _array = _backpack;
     [_backpacks, _magazines, _items, _array] call _appendContainer;
 
 };
 
 
-_helmet = _loadout select 6;
-_facewear = _loadout select 7;
+private _helmet = _loadout select 6;
+private _facewear = _loadout select 7;
 
 _items append [[_helmet, 1], [_facewear, 1]];
 
 
-_binoculars = _loadout select 8;
+private _binoculars = _loadout select 8;
 
 if !(_binoculars isEqualTo []) then
 {
-    _array = _binoculars;
+    private _array = _binoculars;
     [_weapons, _magazines, _items, _array] call _appendWeapon;
 
 };
 
 
-_assignedItems = (_loadout select 9) call BIS_fnc_consolidateArray;
+private _assignedItems = (_loadout select 9) call BIS_fnc_consolidateArray;
 _items append _assignedItems;
 
 
@@ -165,7 +143,7 @@ _items append _assignedItems;
 
 
 {
-    _crate addWeaponCargoGlobal _x;
+    _crate addWeaponWithAttachmentsCargoGlobal [_x, 1];
 
 } forEach _weapons;
 
