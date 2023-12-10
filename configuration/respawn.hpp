@@ -36,7 +36,7 @@
 #define INITIAL_RESPAWN_DELAY               5
 
 #define RESPAWN_MODE_BLUFOR                 RESPAWN_MODE_TIMED_WAVES_TICKETS
-#define RESPAWN_DELAY_BLUFOR                10
+#define RESPAWN_DELAY_BLUFOR                180
 #define RESPAWN_SIDE_TICKETS_BLUFOR         30
 #define RESPAWN_PLAYER_TICKETS_BLUFOR       2
        
