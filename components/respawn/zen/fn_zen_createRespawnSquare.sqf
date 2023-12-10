@@ -1,4 +1,5 @@
 #include "../macros.hpp"
+#define SQUARE_POLL_RATE 5
 
 params ["_position", "_object"];
 
@@ -24,7 +25,7 @@ f_fnc_respawnRandoAtSquare =
     
     private _eligiblePlayers = allPlayers 
         select {!alive _x} 
-        select {(_x getVariable ["f_var_lastSquareRespawnAttempt", 0]) < (CBA_missionTime - 1)};
+        select {(_x getVariable ["f_var_lastSquareRespawnAttempt", 0]) < (CBA_missionTime - (MINIMUM_RESPAWN_DELAY + SQUARE_POLL_RATE + 1))};
 
     private _eligibleCount = count _eligiblePlayers;
     if (_eligibleCount <= 0) exitWith {false};
@@ -49,7 +50,7 @@ f_fnc_onSquareTimeout =
         [
             f_fnc_onSquareTimeout, 
             _this,
-            5
+            SQUARE_POLL_RATE
         ] call CBA_fnc_waitAndExecute;
     }
     else
