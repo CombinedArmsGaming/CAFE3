@@ -2,7 +2,21 @@
 
 params ["_position", "_object"];
 
-private _square = "VR_Area_01_square_1x1_yellow_F" createVehicleLocal (ASLToAGL _position);
+private _squarePos = _position;
+
+if !(isNull curatorCamera) then
+{
+    private _camPos = getPosASL curatorCamera;
+    private _results = lineIntersectsSurfaces [_camPos, _position, objNull, objNull, true, 1];
+
+    if (count _results > 0) then
+    {
+        _squarePos = _results # 0 # 0;
+    };
+};
+
+private _square = "VR_Area_01_square_1x1_yellow_F" createVehicleLocal _squarePos;
+_square setPosASL (_squarePos vectorAdd [0,0,0.1]);
 
 f_fnc_respawnRandoAtSquare = 
 {
