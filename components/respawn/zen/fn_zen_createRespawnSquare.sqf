@@ -27,10 +27,9 @@ f_fnc_respawnRandoAtSquare =
         select {!alive _x} 
         select {(_x getVariable ["f_var_lastSquareRespawnAttempt", 0]) < (CBA_missionTime - (MINIMUM_RESPAWN_DELAY + SQUARE_POLL_RATE + 1))};
 
-    private _eligibleCount = count _eligiblePlayers;
-    if (_eligibleCount <= 0) exitWith {false};
+    if (_eligiblePlayers isEqualTo []) exitWith {false};
 
-    private _player = _eligiblePlayers # (floor random count _eligiblePlayers);
+    private _player = selectRandom _eligiblePlayers;
     _player setVariable ["f_var_lastSquareRespawnAttempt", CBA_missionTime, true];
     
     [ASLToAGL getPosASL _square, "Respawn square"] remoteExec ["f_fnc_allowImmediateRespawnLocal", _player];
@@ -42,11 +41,10 @@ f_fnc_onSquareTimeout =
     params ["_square"];
     if (!alive _square) exitWith {};
 
-    _square setObjectTexture [0, "#(argb,8,8,3)color(0.1,0.8,0.3,1,co)"];
     private _successfulRespawn = [_square] call f_fnc_respawnRandoAtSquare;
-
     if !(_successfulRespawn) then
     {
+         _square setObjectTexture [0, "#(argb,8,8,3)color(0.1,0.8,0.3,1,co)"];
         [
             f_fnc_onSquareTimeout, 
             _this,

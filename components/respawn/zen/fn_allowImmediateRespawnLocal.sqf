@@ -1,6 +1,6 @@
 #include "../macros.hpp"
 
-params [["_location", objNull], ["_locationName", "Unnamed"]];
+params [["_location", objNull, [objNull, []]], ["_locationName", "Unnamed", [""]]];
 
 private _ticketsRemaining = [player, 0, true] call BIS_fnc_respawnTickets;
 if (_ticketsRemaining <= 0) then
