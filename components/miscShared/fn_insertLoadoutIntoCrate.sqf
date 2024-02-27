@@ -17,14 +17,6 @@ private _magazines = [];
 private _items = [];
 
 
-private _appendWeapon =
-{
-    params ["_weapons", "_magazines", "_items", "_array"];
-
-    _weapons pushBack _array;
-};
-
-
 private _appendContainer =
 {
     params ["_backpacks", "_magazines", "_items", "_array"];
@@ -60,8 +52,7 @@ private _primaryWeaponArray = _loadout select 0;
 if !(_primaryWeaponArray isEqualTo []) then
 {
     private _array = _primaryWeaponArray;
-    [_weapons, _magazines, _items, _array] call _appendWeapon;
-
+    _weapons pushBack _array;
 };
 
 
@@ -70,8 +61,7 @@ private _launcherArray = _loadout select 1;
 if !(_launcherArray isEqualTo []) then
 {
     private _array = _launcherArray;
-    [_weapons, _magazines, _items, _array] call _appendWeapon;
-
+    _weapons pushBack _array;
 };
 
 
@@ -80,8 +70,7 @@ private _secondaryWeaponArray = _loadout select 2;
 if !(_secondaryWeaponArray isEqualTo []) then
 {
     private _array = _secondaryWeaponArray;
-    [_weapons, _magazines, _items, _array] call _appendWeapon;
-
+    _weapons pushBack _array;
 };
 
 
@@ -107,7 +96,6 @@ if !(_vest isEqualTo []) then
 
 private _backpack = _loadout select 5;
 
-diag_log format ["%1 vs %2", _backpack#0, typeOf _crate];
 if !((_backpack isEqualTo []) or {(_backpack#0) isEqualTo (typeOf _crate)}) then
 {
     private _array = _backpack;
@@ -127,8 +115,7 @@ private _binoculars = _loadout select 8;
 if !(_binoculars isEqualTo []) then
 {
     private _array = _binoculars;
-    [_weapons, _magazines, _items, _array] call _appendWeapon;
-
+    _weapons pushBack _array;
 };
 
 
