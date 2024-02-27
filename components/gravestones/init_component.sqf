@@ -8,7 +8,7 @@ _setGravestoneType =
 {
     params ["_objectName", "_outputName"];
 
-    _gravestoneType = "Box_Syndicate_Ammo_F";
+    _gravestoneType = "B_AssaultPack_rgr";
 
     _gravestone = missionNamespace getVariable [_objectName, ""];
 
