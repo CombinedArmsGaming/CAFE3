@@ -7,6 +7,8 @@ params ["_display", "_exitCode"];
 
 missionNamespace setVariable ["f_var_spawnPickerDialog_isOpened", false];
 
+private _moveOnClose = missionNamespace getVariable ["f_var_spawnPickerDialog_moveOnClose", false];
+missionNamespace setVariable ["f_var_spawnPickerDialog_moveOnClose", nil];
 
 if (_exitCode == 2) exitWith {};
 
@@ -33,5 +35,11 @@ if (_exitCode == 1) then
     };
 
     missionNamespace setVariable ["f_var_spawnPickerDialog_selectedSpawn", _spawn];
+
+    if (_moveOnClose) then
+    {
+        _spawn params ["_spawnPoint", ["_spawnName", "Unnamed"]];
+        private _success = [player, _spawnPoint, true] call BIS_fnc_moveToRespawnPosition;
+    };
 
 };
