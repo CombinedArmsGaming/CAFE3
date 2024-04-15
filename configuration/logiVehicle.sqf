@@ -8,41 +8,91 @@
 
     Multiple kinds of logistics vehicle may be configured here.  In the editor, assign the logistics role to a vehicle by using the following line in the 'Init' box:
 
-        [this, "example"] call f_fnc_setLogiVehicle;
+        [this, "example_blu"] call f_fnc_setLogiVehicle;
 
 */
 
 BEGIN_LOGI_CONFIG;
 
 
-// Create a type of logi vehicle named "example".
-CREATE_LOGI_TYPE(example);
+// Create a type of logi vehicle named "example_blu".
+CREATE_LOGI_TYPE(example_blu);
 
 // Add spawnable vehicles to the logi vic.
-ADD_VEHICLE(example,"B_MRAP_01_F",2);
-ADD_VEHICLE(example,"B_Quadbike_01_F",5);
+ADD_VEHICLE(example_blu,"B_MRAP_01_F",2);
+ADD_VEHICLE(example_blu,"B_Quadbike_01_F",5);
 
 // The same commands can be used to spawn spare wheels and tracks.
-ADD_VEHICLE(example,"ACE_Track",6);
-ADD_VEHICLE(example,"ACE_Wheel",6);
+ADD_VEHICLE(example_blu,"ACE_Track",6);
+ADD_VEHICLE(example_blu,"ACE_Wheel",6);
 
-// This special command lets you give gearscript to a vehicle (for example, ammo crates).
-ADD_VEHICLE_WITH_GEAR(example,"Box_NATO_Equip_F",5,"crate_small");
+// This special command lets you give gearscript to a vehicle (for example_blu, ammo crates).
+ADD_VEHICLE_WITH_GEAR(example_blu,"Box_NATO_Equip_F",5,"crate_small");
 SET_CUSTOM_NAME("Small Ammo Crate"); // This command lets you give a custom name to the vehicle you've just added.
 
-ADD_VEHICLE_WITH_GEAR(example,"B_supplyCrate_F",5,"crate_med");
+ADD_VEHICLE_WITH_GEAR(example_blu,"B_supplyCrate_F",5,"crate_med");
 SET_CUSTOM_NAME("Large Ammo Crate");
 
 // Set the faction of the logi vehicle.  Used to choose the correct gear for gearscripted crates etc.
-SET_FACTION(example,"blu_f");
+SET_FACTION(example_blu,"blu_f");
 
 // Allow only the command group and Zeus group to use this vehicle.
 // If you don't add any groups then the vehicle can be used by every group.
-ADD_GROUP(example,"Command");
-ADD_GROUP(example,"Zeus");
+ADD_GROUP(example_blu,"COMMAND");
+ADD_GROUP(example_blu,"ZEUS");
 
 // Allow only people with "logi", "eng" or "zeus" gearscript to use this vehicle.
 // If you don't add any roles then the vehicle can be used by every role.
-ADD_ROLE(example,"logi");
-ADD_ROLE(example,"eng");
-ADD_ROLE(example,"zeus");
+ADD_ROLE(example_blu,"logi");
+ADD_ROLE(example_blu,"eng");
+ADD_ROLE(example_blu,"zeus");
+
+
+// Create a type of logi vehicle named "example_ind".
+CREATE_LOGI_TYPE(example_ind);
+
+ADD_VEHICLE(example_ind,"I_MRAP_03_F",2);
+ADD_VEHICLE(example_ind,"I_Quadbike_01_F",5);
+
+ADD_VEHICLE(example_ind,"ACE_Track",6);
+ADD_VEHICLE(example_ind,"ACE_Wheel",6);
+
+ADD_VEHICLE_WITH_GEAR(example_ind,"Box_AAF_Equip_F",5,"crate_small");
+SET_CUSTOM_NAME("Small Ammo Crate");
+
+ADD_VEHICLE_WITH_GEAR(example_ind,"I_supplyCrate_F",5,"crate_med");
+SET_CUSTOM_NAME("Large Ammo Crate");
+
+SET_FACTION(example_ind,"ind_f");
+
+ADD_GROUP(example_ind,"INDIA");
+ADD_GROUP(example_ind,"Zeus");
+
+ADD_ROLE(example_ind,"logi");
+ADD_ROLE(example_ind,"eng");
+ADD_ROLE(example_ind,"zeus");
+
+
+// Create a type of logi vehicle named "example_opf".
+CREATE_LOGI_TYPE(example_opf);
+
+ADD_VEHICLE(example_opf,"O_MRAP_02_F",2);
+ADD_VEHICLE(example_opf,"O_Quadbike_01_F",5);
+
+ADD_VEHICLE(example_opf,"ACE_Track",6);
+ADD_VEHICLE(example_opf,"ACE_Wheel",6);
+
+ADD_VEHICLE_WITH_GEAR(example_opf,"Box_CSAT_Equip_F",5,"crate_small");
+SET_CUSTOM_NAME("Small Ammo Crate");
+
+ADD_VEHICLE_WITH_GEAR(example_opf,"O_supplyCrate_F",5,"crate_med");
+SET_CUSTOM_NAME("Large Ammo Crate");
+
+SET_FACTION(example_opf,"opf_f");
+
+ADD_GROUP(example_opf,"TANGO");
+ADD_GROUP(example_opf,"Zeus");
+
+ADD_ROLE(example_opf,"logi");
+ADD_ROLE(example_opf,"eng");
+ADD_ROLE(example_opf,"zeus");
