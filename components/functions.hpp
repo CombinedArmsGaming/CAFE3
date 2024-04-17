@@ -22,11 +22,11 @@ class F
 #include "miscShared\functions.hpp"
 #include "radio\functions.hpp"
 #include "respawn\functions.hpp"
+#include "slottingGenerator\functions.hpp"
 #include "spawnNpcs\functions.hpp"
 #include "squadMarkers\functions.hpp"
 #include "viewDistanceEditor\functions.hpp"
 #include "zeus_ui\functions.hpp"
-
 
 }
 
