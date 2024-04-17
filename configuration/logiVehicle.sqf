@@ -33,6 +33,24 @@ SET_CUSTOM_NAME("Small Ammo Crate"); // This command lets you give a custom name
 ADD_VEHICLE_WITH_GEAR(example,"B_supplyCrate_F",5,"crate_med");
 SET_CUSTOM_NAME("Large Ammo Crate");
 
+
+// Special "Init" code, see below for details.
+private _tankCode = 
+{
+    params ["_spawnedVic", "_logiVic", "_logiType", "_faction", "_spawnedVicName"];
+
+    // Enable hunter-killer by default.
+    _spawnedVic setVariable ["ace_hunterkiller", true, true];
+
+    // Add a toolkit and backpack only.
+    _spawnedVic addItemCargoGlobal ["Toolkit", 1];
+    _spawnedVic addBackpackCargoGlobal ["B_AssaultPack_rgr", 1];
+};
+
+// This special command lets you run some code on the vehicle you just spawned, kind of like the "Init" box in the editor.
+ADD_VEHICLE_WITH_CODE(example,"B_MBT_01_cannon_F",2,_tankCode);
+
+
 // Set the faction of the logi vehicle.  Used to choose the correct gear for gearscripted crates etc.
 SET_FACTION(example,"blu_f");
 
