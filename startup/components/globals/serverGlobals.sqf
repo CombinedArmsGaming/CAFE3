@@ -1,5 +1,5 @@
-// Client startup group
-// Executes all scripts needed by a normal client.
+// Server globals group
+// Executes all scripts needed before init.
 
 #include "macros.hpp"
 
@@ -10,3 +10,5 @@ LOAD_GLOBALS(respawn)
 LOAD_GLOBALS(gearScript)
 
 LOAD_GLOBALS(radio)
+
+LOAD_GLOBALS(aceActions)
