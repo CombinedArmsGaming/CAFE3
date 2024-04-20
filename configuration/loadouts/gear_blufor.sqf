@@ -50,6 +50,8 @@ BEGIN_LOADOUTS;
 
     REMOVE_ITEM_FROM_LOADOUT(UNIT_NAME,"Item Name");
 
+    PUT_GUN_IN_GUNBAG(UNIT_NAME,FULL ACE ARSENAL EXPORT);
+
     ADD_MAP(UNIT_NAME);
     REMOVE_MAP(UNIT_NAME);
 
@@ -199,6 +201,7 @@ _baseLoadout = [["srifle_LRR_F","","","optic_LRPS",["7Rnd_408_Mag",7],[],""],[],
 
 CREATE_LOADOUT(sniper,_baseLoadout);
 
+// This must be a full ACE Arsenal export.  Not just the part with the weapon.
 _gunbagLoadout = [["arifle_MXC_F","muzzle_snds_65_TI_blk_F","acc_pointer_IR","optic_Aco",["30Rnd_65x39_caseless_mag",30],[],""],[],[],[],[],[],"","",[],["","","","","",""]];
 
 PUT_GUN_IN_GUNBAG(sniper,_gunbagLoadout);

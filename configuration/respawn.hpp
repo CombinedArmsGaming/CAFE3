@@ -15,6 +15,7 @@
         RESPAWN_MODE_TRIGGERED_WAVES_TICKETS - Like RESPAWN_MODE_TRIGGERED_WAVES, but with tickets also.
 
     The RESPAWN_DELAY for each side affects the modes above.  They set wave delay, individual respawn delay etc.
+    In timed waves mode, the wave timer varies from 1-2x of the RESPAWN_DELAY.  In the BLUFOR example below, the timer will be between 3 to 6 minutes.
 
     Tickets can be given to each side, and also to players of each side.  When a player respawns, they will use their own personal tickets first before using any side tickets.
 
@@ -35,6 +36,7 @@
 // When 'respawnOnStart = 1' in the description.ext file, this is how long players will wait to spawn in when the mission starts.
 #define INITIAL_RESPAWN_DELAY               5
 
+// In timed waves mode, the wave timer varies from 1-2x of the RESPAWN_DELAY.  180 will mean between 3 to 6 minutes.
 #define RESPAWN_MODE_BLUFOR                 RESPAWN_MODE_TIMED_WAVES_TICKETS
 #define RESPAWN_DELAY_BLUFOR                180
 #define RESPAWN_SIDE_TICKETS_BLUFOR         30
