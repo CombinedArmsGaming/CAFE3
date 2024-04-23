@@ -52,7 +52,7 @@ private _modifierCode =
 	}
 	else
 	{
-		if ((_gearOrCode isEqualTo "") or (typeName _gearOrCode isEqualTo "CODE")) then
+		if ((_gearOrCode isEqualTo "") or (_gearOrCode isEqualType {})) then
 		{
 			format ["Deploy '%1' (%2 remaining)", GET_VEHICLE_DISPLAY_NAME(_type), _remaining]
 		}

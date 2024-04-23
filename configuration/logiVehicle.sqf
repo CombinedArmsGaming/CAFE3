@@ -37,6 +37,8 @@ SET_CUSTOM_NAME("Large Ammo Crate");
 // Special "Init" code, see below for details.
 private _tankCode = 
 {
+    // This code will execute locally to the person using the action.
+    // This will be executed ~5s after the vehicle has been moved into the AO.
     params ["_spawnedVic", "_logiVic", "_logiType", "_faction", "_spawnedVicName"];
 
     // Enable hunter-killer by default.

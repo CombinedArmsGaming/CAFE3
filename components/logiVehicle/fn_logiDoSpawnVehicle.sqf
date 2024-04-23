@@ -33,7 +33,7 @@ private _message = if (_text isNotEqualTo "") then
 }
 else
 {
-	if ((_gearOrCode isEqualTo "") or (typeName _gearOrCode isEqualTo "CODE")) then
+	if ((_gearOrCode isEqualTo "") or (_gearOrCode isEqualType {})) then
 	{
 		format ["Deploying '%1'...", GET_VEHICLE_DISPLAY_NAME(_type)]
 	}
@@ -96,7 +96,7 @@ _sign2 setPos (_logiVic modelToWorld [0,0,1]);
 
 
 // If vehicle has survived, fill it with any specified gear.
-if (typeName _gearOrCode isEqualTo "CODE") then
+if (_gearOrCode isEqualType {}) then
 {
 	private _logiType = GET_LOGITYPE(_logiVic);
 	private _faction = GET_FACTION_DYNAMIC(_logiType);
