@@ -18,9 +18,9 @@ private _enableCondition =
     private _role = toLower ((assignedVehicleRole player) param [0, "cargo"]);
 
     private _playerCanUse = ((vehicle _player) isEqualTo _vehicle) and {!(_role isEqualTo "cargo")};
-    private _driverNotActive = !(_vehicle getVariable ["ace_hunterkiller", false]);
+    private _hunterKillerNotActive = !(_vehicle getVariable ["ace_hunterkiller", false]);
 
-    _playerCanUse and _driverNotActive;
+    _playerCanUse and _hunterKillerNotActive;
 
 };
 
@@ -31,9 +31,9 @@ private _disableCondition =
     private _role = toLower ((assignedVehicleRole player) param [0, "cargo"]);
 
     private _playerCanUse = ((vehicle _player) isEqualTo _vehicle) and {!(_role isEqualTo "cargo")};
-    private _driverActive = (_vehicle getVariable ["ace_hunterkiller", false]);
+    private _hunterKillerActive = (_vehicle getVariable ["ace_hunterkiller", false]);
 
-    _playerCanUse and _driverActive;
+    _playerCanUse and _hunterKillerActive;
 
 };
 
