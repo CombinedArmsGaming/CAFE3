@@ -2,14 +2,7 @@
 
 params ["_target", "_player", "_params"];
 
-if (isNil "f_var_originalFunction_addRadioActionsToClass") then
-{
-    // Why isn't this easier to do in SQF?  Why does it have to be so brittle?  thanks lads
-    f_var_originalFunction_addRadioActionsToClass = compile preprocessFileLineNumbers "idi\acre\addons\ace_interact\fnc_radioListChildrenActions.sqf";
-};
-
-
-private _children = _this call f_var_originalFunction_addRadioActionsToClass;
+private _children = _this call acre_ace_interact_fnc_radioListChildrenActions_original;
 
 // Update group radio channels
 private _action =
