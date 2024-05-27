@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={160.05789,102.39588,111.35806};
-		dir[]={0.3667562,-0.64473581,0.67067552};
-		up[]={0.30933958,0.76440543,0.56567949};
-		aside[]={0.8773818,-1.4901161e-008,-0.47979271};
+		pos[]={165.35249,102.39588,120.22861};
+		dir[]={0.38991711,-0.63316619,0.66863811};
+		up[]={0.31896174,0.77401149,0.54696333};
+		aside[]={0.8638531,4.3073669e-008,-0.5037567};
 	};
 };
 binarizationWanted=0;
@@ -6134,7 +6134,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="[this, ""example""] call f_fnc_setLogiVehicle;";
+				init="[this, ""example_blu""] call f_fnc_setLogiVehicle;";
 				name="logi_truck";
 			};
 			id=1485;
@@ -6766,7 +6766,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={542.66479,5.8924227,259.58429};
-				angles[]={-0,0.90228283,0};
+				angles[]={0,0.90228283,0};
 			};
 			side="Empty";
 			flags=4;
@@ -6800,7 +6800,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={510.93762,5.8924227,259.78113};
-				angles[]={-0,0.90228283,0};
+				angles[]={0,0.90228283,0};
 			};
 			side="Empty";
 			flags=4;
@@ -6834,7 +6834,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={511.23788,5.8924227,292.69421};
-				angles[]={-0,0.90228283,0};
+				angles[]={0,0.90228283,0};
 			};
 			side="Empty";
 			flags=4;
@@ -6868,7 +6868,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={511.60345,5.8924227,228.92876};
-				angles[]={-0,0.90228283,0};
+				angles[]={0,0.90228283,0};
 			};
 			side="Empty";
 			flags=4;
@@ -6902,7 +6902,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={513.12445,5.1867056,229.75075};
-				angles[]={-0,1.4853275,0};
+				angles[]={0,1.4853275,0};
 			};
 			side="Empty";
 			flags=4;
@@ -6919,7 +6919,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={512.45862,5.1867056,260.60309};
-				angles[]={-0,1.4853275,0};
+				angles[]={0,1.4853275,0};
 			};
 			side="Empty";
 			flags=4;
@@ -6936,7 +6936,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={512.75891,5.1867056,293.51624};
-				angles[]={-0,1.4853275,0};
+				angles[]={0,1.4853275,0};
 			};
 			side="Empty";
 			flags=4;
@@ -6953,7 +6953,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={544.18579,5.1867056,260.40625};
-				angles[]={-0,1.4853275,0};
+				angles[]={0,1.4853275,0};
 			};
 			side="Empty";
 			flags=4;
@@ -6970,7 +6970,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={414.46042,5.8924227,229.26936};
-				angles[]={-0,0.90228283,0};
+				angles[]={0,0.90228283,0};
 			};
 			side="Empty";
 			flags=4;
@@ -7004,7 +7004,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={415.0184,5.8924227,260.81189};
-				angles[]={-0,0.90228283,0};
+				angles[]={0,0.90228283,0};
 			};
 			side="Empty";
 			flags=4;
@@ -7038,7 +7038,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={415.34619,5.8924227,293.40851};
-				angles[]={-0,0.90228283,0};
+				angles[]={0,0.90228283,0};
 			};
 			side="Empty";
 			flags=4;
@@ -7072,7 +7072,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={446.63806,5.8924227,260.7735};
-				angles[]={-0,0.90228283,0};
+				angles[]={0,0.90228283,0};
 			};
 			side="Empty";
 			flags=4;
@@ -7106,7 +7106,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={448.15805,5.1867056,261.59552};
-				angles[]={-0,1.4853275,0};
+				angles[]={0,1.4853275,0};
 			};
 			side="Empty";
 			flags=4;
@@ -7123,7 +7123,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={415.98041,5.1867056,230.09137};
-				angles[]={-0,1.4853275,0};
+				angles[]={0,1.4853275,0};
 			};
 			side="Empty";
 			flags=4;
@@ -7140,7 +7140,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={416.53839,5.1867056,261.63391};
-				angles[]={-0,1.4853275,0};
+				angles[]={0,1.4853275,0};
 			};
 			side="Empty";
 			flags=4;
@@ -7157,7 +7157,7 @@ class Mission
 			class PositionInfo
 			{
 				position[]={416.86618,5.1867056,294.23053};
-				angles[]={-0,1.4853275,0};
+				angles[]={0,1.4853275,0};
 			};
 			side="Empty";
 			flags=4;
