@@ -5,13 +5,13 @@
 
 	Marking groups:
 		To mark groups as being related to eachother, use the editor's "Sync To" feature to link the leaders of each group together.
-		After doing this, you should see blue lines connecting all the leaders in your player heirarchy together.  This will also be visible in Zeus.
+		After doing this, you should see blue lines connecting all the leaders in your player hierarchy together.  This will also be visible in Zeus.
 		You must mark the overall commander with a line of code in their 'Init' box in the editor.  Use the following:
 
 			this setVariable ["f_leaderGroup", true];
 
 		You can do this multiple times for commanders of different sides.
-		You can also have groups that are split-off from the main heirarchy - if you mark them in the same way as above, then they will appear separately in the slotting page.
+		You can also have groups that are split-off from the main hierarchy - if you mark them in the same way as above, then they will appear separately in the slotting page.
 
 	Marking players:
 		You can mark players with special attributes that will show up on the slotting page - you do this by pasting lines of code into their 'Init' box in the editor.
