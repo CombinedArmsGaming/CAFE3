@@ -14,7 +14,7 @@ switch (typeName _structure) do
 		{
 			case "ARRAY": 
 			{
-				if ((count _sampleContent == 2) and ((typeName (_sampleContent#0)) == "STRING")) exitWith 
+				if ((count _sampleContent == 2) and {(_sampleContent#0) isEqualType ""}) exitWith 
 				{
 					[_structure] call f_fnc_composeJSONObjectFragments
 				};
