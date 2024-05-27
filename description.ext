@@ -418,6 +418,15 @@ class Extended_InitPost_EventHandlers
 
 #endif
 
+#ifdef ENABLE_HUNTER_KILLER_ACTION
+
+		class addHunterKillerAction
+		{
+			init = "_this call f_fnc_addHunterKillerActions";
+		};
+
+#endif
+
 		class addAiDriverAction
 		{
 			init = "_this call f_fnc_addAiDriverActions";
@@ -427,18 +436,28 @@ class Extended_InitPost_EventHandlers
 
 
 
-#ifdef ENABLE_PUSH_BOATS_ACTION
-
 	class Ship
 	{
+		
+#ifdef ENABLE_PUSH_BOATS_ACTION
+
 		class addPushAction
 		{
 			init = "_this call f_fnc_addPushActionToClass";
 		};
-	};
 
 #endif
 
+#ifdef ENABLE_HUNTER_KILLER_ACTION
+
+		class addHunterKillerAction
+		{
+			init = "_this call f_fnc_addHunterKillerActions";
+		};
+
+#endif
+
+	};
 
 
 

@@ -3,14 +3,8 @@
 
 #include "macros.hpp"
 
-if (isNil "f_var_originalFunction_effectUnconscious") then
-{
-    // Why isn't this easier to do in SQF?  Why does it have to be so brittle?  what the christ
-    f_var_originalFunction_effectUnconscious = compile preprocessFileLineNumbers "z\ace\addons\medical_feedback\functions\fnc_effectUnconscious.sqf";
-};
-
 params ["_enable", "_mode"];
 
 if (_enable and {IS_TRUE(ace_spectator_isSet)}) exitWith {};
 
-_this call f_var_originalFunction_effectUnconscious
+_this call ace_medical_feedback_fnc_effectUnconscious_original

@@ -205,6 +205,8 @@ f_var_acre_civRadioNet    = "CIV NET";
 
 // Define your radio structure here - see the comment at the top of the file for example usage.
 // The default configuration below shows a BLUFOR radio net for a small infantry mission, including a FAC (but no pilot - try adding one!).
+
+// BLUFOR
 [_shortRadio, "ALPHA SR", west, "ALPHA"] call f_fnc_acre_giveRadioToAllInGroup;
 [_shortRadio, "BRAVO SR", west, "BRAVO"] call f_fnc_acre_giveRadioToAllInGroup;
 [_shortRadio, "CHARLIE SR", west, "CHARLIE"] call f_fnc_acre_giveRadioToAllInGroup;
@@ -216,6 +218,26 @@ f_var_acre_civRadioNet    = "CIV NET";
 
 [_backpackRadio, "GROUND CMD", west, "zeus"] call f_fnc_acre_giveRadioToAllInRole;
 [_shortRadio, "COMMAND SR", west, "zeus"] call f_fnc_acre_giveRadioToAllInRole;
+
+// INDFOR
+[_shortRadio, "INDIA-1 SR", resistance, "INDIA-1"] call f_fnc_acre_giveRadioToAllInGroup;
+[_shortRadio, "INDIA-2 SR", resistance, "INDIA-2"] call f_fnc_acre_giveRadioToAllInGroup;
+[_shortRadio, "INDIA-3 SR", resistance, "INDIA-3"] call f_fnc_acre_giveRadioToAllInGroup;
+[_shortRadio, "INDIA SR", resistance, "INDIA"] call f_fnc_acre_giveRadioToAllInGroup;
+
+[_longRadio, "IND GROUND CMD", resistance, ["sl", "ftl", "co", "med", "fac"]] call f_fnc_acre_giveRadioToAllInRole;
+
+[_backpackRadio, "IND AIR CMD", resistance, ["fac"]] call f_fnc_acre_giveRadioToAllInRole;
+
+// OPFOR
+[_shortRadio, "TANGO-1 SR", east, "TANGO-1"] call f_fnc_acre_giveRadioToAllInGroup;
+[_shortRadio, "TANGO-2 SR", east, "TANGO-2"] call f_fnc_acre_giveRadioToAllInGroup;
+[_shortRadio, "TANGO-3 SR", east, "TANGO-3"] call f_fnc_acre_giveRadioToAllInGroup;
+[_shortRadio, "TANGO SR", east, "TANGO"] call f_fnc_acre_giveRadioToAllInGroup;
+
+[_longRadio, "OPF GROUND CMD", east, ["sl", "ftl", "co", "med", "fac"]] call f_fnc_acre_giveRadioToAllInRole;
+
+[_backpackRadio, "OPF AIR CMD", east, ["fac"]] call f_fnc_acre_giveRadioToAllInRole;
 
 
 // ====================================================================================
