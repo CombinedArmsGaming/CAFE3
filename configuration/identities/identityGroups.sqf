@@ -172,3 +172,25 @@ _names = "gm_names_dan_male";
 
 CREATE_IDENTITY(gm_danish_camo,_speakers,_faces,_names);
 
+// [Spearhead CDLC] US
+_speakers = ["male12eng","male02eng","male07eng","male08eng","male05eng","male04eng","male01eng","male06eng","male03eng","male10eng","male09eng","male11eng"];
+_faces = ["Sturrock","WhiteHead_20","WhiteHead_16","WhiteHead_02","GreekHead_A3_07","WhiteHead_08","GreekHead_A3_06","WhiteHead_03","WhiteHead_07","Barklem","WhiteHead_17","WhiteHead_12","WhiteHead_18","WhiteHead_09","WhiteHead_10","WhiteHead_11","WhiteHead_15","GreekHead_A3_08","GreekHead_A3_09","GreekHead_A3_05","AfricanHead_02","AfricanHead_03","WhiteHead_14","WhiteHead_21","WhiteHead_19","WhiteHead_06","WhiteHead_01","WhiteHead_04","WhiteHead_05","AfricanHead_01","WhiteHead_13"];
+_names = "SPE_EnglishMen";
+
+CREATE_IDENTITY(spe_us,_speakers,_faces,_names);
+
+// [Spearhead CDLC] France
+_speakers = ["Male01FRE", "Male02FRE", "Male03FRE"];
+_faces = ["Sturrock","WhiteHead_20","WhiteHead_16","WhiteHead_02","GreekHead_A3_07","WhiteHead_08","GreekHead_A3_06","WhiteHead_03","WhiteHead_07","Barklem","WhiteHead_17","WhiteHead_12","WhiteHead_18","WhiteHead_09","WhiteHead_10","WhiteHead_11","WhiteHead_15","GreekHead_A3_08","GreekHead_A3_09","GreekHead_A3_05","AfricanHead_02","AfricanHead_03","WhiteHead_14","WhiteHead_21","WhiteHead_19","WhiteHead_06","WhiteHead_01","WhiteHead_04","WhiteHead_05","AfricanHead_01","WhiteHead_13"];
+_names = "SPE_FrenchMen";
+
+CREATE_IDENTITY(spe_french,_speakers,_faces,_names);
+
+
+// [Spearhead CDLC] Germany
+_speakers = ["SPE_Male01GER"];
+_faces = ["WhiteHead_14","WhiteHead_06","WhiteHead_12","WhiteHead_30","Sturrock","LivonianHead_3","LivonianHead_10","WhiteHead_08","RussianHead_4","LivonianHead_1","LivonianHead_5","AsianHead_A3_01","WhiteHead_21","WhiteHead_17","RussianHead_3","WhiteHead_19","WhiteHead_02","WhiteHead_04","WhiteHead_09","LivonianHead_6","WhiteHead_10","WhiteHead_03","LivonianHead_2","LivonianHead_9","WhiteHead_18","WhiteHead_16","WhiteHead_15","WhiteHead_07","WhiteHead_11","LivonianHead_4","RussianHead_1","WhiteHead_05"];
+_names = "SPE_GermanMen";
+
+CREATE_IDENTITY(spe_german,_speakers,_faces,_names);
+

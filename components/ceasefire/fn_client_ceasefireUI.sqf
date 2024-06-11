@@ -62,8 +62,10 @@ _UI setVariable ["endTime", _endTime];
 // Continuously update the UI
 if (isNil "cafe_ceasefire_client_UI_EH") then {cafe_ceasefire_client_UI_EH = -1};
 
-removeMissionEventHandler ["Draw3D", cafe_ceasefire_client_UI_EH];
-cafe_ceasefire_client_UI_EH = addMissionEventHandler ["Draw3D", {
+removeMissionEventHandler ["EachFrame", cafe_ceasefire_client_UI_EH];
+cafe_ceasefire_client_UI_EH = addMissionEventHandler ["EachFrame", {
+
+	if (isGamePaused) exitWith {};
 
 	private _UI = uiNamespace getVariable ["CAFE_RscCeasefire", displayNull];
 	private _ctrlGroup = _UI displayCtrl MACRO_IDC_CF_CTRLGROUP;

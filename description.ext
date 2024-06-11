@@ -36,12 +36,10 @@ loadScreen = "ca_logo_large.jpg";
 
 // ============================================================================================
 
-
 enableDebugConsole = 1;
 
 // CAFE - Debug variable, needs to exist pre-init.
 #include "startup\configuration\internals\debug.sqf"
-
 
 // ============================================================================================
 
@@ -69,7 +67,15 @@ forceRotorLibSimulation = 0;
 
 // ============================================================================================
 
+#ifdef ENABLE_SLOTTING_GENERATOR_MODE
+
+disabledAI = false;
+
+#else
+
 disabledAI = true;
+
+#endif
 
 // ============================================================================================
 
@@ -412,6 +418,15 @@ class Extended_InitPost_EventHandlers
 
 #endif
 
+#ifdef ENABLE_HUNTER_KILLER_ACTION
+
+		class addHunterKillerAction
+		{
+			init = "_this call f_fnc_addHunterKillerActions";
+		};
+
+#endif
+
 		class addAiDriverAction
 		{
 			init = "_this call f_fnc_addAiDriverActions";
@@ -421,18 +436,28 @@ class Extended_InitPost_EventHandlers
 
 
 
-#ifdef ENABLE_PUSH_BOATS_ACTION
-
 	class Ship
 	{
+		
+#ifdef ENABLE_PUSH_BOATS_ACTION
+
 		class addPushAction
 		{
 			init = "_this call f_fnc_addPushActionToClass";
 		};
-	};
 
 #endif
 
+#ifdef ENABLE_HUNTER_KILLER_ACTION
+
+		class addHunterKillerAction
+		{
+			init = "_this call f_fnc_addHunterKillerActions";
+		};
+
+#endif
+
+	};
 
 
 
@@ -475,10 +500,5 @@ class Extended_DisplayLoad_EventHandlers
 	class RscDisplayCurator
 	{
 		clientDisplayLoad = "[] call f_fnc_openZeus;";
-	};
-
-	class RscDisplayEGSpectator
-	{
-		CAFE_Respawn_SpectatorTweaks = "_this call f_fnc_respawnSpectatorTweaks;";
 	};
 };

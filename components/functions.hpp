@@ -22,11 +22,11 @@ class F
 #include "miscShared\functions.hpp"
 #include "radio\functions.hpp"
 #include "respawn\functions.hpp"
+#include "slottingGenerator\functions.hpp"
 #include "spawnNpcs\functions.hpp"
 #include "squadMarkers\functions.hpp"
 #include "viewDistanceEditor\functions.hpp"
 #include "zeus_ui\functions.hpp"
-
 
 }
 
@@ -45,9 +45,12 @@ class ace_medical_feedback
 	{
 		file = "components\downtime";
 		class effectUnconscious{};
-	};
-};
-
+		class effectUnconscious_original
+		{
+			file = "z\ace\addons\medical_feedback\functions\fnc_effectUnconscious.sqf";
+		};
+	}
+}
 
 class ace_medical_status
 {
@@ -68,11 +71,26 @@ class ace_gunbag
 };
 
 
-class acre_ace_interact
+#if __has_include("\idi\acre\addons\main\stringtable.xml")
+    class acre_ace_interact
+    {
+        class overrides
+        {
+            file = "components\radio\acre";
+            class radioListChildrenActions{};
+            class radioListChildrenActions_original
+            {
+                file = "idi\acre\addons\ace_interact\fnc_radioListChildrenActions.sqf";
+            };
+        }
+    }
+#endif
+
+class ace_spectator
 {
-	class overrides
-	{
-    	file = "components\radio\acre";
-		class radioListChildrenActions{};
-	}
-}
+    class overrides
+    {
+        file = "components\respawn\ui_functions";
+        class ui_handleKeyDown{};
+    }
+};

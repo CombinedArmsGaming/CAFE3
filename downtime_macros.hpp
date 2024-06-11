@@ -13,9 +13,8 @@
 #define HAS_DISABLED_RESPAWN_MESSAGE    (["CAFE_Downtime_NoRespawnReminders" call CBA_settings_fnc_get] param [0, false])
 
 #define IS_UNCONSCIOUS(UNIT)            ((UNIT getVariable ["ACE_isUnconscious", false]) and {alive player})
-#define PLAYER_IS_AWAITING_RESPAWN      (missionNamespace getVariable ["f_var_playerHasBeenKilled", false])
-#define PLAYER_IS_DOWN                  (IS_UNCONSCIOUS(player) or {!alive player} or {PLAYER_IS_AWAITING_RESPAWN})
-#define PLAYER_IS_GHOST                 (PLAYER_IS_AWAITING_RESPAWN and {alive player})
-#define SHOULD_DO_DOWNTIME              (IS_UNCONSCIOUS(player) and {!HAS_OPTED_OUT})
+#define PLAYER_IS_DEAD                  (!alive player)
+#define PLAYER_IS_DOWN                  (IS_UNCONSCIOUS(player) or {!alive player})
+#define SHOULD_DO_DOWNTIME              ((HAS_OPTED_OUT and PLAYER_IS_DEAD) or {(!HAS_OPTED_OUT) and PLAYER_IS_DOWN})
 
 #define GET_SPECTATOR_CAM_ARGS(MODE)    (missionNamespace getVariable [format ["f_var_downtime_spectatorModes_%1", MODE], f_var_downtime_spectatorModes_AllowAll])

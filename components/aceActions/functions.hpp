@@ -2,6 +2,7 @@ class aceActions
 {
     file = "components\aceActions";
     class addHeliMusic{};
+    class addHunterKillerActions{};
     class addInventoryActionToClass{};
     class addSquadManagerActionsToClass{};
     class addPushActionToClass{};

@@ -56,7 +56,7 @@
 
 #define IS_TRUE(VAR) ((!isNil #VAR) and {VAR})
 #define EXISTS(VAR) ((!isNil #VAR) and {!(isNull VAR)})
-#define EQUALS(VAR, VALUE) (EXISTS(VAR) and {VAR isEqualTo VALUE})
+#define EQUALS(VAR, VALUE) ((!isNil #VAR) and {VAR isEqualTo VALUE})
 
 #define SERVER_ONLY if (!isServer) exitWith {}
 #define CLIENT_ONLY if !IS_CLIENT exitWith {}

@@ -44,5 +44,14 @@ if (didJip or ((!didJip) and _didFirstSpawn)) exitWith
 	[] call f_fnc_respawn_squad_enforceLoadoutGracePeriod;
 
 	f_var_groupPicker_disableCancel = true;
-	createDialog "CAFE_GroupPicker_Dialog";
+
+	// Wait a second to show the dialog, because timing issues can sometimes cause it to show up in the spectator screen, and then be subsequently destroyed.
+	[
+		{
+			createDialog "CAFE_GroupPicker_Dialog";
+		},
+		[],
+		1
+	] call CBA_fnc_waitAndExecute;
+	
 };

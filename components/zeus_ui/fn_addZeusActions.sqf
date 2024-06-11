@@ -18,7 +18,7 @@ if !(player getVariable ["f_var_isZeus",false]) exitWith {}; // Fallback in case
 
 //ACRE actions
 
-if (["acre_sys_radio"] call ace_common_fnc_isModLoaded) then 
+if (["acre_sys_radio"] call ace_common_fnc_isModLoaded) then
 {
 	private _talkThroughZeus =
 	{
@@ -131,7 +131,7 @@ private _noTurnZeusInvisible =
 {
 	_player setVariable ["f_var_turnZeusInvisible", false, true];
 
-	if (!cafe_ceasefire_active) then {	// Disables AI seeing the Zeus player as hostile when talking in direct speech while hidden
+	if (!cafe_ceasefire_active) then {
 		_player setCaptive false;
 	};
 	[_player, true] remoteExecCall ["f_fnc_activatePlayer", 2];

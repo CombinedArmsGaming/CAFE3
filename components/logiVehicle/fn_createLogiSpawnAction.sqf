@@ -43,7 +43,7 @@ private _modifierCode =
 
 	private _type = _target getVariable [LOGIVIC_VAR_DYNAMIC(_spawnIndex,"type"), ""];
 	private _remaining = _target getVariable [LOGIVIC_VAR_DYNAMIC(_spawnIndex,"amount"), 0];
-	private _gear = _target getVariable [LOGIVIC_VAR_DYNAMIC(_spawnIndex,"gear"), ""];
+	private _gearOrCode = _target getVariable [LOGIVIC_VAR_DYNAMIC(_spawnIndex,"gear"), ""];
 	private _text = _target getVariable [LOGIVIC_VAR_DYNAMIC(_spawnIndex,"text"), ""];
 
 	private _newDisplayText = if (_text isNotEqualTo "") then
@@ -52,13 +52,13 @@ private _modifierCode =
 	}
 	else
 	{
-		if (_gear isEqualTo "") then
+		if ((_gearOrCode isEqualTo "") or (_gearOrCode isEqualType {})) then
 		{
 			format ["Deploy '%1' (%2 remaining)", GET_VEHICLE_DISPLAY_NAME(_type), _remaining]
 		}
 		else
 		{
-			format ["Deploy '%1' with '%3' gear (%2 remaining)", GET_VEHICLE_DISPLAY_NAME(_type), _remaining, _gear]
+			format ["Deploy '%1' with '%3' gear (%2 remaining)", GET_VEHICLE_DISPLAY_NAME(_type), _remaining, _gearOrCode]
 		}
 	};
 

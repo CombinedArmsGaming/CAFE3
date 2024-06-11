@@ -78,6 +78,7 @@ PUT_GUN_IN_GUNBAG(UNIT_NAME,<contents>)
 -   Allows the backpack of the given unit to be turned into an ACE gunbag, with the given contents placed inside.
     The contents can be:
     -   ACE Arsenal code:
+        This must be a full ACE Arsenal export.  Not just the part with the weapon.
         An example of this exists in the default BLUFOR 'sniper' loadout.
     -   Weapon config class-name:
         An example of this exists in the default INDFOR 'sniper' loadout.

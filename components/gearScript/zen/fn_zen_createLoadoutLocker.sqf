@@ -21,6 +21,12 @@ private _createLocker =
         private _lockerModel = ["Metal_Locker_F", "Land_OfficeCabinet_02_F"] select (isNull (configFile >> "CfgVehicles" >> "Metal_Locker_F"));
         _locker = _lockerModel createVehicle [0,0,0];
         _locker setPosASL _position;
+
+        {
+            if (!isNull getAssignedCuratorUnit _x) then {
+                [_x, [[_locker], false]] remoteExecCall ["addCuratorEditableObjects", 2, false];
+            };
+        } forEach allCurators;
     };
 
     // In case picked object becomes a locker while zeus is in the side selection menu.
