@@ -42,6 +42,7 @@ class respawn_zen
     class allowImmediateRespawnLocal{};
     class zen_allowImmediateRespawn{};
     class zen_createRespawnPoint{};
+    class zen_createRespawnSquare{};
     class zen_changeTickets{};
 };
 class respawn_ui

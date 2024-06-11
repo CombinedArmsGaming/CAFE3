@@ -14,6 +14,8 @@ INIT_COMPONENT(miscShared)
 
 INIT_COMPONENT(respawn)
 
+INIT_COMPONENT(slottingGenerator)
+
 
 // Kill tracker init
 #ifdef ENABLE_KILL_TRACKING
