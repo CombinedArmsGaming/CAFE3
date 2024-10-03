@@ -3,6 +3,8 @@
 
 params ["_typeOfUnit", "_unit", "_faction", "_loadout", "_extendedArray"];
 
+if !(_loadout isEqualType []) exitWith {};
+
 if (["acre_sys_radio"] call ace_common_fnc_isModLoaded) then 
 {
 	_this call f_fnc_acre_replaceUnitRadios;

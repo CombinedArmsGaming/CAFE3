@@ -72,46 +72,62 @@ if (_loadoutVariants isEqualTo []) exitWith
 };
 
 
-private _originalLoadout = +(selectRandom _loadoutVariants);
-_originalLoadout = [_originalLoadout] call f_fnc_normaliseCbaExtendedLoadout;
+private _loadout = selectRandom _loadoutVariants;
+private _extendedArray = [];
 
-private _loadout = _originalLoadout#0;
-private _extendedArray = _originalLoadout#1;
-
-
-if (count HATS_DYNAMIC(_gearVariant,_typeofUnit) > 0) then
+if !(_loadout isEqualTypeAny [[], ""]) exitWith
 {
-    private _hat = selectRandom HATS_DYNAMIC(_gearVariant,_typeofUnit);
-    DEBUG_FORMAT1_LOG("Selected variant hat: %1",_hat)
-
-    _loadout set [6, _hat];
+    private _loadoutType = typeName _loadout;
+    DEBUG_FORMAT1_LOG("[GEARSCRIPT-2]: Unsupported type of gearscript (found %1, expected ARRAY or STRING).",_loadoutType)
 };
 
-
-if (count VESTS_DYNAMIC(_gearVariant,_typeofUnit) > 0) then
+if ((_loadout isEqualType "") and (isPlayer _unit)) exitWith
 {
-    private _vest = selectRandom VESTS_DYNAMIC(_gearVariant,_typeofUnit);
-    DEBUG_FORMAT1_LOG("Selected variant vest: %1",_vest)
-
-    _loadout select 4 set [0, _vest];
+    DEBUG_PRINT_LOG("[GEARSCRIPT-2]: Unit-classname gearscripts are not supported for players.")
 };
 
-
-if (count UNIFORMS_DYNAMIC(_gearVariant,_typeofUnit) > 0) then
+if (_loadout isEqualType []) then
 {
-    private _uniform = selectRandom UNIFORMS_DYNAMIC(_gearVariant,_typeofUnit);
-    DEBUG_FORMAT1_LOG("Selected variant uniform: %1",_uniform)
+    private _originalLoadout = +_loadout;
+    _originalLoadout = [_originalLoadout] call f_fnc_normaliseCbaExtendedLoadout;
 
-    _loadout select 3 set [0, _uniform];
-};
+    _extendedArray = _originalLoadout#1;
 
 
-if (count BACKPACKS_DYNAMIC(_gearVariant,_typeofUnit) > 0) then
-{
-    private _backpack = selectRandom BACKPACKS_DYNAMIC(_gearVariant,_typeofUnit);
-    DEBUG_FORMAT1_LOG("Selected variant backpack: %1",_backpack)
+    if (count HATS_DYNAMIC(_gearVariant,_typeofUnit) > 0) then
+    {
+        private _hat = selectRandom HATS_DYNAMIC(_gearVariant,_typeofUnit);
+        DEBUG_FORMAT1_LOG("Selected variant hat: %1",_hat)
 
-    _loadout select 5 set [0, _backpack];
+        _loadout set [6, _hat];
+    };
+
+
+    if (count VESTS_DYNAMIC(_gearVariant,_typeofUnit) > 0) then
+    {
+        private _vest = selectRandom VESTS_DYNAMIC(_gearVariant,_typeofUnit);
+        DEBUG_FORMAT1_LOG("Selected variant vest: %1",_vest)
+
+        _loadout select 4 set [0, _vest];
+    };
+
+
+    if (count UNIFORMS_DYNAMIC(_gearVariant,_typeofUnit) > 0) then
+    {
+        private _uniform = selectRandom UNIFORMS_DYNAMIC(_gearVariant,_typeofUnit);
+        DEBUG_FORMAT1_LOG("Selected variant uniform: %1",_uniform)
+
+        _loadout select 3 set [0, _uniform];
+    };
+
+
+    if (count BACKPACKS_DYNAMIC(_gearVariant,_typeofUnit) > 0) then
+    {
+        private _backpack = selectRandom BACKPACKS_DYNAMIC(_gearVariant,_typeofUnit);
+        DEBUG_FORMAT1_LOG("Selected variant backpack: %1",_backpack)
+
+        _loadout select 5 set [0, _backpack];
+    };
 };
 
 ["CA_PreGearscriptUnit_Local", [_typeOfUnit, _unit, _faction, _loadout, _extendedArray]] call CBA_fnc_localEvent;

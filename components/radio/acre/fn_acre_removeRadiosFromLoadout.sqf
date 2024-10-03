@@ -4,6 +4,8 @@
 
 params ["_loadout"];
 
+if !(_loadout isEqualType []) exitWith {};
+
 private _filterOutRadios =
 {
     if (_this isEqualTo []) exitWith {};

@@ -41,6 +41,8 @@ private _removeItem =
 };
 
 {    
+    if !(_x isEqualType []) then {continue};
+
     private _cbaLoadout = [_x] call f_fnc_normaliseCbaExtendedLoadout;
     private _loadout = _cbaLoadout#0;
 

@@ -26,6 +26,8 @@ if (hasInterface) then
 
             f_var_firstPlayerLoadout = true;
 
+            if !(_loadout isEqualType []) exitWith {};
+
             if ((_unit isEqualTo player) and {!isNil 'f_var_playerGoggles'}) then
             {
                 _loadout set [7, f_var_playerGoggles];

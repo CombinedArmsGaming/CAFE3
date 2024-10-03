@@ -5,6 +5,8 @@
 
 params [["_typeOfUnit", ""], "_unit", "_faction", "_loadout", "_extendedArray"];
 
+if !(_loadout isEqualType []) exitWith {};
+
 LOCAL_ONLY(_unit);
 
 if (_typeOfUnit isEqualTo "") then
