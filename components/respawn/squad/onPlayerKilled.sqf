@@ -14,8 +14,9 @@ if (isNull _oldUnit) exitWith
 };
 
 DEBUG_FORMAT2_CHAT("[RESPAWN-2]: Removing %1 from squad %2.", _oldUnit, (group _oldUnit))
-
 private _oldGroup = group _oldUnit;
+
+[_oldGroup] call f_fnc_storePlayerGroup;
 [_oldUnit] joinSilent grpNull;
 
 // Wait until unit has properly joined new 'respawn' group and then make it invisible on the map.
