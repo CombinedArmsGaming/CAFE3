@@ -12,18 +12,18 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=1887;
+		nextID=1897;
 	};
 	class MarkerIDProvider
 	{
-		nextID=7;
+		nextID=9;
 	};
 	class Camera
 	{
-		pos[]={165.35249,102.39588,120.22861};
-		dir[]={0.38991711,-0.63316619,0.66863811};
-		up[]={0.31896174,0.77401149,0.54696333};
-		aside[]={0.8638531,4.3073669e-008,-0.5037567};
+		pos[]={128.01566,42.079853,282.255};
+		dir[]={0.036929436,-0.44726747,0.89366305};
+		up[]={0.018468443,0.8943733,0.44692412};
+		aside[]={0.9991675,1.1482189e-07,-0.041289091};
 	};
 };
 binarizationWanted=0;
@@ -41,7 +41,6 @@ addons[]=
 	"A3_Supplies_F_AoW_Bags",
 	"UN_data",
 	"A3_Soft_F_Gamma_Truck_01",
-	"A3_Soft_F_Exp_Truck_01",
 	"Blastcore_MainCore",
 	"ace_refuel",
 	"A3_Structures_F_Mil_Flags",
@@ -50,13 +49,15 @@ addons[]=
 	"A3_Soft_F_EPC_Truck_03",
 	"A3_Soft_F_Gamma_Truck_02",
 	"ace_explosives",
-	"ace_nouniformrestrictions"
+	"ace_nouniformrestrictions",
+	"A3_Modules_F",
+	"A3_Modules_F_ObjectModifiers"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=20;
+		items=19;
 		class Item0
 		{
 			className="A3_Modules_F_Curator";
@@ -130,59 +131,52 @@ class AddonsMetaData
 		};
 		class Item11
 		{
-			className="A3_Soft_F_Exp";
-			name="Arma 3 Apex - Unarmored Land Vehicles";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item12
-		{
 			className="Blastcore_MainCore";
 			name="Blastcore_MainCore";
 		};
-		class Item13
+		class Item12
 		{
 			className="ace_refuel";
 			name="ACE3 - Refuel";
 			author="ACE-Team";
 			url="https://ace3.acemod.org/";
 		};
-		class Item14
+		class Item13
 		{
 			className="A3_Structures_F_Mil";
 			name="Arma 3 - Military Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item15
+		class Item14
 		{
 			className="A3_Modules_F";
 			name="Arma 3 Alpha - Scripted Modules";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item16
+		class Item15
 		{
 			className="A3_Soft_F";
 			name="Arma 3 Alpha - Unarmored Land Vehicles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item17
+		class Item16
 		{
 			className="A3_Soft_F_EPC";
 			name="Arma 3 Win Episode - Unarmored Land Vehicles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item18
+		class Item17
 		{
 			className="ace_explosives";
 			name="ACE3 - Explosives";
 			author="ACE-Team";
 			url="https://ace3.acemod.org/";
 		};
-		class Item19
+		class Item18
 		{
 			className="ace_nouniformrestrictions";
 			name="ACE3 - No Uniform Restrictions";
@@ -5187,7 +5181,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=89;
+		items=97;
 		class Item0
 		{
 			dataType="Logic";
@@ -12234,16 +12228,146 @@ class Mission
 				nAttributes=1;
 			};
 		};
+		class Item89
+		{
+			dataType="Trigger";
+			position[]={128.44,5,352.57501};
+			class Attributes
+			{
+				name="ExampleTriggerSpawner";
+				text="Example Trigger Spawner";
+				condition="thisList call f_fnc_ignoreZeus";
+				onActivation="thisTrigger call f_fnc_activateTriggerSpawner;";
+				sizeC=100;
+				activationBy="ANYPLAYER";
+				isServerOnly=1;
+			};
+			id=1887;
+			type="EmptyDetectorAreaR50";
+		};
+		class Item90
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={106.47,5,378.23401};
+			};
+			name="MyExampleBuildingGarrison_1";
+			init="[this, [ [""type"", ""Garrison Building""], [""category"", ""OPFOR_Infantry""], [""unit"", ""Fireteam_4x""] ] ] call f_fnc_configureTriggerSpawner;";
+			id=1888;
+			type="Logic";
+		};
+		class Item91
+		{
+			dataType="Comment";
+			class PositionInfo
+			{
+				position[]={144.677,5,357.63101};
+			};
+			title="Triggered enemy spawner";
+			description="This trigger is configured to spawn enemies when a player walks inside.  Look at the ""Game Logic"" entities inside its radius to see how it's configured." \n "" \n "Consider limiting the height or adding a timer to the trigger to avoid spawning via jet overflights." \n "" \n "Sync a ""Show / Hide"" module to the trigger to draw the radius on the map." \n "" \n "You can copy-paste this set-up if you need more than one.";
+			id=1889;
+		};
+		class Item92
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={128.576,5,320.17801};
+			};
+			name="MyExampleVehiclePatrol_1";
+			init="[this, [ [""type"", ""Patrol Area""], [""radius"", 100], [""category"", ""OPFOR_Vehicles""], [""unit"", ""BTRK_Kamysh""] ] ] call f_fnc_configureTriggerSpawner;";
+			id=1890;
+			type="Logic";
+		};
+		class Item93
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={159.841,5,342.10901};
+			};
+			name="MyExampleVehicle_1";
+			init="[this, [ [""type"", ""No Orders""], [""category"", ""OPFOR_Vehicles""], [""unit"", ""MSE3_Marid""] ] ] call f_fnc_configureTriggerSpawner;";
+			id=1891;
+			type="Logic";
+		};
+		class Item94
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={149.02901,5,378.228};
+			};
+			name="MyExampleAreaGarrison_1";
+			init="[this, [ [""type"", ""Garrison Area""], [""radius"", 50], [""category"", ""OPFOR_Infantry""], [""unit"", ""Section_9x""] ] ] call f_fnc_configureTriggerSpawner;";
+			id=1892;
+			type="Logic";
+		};
+		class Item95
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={96.511002,5,342.42599};
+			};
+			name="MyExamplePatrol_1";
+			init="[this, [ [""type"", ""Patrol Area""], [""radius"", 100], [""category"", ""OPFOR_Infantry""], [""unit"", ""Squad_6x""] ] ] call f_fnc_configureTriggerSpawner;";
+			id=1893;
+			type="Logic";
+		};
+		class Item96
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={128.44,13.127,352.58401};
+			};
+			name="Marker_For_ExampleTriggerSpawner";
+			id=1896;
+			type="ModuleShowHide_F";
+			atlOffset=8.1269999;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ModuleShowHide_F_Units";
+					expression="_this setVariable ['Units',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="0";
+						};
+					};
+				};
+				class Attribute1
+				{
+					property="ModuleShowHide_F_State";
+					expression="_this setVariable ['State',_value,true];";
+					class Value
+					{
+						class data
+						{
+							singleType="STRING";
+							value="1";
+						};
+					};
+				};
+				nAttributes=2;
+			};
+		};
 	};
 	class Connections
 	{
 		class LinkIDProvider
 		{
-			nextID=13;
+			nextID=19;
 		};
 		class Links
 		{
-			items=13;
+			items=19;
 			class Item0
 			{
 				linkID=0;
@@ -12369,6 +12493,66 @@ class Mission
 				linkID=12;
 				item0=1830;
 				item1=1852;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item13
+			{
+				linkID=13;
+				item0=1887;
+				item1=1888;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item14
+			{
+				linkID=14;
+				item0=1893;
+				item1=1887;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item15
+			{
+				linkID=15;
+				item0=1890;
+				item1=1887;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item16
+			{
+				linkID=16;
+				item0=1891;
+				item1=1887;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item17
+			{
+				linkID=17;
+				item0=1892;
+				item1=1887;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item18
+			{
+				linkID=18;
+				item0=1896;
+				item1=1887;
 				class CustomData
 				{
 					type="Sync";
