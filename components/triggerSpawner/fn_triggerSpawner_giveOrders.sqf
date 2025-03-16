@@ -1,9 +1,9 @@
-params [["_group", grpNull], ["_vehicle", objNull], ["_logic", objNull]];
+params [["_logic", objNull], ["_group", grpNull], ["_vehicle", objNull]];
 
 // Ensure params are valid - fail smoothly.
-if ((isNull _group) || (isNull _vehicle) || (isNull _logic)) exitWith
+if ((isNull _group) || (isNull _logic)) exitWith
 {
-    diag_log format ["[Trigger Spawner] Failed to give orders: Group '%1', Vehicle '%2', Node '%3'", _group, _vehicle, _logic];
+    diag_log format ["[Trigger Spawner] Failed to give orders: Node '%1', Group '%2', Vehicle '%3', ", _logic, _group, _vehicle];
 };
 
 private _configMap = _logic getVariable "f_map_triggerSpawner";
@@ -26,4 +26,4 @@ private _ordersFunc = switch (toLower _orders) do
     default { f_fnc_orders_noOrders };
 };
 
-_this call _ordersFunc;
+[_group, _vehicle, _logic] call _ordersFunc;

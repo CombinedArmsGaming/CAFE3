@@ -17,7 +17,7 @@ private _radius = _configMap getOrDefault ["radius", 500];
 private _cycle = _configMap getOrDefault ["cycleTime", 70];
 private _onlyPlayers = _configMap getOrDefault ["onlyHuntPlayers", true];
 
-params [
+[
     _group,
     _radius,
     _cycle,

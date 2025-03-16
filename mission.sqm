@@ -5,25 +5,25 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=513;
+	toggles=1537;
 	mods[]=
 	{
 		"WBK_Zombies_AdvancedEditorSettings"
 	};
 	class ItemIDProvider
 	{
-		nextID=1900;
+		nextID=1907;
 	};
 	class MarkerIDProvider
 	{
-		nextID=9;
+		nextID=10;
 	};
 	class Camera
 	{
-		pos[]={141.03943,161.6673,97.012642};
-		dir[]={0.30040815,-0.64290106,0.70458299};
-		up[]={0.2521477,0.76594412,0.59139478};
-		aside[]={0.91988486,-5.2095857e-08,-0.39220244};
+		pos[]={124.44312,149.5627,95.195946};
+		dir[]={0.35044527,-0.59179097,0.72593927};
+		up[]={0.25727898,0.80607927,0.53294998};
+		aside[]={0.9005689,-8.6496584e-08,-0.43474647};
 	};
 };
 binarizationWanted=0;
@@ -12239,12 +12239,12 @@ class Mission
 		class Item89
 		{
 			dataType="Trigger";
-			position[]={127.88716,5,351.89169};
+			position[]={127.887,5,351.892};
 			class Attributes
 			{
 				name="ExampleTriggerSpawner";
 				text="Example Trigger Spawner";
-				condition="thisList call f_fnc_ignoreZeus";
+				condition="[thisTrigger] call f_fnc_triggerSpawnerMarkerSupport;" \n "thisList call f_fnc_ignoreZeus";
 				onActivation="thisTrigger call f_fnc_activateTriggerSpawner;";
 				sizeC=100;
 				activationBy="ANYPLAYER";
@@ -12329,12 +12329,12 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={118.42485,17.67366,347.92361};
+				position[]={118.425,17.674,347.92401};
 			};
 			name="Marker_For_ExampleTriggerSpawner";
 			id=1896;
 			type="ModuleShowHide_F";
-			atlOffset=12.67366;
+			atlOffset=12.674;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -12359,7 +12359,7 @@ class Mission
 						class data
 						{
 							singleType="STRING";
-							value="1";
+							value="0";
 						};
 					};
 				};
@@ -12548,8 +12548,8 @@ class Mission
 			class Item13
 			{
 				linkID=13;
-				item0=1887;
-				item1=1888;
+				item0=1892;
+				item1=1887;
 				class CustomData
 				{
 					type="Sync";
@@ -12558,7 +12558,7 @@ class Mission
 			class Item14
 			{
 				linkID=14;
-				item0=1893;
+				item0=1896;
 				item1=1887;
 				class CustomData
 				{
@@ -12568,7 +12568,7 @@ class Mission
 			class Item15
 			{
 				linkID=15;
-				item0=1890;
+				item0=1891;
 				item1=1887;
 				class CustomData
 				{
@@ -12578,7 +12578,7 @@ class Mission
 			class Item16
 			{
 				linkID=16;
-				item0=1891;
+				item0=1897;
 				item1=1887;
 				class CustomData
 				{
@@ -12588,7 +12588,7 @@ class Mission
 			class Item17
 			{
 				linkID=17;
-				item0=1892;
+				item0=1898;
 				item1=1887;
 				class CustomData
 				{
@@ -12598,7 +12598,7 @@ class Mission
 			class Item18
 			{
 				linkID=18;
-				item0=1896;
+				item0=1890;
 				item1=1887;
 				class CustomData
 				{
@@ -12608,7 +12608,7 @@ class Mission
 			class Item19
 			{
 				linkID=19;
-				item0=1897;
+				item0=1893;
 				item1=1887;
 				class CustomData
 				{
@@ -12618,7 +12618,7 @@ class Mission
 			class Item20
 			{
 				linkID=20;
-				item0=1898;
+				item0=1888;
 				item1=1887;
 				class CustomData
 				{

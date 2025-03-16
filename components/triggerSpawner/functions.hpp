@@ -3,9 +3,11 @@ class triggerSpawner
     file = "components\triggerSpawner";
     class activateTriggerSpawner{};
     class activateTriggerSpawnerNode{};
+    class assignTriggerSpawnerMarker{};
     class configureTriggerSpawner{};
     class spawnConfigEntry{};
     class triggerSpawner_giveOrders{};
+    class triggerSpawnerMarkerSupport{};
     class validateTriggerSpawnerConfigMap{};
 };
 
