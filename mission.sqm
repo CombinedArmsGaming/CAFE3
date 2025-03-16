@@ -12,7 +12,7 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=1897;
+		nextID=1900;
 	};
 	class MarkerIDProvider
 	{
@@ -20,10 +20,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={128.01566,42.079853,282.255};
-		dir[]={0.036929436,-0.44726747,0.89366305};
-		up[]={0.018468443,0.8943733,0.44692412};
-		aside[]={0.9991675,1.1482189e-07,-0.041289091};
+		pos[]={141.03943,161.6673,97.012642};
+		dir[]={0.30040815,-0.64290106,0.70458299};
+		up[]={0.2521477,0.76594412,0.59139478};
+		aside[]={0.91988486,-5.2095857e-08,-0.39220244};
 	};
 };
 binarizationWanted=0;
@@ -51,13 +51,14 @@ addons[]=
 	"ace_explosives",
 	"ace_nouniformrestrictions",
 	"A3_Modules_F",
-	"A3_Modules_F_ObjectModifiers"
+	"A3_Modules_F_ObjectModifiers",
+	"A3_Structures_F_Households_House_Big02"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=19;
+		items=20;
 		class Item0
 		{
 			className="A3_Modules_F_Curator";
@@ -182,6 +183,13 @@ class AddonsMetaData
 			name="ACE3 - No Uniform Restrictions";
 			author="ACE-Team";
 			url="https://ace3.acemod.org/";
+		};
+		class Item19
+		{
+			className="A3_Structures_F_Households";
+			name="Arma 3 - Houses";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
 		};
 	};
 };
@@ -5181,7 +5189,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=97;
+		items=100;
 		class Item0
 		{
 			dataType="Logic";
@@ -12231,7 +12239,7 @@ class Mission
 		class Item89
 		{
 			dataType="Trigger";
-			position[]={128.44,5,352.57501};
+			position[]={127.88716,5,351.89169};
 			class Attributes
 			{
 				name="ExampleTriggerSpawner";
@@ -12250,10 +12258,10 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={106.47,5,378.23401};
+				position[]={111.91,5,384.12299};
 			};
 			name="MyExampleBuildingGarrison_1";
-			init="[this, [ [""type"", ""Garrison Building""], [""category"", ""OPFOR_Infantry""], [""unit"", ""Fireteam_4x""] ] ] call f_fnc_configureTriggerSpawner;";
+			init="[this, [ [""type"", ""Garrison Building""], [""teleport"", true], [""category"", ""OPFOR_Infantry""], [""unit"", ""Fireteam_4x""] ] ] call f_fnc_configureTriggerSpawner;";
 			id=1888;
 			type="Logic";
 		};
@@ -12262,10 +12270,10 @@ class Mission
 			dataType="Comment";
 			class PositionInfo
 			{
-				position[]={144.677,5,357.63101};
+				position[]={136.52499,5,358.47699};
 			};
 			title="Triggered enemy spawner";
-			description="This trigger is configured to spawn enemies when a player walks inside.  Look at the ""Game Logic"" entities inside its radius to see how it's configured." \n "" \n "Consider limiting the height or adding a timer to the trigger to avoid spawning via jet overflights." \n "" \n "Sync a ""Show / Hide"" module to the trigger to draw the radius on the map." \n "" \n "You can copy-paste this set-up if you need more than one.";
+			description="This trigger is configured to spawn enemies from the Zeus Spawner when a player walks inside.  Look at the linked ""Game Logic"" entities to see how it's configured." \n "" \n "Consider limiting the height of the trigger to avoid spawning via aircraft overflights. " \n "" \n "The trigger should be much larger than the linked entities, so that players are far away from the spawned enemies (suggestion: slightly smaller than the caching radius)." \n "" \n "Sync a ""Show / Hide"" module to the trigger to draw the radius on the map." \n "" \n "You can copy-paste this set-up if you need more than one.";
 			id=1889;
 		};
 		class Item92
@@ -12273,7 +12281,7 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={128.576,5,320.17801};
+				position[]={99.600288,5,329.71872};
 			};
 			name="MyExampleVehiclePatrol_1";
 			init="[this, [ [""type"", ""Patrol Area""], [""radius"", 100], [""category"", ""OPFOR_Vehicles""], [""unit"", ""BTRK_Kamysh""] ] ] call f_fnc_configureTriggerSpawner;";
@@ -12285,7 +12293,7 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={159.841,5,342.10901};
+				position[]={161.37479,5,359.42542};
 			};
 			name="MyExampleVehicle_1";
 			init="[this, [ [""type"", ""No Orders""], [""category"", ""OPFOR_Vehicles""], [""unit"", ""MSE3_Marid""] ] ] call f_fnc_configureTriggerSpawner;";
@@ -12297,7 +12305,7 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={149.02901,5,378.228};
+				position[]={143.90825,5,384.54596};
 			};
 			name="MyExampleAreaGarrison_1";
 			init="[this, [ [""type"", ""Garrison Area""], [""radius"", 50], [""category"", ""OPFOR_Infantry""], [""unit"", ""Section_9x""] ] ] call f_fnc_configureTriggerSpawner;";
@@ -12309,7 +12317,7 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={96.511002,5,342.42599};
+				position[]={92.707893,5,358.97952};
 			};
 			name="MyExamplePatrol_1";
 			init="[this, [ [""type"", ""Patrol Area""], [""radius"", 100], [""category"", ""OPFOR_Infantry""], [""unit"", ""Squad_6x""] ] ] call f_fnc_configureTriggerSpawner;";
@@ -12321,12 +12329,12 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={128.44,13.127,352.58401};
+				position[]={118.42485,17.67366,347.92361};
 			};
 			name="Marker_For_ExampleTriggerSpawner";
 			id=1896;
 			type="ModuleShowHide_F";
-			atlOffset=8.1269999;
+			atlOffset=12.67366;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -12358,16 +12366,55 @@ class Mission
 				nAttributes=2;
 			};
 		};
+		class Item97
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={156.91797,5,329.72516};
+			};
+			name="MyExampleHunters_1";
+			init="[this, [ [""type"", ""Hunt""], [""radius"", 500], [""category"", ""OPFOR_Infantry""], [""unit"", ""Squad_6x""] ] ] call f_fnc_configureTriggerSpawner;";
+			id=1897;
+			type="Logic";
+		};
+		class Item98
+		{
+			dataType="Logic";
+			class PositionInfo
+			{
+				position[]={127.497,5,317.39801};
+			};
+			name="MyExampleRushers_1";
+			init="[this, [ [""type"", ""Rush""], [""radius"", 300], [""category"", ""OPFOR_Infantry""], [""unit"", ""Squad_6x""] ] ] call f_fnc_configureTriggerSpawner;";
+			id=1898;
+			type="Logic";
+		};
+		class Item99
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={111.63775,7.8839674,391.73639};
+			};
+			side="Empty";
+			flags=5;
+			class Attributes
+			{
+			};
+			id=1899;
+			type="Land_i_House_Big_02_V3_F";
+		};
 	};
 	class Connections
 	{
 		class LinkIDProvider
 		{
-			nextID=19;
+			nextID=21;
 		};
 		class Links
 		{
-			items=19;
+			items=21;
 			class Item0
 			{
 				linkID=0;
@@ -12552,6 +12599,26 @@ class Mission
 			{
 				linkID=18;
 				item0=1896;
+				item1=1887;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item19
+			{
+				linkID=19;
+				item0=1897;
+				item1=1887;
+				class CustomData
+				{
+					type="Sync";
+				};
+			};
+			class Item20
+			{
+				linkID=20;
+				item0=1898;
 				item1=1887;
 				class CustomData
 				{
