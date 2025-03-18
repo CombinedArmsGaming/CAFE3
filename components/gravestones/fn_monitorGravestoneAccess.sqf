@@ -25,6 +25,7 @@ if (isServer or {isNull _obj}) exitWith {};
 
 // Remove the previous event handler, if there is one
 private _EH = _obj getVariable ["f_fnc_monitorGravestoneAccess_EH", -1];
+_obj removeEventHandler ["ContainerOpened", _EH];
 
 _obj addEventHandler ["ContainerOpened", {
 	params ["_obj"];
