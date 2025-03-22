@@ -23,10 +23,11 @@ if (_amountLinked isEqualTo 0) exitWith
     _trigger setVariable ["f_var_hasShowHide", false, true];
 };
 
+_trigger setVariable ["f_var_hasShowHide", true, true];
 private _module = _linkedTo # 0;
 
 // Below taken from BI fn_moduleShowHide.  Just in case someone changes the "Hide" setting in the module and expects it to work.
-private _show = _module getvariable ["state","0"];
+private _show = _module getVariable ["state","0"];
 if (_show isEqualType "") then { _show = parseNumber _show; };
 _show = _show > 0;
 

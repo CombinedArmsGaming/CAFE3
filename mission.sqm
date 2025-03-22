@@ -12,15 +12,19 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=1907;
+		nextID=1908;
 	};
 	class MarkerIDProvider
 	{
 		nextID=10;
 	};
+	class LayerIndexProvider
+	{
+		nextID=1;
+	};
 	class Camera
 	{
-		pos[]={124.44312,149.5627,95.195946};
+		pos[]={125.29798,149.5627,94.78331};
 		dir[]={0.35044527,-0.59179097,0.72593927};
 		up[]={0.25727898,0.80607927,0.53294998};
 		aside[]={0.9005689,-8.6496584e-08,-0.43474647};
@@ -50,9 +54,9 @@ addons[]=
 	"A3_Soft_F_Gamma_Truck_02",
 	"ace_explosives",
 	"ace_nouniformrestrictions",
+	"A3_Structures_F_Households_House_Big02",
 	"A3_Modules_F",
-	"A3_Modules_F_ObjectModifiers",
-	"A3_Structures_F_Households_House_Big02"
+	"A3_Modules_F_ObjectModifiers"
 };
 class AddonsMetaData
 {
@@ -5189,7 +5193,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=100;
+		items=92;
 		class Item0
 		{
 			dataType="Logic";
@@ -12238,35 +12242,6 @@ class Mission
 		};
 		class Item89
 		{
-			dataType="Trigger";
-			position[]={127.887,5,351.892};
-			class Attributes
-			{
-				name="ExampleTriggerSpawner";
-				text="Example Trigger Spawner";
-				condition="[thisTrigger] call f_fnc_triggerSpawnerMarkerSupport;" \n "thisList call f_fnc_ignoreZeus";
-				onActivation="thisTrigger call f_fnc_activateTriggerSpawner;";
-				sizeC=100;
-				activationBy="ANYPLAYER";
-				isServerOnly=1;
-			};
-			id=1887;
-			type="EmptyDetectorAreaR50";
-		};
-		class Item90
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={111.91,5,384.12299};
-			};
-			name="MyExampleBuildingGarrison_1";
-			init="[this, [ [""type"", ""Garrison Building""], [""teleport"", true], [""category"", ""OPFOR_Infantry""], [""unit"", ""Fireteam_4x""] ] ] call f_fnc_configureTriggerSpawner;";
-			id=1888;
-			type="Logic";
-		};
-		class Item91
-		{
 			dataType="Comment";
 			class PositionInfo
 			{
@@ -12276,121 +12251,7 @@ class Mission
 			description="This trigger is configured to spawn enemies from the Zeus Spawner when a player walks inside.  Look at the linked ""Game Logic"" entities to see how it's configured." \n "" \n "Consider limiting the height of the trigger to avoid spawning via aircraft overflights. " \n "" \n "The trigger should be much larger than the linked entities, so that players are far away from the spawned enemies (suggestion: slightly smaller than the caching radius)." \n "" \n "Sync a ""Show / Hide"" module to the trigger to draw the radius on the map." \n "" \n "You can copy-paste this set-up if you need more than one.";
 			id=1889;
 		};
-		class Item92
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={99.600288,5,329.71872};
-			};
-			name="MyExampleVehiclePatrol_1";
-			init="[this, [ [""type"", ""Patrol Area""], [""radius"", 100], [""category"", ""OPFOR_Vehicles""], [""unit"", ""BTRK_Kamysh""] ] ] call f_fnc_configureTriggerSpawner;";
-			id=1890;
-			type="Logic";
-		};
-		class Item93
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={161.37479,5,359.42542};
-			};
-			name="MyExampleVehicle_1";
-			init="[this, [ [""type"", ""No Orders""], [""category"", ""OPFOR_Vehicles""], [""unit"", ""MSE3_Marid""] ] ] call f_fnc_configureTriggerSpawner;";
-			id=1891;
-			type="Logic";
-		};
-		class Item94
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={143.90825,5,384.54596};
-			};
-			name="MyExampleAreaGarrison_1";
-			init="[this, [ [""type"", ""Garrison Area""], [""radius"", 50], [""category"", ""OPFOR_Infantry""], [""unit"", ""Section_9x""] ] ] call f_fnc_configureTriggerSpawner;";
-			id=1892;
-			type="Logic";
-		};
-		class Item95
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={92.707893,5,358.97952};
-			};
-			name="MyExamplePatrol_1";
-			init="[this, [ [""type"", ""Patrol Area""], [""radius"", 100], [""category"", ""OPFOR_Infantry""], [""unit"", ""Squad_6x""] ] ] call f_fnc_configureTriggerSpawner;";
-			id=1893;
-			type="Logic";
-		};
-		class Item96
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={118.425,17.674,347.92401};
-			};
-			name="Marker_For_ExampleTriggerSpawner";
-			id=1896;
-			type="ModuleShowHide_F";
-			atlOffset=12.674;
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ModuleShowHide_F_Units";
-					expression="_this setVariable ['Units',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="0";
-						};
-					};
-				};
-				class Attribute1
-				{
-					property="ModuleShowHide_F_State";
-					expression="_this setVariable ['State',_value,true];";
-					class Value
-					{
-						class data
-						{
-							singleType="STRING";
-							value="0";
-						};
-					};
-				};
-				nAttributes=2;
-			};
-		};
-		class Item97
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={156.91797,5,329.72516};
-			};
-			name="MyExampleHunters_1";
-			init="[this, [ [""type"", ""Hunt""], [""radius"", 500], [""category"", ""OPFOR_Infantry""], [""unit"", ""Squad_6x""] ] ] call f_fnc_configureTriggerSpawner;";
-			id=1897;
-			type="Logic";
-		};
-		class Item98
-		{
-			dataType="Logic";
-			class PositionInfo
-			{
-				position[]={127.497,5,317.39801};
-			};
-			name="MyExampleRushers_1";
-			init="[this, [ [""type"", ""Rush""], [""radius"", 300], [""category"", ""OPFOR_Infantry""], [""unit"", ""Squad_6x""] ] ] call f_fnc_configureTriggerSpawner;";
-			id=1898;
-			type="Logic";
-		};
-		class Item99
+		class Item90
 		{
 			dataType="Object";
 			class PositionInfo
@@ -12404,6 +12265,160 @@ class Mission
 			};
 			id=1899;
 			type="Land_i_House_Big_02_V3_F";
+		};
+		class Item91
+		{
+			dataType="Layer";
+			name="CAFE Trigger Spawner";
+			class Entities
+			{
+				items=9;
+				class Item0
+				{
+					dataType="Trigger";
+					position[]={127.887,5,351.892};
+					class Attributes
+					{
+						name="ExampleTriggerSpawner";
+						text="Example Trigger Spawner";
+						condition="[thisTrigger] call f_fnc_triggerSpawnerMarkerSupport;" \n "thisList call f_fnc_ignoreZeus";
+						onActivation="thisTrigger call f_fnc_activateTriggerSpawner;";
+						sizeC=100;
+						activationBy="ANYPLAYER";
+						isServerOnly=1;
+					};
+					id=1887;
+					type="EmptyDetectorAreaR50";
+				};
+				class Item1
+				{
+					dataType="Logic";
+					class PositionInfo
+					{
+						position[]={111.91,5,384.12299};
+					};
+					name="MyExampleBuildingGarrison_1";
+					init="[this, [ [""type"", ""Garrison Building""], [""teleport"", true], [""category"", ""OPFOR_Infantry""], [""unit"", ""Fireteam_4x""] ] ] call f_fnc_configureTriggerSpawner;";
+					id=1888;
+					type="Logic";
+				};
+				class Item2
+				{
+					dataType="Logic";
+					class PositionInfo
+					{
+						position[]={99.600288,5,329.71872};
+					};
+					name="MyExampleVehiclePatrol_1";
+					init="[this, [ [""type"", ""Patrol Area""], [""radius"", 100], [""category"", ""OPFOR_Vehicles""], [""unit"", ""BTRK_Kamysh""] ] ] call f_fnc_configureTriggerSpawner;";
+					id=1890;
+					type="Logic";
+				};
+				class Item3
+				{
+					dataType="Logic";
+					class PositionInfo
+					{
+						position[]={161.37479,5,359.42542};
+					};
+					name="MyExampleVehicle_1";
+					init="[this, [ [""type"", ""No Orders""], [""category"", ""OPFOR_Vehicles""], [""unit"", ""MSE3_Marid""] ] ] call f_fnc_configureTriggerSpawner;";
+					id=1891;
+					type="Logic";
+				};
+				class Item4
+				{
+					dataType="Logic";
+					class PositionInfo
+					{
+						position[]={143.90825,5,384.54596};
+					};
+					name="MyExampleAreaGarrison_1";
+					init="[this, [ [""type"", ""Garrison Area""], [""radius"", 50], [""category"", ""OPFOR_Infantry""], [""unit"", ""Section_9x""] ] ] call f_fnc_configureTriggerSpawner;";
+					id=1892;
+					type="Logic";
+				};
+				class Item5
+				{
+					dataType="Logic";
+					class PositionInfo
+					{
+						position[]={92.707893,5,358.97952};
+					};
+					name="MyExamplePatrol_1";
+					init="[this, [ [""type"", ""Patrol Area""], [""radius"", 100], [""category"", ""OPFOR_Infantry""], [""unit"", ""Squad_6x""] ] ] call f_fnc_configureTriggerSpawner;";
+					id=1893;
+					type="Logic";
+				};
+				class Item6
+				{
+					dataType="Logic";
+					class PositionInfo
+					{
+						position[]={118.425,17.674,347.92401};
+					};
+					name="Marker_For_ExampleTriggerSpawner";
+					id=1896;
+					type="ModuleShowHide_F";
+					atlOffset=12.674;
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="ModuleShowHide_F_Units";
+							expression="_this setVariable ['Units',_value,true];";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="0";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="ModuleShowHide_F_State";
+							expression="_this setVariable ['State',_value,true];";
+							class Value
+							{
+								class data
+								{
+									singleType="STRING";
+									value="0";
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+				class Item7
+				{
+					dataType="Logic";
+					class PositionInfo
+					{
+						position[]={156.91797,5,329.72516};
+					};
+					name="MyExampleHunters_1";
+					init="[this, [ [""type"", ""Hunt""], [""radius"", 500], [""category"", ""OPFOR_Infantry""], [""unit"", ""Squad_6x""] ] ] call f_fnc_configureTriggerSpawner;";
+					id=1897;
+					type="Logic";
+				};
+				class Item8
+				{
+					dataType="Logic";
+					class PositionInfo
+					{
+						position[]={127.497,5,317.39801};
+					};
+					name="MyExampleRushers_1";
+					init="[this, [ [""type"", ""Rush""], [""radius"", 300], [""category"", ""OPFOR_Infantry""], [""unit"", ""Squad_6x""] ] ] call f_fnc_configureTriggerSpawner;";
+					id=1898;
+					type="Logic";
+				};
+			};
+			id=1907;
+			atlOffset=1.58425;
 		};
 	};
 	class Connections
