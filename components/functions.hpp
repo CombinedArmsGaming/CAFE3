@@ -13,6 +13,7 @@ class F
 #include "gearScript\functions.hpp"
 #include "gravestones\functions.hpp"
 #include "identity\functions.hpp"
+#include "ied\functions.hpp"
 #include "joinInProgress\functions.hpp"
 #include "killTracker\functions.hpp"
 #include "logiVehicle\functions.hpp"
