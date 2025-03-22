@@ -74,7 +74,7 @@ class ace_gunbag
 };
 
 
-#if __has_include("\idi\acre\addons\main\stringtable.xml")
+#if __has_include("\idi\acre\addons\ace_interact\fnc_radioListChildrenActions.sqf")
     class acre_ace_interact
     {
         class overrides
