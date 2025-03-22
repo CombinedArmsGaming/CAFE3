@@ -130,31 +130,4 @@ call
     ] call zen_custom_modules_fnc_register;
 
 
-    // Jammer Modules
-
-    if !(isNil 'kyk_ew_fnc_broadcastJammerAdd') then
-    {
-        _category = "[CAFE3] Electronic Warfare";
-
-        private _jammerCreate = { [_this#1] call f_fnc_zen_createJammer };
-
-        [
-            _category,
-            "Add Jammer to Object",
-            _jammerCreate
-
-        ] call zen_custom_modules_fnc_register;
-
-
-        private _jammerRemove = { [_this#1] call f_fnc_zen_removeJammers };
-
-        [
-            _category,
-            "Remove Jammers from Object",
-            _jammerRemove
-
-        ] call zen_custom_modules_fnc_register;
-
-    };
-
 };
