@@ -27,6 +27,7 @@ class F
 #include "spawnNpcs\functions.hpp"
 #include "squadMarkers\functions.hpp"
 #include "statsTracking\functions.hpp"
+#include "triggerSpawner\functions.hpp"
 #include "viewDistanceEditor\functions.hpp"
 #include "zeus_ui\functions.hpp"
 
