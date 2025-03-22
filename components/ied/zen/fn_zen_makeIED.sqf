@@ -7,11 +7,12 @@ CLIENT_ONLY;
 
 params ["_object"];
 
-if (isNull _object) then
+if (isNull _object) exitWith
 {
     ["No object selected."] call zen_common_fnc_showMessage;
-} else {
-	["Create IED",
+} 
+
+["Create IED",
 	[
 		["CHECKBOX", "Large IED?", false],
 		["CHECKBOX", "Is proximity-fused?", false],
@@ -20,16 +21,22 @@ if (isNull _object) then
 	],
 	{
 		params ["_dialogValues", "_args"];
+
 		_dialogValues params ["_isLarge", "_isProxy", "_proxySide", "_proxyRange"];
 		_args params ["_object"];
+
 		private _isAlreadyIED = _object getVariable ["isIED", false];
-		if (_isAlreadyIED) then {
-	    	["Object is already an IED", _object] call zen_common_fnc_showMessage;
-		} else {
+
+		if (_isAlreadyIED) then 
+		{
+			["Object is already an IED", _object] call zen_common_fnc_showMessage;
+		} 
+		else 
+		{
 			[_object, _isLarge, _isProxy, _proxySide, _proxyRange] remoteExec ["f_fnc_addIEDToObject", 2];
 			["Added IED to '%1'.", _object] call zen_common_fnc_showMessage;
 		};
 	},
 	{},
-	[_object]] call zen_dialog_fnc_create;
-};
+	[_object]
+] call zen_dialog_fnc_create;
