@@ -3,7 +3,6 @@ class ied
     file = "components\ied";
     class addDefuseActionsToObject{};
     class addIEDToObject{};
-    class addZeusDetonationToIED{};
     class iedBoom{};
     class addProxyFuseTriggerToIED{};
 };

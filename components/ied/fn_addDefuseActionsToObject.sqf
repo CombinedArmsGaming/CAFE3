@@ -1,5 +1,5 @@
 /**
-	By JC (docs by Bubbus)
+	By JC (docs/minor edit by Bubbus)
 	Adds three ACE actions to the given object:
 		* Defuse Power Source
 		* Defuse Initiator

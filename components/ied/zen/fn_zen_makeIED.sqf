@@ -10,7 +10,7 @@ params ["_object"];
 if (isNull _object) exitWith
 {
     ["No object selected."] call zen_common_fnc_showMessage;
-} 
+};
 
 ["Create IED",
 	[
@@ -29,12 +29,12 @@ if (isNull _object) exitWith
 
 		if (_isAlreadyIED) then 
 		{
-			["Object is already an IED", _object] call zen_common_fnc_showMessage;
+			["Object is already an IED.", _object] call zen_common_fnc_showMessage;
 		} 
 		else 
 		{
 			[_object, _isLarge, _isProxy, _proxySide, _proxyRange] remoteExec ["f_fnc_addIEDToObject", 2];
-			["Added IED to '%1'.", _object] call zen_common_fnc_showMessage;
+			["This object is now an IED: '%1'.", _object] call zen_common_fnc_showMessage;
 		};
 	},
 	{},

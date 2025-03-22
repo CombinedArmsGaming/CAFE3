@@ -1,23 +1,28 @@
 params ["_object", "_isLarge"];
 
-_isDefused = _object getVariable ["defused", false];
+private _isDefused = _object getVariable ["defused", false];
+if (_isDefused) exitWith {};
 
-if (_isDefused == false) then 
-{
-    if (_isLarge == true) then 
+// Add a small amount of height for IED objects that have their origin at floor level.
+private _boomPosWorld = (getPosWorld _object) vectorAdd [0,0,0.2];
+
+private _boomArgs = 
+[
+    ["DemoCharge_Remote_Ammo_Scripted", "SatchelCharge_Remote_Ammo_Scripted"] select _isLarge,
+    _boomPosWorld
+];
+
+deleteVehicle _object;
+
+// Wait a frame before exploding, to ensure explosion isn't "caught inside" the IED object.
+[
     {
-        private _explosive1 = "SatchelCharge_Remote_Ammo_Scripted" createVehicle (getPos _object);
-        _explosive1 setDamage 1;
-
-        private _explosive2 = "SatchelCharge_Remote_Ammo_Scripted" createVehicle (getPos _object);
-        _explosive2 setDamage 1;
-
-        private _explosive3 = "SatchelCharge_Remote_Ammo_Scripted" createVehicle (getPos _object);
-        _explosive3 setDamage 1;
-    } 
-    else 
-    {
-        private _explosive = "DemoCharge_Remote_Ammo_Scripted" createVehicle (getPos _object);
+        params ["_explosiveClass", "_boomPosWorld"];
+        
+        private _explosive = _explosiveClass createVehicle [0,0,0];
+        _explosive setPosWorld _boomPosWorld;
         _explosive setDamage 1;
-    };
-};
+    },
+    _boomArgs
+    
+] call CBA_fnc_execNextFrame;
