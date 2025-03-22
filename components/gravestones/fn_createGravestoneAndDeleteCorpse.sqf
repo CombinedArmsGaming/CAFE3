@@ -7,20 +7,20 @@ _createGravestone =
 {
     params ["_corpse"];
 
-    _corpsePos = getPosASL _corpse vectorAdd [0,0,0.5];
-    _groundNormal = surfaceNormal _corpsePos;
+    private _corpsePos = getPosASL _corpse vectorAdd [0,0,0.5];
+    private _groundNormal = surfaceNormal _corpsePos;
 
-    _grave = objNull;
-    _corpseParent = objectParent _corpse;
-    _corpseBackpack = backpack _corpse;
+    private _grave = objNull;
+    private _corpseParent = objectParent _corpse;
+    private _corpseBackpack = backpack _corpse;
 
-    _backpack = if (_corpseBackpack isNotEqualTo "") then
+    private _backpack = if (_corpseBackpack isNotEqualTo "") then
     {
         _corpseBackpack
     }
     else
     {
-        _faction = _corpse getVariable ["f_var_assignGear_sideName", ""];
+        private _faction = _corpse getVariable ["f_var_assignGear_sideName", ""];
 
         if (_faction isEqualTo "") then
         {
@@ -39,36 +39,35 @@ _createGravestone =
     }
     else
     {
-        _graveDir = vectorNormalized [(random 2) - 1, (random 2) - 1, 0];
+        private _graveDir = vectorNormalized [(random 2) - 1, (random 2) - 1, 0];
         _grave = _backpack createVehicle _corpsePos;
         _grave setVectorDirAndUp [[1,0,0], _groundNormal];
     };
 
-    _graveParent = objectParent _grave;
-
-    if !(isNull _graveParent) then
+    private _graveParent = objectParent _grave;
+    if (isNull _graveParent) then
     {
-        _graveParent setDir (random 360);
-    }
-    else
-    {
-        _grave setDir (random 360);
+        _graveParent = _grave;
     };
 
-    // Required check for if chosen gravestone is a backpack/vest/etc.  Thanks Cre8or.
-    _innerContainers = everyContainer _grave;
+    _graveParent setDir (random 360);
 
-    if (count _innerContainers > 0) then
-    {
-        _grave = _innerContainers select 0 select 1;
-    };
+    // When using ammo crates for gravestone objects, ensure they cannot be destroyed
+    _graveParent allowDamage false;
+    _graveParent setVariable ["ace_cookoff_enable", false, true];
 
-    _grave setDir (random 360);
-    _grave allowDamage false;
-    _grave setVariable ["ace_cookoff_enable", false, true];
+    // Update the locality transfer flag whenever ownership returns to the server (e.g. when the owning
+    // client who received locality disconnects from the server)
+    _graveParent addEventHandler ["Local", {
+        params ["_obj"];
+
+        _obj setVariable ["f_fnc_requestGravestoneLocality_isOnServer", local _obj, true];
+    }];
+
+    // Tell all clients to monitor the gravestone for inventory access on their end
+    [_graveParent] remoteExecCall ["f_fnc_monitorGravestoneAccess", -2, true];
 
     _grave
-
 };
 
 
