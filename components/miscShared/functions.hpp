@@ -3,7 +3,6 @@ class miscShared
     file = "components\miscShared";
     class activatePlayer{};
     class addCustomSettings{};
-    class addJammerToObject{};
     class addObjectsToAllZeuses{};
     class applyInsignia{};
     class attachKeepOrient{};
@@ -28,7 +27,6 @@ class miscShared
     class makeExplosiveBig{};
     class monitorHeadlessClients{};
     class reapplyInsigniaLocal{};
-    class removeJammersFromObject{};
     class runHCAware{};
     class sideToString{};
     class teleportPlayer{};
