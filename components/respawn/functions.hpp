@@ -2,8 +2,10 @@ class respawn
 {
     file = "components\respawn";
     class addFreeTicket{};
+    class forceJoinGroupByName{};
     class getPlayerRespawnDelay{};
     class isRespawnModeActive{};
+    class storePlayerGroup{postInit=1;};
 };
 class respawn_locationSystem
 {

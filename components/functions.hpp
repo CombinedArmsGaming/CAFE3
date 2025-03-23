@@ -13,6 +13,7 @@ class F
 #include "gearScript\functions.hpp"
 #include "gravestones\functions.hpp"
 #include "identity\functions.hpp"
+#include "ied\functions.hpp"
 #include "joinInProgress\functions.hpp"
 #include "killTracker\functions.hpp"
 #include "logiVehicle\functions.hpp"
@@ -25,6 +26,8 @@ class F
 #include "slottingGenerator\functions.hpp"
 #include "spawnNpcs\functions.hpp"
 #include "squadMarkers\functions.hpp"
+#include "statsTracking\functions.hpp"
+#include "triggerSpawner\functions.hpp"
 #include "viewDistanceEditor\functions.hpp"
 #include "zeus_ui\functions.hpp"
 
@@ -71,7 +74,7 @@ class ace_gunbag
 };
 
 
-#if __has_include("\idi\acre\addons\main\stringtable.xml")
+#if __has_include("\idi\acre\addons\ace_interact\fnc_radioListChildrenActions.sqf")
     class acre_ace_interact
     {
         class overrides

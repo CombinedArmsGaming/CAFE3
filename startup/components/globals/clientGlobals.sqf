@@ -16,3 +16,5 @@ LOAD_GLOBALS(radio)
 LOAD_GLOBALS(aceActions)
 
 LOAD_GLOBALS(slottingGenerator)
+
+LOAD_GLOBALS(statsTracking)
