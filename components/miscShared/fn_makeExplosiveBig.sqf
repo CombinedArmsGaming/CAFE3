@@ -19,7 +19,7 @@ private _killIdx = _item addEventHandler
 			_ied removeEventHandler ["Killed", _handlerIdx];
 		};
 
-		_ied setVariable ["IED Killed Index", null];
+		_ied setVariable ["IED Killed Index", nil];
 
 	}
 
