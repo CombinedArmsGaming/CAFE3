@@ -17,7 +17,7 @@ private _delay = "Not set";
 private _modeName = "Not set";
 private _sideTickets = "Not set";
 private _individualTickets = "Not set";
-private _mode = null;
+private _mode = "";
 
 if (_side == west) then {
 #ifdef RESPAWN_DELAY_BLUFOR
