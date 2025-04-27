@@ -135,7 +135,7 @@ _items append _assignedItems;
 } forEach _weapons;
 
 {
-    if (typeName _x == "ARRAY" and {_x select 0 != ""}) then
+    if (_x isEqualType [] and {_x select 0 != ""}) then
     {
         _crate addItemCargoGlobal _x;
     };

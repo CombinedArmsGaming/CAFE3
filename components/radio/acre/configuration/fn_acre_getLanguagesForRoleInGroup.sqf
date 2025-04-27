@@ -15,7 +15,7 @@ private _queryStringsAdd =
 ];
 
 private _sideLanguages = missionNamespace getVariable [format ["f_arr_acre_languages_%1", _sideStr], []];
-if (typeName _sideLanguages isEqualTo "STRING") then {_sideLanguages = [_sideLanguages]};
+if (_sideLanguages isEqualType "") then {_sideLanguages = [_sideLanguages]};
 
 private _languagesList = +_sideLanguages;
 

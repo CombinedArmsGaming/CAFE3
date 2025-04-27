@@ -2,7 +2,7 @@
 _objectVars = [];
 
 {
-	if (typeName (_this getVariable _x) isEqualTo "OBJECT") then
+	if ((_this getVariable _x) isEqualType objNull) then
     {
 		_objectVars pushBack _x;
 	};

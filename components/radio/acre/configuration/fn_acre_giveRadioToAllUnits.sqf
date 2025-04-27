@@ -2,7 +2,7 @@
 
 params [["_radio", nil, [""]], ["_channel", nil, ["",[]]], ["_side", nil, [west]]];
 
-private _channelHasPresetOverride = (typeName _channel isEqualTo "ARRAY");
+private _channelHasPresetOverride = (_channel isEqualType []);
 private _channelName = _channel;
 
 private _preset = if (_channelHasPresetOverride) then
@@ -21,7 +21,7 @@ private _radioKey = format ["%1::%2::%3", [_side] call f_fnc_sideToString, RADIO
 
 private _radiosList = f_map_radioAssignments getOrDefault [_radioKey, [], true];
 
-if (typeName _radio isEqualTo "ARRAY") then
+if (_radio isEqualType []) then
 {
     _radiosList pushBack [_radio#0, _channelName, _radio#1];
 }

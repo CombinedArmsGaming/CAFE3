@@ -14,7 +14,7 @@ private _killIdx = _item addEventHandler
 
 		private _handlerIdx = _ied getVariable "IED Killed Index";
 
-		if (typename _handlerIdx == "SCALAR") then
+		if (_handlerIdx isEqualType 0) then
 		{
 			_ied removeEventHandler ["Killed", _handlerIdx];
 		};
