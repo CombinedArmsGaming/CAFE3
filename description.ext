@@ -218,6 +218,13 @@ class CfgDebriefingSections
 			variable = "acex_killTracker_outputText";
 	};
 
+#ifdef ENABLE_EXTENDED_STATS
+	class cafe_statsTracker
+	{
+		title = "Personal Stats";
+		variable = "cafe_playerStatsStr";
+	};
+#endif
 };
 
 
@@ -388,6 +395,13 @@ class Extended_InitPost_EventHandlers
 			init = "_this call f_fnc_addViewDistanceActionToClass";
 		};
 
+#endif
+
+#ifdef ENABLE_EXTENDED_STATS
+		class addStatsEventHandlers
+		{
+			init = "_this call f_fnc_addStatsEventHandlersToClass";
+		};
 #endif
 
 		class addSquadManagerActions
