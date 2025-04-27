@@ -16,8 +16,13 @@ if (_loadoutVariants isEqualTo []) exitWith
     DEBUG_FORMAT3_LOG("[GEARSCRIPT-2]: Unable to add item from loadout '%1' into crate %2 for side %3: the loadout doesn't exist.",_loadout,_crateName,_side)
 };
 
+_baseVariant = _loadoutVariants # 0;
+if !(_basevariant isEqualType []) exitWith
+{
+    DEBUG_FORMAT3_LOG("[GEARSCRIPT-2]: Unable to add item from loadout '%1' into crate %2 for side %3: only arsenal gearscripts are supported.",_loadout,_crateName,_side)
+};
 
-_baseVariant = [_loadoutVariants # 0] call f_fnc_normaliseCbaExtendedLoadout;
+_baseVariant = [_baseVariant] call f_fnc_normaliseCbaExtendedLoadout;
 _baseVariant = _baseVariant # 0;
 
 if !(_baseVariant isEqualType [] and {count _baseVariant > 0 and {(_baseVariant select 0) isEqualType []}}) exitWith

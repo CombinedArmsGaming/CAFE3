@@ -6,6 +6,8 @@
 
 params ["_typeOfUnit", "_unit", "_faction", "_loadout", "_extendedArray"];
 
+if !(_loadout isEqualType []) exitWith {};
+
 [_loadout] call f_fnc_acre_removeRadiosFromLoadout;
 
 private _groupName = groupId group _unit;
