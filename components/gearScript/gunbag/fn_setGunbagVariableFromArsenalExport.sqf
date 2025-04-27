@@ -7,7 +7,7 @@ params ["_faction", "_unitName", ["_contents", nil, [[], ""]]];
 
 if (isNil "_contents") then {throw format ["_contents for gunbag contents must not be nil. (unit %1, side %2).", _unitName, _faction]};
 
-if (typeName _contents isEqualTo "STRING") exitWith
+if (_contents isEqualType "") exitWith
 {
 	[_faction, _unitName, _contents] call f_fnc_setGunbagVariableState;
 };

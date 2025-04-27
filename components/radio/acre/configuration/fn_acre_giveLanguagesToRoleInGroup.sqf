@@ -1,12 +1,12 @@
 params [["_languages", nil, ["",[]]], ["_side", nil, [west]], ["_role", nil, ["",[]]], ["_groupName", nil, ["",[]]]];
 
-if (typeName _languages isEqualTo "STRING") then
+if (_languages isEqualType "") then
 {
     _languages = [_languages];
 };
 
-private _multipleGroups = (typeName _groupName isEqualTo "ARRAY");
-private _multipleRoles = (typeName _role isEqualTo "ARRAY");
+private _multipleGroups = (_groupName isEqualType []);
+private _multipleRoles = (_role isEqualType []);
 
 if (_multipleGroups) exitWith
 {

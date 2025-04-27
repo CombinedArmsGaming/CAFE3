@@ -7,14 +7,14 @@ RUN_AS_ASYNC(f_fnc_teleportPlayer);
 params ["_unit", "_posAtlOrObject", ["_onFailure", {}]];
 
 
-if (typeName _posAtlOrObject == typeName []) exitWith
+if (_posAtlOrObject isEqualType []) exitWith
 {
     DEBUG_FORMAT1_LOG("[TeleportPlayer] Target is a position: moving to %1 (ATL).",_posAtlOrObject)
     _unit setPosATL _posAtlOrObject;
 };
 
 
-if !(typeName _posAtlOrObject == typeName objNull) exitWith
+if !(_posAtlOrObject isEqualType objNull) exitWith
 {
     DEBUG_FORMAT1_LOG("[TeleportPlayer] f_fnc_teleportPlayer was called with %1 which is not an array or object.",_posAtlOrEntity)
     _this call _onFailure;

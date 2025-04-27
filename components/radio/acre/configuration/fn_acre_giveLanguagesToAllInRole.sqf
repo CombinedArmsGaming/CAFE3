@@ -2,12 +2,12 @@
 
 params [["_languages", nil, ["",[]]], ["_side", nil, [west]], ["_role", nil, ["",[]]]];
 
-if (typeName _languages isEqualTo "STRING") then
+if (_languages isEqualType "") then
 {
     _languages = [_languages];
 };
 
-if (typeName _role isEqualTo "ARRAY") exitWith
+if (_role isEqualType []) exitWith
 {
     {
         [_languages, _side, _x] call f_fnc_acre_giveLanguagesToAllInRole;
