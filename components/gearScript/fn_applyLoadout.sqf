@@ -11,7 +11,7 @@ if (_typeofUnit find "crate_" == 0) exitWith
     _crateArray = +LOADOUT_VAR_DYNAMIC(_gearVariant,_typeofUnit);
     ["CA_PreGearscriptCrate_Local", [_typeOfUnit, _unit, _faction, _crateArray]] call CBA_fnc_localEvent;
 
-    if ((typeName _crateArray == "ARRAY") and {_crateArray IsNotEqualTo []}) then
+    if ((_crateArray isEqualType []) and {_crateArray IsNotEqualTo []}) then
     {
         clearWeaponCargoGlobal _unit;
         clearMagazineCargoGlobal _unit;

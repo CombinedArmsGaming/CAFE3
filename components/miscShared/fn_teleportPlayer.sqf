@@ -14,7 +14,7 @@ if (typeName _posAtlOrObject == typeName []) exitWith
 };
 
 
-if !(typeName _posAtlOrObject == typeName objNull) exitWith
+if !(_posAtlOrObject isEqualType objNull) exitWith
 {
     DEBUG_FORMAT1_LOG("[TeleportPlayer] f_fnc_teleportPlayer was called with %1 which is not an array or object.",_posAtlOrEntity)
     _this call _onFailure;

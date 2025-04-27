@@ -2,12 +2,12 @@
 
 params [["_languages", nil, ["",[]]], ["_side", nil, [west]], ["_groupName", nil, ["",[]]]];
 
-if (typeName _languages isEqualTo "STRING") then
+if (_languages isEqualType "") then
 {
     _languages = [_languages];
 };
 
-if (typeName _groupName isEqualTo "ARRAY") exitWith
+if (_groupName isEqualType []) exitWith
 {
     {
         [_languages, _side, _role, _x] call f_fnc_acre_removeLanguagesFromAllInGroup;

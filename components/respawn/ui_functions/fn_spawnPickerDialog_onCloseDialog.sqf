@@ -26,7 +26,7 @@ if (_exitCode == 1) then
 
     private _spawn = _spawns param [(_selectedSpawnIdx max 0), objNull];
 
-    if ((typeName _spawn isEqualTo "OBJECT") and {!alive _spawn}) then
+    if ((_spawn isEqualType objNull) and {!alive _spawn}) then
     {
         _spawn = _spawns # 0;
 	    [format ["Your chosen spawn location is unavailable.  '%1' has been selected.", (_spawn # 1)]] call f_fnc_createSubtitleText;
