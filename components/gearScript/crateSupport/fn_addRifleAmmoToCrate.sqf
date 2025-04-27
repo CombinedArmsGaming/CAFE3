@@ -20,7 +20,7 @@ if (_loadoutVariants isEqualTo []) exitWith
 _baseVariant = [_loadoutVariants # 0] call f_fnc_normaliseCbaExtendedLoadout;
 _baseVariant = _baseVariant # 0;
 
-if !(_baseVariant isEqualType [] and {count _baseVariant > 0 and {typeName (_baseVariant select 0) == "ARRAY"}}) exitWith
+if !(_baseVariant isEqualType [] and {count _baseVariant > 0 and {(_baseVariant select 0) isEqualType []}}) exitWith
 {
     DEBUG_FORMAT3_LOG("[GEARSCRIPT-2]: Unable to add item from loadout '%1' into crate %2 for side %3: the loadout doesn't have a base variant.",_loadout,_crateName,_side)
 };
@@ -28,7 +28,7 @@ if !(_baseVariant isEqualType [] and {count _baseVariant > 0 and {typeName (_bas
 
 _rifleArray = _baseVariant select 0;
 
-if !(_rifleArray isEqualType [] and {count _rifleArray > 4 and {typeName (_rifleArray select 4) == "ARRAY"}}) exitWith
+if !(_rifleArray isEqualType [] and {count _rifleArray > 4 and {(_rifleArray select 4) isEqualType []}}) exitWith
 {
     DEBUG_FORMAT3_LOG("[GEARSCRIPT-2]: Unable to add rifle ammo from loadout '%1' into crate %2 for side %3: the base variant doesn't have a rifle.",_loadout,_crateName,_side)
 };
@@ -36,7 +36,7 @@ if !(_rifleArray isEqualType [] and {count _rifleArray > 4 and {typeName (_rifle
 
 _rifleAmmo = _rifleArray select 4;
 
-if !(_rifleAmmo isEqualType [] and {count _rifleAmmo > 0 and {typeName (_rifleAmmo select 0) == "STRING"}}) exitWith
+if !(_rifleAmmo isEqualType [] and {count _rifleAmmo > 0 and {(_rifleAmmo select 0) isEqualType ""}}) exitWith
 {
     DEBUG_FORMAT3_LOG("[GEARSCRIPT-2]: Unable to add rifle ammo from loadout '%1' into crate %2 for side %3: the rifle isn't loaded.",_loadout,_crateName,_side)
 };

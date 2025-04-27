@@ -7,7 +7,7 @@ RUN_AS_ASYNC(f_fnc_teleportPlayer);
 params ["_unit", "_posAtlOrObject", ["_onFailure", {}]];
 
 
-if (typeName _posAtlOrObject == typeName []) exitWith
+if (_posAtlOrObject isEqualType []) exitWith
 {
     DEBUG_FORMAT1_LOG("[TeleportPlayer] Target is a position: moving to %1 (ATL).",_posAtlOrObject)
     _unit setPosATL _posAtlOrObject;

@@ -20,7 +20,7 @@ if (_loadoutVariants isEqualTo []) exitWith
 _baseVariant = [_loadoutVariants # 0] call f_fnc_normaliseCbaExtendedLoadout;
 _baseVariant = _baseVariant # 0;
 
-if !(_baseVariant isEqualType [] and {count _baseVariant > 0 and {typeName (_baseVariant select 0) == "ARRAY"}}) exitWith
+if !(_baseVariant isEqualType [] and {count _baseVariant > 0 and {(_baseVariant select 0) isEqualType []}}) exitWith
 {
     DEBUG_FORMAT3_LOG("[GEARSCRIPT-2]: Unable to add item from loadout '%1' into crate %2 for side %3: the loadout doesn't have a base variant.",_loadout,_crateName,_side)
 };
@@ -28,7 +28,7 @@ if !(_baseVariant isEqualType [] and {count _baseVariant > 0 and {typeName (_bas
 
 _pistolArray = _baseVariant select 2;
 
-if !(_pistolArray isEqualType [] and {count _pistolArray > 1 and {typeName (_pistolArray select 0) == "STRING"}}) exitWith
+if !(_pistolArray isEqualType [] and {count _pistolArray > 1 and {(_pistolArray select 0) isEqualType ""}}) exitWith
 {
     DEBUG_FORMAT3_LOG("[GEARSCRIPT-2]: Unable to add pistol from loadout '%1' into crate %2 for side %3: the base variant doesn't have a pistol.",_loadout,_crateName,_side)
 };
