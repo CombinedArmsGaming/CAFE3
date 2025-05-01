@@ -66,3 +66,4 @@ private _radios = [];
 [_vest, _radios] call _findRadios;
 [_backpack, _radios] call _findRadios;
 
+_radios
