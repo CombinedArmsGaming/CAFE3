@@ -240,9 +240,9 @@ ADD_RIFLE_AMMO_TO_CRATE(small,mk,5);
 ADD_RIFLE_AMMO_TO_CRATE(small,crew,2);
 ADD_RIFLE_GRENADES_TO_CRATE(small,ftl,10);
 
-ADD_ITEMS_TO_CRATE(small,"30Rnd_556x45_Stanag_Tracer_Yellow",10);
-ADD_ITEMS_TO_CRATE(small,"ACE_20Rnd_762x51_Mag_Tracer",6);
-ADD_ITEMS_TO_CRATE(small,"200Rnd_65x39_cased_Box_Tracer",3);
+ADD_ITEMS_TO_CRATE(small,"30Rnd_556x45_Stanag",10);
+ADD_ITEMS_TO_CRATE(small,"20Rnd_762x51_Mag",6);
+ADD_ITEMS_TO_CRATE(small,"200Rnd_65x39_cased_Box",3);
 
 ADD_ITEMS_TO_CRATE(small,"1Rnd_Smoke_Grenade_shell",10);
 ADD_ITEMS_TO_CRATE(small,"1Rnd_SmokeRed_Grenade_shell",5);
@@ -285,9 +285,9 @@ ADD_RIFLE_AMMO_TO_CRATE(med,mk,10);
 ADD_RIFLE_AMMO_TO_CRATE(med,crew,4);
 ADD_RIFLE_GRENADES_TO_CRATE(med,ftl,20);
 
-ADD_ITEMS_TO_CRATE(med,"30Rnd_556x45_Stanag_Tracer_Yellow",10);
-ADD_ITEMS_TO_CRATE(med,"ACE_20Rnd_762x51_Mag_Tracer",6);
-ADD_ITEMS_TO_CRATE(med,"200Rnd_65x39_cased_Box_Tracer",3);
+ADD_ITEMS_TO_CRATE(med,"30Rnd_556x45_Stanag",10);
+ADD_ITEMS_TO_CRATE(med,"20Rnd_762x51_Mag",6);
+ADD_ITEMS_TO_CRATE(med,"200Rnd_65x39_cased_Box",3);
 
 ADD_ITEMS_TO_CRATE(med,"1Rnd_Smoke_Grenade_shell",10);
 ADD_ITEMS_TO_CRATE(med,"1Rnd_SmokeRed_Grenade_shell",5);
