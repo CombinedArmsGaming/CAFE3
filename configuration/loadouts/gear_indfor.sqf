@@ -143,7 +143,7 @@ COPY_LOADOUT(sl,ftl);
 
 // Surgeon Loadout (Has PAK)
 
-_baseLoadout = [[["arifle_Mk20C_F","","acc_flashlight","optic_Aco",["30Rnd_556x45_Stanag",30],[],""],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_I_CombatUniform",[["ACE_MapTools",1],["ACE_Flashlight_XL50",1],["ACE_Canteen",1],["ACE_fieldDressing",5],["ACE_packingBandage",1],["ACE_quikclot",1],["ACE_salineIV",1],["ACE_tourniquet",2],["ACE_splint",1],["ACRE_PRC343",1],["ACE_painkillers",2,10]]],["V_PlateCarrierIA1_dgtl",[["HandGrenade",1,1],["SmokeShell",6,1],["30Rnd_556x45_Stanag_Tracer_Yellow",8,30],["9Rnd_45ACP_Mag",3,8]]],["B_Carryall_oli",[["ACE_salineIV",8],["ACE_salineIV_500",8],["ACE_splint",10],["ACE_tourniquet",8],["ACE_morphine",10],["ACE_epinephrine",10],["ACE_elasticBandage",20],["ACE_packingBandage",20],["FSGm_ItemMedicBag",1],["ACE_surgicalKit",1],["ACE_EntrenchingTool",1],["ACE_personalAidKit",1],["ACE_adenosine",5],["SmokeShell",2,1]]],"H_HelmetIA_net","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],[]];
+_baseLoadout = [[["arifle_Mk20C_F","","acc_flashlight","optic_Aco",["30Rnd_556x45_Stanag",30],[],""],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_I_CombatUniform",[["ACE_MapTools",1],["ACE_Flashlight_XL50",1],["ACE_Canteen",1],["ACE_fieldDressing",5],["ACE_packingBandage",1],["ACE_quikclot",1],["ACE_salineIV",1],["ACE_tourniquet",2],["ACE_splint",1],["ACRE_PRC343",1],["ACE_painkillers",2,10]]],["V_PlateCarrierIA1_dgtl",[["HandGrenade",1,1],["SmokeShell",6,1],["30Rnd_556x45_Stanag_Tracer_Yellow",8,30],["9Rnd_45ACP_Mag",3,8]]],["B_Carryall_oli",[["ACE_bloodIV",8],["ACE_bloodIV_500",8],["ACE_splint",10],["ACE_tourniquet",8],["ACE_morphine",10],["ACE_epinephrine",10],["ACE_elasticBandage",25],["ACE_packingBandage",15],["FSGm_ItemMedicBag",1],["ACE_surgicalKit",1],["ACE_EntrenchingTool",1],["ACE_personalAidKit",1],["ACE_adenosine",5],["SmokeShell",2,1]]],"H_HelmetIA_net","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],[]];
 
 CREATE_LOADOUT(sur,_baseLoadout);
 COPY_ADDONS(sur,rif);
@@ -214,7 +214,7 @@ PUT_GUN_IN_GUNBAG(sniper,"arifle_Mk20C_ACO_pointer_F");
 
 // Crewman Loadout
 
-_baseLoadout = [[["hgun_PDW2000_F","","","optic_Aco_smg",["30Rnd_9x21_Mag",30],[],""],[],[],["U_I_CombatUniform_shortsleeve",[["ACE_MapTools",1],["ACE_Flashlight_XL50",1],["ACE_Canteen",1],["ACE_fieldDressing",5],["ACE_packingBandage",1],["ACE_quikclot",1],["ACE_salineIV",1],["ACE_tourniquet",2],["ACE_splint",1],["ACRE_PRC343",1],["ACE_painkillers",2,10]]],["V_TacVest_oli",[["ToolKit",1],["30Rnd_9x21_Mag",2,30]]],[],"H_HelmetCrew_I","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],[]];
+_baseLoadout = [[["hgun_PDW2000_F","","","optic_Aco_smg",["30Rnd_9x21_Mag",30],[],""],[],[],["U_I_CombatUniform_shortsleeve",[["ACE_MapTools",1],["ACE_Flashlight_XL50",1],["ACE_Canteen",1],["ACE_fieldDressing",5],["ACE_packingBandage",1],["ACE_quikclot",1],["ACE_salineIV",1],["ACE_tourniquet",2],["ACE_splint",1],["ACRE_PRC343",1],["ACE_painkillers",2,10]]],["V_TacVest_oli",[["ACE_EntrenchingTool",1],["30Rnd_9x21_Mag",4,30],["SmokeShell",4,1],["SmokeShellGreen",1,1],["SmokeShellBlue",1,1]]],["B_FieldPack_oli",[["ToolKit",1]]],"H_HelmetCrew_I","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],[]];
 
 CREATE_LOADOUT(crew,_baseLoadout);
 
@@ -248,9 +248,9 @@ ADD_RIFLE_AMMO_TO_CRATE(small,mk,5);
 ADD_RIFLE_AMMO_TO_CRATE(small,crew,2);
 ADD_RIFLE_GRENADES_TO_CRATE(small,ftl,10);
 
-ADD_ITEMS_TO_CRATE(small,"30Rnd_556x45_Stanag",10);
-ADD_ITEMS_TO_CRATE(small,"20Rnd_762x51_Mag",6);
-ADD_ITEMS_TO_CRATE(small,"200Rnd_65x39_cased_Box",3);
+ADD_ITEMS_TO_CRATE(small,"30Rnd_556x45_Stanag_Tracer_Yellow",10);
+ADD_ITEMS_TO_CRATE(small,"ACE_20Rnd_762x51_Mag_Tracer",6);
+ADD_ITEMS_TO_CRATE(small,"200Rnd_65x39_cased_Box_Tracer",3);
 
 ADD_ITEMS_TO_CRATE(small,"1Rnd_Smoke_Grenade_shell",10);
 ADD_ITEMS_TO_CRATE(small,"1Rnd_SmokeRed_Grenade_shell",5);
@@ -293,9 +293,9 @@ ADD_RIFLE_AMMO_TO_CRATE(med,mk,10);
 ADD_RIFLE_AMMO_TO_CRATE(med,crew,4);
 ADD_RIFLE_GRENADES_TO_CRATE(med,ftl,20);
 
-ADD_ITEMS_TO_CRATE(med,"30Rnd_556x45_Stanag",10);
-ADD_ITEMS_TO_CRATE(med,"20Rnd_762x51_Mag",6);
-ADD_ITEMS_TO_CRATE(med,"200Rnd_65x39_cased_Box",3);
+ADD_ITEMS_TO_CRATE(med,"30Rnd_556x45_Stanag_Tracer_Yellow",10);
+ADD_ITEMS_TO_CRATE(med,"ACE_20Rnd_762x51_Mag_Tracer",6);
+ADD_ITEMS_TO_CRATE(med,"200Rnd_65x39_cased_Box_Tracer",3);
 
 ADD_ITEMS_TO_CRATE(med,"1Rnd_Smoke_Grenade_shell",10);
 ADD_ITEMS_TO_CRATE(med,"1Rnd_SmokeRed_Grenade_shell",5);
