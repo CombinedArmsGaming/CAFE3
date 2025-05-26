@@ -10,27 +10,13 @@ if (hasInterface) then
 	["ace_firedPlayer", 
 	{
 		params ["_unit", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile"];
-
-		if (_unit == player) then 
-		{
-			private _magName = getText (configFile >> "CfgMagazines" >> _magazine >> "displayName");
-			private _currentCount = cafe_playerShots getOrDefault [_magName, 0];
-			private _updated = _currentCount + 1;
-			cafe_playerShots set [_magName, _updated];
-		};
+		[_magazine, true, _unit] call f_fnc_handleFiredEvent;
 	}] call CBA_fnc_addEventHandler;
 
 	["ace_firedPlayerVehicle", 
 	{
 		params ["_vehicle", "_weapon", "_muzzle", "_mode", "_ammo", "_magazine", "_projectile"];
-
-		if (_unit == player) then 
-		{
-			private _magName = getText (configFile >> "CfgMagazines" >> _magazine >> "displayName");
-			private _currentCount = cafe_playerShots getOrDefault [_magName, 0];
-			private _updated = _currentCount + 1;
-			cafe_playerShots set [_magName, _updated];
-		};
+		[_magazine, false, nil] call f_fnc_handleFiredEvent;
 	}] call CBA_fnc_addEventHandler;
 
 	["ace_unconscious", 
