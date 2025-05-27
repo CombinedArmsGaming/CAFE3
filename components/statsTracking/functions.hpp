@@ -1,9 +1,6 @@
 class statsTracking
 {
     file = "components\statsTracking";
-    class addStatsEventHandlersToClass {
-    };
-    class handleFiredEvent
-    {
-    };
+    class addStatsEventHandlersToClass {};
+    class handleFiredEvent {};
 };
