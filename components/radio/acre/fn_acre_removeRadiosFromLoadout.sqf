@@ -13,7 +13,14 @@ private _filterOutRadios =
     private _retArray = [];
 
     {
-        private _name = _x#0;
+        _x params [
+            ["_name", "", ["", []]]
+        ];
+
+        if !(_name isEqualType "") then {
+            _retArray pushBack _x;
+            continue;
+        };
         if !([_name] call acre_api_fnc_isBaseRadio or {[_name] call acre_api_fnc_isRadio}) then
         {
             _retArray pushBack _x;
