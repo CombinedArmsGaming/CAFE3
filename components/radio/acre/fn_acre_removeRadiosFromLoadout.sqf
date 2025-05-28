@@ -8,7 +8,7 @@ if !(_loadout isEqualType []) exitWith {};
 
 private _filterOutRadios =
 {
-    if (_this isEqualTo []) exitWith {};
+    if (_this isEqualTo []) exitWith {[]};
 
     private _retArray = [];
 
