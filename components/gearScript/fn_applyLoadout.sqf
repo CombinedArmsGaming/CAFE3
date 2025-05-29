@@ -88,11 +88,12 @@ if ((_loadout isEqualType "") and (isPlayer _unit)) exitWith
 
 if (_loadout isEqualType []) then
 {
-    private _originalLoadout = +_loadout;
-    _originalLoadout = [_originalLoadout] call f_fnc_normaliseCbaExtendedLoadout;
+    private _copiedLoadout = +_loadout;
+    _copiedLoadout = [_copiedLoadout] call f_fnc_normaliseCbaExtendedLoadout;
 
-    _extendedArray = _originalLoadout#1;
-
+    _loadout = _copiedLoadout#0;
+    _extendedArray = _copiedLoadout#1;
+    
 
     if (count HATS_DYNAMIC(_gearVariant,_typeofUnit) > 0) then
     {
