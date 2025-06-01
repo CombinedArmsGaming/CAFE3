@@ -2,7 +2,7 @@
 
 params [["_radio", nil, [""]], ["_channel", nil, ["",[]]], ["_side", nil, [west]], ["_groupName", nil, ["",[]]]];
 
-if (typeName _groupName isEqualTo "ARRAY") exitWith
+if (_groupName isEqualType []) exitWith
 {
     {
         [_radio, _channel, _side, _x] call f_fnc_acre_giveRadioToAllInGroup;
@@ -10,7 +10,7 @@ if (typeName _groupName isEqualTo "ARRAY") exitWith
     forEach _groupName;
 };
 
-private _channelHasPresetOverride = (typeName _channel isEqualTo "ARRAY");
+private _channelHasPresetOverride = (_channel isEqualType []);
 private _channelName = _channel;
 
 private _preset = if (_channelHasPresetOverride) then

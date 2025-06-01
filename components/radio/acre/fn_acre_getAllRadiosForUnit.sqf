@@ -11,7 +11,13 @@ private _findRadiosNoConvert =
     if (_container isEqualTo []) exitWith {_retArray};
 
     {
-        private _name = _x#0;
+        _x params [
+            ["_name", "", ["", []]]
+        ];
+
+        if !(_name isEqualType "") then {
+            continue;
+        };
         if ([_name] call acre_api_fnc_isBaseRadio or {[_name] call acre_api_fnc_isRadio}) then
         {
             _retArray pushBack _name;
@@ -29,7 +35,13 @@ private _findRadiosAndConvert =
     if (_container isEqualTo []) exitWith {_retArray};
 
     {
-        private _name = _x#0;
+        _x params [
+            ["_name", "", ["", []]]
+        ];
+
+        if !(_name isEqualType "") then {
+            continue;
+        };
         if ([_name] call acre_api_fnc_isBaseRadio or {[_name] call acre_api_fnc_isRadio}) then
         {
             _retArray pushBack ([_name] call acre_api_fnc_getBaseRadio);

@@ -15,7 +15,7 @@ BEGIN_LOADOUTS;
 
     Available commands FOR UNIT LOADOUTS:
 
-    CREATE_LOADOUT(UNIT_NAME,<ACE Arsenal code>);
+    CREATE_LOADOUT(UNIT_NAME,<ACE Arsenal code> OR <unit class-name>);
     COPY_LOADOUT(TO,FROM);
 
     ADD_HAT(UNIT_NAME,"Hat Classname");
@@ -32,7 +32,7 @@ BEGIN_LOADOUTS;
 
     CLEAR_ADDONS(UNIT_NAME);
 
-    ADD_VARIANT(UNIT_NAME,<ACE Arsenal code>);
+    ADD_VARIANT(UNIT_NAME,<ACE Arsenal code> OR <unit class-name>);
 
     -------------------------------------------------
 

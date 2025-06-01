@@ -22,7 +22,7 @@ _group = [_unitarray,_position,_faction,_side] call f_fnc_spawnGroup;
 _posdir = _attackposition call f_fnc_getDirPos;
 _attackpos = _posdir select 0;
 
-if (typename _attackposition == "STRING") then
+if (_attackposition isEqualType "") then
 {
   	if (markerShape _attackposition ==  "RECTANGLE" || markerShape _attackposition == "ELLIPSE") then
 	{

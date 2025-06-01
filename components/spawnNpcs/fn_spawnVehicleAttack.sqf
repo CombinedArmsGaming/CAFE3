@@ -24,7 +24,7 @@ _group = _grpvehicle select 0;
 _posdir = _attackposition call f_fnc_getdirpos;
 _attackpos = _posdir select 0;
 
-if (typename _attackposition == "STRING") then
+if (_attackposition isEqualType "") then
 {
     if (markerShape _attackposition ==  "RECTANGLE" || markerShape _attackposition == "ELLIPSE") then
     {

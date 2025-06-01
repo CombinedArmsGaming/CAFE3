@@ -1,7 +1,7 @@
 params [["_radio", nil, [""]], ["_channel", nil, ["",[]]], ["_side", nil, [west]], ["_role", nil, ["",[]]], ["_groupName", nil, ["",[]]]];
 
-private _multipleGroups = (typeName _groupName isEqualTo "ARRAY");
-private _multipleRoles = (typeName _role isEqualTo "ARRAY");
+private _multipleGroups = (_groupName isEqualType []);
+private _multipleRoles = (_role isEqualType []);
 
 if (_multipleGroups) exitWith
 {
@@ -19,7 +19,7 @@ if (_multipleRoles) exitWith
     forEach _role;
 };
 
-private _channelHasPresetOverride = (typeName _channel isEqualTo "ARRAY");
+private _channelHasPresetOverride = (_channel isEqualType []);
 private _channelName = _channel;
 
 private _preset = if (_channelHasPresetOverride) then

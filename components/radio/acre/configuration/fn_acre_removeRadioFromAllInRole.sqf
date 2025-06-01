@@ -2,7 +2,7 @@
 
 params [["_radio", nil, [""]], ["_channel", nil, ["",[]]], ["_side", nil, [west]], ["_role", nil, ["",[]]]];
 
-if (typeName _role isEqualTo "ARRAY") exitWith
+if (_role isEqualType []) exitWith
 {
     {
         [_radio, _channel, _side, _x] call f_fnc_acre_removeRadioFromAllInRole;

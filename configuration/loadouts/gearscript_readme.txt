@@ -13,6 +13,11 @@ Available commands FOR UNIT LOADOUTS:
 CREATE_LOADOUT(UNIT_NAME,<ACE Arsenal code>);
 -   Assigns the ACE Arsenal loadout to the unit.
     For example, you can create a Rifleman loadout and assign it to the unit-name "rif".  The rif class will now be available at Loadout Lockers in-game.
+-   Also supports unit class-names.  You can get these from the editor by using "copy class name" from the right-click menu.
+    This is only supported for NPCs and will not work upon players!
+-   For example:
+    CREATE_LOADOUT(med,"O_medic_F");
+    Any non-player medic will now look like a CSAT medic.
 
 COPY_LOADOUT(TO,FROM);
 -   Copies a loadout from one unit-type to another unit-type.  Useful if you want to give the same loadout to FTLs and SLs, etc.
@@ -63,7 +68,7 @@ CLEAR_BACKPACKS(UNIT_NAME);
 CLEAR_ADDONS(UNIT_NAME);
 -   Empties all of the "random lists" for the unit type at the same time.  Just like using all of the CLEAR_* commands at once.
 
-ADD_VARIANT(UNIT_NAME,<ACE Arsenal code>);
+ADD_VARIANT(UNIT_NAME,<ACE Arsenal code> OR <unit class-name>);
 -   Advanced feature.  Adds alternative loadouts to the unit-type.  The loadout will now be randomly chosen between the two.
     You must create the first loadout using the CREATE_LOADOUT command before using this command.
     Randomisation options apply across all variant loadouts.
@@ -73,6 +78,12 @@ ADD_VARIANT(UNIT_NAME,<ACE Arsenal code>);
     Use ACE Arsenal to create a different Rifleman loadout with an M-16 rifle.
     ADD_VARIANT(rif,<ACE Arsenal code>);
     All riflemen will now randomly have an AK-47 or M-16 rifle.
+-   Also supports unit class-names.  You can get these from the editor by using "copy class name" from the right-click menu.
+    This is only supported for NPCs and will not work upon players!
+-   For example:
+    ADD_VARIANT(med,"O_medic_F");
+    Any non-player medic will now look like a CSAT medic.
+
 
 PUT_GUN_IN_GUNBAG(UNIT_NAME,<contents>)
 -   Allows the backpack of the given unit to be turned into an ACE gunbag, with the given contents placed inside.

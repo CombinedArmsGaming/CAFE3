@@ -12,7 +12,7 @@ _setGravestoneType =
 
     _gravestone = missionNamespace getVariable [_objectName, ""];
 
-    if (typeName _gravestone == "OBJECT") then
+    if (_gravestone isEqualType objNull) then
     {
         if ([_gravestone] call f_fnc_isContainer) then
         {
