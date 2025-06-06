@@ -71,7 +71,7 @@
                 ["_radio", "_channelName", "_side", "_role", "_groupName"];
             Example:
                 // Gives short-range radios only to riflemen in the BLUFOR SPECOPS group, tuned to "COOL NET"
-                ["ACRE_PRC343", "COOL NET", west, "rif", "SPECOPS"] call f_fnc_acre_giveRadioToAllInGroup;
+                ["ACRE_PRC343", "COOL NET", west, "rif", "SPECOPS"] call f_fnc_acre_giveRadioToRoleInGroup;
 
         f_fnc_acre_removeRadioFromAllInRole
             Takes away a radio from every unit with the given role on the given side.
