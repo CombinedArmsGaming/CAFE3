@@ -348,8 +348,12 @@ case "ui_init": {
 			_zeusUI displayAddEventHandler ["KeyDown", {
 				params ["_zeusUI", "_key"];
 
-				// If the backspace key was pressed, toggle the UI visibility
-				if (_key == 14) then {
+				// Grab the type of the focused control
+				// 2 = CT_EDIT, such as the search bar
+				_focusedCtrlType = ctrlType focusedCtrl _zeusUI;
+
+				// If the backspace key was pressed outside of a text edit control, toggle the UI visibility
+				if (_key == 14 && _focusedCtrlType != 2) then {
 
 					// Only detect the first keyDown event (so that holding down the key doesn't toggle the UI every frame)
 					if !(_zeusUI getVariable [MACRO_VARNAME_UI_SHOULDHIDE_KEYDOWN, false]) then {
