@@ -152,6 +152,7 @@
 	#define MACRO_VARNAME_UNIT_ROLES                                        "roles"
 	#define MACRO_VARNAME_UNIT_VEHICLE                                      "vehicle"
 	#define MACRO_VARNAME_REINFORCEMENT_ROLES								"reinforcements"
+	#define MACRO_VARNAME_UNIT_GROUPS										"groups"
 
 	// Third-party mods/scripts
 	#define MACRO_VCOM_VARNAME_NOAI                                         "Vcm_Disable"		// Taken from "vcomai\Vcom\Functions\VcomAI_DefaultSettings.sqf"

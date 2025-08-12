@@ -16,6 +16,69 @@ class CA_ZeusUI_Units
 		gear = "blu_f";                   // This is the faction code as used in the CAFE framework. Here, "blu_f", means the gear will be taken from the BLUFOR gearscript (aka BLUFOR).
 		side = "west";                    // "west" means the units will bear allegiance to the western side (aka BLUFOR). Available options are: "west", "east", "resistance" and "civilian".
 
+		class RiflePlatoon
+		{
+			unitName = "BLUFOR Rifle Platoon";
+			groups[] = {
+                                          {"sl", "med", "mk"},
+                                          {"ftl", "ar", "aar", "lat", "rif", "cls"},
+                                          {"ftl", "ar", "aar", "lat", "rif", "cls"},
+                                          {"ftl", "ar", "aar", "lat", "rif", "cls"},
+                                          {"ftl", "mmg", "ammg"}
+			};
+		};
+
+		class SpecialRiflePlatoon
+		{
+			unitName = "Special BLUFOR Rifle Platoon";
+			groups[] = {
+                                          {"sl", "med", "mk"},
+                                          "BLUFOR Fireteam 4x",
+										  "M2A4 Slammer UP"
+			};
+		};
+
+		class PlatoonWithVehicleInline
+		{
+			unitName = "Platoon with vehicle inline";
+			vehicle = "B_APC_Wheeled_01_cannon_F";
+			units[] = {"crew", "crew", "crew"};
+			reinforcements[] = {"ftl", "ar", "aar", "lat", "rif", "mk"};
+			groups[] = {
+				{"sl", "med", "mk"},
+				"BLUFOR Fireteam 4x",
+				"M2A4 Slammer UP"
+			};
+		}
+
+		class PlatoonWithVehicleSubUnit
+		{
+			unitName = "Platoon with vehicle subunit";
+			groups[] = {
+				{"sl", "med", "mk"},
+				"BLUFOR Fireteam 4x",
+				"M2A4 Slammer UP",
+				"AMV-7 Marshall + Squad 6x"
+			};
+		}
+
+		class M2A4_Slammer_UP
+		{
+			unitName = "M2A4 Slammer UP";       // This is the name of the vehicle which will be shown in-game.
+			vehicle = "B_MBT_01_TUSK_F";        // This is the classname of the vehicle. You can get it by right-clicking a vehicle in 3DEN and selecting "Log > Log classes to clipboard"
+			units[] = {"crew", "crew", "crew"}; // This is the crew of the vehicle.  The first unit in the list is always the commander.
+		};
+
+		class AMV_7_Reinforcements
+		{
+			unitName = "AMV-7 Marshall + Squad 6x";
+			vehicle = "B_APC_Wheeled_01_cannon_F";
+			units[] = {"crew", "crew", "crew"};
+			reinforcements[] = {"ftl", "ar", "aar", "lat", "rif", "mk"}; // When defined, this group spawns in the cargo space of the vehicle. The vehicle gets a TR unload waypoint and a RTB waypoint (only if it's unarmed), the group a Move waypoint. The vehicle will also despawn on RTB. If the vehicle is a Heli, it will spawn flying and always RTB
+		};
+
+		
+
 		// Units definition
 		class Rifleman
 		{
@@ -66,12 +129,7 @@ class CA_ZeusUI_Units
 		gear = "blu_f";
 		side = "west";
 
-		class M2A4_Slammer_UP
-		{
-			unitName = "M2A4 Slammer UP";       // This is the name of the vehicle which will be shown in-game.
-			vehicle = "B_MBT_01_TUSK_F";        // This is the classname of the vehicle. You can get it by right-clicking a vehicle in 3DEN and selecting "Log > Log classes to clipboard"
-			units[] = {"crew", "crew", "crew"}; // This is the crew of the vehicle.  The first unit in the list is always the commander.
-		};
+		
 
 		class AMV7_Marshall // Classnames can't contain '-'
 		{
