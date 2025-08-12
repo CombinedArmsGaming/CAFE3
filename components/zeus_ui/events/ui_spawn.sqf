@@ -10,7 +10,10 @@ case "ui_spawn": {
 	// Function to spawn a unit to allow recursion. Called below.
 	private _spawnUnit = {
 		// unitsSpawned is the number of units already spawned in the same ui_spawn event
-		params ["_categoryIndex", "_unitIndex", "_presetIndex", ["_unitsSpawned", 0]];
+		// spawnHistoryQueue is the list of unitNames that have recursively been spawned in this ui_spawn event
+		//		It works as a queue where a child unit adds itself to the queue, and removes itself when it is done spawning all of its children
+		//		This allows checking for recursion
+		params ["_categoryIndex", "_unitIndex", "_presetIndex", ["_unitsSpawned", 0], ["_spawnHistoryQueue", []]];
 
 		// Only continue if we selected something in every listbox
 		if (_categoryIndex >= 0 and {_unitIndex >= 0} and {_presetIndex >= 0}) then {
@@ -93,7 +96,7 @@ case "ui_spawn": {
 					};
 
 					// Distance apart to spawn subsequent groups (negative = behind)
-					private _spawnOffsetDistance = -5;
+					private _spawnOffsetDistance = -10;
 
 					_dir = getDir curatorCamera;
 					// Get the normalized vector of the direction the units spawn in
@@ -101,33 +104,62 @@ case "ui_spawn": {
 					
 					// Shift the starting pos to account for previously spawned groups
 					_pos = _pos vectorAdd (_dirVector vectorMultiply (_spawnOffsetDistance * _unitsSpawned));
-
+					
+					// Spawn any units, vehicles, reinforcements
 					if (!(_roles isEqualTo [])) then {
 						// Tell the server to spawn the group
 						[_roles, _pos, _gear, _side, _vehicleClass, _enableAdvancedAI, _guerrillaAI, _suppressiveAI, _reinforcementRoles, _dir] remoteExec ["f_fnc_server_spawnGroup", 2, false];
 						// Shift the spawn position, just in case more groups will be spawned.
-						_pos = _pos vectorAdd (_dirVector vectorMultiply -5);
+						_pos = _pos vectorAdd (_dirVector vectorMultiply _spawnOffsetDistance);
 						_unitsSpawned = _unitsSpawned + 1;
 					};
 
+					// Spawn any groups. Not an else clause so that units[] and groups[] will both be spawned.
 					if (!(_groups isEqualTo [])) then {
 						{
 							// If this group is an array, then it is a list of units to be spawned
 							if (typeName _x == "ARRAY") then {
 								// Ignore vehicle and reinforcements. Those should be spawned via regular units, not via groups.
 								[_x, _pos, _gear, _side, "", _enableAdvancedAI, _guerrillaAI, _suppressiveAI, [], _dir] remoteExec ["f_fnc_server_spawnGroup", 2, false];
-								// Shift the spawn position 5m back for each group
-								_pos = _pos vectorAdd (_dirVector vectorMultiply -5);
+								// Shift the spawn position by the spawn offset distance for each group
+								_pos = _pos vectorAdd (_dirVector vectorMultiply _spawnOffsetDistance);
 								_unitsSpawned = _unitsSpawned + 1;
 							// Otherwise, it is the name of another unit
 							} else {
-								// Save the name of the other unit to be spawned
+								// Get the name of this unit
+								private _unitName = _categoryVars select _unitIndex;
+
+								// Save the name of the subunit to be spawned
 								private _subUnitName = _x;
+
 								// Find the index of that subunit
 								_subUnitIndex = _categoryVars findIf {_x == _subUnitName};
-								
-								// Recursively call to spawn anything
-								[_categoryIndex, _subUnitIndex, _presetIndex, _unitsSpawned] call _spawnUnit;
+
+								// It is fine to continue here because the -1 will get caught at the top of _spawnUnit
+								if (_subUnitIndex == -1) then {
+									private _str = format ["[ZeusUI] ERROR: Could not find unit with name %1 for spawning.", _unitName];
+									systemChat _str;
+									hint _str;
+									diag_log _str;
+								};
+
+								// Check the spawn history queue to see if a parent of this unit is the same unit
+								if ((_spawnHistoryQueue findIf {_x == _unitName}) != -1) then {
+									private _str = format ["[ZeusUI] ERROR: Infinite recursion detected in spawning unit %1.", _unitName];
+									systemChat _str;
+									hint _str;
+									diag_log _str;
+								// If it wouldn't cause infinite recursion, do the spawning
+								} else {
+									// Add this unit to the spawn history
+									_spawnHistoryQueue pushBack _unitName;
+									
+									// Recursively call to spawn anything (more groups, vehicles, etc.)
+									[_categoryIndex, _subUnitIndex, _presetIndex, _unitsSpawned, _spawnHistoryQueue] call _spawnUnit;
+									
+									// Remove this unit from the spawn history as all of its children have finished spawning
+									_spawnHistoryQueue deleteAt [-1];
+								};
 							};
 						} forEach _groups;
 					};
