@@ -15,7 +15,7 @@ if (count _this > 2) then
 
 if (IS_PLAYER) then
 {
-    waitUntil {local player};
+    waitUntil {(local player) and (time > 1)};
 };
 
 LOCAL_ONLY(_unit);
