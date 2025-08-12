@@ -16,69 +16,6 @@ class CA_ZeusUI_Units
 		gear = "blu_f";                   // This is the faction code as used in the CAFE framework. Here, "blu_f", means the gear will be taken from the BLUFOR gearscript (aka BLUFOR).
 		side = "west";                    // "west" means the units will bear allegiance to the western side (aka BLUFOR). Available options are: "west", "east", "resistance" and "civilian".
 
-		class RiflePlatoon
-		{
-			unitName = "BLUFOR Rifle Platoon";
-			groups[] = {
-                                          {"sl", "med", "mk"},
-                                          {"ftl", "ar", "aar", "lat", "rif", "cls"},
-                                          {"ftl", "ar", "aar", "lat", "rif", "cls"},
-                                          {"ftl", "ar", "aar", "lat", "rif", "cls"},
-                                          {"ftl", "mmg", "ammg"}
-			};
-		};
-
-		class SpecialRiflePlatoon
-		{
-			unitName = "Special BLUFOR Rifle Platoon";
-			groups[] = {
-                                          {"sl", "med", "mk"},
-                                          "BLUFOR Fireteam 4x",
-										  "M2A4 Slammer UP"
-			};
-		};
-
-		class PlatoonWithVehicleInline
-		{
-			unitName = "Platoon with vehicle inline";
-			vehicle = "B_APC_Wheeled_01_cannon_F";
-			units[] = {"crew", "crew", "crew"};
-			reinforcements[] = {"ftl", "ar", "aar", "lat", "rif", "mk"};
-			groups[] = {
-				{"sl", "med", "mk"},
-				"BLUFOR Fireteam 4x",
-				"M2A4 Slammer UP"
-			};
-		}
-
-		class PlatoonWithVehicleSubUnit
-		{
-			unitName = "Platoon with vehicle subunit";
-			groups[] = {
-				{"sl", "med", "mk"},
-				"BLUFOR Fireteam 4x",
-				"M2A4 Slammer UP",
-				"AMV-7 Marshall + Squad 6x"
-			};
-		}
-
-		class M2A4_Slammer_UP
-		{
-			unitName = "M2A4 Slammer UP";       // This is the name of the vehicle which will be shown in-game.
-			vehicle = "B_MBT_01_TUSK_F";        // This is the classname of the vehicle. You can get it by right-clicking a vehicle in 3DEN and selecting "Log > Log classes to clipboard"
-			units[] = {"crew", "crew", "crew"}; // This is the crew of the vehicle.  The first unit in the list is always the commander.
-		};
-
-		class AMV_7_Reinforcements
-		{
-			unitName = "AMV-7 Marshall + Squad 6x";
-			vehicle = "B_APC_Wheeled_01_cannon_F";
-			units[] = {"crew", "crew", "crew"};
-			reinforcements[] = {"ftl", "ar", "aar", "lat", "rif", "mk"}; // When defined, this group spawns in the cargo space of the vehicle. The vehicle gets a TR unload waypoint and a RTB waypoint (only if it's unarmed), the group a Move waypoint. The vehicle will also despawn on RTB. If the vehicle is a Heli, it will spawn flying and always RTB
-		};
-
-		
-
 		// Units definition
 		class Rifleman
 		{
@@ -121,6 +58,21 @@ class CA_ZeusUI_Units
 			unitName = "BLUFOR MK Team";
 			units[] = {"rif", "mk"};
 		};
+
+		// Unit with many separate groups
+		class MechanizedPlatoon
+		{
+			unitName = "BLUFOR Mechanized Platoon";
+			vehicle = "B_APC_Wheeled_01_cannon_F"; 	// Vehicle, units, and reinforcements work side by side with groups.
+			units[] = {"crew", "crew", "crew"}; 	// These will be spawned separately and alongside the groups.
+			reinforcements[] = {"ftl", "ar", "aar", "lat", "rif", "mk"}; // If you want the vehicle and reinforcements to spawn, you must have units[]
+			groups[] = {
+				{"co", "med", "fac"}, 				// Groups can be defined "in-line" the same way units are.
+				"BLUFOR Fireteam 4x", 				// You can reference units defined elsewhere by their unitName NOT their class name (definition order does not matter).
+				"IFV-6C Panther + Squad 6x",		// You can even reference units in other categories (including other sides!).
+				"M2A4 Slammer UP" 					// Names should be unique, but it will always pick a unit from the same category first.
+			};
+		};
 	};
 
 	class BLUFOR_Vehicles
@@ -129,7 +81,22 @@ class CA_ZeusUI_Units
 		gear = "blu_f";
 		side = "west";
 
-		
+		class Tank_Platoon
+		{
+			unitName = "M2A4 Platoon"
+			groups[] = { 				// You can have a unit with only groups and no units or vehicle or reinforcements
+				"M2A4 Slammer UP",
+				"M2A4 Slammer UP",
+				"M2A4 Slammer UP"
+			};
+		};
+
+		class M2A4_Slammer_UP
+		{
+			unitName = "M2A4 Slammer UP";       // This is the name of the vehicle which will be shown in-game.
+			vehicle = "B_MBT_01_TUSK_F";        // This is the classname of the vehicle. You can get it by right-clicking a vehicle in 3DEN and selecting "Log > Log classes to clipboard"
+			units[] = {"crew", "crew", "crew"}; // This is the crew of the vehicle.  The first unit in the list is always the commander.
+		};
 
 		class AMV7_Marshall // Classnames can't contain '-'
 		{
@@ -228,6 +195,21 @@ class CA_ZeusUI_Units
 			unitName = "OPFOR MK Team";
 			units[] = {"rif", "mk"};
 		};
+
+		// Unit with many separate groups
+		class MechanizedPlatoon
+		{
+			unitName = "OPFOR Mechanized Platoon";
+			vehicle = "O_APC_Wheeled_02_rcws_F"; // Vehicle, units, and reinforcements work side by side with groups.
+			units[] = {"crew", "crew", "crew"}; // These will be spawned separately and alongside the groups.
+			reinforcements[] = {"ftl", "ar", "aar", "lat", "rif", "mk"};
+			groups[] = {
+				{"co", "med", "fac"}, // Groups can be defined "in-line" the same way units are.
+				"OPFOR Fireteam 4x", // You can reference units defined elsewhere (definition order does not matter).
+				"BTR-K Kamysh + Squad 6x", // You can even reference units in other categories (including other sides!).
+				"T-100 Varsuk" // Names should be unique, but it will always pick a unit from the same category first.
+			};
+		};
 	};
 
 	class OPFOR_Vehicles
@@ -235,6 +217,16 @@ class CA_ZeusUI_Units
 		categoryName = "OPFOR Vehicles";
 		gear = "opf_f";
 		side = "east";
+
+		class Tank_Platoon
+		{
+			unitName = "Varsuk Platoon"
+			groups[] = { 				// You can have a unit with only groups and no units or vehicle or reinforcements
+				"T-100 Varsuk",
+				"T-100 Varsuk",
+				"T-100 Varsuk"
+			};
+		};
 
 		class T100_Varsuk // Classnames can't contain '-'
 		{
@@ -339,6 +331,18 @@ class CA_ZeusUI_Units
 		{
 			unitName = "INDFOR MK Team";
 			units[] = {"rif", "mk"};
+		};
+
+		class Platoon 
+		{
+			unitName = "INDFOR Platoon";
+			groups[] = {
+				{"sl", "med", "mk"},
+				{"ftl", "ar", "aar", "lat", "rif", "cls"},
+				{"ftl", "ar", "aar", "lat", "rif", "cls"},
+				{"ftl", "ar", "aar", "lat", "rif", "cls"},
+				{"ftl", "mmg", "ammg"}
+			};
 		};
 	};
 
