@@ -2,11 +2,6 @@
 case "ui_spawn": {
 	_eventExists = true;
 
-	// Fetch our listbox indexes
-	private _categoryIndex = missionNamespace getVariable [MACRO_VARNAME_UI_CATEGORYINDEX, -1];
-	private _unitIndex = missionNamespace getVariable [MACRO_VARNAME_UI_UNITINDEX, -1];
-	private _presetIndex = missionNamespace getVariable [MACRO_VARNAME_UI_PRESETINDEX, -1];
-
 	// Function to spawn a unit to allow recursion. Called below.
 	private _spawnUnit = {
 		// unitsSpawned is the number of units already spawned in the same ui_spawn event
@@ -134,8 +129,30 @@ case "ui_spawn": {
 
 								// Find the index of that subunit
 								_subUnitIndex = _categoryVars findIf {_x == _subUnitName};
+								// Assume the sub unit has the same category
+								private _subUnitCategoryIndex = _categoryIndex;
 
-								// It is fine to continue here because the -1 will get caught at the top of _spawnUnit
+								// Check if we failed to find the subunit in the same category as the parent unit
+								if (_subUnitIndex == -1) then {
+									// Search all categories for the unit name
+									{
+										// Get the category namespace and then variables for the searched category
+										_subUnitCategoryNamespace = _allCategoriesNamespace getVariable [_x, locationNull];
+										_subUnitCategoryVars = _subUnitCategoryNamespace getVariable [MACRO_VARNAME_NAMESPACE_ALLVARIABLES, []];
+
+										// Search for the desired unit name
+										_subUnitIndex = _subUnitCategoryVars findIf {_x == _subUnitName};
+
+										// If the unit is found, note down the category index and stop searching.
+										if (_subUnitIndex != -1) then {
+											_subUnitCategoryIndex = _forEachIndex;
+											break;
+										};
+									} forEach _allCategoriesVars;
+								};
+
+								// Check if we still haven't found the unit
+								// This means it doesn't exist in any category
 								if (_subUnitIndex == -1) then {
 									private _str = format ["[ZeusUI] ERROR: Could not find unit with name %1 for spawning.", _unitName];
 									systemChat _str;
@@ -155,7 +172,7 @@ case "ui_spawn": {
 									_spawnHistoryQueue pushBack _unitName;
 									
 									// Recursively call to spawn anything (more groups, vehicles, etc.)
-									[_categoryIndex, _subUnitIndex, _presetIndex, _unitsSpawned, _spawnHistoryQueue] call _spawnUnit;
+									[_subUnitCategoryIndex, _subUnitIndex, _presetIndex, _unitsSpawned, _spawnHistoryQueue] call _spawnUnit;
 									
 									// Remove this unit from the spawn history as all of its children have finished spawning
 									_spawnHistoryQueue deleteAt [-1];
@@ -167,6 +184,11 @@ case "ui_spawn": {
 			};
 		};
 	};
+
+	// Fetch our listbox indexes
+	private _categoryIndex = missionNamespace getVariable [MACRO_VARNAME_UI_CATEGORYINDEX, -1];
+	private _unitIndex = missionNamespace getVariable [MACRO_VARNAME_UI_UNITINDEX, -1];
+	private _presetIndex = missionNamespace getVariable [MACRO_VARNAME_UI_PRESETINDEX, -1];
 
 	[_categoryIndex, _unitIndex, _presetIndex] call _spawnUnit;
 };
