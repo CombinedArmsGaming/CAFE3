@@ -363,6 +363,7 @@ case "ui_init": {
 					};
 				};
 
+				// Ignore alt-tab to avoid shifting spawn menu over one category
 				if (_key isEqualTo DIK_TAB && _alt) then {
 					true
 				};
