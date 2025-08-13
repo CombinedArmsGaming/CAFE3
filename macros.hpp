@@ -1,7 +1,7 @@
 #include "startup\configuration\internals\configMacros.hpp"
 #include "version.hpp"
 
-#define ENABLE_DEBUG
+
 
 #define IS_HC (!(hasInterface or isServer))
 #define IS_CLIENT (hasInterface or {IS_HC})

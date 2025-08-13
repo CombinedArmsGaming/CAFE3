@@ -4,36 +4,6 @@ if (hasInterface) then
 {
     f_arr_playerGogglesCache = [""];
 
-    // onPreloadFinished {
-    //     DEBUG_PRINT_LOG("LOADED!!!");
-    //     private _goggles = goggles player;
-    //     f_var_playerGoggles = _goggles;
-    //     DEBUG_FORMAT1_LOG("[GEARSCRIPT-2] Detected goggles on player: ", f_var_playerGoggles);
-    // };
-
-    // Attempt to get player's chosen goggles by checking the value each frame until the gearscript occurs.  
-    // If something appears, we figure it's the player's choice.  This isn't a great way to do it but it's what we've got.
-    // [] spawn
-    // {
-    //     waitUntil
-    //     {
-    //         if (missionNamespace getVariable ["f_var_firstPlayerLoadout", false]) exitWith {true};
-
-    //         private _goggles = goggles player;
-    //         f_arr_playerGogglesCache pushBackUnique _goggles;
-            
-    //         _goggles IsNotEqualTo "";
-    //     };
-
-
-    //     f_var_playerGoggles = f_arr_playerGogglesCache select -1;
-    //     DEBUG_PRINT_CHAT("test");
-    //     systemChat "hello?";
-    //     diag_log("[GEARSCRIPT-2] HELLOO????");
-    //     systemChat "goggles" + f_var_playerGoggles;
-    //     DEBUG_FORMAT2_LOG("[GEARSCRIPT-2] Detected goggles on player %1", f_var_playerGoggles);
-    // };
-
     [
         "CA_PreGearscriptUnit_Local", 
         {

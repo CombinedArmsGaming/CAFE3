@@ -53,13 +53,12 @@ if (time <= 1) then
         _unit setVariable ["f_var_assignGear", _typeOfUnit, true];
         _unit setVariable ["f_var_assignGear_Faction", _faction, true];
 
+        // Preserve facewear
         _unit setUnitLoadout [[],[],[],["U_B_CombatUniform_mcam",[]],[],[],"",goggles _unit,[],["ItemMap","","","ItemCompass","ItemWatch",""]];
 
         // In this scenario, player gearscripting gets taken over by the respawn template "CAFE_Loadout".  Just exit here.    
         _unit setVariable ["f_var_assignGear_done", true, true];
         _unit setVariable ["f_var_assignGear_running", false, true];
-
-        DEBUG_PRINT_LOG("THE THING HAPPENED");
     };
     
     // If not a player, it isn't as critical that the loadout is applied ASAP.
