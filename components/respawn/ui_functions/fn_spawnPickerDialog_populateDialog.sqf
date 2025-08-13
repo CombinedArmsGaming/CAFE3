@@ -7,6 +7,8 @@ params ["_display"];
 // Group name editor.
 private _spawns = (player call bis_fnc_getRespawnPositions) + ((player call bis_fnc_objectSide) call bis_fnc_getRespawnMarkers);
 private _spawnListEntries = _spawns apply {[_x, (_x call BIS_fnc_showRespawnMenuPositionName) # 0]};
+// Markers have the name "_respawnMarker<index>"
+private _spawnMarkers = [];
 
 missionNamespace setVariable ["f_arr_spawnPickerDialog_spawnListEntries", _spawnListEntries];
 
@@ -15,13 +17,32 @@ private _spawnList = _display displayCtrl IDC_SPAWNPICKER_SPAWNLIST;
 {
     _idx = _spawnList lbAdd (_x#1);
     _spawnList lbSetValue [_idx, _forEachIndex];
-
+    _spawnMarkers set [_forEachIndex, "_respawnMarker" + str _forEachIndex];
 } forEach _spawnListEntries;
 
 _spawnList lbSortBy ["TEXT", false, false];
 
 private _selectedSpawn = missionNamespace getVariable ["f_arr_spawnPickerDialog_selectedSpawn", objNull];
 private _selectedSpawnIdx = _spawns findIf {_x isEqualTo _selectedSpawn};
+
+// Map view
+
+// Get locations of respawn points
+// getRespawnPositions can return Array (PositionATL), Object (specific object), or String (marker name)
+private _spawnLocations = [];
+{
+    switch (typeName _x) do {
+        case "ARRAY": {_spawnLocations pushBack _x;};
+        case "STRING": {_spawnLocations pushBack (getMarkerPos _x);};
+        case "OBJECT": {_spawnLocations pushBack (getPosATL _x);};
+    };
+} forEach _spawns;
+missionNamespace setVariable ["f_arr_spawnPickerDialog_spawnMarkers", _spawnmarkers];
+
+{
+    createMarkerLocal [_x, _spawnLocations # _forEachIndex];
+    _x setMarkerTypeLocal "respawn_inf";
+} forEach _spawnMarkers;
 
 _spawnList lbSetCurSel (_selectedSpawnIdx max 0);
 

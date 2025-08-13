@@ -1,4 +1,6 @@
 #include "../ui_macros.hpp"
+import RscMapControl;
+import RscMapControlEmpty;
 
 class CAFE_SpawnPicker_Dialog
 {
@@ -55,6 +57,7 @@ class CAFE_SpawnPicker_Dialog
 			w = 12 * GUI_GRID_W;
 			h = 11 * GUI_GRID_H;
 			sizeEx = 0.7 * GUI_GRID_H;
+			onLBSelChanged = "_this call f_fnc_spawnPickerDialog_onLBSelChanged;";
 		};
 		class ConfirmButton: CAFE_DefaultButton
 		{
@@ -76,7 +79,14 @@ class CAFE_SpawnPicker_Dialog
 			h = 2 * GUI_GRID_H;
             onButtonClick = "closeDialog 2";
 		};
-
+		class MapScreen: RscMapControl
+		{
+			idc = IDC_RESPAWN_MAP;
+			x = GUI_GRID_CENTER_X;
+			y = GUI_GRID_CENTER_Y;
+			w = 14 * GUI_GRID_W;
+			h = 14 * GUI_GRID_H;
+		}
 	};
 
 };
