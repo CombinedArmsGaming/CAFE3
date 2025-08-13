@@ -6,9 +6,19 @@ params ["_display", "_exitCode"];
 
 
 missionNamespace setVariable ["f_var_spawnPickerDialog_isOpened", false];
+missionNamespace setVariable ["f_var_spawnPickerDialog_selectedSpawnIdx", -1];
 
+// Delete all of the respawn markers from the map
+private _spawnMarkers = missionNamespace getVariable ["f_arr_spawnPickerDialog_spawnMarkers", []];
+{
+    deleteMarkerLocal _x;
+    systemChat format ["Deleted marker %1", _x];
+} forEach _spawnMarkers;
+missionNamespace setVariable ["f_arr_spawnPickerDialog_spawnMarkers", []];
 
-if (_exitCode == 2) exitWith {};
+if (_exitCode == 2) exitWith {
+    
+};
 
 
 if (_exitCode == 1) then
