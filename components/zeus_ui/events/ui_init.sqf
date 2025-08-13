@@ -1,3 +1,4 @@
+#include "\a3\ui_f\hpp\definedikcodes.inc"
 // Initialisation
 case "ui_init": {
 	_eventExists = true;
@@ -346,7 +347,7 @@ case "ui_init": {
 
 			// Hide the UI when pressing backspace
 			_zeusUI displayAddEventHandler ["KeyDown", {
-				params ["_zeusUI", "_key"];
+				params ["_zeusUI", "_key", "_shift", "_ctrl", "_alt"];
 
 				// If the backspace key was pressed, toggle the UI visibility
 				if (_key == 14) then {
@@ -360,6 +361,10 @@ case "ui_init": {
 
 						["ui_toggle", [_isShown]] call f_fnc_zeusUI;
 					};
+				};
+
+				if (_key isEqualTo DIK_TAB && _alt) then {
+					true
 				};
 			}];
 			_zeusUI displayAddEventHandler ["KeyUp", {
