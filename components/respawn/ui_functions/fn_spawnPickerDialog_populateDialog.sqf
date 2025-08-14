@@ -25,7 +25,8 @@ _spawnList lbSortBy ["TEXT", false, false];
 private _selectedSpawn = missionNamespace getVariable ["f_arr_spawnPickerDialog_selectedSpawn", objNull];
 private _selectedSpawnIdx = _spawns findIf {_x isEqualTo _selectedSpawn};
 
-// Map view
+// =======================
+//      Map Control
 
 // Get locations of respawn points
 // getRespawnPositions can return Array (PositionATL), Object (specific object), or String (marker name)
@@ -37,12 +38,22 @@ private _spawnLocations = [];
         case "OBJECT": {_spawnLocations pushBack (getPosATL _x);};
     };
 } forEach _spawns;
-missionNamespace setVariable ["f_arr_spawnPickerDialog_spawnMarkers", _spawnmarkers];
+missionNamespace setVariable ["f_arr_spawnPickerDialog_spawnMarkers", _spawnMarkers];
+missionNamespace setVariable ["f_arr_spawnPickerDialog_spawnLocations", _spawnLocations];
 
+// Mark all respawn points
 {
     createMarkerLocal [_x, _spawnLocations # _forEachIndex];
-    _x setMarkerTypeLocal "respawn_inf";
+    _x setMarkerTypeLocal "flag_Denmark"; // respawn_inf
 } forEach _spawnMarkers;
+
+// Center the map over the selected respawn point
+// Needs to be done here instead of just in onLBLSelChanged event handler, presumably because the dialog is not done loading.
+private _mapCtrl = _display displayCtrl IDC_RESPAWN_MAP;
+_mapCtrl ctrlMapAnimAdd [0, 0.4, _spawnLocations # (_spawnList lbValue (_selectedSpawnIdx max 0))];
+ctrlMapAnimCommit(_mapCtrl);
+
+// =======================
 
 _spawnList lbSetCurSel (_selectedSpawnIdx max 0);
 
