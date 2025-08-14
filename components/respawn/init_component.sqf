@@ -252,4 +252,19 @@ if (hasInterface) then
 
     [] call f_fnc_spectate_forceRadioModSpectateModeLoop;
 
+
+    // Replace previous behaviour of removing dead players from squad.
+    // Instead, keep players in the squad but hide them from the HUD.
+    if !(isNil 'diwako_dui_radar_sortType') then
+    {
+        diwako_dui_radar_customSort = 
+        { 
+            params ["_grp", "_player"]; 
+            _grp = _grp select { alive _x };
+            _grp
+        };
+
+        diwako_dui_radar_sortType = "custom";
+    };
+
 };
