@@ -17,14 +17,16 @@ private _isSameLocation = {
 
     _return
 };
-
+private _spawns = (player call bis_fnc_getRespawnPositions) + ((player call bis_fnc_objectSide) call bis_fnc_getRespawnMarkers);
 // Kill the loop if the dialog is closed
-if (!(missionNamespace getVariable ["f_var_spawnPickerDialog_isOpened", false])) exitWith {};
+if (!(missionNamespace getVariable ["f_var_spawnPickerDialog_isOpened", false])) exitWith {
+    DEBUG_FORMAT1_LOG("[RESPAWN] Spawn picker dialog closed. Killing update loop. Player has %1 spawns", count _spawns);
+};
 
 DEBUG_PRINT_LOG("[RESPAWN] Running spawnPickerDialog update loop!");
 
 // Find the location of all of the respawns
-private _spawns = (player call bis_fnc_getRespawnPositions) + ((player call bis_fnc_objectSide) call bis_fnc_getRespawnMarkers);
+
 private _spawnListEntries = _spawns apply {[_x, (_x call BIS_fnc_showRespawnMenuPositionName) # 0]};
 private _spawnLocations = [];
 {
@@ -93,15 +95,17 @@ if (_spawnsChanged) then {
     private _selectedSpawn = missionNamespace getVariable ["f_var_spawnPickerDialog_selectedSpawn", objNull];
     // Preferably, select the same spawn as was selected previously
     private _selectedSpawnIdx = (_spawnListEntries findIf {_x isEqualTo (_oldSpawnListEntries # _oldSelectedSpawnIdx)});
+    private _selectedListIdx = -1;
     // If that spawn no longer exists, keep the selection at the same index or at the end of the list if it would be past that
     if (_selectedSpawnIdx == -1) then {
-        _selectedSpawnIdx = _oldSelectedListIdx min ((count _spawnListEntries) - 1);
-        DEBUG_FORMAT1_LOG("[RESPAWN] Could not find same spawn. Using selected index %1", _selectedSpawnIdx);
+        _selectedListIdx = _oldSelectedListIdx min ((count _spawnListEntries) - 1);
+        _selectedSpawnIdx = _spawnList lbValue _selectedListidx;
+        DEBUG_FORMAT2_LOG("[RESPAWN] Could not find same spawn. Using selected list index %1, which is spawn index %2", _selectedListIdx, _selectedSpawnIdx);
+    } else {
+        // Get the list index that corresponds to the selected spawn index
+        _selectedListIdx = [_selectedSpawnIdx, _spawnList] call f_fnc_spawnPickerDialog_getListIdxFromSpawnIdx;
     };
     
-    // Get the list index that corresponds to the selected spawn index
-    private _selectedListIdx = [_selectedSPawnIdx, _spawnList] call f_fnc_spawnPickerDialog_getListIdxFromSpawnIdx;
-
     missionNamespace setVariable ["f_arr_spawnPickerDialog_spawnMarkers", _spawnMarkers];
     missionNamespace setVariable ["f_arr_spawnPickerDialog_spawnLocations", _spawnLocations];
 
@@ -119,7 +123,7 @@ if (_spawnsChanged) then {
     
     // Reset selectedSpawnIdx so that event handler doesn't try to deselect an old selection
     missionNamespace setVariable ["f_var_spawnPickerDialog_selectedSpawnIdx", -1];
-    _spawnList lbSetCurSel _selectedListIdx;
+    _spawnList lbSetCurSel (_selectedListIdx max 0);
 
     private _ignoreAlive = missionNamespace getVariable ["f_var_spawnPickerDialog_ignoreAlive", false];
     missionNamespace setVariable ["f_var_spawnPickerDialog_ignoreAlive", nil];

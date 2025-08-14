@@ -13,8 +13,8 @@ if (count _spawnLocations != count _spawnMarkers) then {
     systemChat format ["Uneven length of spawn locations and spawn markers. Locations length: %1, Markers length: %2", count _spawnLocations, count _spawnMarkers];
 };
 
-private _selectedIdx = _lbCurSel;
-private _selectedSpawnIdx = _spawnList lbValue _selectedIdx;
+private _selectedListIdx = _lbCurSel;
+private _selectedSpawnIdx = _spawnList lbValue _selectedListIdx;
 private _spawns = missionNamespace getVariable ["f_arr_spawnPickerDialog_spawnListEntries", []];
 
 if (count _spawns <= 0) exitWith 
@@ -49,4 +49,4 @@ ctrlMapAnimCommit(_mapCtrl);
 // };
 
 missionNamespace setVariable ["f_var_spawnPickerDialog_selectedSpawnIdx", (_selectedSpawnIdx max 0)];
-systemChat format ["Selected index %1, spawn Index %2, set selected spawn to %3", _selectedIdx, _selectedSpawnIdx, _spawn];
+systemChat format ["Selected index %1, spawn Index %2, set selected spawn to %3", _selectedListIdx, _selectedSpawnIdx, _spawn];
