@@ -44,4 +44,13 @@ if (_exitCode == 1) then
 
     missionNamespace setVariable ["f_var_spawnPickerDialog_selectedSpawn", _spawn];
 
+    // Store the player's selection of group
+
+    private _groupsList = _display displayCtrl IDC_GROUPSLIST;
+    DEBUG_FORMAT1_LOG("[RESPAWN] Dialog closing, groups list selected index was %1", _groupsList lbText (lbCurSel _groupsList));
+    if ((lbCurSel _groupsList) >= 0) then {
+        private _groupName = _groupsList lbText (lbCurSel _groupsList);
+        DEBUG_FORMAT1_LOG("[RESPAWN] Storing new group for player: %1", _groupName);
+        missionNamespace setVariable ["f_var_lastPlayerGroupName", _groupName];
+    };
 };
