@@ -1,4 +1,9 @@
 #include "macros.hpp"
+/*
+    Update loop for the spawn picker dialog. Runs once per second while dialog is open.
+    - Refreshes spawn list if a change is detected
+    - Updates number of tickets remaining
+*/
 
 disableSerialization;
 
@@ -17,16 +22,19 @@ private _isSameLocation = {
 
     _return
 };
-private _spawns = (player call bis_fnc_getRespawnPositions) + ((player call bis_fnc_objectSide) call bis_fnc_getRespawnMarkers);
+
 // Kill the loop if the dialog is closed
 if (!(missionNamespace getVariable ["f_var_spawnPickerDialog_isOpened", false])) exitWith {
-    DEBUG_FORMAT1_LOG("[RESPAWN] Spawn picker dialog closed. Killing update loop. Player has %1 spawns", count _spawns);
+    DEBUG_FORMAT1_LOG("[RESPAWN] Spawn picker dialog closed. Killing update loop.");
 };
 
 DEBUG_PRINT_LOG("[RESPAWN] Running spawnPickerDialog update loop!");
 
-// Find the location of all of the respawns
+// Update the tickets remaining
+[_display] call f_fnc_spawnPickerDialog_updateTickets;
 
+// Find the location of all of the respawns
+private _spawns = (player call bis_fnc_getRespawnPositions) + ((player call bis_fnc_objectSide) call bis_fnc_getRespawnMarkers);
 private _spawnListEntries = _spawns apply {[_x, (_x call BIS_fnc_showRespawnMenuPositionName) # 0]};
 private _spawnLocations = [];
 {

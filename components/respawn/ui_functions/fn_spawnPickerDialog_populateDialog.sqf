@@ -1,4 +1,7 @@
 #include "macros.hpp"
+/*
+    Populate the spawn picker dialog when it is initially opened
+*/
 
 disableSerialization;
 
@@ -67,6 +70,8 @@ ctrlMapAnimCommit(_mapCtrl);
 [_display, _mapCtrl] call f_fnc_createSquadMarkerHook;
 
 // =======================
+
+[_display] call f_fnc_spawnPickerDialog_updateTickets;
 
 _spawnList lbSetCurSel (_selectedListIdx max 0);
 DEBUG_FORMAT3_LOG("[RESPAWN] Selecting list index %1, spawn index %2, spawn %3", _selectedListIdx, _selectedSpawnIdx, _spawnListEntries # _selectedSpawnIdx);
