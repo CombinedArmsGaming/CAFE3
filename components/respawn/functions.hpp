@@ -53,9 +53,10 @@ class respawn_ui
     class addSpectatorDowntimeWidgetEventHandler{preInit=1;};
     class createSpectatorDowntimeWidget{};
     class spawnPickerDialog_getListIdxFromSpawnIdx{};
+    class spawnPickerDialog_groupsList_onLBSelChanged{};
     class spawnPickerDialog_onCloseDialog{};
-    class spawnPickerDialog_onLBSelChanged{};
     class spawnPickerDialog_populateDialog{};
+    class spawnPickerDialog_spawnList_onLBSelChanged{};
     class spawnPickerDialog_switchInfoBox{};
     class spawnPickerDialog_updateLoop{};
     class spawnPickerDialog_updateTickets{};

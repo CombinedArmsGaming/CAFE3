@@ -184,15 +184,17 @@ class CAFE_SpawnPicker_Dialog
 			y = infoBoxY * GRID_H + GRID_Y;
 			w = (infoBoxWidth * 2 + verticalBarrierWidth) * GRID_W;
 			h = (infoBoxHeight) * GRID_H;
+			onLoad = "(_this # 0) ctrlShow false";
 			class Controls 
 			{
 				class GroupListbox: CAFE_DefaultListBox
 				{
-					idc = IDC_GROUPLIST;
+					idc = IDC_GROUPSLIST;
 					x = 0;
 					y = 0;
 					w = infoBoxWidth * GRID_W;
 					h = infoBoxHeight * GRID_H;
+					onLBSelChanged = "_this call f_fnc_spawnPickerDialog_groupsList_onLBSelChanged;";
 				}
 				class PlayersListbox: CAFE_DefaultListBox
 				{
@@ -213,8 +215,8 @@ class CAFE_SpawnPicker_Dialog
 			y = infoBoxY * GRID_H + GRID_Y;
 			w = infoBoxWidth * GRID_W;
 			h = infoBoxHeight * GRID_H;
-			sizeEx = 0.7 * GRID_H;
-			onLBSelChanged = "_this call f_fnc_spawnPickerDialog_onLBSelChanged;";
+			sizeEx = 1 * GRID_H; // was 0.7
+			onLBSelChanged = "_this call f_fnc_spawnPickerDialog_spawnList_onLBSelChanged;";
 		}
 		class MapScreen: RscMapControl
 		{
