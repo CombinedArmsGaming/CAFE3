@@ -56,6 +56,7 @@ class respawn_ui
     class spawnPickerDialog_onCloseDialog{};
     class spawnPickerDialog_onLBSelChanged{};
     class spawnPickerDialog_populateDialog{};
+    class spawnPickerDialog_switchInfoBox{};
     class spawnPickerDialog_updateLoop{};
     class spawnPickerDialog_updateTickets{};
     class spectatorDowntimeWidget_updateLoop{};

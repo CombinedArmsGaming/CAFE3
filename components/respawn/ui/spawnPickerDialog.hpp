@@ -7,7 +7,6 @@ import RscMapControlEmpty;
 
 #define dialogY 1
 #define dialogWidth 35
-#define dialogHeight 20
 
 
 #define tooltipIconHorizontalPadding 0.1 // Padding between the tooltip icon text boxes
@@ -51,6 +50,20 @@ import RscMapControlEmpty;
 
 #define infoBoxY (infoBoxOutlineTopLeftY + infoBoxOutlineWidth)
 
+#define infoBoxSelectorButtonY (infoBoxOutlineBottomRightY)
+#define infoBoxSelectorButtonW ((infoBoxOutlineBottomRightX - infoBoxOutlineTopLeftX) / 3)
+#define infoBoxSelectorButtonH 3
+
+#define readyButtonY (infoBoxY + infoBoxHeight + readyButtonVerticalPadding + infoBoxSelectorButtonH)
+
+#define dialogHeight (readyButtonY + readyButtonVerticalPadding + readyButtonHeight - dialogY)
+
+class InfoBoxSelectorButton : CAFE_DefaultButton {
+	y = (infoBoxSelectorButtonY) * GRID_H + GRID_Y;
+	w = (infoBoxSelectorButtonW) * GRID_W;
+	h = (infoBoxSelectorButtonH) * GRID_H;
+}
+
 class CAFE_SpawnPicker_Dialog
 {
 	idd = IDD_SPAWNPICKER_DIALOG;
@@ -69,7 +82,7 @@ class CAFE_SpawnPicker_Dialog
 			y = dialogY * GRID_H + GRID_Y;
 			w = dialogWidth * GRID_W;
 			// tooltipIcon stuff multiplied by 2 because once for tickets etc., and once for time you've been dead
-			h = (tooltipIconVerticalPadding * 2 + tooltipIconHeight * 2 + infoBoxOutlineWidth * 2 + infoBoxHeight + infoBoxSelectorHeight + readyButtonVerticalPadding * 2 + readyButtonHeight) * GRID_H;
+			h = dialogHeight * GRID_H;
 			colorBackground[] = {0,0,0,0.5};
 		};
 		// class MainTitle: CAFE_DefaultText
@@ -121,7 +134,7 @@ class CAFE_SpawnPicker_Dialog
 			y = infoBoxOutlineTopLeftY * GRID_H + GRID_Y;
 			w = (infoBoxOutlineBottomRightX - infoBoxOutlineTopLeftX) * GRID_W;
 			h = (infoBoxOutlineWidth) * GRID_H;
-			colorBackground[] = PRIMARY_COLOR;
+			colorBackground[] = {PRIMARY_COLOR};
 		}
 		class infoBoxLeftBorder: CAFE_DefaultText
 		{
@@ -130,7 +143,7 @@ class CAFE_SpawnPicker_Dialog
 			y = infoBoxOutlineTopLeftY * GRID_H + GRID_Y;
 			w = (infoBoxOutlineWidth) * GRID_W;
 			h = (infoBoxOutlineBottomRightY - infoBoxOutlineTopLeftY) * GRID_H;
-			colorBackground[] = PRIMARY_COLOR;
+			colorBackground[] = {PRIMARY_COLOR};
 		}
 		class infoBoxBottomBorder: CAFE_DefaultText
 		{
@@ -139,7 +152,7 @@ class CAFE_SpawnPicker_Dialog
 			y = (infoBoxOutlineBottomRightY - infoBoxOutlineWidth) * GRID_H + GRID_Y;
 			w = (infoBoxOutlineBottomRightX - infoBoxOutlineTopLeftX) * GRID_W;
 			h = (infoBoxOutlineWidth) * GRID_H;
-			colorBackground[] = PRIMARY_COLOR;
+			colorBackground[] = {PRIMARY_COLOR};
 		}
 		class infoBoxRightBorder: CAFE_DefaultText
 		{
@@ -148,7 +161,7 @@ class CAFE_SpawnPicker_Dialog
 			y = infoBoxOutlineTopLeftY * GRID_H + GRID_Y;
 			w = (infoBoxOutlineWidth) * GRID_W;
 			h = (infoBoxOutlineBottomRightY - infoBoxOutlineTopLeftY) * GRID_H;
-			colorBackground[] = PRIMARY_COLOR;
+			colorBackground[] = {PRIMARY_COLOR};
 		}
 		class verticalBarrier: CAFE_DefaultText
 		{
@@ -163,7 +176,36 @@ class CAFE_SpawnPicker_Dialog
 
 
 	class Controls
-    {
+    {	
+		class GroupInfoBoxes: RscControlsGroup
+		{
+			idc = IDC_GROUP_CT_GROUP;
+			x = (CENTER_X - verticalBarrierWidth/2 - infoBoxWidth) * GRID_W + GRID_X;
+			y = infoBoxY * GRID_H + GRID_Y;
+			w = (infoBoxWidth * 2 + verticalBarrierWidth) * GRID_W;
+			h = (infoBoxHeight) * GRID_H;
+			class Controls 
+			{
+				class GroupListbox: CAFE_DefaultListBox
+				{
+					idc = IDC_GROUPLIST;
+					x = 0;
+					y = 0;
+					w = infoBoxWidth * GRID_W;
+					h = infoBoxHeight * GRID_H;
+				}
+				class PlayersListbox: CAFE_DefaultListBox
+				{
+					idc = IDC_PLAYERSLIST;
+					x = (infoBoxWidth + verticalBarrierWidth) * GRID_W;
+					y = 0;
+					w = infoBoxWidth * GRID_W;
+					h = infoBoxHeight * GRID_H;
+				}
+			};
+		}
+
+		// These info boxes can't be in a controls group because CT_MAP_MAIN controls don't allow it
 		class SpawnListbox: CAFE_DefaultListBox
 		{
 			idc = IDC_SPAWNPICKER_SPAWNLIST;
@@ -173,7 +215,58 @@ class CAFE_SpawnPicker_Dialog
 			h = infoBoxHeight * GRID_H;
 			sizeEx = 0.7 * GRID_H;
 			onLBSelChanged = "_this call f_fnc_spawnPickerDialog_onLBSelChanged;";
-		};
+		}
+		class MapScreen: RscMapControl
+		{
+			idc = IDC_RESPAWN_MAP;
+			x = (CENTER_X + verticalBarrierWidth/2) * GRID_W + GRID_X;
+			y = infoBoxY * GRID_H + GRID_Y;
+			w = infoBoxWidth * GRID_W;
+			h = infoBoxHeight * GRID_H;
+		}
+
+		// Info box selector buttons
+		class LocationButton: InfoBoxSelectorButton
+		{
+			idc = IDC_LOCATION_BUTTON;
+			x = (infoBoxOutlineTopLeftX) * GRID_W + GRID_X;
+			text = "Location";
+			colorBackground[] = {LOCATION_PICKER_COLOR};
+			colorBackgroundActive[] = {LOCATION_PICKER_COLOR};
+			onButtonClick = "['location'] call f_fnc_spawnPickerDialog_switchInfoBox";
+		}
+		class GroupButton: InfoBoxSelectorButton
+		{
+			idc = IDC_GROUP_BUTTON;
+			x = (infoBoxOutlineTopLeftX + infoBoxSelectorButtonW) * GRID_W + GRID_X;
+			text = "Group";
+			colorBackground[] = {0, 0, 0,1};
+			colorBackgroundActive[] = {GROUP_PICKER_COLOR};
+			onButtonClick = "['group'] call f_fnc_spawnPickerDialog_switchInfoBox";
+		}
+		class LoadoutButton: InfoBoxSelectorButton
+		{
+			idc = IDC_LOADOUT_BUTTON;
+			x = (infoBoxOutlineTopLeftX + infoBoxSelectorButtonW * 2) * GRID_W + GRID_X;
+			text = "Loadout";
+			colorBackground[] = {0, 0, 0,1};
+			colorBackgroundActive[] = {LOADOUT_PICKER_COLOR};
+			onButtonClick = "['loadout'] call f_fnc_spawnPickerDialog_switchInfoBox";
+		}
+		
+		// Ready button
+		class ReadyButton: CAFE_DefaultButton
+		{
+			idc = IDC_READY_BUTTON;
+			x = (CENTER_X - readyButtonWidth/2) * GRID_W + GRID_X;
+			y = (infoBoxY + infoBoxHeight + readyButtonVerticalPadding + infoBoxSelectorButtonH) * GRID_H + GRID_Y;
+			w = readyButtonWidth * GRID_W;
+			h = readyButtonHeight * GRID_H;
+			text = "READY";
+		}
+		
+		// Buttons to switch info box
+		
 		// class ConfirmButton: CAFE_DefaultButton
 		// {
 		// 	idc = 1600;
@@ -194,14 +287,6 @@ class CAFE_SpawnPicker_Dialog
 		// 	h = 2 * GUI_GRID_H;
         //     onButtonClick = "closeDialog 2";
 		// };
-		class MapScreen: RscMapControl
-		{
-			idc = IDC_RESPAWN_MAP;
-			x = (CENTER_X + verticalBarrierWidth/2) * GRID_W + GRID_X;
-			y = infoBoxY * GRID_H + GRID_Y;
-			w = infoBoxWidth * GRID_W;
-			h = infoBoxHeight * GRID_H;
-		}
 	};
 
 };
