@@ -63,6 +63,9 @@ private _mapCtrl = _display displayCtrl IDC_RESPAWN_MAP;
 _mapCtrl ctrlMapAnimAdd [0, 0.4, _spawnLocations # _selectedSpawnIdx];
 ctrlMapAnimCommit(_mapCtrl);
 
+[_display, _mapCtrl] call f_fnc_createFireteamMarkerHook;
+[_display, _mapCtrl] call f_fnc_createSquadMarkerHook;
+
 // =======================
 
 _spawnList lbSetCurSel (_selectedListIdx max 0);
