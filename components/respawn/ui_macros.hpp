@@ -5,3 +5,16 @@
 #define IDC_RESPAWN_MAP 1501
 
 #define IDC_TICKETS_TEXT 1003
+
+#define IDC_DEATH_TIMER 1004
+
+#define IDC_INFO_BOX_OUTLINE 6900
+
+// Color shared between major elements
+#define PRIMARY_COLOR {0.65, 0.39, 0.05, 1}
+
+#define LOCATION_PICKER_COLOR PRIMARY_COLOR
+
+#define GROUP_PICKER_COLOR {0.74, 0.93, 0.96, 1}
+
+#define LOADOUT_PICKER_COLOR {0.47, 0.38, 0.45, 1}
