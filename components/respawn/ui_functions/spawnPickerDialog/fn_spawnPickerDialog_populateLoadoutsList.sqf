@@ -1,5 +1,5 @@
 #include "macros.hpp"
-#include "..\..\..\gearscript_macros.hpp"
+
 /*
     Populates the loadouts list
 */

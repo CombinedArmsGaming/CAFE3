@@ -1,5 +1,4 @@
 #include "macros.hpp"
-#include "..\..\..\gearscript_macros.hpp"
 
 /*
     Populates the gear list whenever the loadout selection changes
