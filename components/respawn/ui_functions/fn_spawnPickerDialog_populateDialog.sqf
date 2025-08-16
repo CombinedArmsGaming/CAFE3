@@ -127,8 +127,11 @@ for "_i" from 0 to ((lbSize _groupsList) - 1) do {
 */
 #ifndef ALLOW_TELEPORT_UPON_RESPAWN
 private _teleportCheckbox = _display displayCtrl IDC_TELEPORTCHECKBOX;
+_teleportCheckbox ctrlSetChecked false;
 _teleportCheckbox ctrlEnable false;
-_teleportCheckbox ctrlSetTooltip "Disabled by mission maker";
+_teleportCheckbox lbSetText [0, "Disabled"];
+_teleportCheckbox ctrlSetBackgroundColor [0.2,0.2,0.2,0.5];
+_teleportCheckbox ctrlCommit 0;;
 #endif
 #ifdef ALLOW_TELEPORT_UPON_RESPAWN
 if (missionNamespace getVariable ["f_var_playerWishesTeleportAfterRespawn", false]) then {

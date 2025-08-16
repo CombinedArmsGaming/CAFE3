@@ -13,6 +13,8 @@ private _locationList = _display displayCtrl IDC_SPAWNPICKER_SPAWNLIST;
 private _locationMap = _display displayCtrl IDC_RESPAWN_MAP;
 
 private _groupGroup = _display displayCtrl IDC_GROUP_CT_GROUP;
+private _groupsList = _display displayCtrl IDC_GROUPSLIST;
+private _playersList = _display displayCtrl IDC_PLAYERSLIST;
 private _loadoutGroup = _display displayCtrl IDC_LOADOUT_CT_GROUP;
 
 private _locationButton = _display displayCtrl IDC_LOCATION_BUTTON;
@@ -52,6 +54,9 @@ switch (_newInfoBox) do {
         ctrlSetFocus _groupGroup;
 
         _selectedColor = [GROUP_PICKER_COLOR];
+
+        // Ensure that the players list is updated for the current selection
+        [_groupsList, lbCurSel _groupsList] call f_fnc_spawnPickerDialog_groupsList_onLBSelChanged;
 
         DEBUG_PRINT_LOG("[RESPAWN] Switching info boxes to group");
     };

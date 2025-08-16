@@ -36,6 +36,16 @@ f_fnc_respawn_squad_enforceLoadoutGracePeriod =
 
 [] call f_fnc_respawn_squad_enforceLoadoutGracePeriod;
 
+#ifdef ALLOW_TELEPORT_UPON_RESPAWN
+
+if (didJip or ((!didJip) and _didFirstSpawn)) then 
+{
+	player setVariable ["f_var_mayTeleportToGroup", true, true];
+	DEBUG_PRINT_LOG("[RESPAWN] Setting mayTeleportToGroup to true");
+};
+
+#endif
+
 private _playerGroup = missionNamespace getVariable ["f_var_lastPlayerGroupName", ""];
 DEBUG_FORMAT2_LOG("[RESPAWN] Player respawned, didFirstSpawn: %1, wants group %2", _didFirstSpawn, _playerGroup);
 
@@ -52,18 +62,20 @@ if (_didFirstSpawn and {_playerGroup isNotEqualTo ""}) then
 					#ifdef ALLOW_TELEPORT_UPON_RESPAWN
 					DEBUG_PRINT_LOG("[RESPAWN] Checking for teleport after respawn")
 					_playerWishesTeleport = missionNamespace getVariable ["f_var_playerWishesTeleportAfterRespawn", false];
+					_playerMayTeleport = player getVariable ["f_var_mayTeleportToGroup", false];
 
 					// Reset for next time the player dies
 					missionNamespace setVariable ["f_var_playerWishesTeleportAfterRespawn", false];
 
 					private _group = group player;
 
-					// Checking if may teleport to group prevents any weirdness happening if e.g. they teleport on their own in <5 seconds
-					if (player getVariable ["f_var_mayTeleportToGroup", false] and _playerWishesTeleport and ((leader _group) isNotEqualTo player)) then {
+					// Checking _playerMayTeleport prevents any weirdness happening if e.g. they teleport on their own in <5 seconds
+					if (_playerMayTeleport and _playerWishesTeleport and ((leader _group) isNotEqualTo player)) then {
 						DEBUG_FORMAT1_LOG("[RESPAWN] Attempting teleport to %1", leader _group);
 						[leader _group] spawn f_fnc_tryTeleport;
 					} else {
-						DEBUG_FORMAT3_LOG("[RESPAWN] Did not teleport player. mayTeleport: %1, wishesTeleport: %2, not leader: %3", player getVariable ["f_var_mayTeleportToGroup", false], _playerWishesTeleport,((leader _group) isNotEqualTo player));
+						DEBUG_PRINT_LOG("[RESPAWN] Decided not to teleport player.");
+						DEBUG_FORMAT3_LOG("[RESPAWN] Did not teleport player. mayTeleport: %1, wishesTeleport: %2, not leader: %3", _playerMayTeleport, _playerWishesTeleport,((leader _group) isNotEqualTo player));
 					};
 					#endif
 				},
@@ -75,16 +87,6 @@ if (_didFirstSpawn and {_playerGroup isNotEqualTo ""}) then
 		1
 	] call CBA_fnc_waitAndExecute;
 };
-
-
-#ifdef ALLOW_TELEPORT_UPON_RESPAWN
-
-if (didJip or ((!didJip) and _didFirstSpawn)) exitWith 
-{
-	player setVariable ["f_var_mayTeleportToGroup", true, true];
-};
-
-#endif
 
 
 // Load-bearing nil - Arma throws a "GIAS stack error" if this isn't here.
