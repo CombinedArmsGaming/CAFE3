@@ -52,6 +52,12 @@ class respawn_ui
     file = "components\respawn\ui_functions";
     class addSpectatorDowntimeWidgetEventHandler{preInit=1;};
     class createSpectatorDowntimeWidget{};
+    class spectatorDowntimeWidget_updateLoop{};
+    class tryShowSpawnpointDialog{};
+};
+class respawn_ui_spawnPickerDialog
+{
+    file = "components\respawn\ui_functions\spawnPickerDialog";
     class spawnPickerDialog_deselectWithoutScrolling{};
     class spawnPickerDialog_getListIdxFromSpawnIdx{};
     class spawnPickerDialog_groupsList_onLBSelChanged{};
@@ -63,6 +69,4 @@ class respawn_ui
     class spawnPickerDialog_switchInfoBox{};
     class spawnPickerDialog_updateLoop{};
     class spawnPickerDialog_updateTickets{};
-    class spectatorDowntimeWidget_updateLoop{};
-    class tryShowSpawnpointDialog{};
 };
