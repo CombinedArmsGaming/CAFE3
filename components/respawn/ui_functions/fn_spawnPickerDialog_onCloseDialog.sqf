@@ -60,5 +60,7 @@ if (_exitCode == 1) then
     _isChecked = _teleportCheckbox ctrlChecked 0;
     missionNamespace setVariable ["f_var_playerWishesTeleportAfterRespawn", _isChecked];
     DEBUG_FORMAT1_LOG("[RESPAWN] Player wishes to teleport set to %1", _isChecked);
+    #else 
+    missionNamespace setVariable ["f_var_playerWishesTeleportAfterRespawn", false];
     #endif
 };

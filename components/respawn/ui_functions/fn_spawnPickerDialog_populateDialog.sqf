@@ -133,11 +133,6 @@ _teleportCheckbox lbSetText [0, "Disabled"];
 _teleportCheckbox ctrlSetBackgroundColor [0.2,0.2,0.2,0.5];
 _teleportCheckbox ctrlCommit 0;;
 #endif
-#ifdef ALLOW_TELEPORT_UPON_RESPAWN
-if (missionNamespace getVariable ["f_var_playerWishesTeleportAfterRespawn", false]) then {
-    _teleportCheckbox ctrlSetChecked true;
-};
-#endif
 
 /*
     Misc

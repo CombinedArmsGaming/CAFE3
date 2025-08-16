@@ -294,6 +294,7 @@ class CAFE_SpawnPicker_Dialog
 					strings[] = {"No"};
 					checked_strings[] = {"Yes"};
 					style = 2;
+					onLoad = "(_this # 0) ctrlSetChecked (missionNamespace getVariable ['f_var_playerWishesTeleportAfterRespawn', false])"
 				};
 			}
 		}
