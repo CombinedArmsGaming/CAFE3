@@ -211,7 +211,7 @@ class CAFE_SpawnPicker_Dialog
 					y = 0;
 					w = infoBoxWidth * GRID_W;
 					h = infoBoxHeight * GRID_H;
-					colorDisabled = {1,1,1,1};
+					colorDisabled[] = {1,1,1,1};
 					onLoad = "(_this # 0) ctrlEnable false";
 				}
 			};
