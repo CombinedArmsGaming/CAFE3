@@ -24,7 +24,13 @@ import RscMapControlEmpty;
 #define infoBoxSelectorHeight 1 // Height of the three options you swap between to choose which infoBox you want
 #define infoBoxOutlineWidth 0.2 // Width of the outline that goes around the info boxes
 
-#define readyButtonVerticalPadding 1.5
+#define teleportGroupVerticalPadding 0.5 // Padding above the checkbox
+#define teleportGroupHeight 1
+#define teleportCheckboxWidth 4.5
+#define teleportTitleWidth 6.5
+#define teleportGroupWidth (teleportCheckboxWidth + teleportTitleWidth)
+
+#define readyButtonVerticalPadding 0.5
 #define readyButtonWidth 9.5
 #define readyButtonHeight 2
 
@@ -54,7 +60,9 @@ import RscMapControlEmpty;
 #define infoBoxSelectorButtonW ((infoBoxOutlineBottomRightX - infoBoxOutlineTopLeftX) / 3)
 #define infoBoxSelectorButtonH 3
 
-#define readyButtonY (infoBoxY + infoBoxHeight + readyButtonVerticalPadding + infoBoxSelectorButtonH)
+#define teleportGroupY (infoBoxOutlineBottomRightY + infoBoxSelectorButtonH + teleportGroupVerticalPadding)
+
+#define readyButtonY (teleportGroupY + teleportGroupHeight + readyButtonVerticalPadding)
 
 #define dialogHeight (readyButtonY + readyButtonVerticalPadding + readyButtonHeight - dialogY)
 
@@ -203,6 +211,8 @@ class CAFE_SpawnPicker_Dialog
 					y = 0;
 					w = infoBoxWidth * GRID_W;
 					h = infoBoxHeight * GRID_H;
+					colorDisabled = {1,1,1,1};
+					onLoad = "(_this # 0) ctrlEnable false";
 				}
 			};
 		}
@@ -255,16 +265,50 @@ class CAFE_SpawnPicker_Dialog
 			colorBackgroundActive[] = {LOADOUT_PICKER_COLOR};
 			onButtonClick = "['loadout'] call f_fnc_spawnPickerDialog_switchInfoBox";
 		}
+
+		class TeleportGroup: RscControlsGroup 
+		{
+			idc = -1;
+			x = (CENTER_X - teleportGroupWidth/2) * GRID_W + GRID_X;
+			y = teleportGroupY * GRID_H + GRID_Y;
+			w = teleportGroupWidth * GRID_W;
+			h = teleportGroupHeight * GRID_H;
+			class Controls 
+			{
+				class TeleportTitle: CAFE_DefaultText
+				{
+					idc = -1;
+					text = "Teleport to squad:";
+					x = 0
+					y = 0;
+					w = teleportTitleWidth * GRID_W;
+					h = teleportGroupHeight * GRID_H;
+				};
+				class TeleportCheckbox: CAFE_DefaultTextCheckBox
+				{
+					idc = IDC_TELEPORTCHECKBOX;
+					x = teleportTitleWidth * GRID_W;
+					y = 0;
+					w = teleportCheckboxWidth * GRID_W;
+					h = teleportGroupHeight * GRID_H;
+					strings[] = {"No"};
+					checked_strings[] = {"Yes"};
+					style = 2;
+				};
+			}
+		}
+		
 		
 		// Ready button
 		class ReadyButton: CAFE_DefaultButton
 		{
 			idc = IDC_READY_BUTTON;
 			x = (CENTER_X - readyButtonWidth/2) * GRID_W + GRID_X;
-			y = (infoBoxY + infoBoxHeight + readyButtonVerticalPadding + infoBoxSelectorButtonH) * GRID_H + GRID_Y;
+			y = readyButtonY * GRID_H + GRID_Y;
 			w = readyButtonWidth * GRID_W;
 			h = readyButtonHeight * GRID_H;
 			text = "READY";
+			onButtonClick = "closeDialog 1";
 		}
 		
 		// Buttons to switch info box

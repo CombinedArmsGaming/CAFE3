@@ -25,6 +25,8 @@
 
 #define IDC_READY_BUTTON 1008
 
+#define IDC_TELEPORTCHECKBOX 1009
+
 
 // Colors defined without brackets because .hpp uses {} and .sqf uses []
 // Color shared between major elements
