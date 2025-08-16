@@ -17,7 +17,7 @@ private _spawnMarkers = missionNamespace getVariable ["f_arr_spawnPickerDialog_s
 missionNamespace setVariable ["f_arr_spawnPickerDialog_spawnMarkers", []];
 
 if (_exitCode == 2) exitWith {
-    
+
 };
 
 
@@ -53,4 +53,12 @@ if (_exitCode == 1) then
         DEBUG_FORMAT1_LOG("[RESPAWN] Storing new group for player: %1", _groupName);
         missionNamespace setVariable ["f_var_lastPlayerGroupName", _groupName];
     };
+
+    #ifdef ALLOW_TELEPORT_UPON_RESPAWN
+    // Store whether the player wishes to be teleported on spawn
+    private _teleportCheckbox = _display displayCtrl IDC_TELEPORTCHECKBOX;
+    _isChecked = _teleportCheckbox ctrlChecked 0;
+    missionNamespace setVariable ["f_var_playerWishesTeleportAfterRespawn", _isChecked];
+    DEBUG_FORMAT1_LOG("[RESPAWN] Player wishes to teleport set to %1", _isChecked);
+    #endif
 };

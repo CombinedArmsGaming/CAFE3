@@ -122,7 +122,23 @@ for "_i" from 0 to ((lbSize _groupsList) - 1) do {
     }
 };
 
+/*
+    Teleport Checkbox
+*/
+#ifndef ALLOW_TELEPORT_UPON_RESPAWN
+private _teleportCheckbox = _display displayCtrl IDC_TELEPORTCHECKBOX;
+_teleportCheckbox ctrlEnable false;
+_teleportCheckbox ctrlSetTooltip "Disabled by mission maker";
+#endif
+#ifdef ALLOW_TELEPORT_UPON_RESPAWN
+if (missionNamespace getVariable ["f_var_playerWishesTeleportAfterRespawn", false]) then {
+    _teleportCheckbox ctrlSetChecked true;
+};
+#endif
 
+/*
+    Misc
+*/
 [_display] call f_fnc_spawnPickerDialog_updateTickets;
 
 _spawnList lbSetCurSel (_selectedListIdx max 0);

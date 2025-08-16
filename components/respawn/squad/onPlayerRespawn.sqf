@@ -36,8 +36,45 @@ f_fnc_respawn_squad_enforceLoadoutGracePeriod =
 
 [] call f_fnc_respawn_squad_enforceLoadoutGracePeriod;
 
-
 private _playerGroup = missionNamespace getVariable ["f_var_lastPlayerGroupName", ""];
+DEBUG_FORMAT2_LOG("[RESPAWN] Player respawned, didFirstSpawn: %1, wants group %2", _didFirstSpawn, _playerGroup);
+
+if (_didFirstSpawn and {_playerGroup isNotEqualTo ""}) then 
+{
+	[
+		{
+			if (_playerGroup isNotEqualTo (groupId group player)) then {
+				_this call f_fnc_forceJoinGroupByName;
+			};
+			
+			[
+				{
+					#ifdef ALLOW_TELEPORT_UPON_RESPAWN
+					DEBUG_PRINT_LOG("[RESPAWN] Checking for teleport after respawn")
+					_playerWishesTeleport = missionNamespace getVariable ["f_var_playerWishesTeleportAfterRespawn", false];
+
+					// Reset for next time the player dies
+					missionNamespace setVariable ["f_var_playerWishesTeleportAfterRespawn", false];
+
+					private _group = group player;
+
+					// Checking if may teleport to group prevents any weirdness happening if e.g. they teleport on their own in <5 seconds
+					if (player getVariable ["f_var_mayTeleportToGroup", false] and _playerWishesTeleport and ((leader _group) isNotEqualTo player)) then {
+						DEBUG_FORMAT1_LOG("[RESPAWN] Attempting teleport to %1", leader _group);
+						[leader _group] spawn f_fnc_tryTeleport;
+					} else {
+						DEBUG_FORMAT3_LOG("[RESPAWN] Did not teleport player. mayTeleport: %1, wishesTeleport: %2, not leader: %3", player getVariable ["f_var_mayTeleportToGroup", false], _playerWishesTeleport,((leader _group) isNotEqualTo player));
+					};
+					#endif
+				},
+				[player],
+				1
+			] call CBA_fnc_waitAndExecute;
+		},
+		[_playerGroup],
+		1
+	] call CBA_fnc_waitAndExecute;
+};
 
 
 #ifdef ALLOW_TELEPORT_UPON_RESPAWN
