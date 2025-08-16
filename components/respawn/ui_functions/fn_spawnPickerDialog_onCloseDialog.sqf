@@ -54,6 +54,16 @@ if (_exitCode == 1) then
         missionNamespace setVariable ["f_var_lastPlayerGroupName", _groupName];
     };
 
+    #ifdef ALLOW_LOADOUT_CHANGE_UPON_RESPAWN
+    // Store the player's selection of loadout
+    private _loadoutsList = _display displayCtrl IDC_LOADOUTSLIST;
+    if ((lbCurSel _loadoutsList) >= 0) then {
+        private _loadoutName = _loadoutsList lbData (lbCurSel _loadoutsList);
+        player setVariable ["f_var_assignGear", _loadoutName];
+        DEBUG_FORMAT1_LOG("[RESPAWN] Storing new chosen loadout %1", _loadoutName);
+    };
+    #endif
+
     #ifdef ALLOW_TELEPORT_UPON_RESPAWN
     // Store whether the player wishes to be teleported on spawn
     private _teleportCheckbox = _display displayCtrl IDC_TELEPORTCHECKBOX;

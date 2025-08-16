@@ -1,31 +1,35 @@
 #define IDD_SPAWNPICKER_DIALOG 12154
 
+// Location info boxes
 #define IDC_SPAWNPICKER_SPAWNLIST 1500
-
 #define IDC_RESPAWN_MAP 1501
 
+// Group info boxes
+#define IDC_GROUPSLIST 1502
+#define IDC_PLAYERSLIST 1503
+
+// Loadout info boxes
+#define IDC_LOADOUTSLIST 1504
+#define IDC_GEARLIST 1505
+
+// Control groups
 #define IDC_GROUP_CT_GROUP 2001
 #define IDC_LOADOUT_CT_GROUP 2002
-
-#define IDC_GROUPSLIST 1502
-
-#define IDC_PLAYERSLIST 1503
 
 #define IDC_TICKETS_TEXT 1003
 
 #define IDC_DEATH_TIMER 1004
 
-#define IDC_INFO_BOX_OUTLINE 6900
-
+// Info box selector buttons
 #define IDC_LOCATION_BUTTON 1005
-
 #define IDC_GROUP_BUTTON 1006
-
 #define IDC_LOADOUT_BUTTON 1007
 
 #define IDC_READY_BUTTON 1008
 
 #define IDC_TELEPORTCHECKBOX 1009
+
+#define IDC_INFO_BOX_OUTLINE 6900
 
 
 // Colors defined without brackets because .hpp uses {} and .sqf uses []

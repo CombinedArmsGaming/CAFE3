@@ -212,7 +212,42 @@ class CAFE_SpawnPicker_Dialog
 					w = infoBoxWidth * GRID_W;
 					h = infoBoxHeight * GRID_H;
 					colorDisabled[] = {1,1,1,1};
-					onLoad = "(_this # 0) ctrlEnable false";
+					// Allows scrolling but doesn't allow selecting
+					onLBSelChanged = "_this call f_fnc_spawnPickerDialog_deselectWithoutScrolling";
+				}
+			};
+		}
+
+		class LoadoutInfoBoxes: RscControlsGroup
+		{
+			idc = IDC_LOADOUT_CT_GROUP;
+			x = (CENTER_X - verticalBarrierWidth/2 - infoBoxWidth) * GRID_W + GRID_X;
+			y = infoBoxY * GRID_H + GRID_Y;
+			w = (infoBoxWidth * 2 + verticalBarrierWidth) * GRID_W;
+			h = (infoBoxHeight) * GRID_H;
+			onLoad = "(_this # 0) ctrlShow false";
+			class Controls 
+			{
+				class LoadoutsListbox: CAFE_DefaultListBox
+				{
+					idc = IDC_LOADOUTSLIST;
+					x = 0;
+					y = 0;
+					w = infoBoxWidth * GRID_W;
+					h = infoBoxHeight * GRID_H;
+					onLBSelChanged = "_this call f_fnc_spawnPickerDialog_loadoutsList_onLBSelChanged;";
+					onLoad = "_this call f_fnc_spawnPickerDialog_populateLoadoutsList"
+				}
+				class GearListbox: CAFE_DefaultListBox
+				{
+					idc = IDC_GEARLIST;
+					x = (infoBoxWidth + verticalBarrierWidth) * GRID_W;
+					y = 0;
+					w = infoBoxWidth * GRID_W;
+					h = infoBoxHeight * GRID_H;
+					colorDisabled[] = {1,1,1,1};
+					// Allows scrolling but doesn't allow selecting
+					onLBSelChanged = "_this call f_fnc_spawnPickerDialog_deselectWithoutScrolling"
 				}
 			};
 		}

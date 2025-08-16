@@ -14,8 +14,9 @@ private _locationMap = _display displayCtrl IDC_RESPAWN_MAP;
 
 private _groupGroup = _display displayCtrl IDC_GROUP_CT_GROUP;
 private _groupsList = _display displayCtrl IDC_GROUPSLIST;
-private _playersList = _display displayCtrl IDC_PLAYERSLIST;
+
 private _loadoutGroup = _display displayCtrl IDC_LOADOUT_CT_GROUP;
+private _loadoutsList = _display displayCtrl IDC_LOADOUTSLIST;
 
 private _locationButton = _display displayCtrl IDC_LOCATION_BUTTON;
 private _groupButton = _display displayCtrl IDC_GROUP_BUTTON;
@@ -73,6 +74,8 @@ switch (_newInfoBox) do {
         ctrlSetFocus _loadoutGroup;
 
         _selectedColor = [LOADOUT_PICKER_COLOR];
+
+        [_loadoutsList, lbCurSel _loadoutsList] call f_fnc_spawnPickerDialog_loadoutsList_onLBSelChanged;
 
         DEBUG_PRINT_LOG("[RESPAWN] Switching info boxes to loadout");
     };

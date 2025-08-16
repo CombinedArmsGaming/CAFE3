@@ -125,6 +125,7 @@ for "_i" from 0 to ((lbSize _groupsList) - 1) do {
 /*
     Teleport Checkbox
 */
+// Disable the checkbox if teleport on respawn is not allowed
 #ifndef ALLOW_TELEPORT_UPON_RESPAWN
 private _teleportCheckbox = _display displayCtrl IDC_TELEPORTCHECKBOX;
 _teleportCheckbox ctrlSetChecked false;
