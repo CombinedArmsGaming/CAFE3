@@ -31,7 +31,7 @@
 // #define ALLOW_TELEPORT_UPON_RESPAWN
 
 // When a player dies, do they get hidden from the squad HUD?  Turn off for hardcore settings but beware - this will confuse players who are used to this feature.
-// #define HIDE_DEAD_IN_SQUAD
+#define HIDE_DEAD_IN_SQUAD
 
 // This only takes effect for the TRIGGERED_WAVES respawn modes.  Timed modes will use the RESPAWN_DELAY settings.
 #define RESPAWN_WAVE_DURATION               60
