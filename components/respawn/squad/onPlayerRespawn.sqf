@@ -39,23 +39,6 @@ f_fnc_respawn_squad_enforceLoadoutGracePeriod =
 
 private _playerGroup = missionNamespace getVariable ["f_var_lastPlayerGroupName", ""];
 
-if (_didFirstSpawn and {_playerGroup isNotEqualTo ""}) then 
-{
-	[
-		{
-			_this call f_fnc_forceJoinGroupByName;
-			
-			[
-				{_this call f_fnc_reapplyGear},
-				[player],
-				1
-			] call CBA_fnc_waitAndExecute;
-		},
-		[_playerGroup],
-		5
-	] call CBA_fnc_waitAndExecute;
-};
-
 
 #ifdef ALLOW_TELEPORT_UPON_RESPAWN
 
