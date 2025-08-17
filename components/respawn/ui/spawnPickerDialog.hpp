@@ -50,13 +50,18 @@ import RscMapControlEmpty;
 #define infoBoxOutlineBottomRightX (CENTER_X + verticalBarrierWidth / 2 + infoBoxWidth + infoBoxOutlineWidth) // X coord of the bottom right outside edge of the outline around the info boxes
 #define infoBoxOutlineBottomRightY (infoBoxOutlineTopLeftY + infoBoxOutlineWidth * 2 + infoBoxHeight)
 
-
 #define infoTextWidth (infoBoxOutlineBottomRightX - infoBoxOutlineTopLeftX)
 
 #define infoBoxY (infoBoxOutlineTopLeftY + infoBoxOutlineWidth)
 
 #define infoBoxSelectorButtonY (infoBoxOutlineBottomRightY)
+
+#ifdef ALLOW_LOADOUT_CHANGE_UPON_RESPAWN
 #define infoBoxSelectorButtonW ((infoBoxOutlineBottomRightX - infoBoxOutlineTopLeftX) / 3)
+#else 
+#define infoBoxSelectorButtonW ((infoBoxOutlineBottomRightX - infoBoxOutlineTopLeftX) / 2)
+#endif
+
 #define infoBoxSelectorButtonH 3
 
 #define teleportGroupY (infoBoxOutlineBottomRightY + infoBoxSelectorButtonH + teleportGroupVerticalPadding)
@@ -238,6 +243,7 @@ class CAFE_SpawnPicker_Dialog
 			};
 		}
 
+		#ifdef ALLOW_LOADOUT_CHANGE_UPON_RESPAWN
 		class LoadoutInfoBoxes: RscControlsGroup
 		{
 			idc = IDC_LOADOUT_CT_GROUP;
@@ -271,6 +277,7 @@ class CAFE_SpawnPicker_Dialog
 				}
 			};
 		}
+		#endif
 
 		// These info boxes can't be in a controls group because CT_MAP_MAIN controls don't allow it
 		class SpawnListbox: CAFE_DefaultListBox
@@ -311,6 +318,7 @@ class CAFE_SpawnPicker_Dialog
 			colorBackgroundActive[] = {GROUP_PICKER_COLOR};
 			onButtonClick = "['group'] call f_fnc_spawnPickerDialog_switchInfoBox";
 		}
+		#ifdef ALLOW_LOADOUT_CHANGE_UPON_RESPAWN
 		class LoadoutButton: InfoBoxSelectorButton
 		{
 			idc = IDC_LOADOUT_BUTTON;
@@ -320,6 +328,7 @@ class CAFE_SpawnPicker_Dialog
 			colorBackgroundActive[] = {LOADOUT_PICKER_COLOR};
 			onButtonClick = "['loadout'] call f_fnc_spawnPickerDialog_switchInfoBox";
 		}
+		#endif
 
 		class TeleportGroup: RscControlsGroup 
 		{

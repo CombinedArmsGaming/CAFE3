@@ -141,7 +141,7 @@ _teleportCheckbox ctrlCommit 0;
 private _ticketsText = _display displayCtrl IDC_TICKETS_TEXT;
 _ticketsText ctrlShow ([RESPAWN_TICKETS] call f_fnc_isRespawnModeActive);
 private _waveInfo = _display displayCtrl IDC_WAVE_TEXT;
-_waveInfo ctrlShow (([RESPAWN_TIMED_WAVE] call f_fnc_isRespawnModeActive) or ([RESPAWN_TRIGGERED_WAVE] call f_fnc_isRespawnModeActive));
+_waveInfo ctrlShow ([RESPAWN_TRIGGERED_WAVE] call f_fnc_isRespawnModeActive);
 DEBUG_FORMAT2_LOG("[RESPAWN] ticketsText shown: %1, waveInfo shown: %2", ctrlShown _ticketsText, ctrlShown _waveInfo);
 
 /*
