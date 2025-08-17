@@ -10,7 +10,7 @@ params ["_display"];
 
 private _deathTimer = _display displayCtrl IDC_DEATH_TIMER;
 
-private _timeDead = round (CBA_missionTime - (player getVariable ["f_var_playerDeathTime", CBA_missionTime]));
+private _timeDead = round (CBA_missionTime - (missionNamespace getVariable ["f_var_playerDeathTime", CBA_missionTime]));
 private _minutesDead = floor (_timeDead / 60);
 private _minutesStr = str _minutesDead;
 if (_minutesDead < 10) then {_minutesStr = "0" + _minutesStr};
