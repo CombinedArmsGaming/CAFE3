@@ -8,15 +8,13 @@ import RscMapControlEmpty;
 #define dialogY 1
 #define dialogWidth 35
 
+#define infoTextVerticalPadding 0.6 // Padding above the info text group
+#define infoTextLineHeight 1 // Height of one line of the info text box
+#define ticketsInfoWidth 7
+#define timerInfoWidth 6
+#define waveInfoWidth 8.5
 
-#define tooltipIconHorizontalPadding 0.1 // Padding between the tooltip icon text boxes
-#define tooltipIconVerticalPadding 0.6 // Padding above and below the tooltip icon
-#define tooltipIconHeight 1
-#define ticketsTooltipWidth 4
-
-#define deathTimerWidth 10
-#define deathTimerHeight tooltipIconHeight
-#define deathTimerVerticalPadding tooltipIconVerticalPadding // Amount of padding below the death timer
+#define deathTimerWidth 9
 
 #define infoBoxWidth 14 // Width of one of the little info boxes that have stuff like spawn list, map, loadout list, etc.
 #define infoBoxHeight 14
@@ -45,14 +43,15 @@ import RscMapControlEmpty;
 #define GRID_H GUI_GRID_CENTER_H // Height of one grid cell
 
 // Derived parameters
-#define tooltipIconY (dialogY + tooltipIconVerticalPadding)
-
-#define deathTimerY (tooltipIconY + tooltipIconHeight + tooltipIconVerticalPadding)
+#define infoTextY (dialogY + infoTextVerticalPadding)
 
 #define infoBoxOutlineTopLeftX (CENTER_X - verticalBarrierWidth / 2 - infoBoxWidth - infoBoxOutlineWidth) // X coord of the top left outside edge of the outline around the info boxes 
-#define infoBoxOutlineTopLeftY (deathTimerY + deathTimerHeight + deathTimerVerticalPadding) // Y coord of ^
+#define infoBoxOutlineTopLeftY (infoTextY + infoTextLineHeight * 2 + infoTextVerticalPadding) // Y coord of ^
 #define infoBoxOutlineBottomRightX (CENTER_X + verticalBarrierWidth / 2 + infoBoxWidth + infoBoxOutlineWidth) // X coord of the bottom right outside edge of the outline around the info boxes
 #define infoBoxOutlineBottomRightY (infoBoxOutlineTopLeftY + infoBoxOutlineWidth * 2 + infoBoxHeight)
+
+
+#define infoTextWidth (infoBoxOutlineBottomRightX - infoBoxOutlineTopLeftX)
 
 #define infoBoxY (infoBoxOutlineTopLeftY + infoBoxOutlineWidth)
 
@@ -93,48 +92,66 @@ class CAFE_SpawnPicker_Dialog
 			h = dialogHeight * GRID_H;
 			colorBackground[] = {0,0,0,0.5};
 		};
-		// class MainTitle: CAFE_DefaultText
-		// {
-		// 	idc = 1001;
-		// 	text = "Choose a spawn location:";
-		// 	x = 21 * GUI_GRID_W + GUI_GRID_X;
-		// 	y = 3.5 * GUI_GRID_H + GUI_GRID_Y;
-		// 	w = 12 * GUI_GRID_W;
-		// 	h = 1 * GUI_GRID_H;
-		// 	sizeEx = 1.2 * GUI_GRID_H;
-		// };
-		// class FeedbackText: CAFE_DefaultText
-		// {
-		// 	idc = 1002;
-		// 	text = "This is a temporary menu - message Bubbus with any feedback.";
-		// 	x = 20 * GUI_GRID_W + GUI_GRID_X;
-		// 	y = 20 * GUI_GRID_H + GUI_GRID_Y;
-		// 	w = 14 * GUI_GRID_W;
-		// 	h = 0.5 * GUI_GRID_H;
-		// 	colorBackground[] = {0,0,0,0.5};
-		// 	sizeEx = 0.5 * GUI_GRID_H;
-		// };
-		class TicketsIcon: CAFE_DefaultStructuredText
+
+		class Test: CAFE_DefaultText
 		{
-			idc = IDC_TICKETS_TEXT;
-			text = "<t align='center'>Tickets</t>";
-			x = (CENTER_X - ticketsTooltipWidth/2) * GRID_W + GRID_X;
-			y = (tooltipIconY) * GRID_H + GRID_Y;
-			w = ticketsTooltipWidth * GRID_W;
-			h = tooltipIconHeight * GRID_H;
-			colorBackground[] = {0,0,0,0};
-			tooltip = "Tickets loading"
+			x = (infoBoxOutlineTopLeftX) * GRID_W + GRID_X;
+			y = infoTextY * GRID_H + GRID_Y;
+			w = infoTextWidth * GRID_W;
+			h = (infoTextLineHeight * 2) * GRID_H;
+			// colorBackground[] = {0, 0, 1, 0.25};
 		}
-		class DeathTimer: CAFE_DefaultStructuredText
+
+		// Control group containing all of the informational text
+		class InfoGroup: RscControlsGroup
 		{
-			idc = IDC_DEATH_TIMER;
-			text = "<t align='center'>time u have been dead</t>";
-			x = (CENTER_X - deathTimerWidth/2) * GRID_W + GRID_X;
-			y = (deathTimerY) * GRID_H + GRID_Y;
-			w = deathTimerWidth * GRID_W;
-			h = deathTimerHeight * GRID_H;
-			colorBackground[] = {0,0,0,0};
+			idc = -1;
+			// Positioned such that it spans from the left edge of the info box border to the right
+			x = (infoBoxOutlineTopLeftX) * GRID_W + GRID_X;
+			y = infoTextY * GRID_H + GRID_Y;
+			w = infoTextWidth * GRID_W;
+			h = (infoTextLineHeight * 2) * GRID_H;
+			class Controls 
+			{
+				class TicketsText: CAFE_DefaultText
+				{
+					idc = IDC_TICKETS_TEXT;
+					text = "Personal Tickets: 2\nSide Tickets: 30";
+					style = ST_MULTI + ST_NO_RECT;
+					x = 0;
+					y = 0;
+					w = ticketsInfoWidth * GRID_W;
+					h = infoTextLineHeight * 2 * GRID_H;
+					lineSpacing = 1;
+					// colorBackground[] = {0,1,0,0.25};
+				}
+				class DeathTimer: CAFE_DefaultText
+				{
+					idc = IDC_DEATH_TIMER;
+					// text = "<t align='center' size='1.2'>You have been dead</t><br/><t size='0.8' align='center'>time u have been dead</t>";
+					text = "Dead for:\n00:00"
+					// sizeEx = 0.7
+					style = ST_MULTI + ST_NO_RECT + ST_CENTER;
+					x = (infoTextWidth/2 - deathTimerWidth/2) * GRID_W;
+					y = 0;
+					w = deathTimerWidth * GRID_W;
+					h = infoTextLineHeight * 2 * GRID_H;
+					// colorBackground[] = {1,0,0,0.25};
+				}
+				class WaveInfo: CAFE_DefaultText
+				{
+					IDC= IDC_WAVE_TEXT;
+					text = "Respawn Wave Status:\nUnavailable (wait 1m 20s)";
+					style = ST_MULTI + ST_NO_RECT + ST_RIGHT;
+					x = (infoTextWidth - waveInfoWidth) * GRID_W;
+					y = 0;
+					w = waveInfoWidth * GRID_W;
+					h = infoTextLineHeight * 2 * GRID_H;
+					// colorBackground[] = {1,0,1,0.25};
+				}
+			}
 		}
+		
 		class infoBoxTopBorder: CAFE_DefaultText
 		{
 			idc = IDC_INFO_BOX_OUTLINE;

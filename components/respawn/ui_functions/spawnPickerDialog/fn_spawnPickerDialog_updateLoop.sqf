@@ -2,7 +2,7 @@
 /*
     Update loop for the spawn picker dialog. Runs once per second while dialog is open.
     - Refreshes spawn list if a change is detected
-    - Updates number of tickets remaining
+    - Updates all of the info text at the top of the UI
 */
 
 disableSerialization;
@@ -27,11 +27,6 @@ private _isSameLocation = {
 if (!(missionNamespace getVariable ["f_var_spawnPickerDialog_isOpened", false])) exitWith {
     DEBUG_FORMAT1_LOG("[RESPAWN] Spawn picker dialog closed. Killing update loop.");
 };
-
-DEBUG_PRINT_LOG("[RESPAWN] Running spawnPickerDialog update loop!");
-
-// Update the tickets remaining
-[_display] call f_fnc_spawnPickerDialog_updateTickets;
 
 // Find the location of all of the respawns
 private _spawns = (player call bis_fnc_getRespawnPositions) + ((player call bis_fnc_objectSide) call bis_fnc_getRespawnMarkers);
@@ -136,6 +131,14 @@ if (_spawnsChanged) then {
     private _ignoreAlive = missionNamespace getVariable ["f_var_spawnPickerDialog_ignoreAlive", false];
     missionNamespace setVariable ["f_var_spawnPickerDialog_ignoreAlive", nil];
 };
+
+/*
+    Info text section
+*/
+// Update the tickets remaining
+[_display] call f_fnc_spawnPickerDialog_updateTickets;
+
+[_display] call f_fnc_spawnPickerDialog_updateTimers;
 
 [
     f_fnc_spawnPickerDialog_updateLoop,

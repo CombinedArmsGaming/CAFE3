@@ -23,7 +23,9 @@ _groupTickets = [group player, 0, false] call bis_fnc_respawnTickets;
 private _str = format ["Personal tickets: %1", (_playerTickets max 0)];
 if (_groupTickets > 0) then {
     _str = _str + format ["\nGroup tickets: %1", _groupTickets];
+// If group tickets are set, it looks like they kind of merge with side tickets
+} else {
+    _str = _str + format ["\nSide tickets: %1",(_sideTickets max 0)];
 };
-_str = _str + format ["\nBackup side tickets: %1",(_sideTickets max 0)];
 
 _ticketsCtrl ctrlSetTooltip _str;

@@ -69,4 +69,5 @@ class respawn_ui_spawnPickerDialog
     class spawnPickerDialog_switchInfoBox{};
     class spawnPickerDialog_updateLoop{};
     class spawnPickerDialog_updateTickets{};
+    class spawnPickerDialog_updateTimers{};
 };
