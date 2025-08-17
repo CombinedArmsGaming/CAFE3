@@ -5,11 +5,11 @@ import RscMapControlEmpty;
 
 // Designing for RESPAWN_MODE_TIMED_TICKETS
 
-#define dialogY 1
-#define dialogWidth 35
+#define dialogY 0
+#define dialogWidth 32
 
 #define infoTextVerticalPadding 0.6 // Padding above the info text group
-#define infoTextLineHeight 1 // Height of one line of the info text box
+#define infoTextLineHeight 0.7 // Height of one line of the info text box
 #define ticketsInfoWidth 7
 #define timerInfoWidth 6
 #define waveInfoWidth 8.5
@@ -46,7 +46,7 @@ import RscMapControlEmpty;
 #define infoTextY (dialogY + infoTextVerticalPadding)
 
 #define infoBoxOutlineTopLeftX (CENTER_X - verticalBarrierWidth / 2 - infoBoxWidth - infoBoxOutlineWidth) // X coord of the top left outside edge of the outline around the info boxes 
-#define infoBoxOutlineTopLeftY (infoTextY + infoTextLineHeight * 2 + infoTextVerticalPadding) // Y coord of ^
+#define infoBoxOutlineTopLeftY (infoTextY + infoTextLineHeight * 2) // Y coord of ^
 #define infoBoxOutlineBottomRightX (CENTER_X + verticalBarrierWidth / 2 + infoBoxWidth + infoBoxOutlineWidth) // X coord of the bottom right outside edge of the outline around the info boxes
 #define infoBoxOutlineBottomRightY (infoBoxOutlineTopLeftY + infoBoxOutlineWidth * 2 + infoBoxHeight)
 
@@ -93,14 +93,14 @@ class CAFE_SpawnPicker_Dialog
 			colorBackground[] = {0,0,0,0.5};
 		};
 
-		class Test: CAFE_DefaultText
-		{
-			x = (infoBoxOutlineTopLeftX) * GRID_W + GRID_X;
-			y = infoTextY * GRID_H + GRID_Y;
-			w = infoTextWidth * GRID_W;
-			h = (infoTextLineHeight * 2) * GRID_H;
-			// colorBackground[] = {0, 0, 1, 0.25};
-		}
+		// class Test: CAFE_DefaultText
+		// {
+		// 	x = (CENTER_X - dialogWidth/2) * GRID_W + GRID_X;
+		// 	y = 0;
+		// 	w = deathTimerWidth * GRID_W;
+		// 	h = 25 * GRID_H;
+		// 	colorBackground[] = {0, 0, 1, 0.25};
+		// }
 
 		// Control group containing all of the informational text
 		class InfoGroup: RscControlsGroup
@@ -123,6 +123,7 @@ class CAFE_SpawnPicker_Dialog
 					w = ticketsInfoWidth * GRID_W;
 					h = infoTextLineHeight * 2 * GRID_H;
 					lineSpacing = 1;
+					sizeEx = 0.7*GRID_H;
 					// colorBackground[] = {0,1,0,0.25};
 				}
 				class DeathTimer: CAFE_DefaultText
@@ -136,6 +137,7 @@ class CAFE_SpawnPicker_Dialog
 					y = 0;
 					w = deathTimerWidth * GRID_W;
 					h = infoTextLineHeight * 2 * GRID_H;
+					sizeEx = 0.7*GRID_H;
 					// colorBackground[] = {1,0,0,0.25};
 				}
 				class WaveInfo: CAFE_DefaultText
@@ -147,6 +149,7 @@ class CAFE_SpawnPicker_Dialog
 					y = 0;
 					w = waveInfoWidth * GRID_W;
 					h = infoTextLineHeight * 2 * GRID_H;
+					sizeEx = 0.7*GRID_H;
 					// colorBackground[] = {1,0,1,0.25};
 				}
 			}
