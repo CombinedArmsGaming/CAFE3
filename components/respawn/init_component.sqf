@@ -253,6 +253,8 @@ if (hasInterface) then
     [] call f_fnc_spectate_forceRadioModSpectateModeLoop;
 
 
+    #ifdef HIDE_DEAD_IN_SQUAD
+
     // Replace previous behaviour of removing dead players from squad.
     // Instead, keep players in the squad but hide them from the HUD.
     if !(isNil 'diwako_dui_radar_sortType') then
@@ -266,5 +268,9 @@ if (hasInterface) then
 
         diwako_dui_radar_sortType = "custom";
     };
+
+    f_var_hidingDeadPlayers = true;
+
+    #endif
 
 };
