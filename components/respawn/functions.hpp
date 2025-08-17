@@ -58,6 +58,7 @@ class respawn_ui
 class respawn_ui_spawnPickerDialog
 {
     file = "components\respawn\ui_functions\spawnPickerDialog";
+    class spawnPickerDialog_delaySpawnUntilReady{};
     class spawnPickerDialog_deselectWithoutScrolling{};
     class spawnPickerDialog_getListIdxFromSpawnIdx{};
     class spawnPickerDialog_groupsList_onLBSelChanged{};

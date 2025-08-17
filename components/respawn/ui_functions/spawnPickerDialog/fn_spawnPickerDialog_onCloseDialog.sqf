@@ -16,6 +16,12 @@ private _spawnMarkers = missionNamespace getVariable ["f_arr_spawnPickerDialog_s
 } forEach _spawnMarkers;
 missionNamespace setVariable ["f_arr_spawnPickerDialog_spawnMarkers", []];
 
+if (missionNamespace getVariable ["f_var_spawnPickerDialog_respawnHeld", false]) then {
+    DEBUG_PRINT_LOG("[RESPAWN] Dialog closed after respawn held. Respawning player.");
+    setPlayerRespawnTime 1;
+    missionNamespace setVariable ["f_var_spawnPickerDialog_respawnHeld", false];
+};
+
 if (_exitCode == 2) exitWith {
 
 };

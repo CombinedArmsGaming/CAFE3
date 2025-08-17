@@ -152,7 +152,7 @@ missionNamespace setVariable ["f_var_spawnPickerDialog_ignoreAlive", nil];
 // Ensure dialog is closed when player spawns.
 [
     {
-        ((!_ignoreAlive) and {alive player}) or {!(missionNamespace getVariable ["f_var_spawnPickerDialog_isOpened", false])}
+        ((!_ignoreAlive) and (alive player)) or (!(missionNamespace getVariable ["f_var_spawnPickerDialog_isOpened", false]))
     },
     {
         if (missionNamespace getVariable ["f_var_spawnPickerDialog_isOpened", false]) then
@@ -163,6 +163,8 @@ missionNamespace setVariable ["f_var_spawnPickerDialog_ignoreAlive", nil];
     []
 ] call CBA_fnc_waitUntilAndExecute;
 
+missionNamespace setVariable ["f_var_spawnPickerDialog_respawnHeld", false];
 missionNamespace setVariable ["f_var_spawnPickerDialog_isOpened", true];
 
 [_display] call f_fnc_spawnPickerDialog_updateLoop;
+[] call f_fnc_spawnPickerDialog_delaySpawnUntilReady;
