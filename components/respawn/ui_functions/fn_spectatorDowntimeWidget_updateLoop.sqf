@@ -9,6 +9,10 @@ if ((isNil "_downIndicator") or {isNull _downIndicator}) exitWith
     uiNamespace setVariable ["f_downtimeWidget_state", nil];
 };
 
+// There's an invisible structured text control with IDC 140 that is on top of the CHOOSE SPAWN LOCATION button
+// No idea why it's there but disabling it makes the button work and seems to have no ill effects
+private _hiddenTextBox = (findDisplay 60000 displayCtrl 140);
+_hiddenTextBox ctrlEnable false;
 
 private _state = uiNamespace getVariable ["f_downtimeWidget_state", ["DEAD"]];
 _state params ["_prevDownState"];
