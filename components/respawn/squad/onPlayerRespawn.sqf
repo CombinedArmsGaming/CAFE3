@@ -47,14 +47,17 @@ if (didJip or ((!didJip) and _didFirstSpawn)) then
 #endif
 
 private _playerGroup = missionNamespace getVariable ["f_var_lastPlayerGroupName", ""];
-DEBUG_FORMAT2_LOG("[RESPAWN] Player respawned, didFirstSpawn: %1, wants group %2", _didFirstSpawn, _playerGroup);
+DEBUG_FORMAT3_LOG("[RESPAWN] Player respawned, didFirstSpawn: %1, wants group %2, is in group %3", _didFirstSpawn, _playerGroup, (groupId group player));
 
 if (_didFirstSpawn and {_playerGroup isNotEqualTo ""}) then 
 {
 	[
 		{
+			params ["_playerGroup"];
 			if (_playerGroup isNotEqualTo (groupId group player)) then {
 				_this call f_fnc_forceJoinGroupByName;
+			} else {
+				DEBUG_FORMAT3_LOG("[RESPAWN] Did not join player to group %1. Player had group %2. Is not equal: %3", _playerGroup, (groupId group player), _playerGroup isNotEqualTo (groupId group player));
 			};
 			
 			[
