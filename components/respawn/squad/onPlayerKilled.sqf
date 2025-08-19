@@ -22,21 +22,27 @@ private _oldGroup = group _oldUnit;
 DEBUG_PRINT_LOG("[RESPAWN] Checking if dead unit is leader of group");
 // If the dead player is the leader, give leadership to the least recently respawned player in the group
 private _alivePlayersInGroup = (units _oldGroup) select {alive _x};
-if ((_oldUnit isEqualTo (leader _oldGroup)) and (count _alivePlayersInGroup > 0)) then {
-	private _leastRecentTime = CBA_missionTime;
-	private _leastRecentPlayer = player;
+if ((_oldUnit isEqualTo (leader _oldGroup))) then {
+	_oldUnit setVariable ["f_var_playerWasLeader", true];
 
-	// Find the least recently respawned player amongst the alive group members
-	{
-		private _respawnTime = _x getVariable ["f_var_playerLastRespawnTime", CBA_missionTime];
-		if (_respawnTime <= _leastRecentTime) then {
-			_leastRecentTime = _respawnTime;
-			_leastRecentPlayer = _x;
-		};
-	} forEach _alivePlayersInGroup;
+	if ((count _alivePlayersInGroup > 0)) then {
+		private _leastRecentTime = CBA_missionTime;
+		private _leastRecentPlayer = player;
 
-	DEBUG_FORMAT2_LOG("[RESPAWN] Setting group leader to least recently respawned player %1 with respawn time %2", _leastRecentPlayer, _leastRecentTime);
-	_oldGroup selectLeader _leastRecentPlayer;
+		// Find the least recently respawned player amongst the alive group members
+		{
+			private _respawnTime = _x getVariable ["f_var_playerLastRespawnTime", CBA_missionTime];
+			if (_respawnTime <= _leastRecentTime) then {
+				_leastRecentTime = _respawnTime;
+				_leastRecentPlayer = _x;
+			};
+		} forEach _alivePlayersInGroup;
+
+		DEBUG_FORMAT2_LOG("[RESPAWN] Setting group leader to least recently respawned player %1 with respawn time %2", _leastRecentPlayer, _leastRecentTime);
+		_oldGroup selectLeader _leastRecentPlayer;
+	};
+} else {
+	_oldUnit setVariable ["f_var_playerWasLeader", false];
 };
 
 #endif
