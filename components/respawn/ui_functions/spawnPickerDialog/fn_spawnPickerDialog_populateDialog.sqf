@@ -59,7 +59,7 @@ missionNamespace setVariable ["f_arr_spawnPickerDialog_spawnLocations", _spawnLo
 // Mark all respawn points
 {
     createMarkerLocal [_x, _spawnLocations # _forEachIndex];
-    _x setMarkerTypeLocal "flag_Denmark"; // respawn_inf
+    _x setMarkerTypeLocal "respawn_inf";
 } forEach _spawnMarkers;
 
 // Center the map over the selected respawn point
@@ -142,7 +142,6 @@ private _ticketsText = _display displayCtrl IDC_TICKETS_TEXT;
 _ticketsText ctrlShow ([RESPAWN_TICKETS] call f_fnc_isRespawnModeActive);
 private _waveInfo = _display displayCtrl IDC_WAVE_TEXT;
 _waveInfo ctrlShow ([RESPAWN_TRIGGERED_WAVE] call f_fnc_isRespawnModeActive);
-DEBUG_FORMAT2_LOG("[RESPAWN] ticketsText shown: %1, waveInfo shown: %2", ctrlShown _ticketsText, ctrlShown _waveInfo);
 
 /*
     Misc

@@ -43,8 +43,8 @@
 #define INITIAL_RESPAWN_DELAY               5
 
 // In timed waves mode, the wave timer varies from 1-2x of the RESPAWN_DELAY.  180 will mean between 3 to 6 minutes.
-#define RESPAWN_MODE_BLUFOR                 RESPAWN_MODE_TRIGGERED_WAVES_TICKETS
-#define RESPAWN_DELAY_BLUFOR                30
+#define RESPAWN_MODE_BLUFOR                 RESPAWN_MODE_TIMED_WAVES_TICKETS
+#define RESPAWN_DELAY_BLUFOR                180
 #define RESPAWN_SIDE_TICKETS_BLUFOR         30
 #define RESPAWN_PLAYER_TICKETS_BLUFOR       2
        

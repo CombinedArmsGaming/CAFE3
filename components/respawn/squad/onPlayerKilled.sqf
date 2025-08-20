@@ -43,26 +43,5 @@ if ((_oldUnit isEqualTo (leader _oldGroup))) then {
 
 #endif
 
-// playerLeaderOfGroup is only used to give leadership back when TPing to squad
-// Leadership is only automatically transferred when HIDE_DEAD_IN_SQUAD is defined
-// #ifdef HIDE_DEAD_IN_SQUAD
-// #ifdef ALLOW_TELEPORT_UPON_RESPAWN
-// private _playerLeader = (group _oldUnit) getVariable ["f_var_playerLeaderOfGroup", ""];
-
-// // Pass the leader tag to the current leader if the dead player is no longer the leader
-// if ((_playerLeader isEqualTo (name _oldUnit)) and (_oldUnit isNotEqualTo (leader _oldGroup))) then {
-// 	(group _oldUnit) setVariable ["f_var_playerLeaderOfGroup", name (leader _oldGroup), true];
-// 	DEBUG_FORMAT2_LOG("[RESPAWN] Player had leader tag but is no longer leader of %1. Passing leader tag to %2.", _oldGroup, name leader _oldGroup);
-// };
-
-// // Take the leader tag if the player who had it last is not in the squad 
-// if ((_playerLeader isNotEqualTo (name _oldUnit)) and (_oldUnit isEqualTo (leader _oldGroup))) then {
-
-// }
-
-
-// #endif
-// #endif
-
 // load bearing nil :)
 nil;

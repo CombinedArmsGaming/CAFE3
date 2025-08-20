@@ -274,7 +274,6 @@ if (hasInterface) then
             {missionNamespace setVariable ["diwako_dui_radar_sortType", "custom"]; DEBUG_PRINT_LOG("[RESPAWN] Detected non-custom sort type. setting to custom.")},
             []
         ] call CBA_fnc_waitUntilAndExecute;
-        DEBUG_FORMAT1_LOG("[RESPAWN] Set sort type to %1", diwako_dui_radar_sortType);
     };
 
     f_var_hidingDeadPlayers = true;

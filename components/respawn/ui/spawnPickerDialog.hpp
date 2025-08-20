@@ -98,15 +98,6 @@ class CAFE_SpawnPicker_Dialog
 			colorBackground[] = {0,0,0,0.5};
 		};
 
-		// class Test: CAFE_DefaultText
-		// {
-		// 	x = (CENTER_X - dialogWidth/2) * GRID_W + GRID_X;
-		// 	y = 0;
-		// 	w = deathTimerWidth * GRID_W;
-		// 	h = 25 * GRID_H;
-		// 	colorBackground[] = {0, 0, 1, 0.25};
-		// }
-
 		// Control group containing all of the informational text
 		class InfoGroup: RscControlsGroup
 		{
@@ -129,21 +120,17 @@ class CAFE_SpawnPicker_Dialog
 					h = infoTextLineHeight * 2 * GRID_H;
 					lineSpacing = 1;
 					sizeEx = 0.7*GRID_H;
-					// colorBackground[] = {0,1,0,0.25};
 				}
 				class DeathTimer: CAFE_DefaultText
 				{
 					idc = IDC_DEATH_TIMER;
-					// text = "<t align='center' size='1.2'>You have been dead</t><br/><t size='0.8' align='center'>time u have been dead</t>";
 					text = "Dead for:\n00:00"
-					// sizeEx = 0.7
 					style = ST_MULTI + ST_NO_RECT + ST_CENTER;
 					x = (infoTextWidth/2 - deathTimerWidth/2) * GRID_W;
 					y = 0;
 					w = deathTimerWidth * GRID_W;
 					h = infoTextLineHeight * 2 * GRID_H;
 					sizeEx = 0.7*GRID_H;
-					// colorBackground[] = {1,0,0,0.25};
 				}
 				class WaveInfo: CAFE_DefaultText
 				{
@@ -155,7 +142,6 @@ class CAFE_SpawnPicker_Dialog
 					w = waveInfoWidth * GRID_W;
 					h = infoTextLineHeight * 2 * GRID_H;
 					sizeEx = 0.7*GRID_H;
-					// colorBackground[] = {1,0,1,0.25};
 				}
 			}
 		}
@@ -287,7 +273,7 @@ class CAFE_SpawnPicker_Dialog
 			y = infoBoxY * GRID_H + GRID_Y;
 			w = infoBoxWidth * GRID_W;
 			h = infoBoxHeight * GRID_H;
-			sizeEx = 1 * GRID_H; // was 0.7
+			sizeEx = 1 * GRID_H;
 			onLBSelChanged = "_this call f_fnc_spawnPickerDialog_spawnList_onLBSelChanged;";
 		}
 		class MapScreen: RscMapControl
@@ -375,29 +361,6 @@ class CAFE_SpawnPicker_Dialog
 			text = "READY";
 			onButtonClick = "closeDialog 1";
 		}
-		
-		// Buttons to switch info box
-		
-		// class ConfirmButton: CAFE_DefaultButton
-		// {
-		// 	idc = 1600;
-		// 	text = "CONFIRM SPAWN";
-		// 	x = 20 * GUI_GRID_W + GUI_GRID_X;
-		// 	y = 17.5 * GUI_GRID_H + GUI_GRID_Y;
-		// 	w = 9.5 * GUI_GRID_W;
-		// 	h = 2 * GUI_GRID_H;
-        //     onButtonClick = "closeDialog 1";
-		// };
-		// class CancelButton: CAFE_DefaultButton
-		// {
-		// 	idc = 1601;
-		// 	text = "Cancel";
-		// 	x = 30 * GUI_GRID_W + GUI_GRID_X;
-		// 	y = 17.5 * GUI_GRID_H + GUI_GRID_Y;
-		// 	w = 4 * GUI_GRID_W;
-		// 	h = 2 * GUI_GRID_H;
-        //     onButtonClick = "closeDialog 2";
-		// };
 	};
 
 };

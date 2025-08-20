@@ -13,4 +13,3 @@ diag_log format ["[CAFE Respawn]: %1 joinSilent %2", [player], (_group#0)];
 [player] joinSilent (_group#0);
 
 private _spawns = (player call bis_fnc_getRespawnPositions) + ((player call bis_fnc_objectSide) call bis_fnc_getRespawnMarkers);
-DEBUG_FORMAT1_LOG("[RESPAWN] After force join group, player has spawns %1", _spawns);

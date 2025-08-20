@@ -3,7 +3,6 @@
 disableSerialization;
 
 params ["_control", "_lbCurSel"];
-// systemChat format ["Selected index %1", _lbCurSel];
 
 private _spawnList = _control;
 private _oldSelectedSpawnIdx = missionNamespace getVariable ["f_var_spawnPickerDialog_selectedSpawnIdx", -1];
@@ -42,11 +41,4 @@ private _mapCtrl = findDisplay IDD_SPAWNPICKER_DIALOG displayCtrl IDC_RESPAWN_MA
 _mapCtrl ctrlMapAnimAdd [0.5, 0.4, _spawnLocations # _selectedSpawnIdx];
 ctrlMapAnimCommit(_mapCtrl);
 
-// if ((_spawn isEqualType objNull) and {!alive _spawn}) then
-// {
-//     _spawn = _spawns # 0;
-//     [format ["Your chosen spawn location is unavailable.  '%1' has been selected.", (_spawn # 1)]] call f_fnc_createSubtitleText;
-// };
-
 missionNamespace setVariable ["f_var_spawnPickerDialog_selectedSpawnIdx", (_selectedSpawnIdx max 0)];
-systemChat format ["Selected index %1, spawn Index %2, set selected spawn to %3", _selectedListIdx, _selectedSpawnIdx, _spawn];
