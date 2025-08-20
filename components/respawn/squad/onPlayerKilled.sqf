@@ -23,8 +23,6 @@ DEBUG_PRINT_LOG("[RESPAWN] Checking if dead unit is leader of group");
 // If the dead player is the leader, give leadership to the least recently respawned player in the group
 private _alivePlayersInGroup = (units _oldGroup) select {alive _x};
 if ((_oldUnit isEqualTo (leader _oldGroup))) then {
-	_oldUnit setVariable ["f_var_playerWasLeader", true];
-
 	if ((count _alivePlayersInGroup > 0)) then {
 		private _leastRecentTime = CBA_missionTime;
 		private _leastRecentPlayer = player;
@@ -41,11 +39,30 @@ if ((_oldUnit isEqualTo (leader _oldGroup))) then {
 		DEBUG_FORMAT2_LOG("[RESPAWN] Setting group leader to least recently respawned player %1 with respawn time %2", _leastRecentPlayer, _leastRecentTime);
 		_oldGroup selectLeader _leastRecentPlayer;
 	};
-} else {
-	_oldUnit setVariable ["f_var_playerWasLeader", false];
 };
 
 #endif
+
+// playerLeaderOfGroup is only used to give leadership back when TPing to squad
+// Leadership is only automatically transferred when HIDE_DEAD_IN_SQUAD is defined
+// #ifdef HIDE_DEAD_IN_SQUAD
+// #ifdef ALLOW_TELEPORT_UPON_RESPAWN
+// private _playerLeader = (group _oldUnit) getVariable ["f_var_playerLeaderOfGroup", ""];
+
+// // Pass the leader tag to the current leader if the dead player is no longer the leader
+// if ((_playerLeader isEqualTo (name _oldUnit)) and (_oldUnit isNotEqualTo (leader _oldGroup))) then {
+// 	(group _oldUnit) setVariable ["f_var_playerLeaderOfGroup", name (leader _oldGroup), true];
+// 	DEBUG_FORMAT2_LOG("[RESPAWN] Player had leader tag but is no longer leader of %1. Passing leader tag to %2.", _oldGroup, name leader _oldGroup);
+// };
+
+// // Take the leader tag if the player who had it last is not in the squad 
+// if ((_playerLeader isNotEqualTo (name _oldUnit)) and (_oldUnit isEqualTo (leader _oldGroup))) then {
+
+// }
+
+
+// #endif
+// #endif
 
 // load bearing nil :)
 nil;

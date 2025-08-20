@@ -37,11 +37,10 @@ if ((!alive _goto) or (player isEqualTo _goto)) then {
 };
 
 #ifdef HIDE_DEAD_IN_SQUAD
-if (player getVariable ["f_var_playerWasLeader", false]) then {
+if ((name player) isEqualTo ((group player) getVariable ["f_var_playerLeaderOfGroup", ""])) then {
     DEBUG_FORMAT2_LOG("[TryTeleport] Player %1 was leader of group %2, setting leader again", player, group _goto);
     // selectLeader has to be run on the machine where the group is local
     [(group _goto), player] remoteExec ["selectLeader", leader (group _goto)];
-    player setVariable ["f_var_playerWasLeader", false];
 };
 #endif
 

@@ -12,7 +12,7 @@ params ["_newUnit", "_oldUnit", "_respawn", "_respawnDelay"];
 private _didFirstSpawn = missionNamespace getVariable ["f_var_squad_didFirstSpawn", false];
 missionNamespace setVariable ["f_var_squad_didFirstSpawn", true];
 
-_newUnit setVariable ["f_var_playerLastRespawnTime", CBA_missionTime];
+_newUnit setVariable ["f_var_playerLastRespawnTime", CBA_missionTime, true];
 
 // If not JIP or first spawn, need to reapply gearscript after group is selected.  Apply a grace period of 60s in case group assignment goes wrong.
 f_fnc_respawn_squad_enforceLoadoutGracePeriod = 

@@ -6,6 +6,7 @@ class respawn
     class getPlayerRespawnDelay{};
     class isRespawnModeActive{};
     class storePlayerGroup{postInit=1;};
+    class leaderTagLoop{};
 };
 class respawn_locationSystem
 {
