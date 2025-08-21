@@ -15,7 +15,7 @@ if (count _this > 2) then
 
 if (IS_PLAYER) then
 {
-    waitUntil {local player};
+    waitUntil {(local player)};
 };
 
 LOCAL_ONLY(_unit);
@@ -53,7 +53,8 @@ if (time <= 1) then
         _unit setVariable ["f_var_assignGear", _typeOfUnit, true];
         _unit setVariable ["f_var_assignGear_Faction", _faction, true];
 
-        _unit setUnitLoadout [[],[],[],["U_B_CombatUniform_mcam",[]],[],[],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]];
+        // Preserve facewear
+        _unit setUnitLoadout [[],[],[],["U_B_CombatUniform_mcam",[]],[],[],"",goggles _unit,[],["ItemMap","","","ItemCompass","ItemWatch",""]];
 
         // In this scenario, player gearscripting gets taken over by the respawn template "CAFE_Loadout".  Just exit here.    
         _unit setVariable ["f_var_assignGear_done", true, true];

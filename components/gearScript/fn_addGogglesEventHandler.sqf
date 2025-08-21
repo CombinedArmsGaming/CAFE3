@@ -1,23 +1,8 @@
+#include "macros.hpp"
+
 if (hasInterface) then
 {
     f_arr_playerGogglesCache = [""];
-
-    // Attempt to get player's chosen goggles by checking the value each frame until the gearscript occurs.  
-    // If something appears, we figure it's the player's choice.  This isn't a great way to do it but it's what we've got.
-    [] spawn
-    {
-        waitUntil
-        {
-            if (missionNamespace getVariable ["f_var_firstPlayerLoadout", false]) exitWith {true};
-
-            private _goggles = goggles player;
-            f_arr_playerGogglesCache pushBackUnique _goggles;
-            
-            _goggles IsNotEqualTo "";
-        };
-
-        f_var_playerGoggles = f_arr_playerGogglesCache select -1;
-    };
 
     [
         "CA_PreGearscriptUnit_Local", 
@@ -28,10 +13,23 @@ if (hasInterface) then
 
             if !(_loadout isEqualType []) exitWith {};
 
+            if ((_unit isEqualTo player)) then {
+                private _goggles = goggles _unit;
+                f_var_playerGoggles = _goggles;
+                DEBUG_FORMAT1_LOG("[GEARSCRIPT-2] Detected goggles on player: %1", f_var_playerGoggles);
+                // _loadout set [7, f_var_playerGoggles];
+            };
+            
             if ((_unit isEqualTo player) and {!isNil 'f_var_playerGoggles'}) then
             {
-                _loadout set [7, f_var_playerGoggles];
-            };
+                private _gearVariant = _unit getVariable ["f_var_assignGear_sideName", ""];
+                if (f_var_playerGoggles != "" and !(FACEWEAR_FORCED_DYNAMIC(_gearVariant,_typeOfUnit))) then {
+                    DEBUG_FORMAT1_LOG("[GEARSCRIPT-2] Set loadout to have: %1", f_var_playerGoggles);
+                    _loadout set [7, f_var_playerGoggles];
+                } else {
+                    DEBUG_FORMAT3_LOG("[GEARSCRIPT-2] Applied gearscript goggles. playerGoggles var: %1, forceFacewear: %2", f_var_playerGoggles, FACEWEAR_FORCED_DYNAMIC(_gearVariant,_typeOfUnit));
+                };
+            }
         }
 
     ] call CBA_fnc_addEventHandler;

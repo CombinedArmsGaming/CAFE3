@@ -129,6 +129,14 @@ if (_loadout isEqualType []) then
 
         _loadout select 5 set [0, _backpack];
     };
+
+    if (count FACEWEAR_DYNAMIC(_gearVariant,_typeOfUnit) > 0) then 
+    {
+        private _facewear = selectRandom FACEWEAR_DYNAMIC(_gearVariant,_typeOfUnit);
+        DEBUG_FORMAT1_LOG("Selected variant facewear: %1",_facewear)
+
+        _loadout set [7, _facewear];
+    }
 };
 
 ["CA_PreGearscriptUnit_Local", [_typeOfUnit, _unit, _faction, _loadout, _extendedArray]] call CBA_fnc_localEvent;

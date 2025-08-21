@@ -2,6 +2,7 @@
 #include "version.hpp"
 
 
+
 #define IS_HC (!(hasInterface or isServer))
 #define IS_CLIENT (hasInterface or {IS_HC})
 #define IS_PLAYER (hasInterface)
