@@ -12,7 +12,6 @@ missionNamespace setVariable ["f_var_spawnPickerDialog_selectedSpawnIdx", -1];
 private _spawnMarkers = missionNamespace getVariable ["f_arr_spawnPickerDialog_spawnMarkers", []];
 {
     deleteMarkerLocal _x;
-    systemChat format ["Deleted marker %1", _x];
 } forEach _spawnMarkers;
 missionNamespace setVariable ["f_arr_spawnPickerDialog_spawnMarkers", []];
 
