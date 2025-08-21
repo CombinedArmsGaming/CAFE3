@@ -57,6 +57,31 @@ if (_didFirstSpawn and {_playerGroup isNotEqualTo ""}) then
 			params ["_playerGroup"];
 			if (_playerGroup isNotEqualTo (groupId group player)) then {
 				_this call f_fnc_forceJoinGroupByName;
+
+				// Reconfigure radios for new group
+				// Joining group may take some time, so wait until player is actually in group
+				[
+					{
+						params ["_group"];       
+						(groupId (group player)) isEqualTo _group
+					},
+					{
+						params ["_group"];
+						[
+							{
+								params ["_group"];
+								DEBUG_FORMAT2_LOG("[RESPAWN] Configuring radios for player in group %1, ideally in group %2", group player, _group); 
+								["", player] call f_fnc_configureUnitRadios;
+							},
+							[_group],
+							1            
+						] call CBA_fnc_waitAndExecute;
+					},
+					[_playerGroup],
+					// Timeout (secs)
+					10,
+					{DEBUG_FORMAT1_LOG("[RESPAWN] Timed out waiting for player to join group. Configuring radios in group %1", group player); ["", player] call f_fnc_configureUnitRadios;}
+				] call CBA_fnc_waitUntilAndExecute;
 			} else {
 				DEBUG_FORMAT3_LOG("[RESPAWN] Did not join player to group %1. Player had group %2. Is not equal: %3", _playerGroup, (groupId group player), _playerGroup isNotEqualTo (groupId group player));
 			};
