@@ -1,3 +1,4 @@
+#include "\a3\ui_f\hpp\definedikcodes.inc"
 // Initialisation
 case "ui_init": {
 	_eventExists = true;
@@ -346,7 +347,7 @@ case "ui_init": {
 
 			// Hide the UI when pressing backspace
 			_zeusUI displayAddEventHandler ["KeyDown", {
-				params ["_zeusUI", "_key"];
+				params ["_zeusUI", "_key", "_shift", "_ctrl", "_alt"];
 
 				// Grab the type of the focused control
 				// 2 = CT_EDIT, such as the search bar
@@ -364,6 +365,11 @@ case "ui_init": {
 
 						["ui_toggle", [_isShown]] call f_fnc_zeusUI;
 					};
+				};
+
+				// Ignore alt-tab to avoid shifting spawn menu over one category
+				if (_key isEqualTo DIK_TAB && _alt) then {
+					true
 				};
 			}];
 			_zeusUI displayAddEventHandler ["KeyUp", {
