@@ -6,6 +6,7 @@ class respawn
     class getPlayerRespawnDelay{};
     class isRespawnModeActive{};
     class storePlayerGroup{postInit=1;};
+    class leaderTagLoop{};
 };
 class respawn_locationSystem
 {
@@ -52,8 +53,23 @@ class respawn_ui
     file = "components\respawn\ui_functions";
     class addSpectatorDowntimeWidgetEventHandler{preInit=1;};
     class createSpectatorDowntimeWidget{};
-    class spawnPickerDialog_onCloseDialog{};
-    class spawnPickerDialog_populateDialog{};
     class spectatorDowntimeWidget_updateLoop{};
     class tryShowSpawnpointDialog{};
+};
+class respawn_ui_spawnPickerDialog
+{
+    file = "components\respawn\ui_functions\spawnPickerDialog";
+    class spawnPickerDialog_delaySpawnUntilReady{};
+    class spawnPickerDialog_deselectWithoutScrolling{};
+    class spawnPickerDialog_getListIdxFromSpawnIdx{};
+    class spawnPickerDialog_groupsList_onLBSelChanged{};
+    class spawnPickerDialog_loadoutsList_onLBSelChanged{};
+    class spawnPickerDialog_onCloseDialog{};
+    class spawnPickerDialog_populateDialog{};
+    class spawnPickerDialog_populateLoadoutsList{};
+    class spawnPickerDialog_spawnList_onLBSelChanged{};
+    class spawnPickerDialog_switchInfoBox{};
+    class spawnPickerDialog_updateLoop{};
+    class spawnPickerDialog_updateTickets{};
+    class spawnPickerDialog_updateTimers{};
 };

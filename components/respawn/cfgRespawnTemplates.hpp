@@ -1,5 +1,7 @@
 class CfgRespawnTemplates
 {
+	#include "deathTimer\respawnTemplates.hpp"
+
 	#include "fixPlayerTickets\respawnTemplates.hpp"
 	
 	#include "loadout\respawnTemplates.hpp"
