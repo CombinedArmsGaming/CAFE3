@@ -4,27 +4,6 @@ disableSerialization;
 
 params ["_display", "_exitCode"];
 
-
-_doTeleport =
-{
-    // 2020-06-02 TODO :: Copied from respawnTemplates/parts/tryTeleport.sqf.  De-duplicate.
-
-    params ["_goto"];
-
-    _onTeleportFailure =
-    {
-        hint "Failed to teleport to group leader.  You can now try again.";
-        player setVariable ["f_var_mayTeleportToGroup", true, true];
-    };
-
-    player setVariable ["f_var_mayTeleportToGroup", false, true];
-
-    _teleHandle = [player, _goto, _onTeleportFailure] spawn f_fnc_teleportPlayer;
-
-    waitUntil { sleep 0.1; scriptDone _teleHandle };
-
-};
-
 private _doGearscript = missionNamespace getVariable ["f_var_groupPicker_forceGearscript_internal", false];
 missionNamespace setVariable ["f_var_groupPicker_forceGearscript_internal", nil];
 
@@ -85,7 +64,7 @@ if (_exitCode == 1) then
 
         if (_isChecked and {(_countPriorToJoin > 0) and (leader _selectedGroup isNotEqualTo player)}) then
         {
-            [leader _selectedGroup] spawn _doTeleport;
+            [leader _selectedGroup] spawn f_fnc_tryTeleport;
         };
 
     };

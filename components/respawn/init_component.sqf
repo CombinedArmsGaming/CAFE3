@@ -267,10 +267,35 @@ if (hasInterface) then
         };
 
         diwako_dui_radar_sortType = "custom";
+
+        // Set the sort type again. Something resets it to "none" on clients on mission start.
+        [
+            {diwako_dui_radar_sortType isNotEqualTo "custom"},
+            {missionNamespace setVariable ["diwako_dui_radar_sortType", "custom"]; DEBUG_PRINT_LOG("[RESPAWN] Detected non-custom sort type. setting to custom.")},
+            []
+        ] call CBA_fnc_waitUntilAndExecute;
     };
 
     f_var_hidingDeadPlayers = true;
 
+    #endif
+
+    #ifdef ALLOW_TELEPORT_UPON_RESPAWN
+    f_var_allowingTpUponRespawn = true;
+    #endif
+
+    // playerLeaderOfGroup is only used for transferring leadership when the former group leader TPs in
+    // Group leadership is only automatically transferred when HIDE_DEAD_IN_SQUAD is defined
+    // No need to compute if you can't TP or the player keeps leadership anyway
+    #ifdef HIDE_DEAD_IN_SQUAD
+    #ifdef ALLOW_TELEPORT_UPON_RESPAWN
+    if (player isEqualTo (leader group player)) then {
+        (group player) setVariable ["f_var_playerLeaderOfGroup", name player, true];
+        DEBUG_FORMAT2_LOG("[RESPAWN] Setting player leader of group %1 to %2", groupId group player, name player);
+    };
+
+    [] call f_fnc_leaderTagLoop;
+    #endif
     #endif
 
 };
