@@ -5,6 +5,7 @@
 -------------------------------------------------------------------------------------------------------------------- */
 
 #include "..\..\configuration\cbaSettings.hpp"
+#include "..\..\configuration\respawn.hpp"
 
 //Medical
 
@@ -65,5 +66,12 @@
 #ifdef DISABLE_ACE_CAR_DAMAGE
 
 	#include "ace_vic_settings.sqf"
+
+#endif
+
+// Diwako DUI squad radar
+#ifdef HIDE_DEAD_IN_SQUAD
+
+	#include "dui_settings.sqf"
 
 #endif
