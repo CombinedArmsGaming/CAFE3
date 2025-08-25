@@ -156,18 +156,18 @@ COPY_ADDONS(ftl,rif);   // FTLs will now get the random uniforms and hats from t
 
 COPY_LOADOUT(sl,ftl);   // SLs will be identical to FTLs.  Because FTLs get the random Rifleman stuff, SLs will get it too.
 
+
 // Surgeon Loadout (Has PAK)
 
 _baseLoadout = [[["arifle_MXC_F","","acc_flashlight","optic_ACO_grn",["30Rnd_65x39_caseless_mag",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",17],[],""],["U_B_CombatUniform_mcam",[["ACE_packingBandage",1],["ACE_fieldDressing",5],["ACE_splint",1],["ACE_tourniquet",2],["ACE_salineIV",1],["ACE_quikclot",1],["ACE_Canteen",1],["ACE_Flashlight_XL50",1],["ACE_MapTools",1],["ACRE_PRC343",1],["ACE_painkillers",2,10]]],["V_PlateCarrier1_rgr",[["HandGrenade",1,1],["SmokeShell",10,1],["30Rnd_65x39_caseless_green",6,30],["30Rnd_65x39_caseless_green_mag_Tracer",2,30],["16Rnd_9x21_Mag",2,17]]],["B_Carryall_khk",[["ACE_morphine",10],["ACE_epinephrine",10],["ACE_packingBandage",20],["ACE_elasticBandage",20],["ACE_adenosine",5],["ACE_splint",10],["ACE_tourniquet",8],["FSGm_ItemMedicBag",1],["ACE_surgicalKit",1],["ACE_EntrenchingTool",1],["ACE_quikclot",5],["ACE_personalAidKit",1],["ACE_bloodIV",8],["ACE_bloodIV_500",8]]],"H_HelmetB_snakeskin","",["Binocular","","","",[],[],""],["ItemMap","ItemGPS","","ItemCompass","ItemWatch","NVGoggles"]],[]];
 
-
 CREATE_LOADOUT(sur,_baseLoadout);
 COPY_ADDONS(sur,rif);
+
 
 // Medic Loadout (No PAK)
 
 _baseLoadout = [[["arifle_MXC_F","","acc_flashlight","optic_ACO_grn",["30Rnd_65x39_caseless_mag",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",17],[],""],["U_B_CombatUniform_mcam",[["ACE_packingBandage",1],["ACE_fieldDressing",5],["ACE_splint",1],["ACE_tourniquet",2],["ACE_salineIV",1],["ACE_quikclot",1],["ACE_Canteen",1],["ACE_Flashlight_XL50",1],["ACE_MapTools",1],["ACRE_PRC343",1],["ACE_painkillers",2,10]]],["V_PlateCarrier1_rgr",[["HandGrenade",1,1],["SmokeShell",10,1],["30Rnd_65x39_caseless_green",6,30],["30Rnd_65x39_caseless_green_mag_Tracer",2,30],["16Rnd_9x21_Mag",2,17]]],["B_Carryall_khk",[["ACE_morphine",8],["ACE_epinephrine",8],["ACE_packingBandage",15],["ACE_elasticBandage",25],["ACE_adenosine",5],["ACE_splint",6],["ACE_tourniquet",6],["FSGm_ItemMedicBag",1],["ACE_surgicalKit",1],["ACE_EntrenchingTool",1],["ACE_quikclot",5],["ACE_salineIV",8],["ACE_salineIV_500",8],["ACE_fieldDressing",10],["SmokeShell",4,1]]],"H_HelmetB_snakeskin","",["Binocular","","","",[],[],""],["ItemMap","ItemGPS","","ItemCompass","ItemWatch","NVGoggles"]],[]];
-
 
 CREATE_LOADOUT(med,_baseLoadout);
 COPY_ADDONS(med,rif);
@@ -263,10 +263,11 @@ ADD_RIFLE_TO_CRATE(small,rif,2);    // This crate now contains two of the Riflem
 ADD_LAUNCHER_TO_CRATE(small,lat,2); // This crate now contains two of the LAT soldier's launchers in it.
 ADD_PISTOL_TO_CRATE(small,rif,2);   // Two of the Rifleman's pistols.  If the Rifleman doesn't have a pistol, you can choose it from other units (for example, ftl or co).
 
-ADD_RIFLE_AMMO_TO_CRATE(small,rif,30); // This crate now contains two rifle magazines in it, which the Rifleman can use.
+ADD_RIFLE_AMMO_TO_CRATE(small,rif,25); // This crate now contains two rifle magazines in it, which the Rifleman can use.
 ADD_PISTOL_AMMO_TO_CRATE(small,rif,6); // This crate now contains two of the Rifleman's pistol magazines in it.
 ADD_RIFLE_AMMO_TO_CRATE(small,ar,6);   // These commands copy whatever magazine is loaded into the weapon in ACE Arsenal.
 ADD_RIFLE_AMMO_TO_CRATE(small,crew,2); // So if nothing appears, make sure your loadout has a magazine loaded into its gun.
+ADD_RIFLE_AMMO_TO_CRATE(small,mk,5);
 ADD_RIFLE_GRENADES_TO_CRATE(small,ftl,4);  // Grenade launcher rounds work too!
 
 ADD_ITEMS_TO_CRATE(small,"30Rnd_65x39_caseless_mag_Tracer",10); // The Rifleman has normal bullets loaded into his gun.  To add Tracer rounds into this box, we can use this command.
@@ -307,9 +308,10 @@ ADD_LAUNCHER_TO_CRATE(med,lat,4);
 ADD_PISTOL_TO_CRATE(med,rif,4);
 
 ADD_PISTOL_AMMO_TO_CRATE(med,rif,12);
-ADD_RIFLE_AMMO_TO_CRATE(med,rif,60);
+ADD_RIFLE_AMMO_TO_CRATE(med,rif,50);
 ADD_RIFLE_AMMO_TO_CRATE(med,ar,15);
 ADD_RIFLE_AMMO_TO_CRATE(med,crew,4);
+ADD_RIFLE_AMMO_TO_CRATE(small,mk,10);
 ADD_RIFLE_GRENADES_TO_CRATE(med,ftl,10);
 
 ADD_ITEMS_TO_CRATE(med,"30Rnd_65x39_caseless_mag_Tracer",20);

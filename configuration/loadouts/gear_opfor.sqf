@@ -138,12 +138,14 @@ COPY_ADDONS(ftl,rif);
 
 COPY_LOADOUT(sl,ftl);
 
+
 // Surgeon Loadout (Has PAK)
 
 _baseLoadout = [[["arifle_Katiba_C_F","","acc_flashlight","optic_Aco",["30Rnd_65x39_caseless_green",30],[],""],[],["hgun_Rook40_F","","","",["16Rnd_9x21_Mag",17],[],""],["U_O_CombatUniform_ocamo",[["ACE_packingBandage",1],["ACE_fieldDressing",5],["ACE_splint",1],["ACE_tourniquet",2],["ACE_salineIV",1],["ACE_quikclot",1],["ACE_Canteen",1],["ACE_Flashlight_XL50",1],["ACE_MapTools",1],["ACRE_PRC343",1],["ACE_painkillers",2,10]]],["V_HarnessO_brn",[["HandGrenade",1,1],["SmokeShell",10,1],["30Rnd_65x39_caseless_green",6,30],["30Rnd_65x39_caseless_green_mag_Tracer",2,30],["16Rnd_9x21_Mag",2,17]]],["B_Kitbag_cbr",[["ACE_morphine",10],["ACE_epinephrine",10],["ACE_packingBandage",20],["ACE_elasticBandage",20],["ACE_adenosine",5],["ACE_splint",10],["ACE_tourniquet",8],["FSGm_ItemMedicBag",1],["ACE_surgicalKit",1],["ACE_EntrenchingTool",1],["ACE_quikclot",5],["ACE_personalAidKit",1],["ACE_bloodIV",8],["ACE_bloodIV_500",8]]],"H_HelmetO_ocamo","",["Binocular","","","",[],[],""],["ItemMap","ItemGPS","","ItemCompass","ItemWatch","NVGoggles_OPFOR"]],[]];
 
 CREATE_LOADOUT(sur,_baseLoadout);
 COPY_ADDONS(sur,rif);
+
 
 // Medic Loadout (No PAK)
 
@@ -204,6 +206,7 @@ CREATE_LOADOUT(crew,_baseLoadout);
 _baseLoadout = [[["arifle_Katiba_C_F","","acc_flashlight","optic_Aco",["30Rnd_65x39_caseless_green",30],[],""],[],["hgun_Rook40_F","","","",["16Rnd_9x21_Mag",17],[],""],["U_O_CombatUniform_ocamo",[["ACE_packingBandage",1],["ACE_fieldDressing",5],["ACE_splint",1],["ACE_tourniquet",2],["ACE_salineIV",1],["ACE_quikclot",1],["ACE_Canteen",1],["ACE_Flashlight_XL50",1],["ACE_MapTools",1],["ACRE_PRC343",1],["ACE_painkillers",2,10]]],["V_HarnessO_brn",[["HandGrenade",4,1],["SmokeShell",4,1],["30Rnd_65x39_caseless_green",5,30],["30Rnd_65x39_caseless_green_mag_Tracer",2,30],["16Rnd_9x21_Mag",1,17],["ACE_M14",2,1]]],["B_AssaultPack_ocamo",[["ToolKit",1],["ACE_EntrenchingTool",1],["ACE_Clacker",1],["MineDetector",1],["ACE_DefusalKit",1],["ACE_wirecutter",1]]],"H_HelmetO_ocamo","",["Binocular","","","",[],[],""],["ItemMap","ItemGPS","","ItemCompass","ItemWatch","NVGoggles_OPFOR"]],[]];
 
 CREATE_LOADOUT(eng,_baseLoadout);
+
 
 // Zeus
 

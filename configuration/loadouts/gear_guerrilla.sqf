@@ -163,11 +163,12 @@ COPY_LOADOUT(sl,ftl);
 
 _baseLoadout = [[["arifle_TRG20_F","","acc_flashlight","optic_ACO_grn",["30Rnd_556x45_Stanag_Tracer_Yellow",30],[],""],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_BG_Guerilla1_1",[["ACE_tourniquet",2],["ACE_splint",1],["ACE_packingBandage",1],["ACE_fieldDressing",5],["ACE_elasticBandage",1],["ACE_salineIV",1],["ACRE_PRC343",1],["ACE_painkillers",2,10]]],["V_TacVest_oli",[["ACE_Flashlight_XL50",1],["ACE_MapTools",1],["SmokeShell",6,1],["9Rnd_45ACP_Mag",2,8],["30Rnd_556x45_Stanag_Tracer_Yellow",7,30]]],["B_Kitbag_rgr",[["FSGm_ItemMedicBag",1],["ACE_bloodIV",8],["ACE_bloodIV_500",8],["ACE_splint",10],["ACE_tourniquet",8],["ACE_surgicalKit",1],["ACE_personalAidKit",1],["ACE_morphine",10],["ACE_epinephrine",10],["ACE_adenosine",5],["ACE_elasticBandage",20],["ACE_packingBandage",20],["ACE_EntrenchingTool",1]]],"H_Shemag_olive","",["Binocular","","","",[],[],""],["ItemMap","","","ItemCompass","ItemWatch",""]],[]];
 
-
 CREATE_LOADOUT(sur,_baseLoadout);
 COPY_ADDONS(sur,rif);
 
+
 // Medic Loadout (No PAK)
+
 _baseLoadout = [[["arifle_TRG20_F","","acc_flashlight","optic_ACO_grn",["30Rnd_556x45_Stanag_Tracer_Yellow",30],[],""],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_BG_Guerilla1_1",[["ACE_tourniquet",2],["ACE_splint",1],["ACE_packingBandage",1],["ACE_fieldDressing",5],["ACE_elasticBandage",1],["ACE_salineIV",1],["ACRE_PRC343",1],["ACE_painkillers",2,10]]],["V_TacVest_oli",[["ACE_Flashlight_XL50",1],["ACE_MapTools",1],["SmokeShell",6,1],["9Rnd_45ACP_Mag",2,8],["30Rnd_556x45_Stanag_Tracer_Yellow",7,30]]],["B_Kitbag_rgr",[["FSGm_ItemMedicBag",1],["ACE_splint",6],["ACE_tourniquet",6],["ACE_surgicalKit",1],["ACE_morphine",8],["ACE_epinephrine",8],["ACE_adenosine",5],["ACE_elasticBandage",25],["ACE_packingBandage",15],["ACE_EntrenchingTool",1],["ACE_salineIV",8],["ACE_salineIV_500",8],["ACE_fieldDressing",10],["ACE_quikclot",5]]],"H_Shemag_olive","",["Binocular","","","",[],[],""],["ItemMap","","","ItemCompass","ItemWatch",""]],[]];
 
 CREATE_LOADOUT(med,_baseLoadout);
@@ -226,6 +227,7 @@ CREATE_LOADOUT(crew,_baseLoadout);
 _baseLoadout = [[["arifle_TRG20_F","","acc_flashlight","optic_ACO_grn",["30Rnd_556x45_Stanag_Tracer_Yellow",30],[],""],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_BG_Guerilla1_1",[["ACE_tourniquet",2],["ACE_splint",1],["ACE_packingBandage",1],["ACE_fieldDressing",5],["ACE_elasticBandage",1],["ACE_salineIV",1],["ACRE_PRC343",1],["ACE_painkillers",2,10]]],["V_TacVest_oli",[["ACE_Flashlight_XL50",1],["ACE_MapTools",1],["ACE_bloodIV",2],["ACE_bloodIV_500",1],["SmokeShell",4,1],["9Rnd_45ACP_Mag",2,8],["30Rnd_556x45_Stanag_Tracer_Yellow",5,30]]],["B_AssaultPack_khk",[["ToolKit",1],["ACE_EntrenchingTool",1],["ACE_DefusalKit",1],["ACE_Clacker",1],["MineDetector",1],["ACE_wirecutter",1]]],"H_Bandanna_sgg","",["Binocular","","","",[],[],""],["ItemMap","","","ItemCompass","ItemWatch",""]],[]];
 
 CREATE_LOADOUT(eng,_baseLoadout);
+
 
 // Zeus
 
