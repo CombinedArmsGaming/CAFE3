@@ -1,4 +1,44 @@
+/*
+	Zeus spawner AI presets
 
+	Use this file to set up presets of groups of units to be spawned with the zeus spawner. 
+
+	A "unit" here is a group or groups that can be spawned by one click of the spawn button.
+	It is not necessarily only one soldier or group.
+
+	Units and categories are defined as classes, with unit classes contained inside a category class.
+
+	The class name is not seen in game and is restricted to letters, numbers, and underscores. 
+
+	A category has:
+		- categoryName: The name of the category which you will see in-game.
+		- gear: 		The faction code as used in the CAFE framework. For example, "blu_f" means the gear will be taken from the BLUFOR gearscript.
+		- side:			This defines the side that soldiers spawned will bear allegiance to. Available options are: "west" (BLUFOR), "east" (OPFOR), "resistance", and "civilian".
+		- Any number of unit classes.
+	
+	A unit has (at most):
+		- unitName: 		The name that will be shown in-game on the zeus spawner UI.
+		- units[]:			An array of soldiers to be spawned, given as gearscript loadout codes.
+		- vehicle: 			The classname of a vehicle to be spawned. You can get it by right-clicking a vehicle in 3DEN and selecting "Log > Log classes to clipboard".
+		- reinforcements[]:	An array of soldiers to be spawned in the vehicle's cargo space, given as gearscript loadout codes.
+		- groups[]:			An array of units that will be spawned as separate groups, explained in detail below.
+	
+	The only field that must be present in all unit definitions is unitName. You can include whichever of the rest you wish, with some limitations explained below. 
+
+	If a vehicle is defined, then units[] *must* also be defined. The units[] will be treated as the crew of that vehicle and will spawn inside. The first entry of units[] will always be the commander.
+
+	If reinforcements[] is defined, then a vehicle and units[] *must* also be defined. The reinforcements will spawn in the cargo space of the vehicle.
+		The vehicle gets a TR unload waypoint and a RTB waypoint (only if it's unarmed), the group a Move waypoint. The vehicle will also despawn on RTB. If the vehicle is a Heli, it will spawn flying and always RTB
+
+	The groups[] array allows you to spawn many separate groups with one click. 
+	The groups[] array can contain as many groups as you wish, which will be spawned alongside units[], vehicle, and reinforcements[], if they are defined.
+	You can define a group "in-line" as an array of gearscript loadout codes, similarly to the units[] array. You may not reference other units in groups defined this way.
+	You can reference other defined units by their class name (NOT their unitName). Definition order does not matter, and names are not case sensitive.
+	Other units are referenced as Category_Class.Unit_Class (e.g. BLUFOR_Infantry.Rifleman). This means you can reference across categories, even including other sides if you wish.
+	If you are referencing a unit in the same category, you can leave off the Category_Class (e.g. just Rifleman).
+	Note that you can not directly reference a vehicle class name. It must be defined in a separate unit to be referenced in groups[].
+	If you reference another unit, it will be spawned just like if you had clicked the spawn button for that unit.
+*/
 
 
 
@@ -59,61 +99,17 @@ class CA_ZeusUI_Units
 			units[] = {"rif", "mk"};
 		};
 
-		// Unit with many separate groups
 		class MechanizedPlatoon
 		{
 			unitName = "BLUFOR Mechanized Platoon";
-			vehicle = "B_APC_Wheeled_01_cannon_F"; 	// Vehicle, units, and reinforcements work side by side with groups.
-			units[] = {"crew", "crew", "crew"}; 	// These will be spawned separately and alongside the groups.
-			reinforcements[] = {"ftl", "ar", "aar", "lat", "rif", "mk"}; // If you want the vehicle and reinforcements to spawn, you must have units[]
+			vehicle = "B_APC_Wheeled_01_cannon_F"; 	// The vehicle, units, and reinforcements will be spawned alongside the groups[]
+			units[] = {"crew", "crew", "crew"}; 	
+			reinforcements[] = {"ftl", "ar", "aar", "lat", "rif", "mk"};
 			groups[] = {
-				{"co", "med", "fac"}, 				// Groups can be defined "in-line" the same way units are.
-													// You cannot reference other units in this in-line definition
-				"Fireteam_4x", 						// You can reference units defined elsewhere by their unitName NOT their class name (definition order does not matter).
-				"BLUFOR_Vehicles.IFV6C_Panther_Reinforcements",		// You can even reference units in other categories (including other sides!).
-				"BLUFOR_Vehicles.m2a4_slammer_UP" 					// Names should be unique, but it will always pick a unit from the same category first.
-			};
-		};
-
-		class BrokenMechPlatoon
-		{
-			unitName = "Broken mech platoon";
-			vehicle = "B_APC_Wheeled_01_cannon_F"; 	// Vehicle, units, and reinforcements work side by side with groups.
-			units[] = {"crew", "crew", "crew"}; 	// These will be spawned separately and alongside the groups.
-			reinforcements[] = {"ftl", "ar", "aar", "lat", "rif", "mk"}; // If you want the vehicle and reinforcements to spawn, you must have units[]
-			groups[] = {
-				{"co", "med", "fac"}, 				// Groups can be defined "in-line" the same way units are.
-													// You cannot reference other units in this in-line definition
-				"Fireteam_4x", 						// You can reference units defined elsewhere by their unitName NOT their class name (definition order does not matter).
-				"IFV6C_Panther_Reinforcements",		// You can even reference units in other categories (including other sides!).
-				"BLUFOR_Vehicles.M2A4_Slammer_UP" 					// Names should be unique, but it will always pick a unit from the same category first.
-			};
-		};
-
-		class LoopingPlatoon
-		{
-			unitName = "Looping platoon";
-			units[] = {"co", "med"};
-			groups[] = {
-				"LoopingPlatoon2";
-			};
-		};
-
-		class LoopingPlatoon2
-		{
-			unitName = "Looping platoon 2";
-			units[] = {"fac"};
-			groups[] = {
-				"LoopingPlatoon3";
-			};
-		};
-
-		class LoopingPlatoon3
-		{
-			unitName = "Looping platoon 3";
-			units[] = {"mk"};
-			groups[] = {
-				"LoopingPlatoon";
+				{"co", "med", "fac"}, 								// Groups can be defined "in-line" the same way units are. You cannot reference other units in this in-line definition
+				"Fireteam_4x", 										// You can reference units defined in the same category by their class name, or by Category_Class.Unit_Class, e.g. BLUFOR_Infantry.Fireteam_4x
+				"BLUFOR_Vehicles.IFV6C_Panther_Reinforcements",		// You can reference units in other categories by Category_Class.Unit_Class
+				"BLUFOR_Vehicles.M2A4_Slammer_UP" 					// Note that this is a *unit* class name, not the vehicle's class name			
 			};
 		};
 	};
@@ -128,9 +124,9 @@ class CA_ZeusUI_Units
 		{
 			unitName = "M2A4 Platoon"
 			groups[] = { 				// You can have a unit with only groups and no units or vehicle or reinforcements
-				"M2A4 Slammer UP",
-				"M2A4 Slammer UP",
-				"M2A4 Slammer UP"
+				"M2A4_Slammer_UP",
+				"M2A4_Slammer_UP",
+				"M2A4_Slammer_UP"
 			};
 		};
 
@@ -239,18 +235,17 @@ class CA_ZeusUI_Units
 			units[] = {"rif", "mk"};
 		};
 
-		// Unit with many separate groups
 		class MechanizedPlatoon
 		{
 			unitName = "OPFOR Mechanized Platoon";
-			vehicle = "O_APC_Wheeled_02_rcws_F"; // Vehicle, units, and reinforcements work side by side with groups.
-			units[] = {"crew", "crew", "crew"}; // These will be spawned separately and alongside the groups.
+			vehicle = "O_APC_Wheeled_02_rcws_F"; 	// The vehicle, units, and reinforcements will be spawned alongside the groups[]
+			units[] = {"crew", "crew", "crew"}; 	
 			reinforcements[] = {"ftl", "ar", "aar", "lat", "rif", "mk"};
 			groups[] = {
-				{"co", "med", "fac"}, // Groups can be defined "in-line" the same way units are.
-				"OPFOR Fireteam 4x", // You can reference units defined elsewhere (definition order does not matter).
-				"BTR-K Kamysh + Squad 6x", // You can even reference units in other categories (including other sides!).
-				"T-100 Varsuk" // Names should be unique, but it will always pick a unit from the same category first.
+				{"co", "med", "fac"}, 								// Groups can be defined "in-line" the same way units are. You cannot reference other units in this in-line definition
+				"OPFOR_Infantry.Fireteam_4x", 						// You can reference units defined in the same category by their class name, or by Category_Class.Unit_Class, e.g. OPFOR_Infantry.Fireteam_4x
+				"OPFOR_Vehicles.BTRK_Kamysh_Reinforcements",		// You can reference units in other categories by Category_Class.Unit_Class
+				"OPFOR_Vehicles.T100_Varsuk" 					
 			};
 		};
 	};
@@ -265,9 +260,9 @@ class CA_ZeusUI_Units
 		{
 			unitName = "Varsuk Platoon"
 			groups[] = { 				// You can have a unit with only groups and no units or vehicle or reinforcements
-				"T-100 Varsuk",
-				"T-100 Varsuk",
-				"T-100 Varsuk"
+				"T100_Varsuk",
+				"T100_Varsuk",
+				"T100_Varsuk"
 			};
 		};
 
