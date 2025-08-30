@@ -68,9 +68,52 @@ class CA_ZeusUI_Units
 			reinforcements[] = {"ftl", "ar", "aar", "lat", "rif", "mk"}; // If you want the vehicle and reinforcements to spawn, you must have units[]
 			groups[] = {
 				{"co", "med", "fac"}, 				// Groups can be defined "in-line" the same way units are.
-				"BLUFOR Fireteam 4x", 				// You can reference units defined elsewhere by their unitName NOT their class name (definition order does not matter).
-				"IFV-6C Panther + Squad 6x",		// You can even reference units in other categories (including other sides!).
-				"M2A4 Slammer UP" 					// Names should be unique, but it will always pick a unit from the same category first.
+													// You cannot reference other units in this in-line definition
+				"Fireteam_4x", 						// You can reference units defined elsewhere by their unitName NOT their class name (definition order does not matter).
+				"BLUFOR_Vehicles.IFV6C_Panther_Reinforcements",		// You can even reference units in other categories (including other sides!).
+				"BLUFOR_Vehicles.m2a4_slammer_UP" 					// Names should be unique, but it will always pick a unit from the same category first.
+			};
+		};
+
+		class BrokenMechPlatoon
+		{
+			unitName = "Broken mech platoon";
+			vehicle = "B_APC_Wheeled_01_cannon_F"; 	// Vehicle, units, and reinforcements work side by side with groups.
+			units[] = {"crew", "crew", "crew"}; 	// These will be spawned separately and alongside the groups.
+			reinforcements[] = {"ftl", "ar", "aar", "lat", "rif", "mk"}; // If you want the vehicle and reinforcements to spawn, you must have units[]
+			groups[] = {
+				{"co", "med", "fac"}, 				// Groups can be defined "in-line" the same way units are.
+													// You cannot reference other units in this in-line definition
+				"Fireteam_4x", 						// You can reference units defined elsewhere by their unitName NOT their class name (definition order does not matter).
+				"IFV6C_Panther_Reinforcements",		// You can even reference units in other categories (including other sides!).
+				"BLUFOR_Vehicles.M2A4_Slammer_UP" 					// Names should be unique, but it will always pick a unit from the same category first.
+			};
+		};
+
+		class LoopingPlatoon
+		{
+			unitName = "Looping platoon";
+			units[] = {"co", "med"};
+			groups[] = {
+				"LoopingPlatoon2";
+			};
+		};
+
+		class LoopingPlatoon2
+		{
+			unitName = "Looping platoon 2";
+			units[] = {"fac"};
+			groups[] = {
+				"LoopingPlatoon3";
+			};
+		};
+
+		class LoopingPlatoon3
+		{
+			unitName = "Looping platoon 3";
+			units[] = {"mk"};
+			groups[] = {
+				"LoopingPlatoon";
 			};
 		};
 	};

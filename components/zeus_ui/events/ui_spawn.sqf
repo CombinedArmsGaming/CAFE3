@@ -16,10 +16,12 @@ case "ui_spawn": {
 			// Fetch the selected category namespace
 			private _allCategoriesNamespace = missionNamespace getVariable [MACRO_VARNAME_NAMESPACE_CATEGORIES, locationNull];
 			private _allCategoriesVars = _allCategoriesNamespace getVariable [MACRO_VARNAME_NAMESPACE_ALLVARIABLES, []];
+			private _allCategoryClassNames = _allCategoriesNamespace getVariable [MACRO_VARNAME_NAMESPACE_ALLCLASSNAMES, []];
 			private _categoryNamespace = _allCategoriesNamespace getVariable [_allCategoriesVars select _categoryIndex, locationNull];
 
 			// Fetch the selected unit namespace
 			private _categoryVars = _categoryNamespace getVariable [MACRO_VARNAME_NAMESPACE_ALLVARIABLES, []];
+			private _categoryClassNames = _categoryNamespace getVariable [MACRO_VARNAME_NAMESPACE_ALLCLASSNAMES, []];
 			private _unitNamespace = _categoryNamespace getVariable [_categoryVars select _unitIndex, locationNull];
 
 			// Fetch the gear and side
@@ -113,7 +115,7 @@ case "ui_spawn": {
 					if (!(_groups isEqualTo [])) then {
 						{
 							// If this group is an array, then it is a list of units to be spawned
-							if (typeName _x == "ARRAY") then {
+							if (typeName _x isEqualTo "ARRAY") then {
 								// Ignore vehicle and reinforcements. Those should be spawned via regular units, not via groups.
 								[_x, _pos, _gear, _side, "", _enableAdvancedAI, _guerrillaAI, _suppressiveAI, [], _dir] remoteExec ["f_fnc_server_spawnGroup", 2, false];
 								// Shift the spawn position by the spawn offset distance for each group
@@ -121,55 +123,84 @@ case "ui_spawn": {
 								_unitsSpawned = _unitsSpawned + 1;
 							// Otherwise, it is the name of another unit
 							} else {
-								// Get the name of this unit
-								private _unitName = _categoryVars select _unitIndex;
+								// Get the class name of the parent unit
+								private _unitClassName = _unitNamespace getVariable [MACRO_VARNAME_CLASS_NAME, ""];
 
-								// Save the name of the subunit to be spawned
-								private _subUnitName = _x;
+								// Returns an array of [[[side, index]], [[category, index]], [[unit, index]]], if they are defined in the search term
+								private _searchClassNames = (toLower _x) regexFind ["[a-z0-9_]+"];
 
-								// Find the index of that subunit
-								_subUnitIndex = _categoryVars findIf {_x == _subUnitName};
-								// Assume the sub unit has the same category
-								private _subUnitCategoryIndex = _categoryIndex;
-
-								// Check if we failed to find the subunit in the same category as the parent unit
-								if (_subUnitIndex == -1) then {
-									// Search all categories for the unit name
-									{
-										// Get the category namespace and then variables for the searched category
-										_subUnitCategoryNamespace = _allCategoriesNamespace getVariable [_x, locationNull];
-										_subUnitCategoryVars = _subUnitCategoryNamespace getVariable [MACRO_VARNAME_NAMESPACE_ALLVARIABLES, []];
-
-										// Search for the desired unit name
-										_subUnitIndex = _subUnitCategoryVars findIf {_x == _subUnitName};
-
-										// If the unit is found, note down the category index and stop searching.
-										if (_subUnitIndex != -1) then {
-											_subUnitCategoryIndex = _forEachIndex;
-											break;
-										};
-									} forEach _allCategoriesVars;
+								if (count _searchClassNames == 0) then {
+									_str = format ["[ZeusUI] ERROR: Could not find any class names in string %1", toLower _x];
+									systemChat _str;
+									diag_log _str;
+									continue;
 								};
 
-								// Check if we still haven't found the unit
-								// This means it doesn't exist in any category
+								DEBUG_FORMAT1_LOG("[ZeusUI] Regex find found class names %1", _searchClassNames);
+
+								// Each match to regexFind is returned as [string match, index]
+								private _subUnitClassName = ((_searchClassNames select -1) select 0) select 0;
+
+								private _subUnitCategoryClassName = "";
+								if (count _searchClassNames > 1) then {
+									private _foundCategory = (_searchClassNames select -2) select 0;
+									_subUnitCategoryClassName = _foundCategory select 0;
+									if ((_foundCategory select 1) > 0) then {
+										private _str = format ["[ZeusUI] WARNING: Ignoring extra specifier before category %1 in spawning for %2", (_foundCategory select 0), toLower _x];
+										systemChat _str;
+										diag_log _str;
+									};
+								} else {
+									_subUnitCategoryClassName = _categoryNamespace getVariable [MACRO_VARNAME_CLASS_NAME, ""];
+								};
+
+								DEBUG_FORMAT3_LOG("[ZeusUI] Spawning subunit with category %1, class name %2, parent %3", _subUnitCategoryClassName, _subUnitClassName, _unitClassName);
+
+								private _subUnitCategoryIndex = -1;
+								private _subUnitIndex = -1;
+								if (_subUnitCategoryClassName isNotEqualTo "") then {
+									// Selected a specific category
+									_subUnitCategoryIndex = _allCategoryClassNames findIf {_x isEqualTo _subUnitCategoryClassName};
+
+									if (_subUnitCategoryIndex == -1) then {
+										private _str = format ["[ZeusUI] ERROR: Could not find category with class name %1 when spawning %2 (child of %3)", _subUnitCategoryClassName, toLower _x, _unitClassName];
+										systemChat _str;
+										diag_log _str;
+										continue;
+									};
+
+									// Get the namespace and then all class names for the desired category
+									private _subUnitCategoryNamespace = _allCategoriesNamespace getVariable [_allCategoriesVars select _subUnitCategoryIndex, locationNull];
+									private _subUnitCategoryAllClassNames = _subUnitCategoryNamespace getVariable [MACRO_VARNAME_NAMESPACE_ALLCLASSNAMES, []];
+
+									_subUnitIndex = _subUnitCategoryAllClassNames findIf {_x isEqualTo _subUnitClassName};
+
+									DEBUG_FORMAT2_LOG("[ZeusUI] Got new subunit category index of %1, unit index of %2", _subUnitCategoryIndex, _subUnitIndex);
+								} else {
+									// Did not specify category, so assume same as parent unit
+									_subUnitCategoryIndex = _categoryIndex;
+									_subUnitIndex = _categoryClassNames findIf {_x isEqualTo _subUnitClassName};
+								};
+
+								// Check if we haven't found the unit
 								if (_subUnitIndex == -1) then {
-									private _str = format ["[ZeusUI] ERROR: Could not find unit with name %1 for spawning.", _unitName];
+									private _str = format ["[ZeusUI] ERROR: Could not find unit %1 in category %2 (child of %3)", _subUnitClassName, _subUnitCategoryClassName, _unitClassName];
 									systemChat _str;
 									hint _str;
 									diag_log _str;
+									continue;
 								};
 
 								// Check the spawn history queue to see if a parent of this unit is the same unit
-								if ((_spawnHistoryQueue findIf {_x == _unitName}) != -1) then {
-									private _str = format ["[ZeusUI] ERROR: Infinite recursion detected in spawning unit %1.", _unitName];
+								if ((_spawnHistoryQueue findIf {_x isEqualTo _unitClassName}) != -1) then {
+									private _str = format ["[ZeusUI] ERROR: Infinite recursion detected in spawning unit %1 (child of %2).", _subUnitClassName, _unitClassName];
 									systemChat _str;
 									hint _str;
 									diag_log _str;
 								// If it wouldn't cause infinite recursion, do the spawning
 								} else {
 									// Add this unit to the spawn history
-									_spawnHistoryQueue pushBack _unitName;
+									_spawnHistoryQueue pushBack _unitClassName;
 									
 									// Recursively call to spawn anything (more groups, vehicles, etc.)
 									[_subUnitCategoryIndex, _subUnitIndex, _presetIndex, _unitsSpawned, _spawnHistoryQueue] call _spawnUnit;

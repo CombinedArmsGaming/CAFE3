@@ -146,6 +146,9 @@
 	#define MACRO_VARNAME_NAMESPACE_PRESETS                                 "ca_zeusUI_presets"
 	#define MACRO_VARNAME_NAMESPACE_ALLVARIABLES                            "allVariables"
 
+	#define MACRO_VARNAME_CLASS_NAME										"className"
+	#define MACRO_VARNAME_NAMESPACE_ALLCLASSNAMES							"allClassNames"
+
 	#define MACRO_VARNAME_CATEGORY_GEAR                                     "gear"
 	#define MACRO_VARNAME_CATEGORY_SIDE                                     "side"
 
