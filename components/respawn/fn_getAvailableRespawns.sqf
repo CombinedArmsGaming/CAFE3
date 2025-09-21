@@ -1,5 +1,5 @@
 // get all spawn positions available to the given target (OBJECT, GROUP, SIDE or NAMESPACE)
-// gotchas: doesn't support "leading side" or vehicles
+// gotchas: doesn't support "leading side" or respawnable vehicles
 
 params ["_target"];
 
@@ -7,12 +7,21 @@ private _fnc_logicAvailableToTarget =
 {
 	params ["_logic", "_target"];
 
-	private _sideId = _logic getVariable ["side", -1];
-	private _typeId = _logic getVariable ["type", -1];
+	private _respawnLocations = (_logic getvariable "respawn");
 
-	if (_typeId > 0) exitWith { false };
+	if (isNil "_respawnLocations") exitWith { false }; // Respawn point disabled.
 
-	if (_target isEqualTypeAny [objNull, grpNull]) then
+	private _sideId = parseNumber (_logic getVariable ["side", "-1"]); // Id < 0 = "leading side".  We are interpreting as "any side" instead.
+	private _typeId = parseNumber (_logic getVariable ["type", "-1"]);
+
+	if (_typeId > 0) exitWith { false }; // Type is not "Infantry respawn".
+
+	if (_target isKindOf "CAManBase") then
+	{
+		_target = group _target;
+	};
+
+	if (_target isEqualType grpNull) then
 	{
 		_target = side _target;
 	};
@@ -29,35 +38,27 @@ private _fnc_markerAvailableToTarget =
 {
 	params ["_markerName", "_target"];
 
-	if (_target isEqualTypeAny [objNull, grpNull]) then
+	if (_target isKindOf "CAManBase") then
+	{
+		_target = group _target;
+	};
+
+	if (_target isEqualType grpNull) then
 	{
 		_target = side _target;
 	};
 
 	if (_target isEqualType sideEmpty) exitWith
 	{
-		private _sideString = ["east", "west", "guer", "civ"] select (_target call bis_fnc_sideID)
-		(_markerName find ("respawn_" + sideString) >= 0)
+		private _sideString = ["east", "west", "guer", "civ"] select (_target call bis_fnc_sideID);
+		(_markerName find ("respawn_" + _sideString) >= 0)
 	};
 };
 
 private _candidateMarkers = allMapMarkers; // Don't pre-filter, extra string searches for no reason.
-
 private _availableMarkers = _candidateMarkers select {[_x, _target] call _fnc_markerAvailableToTarget};
 
-switch (typename _target) do {
-	case (typename objnull): {
-		_objectPositions = if (isnull _target) then {_default} else {_target getvariable [_varName,_default]};
-		_groupPositions = if (isnull group _target) then {_default} else {(group _target) getvariable [_varName,_default]};
-		_sidePositions = missionnamespace getvariable [_varName + str (_target call bis_fnc_objectSide),_default];
-	};
-	case (typename grpnull): {
-		_groupPositions = if (isnull _target) then {_default} else {(_target) getvariable [_varName,_default]};
-		_sidePositions = missionnamespace getvariable [_varName + str (_target call bis_fnc_objectSide),_default];
-	};
-	case (typename sideunknown): {
-		_sidePositions = missionnamespace getvariable [_varName + str (_target),_default];
-	};
-	case (typename missionnamespace): {
-	};
-};
+private _candidateLogics = "ModuleRespawnPosition_F" allObjects 1; // BUB 2025-09-21 TODO :: cache this list with staleness timer
+private _availableLogics = _candidateLogics select {[_x, _target] call _fnc_logicAvailableToTarget};
+
+(_availableMarkers + _availableLogics)
