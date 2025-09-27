@@ -371,15 +371,17 @@ class CA_ZeusUI_Units
 			units[] = {"rif", "mk"};
 		};
 
-		class Platoon 
+		class MechanizedPlatoon
 		{
-			unitName = "INDFOR Platoon";
+			unitName = "INDFOR Mechanized Platoon";
+			vehicle = "I_APC_Wheeled_03_cannon_F"; 	// The vehicle, units, and reinforcements will be spawned alongside the groups[]
+			units[] = {"crew", "crew", "crew"}; 	
+			reinforcements[] = {"ftl", "ar", "aar", "lat", "rif", "mk"};
 			groups[] = {
-				{"sl", "med", "mk"},
-				{"ftl", "ar", "aar", "lat", "rif", "cls"},
-				{"ftl", "ar", "aar", "lat", "rif", "cls"},
-				{"ftl", "ar", "aar", "lat", "rif", "cls"},
-				{"ftl", "mmg", "ammg"}
+				{"co", "med", "fac"}, 								// Groups can be defined "in-line" the same way units are. You cannot reference other units in this in-line definition
+				"INDFOR_Infantry.Fireteam_4x", 						// You can reference units defined in the same category by their class name, or by Category_Class.Unit_Class, e.g. OPFOR_Infantry.Fireteam_4x
+				"INDFOR_Vehicles.FV720_Mora_Reinforcements",		// You can reference units in other categories by Category_Class.Unit_Class
+				"INDFOR_Vehicles.MBT52_Kuma" 					
 			};
 		};
 	};
