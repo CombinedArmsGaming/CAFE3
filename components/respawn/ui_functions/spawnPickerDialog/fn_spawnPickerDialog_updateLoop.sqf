@@ -70,7 +70,6 @@ if (_spawnsChanged) then {
     private _spawnMarkers = missionNamespace getVariable ["f_arr_spawnPickerDialog_spawnMarkers", []];
     {
         deleteMarkerLocal _x;
-        systemChat format ["Deleted marker %1", _x];
     } forEach _spawnMarkers;
     _spawnMarkers = [];
 
@@ -96,6 +95,7 @@ if (_spawnsChanged) then {
     _spawnList lbSortBy ["TEXT", false, false];
 
     private _selectedSpawn = missionNamespace getVariable ["f_var_spawnPickerDialog_selectedSpawn", objNull];
+    private _selectedSpawnChanged = false;
     // Preferably, select the same spawn as was selected previously
     private _selectedSpawnIdx = (_spawnListEntries findIf {_x isEqualTo (_oldSpawnListEntries # _oldSelectedSpawnIdx)});
     private _selectedListIdx = -1;
@@ -103,6 +103,7 @@ if (_spawnsChanged) then {
     if (_selectedSpawnIdx == -1) then {
         _selectedListIdx = _oldSelectedListIdx min ((count _spawnListEntries) - 1);
         _selectedSpawnIdx = _spawnList lbValue _selectedListidx;
+        _selectedSpawnChanged = true;
         DEBUG_FORMAT2_LOG("[RESPAWN] Could not find same spawn. Using selected list index %1, which is spawn index %2", _selectedListIdx, _selectedSpawnIdx);
     } else {
         // Get the list index that corresponds to the selected spawn index
@@ -115,17 +116,21 @@ if (_spawnsChanged) then {
     // Mark all respawn points
     {
         createMarkerLocal [_x, _spawnLocations # _forEachIndex];
-        _x setMarkerTypeLocal "flag_Denmark"; // respawn_inf
+        _x setMarkerTypeLocal "respawn_inf"; // respawn_inf
     } forEach _spawnMarkers;
+
+    // Embiggen the selected respawn point
+    _spawnMarkers # _selectedSpawnIdx setMarkerSizeLocal [1.5, 1.5];
 
     // Center the map over the selected respawn point
     // Needs to be done here instead of just in onLBSelChanged event handler, presumably because the dialog is not done loading.
-    private _mapCtrl = _display displayCtrl IDC_RESPAWN_MAP;
-    _mapCtrl ctrlMapAnimAdd [1, 0.4, _spawnLocations # (_selectedSpawnIdx max 0)];
-    ctrlMapAnimCommit(_mapCtrl);
+    if (_selectedSpawnChanged) then {
+        DEBUG_PRINT_LOG("[RESPAWN] Scrolling map to new selected spawn");
+        private _mapCtrl = _display displayCtrl IDC_RESPAWN_MAP;
+        _mapCtrl ctrlMapAnimAdd [1, 0.4, _spawnLocations # (_selectedSpawnIdx max 0)];
+        ctrlMapAnimCommit(_mapCtrl);
+    };
     
-    // Reset selectedSpawnIdx so that event handler doesn't try to deselect an old selection
-    missionNamespace setVariable ["f_var_spawnPickerDialog_selectedSpawnIdx", -1];
     _spawnList lbSetCurSel (_selectedListIdx max 0);
 
     private _ignoreAlive = missionNamespace getVariable ["f_var_spawnPickerDialog_ignoreAlive", false];

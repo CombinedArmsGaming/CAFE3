@@ -14,6 +14,10 @@ if (count _spawnLocations != count _spawnMarkers) then {
 
 private _selectedListIdx = _lbCurSel;
 private _selectedSpawnIdx = _spawnList lbValue _selectedListIdx;
+if (_selectedSpawnIdx == _oldSelectedSpawnIdx) exitWith {
+    DEBUG_PRINT_LOG("[RESPAWN] LBSelChanged fired but the selected spawn did not change. Not doing anything.");
+};
+
 private _spawns = missionNamespace getVariable ["f_arr_spawnPickerDialog_spawnListEntries", []];
 
 if (count _spawns <= 0) exitWith 
@@ -24,12 +28,8 @@ if (count _spawns <= 0) exitWith
 private _spawn = _spawns param [(_selectedSpawnIdx max 0), objNull];
 
 // Deselect the old marker
-if (_oldSelectedSpawnIdx > -1) then {
-    if (_oldSelectedSpawnIdx < count _spawnMarkers) then {
-        _spawnMarkers # _oldSelectedSpawnIdx setMarkerSizeLocal [1, 1];
-    } else {
-        systemChat format ["Attempted to deselect marker with index %1, but markers array only has length %2", _oldSelectedSpawnIdx, count _spawnMarkers];
-    };
+if ((_oldSelectedSpawnIdx > -1) and (_oldSelectedSpawnIdx < count _spawnMarkers)) then {
+    _spawnMarkers # _oldSelectedSpawnIdx setMarkerSizeLocal [1, 1];
 };
 
 // Select the new marker
