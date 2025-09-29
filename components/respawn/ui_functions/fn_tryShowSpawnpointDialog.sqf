@@ -8,4 +8,4 @@ private _widgetCtrlGroup = uiNamespace getVariable ["f_downtimeWidget_ctrlGroup"
 
 if ((isNull _widgetCtrlGroup) or {!ctrlShown _widgetCtrlGroup}) exitWith {};
 
-createDialog "CAFE_SpawnPicker_Dialog";
+createDialog ["CAFE_SpawnPicker_Dialog", true];

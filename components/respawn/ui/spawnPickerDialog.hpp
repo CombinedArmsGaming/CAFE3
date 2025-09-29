@@ -360,6 +360,8 @@ class CAFE_SpawnPicker_Dialog
 			h = readyButtonHeight * GRID_H;
 			text = "READY";
 			onButtonClick = "closeDialog 1";
+			colorBackground[] = {LOCATION_PICKER_COLOR};
+			colorBackgroundActive[] = {0, 0, 0, 1};
 		}
 	};
 
