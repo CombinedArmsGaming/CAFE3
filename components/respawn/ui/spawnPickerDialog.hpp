@@ -32,6 +32,9 @@ import RscMapControlEmpty;
 #define readyButtonWidth 9.5
 #define readyButtonHeight 2
 
+#define cancelButtonWidth 4
+#define cancelButtonHeight 1.5
+
 #define GUI_GRID_WIDTH 40
 #define GUI_GRID_HEIGHT 25
 #define CENTER_X GUI_GRID_WIDTH/2
@@ -361,6 +364,19 @@ class CAFE_SpawnPicker_Dialog
 			text = "READY";
 			onButtonClick = "closeDialog 1";
 			colorBackground[] = {LOCATION_PICKER_COLOR};
+			colorBackgroundActive[] = {0, 0, 0, 1};
+		}
+
+		class CancelButton: CAFE_DefaultButton
+		{
+			idc = IDC_CANCEL_BUTTON;
+			x = infoBoxOutlineTopLeftX * GRID_W + GRID_X;
+			y = (readyButtonY + ((readyButtonHeight - cancelButtonHeight) / 2)) * GRID_H + GRID_Y;
+			w = cancelButtonWidth * GRID_W;
+			h = cancelButtonHeight * GRID_H;
+			text = "CANCEL";
+			onButtonClick = "closeDialog 3";
+			colorBackground[] = {0, 0, 0, 0.25};
 			colorBackgroundActive[] = {0, 0, 0, 1};
 		}
 	};
