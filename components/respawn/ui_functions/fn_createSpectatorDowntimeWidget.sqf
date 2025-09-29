@@ -21,3 +21,5 @@ uiNamespace setVariable ["f_downtimeWidget_chooseSpawnButtonText", _display disp
 
 
 [] call f_fnc_spectatorDowntimeWidget_updateLoop;
+
+[] call f_fnc_tryShowSpawnpointDialog;
