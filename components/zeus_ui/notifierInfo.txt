@@ -1,0 +1,18 @@
+This file explains the system for the Zeus notifier.
+
+The server maintains a public hashmap for every list in the notifier.
+The hashmap is keyed by string names of lists, defined as NOTIFIER_LIST_* macros in notifier_macros.hpp.
+The hashmap values are arrays of player names that are currently in the respective list.
+
+Players are added to lists on their clients volition. 
+This distributes any required processing power and allows events to be raised when the relevant action is taken rather than requiring continuous monitoring by the server.
+When a client wishes to be added to a list, it raises a CBA server event named NOTIFIER_CLIENT_NEW_NOTIF_EVENT.
+It passes parameters in the form [string list name, string player name, bool removeFromList].
+	list name should be defined in notifier_macros.hpp
+	removeFromList should be set to true if the client is requesting to be removed from the list, and false otherwise
+
+The server's event handler is created in .\init_component.sqf.
+When the server handles an event, it updates its hashmap and then raises MACRO_VARNAME_SERVER_NOTIF_EVENT events on every Zeus machine.
+Zeus machines then update their UI with the new hashmap data. 
+The Zeus event handler is also created in .\init_component.sqf.
+Zeus machines also get the hashmap data every time the Zeus UI is opened.

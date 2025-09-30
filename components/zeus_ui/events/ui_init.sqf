@@ -6,6 +6,7 @@ case "ui_init": {
 	// Determine which UI to initialise
 	// 0: Main UI
 	// 1: Presets UI
+	// 2: Notifier UI
 	private _menuID = _args param [0, MACRO_VARNAME_UI_ID_MAIN];
 
 	// Create a function to simplify creating controls
@@ -933,5 +934,80 @@ case "ui_init": {
 				_zeusUI_presetsCtrlGrp ctrlCommit 0;
 			};
 		};
-	};
+
+
+
+		// Notifier UI
+		case MACRO_VARNAME_UI_ID_NOTIFIER: {
+			// Create the controls
+				// Fetch the last main control group position from the profile namespace
+				(profileNamespace getVariable [MACRO_VARNAME_UI_POS_NOTIFIERCTRLGRP, [
+					safeZoneX + safeZoneW * 0.73,
+					safeZoneY + safeZoneH * (1 - MACRO_POS_MAIN_HEIGHT - 0.01)
+				]]) params ["_posX", "_posY"];
+
+				// Main Control Group
+				_zeusUI_notifierCtrlGrp = [
+					"ControlsGroup",
+					MACRO_IDC_NOTIFIER_CTRLGRP,
+					_posX,
+					_posY,
+					safeZoneW * MACRO_POS_MAIN_WIDTH,
+					safeZoneH * MACRO_POS_MAIN_HEIGHT
+				] call _createCtrl;
+
+				uiNamespace setVariable [MACRO_VARNAME_UI_NOTIFIERCTRLGRP, _zeusUI_notifierCtrlGrp];
+
+				// Dragging frame
+				private _ctrlDraggingFrame = [
+					"Frame",
+					MACRO_IDC_NOTIFIER_DRAGGING_FRAME,
+					0,
+					0,
+					safeZoneW * MACRO_POS_MAIN_WIDTH,
+					safeZoneH * MACRO_POS_MAIN_GAP_DRAGGING_Y,
+					_zeusUI_notifierCtrlGrp,
+					SQUARE(MACRO_COLOUR_BACKGROUND)
+				] call _createCtrl;
+				_ctrlDraggingFrame ctrlAddEventHandler ["MouseButtonDown", {["ui_dragging_start", _this] call f_fnc_zeusUI}];
+
+				// Background
+				[
+					"Box",
+					-1,
+					0,
+					0,
+					safeZoneW * MACRO_POS_MAIN_WIDTH,
+					safeZoneH * MACRO_POS_MAIN_HEIGHT,
+					_zeusUI_notifierCtrlGrp,
+					SQUARE(MACRO_COLOUR_BACKGROUND)
+				] call _createCtrl;
+
+				// Background Outline
+				[
+					"Outline",
+					-1,
+					0,
+					0,
+					safeZoneW * MACRO_POS_MAIN_WIDTH,
+					safeZoneH * MACRO_POS_MAIN_HEIGHT,
+					_zeusUI_notifierCtrlGrp,
+					SQUARE(MACRO_COLOUR_WHITE_OPAQUE)
+				] call _createCtrl;
+
+				// Categories Text
+				[
+					"Text",
+					-1,
+					safeZoneW * MACRO_POS_GAP_X,
+					safeZoneH * (MACRO_POS_MAIN_GAP_DRAGGING_Y + MACRO_POS_GAP_Y),
+					safeZoneW * (MACRO_POS_MAIN_WIDTH - MACRO_POS_GAP_X * 2),
+					safeZoneH * MACRO_POS_TEXT_HEIGHT,
+					_zeusUI_notifierCtrlGrp,
+					"Select a category:"
+				] call _createCtrl;
+
+				["ui_notifier_refresh"] call f_fnc_zeusUI;
+		};
+	}
 };

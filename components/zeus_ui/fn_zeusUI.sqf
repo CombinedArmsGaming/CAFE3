@@ -11,6 +11,7 @@
 -------------------------------------------------------------------------------------------------------------------- */
 
 #include "config\macros.hpp"
+#include "macros.hpp"
 
 // Fetch our params
 params [
@@ -46,6 +47,7 @@ switch (_event) do {
 	#include "events\ui_dragging.sqf"
 	#include "events\ui_dragging_stop.sqf"
 	#include "events\ui_init.sqf"
+	#include "events\ui_notifier_refresh.sqf"
 	#include "events\ui_select_category.sqf"
 	#include "events\ui_select_preset.sqf"
 	#include "events\ui_select_unit.sqf"
