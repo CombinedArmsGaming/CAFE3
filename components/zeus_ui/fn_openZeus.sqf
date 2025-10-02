@@ -28,8 +28,9 @@ if (!cafe_zeusUI_isInitialised) then {
 
 	[
 		MACRO_VARNAME_SERVER_NOTIF_EVENT,
-		{["ui_notifier_refresh"] call f_fnc_zeusUI}
-	] call CBA_fnc_addEventHandler;
+		// Pass the changed list to the refresh function
+		{["ui_notifier_refresh", _this] call f_fnc_zeusUI}
+	] call CBA_fnc_addEventHandlerArgs;
 };
 
 // Godmode

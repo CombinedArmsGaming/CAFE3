@@ -13,6 +13,28 @@ It passes parameters in the form [string list name, string player name, bool rem
 
 The server's event handler is created in .\init_component.sqf.
 When the server handles an event, it updates its hashmap and then raises MACRO_VARNAME_SERVER_NOTIF_EVENT events on every Zeus machine.
+These events contain an argument which is an array containing the updated list's name.
 Zeus machines then update their UI with the new hashmap data. 
-The Zeus event handler is also created in .\init_component.sqf.
+The Zeus event handler is created in .\fn_openZeus.sqf.
 Zeus machines also get the hashmap data every time the Zeus UI is opened.
+
+
+The UI controls are organized as such:
+Overall notifier control group (IDC: MACRO_IDC_NOTIFIER_CTRLGRP, also stored in uiNamespace as MACRO_VARNAME_UI_NOTIFIERCTRLGRP)
+	Dragging frame
+	Background
+	Outline
+	Title
+	Lists control group (IDC: MACRO_IDC_NOTIFIER_LISTS_CTRLGRP)
+		List #1 control group
+			List Title
+			Collapse Button
+			List contents control group
+				List contents text control(s) (e.g. player names)
+				(possible) buttons to operate on list contents
+		List #2 control group
+		...
+
+MACRO_VARNAME_UI_LIST_CTRLGRPS: Hashmap in uiNamespace. Key: list name. Value: List control group
+MACRO_VARNAME_UI_VISIBLE_LISTS: Array in uiNamespace. Elements: [list name, # of lines of content]. Contains any lists visible in the UI, ordered as they are in the UI.
+MACRO_VARNAME_UI_NOTIFIER_LIST_CONTENTS: Array on each list control group. Elements: Controls. Contains the controls in the list contents control group.

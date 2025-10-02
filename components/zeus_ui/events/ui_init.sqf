@@ -17,7 +17,7 @@ case "ui_init": {
 
 		switch (toLower _class) do {
 			case "controlsgroup": {
-				_ctrl = _zeusUI ctrlCreate ["RscControlsGroup", _idc];
+				_ctrl = _zeusUI ctrlCreate ["RscControlsGroup", _idc, _ctrlGrp];
 				_ctrl ctrlSetPixelPrecision 2;
 			};
 			case "box": {
@@ -943,7 +943,7 @@ case "ui_init": {
 				// Fetch the last main control group position from the profile namespace
 				(profileNamespace getVariable [MACRO_VARNAME_UI_POS_NOTIFIERCTRLGRP, [
 					safeZoneX + safeZoneW * 0.73,
-					safeZoneY + safeZoneH * (1 - MACRO_POS_MAIN_HEIGHT - 0.01)
+					safeZoneY + safeZoneH * (1 - MACRO_POS_NOTIFIER_HEIGHT - 0.01)
 				]]) params ["_posX", "_posY"];
 
 				// Main Control Group
@@ -952,8 +952,8 @@ case "ui_init": {
 					MACRO_IDC_NOTIFIER_CTRLGRP,
 					_posX,
 					_posY,
-					safeZoneW * MACRO_POS_MAIN_WIDTH,
-					safeZoneH * MACRO_POS_MAIN_HEIGHT
+					safeZoneW * MACRO_POS_NOTIFIER_WIDTH,
+					safeZoneH * MACRO_POS_NOTIFIER_HEIGHT
 				] call _createCtrl;
 
 				uiNamespace setVariable [MACRO_VARNAME_UI_NOTIFIERCTRLGRP, _zeusUI_notifierCtrlGrp];
@@ -964,8 +964,8 @@ case "ui_init": {
 					MACRO_IDC_NOTIFIER_DRAGGING_FRAME,
 					0,
 					0,
-					safeZoneW * MACRO_POS_MAIN_WIDTH,
-					safeZoneH * MACRO_POS_MAIN_GAP_DRAGGING_Y,
+					safeZoneW * MACRO_POS_NOTIFIER_WIDTH,
+					safeZoneH * MACRO_POS_NOTIFIER_GAP_DRAGGING_Y,
 					_zeusUI_notifierCtrlGrp,
 					SQUARE(MACRO_COLOUR_BACKGROUND)
 				] call _createCtrl;
@@ -977,8 +977,8 @@ case "ui_init": {
 					-1,
 					0,
 					0,
-					safeZoneW * MACRO_POS_MAIN_WIDTH,
-					safeZoneH * MACRO_POS_MAIN_HEIGHT,
+					safeZoneW * MACRO_POS_NOTIFIER_WIDTH,
+					safeZoneH * MACRO_POS_NOTIFIER_HEIGHT,
 					_zeusUI_notifierCtrlGrp,
 					SQUARE(MACRO_COLOUR_BACKGROUND)
 				] call _createCtrl;
@@ -989,25 +989,72 @@ case "ui_init": {
 					-1,
 					0,
 					0,
-					safeZoneW * MACRO_POS_MAIN_WIDTH,
-					safeZoneH * MACRO_POS_MAIN_HEIGHT,
+					safeZoneW * MACRO_POS_NOTIFIER_WIDTH,
+					safeZoneH * MACRO_POS_NOTIFIER_HEIGHT,
 					_zeusUI_notifierCtrlGrp,
 					SQUARE(MACRO_COLOUR_WHITE_OPAQUE)
 				] call _createCtrl;
 
-				// Categories Text
-				[
-					"Text",
-					-1,
-					safeZoneW * MACRO_POS_GAP_X,
-					safeZoneH * (MACRO_POS_MAIN_GAP_DRAGGING_Y + MACRO_POS_GAP_Y),
-					safeZoneW * (MACRO_POS_MAIN_WIDTH - MACRO_POS_GAP_X * 2),
-					safeZoneH * MACRO_POS_TEXT_HEIGHT,
-					_zeusUI_notifierCtrlGrp,
-					"Select a category:"
-				] call _createCtrl;
+				// List UI elements
+					// Control group containing all of the lists
+					_zeusUI_notifListsCtrlGrp = [
+						"ControlsGroup",
+						MACRO_IDC_NOTIFIER_LISTS_CTRLGRP,
+						0,
+						0,
+						safeZoneW * MACRO_POS_NOTIFIER_WIDTH,
+						safeZoneH * MACRO_POS_NOTIFIER_HEIGHT,
+						_zeusUI_notifierCtrlGrp
+					] call _createCtrl;
 
-				["ui_notifier_refresh"] call f_fnc_zeusUI;
+					private _listCtrlGrps = createHashMap;
+
+					// Long time dead list
+					_zeusUI_longDeadCtrlGrp = [
+						"ControlsGroup",
+						MACRO_IDC_NOTIFIER_LONGDEAD_CTRLGRP,
+						0,
+						safeZoneH * MACRO_POS_TEXT_HEIGHT,
+						safeZoneW * MACRO_POS_NOTIFIER_WIDTH,
+						safeZoneH * MACRO_POS_NOTIFIER_HEIGHT,
+						_zeusUI_notifListsCtrlGrp
+					] call _createCtrl;
+
+					_listCtrlGrps insert [[NOTIFIER_LIST_LONG_DEAD, _zeusUI_longDeadCtrlGrp]];
+					//  MACRO_VARNAME_UI_NOTIFIER_LIST_CONTENTS contains all of the text and button controls that make up the list contents
+					_zeusUI_longDeadCtrlGrp setVariable [MACRO_VARNAME_UI_NOTIFIER_LIST_CONTENTS, []];
+					
+					// Long time dead list title
+					[
+						"Text",
+						-1,
+						safeZoneW * MACRO_POS_GAP_X,
+						0,
+						safeZoneW * MACRO_POS_NOTIFIER_WIDTH,
+						safeZoneH * MACRO_POS_TEXT_HEIGHT,
+						_zeusUI_longDeadCtrlGrp,
+						"Players dead for a long time"
+					] call _createCtrl;
+
+					// Collapse button
+					[
+						"Button",
+						-1,
+						safeZoneW * (MACRO_POS_MAIN_WIDTH - MACRO_POS_GAP_X - 0.01),
+						0,
+						safeZoneW * 0.01,
+						safeZoneH * MACRO_POS_TEXT_HEIGHT,
+						_zeusUI_longDeadCtrlGrp,
+						"C"
+					] call _createCtrl;
+			
+			// Store the list control groups hashmap
+			uiNamespace setVariable [MACRO_VARNAME_UI_LIST_CTRLGRPS, _listCtrlGrps];
+
+			// Set up the UI with all lists in case any have content
+			{
+				["ui_notifier_refresh", [_x]] call f_fnc_zeusUI;
+			} forEach NOTIFIER_ALL_LISTS;
 		};
 	}
 };

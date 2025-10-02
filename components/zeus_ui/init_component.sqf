@@ -73,7 +73,7 @@ if (isServer) then {
 					DEBUG_FORMAT1_LOG("[ZEUS_NOTIFIER] Server: Firing event on zeus clients %1", _zeuses apply {name _x});
 					[
 						MACRO_VARNAME_SERVER_NOTIF_EVENT,
-						[],
+						[_listName],
 						_zeuses
 					] call CBA_fnc_targetEvent;
 				} else {

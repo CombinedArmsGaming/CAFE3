@@ -30,6 +30,8 @@
 	// Notifier UI
 	#define MACRO_IDC_NOTIFIER_CTRLGRP										3000
 	#define MACRO_IDC_NOTIFIER_DRAGGING_FRAME								3001
+	#define MACRO_IDC_NOTIFIER_LONGDEAD_CTRLGRP								3002
+	#define MACRO_IDC_NOTIFIER_LISTS_CTRLGRP								3003
 
 	// Presets UI
 	#define MACRO_IDC_PRESETS_CTRLGRP                                       2000
@@ -85,6 +87,11 @@
 	#define MACRO_POS_PRESETS_INDENT_X                                      0.01
 	#define MACRO_POS_PRESETS_INDENT_SLIDER_X                               0.1
 
+	// Notifier UI
+	#define MACRO_POS_NOTIFIER_WIDTH										0.12
+	#define MACRO_POS_NOTIFIER_HEIGHT										0.22
+	#define MACRO_POS_NOTIFIER_GAP_DRAGGING_Y								0.02
+
 	// Other
 	#define MACRO_POS_GAP_X                                                 0.002
 	#define MACRO_POS_GAP_Y                                                 0.004
@@ -135,10 +142,14 @@
 	#define MACRO_VARNAME_UI_NOTIFIERCTRLGRP								"ca_zeusUI_notifierCtrlGrp"
 	#define MACRO_VARNAME_UI_NOTIFIER_ISSHOWN								"ca_zeusUI_notifier_isShown"
 	#define MACRO_VARNAME_UI_POS_NOTIFIERCTRLGRP							"ca_zeusUI_pos_notifierCtrlGrp"
+	#define MACRO_VARNAME_UI_VISIBLE_LISTS									"ca_zeusUI_visibleLists"
+	#define MACRO_VARNAME_UI_LIST_CTRLGRPS									"ca_zeusUI_listCtrlGrps"
+	#define MACRO_VARNAME_UI_NOTIFIER_LIST_CONTENTS							"listContents"
 
 	// Notifier
 	#define MACRO_VARNAME_NOTIFIER_MAP										"ca_zeusUI_notifier_map"
 	#define MACRO_VARNAME_SERVER_NOTIF_EVENT								"ca_zeusUI_serverNotifEvent"
+	#define MACRO_VARNAME_COLLAPSED_LISTS									"ca_zeusUI_collapsedLists"
 
 	// Custom Preset Settings
 	#define MACRO_VARNAME_PRESET_GAI                                        "ca_zeusUI_preset_gAI"
