@@ -1083,17 +1083,6 @@ case "ui_init": {
 						} forEach _collapsedLists;
 
 					uiNamespace setVariable [MACRO_VARNAME_UI_NOTIFIER_TREE, _listTree];
-
-
-			// Set up the UI with all lists in case any have content
-			// private _allListNames = missionNamespace getVariable MACRO_VARNAME_ALL_LIST_NAMES;
-			// if (isNil "_allListNames") exitWith {
-			// 	DEBUG_PRINT_LOG("[ZEUS_NOTIFIER] Client: Could not find allListNames!!");
-			// };
-
-			// {
-			// 	["ui_notifier_refresh", [_x]] call f_fnc_zeusUI;
-			// } forEach _allListNames;
 		};
 	}
 };

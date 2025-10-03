@@ -30,7 +30,6 @@
 	// Notifier UI
 	#define MACRO_IDC_NOTIFIER_CTRLGRP										3000
 	#define MACRO_IDC_NOTIFIER_DRAGGING_FRAME								3001
-	#define MACRO_IDC_NOTIFIER_LISTS_CTRLGRP								3003
 	#define MACRO_IDC_NOTIFIER_TREE											3004
 
 	// Presets UI
@@ -140,12 +139,8 @@
 	#define MACRO_VARNAME_UI_SHOULDHIDE_KEYDOWN                             "shouldHide_keyDown"
 
 	#define MACRO_VARNAME_UI_NOTIFIERCTRLGRP								"ca_zeusUI_notifierCtrlGrp"
-	#define MACRO_VARNAME_UI_NOTIFIER_ISSHOWN								"ca_zeusUI_notifier_isShown"
 	#define MACRO_VARNAME_UI_POS_NOTIFIERCTRLGRP							"ca_zeusUI_pos_notifierCtrlGrp"
-	#define MACRO_VARNAME_UI_VISIBLE_LISTS									"ca_zeusUI_visibleLists"
-	#define MACRO_VARNAME_UI_LIST_CTRLGRPS									"ca_zeusUI_listCtrlGrps"
 	#define MACRO_VARNAME_UI_NOTIFIER_TREE									"ca_zeusUI_notifierTree"
-	#define MACRO_VARNAME_UI_NOTIFIER_LIST_CONTENTS							"listContents"
 
 
 	// Notifier

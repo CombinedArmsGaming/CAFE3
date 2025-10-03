@@ -23,7 +23,6 @@ case "ui_notifier_refresh": {
 		DEBUG_PRINT_LOG("[ZEUS_NOTIFIER] Client: Event was raised but with no changed list argument.");
 	};
 
-	systemChat format ["map: %1", _notifHashMap];
 	DEBUG_FORMAT2_LOG("[ZEUS_NOTIFIER] Client: List %1 changed. Updated hashmap is: %2", _changedList, _notifHashMap);
 
 	private _changedListContents = _notifHashMap get _changedList;
@@ -46,8 +45,6 @@ case "ui_notifier_refresh": {
 			DEBUG_FORMAT2_LOG("[ZEUS_NOTIFIER] Found changed list %1 at index %2", _changedList, _i);
 		};
 	};
-	DEBUG_PRINT_LOG("[ZEUS_NOTIFIER] Got out");
-	DEBUG_FORMAT1_LOG("[ZEUS_NOTIFIER] _changedListTreeIndex is %1", _changedListTreeIndex);
 
 	// If the list was visible
 	if (_changedListTreeIndex > -1) then  {

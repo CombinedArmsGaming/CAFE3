@@ -1,5 +1,3 @@
-#define CLIENT_NOTIFS_ARRAY	"f_var_clientRaisedNotifsArray"
-
 #define NOTIFIER_LIST_LONG_DEAD ["f_var_notifierListLongDead", "Players dead for a long time"]
 #define NOTIFIER_LIST_BAD_SPAWN ["f_var_notifierListBadSpawn", "Players spawned badly"]
 
