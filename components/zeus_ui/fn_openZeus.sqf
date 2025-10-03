@@ -25,13 +25,6 @@ if (!cafe_zeusUI_isInitialised) then {
 	player removeCuratorEditableObjects [player, true];
 
 	[] call f_fnc_addZeusActions;
-
-	private _eventID = [
-		MACRO_VARNAME_SERVER_NOTIF_EVENT,
-		// Pass the changed list to the refresh function
-		{["ui_notifier_refresh", _this] call f_fnc_zeusUI}
-	] call CBA_fnc_addEventHandlerArgs;
-	missionNamespace setVariable ["f_var_notifierEH", _eventID];
 };
 
 // Godmode
@@ -55,6 +48,13 @@ if (player getVariable ["f_var_turnZeusInvisible", true]) then
 	// Start the custom Zeus UI
 	["ui_init"] call f_fnc_zeusUI;
 	["ui_init", MACRO_VARNAME_UI_ID_NOTIFIER] call f_fnc_zeusUI;
+
+	private _eventID = [
+		MACRO_VARNAME_SERVER_NOTIF_EVENT,
+		// Pass the changed list to the refresh function
+		{["ui_notifier_refresh", _this] call f_fnc_zeusUI}
+	] call CBA_fnc_addEventHandlerArgs;
+	missionNamespace setVariable ["f_var_notifierEH", _eventID];
 
     if (["acre_sys_radio"] call ace_common_fnc_isModLoaded) then
 	{
