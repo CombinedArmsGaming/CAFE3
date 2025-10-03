@@ -64,6 +64,17 @@ class CA_ZeusUI_ScriptedText : RscText {
 	w = 0;
 	h = 0;
 };
+class CA_ZeusUI_ScriptedTextMulti : RscText {
+	style = ST_LEFT + ST_MULTI + ST_NO_RECT;
+	lineSpacing = 1;
+	font = "RobotoCondensed";
+	sizeEx = 0.032;
+	shadow = 0;
+	x = 0;
+	y = 0;
+	w = 0;
+	h = 0;
+}
 class CA_ZeusUI_ScriptedOutline : RscBox {
 	style = ST_WITH_RECT;
 	shadow = 0;

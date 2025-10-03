@@ -1001,9 +1001,9 @@ case "ui_init": {
 						"ControlsGroup",
 						MACRO_IDC_NOTIFIER_LISTS_CTRLGRP,
 						0,
-						0,
+						safeZoneH * (MACRO_POS_TEXT_HEIGHT + MACRO_POS_GAP_Y),
 						safeZoneW * MACRO_POS_NOTIFIER_WIDTH,
-						safeZoneH * MACRO_POS_NOTIFIER_HEIGHT,
+						safeZoneH * (MACRO_POS_NOTIFIER_HEIGHT - MACRO_POS_TEXT_HEIGHT - MACRO_POS_GAP_Y),
 						_zeusUI_notifierCtrlGrp
 					] call _createCtrl;
 
@@ -1014,9 +1014,9 @@ case "ui_init": {
 						"ControlsGroup",
 						MACRO_IDC_NOTIFIER_LONGDEAD_CTRLGRP,
 						0,
-						safeZoneH * MACRO_POS_TEXT_HEIGHT,
-						safeZoneW * MACRO_POS_NOTIFIER_WIDTH,
-						safeZoneH * MACRO_POS_NOTIFIER_HEIGHT,
+						0,// safeZoneH * MACRO_POS_TEXT_HEIGHT,
+						0,// safeZoneW * MACRO_POS_NOTIFIER_WIDTH,
+						0,// safeZoneH * (MACRO_POS_NOTIFIER_HEIGHT - MACRO_POS_TEXT_HEIGHT),
 						_zeusUI_notifListsCtrlGrp
 					] call _createCtrl;
 
@@ -1030,23 +1030,43 @@ case "ui_init": {
 						-1,
 						safeZoneW * MACRO_POS_GAP_X,
 						0,
-						safeZoneW * MACRO_POS_NOTIFIER_WIDTH,
+						safeZoneW * (MACRO_POS_NOTIFIER_WIDTH - MACRO_POS_GAP_X),
 						safeZoneH * MACRO_POS_TEXT_HEIGHT,
 						_zeusUI_longDeadCtrlGrp,
 						"Players dead for a long time"
 					] call _createCtrl;
 
 					// Collapse button
-					[
+					private _collapseButton = [
 						"Button",
 						-1,
-						safeZoneW * (MACRO_POS_MAIN_WIDTH - MACRO_POS_GAP_X - 0.01),
+						safeZoneW * (MACRO_POS_NOTIFIER_WIDTH - MACRO_POS_GAP_X - 0.01),
 						0,
 						safeZoneW * 0.01,
 						safeZoneH * MACRO_POS_TEXT_HEIGHT,
 						_zeusUI_longDeadCtrlGrp,
-						"C"
+						"⌄"
 					] call _createCtrl;
+
+					_collapseButton ctrlAddEventHandler ["ButtonClick", {
+						params ["_control"];
+						private _collapsedLists = uiNamespace getVariable [MACRO_VARNAME_COLLAPSED_LISTS, []];
+						DEBUG_FORMAT1_LOG("[ZEUS_NOTIFIER] Collapse button pressed. Collapsed lists before: %1", _collapsedLists);
+						private _listIdx = _collapsedLists find NOTIFIER_LIST_LONG_DEAD;
+						if (_listIdx > -1) then {
+							// List was already collapsed, so expand it
+							_collapsedLists deleteAt _listIdx;
+							_control ctrlSetText "⌄";
+						} else {
+							// List was expanded, so collapse it
+							_collapsedLists pushBack NOTIFIER_LIST_LONG_DEAD;
+							_control ctrlSetText ">";
+						};
+						DEBUG_FORMAT1_LOG("[ZEUS_NOTIFIER] Collapsed lists after: %1", _collapsedLists);
+						uiNamespace setVariable [MACRO_VARNAME_COLLAPSED_LISTS, _collapsedLists];
+						["ui_redraw_notifier_lists", NOTIFIER_LIST_LONG_DEAD] call f_fnc_zeusUI;
+					}];
+
 			
 			// Store the list control groups hashmap
 			uiNamespace setVariable [MACRO_VARNAME_UI_LIST_CTRLGRPS, _listCtrlGrps];

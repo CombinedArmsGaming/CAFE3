@@ -73,12 +73,12 @@ case "ui_notifier_refresh": {
 			// Create a text control
 			private _namesString = "";
 			{
-				_namesString = _x + "<br/>";
+				_namesString = _x + "\n";
 			} forEach _changedListContents;
 
 			DEBUG_FORMAT1_LOG("[ZEUS_NOTIFIER] Client: Created control with text %1", _namesString);
 
-			private _ctrl = _zeusUI ctrlCreate ["CA_ZeusUI_ScriptedText", -1, _listCtrlGrp];
+			private _ctrl = _zeusUI ctrlCreate ["CA_ZeusUI_ScriptedTextMulti", -1, _listCtrlGrp];
 			_ctrl ctrlSetText _namesString;
 			_ctrl ctrlSetTextColor SQUARE(MACRO_COLOUR_WHITE_TEXT);
 			
