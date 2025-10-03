@@ -3,22 +3,33 @@
 
 if (isServer) then {
 	// Setup for zeus notifier. See notifierInfo.txt for more information.
-	// Create hash map with all empty arrays 
+
+	// Save an array of all the list names for future use
+	private _allListNames = NOTIFIER_ALL_LISTS apply {_x # 0};
+	missionNamespace setVariable [MACRO_VARNAME_ALL_LIST_NAMES, _allListNames];
+
+	// Save a hashmap for future reference of list titles
+	private _listTitleHashmap = createHashMapFromArray NOTIFIER_ALL_LISTS;
+	missionNamespace setVariable [MACRO_VARNAME_LIST_TITLE_HASHMAP, _listTitleHashmap];
+
+	// Create hash map with all empty arrays to store the lists of players
 	private _notifHashMap = createHashMap;
-	_notifHashMap insert (NOTIFIER_ALL_LISTS apply {[_x, []]});
+	_notifHashMap insert (_allListNames apply {[_x, []]});
 	missionNamespace setVariable [MACRO_VARNAME_NOTIFIER_MAP, _notifHashMap, true];
 
 	// Create event handler for new client notifications
 	[
 		NOTIFIER_CLIENT_NEW_NOTIF_EVENT,
 		{
+			_thisArgs params ["_allListNames"];
+
 			private _argsCorrect = _this params [["_listName", "", [""]], ["_playerName", "", [""]], ["_removeFromList", false, [false]]];
 			DEBUG_FORMAT3_LOG("[ZEUS_NOTIFIER] Server: Handling client event with list name %1, player name %2, removeFromList %3.", _listName, _playerName, _removeFromList);
 			if (!_argsCorrect) exitWith {
 				DEBUG_PRINT_LOG("[ZEUS_NOTIFIER] Server: Received event with badly formed args. Args should be string list name, string player name, bool removeFromList.");
 			};
 
-			if (!(_listName in NOTIFIER_ALL_LISTS)) exitWith {
+			if (!(_listName in _allListNames)) exitWith {
 				private _str = format ["[ZEUS_NOTIFIER] Server: Received event with unknown list name: %1. Ignoring.", _listName];
 				DEBUG_PRINT_CHAT(_str);
 				diag_log(_str);
@@ -80,12 +91,21 @@ if (isServer) then {
 					DEBUG_PRINT_LOG("[ZEUS_NOTIFIER] Server: Updated hashmap but there are no zeuses to hear about it.");
 				};
 			}
-		}
+		},
+		[_allListNames]
 	] call CBA_fnc_addEventHandlerArgs;
 };
 
 CLIENT_ONLY;
 
-DEBUG_PRINT_LOG("[Zeus] Initting Zeus components")
+DEBUG_PRINT_LOG("[Zeus] Initting Zeus components");
+
+// Save an array of all the list names for future use
+private _allListNames = NOTIFIER_ALL_LISTS apply {_x # 0};
+missionNamespace setVariable [MACRO_VARNAME_ALL_LIST_NAMES, _allListNames];
+
+// Save a hashmap for future reference of list titles
+private _listTitleHashmap = createHashMapFromArray NOTIFIER_ALL_LISTS;
+missionNamespace setVariable [MACRO_VARNAME_LIST_TITLE_HASHMAP, _listTitleHashmap];
 
 cafe_zeusUI_isInitialised = false;

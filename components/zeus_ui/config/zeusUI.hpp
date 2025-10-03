@@ -127,3 +127,12 @@ class CA_ZeusUI_ScriptedTextBox : RscEdit {
 	w = 0;
 	h = 0;
 };
+
+class CA_ZeusUI_ScriptedTree : RscTree {
+	font = "RobotoCondensed";
+	sizeEx = 0.032;
+	shadow = 0;
+	colorSelect[] = {0, 0, 0, 0};
+	colorText[] = {1, 1, 1, 1};
+	colorSelectText[] = {1, 1, 1, 1};
+};

@@ -26,11 +26,12 @@ if (!cafe_zeusUI_isInitialised) then {
 
 	[] call f_fnc_addZeusActions;
 
-	[
+	private _eventID = [
 		MACRO_VARNAME_SERVER_NOTIF_EVENT,
 		// Pass the changed list to the refresh function
 		{["ui_notifier_refresh", _this] call f_fnc_zeusUI}
 	] call CBA_fnc_addEventHandlerArgs;
+	missionNamespace setVariable ["f_var_notifierEH", _eventID];
 };
 
 // Godmode

@@ -1,5 +1,5 @@
 case "ui_redraw_notifier_lists": {
-	_eventExists = true;
+	_eventExists = false;
 
 	// Draw the lists based on the visible lists array
 	// Position correctly based on collapsed status and lines of content

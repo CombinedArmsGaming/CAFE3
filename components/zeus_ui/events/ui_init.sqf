@@ -99,6 +99,11 @@ case "ui_init": {
 				_ctrl ctrlSetBackgroundColor SQUARE(MACRO_COLOUR_BACKGROUND);
 				_ctrl ctrlSetPixelPrecision 2;
 			};
+			case "tree": {
+				_ctrl = _zeusUI ctrlCreate ["CA_ZeusUI_ScriptedTree", _idc, _ctrlGrp];
+				_ctrl ctrlSetPixelPrecision 2;
+				_ctrl ctrlSetTextColor SQUARE(MACRO_COLOUR_WHITE_TEXT);
+			};
 		};
 
 		// If the new control is a child of a controls group, add it to its child controls list
@@ -995,11 +1000,10 @@ case "ui_init": {
 					SQUARE(MACRO_COLOUR_WHITE_OPAQUE)
 				] call _createCtrl;
 
-				// List UI elements
-					// Control group containing all of the lists
-					_zeusUI_notifListsCtrlGrp = [
-						"ControlsGroup",
-						MACRO_IDC_NOTIFIER_LISTS_CTRLGRP,
+				// List Tree
+					private _listTree = [
+						"Tree",
+						MACRO_IDC_NOTIFIER_TREE,
 						0,
 						safeZoneH * (MACRO_POS_TEXT_HEIGHT + MACRO_POS_GAP_Y),
 						safeZoneW * MACRO_POS_NOTIFIER_WIDTH,
@@ -1007,74 +1011,89 @@ case "ui_init": {
 						_zeusUI_notifierCtrlGrp
 					] call _createCtrl;
 
-					private _listCtrlGrps = createHashMap;
-
-					// Long time dead list
-					_zeusUI_longDeadCtrlGrp = [
-						"ControlsGroup",
-						MACRO_IDC_NOTIFIER_LONGDEAD_CTRLGRP,
-						0,
-						0,// safeZoneH * MACRO_POS_TEXT_HEIGHT,
-						0,// safeZoneW * MACRO_POS_NOTIFIER_WIDTH,
-						0,// safeZoneH * (MACRO_POS_NOTIFIER_HEIGHT - MACRO_POS_TEXT_HEIGHT),
-						_zeusUI_notifListsCtrlGrp
-					] call _createCtrl;
-
-					_listCtrlGrps insert [[NOTIFIER_LIST_LONG_DEAD, _zeusUI_longDeadCtrlGrp]];
-					//  MACRO_VARNAME_UI_NOTIFIER_LIST_CONTENTS contains all of the text and button controls that make up the list contents
-					_zeusUI_longDeadCtrlGrp setVariable [MACRO_VARNAME_UI_NOTIFIER_LIST_CONTENTS, []];
-					
-					// Long time dead list title
-					[
-						"Text",
-						-1,
-						safeZoneW * MACRO_POS_GAP_X,
-						0,
-						safeZoneW * (MACRO_POS_NOTIFIER_WIDTH - MACRO_POS_GAP_X),
-						safeZoneH * MACRO_POS_TEXT_HEIGHT,
-						_zeusUI_longDeadCtrlGrp,
-						"Players dead for a long time"
-					] call _createCtrl;
-
-					// Collapse button
-					private _collapseButton = [
-						"Button",
-						-1,
-						safeZoneW * (MACRO_POS_NOTIFIER_WIDTH - MACRO_POS_GAP_X - 0.01),
-						0,
-						safeZoneW * 0.01,
-						safeZoneH * MACRO_POS_TEXT_HEIGHT,
-						_zeusUI_longDeadCtrlGrp,
-						"⌄"
-					] call _createCtrl;
-
-					_collapseButton ctrlAddEventHandler ["ButtonClick", {
-						params ["_control"];
+					// Add event handlers to save which lists are collapsed between openings of the UI
+					_listTree ctrlAddEventHandler ["TreeCollapsed", {
+						params ["_tree", "_path"];
+						private _listName = _tree tvData _path;
 						private _collapsedLists = uiNamespace getVariable [MACRO_VARNAME_COLLAPSED_LISTS, []];
-						DEBUG_FORMAT1_LOG("[ZEUS_NOTIFIER] Collapse button pressed. Collapsed lists before: %1", _collapsedLists);
-						private _listIdx = _collapsedLists find NOTIFIER_LIST_LONG_DEAD;
-						if (_listIdx > -1) then {
-							// List was already collapsed, so expand it
-							_collapsedLists deleteAt _listIdx;
-							_control ctrlSetText "⌄";
-						} else {
-							// List was expanded, so collapse it
-							_collapsedLists pushBack NOTIFIER_LIST_LONG_DEAD;
-							_control ctrlSetText ">";
-						};
-						DEBUG_FORMAT1_LOG("[ZEUS_NOTIFIER] Collapsed lists after: %1", _collapsedLists);
+						_collapsedLists pushBackUnique _listName;
 						uiNamespace setVariable [MACRO_VARNAME_COLLAPSED_LISTS, _collapsedLists];
-						["ui_redraw_notifier_lists", NOTIFIER_LIST_LONG_DEAD] call f_fnc_zeusUI;
+						DEBUG_FORMAT2_LOG("[ZEUS_NOTIFIER] Collapsed list %1. Collapsed lists now: %2", _listName, _collapsedLists);
 					}];
 
-			
-			// Store the list control groups hashmap
-			uiNamespace setVariable [MACRO_VARNAME_UI_LIST_CTRLGRPS, _listCtrlGrps];
+					_listTree ctrlAddEventHandler ["TreeExpanded", {
+						params ["_tree", "_path"];
+						private _listName = _tree tvData _path;
+						private _collapsedLists = uiNamespace getVariable [MACRO_VARNAME_COLLAPSED_LISTS, []];
+						private _listIdx = _collapsedLists find _listName;
+						if (_listIdx > -1) then {
+							_collapsedLists deleteAt _listIdx;
+							DEBUG_FORMAT2_LOG("[ZEUS_NOTIFIER] Expanded list %1. Collapsed lists now: %2", _listName, _collapsedLists);
+						} else {
+							DEBUG_FORMAT2_LOG("[ZEUS_NOTIFIER] Expanded list %1 but it was not in the collapsed lists array (%2)", _listName, _collapsedLists);
+						};
+						uiNamespace setVariable [MACRO_VARNAME_COLLAPSED_LISTS, _collapsedLists];
+					}];
+
+					// Add all lists with content to the tree
+						// Get the notif hashmap
+						private _notifHashMap = missionNamespace getVariable [MACRO_VARNAME_NOTIFIER_MAP, false];
+						if (_notifHashMap isEqualTo false) exitWith {
+							private _str = "[ZEUS_NOTIFIER] Client: Notifier refresh event raised but notifier map does not exist.";
+							DEBUG_PRINT_CHAT(_str);
+							DEBUG_PRINT_LOG(_str);
+						};
+
+						// Get the list title hashmap
+						private _listTitleHashmap = missionNamespace getVariable MACRO_VARNAME_LIST_TITLE_HASHMAP;
+						if (isNil "_listTitleHashmap") exitWith {
+							DEBUG_PRINT_LOG("[ZEUS_NOTIFIER] Client: Could not find list title hashmap!");
+						};
+
+						// Add any lists with content
+						{
+							private _listName = _x;
+							private _listContents = _y;
+							// Add to the tree if there is something in the list
+							if (count _listContents > 0) then {
+								// Add the list title
+								private _listIndex = _listTree tvAdd [[], _listTitleHashmap get _listName];	
+								_listTree tvSetData [[_listIndex], _listName];
+								// Add the list contents below the title
+								{
+									_listTree tvAdd [[_listIndex], _x];
+								} forEach _listContents;
+							};
+						} forEach _notifHashMap;
+
+					tvExpandAll _listTree;
+
+					// Restore collapsed lists
+						private _collapsedLists = uiNamespace getVariable [MACRO_VARNAME_COLLAPSED_LISTS, []];
+						
+						{
+							// Search for the correct list in the tree
+							private _listName = _x;
+							for "_i" from 0 to ((_listTree tvCount []) - 1) do {
+								if ((_listTree tvData [_i]) isEqualTo _listName) then {
+									_listTree tvCollapse [_i];
+									break;
+								};
+							};
+						} forEach _collapsedLists;
+
+					uiNamespace setVariable [MACRO_VARNAME_UI_NOTIFIER_TREE, _listTree];
+
 
 			// Set up the UI with all lists in case any have content
-			{
-				["ui_notifier_refresh", [_x]] call f_fnc_zeusUI;
-			} forEach NOTIFIER_ALL_LISTS;
+			// private _allListNames = missionNamespace getVariable MACRO_VARNAME_ALL_LIST_NAMES;
+			// if (isNil "_allListNames") exitWith {
+			// 	DEBUG_PRINT_LOG("[ZEUS_NOTIFIER] Client: Could not find allListNames!!");
+			// };
+
+			// {
+			// 	["ui_notifier_refresh", [_x]] call f_fnc_zeusUI;
+			// } forEach _allListNames;
 		};
 	}
 };
