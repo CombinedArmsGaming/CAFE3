@@ -30,3 +30,6 @@ These events contain an argument which is an array containing the updated list's
 Zeus machines then update their UI with the new hashmap data. 
 The Zeus event handler is created in .\fn_openZeus.sqf.
 Zeus machines also get the hashmap data every time the Zeus UI is opened.
+
+The UI is a tree display. When a list is added to the tree, it is given the highest value on the tree.
+This value is stored in the visibleLists hashmap. The tree is sorted when it is rebuilt on the next UI opening.

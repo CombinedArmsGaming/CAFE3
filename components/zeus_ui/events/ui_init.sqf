@@ -1050,6 +1050,13 @@ case "ui_init": {
 							DEBUG_PRINT_LOG("[ZEUS_NOTIFIER] Client: Could not find list title hashmap!");
 						};
 
+						// Get the hashmap of previously visible lists (key: list name, value: position in tree, highest value on top)
+						private _visibleLists = uiNamespace getVariable [MACRO_VARNAME_VISIBLE_LISTS, createHashMap];
+						private _maxValue = -1;
+						if (count _visibleLists > 0) then {
+							_maxValue = selectMax (values _visibleLists);
+						};
+
 						// Add any lists with content
 						{
 							private _listName = _x;
@@ -1063,10 +1070,25 @@ case "ui_init": {
 								{
 									_listTree tvAdd [[_listIndex], _x];
 								} forEach _listContents;
+
+								if (_listName in _visibleLists) then {
+									// If the list was visible last time, keep the same value so it is sorted the same
+									_listTree tvSetValue [[_listIndex], _visibleLists get _listName];
+								} else {
+									// If the list was not visible last time, set its value to be higher than any other so it goes on top
+									_listTree tvSetValue [[_listIndex], _maxValue + 1];
+									// Add to visible lists
+									_visibleLists insert [[_listName, _maxValue + 1]];
+									// Update the max value in case there are multiple new lists
+									_maxValue = _maxValue + 1;
+								};
 							};
 						} forEach _notifHashMap;
 
+					uiNamespace setVariable [MACRO_VARNAME_VISIBLE_LISTS, _visibleLists];
+
 					tvExpandAll _listTree;
+					_listTree tvSortByValue [[]];
 
 					// Restore collapsed lists
 						private _collapsedLists = uiNamespace getVariable [MACRO_VARNAME_COLLAPSED_LISTS, []];

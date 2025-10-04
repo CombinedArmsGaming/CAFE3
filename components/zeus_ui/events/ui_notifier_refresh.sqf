@@ -33,6 +33,12 @@ case "ui_notifier_refresh": {
 	// Get the array of lists that the user has collapsed
 	private _collapsedLists = uiNamespace getVariable [MACRO_VARNAME_COLLAPSED_LISTS, []];
 
+	// Get the hashmap of visible lists (key: list name, value: number, higher values = higher in UI)
+	private _visibleLists = uiNamespace getVariable MACRO_VARNAME_VISIBLE_LISTS;
+	if (isNil "_visibleLists") exitWith {
+		DEBUG_PRINT_LOG("[ZEUS_NOTIFIER] Client: Could not find visible lists hashmap in uiNamespace!");
+	};
+
 	private _listTree = uiNamespace getVariable MACRO_VARNAME_UI_NOTIFIER_TREE;
 	if (isNil "_listTree") exitWith {
 		DEBUG_PRINT_LOG("[ZEUS_NOTIFIER] Client: Could not find notifier tree control in uiNamespace!");
@@ -49,6 +55,7 @@ case "ui_notifier_refresh": {
 	// If the list was visible
 	if (_changedListTreeIndex > -1) then  {
 		DEBUG_FORMAT1_LOG("[ZEUS_NOTIFIER] Client: List %1 was previously visible.", _changedList);
+		// No changes needed to visible lists array
 		
 		// If the list has content
 		if (count _changedListContents > 0) then {
@@ -65,7 +72,9 @@ case "ui_notifier_refresh": {
 		// If the list has no content
 		} else {
 			// Remove the changed list
-			_listTree tvDelete [[_changedListTreeIndex]];
+			DEBUG_FORMAT3_LOG("[ZEUS_NOTIFIER] Deleting list at index %1 with data %2 and value %3", _changedListTreeIndex, _listTree tvData [_changedListTreeIndex], _listTree tvValue [_changedListTreeIndex]);
+			_listTree tvDelete [_changedListTreeIndex];
+			_visibleLists deleteAt _changedList;
 			DEBUG_FORMAT1_LOG("[ZEUS_NOTIFIER] Client: List %1 was visible but now has no content. Removing.", _changedList);
 		};
 	// If the list was not visible
@@ -92,10 +101,23 @@ case "ui_notifier_refresh": {
 			{
 				_listTree tvAdd [[_changedListTreeIndex], _x];
 			} forEach _changedListContents;
+
+			// Add the list to visible lists and sort so that it is at the top of the UI
+			private _maxValue = -1;
+			if (count _visibleLists > 0) then {
+				_maxValue = selectMax (values _visibleLists);
+			};
+			DEBUG_FORMAT2_LOG("[ZEUS_NOTIFIER] Client: Giving list value %1. Visible lists is: %2", _maxValue + 1, _visibleLists);
+			_listTree tvSetValue [[_changedListTreeIndex], _maxValue + 1];
+			_visibleLists insert [[_listName, _maxValue + 1]];
+			_listTree tvSortByValue [[]];
+
 			DEBUG_FORMAT1_LOG("[ZEUS_NOTIFIER] Client: List %1 was not previously visible. Added to tree.", _changedList);
 		// If the list does not have content
 		} else {
 			DEBUG_FORMAT1_LOG("[ZEUS_NOIFIER] Client: Received changed list %1 with no content but the list was not visible.", _changedList);
 		};
 	};
+
+	uiNamespace setVariable [MACRO_VARNAME_VISIBLE_LISTS, _visibleLists];
 };

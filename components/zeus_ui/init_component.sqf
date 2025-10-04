@@ -12,9 +12,8 @@ if (isServer) then {
 	private _listTitleHashmap = createHashMapFromArray NOTIFIER_ALL_LISTS;
 	missionNamespace setVariable [MACRO_VARNAME_LIST_TITLE_HASHMAP, _listTitleHashmap];
 
-	// Create hash map with all empty arrays to store the lists of players
+	// Create hash map to store the lists of players
 	private _notifHashMap = createHashMap;
-	_notifHashMap insert (_allListNames apply {[_x, []]});
 	missionNamespace setVariable [MACRO_VARNAME_NOTIFIER_MAP, _notifHashMap, true];
 
 	// Create event handler for new client notifications
@@ -43,8 +42,10 @@ if (isServer) then {
 
 			// Fetch current client list
 			private _notifList = _notifHashMap get _listName;
-			if (isNil "_notifList") exitWith {
-				diag_log (format ["[ZEUS_NOTIFIER] Server: Notif list %1 was known but didn't exist in hash map.", _listName]);
+			if (isNil "_notifList") then {
+				DEBUG_FORMAT1_LOG("[ZEUS_NOTIFIER] Server: Notif list %1 was known but didn't exist in hash map. Adding!", _listName);
+				_notifHashMap insert [[_listName, []]];
+				_notifList = [];
 			};
 
 			// Keep track of if this event actually changed anything

@@ -147,6 +147,7 @@
 	#define MACRO_VARNAME_NOTIFIER_MAP										"ca_zeusUI_notifier_map"
 	#define MACRO_VARNAME_SERVER_NOTIF_EVENT								"ca_zeusUI_serverNotifEvent"
 	#define MACRO_VARNAME_COLLAPSED_LISTS									"ca_zeusUI_collapsedLists"
+	#define MACRO_VARNAME_VISIBLE_LISTS										"ca_zeusUI_visibleLists"
 	#define MACRO_VARNAME_ALL_LIST_NAMES									"f_var_notifier_allListNames"
 	#define MACRO_VARNAME_LIST_TITLE_HASHMAP								"f_var_notifier_listTitleHashmap"
 
