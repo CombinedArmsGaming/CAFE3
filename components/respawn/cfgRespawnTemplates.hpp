@@ -19,4 +19,6 @@ class CfgRespawnTemplates
 	#include "weaponSafety\respawnTemplates.hpp"
 
 	#include "moveToSpawn\respawnTemplates.hpp"
+
+	#include "notifier\respawnTemplates.hpp"
 }

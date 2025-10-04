@@ -1,0 +1,1 @@
+#define LONG_TIME_DEAD 15

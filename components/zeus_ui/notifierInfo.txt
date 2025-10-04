@@ -4,13 +4,13 @@ To add new lists, add a new define in notifier_macros.hpp and add it to NOTIFIER
 When you wish to add a player to that list, the code looks like this (run on the client):
 	[
 		NOTIFIER_CLIENT_NEW_NOTIF_EVENT,
-		[NOTIFIER_LIST_*, name player, false]
+		[NOTIFIER_LIST_* # 0, name player, false]
 	] call CBA_fnc_serverEvent;
 
 To remove a player, the code is this:
 	[
 		NOTIFIER_CLIENT_NEW_NOTIF_EVENT,
-		[NOTIFIER_LIST_*, name player, true]
+		[NOTIFIER_LIST_* # 0, name player, true]
 	] call CBA_fnc_serverEvent;
 
 The server maintains a public hashmap for every list in the notifier.
