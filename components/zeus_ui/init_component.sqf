@@ -1,16 +1,16 @@
 #include "macros.hpp"
 #include "..\..\notifier_macros.hpp"
 
+// Save an array of all the list names for future use
+private _allListNames = NOTIFIER_ALL_LISTS apply {_x # 0};
+missionNamespace setVariable [MACRO_VARNAME_ALL_LIST_NAMES, _allListNames];
+
+// Save a hashmap for future reference of list titles
+private _listTitleHashmap = createHashMapFromArray NOTIFIER_ALL_LISTS;
+missionNamespace setVariable [MACRO_VARNAME_LIST_TITLE_HASHMAP, _listTitleHashmap];
+
 if (isServer) then {
 	// Setup for zeus notifier. See notifierInfo.txt for more information.
-
-	// Save an array of all the list names for future use
-	private _allListNames = NOTIFIER_ALL_LISTS apply {_x # 0};
-	missionNamespace setVariable [MACRO_VARNAME_ALL_LIST_NAMES, _allListNames];
-
-	// Save a hashmap for future reference of list titles
-	private _listTitleHashmap = createHashMapFromArray NOTIFIER_ALL_LISTS;
-	missionNamespace setVariable [MACRO_VARNAME_LIST_TITLE_HASHMAP, _listTitleHashmap];
 
 	// Create hash map to store the lists of players
 	private _notifHashMap = createHashMap;
@@ -101,12 +101,6 @@ CLIENT_ONLY;
 
 DEBUG_PRINT_LOG("[Zeus] Initting Zeus components");
 
-// Save an array of all the list names for future use
-private _allListNames = NOTIFIER_ALL_LISTS apply {_x # 0};
-missionNamespace setVariable [MACRO_VARNAME_ALL_LIST_NAMES, _allListNames];
 
-// Save a hashmap for future reference of list titles
-private _listTitleHashmap = createHashMapFromArray NOTIFIER_ALL_LISTS;
-missionNamespace setVariable [MACRO_VARNAME_LIST_TITLE_HASHMAP, _listTitleHashmap];
 
 cafe_zeusUI_isInitialised = false;
