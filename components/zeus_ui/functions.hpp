@@ -10,4 +10,6 @@ class zeusui
 	class openZeus{};
 	class endingDialog{};
 	class raiseNotifierEvent{};
+	class fpsUpdateLoop{};
+	class client_fpsLogLoop{};
 };

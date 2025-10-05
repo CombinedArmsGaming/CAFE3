@@ -150,6 +150,7 @@
 	#define MACRO_VARNAME_VISIBLE_LISTS										"ca_zeusUI_visibleLists"
 	#define MACRO_VARNAME_ALL_LIST_NAMES									"f_var_notifier_allListNames"
 	#define MACRO_VARNAME_LIST_TITLE_HASHMAP								"f_var_notifier_listTitleHashmap"
+	#define MACRO_VARNAME_FPS_LOG											"f_var_notifier_fps"
 
 	// Custom Preset Settings
 	#define MACRO_VARNAME_PRESET_GAI                                        "ca_zeusUI_preset_gAI"

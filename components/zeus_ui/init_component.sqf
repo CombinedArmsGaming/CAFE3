@@ -16,6 +16,9 @@ if (isServer) then {
 	private _notifHashMap = createHashMap;
 	missionNamespace setVariable [MACRO_VARNAME_NOTIFIER_MAP, _notifHashMap, true];
 
+	// Start up fps monitor loop
+	call f_fnc_fpsUpdateLoop;
+
 	// Create event handler for new client notifications
 	[
 		NOTIFIER_CLIENT_NEW_NOTIF_EVENT,
@@ -41,12 +44,7 @@ if (isServer) then {
 			};
 
 			// Fetch current client list
-			private _notifList = _notifHashMap get _listName;
-			if (isNil "_notifList") then {
-				DEBUG_FORMAT1_LOG("[ZEUS_NOTIFIER] Server: Notif list %1 was known but didn't exist in hash map. Adding!", _listName);
-				_notifHashMap insert [[_listName, []]];
-				_notifList = [];
-			};
+			private _notifList = _notifHashMap getOrDefault [_listName, [], true];
 
 			// Keep track of if this event actually changed anything
 			private _hashmapUpdated = false;
@@ -101,6 +99,7 @@ CLIENT_ONLY;
 
 DEBUG_PRINT_LOG("[Zeus] Initting Zeus components");
 
-
+// Start up client FPS logging
+call f_fnc_client_fpsLogLoop;
 
 cafe_zeusUI_isInitialised = false;
