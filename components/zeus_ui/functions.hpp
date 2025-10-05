@@ -9,4 +9,5 @@ class zeusui
 	class exitZeus{};
 	class openZeus{};
 	class endingDialog{};
+	class raiseNotifierEvent{};
 };

@@ -1,17 +1,11 @@
 This file explains the system for the Zeus notifier.
 
 To add new lists, add a new define in notifier_macros.hpp and add it to NOTIFIER_ALL_LISTS in that file. 
-When you wish to add a player to that list, the code looks like this (run on the client):
-	[
-		NOTIFIER_CLIENT_NEW_NOTIF_EVENT,
-		[NOTIFIER_LIST_* # 0, name player, false]
-	] call CBA_fnc_serverEvent;
+When you wish to add a player to that list, call f_fnc_raiseNotifierEvent like so:
+[NOTIFIER_LIST_*] call f_fnc_raiseNotifierEvent
 
-To remove a player, the code is this:
-	[
-		NOTIFIER_CLIENT_NEW_NOTIF_EVENT,
-		[NOTIFIER_LIST_* # 0, name player, true]
-	] call CBA_fnc_serverEvent;
+To remove a player, call like so:
+[NOTIFIER_LIST_*, true] call f_fnc_raiseNotifierEvent
 
 The server maintains a public hashmap for every list in the notifier.
 The hashmap is keyed by string names of lists, defined as NOTIFIER_LIST_* macros in notifier_macros.hpp.
