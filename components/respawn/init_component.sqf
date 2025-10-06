@@ -52,9 +52,6 @@ if (isServer) then
     f_var_respawnDuration = 0;
     #endif
 
-
-    [] call f_fnc_respawnManagerLoop;
-
 };
 
 if (hasInterface) then
