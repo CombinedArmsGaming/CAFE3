@@ -30,6 +30,7 @@ class F
 #include "triggerSpawner\functions.hpp"
 #include "viewDistanceEditor\functions.hpp"
 #include "zeus_ui\functions.hpp"
+#include "taskings\functions.hpp"
 
 }
 
