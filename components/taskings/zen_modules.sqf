@@ -15,4 +15,11 @@ call
             [] remoteExecCall ["f_fnc_tasking_state"];
         }
     ] call zen_custom_modules_fnc_register;
+    [
+        _category,
+        "Remove Tasking",
+        {
+            [] remoteExecCall ["f_fnc_tasking_remove"];
+        }
+    ] call zen_custom_modules_fnc_register;
 };
