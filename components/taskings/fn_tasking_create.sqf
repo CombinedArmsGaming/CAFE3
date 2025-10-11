@@ -12,15 +12,12 @@ _taskList = player call BIS_fnc_tasksUnit;
 		//On Confirm
 		params ["_dialogValues"];
 		_dialogValues params ["_taskingSide", "_taskingName", "_hasParent", "_parentTasking", "_initialState", "_taskingDescription"];
-		hint str _dialogValues;
 		if (_hasParent) then
 		{
-			hint "has parent";
 			[west, [_taskingName, _parentTasking], [_taskingDescription, _taskingName, "void"], objNull, _initialState] call BIS_fnc_taskCreate;
 		}
 		else
 		{
-			hint "does not have parent";
 			[_taskingSide, _taskingName, [_taskingDescription, _taskingName, "void"], objNull, _initialState] call BIS_fnc_taskCreate;
 		};
 	}, 
