@@ -6,7 +6,7 @@ _taskList = player call BIS_fnc_tasksUnit;
 		["CHECKBOX", "Has parent?", false], //_hasParent
 		["COMBO", "Parent Tasking", [_taskList,_taskList]], //_parentTasking
 		["COMBO", "Initial State", [["CREATED", "ASSIGNED", "SUCCEEDED", "FAILED", "CANCELED"],["Created", "Assigned", "Succeeded", "Failed", "Cancelled"]]], //_initialState
-		["EDIT:MULTI", "Description"] //_taskingDescription
+		["EDIT:MULTI", "Task Description"] //_taskingDescription
 	],
 	{
 		//On Confirm
