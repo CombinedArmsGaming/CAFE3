@@ -30,6 +30,9 @@ private _timesAdded = missionNamespace getVariable [_timesAddedVarName, 0];
 ] call CBA_fnc_serverEvent;
 
 if (_autoRemoveTime > -1 and !_removeFromList) then {
+	// Only the last firing timer should remove the player from the list
+	// Can tell which timer is last by which one is triggered when times added is 1
+	// "timesAdded" could also be called "timersActive"
 	_timesAdded = _timesAdded + 1;
 	missionNamespace setVariable [_timesAddedVarName, _timesAdded];
 	missionNamespace setVariable [_shouldAutoRemoveVarName, true];

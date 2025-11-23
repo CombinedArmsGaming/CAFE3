@@ -1,11 +1,20 @@
 This file explains the system for the Zeus notifier.
 
+-- Adding new lists ---
+
 To add new lists, add a new define in notifier_macros.hpp and add it to NOTIFIER_ALL_LISTS in that file. 
 When you wish to add a player to that list, call f_fnc_raiseNotifierEvent like so:
-[NOTIFIER_LIST_*] call f_fnc_raiseNotifierEvent
+[NOTIFIER_LIST_*, false] call f_fnc_raiseNotifierEvent
 
 To remove a player, call like so:
 [NOTIFIER_LIST_*, true] call f_fnc_raiseNotifierEvent
+
+If you wish for the player to be added to a list and then automatically removed from the list after a certain amount of time, call like so:
+[NOTIFIER_LIST_*, false, 120] call f_fnc_raiseNotifierEvent
+This will add the player to the list, and automatically remove them from it after 120 seconds. 
+They can be removed earlier than this timeout, and the timer can be refreshed (or changed or removed) by calling the function again.
+
+--- Implementation info ---
 
 The server maintains a public hashmap for every list in the notifier.
 The hashmap is keyed by string names of lists, defined as NOTIFIER_LIST_* macros in notifier_macros.hpp.
