@@ -19,6 +19,22 @@ if (isServer) then {
 	// Start up fps monitor loop
 	call f_fnc_fpsUpdateLoop;
 
+	// Create event handler for when a player disconnects
+	// This handler also fires when a player presses "abort" and goes back to role select
+	addMissionEventHandler ["PlayerDisconnected", {
+		params ["_id", "_uid", "_name", "_jip", "_owner", "_idstr"];
+		DEBUG_FORMAT1_LOG("[ZEUS_NOTIFIER] Player %1 disconnected", _name);
+
+		// Raise an event with ourselves removing the player from every list
+		private _allListNames = missionNamespace getVariable [MACRO_VARNAME_ALL_LIST_NAMES, []];
+		{
+			[
+				NOTIFIER_CLIENT_NEW_NOTIF_EVENT,
+				[_x, _name, true]
+			] call CBA_fnc_serverEvent;
+		} forEach _allListNames;
+	}];
+
 	// Create event handler for new client notifications
 	[
 		NOTIFIER_CLIENT_NEW_NOTIF_EVENT,
