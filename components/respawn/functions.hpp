@@ -33,12 +33,6 @@ class respawn_triggeredWave_ui
     file = "components\respawn\triggeredWave\ui_functions";
     class triggeredWaveDialog_populateDialog{};
 };
-class respawn_redeployment
-{
-    file = "components\respawn";
-    class createRedeployObject{};
-    class doRedeployAction{};
-};
 class respawn_zen
 {
     file = "components\respawn\zen";
