@@ -8,7 +8,6 @@
 		(nothing)
 -------------------------------------------------------------------------------------------------------------------- */
 #include "macros.hpp"
-#include "..\..\configuration\zeusNotifier.hpp"
 
 SERVER_ONLY_WARN("[ZEUS_NOTIFIER] Fps update loop called on client!");
 

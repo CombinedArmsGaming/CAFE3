@@ -3,8 +3,7 @@
 
 params ["_newUnit", "_oldUnit"];
 
-// with no respawn marker if move to spawn doesn't work the player is respawned on where they died
-// Does not matter if the corpse is moved
+[NOTIFIER_LIST_DEAD_PLAYERS] call f_fnc_raiseNotifierEvent;
 
 private _checkDeathTime = {
 	params ["_newUnit"];

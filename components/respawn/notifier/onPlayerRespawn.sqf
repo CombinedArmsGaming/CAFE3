@@ -2,6 +2,7 @@
 
 params ["_newUnit", "_oldUnit", "_respawn", "_respawnDelay"];
 
+[NOTIFIER_LIST_DEAD_PLAYERS, true] call f_fnc_raiseNotifierEvent;
 // Remove from the long dead list
 [NOTIFIER_LIST_LONG_DEAD, true] call f_fnc_raiseNotifierEvent;
 

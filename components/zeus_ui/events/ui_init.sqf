@@ -1052,10 +1052,9 @@ case "ui_init": {
 
 						// Get the hashmap of previously visible lists (key: list name, value: position in tree, highest value on top)
 						private _visibleLists = uiNamespace getVariable [MACRO_VARNAME_VISIBLE_LISTS, createHashMap];
-						private _maxValue = -1;
-						if (count _visibleLists > 0) then {
-							_maxValue = selectMax (values _visibleLists);
-						};
+						// Dead players list always has value 0 so it's on the bottom
+						_visibleLists set [NOTIFIER_LIST_DEAD_PLAYERS # 0, 0];
+						_maxValue = selectMax (values _visibleLists);
 
 						// Add any lists with content
 						{

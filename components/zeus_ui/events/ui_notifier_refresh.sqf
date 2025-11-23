@@ -103,14 +103,22 @@ case "ui_notifier_refresh": {
 			} forEach _changedListContents;
 
 			// Add the list to visible lists and sort so that it is at the top of the UI
-			private _maxValue = -1;
-			if (count _visibleLists > 0) then {
-				_maxValue = selectMax (values _visibleLists);
+			// Dead players list always has value 0 so it is at the bottom
+			if (_changedList isEqualTo (NOTIFIER_LIST_DEAD_PLAYERS # 0)) then {
+				DEBUG_PRINT_LOG("[ZEUS_NOTIFIER] Client: Dead players list! Giving value 0");
+				_listTree tvSetValue [[_changedListTreeIndex], 0];
+				_visibleLists insert [[_listName, 0]];
+				_listTree tvSortByValue [[]];
+			} else {
+				private _maxValue = 0;
+				if (count _visibleLists > 0) then {
+					_maxValue = selectMax (values _visibleLists);
+				};
+				DEBUG_FORMAT2_LOG("[ZEUS_NOTIFIER] Client: Giving list value %1. Visible lists is: %2", _maxValue + 1, _visibleLists);
+				_listTree tvSetValue [[_changedListTreeIndex], _maxValue + 1];
+				_visibleLists insert [[_listName, _maxValue + 1]];
+				_listTree tvSortByValue [[]];
 			};
-			DEBUG_FORMAT2_LOG("[ZEUS_NOTIFIER] Client: Giving list value %1. Visible lists is: %2", _maxValue + 1, _visibleLists);
-			_listTree tvSetValue [[_changedListTreeIndex], _maxValue + 1];
-			_visibleLists insert [[_listName, _maxValue + 1]];
-			_listTree tvSortByValue [[]];
 
 			DEBUG_FORMAT1_LOG("[ZEUS_NOTIFIER] Client: List %1 was not previously visible. Added to tree.", _changedList);
 		// If the list does not have content
