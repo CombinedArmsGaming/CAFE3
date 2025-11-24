@@ -32,6 +32,7 @@ private _return = nil;
 private _zeusUI = findDisplay 312;
 private _zeusUI_mainCtrlGrp = uiNamespace getVariable [MACRO_VARNAME_UI_MAINCTRLGRP, controlNull];
 private _zeusUI_presetsCtrlGrp = uiNamespace getVariable [MACRO_VARNAME_UI_PRESETSCTRLGRP, controlNull];
+private _zeusUI_notifierCtrlGrp = uiNamespace getVariable [MACRO_VARNAME_UI_NOTIFIERCTRLGRP, controlNull];
 if (_event != "ui_init" and {isNull _zeusUI_mainCtrlGrp}) exitWith {systemChat "Zeus UI isn't open!"};
 
 
