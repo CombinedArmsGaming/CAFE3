@@ -43,6 +43,7 @@ switch (_event) do {
 
 	#include "events\ui_checkbox_changed.sqf"
 	#include "events\ui_close.sqf"
+	#include "events\ui_collapse.sqf"
 	#include "events\ui_dragging_start.sqf"
 	#include "events\ui_dragging.sqf"
 	#include "events\ui_dragging_stop.sqf"

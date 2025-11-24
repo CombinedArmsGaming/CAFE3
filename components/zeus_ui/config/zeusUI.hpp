@@ -111,6 +111,11 @@ class CA_ZeusUI_ScriptedButton : RscButton {
 	h = 0;
 };
 
+class CA_ZeusUI_ScriptedPictureButton : CA_ZeusUI_ScriptedButton {
+	style = ST_PICTURE;
+	colorFocused[] = CURLY(MACRO_COLOUR_BUTTON);
+};
+
 class CA_ZeusUI_ScriptedButton_Red : CA_ZeusUI_ScriptedButton {
 	colorBackground[] = CURLY(MACRO_COLOUR_RED);
 	colorBackgroundActive[] = CURLY(MACRO_COLOUR_RED);

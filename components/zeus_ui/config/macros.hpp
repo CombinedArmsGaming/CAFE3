@@ -31,6 +31,9 @@
 	#define MACRO_IDC_NOTIFIER_CTRLGRP										3000
 	#define MACRO_IDC_NOTIFIER_DRAGGING_FRAME								3001
 	#define MACRO_IDC_NOTIFIER_TREE											3004
+	#define MACRO_IDC_NOTIFIER_COLLAPSE_TOGGLE								3005
+	#define MACRO_IDC_NOTIFIER_BACKGROUND									3006
+	#define MACRO_IDC_NOTIFIER_BACKGROUND_OUTLINE							3007
 
 	// Presets UI
 	#define MACRO_IDC_PRESETS_CTRLGRP                                       2000
@@ -90,6 +93,7 @@
 	#define MACRO_POS_NOTIFIER_WIDTH										0.12
 	#define MACRO_POS_NOTIFIER_HEIGHT										0.22
 	#define MACRO_POS_NOTIFIER_GAP_DRAGGING_Y								0.02
+	#define MACRO_POS_NOTIFIER_TOGGLE_WIDTH									0.013
 
 	// Other
 	#define MACRO_POS_GAP_X                                                 0.002
@@ -141,6 +145,7 @@
 	#define MACRO_VARNAME_UI_NOTIFIERCTRLGRP								"ca_zeusUI_notifierCtrlGrp"
 	#define MACRO_VARNAME_UI_POS_NOTIFIERCTRLGRP							"ca_zeusUI_pos_notifierCtrlGrp"
 	#define MACRO_VARNAME_UI_NOTIFIER_TREE									"ca_zeusUI_notifierTree"
+	#define MACRO_VARNAME_UI_NOTIFIER_COLLAPSED								"ca_zeusUI_notifierCollapsed"
 
 
 	// Notifier

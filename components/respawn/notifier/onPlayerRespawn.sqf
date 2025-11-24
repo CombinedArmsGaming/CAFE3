@@ -2,16 +2,15 @@
 
 params ["_newUnit", "_oldUnit", "_respawn", "_respawnDelay"];
 
-[NOTIFIER_LIST_DEAD_PLAYERS, true] call f_fnc_raiseNotifierEvent;
-// Remove from the long dead list
-[NOTIFIER_LIST_LONG_DEAD, true] call f_fnc_raiseNotifierEvent;
-
 // Add to bad spawn list if they did not spawn where they selected
 private _didFirstSpawn = missionNamespace getVariable ["f_var_notifier_didFirstSpawn", false];
 missionNamespace setVariable ["f_var_notifier_didFirstSpawn", true];
 
 if (_didFirstSpawn) exitWith 
 {	
+	[NOTIFIER_LIST_DEAD_PLAYERS, true] call f_fnc_raiseNotifierEvent;
+	// Remove from the long dead list
+	[NOTIFIER_LIST_LONG_DEAD, true] call f_fnc_raiseNotifierEvent;
 	private _spawnArray = missionNamespace getVariable ["f_var_spawnPickerDialog_selectedSpawn", objNull];
 	DEBUG_FORMAT1_LOG("[ZEUS_NOTIFIER] selectedSpawn was %1", _spawnArray);
     if (_spawnArray isEqualTo objNull) then 
