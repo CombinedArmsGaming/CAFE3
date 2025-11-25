@@ -84,11 +84,3 @@ private _keysToRemove = [];
 	f_var_respawnPollersMap deleteAt _x;	
 } forEach _keysToRemove;
 
-
-// Schedule manager to run every second - too much processing here for per-frame.
-[
-	f_fnc_respawnManagerLoop,
-	[],
-	1
-] call CBA_fnc_waitAndExecute;
-

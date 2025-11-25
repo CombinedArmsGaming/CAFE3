@@ -6,14 +6,13 @@ class respawn
     class getPlayerRespawnDelay{};
     class isRespawnModeActive{};
     class storePlayerGroup{postInit=1;};
+    class leaderTagLoop{};
 };
 class respawn_locationSystem
 {
     file = "components\respawn";
     class addToRespawnPollers{};
-    class getManagedRespawn{};
     class getRespawnKey{};
-    class removeManagedRespawn{};
     class respawnManagerLoop{};
     class setRespawnLocation{};
     class updateManagedSpawnpoint{};
@@ -32,12 +31,6 @@ class respawn_triggeredWave_ui
     file = "components\respawn\triggeredWave\ui_functions";
     class triggeredWaveDialog_populateDialog{};
 };
-class respawn_redeployment
-{
-    file = "components\respawn";
-    class createRedeployObject{};
-    class doRedeployAction{};
-};
 class respawn_zen
 {
     file = "components\respawn\zen";
@@ -52,8 +45,23 @@ class respawn_ui
     file = "components\respawn\ui_functions";
     class addSpectatorDowntimeWidgetEventHandler{preInit=1;};
     class createSpectatorDowntimeWidget{};
-    class spawnPickerDialog_onCloseDialog{};
-    class spawnPickerDialog_populateDialog{};
     class spectatorDowntimeWidget_updateLoop{};
     class tryShowSpawnpointDialog{};
+};
+class respawn_ui_spawnPickerDialog
+{
+    file = "components\respawn\ui_functions\spawnPickerDialog";
+    class spawnPickerDialog_delaySpawnUntilReady{};
+    class spawnPickerDialog_deselectWithoutScrolling{};
+    class spawnPickerDialog_getListIdxFromSpawnIdx{};
+    class spawnPickerDialog_groupsList_onLBSelChanged{};
+    class spawnPickerDialog_loadoutsList_onLBSelChanged{};
+    class spawnPickerDialog_onCloseDialog{};
+    class spawnPickerDialog_populateDialog{};
+    class spawnPickerDialog_populateLoadoutsList{};
+    class spawnPickerDialog_spawnList_onLBSelChanged{};
+    class spawnPickerDialog_switchInfoBox{};
+    class spawnPickerDialog_updateLoop{};
+    class spawnPickerDialog_updateTickets{};
+    class spawnPickerDialog_updateTimers{};
 };

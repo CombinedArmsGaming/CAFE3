@@ -20,7 +20,7 @@ CREATE_LOADOUT(UNIT_NAME,<ACE Arsenal code>);
     Any non-player medic will now look like a CSAT medic.
 
 COPY_LOADOUT(TO,FROM);
--   Copies a loadout from one unit-type to another unit-type.  Useful if you want to give the same loadout to FTLs and SLs, etc.
+-   Copies a loadout from one unit-type to another unit-type.  Useful if you want to give the same loadout to FTLs and SLs, etc. Copies addons and whether facewear is forced.
 
 ADD_HAT(UNIT_NAME,"Hat Classname");
 -   Adds a hat to the unit's "random hats" list.  When a unit is given this loadout, they will recieve a random hat from the list.
@@ -31,11 +31,20 @@ ADD_HAT(UNIT_NAME,"Hat Classname");
 ADD_UNIFORM(UNIT_NAME,"Uniform Classname");
 ADD_VEST(UNIT_NAME,"Vest Classname");
 ADD_BACKPACK(UNIT_NAME,"Backpack Classname");
--   These all work the same as the ADD_HAT command.  The only difference is that they randomise uniforms, vests and backpacks.
+-   These all work the same as the ADD_HAT command.  The only difference is that they randomise uniforms, vests, and backpacks.
+
+ADD_FACEWEAR(UNIT_NAME,"Facewear Classname");
+-   Works similarly to the ADD_HAT command. 
+-   Facewear is optional by default. If the player has no facewear chosen, they will be given a random facewear from the list. Otherwise, they keep their preferred facewear.
+    This optionality can be overridden by the FORCE_FACEWEAR command.
+
+FORCE_FACEWEAR(UNIT_NAME);
+-   Forces the player to be assigned a facewear from the list defined by uses of ADD_FACEWEAR. This overrides the player's choice of facewear in their profile.
 
 COPY_ADDONS(TO,FROM);
 -   Copies all of the "random lists" from one unit-type to another unit-type.
     This is useful for adding random uniforms, hats etc to all of your units without having to do lots of repeated work.
+    This does not force facewear on the TO loadout, even if it is forced on the FROM loadout. 
 -   For example:
         Create a Rifleman loadout with a lot of good randomisation options.
         Create a new Anti-tank loadout.
@@ -43,10 +52,13 @@ COPY_ADDONS(TO,FROM);
         The Anti-tank loadout now has all of the Rifleman's randomisation.
 
 COPY_HATS(TO,FROM);
+COPY_UNIFORMS(TO,FROM);
 COPY_VESTS(TO,FROM);
 COPY_BACKPACKS(TO,FROM);
--   Copies only the hat, vest or backpack randomisation from one unit-type to another one.
+COPY_FACEWEAR(TO,FROM);
+-   Copies only the hat, uniform, vest, backpack, or facewear randomisation from one unit-type to another one.
     This is useful in situations where you only want to copy one type of randomisation from another unit-type.
+    This does not force facewear on the TO loadout, even if it is forced on the FROM loadout.
 
 CLEAR_HATS(UNIT_NAME);
 -   Empties the "random hats" list for the unit.
@@ -63,6 +75,7 @@ CLEAR_HATS(UNIT_NAME);
 CLEAR_UNIFORMS(UNIT_NAME);
 CLEAR_VESTS(UNIT_NAME);
 CLEAR_BACKPACKS(UNIT_NAME);
+CLEAR_FACEWEAR(UNIT_NAME);
 -   These all work the same as the CLEAR_HATS command.  The only difference is that they empty "random lists" for uniforms, vests and backpacks.
 
 CLEAR_ADDONS(UNIT_NAME);

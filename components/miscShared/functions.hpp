@@ -33,5 +33,6 @@ class miscShared
     class toggleAIPath{};
     class tryMoveIntoVehicle{};
     class tryRunOnHeadlessClient{};
+    class tryTeleport{};
     class woundUnitRandomly{};
 };

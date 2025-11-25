@@ -13,30 +13,35 @@ if (isNull _oldUnit) exitWith
 	DEBUG_PRINT_CHAT("[RESPAWN-2]: No old unit found.  respawnOnStart may be set to 1.")
 };
 
-DEBUG_FORMAT2_CHAT("[RESPAWN-2]: Removing %1 from squad %2.", _oldUnit, (group _oldUnit))
+DEBUG_FORMAT2_CHAT("[RESPAWN-2]: Storing squad %1 for player %2.", (group _oldUnit), (_oldUnit))
 private _oldGroup = group _oldUnit;
 
 [_oldGroup] call f_fnc_storePlayerGroup;
-[_oldUnit] joinSilent grpNull;
 
-// Wait until unit has properly joined new 'respawn' group and then make it invisible on the map.
-[
-	// Condition
-	{
-		(group (_this#0)) isNotEqualTo (_this#1)
-	},
+#ifdef HIDE_DEAD_IN_SQUAD
+DEBUG_PRINT_LOG("[RESPAWN] Checking if dead unit is leader of group");
+// If the dead player is the leader, give leadership to the least recently respawned player in the group
+private _alivePlayersInGroup = (units _oldGroup) select {alive _x};
+if ((_oldUnit isEqualTo (leader _oldGroup))) then {
+	if ((count _alivePlayersInGroup > 0)) then {
+		private _leastRecentTime = CBA_missionTime;
+		private _leastRecentPlayer = player;
 
-	// Script
-	{
-		private _newGroup = group (_this#0);
-
-		if (count units _newGroup <= 1) then
+		// Find the least recently respawned player amongst the alive group members
 		{
-			SET_SQUAD_VISIBILITY_DIRECT(_newGroup,false);
-		};
-	}, 
+			private _respawnTime = _x getVariable ["f_var_playerLastRespawnTime", CBA_missionTime];
+			if (_respawnTime <= _leastRecentTime) then {
+				_leastRecentTime = _respawnTime;
+				_leastRecentPlayer = _x;
+			};
+		} forEach _alivePlayersInGroup;
 
-	// Arguments
-	[_oldUnit, _oldGroup]
+		DEBUG_FORMAT2_LOG("[RESPAWN] Setting group leader to least recently respawned player %1 with respawn time %2", _leastRecentPlayer, _leastRecentTime);
+		_oldGroup selectLeader _leastRecentPlayer;
+	};
+};
 
-] call CBA_fnc_waitUntilAndExecute;
+#endif
+
+// load bearing nil :)
+nil;
