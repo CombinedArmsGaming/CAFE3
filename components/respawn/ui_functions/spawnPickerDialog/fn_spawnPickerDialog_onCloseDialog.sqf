@@ -21,12 +21,13 @@ if (missionNamespace getVariable ["f_var_spawnPickerDialog_respawnHeld", false])
     missionNamespace setVariable ["f_var_spawnPickerDialog_respawnHeld", false];
 };
 
-if (_exitCode == 2) exitWith {
+// Discard changes if closing dialog with cancel button
+if (_exitCode == 3) exitWith {
 
 };
 
-
-if (_exitCode == 1) then
+// Save changes whether exiting with ready button or escape
+if (_exitCode == 1 or _exitCode == 2) then
 {
     private _spawnList = _display displayCtrl IDC_SPAWNPICKER_SPAWNLIST;
 

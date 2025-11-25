@@ -52,9 +52,6 @@ if (isServer) then
     f_var_respawnDuration = 0;
     #endif
 
-
-    [] call f_fnc_respawnManagerLoop;
-
 };
 
 if (hasInterface) then
@@ -267,13 +264,6 @@ if (hasInterface) then
         };
 
         diwako_dui_radar_sortType = "custom";
-
-        // Set the sort type again. Something resets it to "none" on clients on mission start.
-        [
-            {diwako_dui_radar_sortType isNotEqualTo "custom"},
-            {missionNamespace setVariable ["diwako_dui_radar_sortType", "custom"]; DEBUG_PRINT_LOG("[RESPAWN] Detected non-custom sort type. setting to custom.")},
-            []
-        ] call CBA_fnc_waitUntilAndExecute;
     };
 
     f_var_hidingDeadPlayers = true;

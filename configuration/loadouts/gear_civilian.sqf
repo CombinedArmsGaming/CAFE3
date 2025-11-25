@@ -112,7 +112,7 @@ BEGIN_LOADOUTS;
 */
 
 
-//IDAP Medic
+// IDAP Medic
 
 _baseLoadout = [[],[],[],["U_C_Paramedic_01_F",[["ACE_fieldDressing",10],["ACE_elasticBandage",5],["ACE_salineIV",1]]],[],["B_Messenger_IDAP_Medical_F",[["ACE_tourniquet",6],["ACE_surgicalKit",1],["ACE_splint",9],["ACE_salineIV",5],["ACE_epinephrine",2],["ACE_morphine",2]]],"","G_Respirator_white_F",[],["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch",""]];
 

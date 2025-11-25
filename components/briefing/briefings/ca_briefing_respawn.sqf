@@ -20,8 +20,8 @@ private _modeName = "Not set";
 private _sideTickets = "Not set";
 private _individualTickets = "Not set";
 private _hideDeadPlayersString = ["<font color='#FF5555'>will remain visible</font> on", "are removed from"] select _hideDeadPlayersInSquad;
-private _leadershipTransfer = ["is transferred", "is not transferred"] select _hideDeadPlayersInSquad;
-private _leadershipReturn = [" and given back upon TP", ""] select (_allowTeleportUponRespawn and _hideDeadPlayersInSquad);
+private _leadershipTransfer = ["is not transferred", "is transferred"] select _hideDeadPlayersInSquad;
+private _leadershipReturn = ["", " and given back upon TP"] select (_allowTeleportUponRespawn and _hideDeadPlayersInSquad);
 private _mode = "";
 
 if (_side == west) then {
