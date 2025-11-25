@@ -1128,6 +1128,7 @@ case "ui_init": {
 				_pictureString
 			] call _createCtrl;
 
+			// Collapse/expand the window to the correct initial state
 			["ui_collapse", [_collapseButton, _notifierCollapsed]] call f_fnc_zeusUI;
 
 			_collapseButton ctrlAddEventHandler ["ButtonClick", {

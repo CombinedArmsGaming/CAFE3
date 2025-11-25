@@ -1,4 +1,3 @@
-#define ENABLE_DEBUG
 #include "macros.hpp"
 
 params ["_newUnit", "_oldUnit"];

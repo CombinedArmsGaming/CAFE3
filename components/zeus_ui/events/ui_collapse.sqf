@@ -1,7 +1,12 @@
-// Toggles collapse of zeus notifier
+/* 
+	Adjusts zeus notifier UI based on collapse state
+
+	Arguments:
+		0: <CONTROL> The button control for the toggle collapse button
+		1: <BOOLEAN> Whether or not the window is *now* collapsed
+*/
 case "ui_collapse": {
 	_eventExists = true;
-	// Args: Toggle button control, whether or not the notifier window is *now* collapsed
 	_args params ["_button", "_notifierCollapsed"];
 	DEBUG_FORMAT1_LOG("[ZEUS_NOTIFIER] Toggling notifier collapse. _notifierCollapsed now: %1", _notifierCollapsed);
 
