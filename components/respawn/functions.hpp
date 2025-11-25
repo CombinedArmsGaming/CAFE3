@@ -12,9 +12,7 @@ class respawn_locationSystem
 {
     file = "components\respawn";
     class addToRespawnPollers{};
-    class getManagedRespawn{};
     class getRespawnKey{};
-    class removeManagedRespawn{};
     class respawnManagerLoop{};
     class setRespawnLocation{};
     class updateManagedSpawnpoint{};
