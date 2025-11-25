@@ -51,6 +51,7 @@
 
         f_fnc_acre_giveRadioToAllInGroup
             Gives a radio to every unit in the given group and side.
+            _groupName can be set to "DEFAULT" to apply to any group which is unmentioned in this config file.
             Args:
                 ["_radio", "_channelName", "_side", "_groupName"]
             Example:
@@ -67,6 +68,7 @@
 
         f_fnc_acre_giveRadioToRoleInGroup
             Gives a radio to specific role(s) in specific group(s).
+            _groupName can be set to "DEFAULT" to apply to any group which is unmentioned in this config file.
             Args:
                 ["_radio", "_channelName", "_side", "_role", "_groupName"];
             Example:
@@ -212,6 +214,9 @@ f_var_acre_civRadioNet    = "CIV NET";
 [_shortRadio, "CHARLIE SR", west, "CHARLIE"] call f_fnc_acre_giveRadioToAllInGroup;
 [_shortRadio, "COMMAND SR", west, "COMMAND"] call f_fnc_acre_giveRadioToAllInGroup;
 
+// Use "DEFAULT" as a group name to give radios to anyone in an unconfigured group:
+[_shortRadio, "COMMAND SR", west, "DEFAULT"] call f_fnc_acre_giveRadioToAllInGroup;
+
 [_longRadio, "GROUND CMD", west, ["sl", "ftl", "co", "med", "fac"]] call f_fnc_acre_giveRadioToAllInRole;
 
 [_backpackRadio, "AIR CMD", west, ["fac", "zeus"]] call f_fnc_acre_giveRadioToAllInRole;
@@ -224,6 +229,7 @@ f_var_acre_civRadioNet    = "CIV NET";
 [_shortRadio, "INDIA-2 SR", resistance, "INDIA-2"] call f_fnc_acre_giveRadioToAllInGroup;
 [_shortRadio, "INDIA-3 SR", resistance, "INDIA-3"] call f_fnc_acre_giveRadioToAllInGroup;
 [_shortRadio, "INDIA SR", resistance, "INDIA"] call f_fnc_acre_giveRadioToAllInGroup;
+[_shortRadio, "INDIA SR", resistance, "DEFAULT"] call f_fnc_acre_giveRadioToAllInGroup;
 
 [_longRadio, "IND GROUND CMD", resistance, ["sl", "ftl", "co", "med", "fac"]] call f_fnc_acre_giveRadioToAllInRole;
 
@@ -234,6 +240,7 @@ f_var_acre_civRadioNet    = "CIV NET";
 [_shortRadio, "TANGO-2 SR", east, "TANGO-2"] call f_fnc_acre_giveRadioToAllInGroup;
 [_shortRadio, "TANGO-3 SR", east, "TANGO-3"] call f_fnc_acre_giveRadioToAllInGroup;
 [_shortRadio, "TANGO SR", east, "TANGO"] call f_fnc_acre_giveRadioToAllInGroup;
+[_shortRadio, "TANGO SR", east, "DEFAULT"] call f_fnc_acre_giveRadioToAllInGroup;
 
 [_longRadio, "OPF GROUND CMD", east, ["sl", "ftl", "co", "med", "fac"]] call f_fnc_acre_giveRadioToAllInRole;
 
