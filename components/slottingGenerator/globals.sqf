@@ -75,8 +75,8 @@ f_map_slot_shortcodes = createHashMapFromArray
 	["zeus player", "ZEUS"],
 	["zeus player 1", "ZEUS"],
 	["zeus player 2", "ZEUS"],
-	["zeus", "ZEUS"]
-	["zeus 1", "ZEUS"]
+	["zeus", "ZEUS"],
+	["zeus 1", "ZEUS"],
 	["zeus 2", "ZEUS"]
 ];
 
