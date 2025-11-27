@@ -19,5 +19,8 @@ uiNamespace setVariable ["f_downtimeWidget_chooseSpawnButton", _display displayC
 
 uiNamespace setVariable ["f_downtimeWidget_chooseSpawnButtonText", _display displayCtrl 49695];
 
-
 [] call f_fnc_spectatorDowntimeWidget_updateLoop;
+
+if (PLAYER_IS_DEAD) then {
+	[] call f_fnc_tryShowSpawnpointDialog;
+};
