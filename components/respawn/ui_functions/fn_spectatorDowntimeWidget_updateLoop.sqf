@@ -85,6 +85,11 @@ if (_downState isNotEqualTo _prevDownState) then
     });
     _ctrlGroup ctrlCommit 0.5;
     
+	// Open spawn picker dialog on death
+	if (_downState isEqualTo "DEAD") then 
+	{
+		[] call f_fnc_tryShowSpawnpointDialog;
+	};
 };
 
 
