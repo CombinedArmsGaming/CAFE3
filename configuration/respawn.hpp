@@ -38,6 +38,7 @@
 
 // Should a player be able to open the respawn/spawn picker dialog? Without it, they won't be able to choose their spawnpoint. 
 // Disabling the dialog is useful if, for example, you want to only use respawn squares.
+// Use caution when commenting this out! Things can get weird if you allow players to respawn normally.
 #define ENABLE_RESPAWN_DIALOG
 
 // This only takes effect for the TRIGGERED_WAVES respawn modes.  Timed modes will use the RESPAWN_DELAY settings.
