@@ -36,6 +36,10 @@
 // When a player dies, do they get hidden from the squad HUD?  Turn off for hardcore settings but beware - this will confuse players who are used to this feature.
 #define HIDE_DEAD_IN_SQUAD
 
+// Should a player be able to open the respawn/spawn picker dialog? Without it, they won't be able to choose their spawnpoint. 
+// Disabling the dialog is useful if, for example, you want to only use respawn squares.
+#define ENABLE_RESPAWN_DIALOG
+
 // This only takes effect for the TRIGGERED_WAVES respawn modes.  Timed modes will use the RESPAWN_DELAY settings.
 #define RESPAWN_WAVE_DURATION               60
 

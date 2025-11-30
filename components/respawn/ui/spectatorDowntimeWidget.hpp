@@ -3,9 +3,14 @@
 class CAFE_DowntimeControlsGroup : RscControlsGroupNoScrollbars
 {
     idc = 49690;
-    x = (safeZoneW + safeZoneX) - (safeZoneW * 0.25);
+	#ifdef ENABLE_RESPAWN_DIALOG
+	x = (safeZoneW + safeZoneX) - (safeZoneW * 0.25);
+	w = safeZoneW * 0.25;
+	#else
+	x = (safeZoneW + safeZoneX) - (safeZoneW * 0.06);
+	w = safeZoneW * 0.06;
+	#endif
     y = safeZoneY + (safeZoneH * 0.00);
-    w = safeZoneW * 0.25;
     h = safeZoneH * 0.07;
     class Controls
     {
@@ -14,7 +19,11 @@ class CAFE_DowntimeControlsGroup : RscControlsGroupNoScrollbars
             idc = 49691;
             x = 0;
             y = 0;
+			#ifdef ENABLE_RESPAWN_DIALOG
             w = safeZoneW * 0.25;
+			#else 
+			w = safeZoneW * 0.06;
+			#endif
             h = safeZoneH * 0.07;
             colorBackground[] = {0, 0, 0, 0.5};
         };
@@ -34,13 +43,14 @@ class CAFE_DowntimeControlsGroup : RscControlsGroupNoScrollbars
             idc = 49693;
             x = 0;
             y = safeZoneH * 0.015;
-            w = safeZoneW * 0.1;
+            w = safeZoneW * 0.06;
             h = safeZoneH * 0.05;
             text = "DEAD";
             colorText[] = {1, 0.7, 0.7, 1};
             font = "PuristaBold";
             sizeEx = 0.075;
         };
+		#ifdef ENABLE_RESPAWN_DIALOG
         class ChooseSpawnButton: CAFE_DefaultButton
         {
             idc = 49694;
@@ -65,6 +75,7 @@ class CAFE_DowntimeControlsGroup : RscControlsGroupNoScrollbars
             sizeEx = 0.03;
 
         }
+		#endif
     }
 }
 
