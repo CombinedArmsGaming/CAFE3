@@ -1,5 +1,4 @@
 #include "../macros.hpp"
-#define SQUARE_POLL_RATE 5
 
 
 private _onConfirm = {
