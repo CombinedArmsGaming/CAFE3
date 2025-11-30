@@ -11,7 +11,12 @@ if (_ticketsRemaining <= 0) then
 if (_location isNotEqualTo objNull) then
 {
     systemChat format ["Respawning at %1, %2", _location, _locationName];
+	hint format ["Respawning at %1, %2", _location, _locationName];
+	if (missionNamespace getVariable ["f_var_spawnPickerDialog_isOpened", false]) then {
+		closeDialog 3;
+	};
     missionNamespace setVariable ["f_var_spawnPickerDialog_selectedSpawn", [_location, _locationName]];
+	missionNamespace setVariable ["f_var_spawnPickerDialog_lockedOut", true];
 };
 
 setPlayerRespawnTime MINIMUM_RESPAWN_DELAY;
