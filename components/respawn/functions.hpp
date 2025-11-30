@@ -35,6 +35,7 @@ class respawn_zen
 {
     file = "components\respawn\zen";
     class allowImmediateRespawnLocal{};
+	class doRespawnSquare{};
 	class selectFromDeadPlayers{};
     class zen_allowImmediateRespawn{};
     class zen_createRespawnPoint{};
