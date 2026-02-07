@@ -3,6 +3,7 @@
 
 #include "macros.hpp"
 
+INIT_COMPONENT(ftMemberMarkers)
 INIT_COMPONENT(squadMarkers)
 
 // CAFE - Briefing

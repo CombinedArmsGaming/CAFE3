@@ -6,10 +6,12 @@ DEBUG_PRINT_LOG("initting squad markers")
 
 #ifdef ENABLE_SQUAD_MARKERS
 
-[] call f_fnc_beginSquadMarkers;
+f_var_hideSquadMarkers = false;
 
 #else
 
-if (true) exitWith { DEBUG_PRINT_LOG("[SquadMarkers] init_component was called but ENABLE_SQUAD_MARKERS is not set.") };
+f_var_hideSquadMarkers = true;
 
 #endif
+
+[] call f_fnc_beginSquadMarkers;

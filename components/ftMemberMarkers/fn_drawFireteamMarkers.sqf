@@ -4,6 +4,7 @@ params ["_map"];
 
 if !(alive player) exitWith {};
 if !IS_TRUE(f_var_allSettingsReady) exitWith {};
+if IS_TRUE(f_var_hideFTMarkers) exitWith {};
 
 #ifdef HIDE_DEAD_IN_SQUAD
 _group = (units player) select {alive _x};
