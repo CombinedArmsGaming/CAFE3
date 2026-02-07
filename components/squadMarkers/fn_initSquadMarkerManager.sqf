@@ -50,13 +50,9 @@ waitUntil
             if (_visible) then
             {
                 _isAiOnly = ({isPlayer _x} count _units) <= 0;
-
-#ifdef SHOW_NPC_SQUADS
-                _shouldShow = true;
-#endif
-#ifndef SHOW_NPC_SQUADS
-                _shouldShow = !_isAiOnly;
-#endif
+                
+                // Show squad if NPC squads are shown, or if it is not an NPC squad.
+                _shouldShow = IS_TRUE(f_var_showNPCSquads) or !_isAiOnly;
 
                 if (_shouldShow) then
                 {

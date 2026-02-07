@@ -7,7 +7,7 @@ WAIT_UNTIL_SETTINGS_READY();
 params ["_display", "_control"];
 
 // If ft markers are enabled, wait until this display has ft markers hooked.  Draw calls should occur in inverse order of registration.
-#ifdef ENABLE_FIRETEAM_MARKERS
+if IS_TRUE(f_var_showFTMarkers) then {
 
 	if (_display getVariable ["f_var_ftMarker_eventId", -1] < 0) then
 	{
@@ -19,7 +19,7 @@ params ["_display", "_control"];
 		};
 	};
 
-#endif
+};
 
 if (_display getVariable ["f_var_squadMarker_eventId", -1] >= 0) exitWith
 {
