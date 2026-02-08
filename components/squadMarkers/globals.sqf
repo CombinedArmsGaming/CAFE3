@@ -1,7 +1,5 @@
 #include "macros.hpp"
 
-f_var_hideSquadMarkers = false;
-
 f_var_squadMarker_colourChoices =
 [
     'Red',
