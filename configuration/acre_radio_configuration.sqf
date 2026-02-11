@@ -231,9 +231,9 @@ f_var_acre_civRadioNet    = "CIV NET";
 [_shortRadio, "INDIA SR", resistance, "INDIA"] call f_fnc_acre_giveRadioToAllInGroup;
 [_shortRadio, "INDIA SR", resistance, "DEFAULT"] call f_fnc_acre_giveRadioToAllInGroup;
 
-[_longRadio, "IND GROUND CMD", resistance, ["sl", "ftl", "co", "med", "fac"]] call f_fnc_acre_giveRadioToAllInRole;
+[_longRadio, "IND GROUND CMD", resistance, ["sl", "ftl", "co", "med", "fac", "zeus"]] call f_fnc_acre_giveRadioToAllInRole;
 
-[_backpackRadio, "IND AIR CMD", resistance, ["fac"]] call f_fnc_acre_giveRadioToAllInRole;
+[_backpackRadio, "IND AIR CMD", resistance, ["fac", "zeus"]] call f_fnc_acre_giveRadioToAllInRole;
 
 // OPFOR
 [_shortRadio, "TANGO-1 SR", east, "TANGO-1"] call f_fnc_acre_giveRadioToAllInGroup;
@@ -242,9 +242,9 @@ f_var_acre_civRadioNet    = "CIV NET";
 [_shortRadio, "TANGO SR", east, "TANGO"] call f_fnc_acre_giveRadioToAllInGroup;
 [_shortRadio, "TANGO SR", east, "DEFAULT"] call f_fnc_acre_giveRadioToAllInGroup;
 
-[_longRadio, "OPF GROUND CMD", east, ["sl", "ftl", "co", "med", "fac"]] call f_fnc_acre_giveRadioToAllInRole;
+[_longRadio, "OPF GROUND CMD", east, ["sl", "ftl", "co", "med", "fac", "zeus"]] call f_fnc_acre_giveRadioToAllInRole;
 
-[_backpackRadio, "OPF AIR CMD", east, ["fac"]] call f_fnc_acre_giveRadioToAllInRole;
+[_backpackRadio, "OPF AIR CMD", east, ["fac", "zeus"]] call f_fnc_acre_giveRadioToAllInRole;
 
 
 // ====================================================================================

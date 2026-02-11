@@ -44,6 +44,12 @@
 
 */
 
+// Zeus squad
+_group = GET_SQUAD_ON_SIDE(ZEUS,east);
+SET_SQUAD_IMPORTANT_DIRECT(_group,true);
+HIDE_SQUAD_DIRECT(_group);
+
+
 SET_SQUAD_IMPORTANT(TANGO-1,true);
 SET_SQUAD_COLOUR(TANGO-1,COLOUR_RED);
 
