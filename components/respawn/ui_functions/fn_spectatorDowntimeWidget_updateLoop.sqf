@@ -51,13 +51,14 @@ uiNamespace setVariable ["f_downtimeWidget_state", [_downState]];
 
 if (_downState isNotEqualTo _prevDownState) then
 {
-    private _chooseSpawnButton = uiNamespace getVariable "f_downtimeWidget_chooseSpawnButton";
-    private _chooseSpawnText = uiNamespace getVariable "f_downtimeWidget_chooseSpawnButtonText";
-    private _ctrlGroup = uiNamespace getVariable "f_downtimeWidget_ctrlGroup";
-
     _downIndicator ctrlSetText _downState;
     _downIndicator ctrlSetTextColor (switch (_downState) do {case "DEAD": {[1, 0.7, 0.7, 1]}; case "DOWN": {[0.7, 0.7, 1, 1]}; case "ALIVE": {[0.7, 1, 0.7, 1]}; default {[1,1,1,1]}; });
     _downIndicator ctrlCommit 0;
+
+	#ifdef ENABLE_RESPAWN_DIALOG
+	private _chooseSpawnButton = uiNamespace getVariable "f_downtimeWidget_chooseSpawnButton";
+    private _chooseSpawnText = uiNamespace getVariable "f_downtimeWidget_chooseSpawnButtonText";
+    private _ctrlGroup = uiNamespace getVariable "f_downtimeWidget_ctrlGroup";
 
     _chooseSpawnButton ctrlShow (_downState isEqualTo "DEAD");
     _chooseSpawnButton ctrlCommit 0;
@@ -85,6 +86,12 @@ if (_downState isNotEqualTo _prevDownState) then
     });
     _ctrlGroup ctrlCommit 0.5;
     
+	// Open spawn picker dialog on death
+	if (_downState isEqualTo "DEAD") then 
+	{
+		[] call f_fnc_tryShowSpawnpointDialog;
+	};
+	#endif
 };
 
 

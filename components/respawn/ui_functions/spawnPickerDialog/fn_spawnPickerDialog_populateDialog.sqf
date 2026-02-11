@@ -78,37 +78,26 @@ ctrlMapAnimCommit(_mapCtrl);
     It can be assumed that the squads will exist again later thanks to components/squadMarkers/fn_maintainImportantSquad.sqf
 */
 // List of important squads as [groupId group, side group]. Created in startup/configuration/internals/squadMarkers.sqf
-private _importantSquadsList = missionNamespace getVariable ["f_arr_importantSquadsList", []];
-DEBUG_FORMAT1_LOG("[RESPAWN] Beginning groups list population. Important squads: %1", _importantSquadsList);
 private _groupsList = _display displayCtrl IDC_GROUPSLIST;
 
 // Collect all important squads and all squads with players in them that it makes sense to let this player join
-private _groupsToInclude = [];
+private _groupsToInclude = (groups playerSide) select {
+	private _name = groupId _x;
 
-// Add all of the important squads of the player's side
+	// Not spectators group
+	(_name isNotEqualTo "Spectators") and
+	// Not zeus group if the player is not a zeus
+	((player getVariable ["f_var_isZeus", false]) or {(toLower _name) isNotEqualTo "zeus"}) and 
+	// Must either be important or have players in
+	(SQUAD_IS_IMPORTANT(_x) or ({((units _x) findIf { isPlayer _x }) >= 0}))
+};
+
+// Add the squads to the list
 {
-    private _name = _x # 0;
-    private _side = _x # 1;
-    
-    // Don't include the zeus squad for non-zeuses
-    if ((player getVariable ["f_var_isZeus", false]) or {(toLower _name) isNotEqualTo "zeus"}) then {
-        _groupsToInclude pushBackUnique _name;
-    };
-    
-} forEach (_importantSquadsList select {(_x # 1 ) isEqualTo playerSide});
-
-// Check all the current squads with people in 'em in case one isn't marked as important
-{   
-    // Don't include the spectators group, a default group, or the zeus group for non-zeuses
-    if ((_name isNotEqualTo "Spectators") 
-        and {!(_name regexMatch "[A-Z][a-z]+ \d\d?-\d\d?")}
-        and {(player getVariable ["f_var_isZeus", false]) or {(toLower _name) isNotEqualTo "zeus"}}) then {
-            _groupsToInclude pushBackUnique (groupId _x);
-    };
-} forEach ((groups (playerSide)) select {((units _x) findIf { isPlayer _x }) >= 0});
-
-{
-    _groupsList lbAdd (_x);
+	private _name = groupId _x;
+	private _count = count (units _x);
+	private _idx = _groupsList lbAdd (format ["%1 (%2)", _name, _count]);
+	_groupsList lbSetData [_idx, _name];
 } forEach _groupsToInclude;
 
 _groupsList lbSortBy ["TEXT", false, false];
@@ -117,7 +106,7 @@ _groupsList lbSortBy ["TEXT", false, false];
 private _playerGroupName = missionNamespace getVariable ["f_var_lastPlayerGroupName", ""];
 DEBUG_FORMAT1_LOG("[RESPAWN] lastPlayerGroupName was %1, attempting to select", _playerGroupname);
 for "_i" from 0 to ((lbSize _groupsList) - 1) do {
-    if ((_groupsList lbText _i) isEqualTo _playerGroupName) exitWith {
+    if ((_groupsList lbData _i) isEqualTo _playerGroupName) exitWith {
         _groupsList lbSetCurSel _i;
     }
 };
