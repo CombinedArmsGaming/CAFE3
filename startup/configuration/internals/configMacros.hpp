@@ -9,7 +9,6 @@
 #include "..\..\..\configuration\ceasefire.hpp"
 #include "..\..\..\configuration\killTracking.hpp"
 #include "..\..\..\configuration\gravestones.hpp"
-#include "..\..\..\configuration\mapMarkers.hpp"
 #include "..\..\..\configuration\viewDistanceEditor.hpp"
 #include "..\..\..\configuration\identityReplacement.hpp"
 #include "..\..\..\configuration\insignia.hpp"
@@ -18,4 +17,3 @@
 #include "..\..\..\configuration\respawn.hpp"
 #include "..\..\..\configuration\slottingGenerator.hpp"
 #include "..\..\..\configuration\statsTracking.hpp"
-#include "..\..\..\configuration\zeusTaskingModules.hpp"

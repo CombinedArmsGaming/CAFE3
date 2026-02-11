@@ -82,7 +82,7 @@
                 ["_radio", "_channelName", "_side", "_role"]
             Example:
                 // Removes a SEM-52 long-range radio from all BLUFOR FTLs, which was tuned to "GROUND CMD".
-                ["ACRE_SEM52SL", "GROUND CMD", west, "ftl"] call f_fnc_acre_giveRadioToAllInRole;
+                ["ACRE_SEM52SL", "GROUND CMD", west, "ftl"] call f_fnc_acre_removeRadioFromAllInRole;
 
         f_fnc_acre_removeRadioFromAllInGroup
             Takes away a radio from every unit in the given group and side.
@@ -100,7 +100,7 @@
                 ["_radio", "_channelName", "_side", "_role", "_groupName"];
             Example:
                 // Removes a short-range radio from an extremely suspicious individual in the BLUFOR ALPHA group, which was tuned to "ALPHA SR" net.
-                ["ACRE_PRC343", "ALPHA SR", west, "sus", "ALPHA"] call f_fnc_acre_giveRadioToAllInGroup;
+                ["ACRE_PRC343", "ALPHA SR", west, "sus", "ALPHA"] call f_fnc_acre_removeRadioFromRoleInGroup;
 
     LANGUAGE COMMAND ARGUMENTS REFERENCE:
 
@@ -154,7 +154,7 @@
             Example:
                 // On the BLUFOR side, gives a very suspicious rifleman in CHARLIE the OPFOR language.  Do the same for the CHARLIE FTL.
                 // Because they are BLUFOR units, they will already have the BLUFOR language, so they will speak both.
-                ["opf", west, ["rif", "ftl"], "CHARLIE"] call f_fnc_acre_giveRadioToAllUnits;
+                ["opf", west, ["rif", "ftl"], "CHARLIE"] call f_fnc_acre_giveLanguagesToRoleInGroup;
 
         f_fnc_acre_removeLanguagesFromAllInGroup
             Removes the language(s) from all units in the given group(s).
