@@ -13,6 +13,9 @@ params ["_newUnit", "_oldUnit", "_respawn", "_respawnDelay"];
 private _didFirstSpawn = missionNamespace getVariable ["f_var_moveToSpawn_didFirstSpawn", false];
 missionNamespace setVariable ["f_var_moveToSpawn_didFirstSpawn", true];
 
+// Clear UI lockout in case it was set by anything
+missionNamespace setVariable ["f_var_spawnPickerDialog_lockedOut", false];
+
 if (_didFirstSpawn) exitWith 
 {
     private _lastTpTime = missionNamespace getVariable ["f_var_spawnPickerDialog_lastTpTime", 0];
