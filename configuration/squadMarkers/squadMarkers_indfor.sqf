@@ -44,6 +44,12 @@
 
 */
 
+// Zeus squad
+_group = GET_SQUAD_ON_SIDE(ZEUS,independent);
+SET_SQUAD_IMPORTANT_DIRECT(_group,true);
+HIDE_SQUAD_DIRECT(_group);
+
+
 SET_SQUAD_IMPORTANT(INDIA-1,true);
 SET_SQUAD_COLOUR(INDIA-1,COLOUR_RED);
 

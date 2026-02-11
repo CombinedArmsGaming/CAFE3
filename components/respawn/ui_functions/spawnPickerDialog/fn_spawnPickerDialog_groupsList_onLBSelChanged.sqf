@@ -10,7 +10,7 @@ params ["_control", "_lbCurSel"];
 
 private _playersList = findDisplay IDD_SPAWNPICKER_DIALOG displayCtrl IDC_PLAYERSLIST;
 
-private _selectedGroupName = _control lbText _lbCurSel;
+private _selectedGroupName = _control lbData _lbCurSel;
 
 DEBUG_FORMAT1_LOG("[RESPAWN] Updating players list for %1", _selectedGroupName);
 

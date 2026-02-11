@@ -53,9 +53,9 @@ if (_exitCode == 1 or _exitCode == 2) then
     // Store the player's selection of group
 
     private _groupsList = _display displayCtrl IDC_GROUPSLIST;
-    DEBUG_FORMAT1_LOG("[RESPAWN] Dialog closing, groups list selected index was %1", _groupsList lbText (lbCurSel _groupsList));
+    DEBUG_FORMAT1_LOG("[RESPAWN] Dialog closing, groups list selected index was %1", _groupsList lbData (lbCurSel _groupsList));
     if ((lbCurSel _groupsList) >= 0) then {
-        private _groupName = _groupsList lbText (lbCurSel _groupsList);
+        private _groupName = _groupsList lbData (lbCurSel _groupsList);
         DEBUG_FORMAT1_LOG("[RESPAWN] Storing new group for player: %1", _groupName);
         missionNamespace setVariable ["f_var_lastPlayerGroupName", _groupName];
     };
