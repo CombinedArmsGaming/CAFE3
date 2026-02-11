@@ -2,36 +2,20 @@
 
 params ["_position", "_object"];
 
-private _headlessClients = entities "HeadlessClient_F";
-private _humanPlayers = allPlayers - _headlessClients;
-private _deadPlayers = _humanPlayers select {!alive _x};
-
-if (count _deadPlayers <= 0) exitWith
-{
-    systemChat "No players are currently dead.";
-};
-
-private _playerNames = _deadPlayers apply {name _x};
-
-private _dialogContent = 
-[
-    ["LIST", "Allow respawn of player", [_deadPlayers, _playerNames, 0, 10]]
-];
-
 private _onConfirm = 
 {
     params ["_values"];
 
-    private _toRespawn = _values # 0;
-    if (isNull _toRespawn) exitWith {};
+	if (count _values < 1) exitWith {};
 
-    systemChat format ["Allowing immediate respawn for %1.", name _toRespawn];
+	private _toRespawn = _values # 0;
 
-    [] remoteExec ["f_fnc_allowImmediateRespawnLocal", _toRespawn];
+	DEBUG_FORMAT1_LOG("[RESPAWN_ZEN] Got list of players to respawn: %1", _toRespawn);
+
+	{
+		systemChat format ["Allowing immediate respawn for %1.", name _x];
+    	[] remoteExec ["f_fnc_allowImmediateRespawnLocal", _x];
+	} forEach _toRespawn;
 };
 
-[
-    "Allow immediate respawn",
-    _dialogContent,
-    _onConfirm
-] call zen_dialog_fnc_create;
+["Allow immediate respawn", _onConfirm] call f_fnc_selectFromDeadPlayers;
