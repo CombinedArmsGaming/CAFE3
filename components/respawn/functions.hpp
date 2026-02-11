@@ -8,15 +8,6 @@ class respawn
     class storePlayerGroup{postInit=1;};
     class leaderTagLoop{};
 };
-class respawn_locationSystem
-{
-    file = "components\respawn";
-    class addToRespawnPollers{};
-    class getRespawnKey{};
-    class respawnManagerLoop{};
-    class setRespawnLocation{};
-    class updateManagedSpawnpoint{};
-};
 class respawn_triggeredWave
 {
     file = "components\respawn\triggeredWave";
