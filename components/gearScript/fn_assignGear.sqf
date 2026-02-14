@@ -102,6 +102,7 @@ _unit setVariable ["f_var_assignGear_running", false, true];
 if (isPlayer _unit) then
 {
     [_unit] spawn f_fnc_addInsigniaMonitor;
+    [_unit] call f_fnc_applyInsignia;
 }
 else
 {

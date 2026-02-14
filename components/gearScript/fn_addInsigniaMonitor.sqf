@@ -1,4 +1,3 @@
-#define ENABLE_DEBUG
 #include "macros.hpp"
 #include "..\..\squadmarker_macros.hpp"
 
@@ -35,8 +34,8 @@ _unit setVariable ["f_var_hasInsigniaMonitor", true, true];
         private _newBackpack = backpack _unit;
 
         #ifdef ENABLE_DEBUG
-            diag_log (format ["[INSIGNIA] Old unit type: %1, Old group %2, Old uniform %3, Old vest %4, Old backpack %5", _unitType, _group, _uniform, _vest, _backpack]);
-            diag_log (format ["[INSIGNIA] New unit type: %1, new group %2, new uniform %3, new vest %4, new backpack %5", _newUnitType, _newGroup, _newUniform, _newVest, _newBackpack]);
+            diag_log (format ["[INSIGNIA] Old unit type: %1, Old group %2, Old group colour %3, Old uniform %4, Old vest %5, Old backpack %6", _unitType, _group, _groupColour, _uniform, _vest, _backpack]);
+            diag_log (format ["[INSIGNIA] New unit type: %1, new group %2, New group colour %3, new uniform %4, new vest %5, new backpack %6", _newUnitType, _newGroup, _newColour, _newUniform, _newVest, _newBackpack]);
         #endif
 
         if !((_unitType isEqualTo _newUnitType) and {_group isEqualTo _newGroup} and {_groupColour isEqualTo _newColour} and {_uniform isEqualTo _newUniform} and {_vest isEqualTo _newVest} and {_backpack isEqualTo _newBackpack}) then
