@@ -1,3 +1,5 @@
+#define ENABLE_DEBUG
+
 #include "macros.hpp"
 #include "..\..\squadmarker_macros.hpp"
 
@@ -21,19 +23,22 @@ private _insigniaClass = "";
 if (_insigniaVar isNotEqualTo "") then
 {
     _insigniaClass = f_dict_insignia_custom getOrDefault [_insigniaVar, ""];
+    DEBUG_FORMAT2_LOG("[INSIGNIA] Found insignia var %1, set class to %2 ", _insigniaVar, _insigniaClass)
 };
 
 // Attempt to set insignia from unit gearscript role
 if ((_insigniaClass isEqualTo "") and {_unitType isNotEqualTo ""}) then
 {
     _insigniaClass = f_dict_insignia_custom getOrDefault [_unitType, ""];
+    DEBUG_FORMAT2_LOG("[INSIGNIA] Found unit type %1, set class to %2 ", _unitType, _insigniaClass)
 };
 
 // Attempt to set insignia from unit group callsign
 if (_insigniaClass isEqualTo "") then
 {
-    private _callsign = groupId _group;
+    private _callsign = groupId (group _unit);
     _insigniaClass = f_dict_insignia_custom getOrDefault [_callsign, ""];
+    DEBUG_FORMAT2_LOG("[INSIGNIA] Found group callsign %1, set class to %2 ", _callsign, _insigniaClass)
 };
 
 
@@ -73,7 +78,7 @@ if (_insigniaClass isEqualTo "") then
 
 if (_insigniaClass isNotEqualTo "") then
 {
-    DEBUG_FORMAT2_LOG("[INSIGNIA]: Found insignia '%2' for unit %1.",_unit,_insigniaClass)
+    DEBUG_FORMAT2_LOG("[INSIGNIA]: Found final insignia class '%2' for unit %1.",_unit,_insigniaClass)
 
 	waitUntil
     {
@@ -95,7 +100,7 @@ if (_insigniaClass isNotEqualTo "") then
 	private _index = -1;
 
 	{
-		if (_x isEqualTo "insignia") exitwith
+		if (toLower (_x) isEqualTo "insignia") exitwith
         {
             _index = _forEachIndex;
         };
