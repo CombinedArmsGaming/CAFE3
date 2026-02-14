@@ -20,25 +20,22 @@ _unit setVariable ["f_var_hasInsigniaMonitor", true, true];
     private _unitType = "";
     private _group = grpNull;
     private _groupColour = [];
-    private _uniform = "";
-    private _vest = "";
-    private _backpack = "";
-
+    private _insignia = "";
+    
     while {alive _unit} do
     {
         private _newUnitType = _unit getVariable ["f_var_assignGear", ""];
         private _newGroup = group _unit;
         private _newColour = SQUAD_COLOUR(_newGroup);
-        private _newUniform = uniform _unit;
-        private _newVest = vest _unit;
-        private _newBackpack = backpack _unit;
+        private _newInsignia = _unit call BIS_fnc_getUnitInsignia;
 
         #ifdef ENABLE_DEBUG
-            diag_log (format ["[INSIGNIA] Old unit type: %1, Old group %2, Old group colour %3, Old uniform %4, Old vest %5, Old backpack %6", _unitType, _group, _groupColour, _uniform, _vest, _backpack]);
-            diag_log (format ["[INSIGNIA] New unit type: %1, new group %2, New group colour %3, new uniform %4, new vest %5, new backpack %6", _newUnitType, _newGroup, _newColour, _newUniform, _newVest, _newBackpack]);
+            diag_log (format ["[INSIGNIA] Old unit type: %1, Old group %2, Old group colour %3, Old insignia %4", _unitType, _group, _groupColour, _insignia]);
+            diag_log (format ["[INSIGNIA] New unit type: %1, new group %2, New group colour %3, new insignia %4", _newUnitType, _newGroup, _newColour, _newInsignia]);
         #endif
 
-        if !((_unitType isEqualTo _newUnitType) and {_group isEqualTo _newGroup} and {_groupColour isEqualTo _newColour} and {_uniform isEqualTo _newUniform} and {_vest isEqualTo _newVest} and {_backpack isEqualTo _newBackpack}) then
+        private _insigniaApplied = false;
+        if !((_unitType isEqualTo _newUnitType) and {_group isEqualTo _newGroup} and {_groupColour isEqualTo _newColour} and {_insignia isEqualTo _newInsignia}) then
         {
             [_unit] call f_fnc_applyInsignia;
         };
@@ -46,9 +43,7 @@ _unit setVariable ["f_var_hasInsigniaMonitor", true, true];
         _unitType = _newUnitType;
         _group = _newGroup;
         _groupColour = +_newColour;
-        _uniform = _newUniform;
-        _vest = _newVest;
-        _backpack = _newBackpack;
+        _insignia = _unit call BIS_fnc_getUnitInsignia; // Update the insignia in case we changed it with applyInsignia
 
         sleep 5;
 

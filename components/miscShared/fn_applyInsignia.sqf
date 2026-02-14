@@ -105,13 +105,18 @@ if (_insigniaClass isNotEqualTo "") then
 
 	} foreach _uniformInfos;
 
+    DEBUG_FORMAT2_LOG("[INSIGNIA]: Setting insignia of %1 to %2",_unit,_insigniaClass)
 	if (_index >= 0) then
     {
-        DEBUG_FORMAT2_LOG("[INSIGNIA]: Setting insignia of %1 to %2",_unit,_insigniaClass)
+        // Apply the insignia in every way we know, for maximum application consistency
 		_unit setVariable ["bis_fnc_setUnitInsignia_class", _insigniaClass, true];
         _unit setVariable ["f_arr_currentInsignia", [_index, _texture], true];
 		_unit setObjectTextureGlobal [_index, _texture];
 	};
+
+    // Apply the insignia in the same way ACE arsenal does it to make sure all variables are set correctly
+    [_unit, ""] call BIS_fnc_setUnitInsignia; // Clearing the insignia first is required. Unknown reason.
+    [_unit, _insigniaClass] call BIS_fnc_setUnitInsignia;
 
 }
 else
