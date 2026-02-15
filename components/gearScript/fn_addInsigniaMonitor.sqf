@@ -1,9 +1,13 @@
-#define ENABLE_DEBUG
 #include "macros.hpp"
 
 params ["_unit"];
 
-RUN_LOCAL_TO(_unit,f_fnc_addInsigniaMonitor,_this);
+// JIP players have units created on the server first, then transferred to their machine.
+// This function is run from the init box of the unit, which runs on the server and on the client.
+// This check ensures it is running on the correct machine.
+// RUN_LOCAL_TO is not good enough, because the unit is local to the server initially. 
+if (player isNotEqualTo _unit) exitWith {DEBUG_FORMAT2_LOG("[INSIGNIA] Did not add insignia monitor to unit %1, because this machine is player %2", _unit, player)};
+
 
 DEBUG_FORMAT1_LOG("[INSIGNIA] Adding insignia monitor to %1", _unit);
 
