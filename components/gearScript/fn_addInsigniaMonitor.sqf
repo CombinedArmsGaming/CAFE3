@@ -1,5 +1,5 @@
+#define ENABLE_DEBUG
 #include "macros.hpp"
-#include "..\..\squadmarker_macros.hpp"
 
 params ["_unit"];
 
@@ -16,39 +16,23 @@ _unit setVariable ["f_var_hasInsigniaMonitor", true, true];
     params ["_unit"];
 
     WAIT_UNTIL_MISSION_STARTED;
-
-    private _unitType = "";
-    private _group = grpNull;
-    private _groupColour = [];
-    private _insignia = "";
     
     while {alive _unit} do
     {
-        private _newUnitType = _unit getVariable ["f_var_assignGear", ""];
-        private _newGroup = group _unit;
-        private _newColour = SQUAD_COLOUR(_newGroup);
-        private _newInsignia = _unit call BIS_fnc_getUnitInsignia;
+        private _insigniaClass = _unit call f_fnc_getCustomInsignia;
+        
+        private _detectedInsignia = _unit call BIS_fnc_getUnitInsignia;
 
-        #ifdef ENABLE_DEBUG
-            diag_log (format ["[INSIGNIA] Old unit type: %1, Old group %2, Old group colour %3, Old insignia %4", _unitType, _group, _groupColour, _insignia]);
-            diag_log (format ["[INSIGNIA] New unit type: %1, new group %2, New group colour %3, new insignia %4", _newUnitType, _newGroup, _newColour, _newInsignia]);
-        #endif
+        DEBUG_FORMAT2_LOG("[INSIGNIA] Unit has insignia: %1, Unit should have insignia: %2", _detectedInsignia, _insigniaClass);
 
-        private _insigniaApplied = false;
-        if !((_unitType isEqualTo _newUnitType) and {_group isEqualTo _newGroup} and {_groupColour isEqualTo _newColour} and {_insignia isEqualTo _newInsignia}) then
+        if (_insigniaClass isNotEqualTo _detectedInsignia) then
         {
-            [_unit] call f_fnc_applyInsignia;
+            [_unit, _insigniaClass] call f_fnc_applyInsignia;
         };
-
-        _unitType = _newUnitType;
-        _group = _newGroup;
-        _groupColour = +_newColour;
-        _insignia = _unit call BIS_fnc_getUnitInsignia; // Update the insignia in case we changed it with applyInsignia
 
         sleep 5;
 
     };
 
     _unit setVariable ["f_var_hasInsigniaMonitor", false, true];
-
 };
