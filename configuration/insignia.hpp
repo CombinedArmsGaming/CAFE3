@@ -28,4 +28,4 @@
 
 // Enables the usage of the Advanced Insignia mode.
 // To disable Advanced Insignia mode for all units, comment-out or delete the line below.
-//#define ENABLE_ADVANCED_INSIGNIA
+#define ENABLE_ADVANCED_INSIGNIA
