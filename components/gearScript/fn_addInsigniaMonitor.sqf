@@ -11,6 +11,29 @@ if ((_unit getVariable ["f_var_hasInsigniaMonitor", false]) isEqualTo true) exit
 
 _unit setVariable ["f_var_hasInsigniaMonitor", true, true];
 
+// Add event handler for instant updating when the uniform is changed
+_unit addEventHandler ["SlotItemChanged", {
+	params ["_unit", "_name", "_slot", "_assigned", "_weapon"];
+    
+    // Check if the uniform changed
+    // Note:
+    //      This event is generated twice whenever uniform is changed. 
+    //      Once with the old uniform and _assigned = false, and once with the new uniform and _assigned = true
+    //      Checking _assigned makes sure we only handle it once, but we can handle it on false or true it doesn't matter
+    if (_slot isEqualTo 801 and _assigned isEqualTo true) then {
+        DEBUG_FORMAT1_LOG("[INSIGNIA] Detected uniform change on unit %1", _unit)
+
+        private _insigniaClass = _unit call f_fnc_getCustomInsignia;
+        private _detectedInsignia = _unit call BIS_fnc_getUnitInsignia;
+
+        DEBUG_FORMAT2_LOG("[INSIGNIA] Unit has insignia: %1, Unit should have insignia: %2", _detectedInsignia, _insigniaClass);
+
+        if (_insigniaClass isNotEqualTo _detectedInsignia) then {
+            [_unit, _insigniaClass] call f_fnc_applyInsignia;
+        };
+    };
+}];
+
 [_unit] spawn
 {
     params ["_unit"];
