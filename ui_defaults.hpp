@@ -3,8 +3,20 @@
 #define GUI_GRID_W		(0.025)
 #define GUI_GRID_H		(0.04)
 
+// Colors defined without brackets because .hpp uses {} and .sqf uses []
+// Color shared between major elements
+#define PRIMARY_COLOR 0.65, 0.39, 0.05, 1
 
+#define LOCATION_PICKER_COLOR PRIMARY_COLOR
 
+#define GROUP_PICKER_COLOR 0.74, 0.93, 0.96, 1
+
+#define LOADOUT_PICKER_COLOR 0.47, 0.38, 0.45, 1
+
+#define BLACK 0,0,0,1
+
+import RscMapControl;
+import RscMapControlEmpty;
 
 class CAFE_DefaultStructuredText
 {
@@ -320,3 +332,306 @@ class CAFE_DefaultCombo
 	};
 
 };
+
+#include "\a3\ui_f\hpp\definecommongrids.inc"
+
+
+#define dialogY 0
+#define dialogWidth 32
+
+#define infoTextVerticalPadding 0.6 // Padding above the info text group
+#define infoTextLineHeight 0.7 // Height of one line of the info text box
+#define ticketsInfoWidth 7
+#define timerInfoWidth 6
+#define waveInfoWidth 8.5
+
+#define deathTimerWidth 9
+
+#define infoBoxWidth 14 // Width of one of the little info boxes that have stuff like spawn list, map, loadout list, etc.
+#define infoBoxHeight 14
+#define verticalBarrierWidth 0.2 // Width of the vertical barrier separating list you pick from and info on the other side
+#define infoBoxSelectorHeight 1 // Height of the three options you swap between to choose which infoBox you want
+#define infoBoxOutlineWidth 0.2 // Width of the outline that goes around the info boxes
+
+#define teleportGroupVerticalPadding 0.5 // Padding above the checkbox
+#define teleportGroupHeight 1
+#define teleportCheckboxWidth 4.5
+#define teleportTitleWidth 6.5
+#define teleportGroupWidth (teleportCheckboxWidth + teleportTitleWidth)
+
+#define readyButtonVerticalPadding 0.5
+#define readyButtonWidth 9.5
+#define readyButtonHeight 2
+
+#define cancelButtonWidth 4
+#define cancelButtonHeight 1.5
+
+#define GUI_GRID_WIDTH 40
+#define GUI_GRID_HEIGHT 25
+#define CENTER_X GUI_GRID_WIDTH/2
+#define CENTER_Y GUI_GRID_HEIGHT/2
+
+#define GRID_X GUI_GRID_CENTER_X // Left edge of GUI_GRID_CENTER
+#define GRID_Y GUI_GRID_CENTER_Y // Top edge of GUI_GRID_CENTER
+#define GRID_W GUI_GRID_CENTER_W // Width of one grid cell
+#define GRID_H GUI_GRID_CENTER_H // Height of one grid cell
+
+// Derived parameters
+#define infoTextY (dialogY + infoTextVerticalPadding)
+
+#define infoBoxOutlineTopLeftX (CENTER_X - verticalBarrierWidth / 2 - infoBoxWidth - infoBoxOutlineWidth) // X coord of the top left outside edge of the outline around the info boxes 
+#define infoBoxOutlineTopLeftY (infoTextY + infoTextLineHeight * 2) // Y coord of ^
+#define infoBoxOutlineBottomRightX (CENTER_X + verticalBarrierWidth / 2 + infoBoxWidth + infoBoxOutlineWidth) // X coord of the bottom right outside edge of the outline around the info boxes
+#define infoBoxOutlineBottomRightY (infoBoxOutlineTopLeftY + infoBoxOutlineWidth * 2 + infoBoxHeight)
+
+#define infoTextWidth (infoBoxOutlineBottomRightX - infoBoxOutlineTopLeftX)
+
+#define infoBoxY (infoBoxOutlineTopLeftY + infoBoxOutlineWidth)
+
+#define infoBoxSelectorButtonY (infoBoxOutlineBottomRightY)
+
+#ifdef ALLOW_LOADOUT_CHANGE_UPON_RESPAWN
+#define infoBoxSelectorButtonW ((infoBoxOutlineBottomRightX - infoBoxOutlineTopLeftX) / 3)
+#else 
+#define infoBoxSelectorButtonW ((infoBoxOutlineBottomRightX - infoBoxOutlineTopLeftX) / 2)
+#endif
+
+#define infoBoxSelectorButtonH 3
+
+#define teleportGroupY (infoBoxOutlineBottomRightY + infoBoxSelectorButtonH + teleportGroupVerticalPadding)
+
+#define readyButtonY (teleportGroupY + teleportGroupHeight + readyButtonVerticalPadding)
+
+#define dialogHeight (readyButtonY + readyButtonVerticalPadding + readyButtonHeight - dialogY)
+
+class CAFE_InfoBoxSelectorButton : CAFE_DefaultButton {
+	y = (infoBoxSelectorButtonY) * GRID_H + GRID_Y;
+	w = (infoBoxSelectorButtonW) * GRID_W;
+	h = (infoBoxSelectorButtonH) * GRID_H;
+}
+
+class CAFE_Background: CAFE_DefaultText  {
+	// x = (CENTER_X - dialogWidth/2) * GRID_W + GRID_X;
+	// y = dialogY * GRID_H + GRID_Y;
+	// w = dialogWidth * GRID_W;
+	// h = dialogHeight * GRID_H;
+	x = 0;
+	y = 0;
+	w = 1;
+	h = 1;
+	colorBackground[] = {0,0,0,0.5};
+};
+
+// Control group containing all of the informational text at the top of the dialog
+class CAFE_InfoTextControlGroup: RscControlsGroup {
+	// Positioned such that it spans from the left edge of the info box border to the right
+	x = (infoBoxOutlineTopLeftX) * GRID_W + GRID_X;
+	y = infoTextY * GRID_H + GRID_Y;
+	w = infoTextWidth * GRID_W;
+	h = (infoTextLineHeight * 2) * GRID_H;
+};
+
+// Control containing info text at the top of the dialog
+class CAFE_InfoText: CAFE_DefaultText {
+	y = 0;
+	h = infoTextLineHeight * 2 * GRID_H;
+	sizeEx = 0.7*GRID_H;
+};
+
+class CAFE_InfoBoxTopBorder: CAFE_DefaultText
+{
+	idc = IDC_INFO_BOX_OUTLINE;
+	x = 0;
+	y = 0;
+	w = (infoBoxOutlineBottomRightX - infoBoxOutlineTopLeftX) * GRID_W;
+	h = (infoBoxOutlineWidth) * GRID_H;
+	colorBackground[] = {BORDER_COLOR};
+};
+class CAFE_InfoBoxLeftBorder: CAFE_DefaultText
+{
+	idc = IDC_INFO_BOX_OUTLINE + 1;
+	x = 0;
+	y = 0;
+	w = (infoBoxOutlineWidth) * GRID_W;
+	h = (infoBoxOutlineBottomRightY - infoBoxOutlineTopLeftY) * GRID_H;
+	colorBackground[] = {BORDER_COLOR};
+};
+class CAFE_InfoBoxBottomBorder: CAFE_DefaultText
+{
+	idc = IDC_INFO_BOX_OUTLINE + 2;
+	x = 0;
+	y = (infoBoxOutlineBottomRightY - infoBoxOutlineWidth) * GRID_H;
+	w = (infoBoxOutlineBottomRightX - infoBoxOutlineTopLeftX) * GRID_W;
+	h = (infoBoxOutlineWidth) * GRID_H;
+	colorBackground[] = {BORDER_COLOR};
+};
+class CAFE_InfoBoxRightBorder: CAFE_DefaultText
+{
+	idc = IDC_INFO_BOX_OUTLINE + 3;
+	x = (infoBoxOutlineBottomRightX - infoBoxOutlineWidth) * GRID_W + GRID_X;
+	y = infoBoxOutlineTopLeftY * GRID_H + GRID_Y;
+	w = (infoBoxOutlineWidth) * GRID_W;
+	h = (infoBoxOutlineBottomRightY - infoBoxOutlineTopLeftY) * GRID_H;
+	colorBackground[] = {BORDER_COLOR};
+};
+class CAFE_InfoBoxBorderGroup: RscControlsGroup 
+{
+	x = infoBoxOutlineTopLeftX * GRID_W + GRID_X;
+	y = infoBoxOutlineTopLeftY * GRID_H + GRID_Y;
+	w = (infoBoxOutlineBottomRightX - infoBoxOutlineTopLeftX) * GRID_W;
+	h = (infoBoxOutlineBottomRightY - infoBoxOutlineTopLeftY) * GRID_H;
+};
+
+class CAFE_VerticalBarrier: CAFE_DefaultText {
+	x = (CENTER_X - verticalBarrierWidth/2) * GRID_W + GRID_X;
+	y = (infoBoxY) * GRID_H + GRID_Y;
+	w = verticalBarrierWidth * GRID_W;
+	h = infoBoxHeight * GRID_H;
+	colorBackground[] = {0.42, 0.42, 0.42, 1};
+};
+
+class CAFE_GroupInfoBoxesCtrlGroup: RscControlsGroup
+{
+	idc = IDC_GROUP_CT_GROUP;
+	x = (CENTER_X - verticalBarrierWidth/2 - infoBoxWidth) * GRID_W + GRID_X;
+	y = infoBoxY * GRID_H + GRID_Y;
+	w = (infoBoxWidth * 2 + verticalBarrierWidth) * GRID_W;
+	h = (infoBoxHeight) * GRID_H;
+	class Controls 
+	{
+		class GroupListbox: CAFE_DefaultListBox
+		{
+			idc = IDC_GROUPSLIST;
+			x = 0;
+			y = 0;
+			w = infoBoxWidth * GRID_W;
+			h = infoBoxHeight * GRID_H;
+		}
+		class PlayersListbox: CAFE_DefaultListBox
+		{
+			idc = IDC_PLAYERSLIST;
+			x = (infoBoxWidth + verticalBarrierWidth) * GRID_W;
+			y = 0;
+			w = infoBoxWidth * GRID_W;
+			h = infoBoxHeight * GRID_H;
+			colorDisabled[] = {1,1,1,1};
+			// Allows scrolling but doesn't allow selecting
+			onLBSelChanged = "_this call f_fnc_listBoxDeselectWithoutScrolling";
+		}
+	};
+};
+
+class CAFE_LoadoutInfoBoxesCtrlGroup: RscControlsGroup
+{
+	idc = IDC_LOADOUT_CT_GROUP;
+	x = (CENTER_X - verticalBarrierWidth/2 - infoBoxWidth) * GRID_W + GRID_X;
+	y = infoBoxY * GRID_H + GRID_Y;
+	w = (infoBoxWidth * 2 + verticalBarrierWidth) * GRID_W;
+	h = (infoBoxHeight) * GRID_H;
+	class Controls 
+	{
+		class LoadoutsListbox: CAFE_DefaultListBox
+		{
+			idc = IDC_LOADOUTSLIST;
+			x = 0;
+			y = 0;
+			w = infoBoxWidth * GRID_W;
+			h = infoBoxHeight * GRID_H;
+		}
+		class GearListbox: CAFE_DefaultListBox
+		{
+			idc = IDC_GEARLIST;
+			x = (infoBoxWidth + verticalBarrierWidth) * GRID_W;
+			y = 0;
+			w = infoBoxWidth * GRID_W;
+			h = infoBoxHeight * GRID_H;
+			colorDisabled[] = {1,1,1,1};
+			// Allows scrolling but doesn't allow selecting
+			onLBSelChanged = "_this call f_fnc_listBoxDeselectWithoutScrolling";
+		}
+	};
+}
+
+// These info boxes can't be in a controls group because CT_MAP_MAIN controls don't allow it
+class CAFE_SpawnpointListbox: CAFE_DefaultListBox
+{
+	idc = IDC_SPAWNPICKER_SPAWNLIST;
+	x = (CENTER_X - verticalBarrierWidth/2 - infoBoxWidth) * GRID_W + GRID_X;
+	y = infoBoxY * GRID_H + GRID_Y;
+	w = infoBoxWidth * GRID_W;
+	h = infoBoxHeight * GRID_H;
+	sizeEx = 1 * GRID_H;
+}
+class CAFE_MapInfoBox: RscMapControl
+{
+	idc = IDC_RESPAWN_MAP;
+	x = (CENTER_X + verticalBarrierWidth/2) * GRID_W + GRID_X;
+	y = infoBoxY * GRID_H + GRID_Y;
+	w = infoBoxWidth * GRID_W;
+	h = infoBoxHeight * GRID_H;
+}
+
+class CAFE_TeleportToSquadCtrlGroup: RscControlsGroup 
+{
+	x = (CENTER_X - teleportGroupWidth/2) * GRID_W + GRID_X;
+	y = teleportGroupY * GRID_H + GRID_Y;
+	w = teleportGroupWidth * GRID_W;
+	h = teleportGroupHeight * GRID_H;
+	class Controls 
+	{
+		class TeleportTitle: CAFE_DefaultText
+		{
+			text = "Teleport to squad:";
+			x = 0;
+			y = 0;
+			w = teleportTitleWidth * GRID_W;
+			h = teleportGroupHeight * GRID_H;
+		};
+		class TeleportCheckbox: CAFE_DefaultTextCheckBox
+		{
+			idc = IDC_TELEPORTCHECKBOX;
+			x = teleportTitleWidth * GRID_W;
+			y = 0;
+			w = teleportCheckboxWidth * GRID_W;
+			h = teleportGroupHeight * GRID_H;
+			strings[] = {"No"};
+			checked_strings[] = {"Yes"};
+			style = 2;
+			onLoad = "(_this # 0) ctrlSetChecked (missionNamespace getVariable ['f_var_playerWishesTeleportAfterRespawn', false])";
+		};
+	}
+}
+
+// Ready button
+class CAFE_ReadyButton: CAFE_DefaultButton
+{
+	idc = IDC_READY_BUTTON;
+	x = (CENTER_X - readyButtonWidth/2) * GRID_W + GRID_X;
+	y = readyButtonY * GRID_H + GRID_Y;
+	w = readyButtonWidth * GRID_W;
+	h = readyButtonHeight * GRID_H;
+	text = "READY";
+	onButtonClick = "closeDialog 1";
+	colorBackground[] = {LOCATION_PICKER_COLOR};
+	colorBackgroundActive[] = {0, 0, 0, 1};
+}
+
+class CAFE_CancelButton: CAFE_DefaultButton
+{
+	idc = IDC_CANCEL_BUTTON;
+	x = infoBoxOutlineTopLeftX * GRID_W + GRID_X;
+	y = (readyButtonY + ((readyButtonHeight - cancelButtonHeight) / 2)) * GRID_H + GRID_Y;
+	w = cancelButtonWidth * GRID_W;
+	h = cancelButtonHeight * GRID_H;
+	text = "CANCEL";
+	onButtonClick = "closeDialog 3";
+	colorBackground[] = {0, 0, 0, 0.25};
+	colorBackgroundActive[] = {0, 0, 0, 1};
+}
+
+
+// Hardcode again to avoid messing with any other UIs that use this
+#define GUI_GRID_X		(0)
+#define GUI_GRID_Y		(0)
+#define GUI_GRID_W		(0.025)
+#define GUI_GRID_H		(0.04)

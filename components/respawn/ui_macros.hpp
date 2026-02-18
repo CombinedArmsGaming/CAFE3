@@ -34,16 +34,3 @@
 #define IDC_CANCEL_BUTTON 1011
 
 #define IDC_INFO_BOX_OUTLINE 6900
-
-
-// Colors defined without brackets because .hpp uses {} and .sqf uses []
-// Color shared between major elements
-#define PRIMARY_COLOR 0.65, 0.39, 0.05, 1
-
-#define LOCATION_PICKER_COLOR PRIMARY_COLOR
-
-#define GROUP_PICKER_COLOR 0.74, 0.93, 0.96, 1
-
-#define LOADOUT_PICKER_COLOR 0.47, 0.38, 0.45, 1
-
-#define BLACK 0,0,0,1
