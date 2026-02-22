@@ -4,7 +4,7 @@ if (isNil "f_var_mapMarkers_already_defined") then
 {
     f_var_mapMarkers_already_defined = true;
 
-    #include "..\..\..\configuration\mapMarkers.sqf"
+    #include "..\..\..\core_configuration\mapMarkers.sqf"
 }
 else
 {
