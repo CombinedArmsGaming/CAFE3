@@ -8,7 +8,7 @@
 #include "..\internals\lootBox.sqf"
 
 // NPC spawn scripts
-#include "..\..\..\configuration\spawnNpcs.sqf"
+#include "..\..\..\optional_configuration\spawnNpcs.sqf"
 
 // Squad markers
 #include "..\internals\squadMarkers.sqf"

@@ -5,7 +5,7 @@ if (isNil "f_var_logiVehicle_already_run") then
     #include "..\..\..\logi_macros.hpp"
     f_var_logiVehicle_already_run = true;
 
-    #include "..\..\..\configuration\logiVehicle.sqf"
+    #include "..\..\..\optional_configuration\logiVehicle.sqf"
     f_var_logiVehicle_loaded = true;
 
 }
