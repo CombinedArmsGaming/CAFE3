@@ -10,7 +10,7 @@ if (["acre_sys_radio"] call ace_common_fnc_isModLoaded) then
     private ["_languageMap"];
     private ["_bluforLanguage", "_opforLanguage", "_indforLanguage", "_civLanguage"];
 
-    #include "..\..\..\configuration\acre_radio_configuration.sqf"
+    #include "..\..\..\core_configuration\acre_radio_configuration.sqf"
 
     f_arr_acre_languageMap = _languageMap;
 
