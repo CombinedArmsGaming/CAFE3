@@ -8,7 +8,7 @@
 #include "..\..\..\configuration\aceActions.hpp"
 #include "..\..\..\configuration\ceasefire.hpp"
 #include "..\..\..\configuration\killTracking.hpp"
-#include "..\..\..\configuration\gravestones.hpp"
+#include "..\..\..\optional_configuration\gravestones.hpp"
 #include "..\..\..\configuration\viewDistanceEditor.hpp"
 #include "..\..\..\core_configuration\identityReplacement.hpp"
 #include "..\..\..\optional_configuration\insignia.hpp"
