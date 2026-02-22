@@ -14,6 +14,6 @@
 #include "..\..\..\optional_configuration\insignia.hpp"
 #include "..\..\..\optional_configuration\objectScaling.hpp"
 #include "..\..\..\optional_configuration\sogConfig.hpp"
-#include "..\..\..\configuration\respawn.hpp"
-#include "..\..\..\configuration\slottingGenerator.hpp"
+#include "..\..\..\core_configuration\respawn.hpp"
+#include "..\..\..\core_configuration\slottingGenerator.hpp"
 #include "..\..\..\optional_configuration\statsTracking.hpp"
