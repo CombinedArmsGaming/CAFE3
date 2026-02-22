@@ -5,7 +5,7 @@
 #include "..\..\..\configuration\mapClick.sqf"
 
 // AI Caching settings
-#include "..\..\..\configuration\aiCache.sqf"
+#include "..\..\..\optional_configuration\aiCache.sqf"
 
 // Lootbox
 #include "..\internals\lootBox.sqf"
