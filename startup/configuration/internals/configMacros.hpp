@@ -11,7 +11,7 @@
 #include "..\..\..\configuration\gravestones.hpp"
 #include "..\..\..\configuration\viewDistanceEditor.hpp"
 #include "..\..\..\core-configuration\identityReplacement.hpp"
-#include "..\..\..\configuration\insignia.hpp"
+#include "..\..\..\optional-configuration\insignia.hpp"
 #include "..\..\..\configuration\objectScaling.hpp"
 #include "..\..\..\configuration\sogConfig.hpp"
 #include "..\..\..\configuration\respawn.hpp"
