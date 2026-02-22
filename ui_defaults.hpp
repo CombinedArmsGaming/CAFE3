@@ -460,7 +460,7 @@ class CAFE_InfoBoxBottomBorder: CAFE_DefaultText
 {
 	idc = IDC_INFO_BOX_OUTLINE + 2;
 	x = 0;
-	y = (infoBoxOutlineBottomRightY - infoBoxOutlineWidth) * GRID_H;
+	y = (infoBoxHeight + infoBoxOutlineWidth) * GRID_H;
 	w = (infoBoxOutlineBottomRightX - infoBoxOutlineTopLeftX) * GRID_W;
 	h = (infoBoxOutlineWidth) * GRID_H;
 	colorBackground[] = {BORDER_COLOR};
@@ -468,8 +468,8 @@ class CAFE_InfoBoxBottomBorder: CAFE_DefaultText
 class CAFE_InfoBoxRightBorder: CAFE_DefaultText
 {
 	idc = IDC_INFO_BOX_OUTLINE + 3;
-	x = (infoBoxOutlineBottomRightX - infoBoxOutlineWidth) * GRID_W + GRID_X;
-	y = infoBoxOutlineTopLeftY * GRID_H + GRID_Y;
+	x = (infoBoxWidth * 2 + verticalBarrierWidth + infoBoxOutlineWidth) * GRID_W;
+	y = 0;
 	w = (infoBoxOutlineWidth) * GRID_W;
 	h = (infoBoxOutlineBottomRightY - infoBoxOutlineTopLeftY) * GRID_H;
 	colorBackground[] = {BORDER_COLOR};
@@ -478,8 +478,8 @@ class CAFE_InfoBoxBorderGroup: RscControlsGroup
 {
 	x = infoBoxOutlineTopLeftX * GRID_W + GRID_X;
 	y = infoBoxOutlineTopLeftY * GRID_H + GRID_Y;
-	w = (infoBoxOutlineBottomRightX - infoBoxOutlineTopLeftX) * GRID_W;
-	h = (infoBoxOutlineBottomRightY - infoBoxOutlineTopLeftY) * GRID_H;
+	w = (infoBoxOutlineBottomRightX - infoBoxOutlineTopLeftX + 1) * GRID_W;
+	h = (infoBoxOutlineBottomRightY - infoBoxOutlineTopLeftY + 1) * GRID_H;
 };
 
 class CAFE_VerticalBarrier: CAFE_DefaultText {

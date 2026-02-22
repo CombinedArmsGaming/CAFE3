@@ -81,6 +81,9 @@ class CAFE_SpawnPicker_Dialog
 				};
 			}
 		}
+
+		class VerticalBarrier: CAFE_VerticalBarrier
+		{}
 		
 	};
 
@@ -89,7 +92,7 @@ class CAFE_SpawnPicker_Dialog
     {	
 		class GroupInfoBoxes: CAFE_GroupInfoBoxesCtrlGroup
 		{
-			
+
 		}
 
 		#ifdef ALLOW_LOADOUT_CHANGE_UPON_RESPAWN
