@@ -53,7 +53,7 @@ if (serverCommandAvailable "#kick") then
 
 if (_unitSide == west) exitWith
 {
-#include "..\..\core-configuration\briefings\part_briefing_west.sqf"
+#include "..\..\core_configuration\briefings\part_briefing_west.sqf"
 
 	DEBUG_FORMAT1_CHAT("DEBUG (briefing.sqf): Briefing for %1 slot selected.", _unitSide)
 };
@@ -66,7 +66,7 @@ if (_unitSide == west) exitWith
 
 if (_unitSide == east) exitWith
 {
-#include "..\..\core-configuration\briefings\part_briefing_east.sqf"
+#include "..\..\core_configuration\briefings\part_briefing_east.sqf"
 
 	DEBUG_FORMAT1_CHAT("DEBUG (briefing.sqf): Briefing for %1 slot selected.", _unitSide)
 };
@@ -78,7 +78,7 @@ if (_unitSide == east) exitWith
 
 if (_unitSide == resistance) exitWith
 {
-#include "..\..\core-configuration\briefings\part_briefing_resistance.sqf"
+#include "..\..\core_configuration\briefings\part_briefing_resistance.sqf"
 
 	DEBUG_FORMAT1_CHAT("DEBUG (briefing.sqf): Briefing for %1 slot selected.", _unitSide)
 };
@@ -91,7 +91,7 @@ if (_unitSide == resistance) exitWith
 
 if (_unitSide == civilian) exitWith
 {
-#include "..\..\core-configuration\briefings\part_briefing_civ.sqf"
+#include "..\..\core_configuration\briefings\part_briefing_civ.sqf"
 
 	DEBUG_FORMAT1_CHAT("DEBUG (briefing.sqf): Briefing for %1 slot selected.", _unitSide)
 };

@@ -4,7 +4,7 @@ if (isNil "f_var_insignia_already_defined") then
 {
     f_var_insignia_already_defined = true;
 
-    #include "..\..\..\optional-configuration\insigniaGroups.sqf"
+    #include "..\..\..\optional_configuration\insigniaGroups.sqf"
 
     f_var_insignia_defined = true;
 
