@@ -47,10 +47,8 @@ class respawn_ui_spawnPickerDialog
     file = "components\respawn\ui_functions\spawnPickerDialog";
     class spawnPickerDialog_delaySpawnUntilReady{};
     class spawnPickerDialog_getListIdxFromSpawnIdx{};
-    class spawnPickerDialog_loadoutsList_onLBSelChanged{};
     class spawnPickerDialog_onCloseDialog{};
     class spawnPickerDialog_populateDialog{};
-    class spawnPickerDialog_populateLoadoutsList{};
     class spawnPickerDialog_spawnList_onLBSelChanged{};
     class spawnPickerDialog_switchInfoBox{};
     class spawnPickerDialog_updateLoop{};

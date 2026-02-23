@@ -73,7 +73,7 @@ switch (_newInfoBox) do {
 
         _selectedColor = [LOADOUT_PICKER_COLOR];
 
-        [_loadoutsList, lbCurSel _loadoutsList] call f_fnc_spawnPickerDialog_loadoutsList_onLBSelChanged;
+        [_loadoutsList, lbCurSel _loadoutsList] call f_fnc_loadoutsList_onLBSelChanged;
 
         DEBUG_PRINT_LOG("[RESPAWN] Switching info boxes to loadout");
     };

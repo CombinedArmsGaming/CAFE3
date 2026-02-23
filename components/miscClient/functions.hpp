@@ -12,7 +12,9 @@ class miscClient_ui
     file = "components\miscClient\ui_functions";
     class subtitleText_onLoad{};
     class groupsList_onLBSelChanged{};
+    class loadoutsList_onLBSelChanged{};
     class populateGroupsList{};
+    class populateLoadoutsList{};
     class createSubtitleText{};
 };
 class miscClient_zen
