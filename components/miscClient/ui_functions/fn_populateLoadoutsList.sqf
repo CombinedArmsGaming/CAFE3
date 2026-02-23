@@ -6,11 +6,9 @@
 
 disableSerialization;
 
-params ["_loadoutsList"];
+params ["_loadoutsList", ["_faction", toLower (faction player)]];
 
 waitUntil { IS_TRUE(f_var_gearscript_loaded) };
-// faction player is correct even when dead
-private _faction = toLower (faction player);
 private _gearVariant = [_faction] call f_fnc_factionToSideName;
 private _typeOfUnit = player getVariable ["f_var_assignGear", ""];
 private _registry = LOADOUT_REGISTRY_DYNAMIC(_gearVariant);

@@ -549,7 +549,7 @@ class CAFE_LoadoutInfoBoxesCtrlGroup: RscControlsGroup
 			w = infoBoxWidth * GRID_W;
 			h = infoBoxHeight * GRID_H;
 			onLBSelChanged = "_this call f_fnc_loadoutsList_onLBSelChanged;";
-			onLoad = "_this call f_fnc_populateLoadoutsList"
+			onLoad = "[_this # 0, toLower (player getVariable ['f_var_interactedLockerFaction', faction player])] call f_fnc_populateLoadoutsList"
 		}
 		class GearListbox: CAFE_DefaultListBox
 		{

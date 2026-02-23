@@ -10,15 +10,6 @@ _group = group player;
 _groupText = _display displayCtrl IDC_GROUPPICKER_CURRENTSQUADTEXT;
 _groupText ctrlSetText (format ["You are in:\n%1", groupId _group]);
 
-_groups = allGroups select
-{
-    ((side _x) isEqualTo (side _group)) and
-    {
-        SQUAD_IS_IMPORTANT(_x)
-        or {((units _x) findIf { isPlayer _x }) >= 0}
-    }
-};
-
 _groupList = _display displayCtrl IDC_GROUPSLIST;
 [_grouplist] call f_fnc_populateGroupsList;
 
