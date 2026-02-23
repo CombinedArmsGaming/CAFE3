@@ -21,6 +21,7 @@ if (IS_PLAYER) then
 
 	_openDialog = {
 		player setVariable ["f_var_interactedLockerFaction", _this # 3];
+		systemChat format ["set var to %1.", _this # 3];
 		createDialog "CAFE_LoadoutPicker_Dialog";
 	};
 

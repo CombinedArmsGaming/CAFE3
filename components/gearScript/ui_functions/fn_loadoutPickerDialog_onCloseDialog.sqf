@@ -4,8 +4,6 @@ disableSerialization;
 
 params ["_display", "_exitCode"];
 
-if (_exitCode == 2) then {};
-
 if (_exitCode == 1) then {
     private _loadoutsList = _display displayCtrl IDC_LOADOUTSLIST;
     if ((lbCurSel _loadoutsList) >= 0) then {
@@ -15,7 +13,7 @@ if (_exitCode == 1) then {
         
         _faction = toLower (player getVariable ["f_var_interactedLockerFaction", faction player]);
         private _loadoutArgs = [_loadout, _newUnit, _faction];
-        [_loadoutName, player, faction player] call f_fnc_assignGear;
+        [_loadoutName, player, _faction] call f_fnc_assignGear;
     };
 };
 

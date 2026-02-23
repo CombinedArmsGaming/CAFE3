@@ -27,7 +27,7 @@ private _gearList = (ctrlParent _loadoutsList) displayCtrl IDC_GEARLIST;
 lbClear _gearList;
 
 private _typeOfUnit = _loadoutsList lbData _lbCurSel;
-private _faction = toLower (faction player);
+private _faction = toLower (player getVariable ['f_var_interactedLockerFaction', faction player]);
 private _gearVariant = [_faction] call f_fnc_factionToSideName;
 
 
