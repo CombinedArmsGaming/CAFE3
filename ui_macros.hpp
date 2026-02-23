@@ -11,6 +11,12 @@
 
 #define BLACK 0,0,0,1
 
+#define IDD_SPAWNPICKER_DIALOG 12154
+
+// Location info boxes
+#define IDC_SPAWNPICKER_SPAWNLIST 1500
+#define IDC_RESPAWN_MAP 1501
+
 // Group info boxes
 #define IDC_GROUPSLIST 1502
 #define IDC_PLAYERSLIST 1503

@@ -1,8 +1,5 @@
 #include "\a3\ui_f\hpp\definecommongrids.inc"
 #include "../ui_macros.hpp"
-import RscMapControl;
-import RscMapControlEmpty;
-import RscFrame;
 
 // Design for spawnPickerDialog UI
 
