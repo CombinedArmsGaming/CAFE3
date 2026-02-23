@@ -31,7 +31,7 @@
 // #define ALLOW_TELEPORT_UPON_RESPAWN
 
 // When a player respawns, do they get to choose their loadout?
-#define ALLOW_LOADOUT_CHANGE_UPON_RESPAWN
+// #define ALLOW_LOADOUT_CHANGE_UPON_RESPAWN
 
 // When a player dies, do they get hidden from the squad HUD?  Turn off for hardcore settings but beware - this will confuse players who are used to this feature.
 #define HIDE_DEAD_IN_SQUAD
