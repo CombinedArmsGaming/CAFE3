@@ -20,7 +20,7 @@ _groups = allGroups select
 };
 
 _groupList = _display displayCtrl IDC_GROUPSLIST;
-[_grouplist] call f_fnc_populateGroupPicker;
+[_grouplist] call f_fnc_populateGroupsList;
 
 
 _teleportCheckbox = _display displayCtrl IDC_TELEPORTCHECKBOX;

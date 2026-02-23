@@ -12,7 +12,7 @@ class miscClient_ui
     file = "components\miscClient\ui_functions";
     class subtitleText_onLoad{};
     class groupsList_onLBSelChanged{};
-    class populateGroupPicker{};
+    class populateGroupsList{};
     class createSubtitleText{};
 };
 class miscClient_zen
