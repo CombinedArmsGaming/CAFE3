@@ -1,4 +1,6 @@
 #include "configuration\respawn.hpp"
+// Macros used for the loadout, respawn, and group picker UIs
+
 // Colors defined without brackets because .hpp uses {} and .sqf uses []
 // Color shared between major elements
 #define PRIMARY_COLOR 0.65, 0.39, 0.05, 1
@@ -11,10 +13,8 @@
 
 #define BLACK 0,0,0,1
 
-#define IDD_SPAWNPICKER_DIALOG 12154
-
 // Location info boxes
-#define IDC_SPAWNPICKER_SPAWNLIST 1500
+#define IDC_SPAWNLIST 1500
 #define IDC_RESPAWN_MAP 1501
 
 // Group info boxes

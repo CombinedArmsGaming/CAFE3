@@ -7,7 +7,7 @@ disableSerialization;
 
 params [["_newInfoBox", ""], "_display"];
 
-private _locationList = _display displayCtrl IDC_SPAWNPICKER_SPAWNLIST;
+private _locationList = _display displayCtrl IDC_SPAWNLIST;
 private _locationMap = _display displayCtrl IDC_RESPAWN_MAP;
 
 private _groupGroup = _display displayCtrl IDC_GROUP_CT_GROUP;

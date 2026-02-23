@@ -17,7 +17,7 @@ private _spawnMarkers = [];
 
 missionNamespace setVariable ["f_arr_spawnPickerDialog_spawnListEntries", _spawnListEntries];
 
-private _spawnList = _display displayCtrl IDC_SPAWNPICKER_SPAWNLIST;
+private _spawnList = _display displayCtrl IDC_SPAWNLIST;
 
 {
     _idx = _spawnList lbAdd (_x#1);

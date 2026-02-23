@@ -323,6 +323,12 @@ class CAFE_DefaultCombo
 
 };
 
+/*
+
+	Default controls used for the loadout, group picker, and respawn dialogs
+
+*/
+
 #include "\a3\ui_f\hpp\definecommongrids.inc"
 
 #define dialogY 0
@@ -400,14 +406,10 @@ class CAFE_InfoBoxSelectorButton : CAFE_DefaultButton {
 }
 
 class CAFE_Background: CAFE_DefaultText  {
-	// x = (CENTER_X - dialogWidth/2) * GRID_W + GRID_X;
-	// y = dialogY * GRID_H + GRID_Y;
-	// w = dialogWidth * GRID_W;
-	// h = dialogHeight * GRID_H;
-	x = 0;
-	y = 0;
-	w = 1;
-	h = 1;
+	x = (CENTER_X - dialogWidth/2) * GRID_W + GRID_X;
+	y = dialogY * GRID_H + GRID_Y;
+	w = dialogWidth * GRID_W;
+	h = dialogHeight * GRID_H;
 	colorBackground[] = {0,0,0,0.5};
 };
 
@@ -564,7 +566,7 @@ class CAFE_LoadoutInfoBoxesCtrlGroup: RscControlsGroup
 // These info boxes can't be in a controls group because CT_MAP_MAIN controls don't allow it
 class CAFE_SpawnpointListbox: CAFE_DefaultListBox
 {
-	idc = IDC_SPAWNPICKER_SPAWNLIST;
+	idc = IDC_SPAWNLIST;
 	x = (CENTER_X - verticalBarrierWidth/2 - infoBoxWidth) * GRID_W + GRID_X;
 	y = infoBoxY * GRID_H + GRID_Y;
 	w = infoBoxWidth * GRID_W;

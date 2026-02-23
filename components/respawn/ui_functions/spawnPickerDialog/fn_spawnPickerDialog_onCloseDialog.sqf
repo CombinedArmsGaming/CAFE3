@@ -29,7 +29,7 @@ if (_exitCode == 3) exitWith {
 // Save changes whether exiting with ready button or escape
 if (_exitCode == 1 or _exitCode == 2) then
 {
-    private _spawnList = _display displayCtrl IDC_SPAWNPICKER_SPAWNLIST;
+    private _spawnList = _display displayCtrl IDC_SPAWNLIST;
 
     private _selectedIdx = lbCurSel _spawnList;
     private _selectedSpawnIdx = _spawnList lbValue _selectedIdx;
