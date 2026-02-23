@@ -6,10 +6,13 @@
 
 disableSerialization;
 
-params ["_loadoutsList", ["_faction", toLower (faction player)]];
+// Faction default is assignGear_Faction, or the player's faction if they don't have that var
+params ["_loadoutsList", ["_faction", toLower (player getVariable ["f_var_assignGear_Faction", faction player])]];
+
+_loadoutsList setVariable ["f_var_faction", _faction];
 
 waitUntil { IS_TRUE(f_var_gearscript_loaded) };
-private _gearVariant = [_faction] call f_fnc_factionToSideName;
+private _gearVariant = [toLower _faction] call f_fnc_factionToSideName;
 private _typeOfUnit = player getVariable ["f_var_assignGear", ""];
 private _registry = LOADOUT_REGISTRY_DYNAMIC(_gearVariant);
 
