@@ -19,7 +19,27 @@ if (IS_PLAYER) then
 
 	if (_registry isEqualTo []) exitWith {};
 
+	_openDialog = {
+		player setVariable ["f_var_interactedLockerFaction", _this # 3];
+		createDialog "CAFE_LoadoutPicker_Dialog";
+	};
+
+	_condition = "!(_this getVariable ['f_var_assignGear_running', false])";
+
 	_codeTemplate = "['%1', (_this select 1), '%2'] call f_fnc_assignGear;";
+
+	_locker addAction
+	[
+		"Open Loadout Menu",
+		_openDialog,
+		_faction,
+		1.5,
+		true,
+		true,
+		"",
+		_condition,
+		5
+	];
 
 	// Add the base ACE3 category
 	[
