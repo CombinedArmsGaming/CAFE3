@@ -13,7 +13,7 @@ if (_exitCode == 2) exitWith {};
 
 if (_exitCode == 1) then
 {
-    _groupList = _display displayCtrl IDC_GROUPPICKER_SQUADLIST;
+    _groupList = _display displayCtrl IDC_GROUPSLIST;
 
     _selectedIdx = lbCurSel _groupList;
     _selectedGroupName = _groupList lbData _selectedIdx;
@@ -58,7 +58,7 @@ if (_exitCode == 1) then
 
     if (_allowedToTeleport) then
     {
-        _teleportCheckbox = _display displayCtrl IDC_GROUPPICKER_TELEPORTCHECKBOX;
+        _teleportCheckbox = _display displayCtrl IDC_TELEPORTCHECKBOX;
 
         _isChecked = _teleportCheckbox ctrlChecked 0;
 

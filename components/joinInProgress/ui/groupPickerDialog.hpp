@@ -29,6 +29,9 @@ class CAFE_GroupPicker_Dialog
 			}
 		};
 
+		class VerticalBarrier: CAFE_VerticalBarrier
+		{};
+
 		class InfoBoxBorders: CAFE_InfoBoxBorderGroup {
 			class Controls 
 			{
@@ -51,8 +54,7 @@ class CAFE_GroupPicker_Dialog
 			}
 		};
 
-		class VerticalBarrier: CAFE_VerticalBarrier
-		{};
+		
 
 	};
 
@@ -61,52 +63,18 @@ class CAFE_GroupPicker_Dialog
     {
 		class GroupInfoBoxes: CAFE_GroupInfoBoxesCtrlGroup
 		{
-			
+
 		}
 
-		class CAFE_GroupPicker_TeleportTitle: CAFE_DefaultText
-		{
-			idc = 1006;
-			text = "Teleport to squad:";
-			x = 14 * GUI_GRID_W + GUI_GRID_X;
-			y = 16 * GUI_GRID_H + GUI_GRID_Y;
-			w = 7.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-		};
+		class TeleportGroup: CAFE_TeleportToSquadCtrlGroup
+		{}
+		
+		class ReadyButton: CAFE_ReadyButton
+		{}
 
-		class CAFE_GroupPicker_TeleportCheckbox: CAFE_DefaultTextCheckBox
-		{
-			idc = IDC_GROUPPICKER_TELEPORTCHECKBOX;
-			text = "Yes";
-			x = 21.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 16 * GUI_GRID_H + GUI_GRID_Y;
-			w = 4.5 * GUI_GRID_W;
-			h = 1 * GUI_GRID_H;
-			strings[] = {"No"};
-			checked_strings[] = {"Yes"};
-			style = 2;
-		};
-
-		class CAFE_GroupPicker_ConfirmButton: CAFE_DefaultButton
-		{
-			idc = 1600;
-			text = "Confirm";
-			x = 20.5 * GUI_GRID_W + GUI_GRID_X;
-			y = 19 * GUI_GRID_H + GUI_GRID_Y;
-			w = 5.5 * GUI_GRID_W;
-			h = 1.5 * GUI_GRID_H;
-            onButtonClick = "closeDialog 1";
-		};
-
-		class CAFE_GroupPicker_CancelButton: CAFE_DefaultButton
+		class CancelButton:CAFE_CancelButton
 		{
 			idc = IDC_GROUPPICKER_CANCELBUTTON;
-			text = "Cancel";
-			x = 14 * GUI_GRID_W + GUI_GRID_X;
-			y = 19 * GUI_GRID_H + GUI_GRID_Y;
-			w = 5.5 * GUI_GRID_W;
-			h = 1.5 * GUI_GRID_H;
-            onButtonClick = "closeDialog 2";
 		};
 
 	};
