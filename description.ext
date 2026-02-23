@@ -165,7 +165,7 @@ class cfgNotifications
 
 class CfgDebriefing
 {
-	#include "configuration\endings.hpp"
+	#include "core_configuration\endings.hpp"
 };
 
 

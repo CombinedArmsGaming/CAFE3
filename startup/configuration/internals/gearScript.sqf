@@ -5,7 +5,7 @@ if (isNil "f_var_gearscript_already_run") then
     #include "..\..\..\gearscript_macros.hpp"
     f_var_gearscript_already_run = true;
 
-    #include "..\..\..\configuration\gearScript.sqf"
+    #include "..\..\..\core_configuration\gearScript.sqf"
     f_var_gearscript_loaded = true;
 
 }

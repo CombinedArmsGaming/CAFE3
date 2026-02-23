@@ -4,5 +4,5 @@
 
 // To disable a feature, comment out its #define line.
 
-#include "..\..\..\configuration\zeusSpawner\unitPresets.hpp"
-#include "..\..\..\configuration\zeusSpawner\aiPresets.hpp"
+#include "..\..\..\core_configuration\zeusSpawner\unitPresets.hpp"
+#include "..\..\..\core_configuration\zeusSpawner\aiPresets.hpp"

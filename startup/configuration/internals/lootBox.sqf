@@ -5,7 +5,7 @@ if (isNil "f_var_lootbox_already_run") then
     #include "..\..\..\lootbox_macros.hpp"
     f_var_lootbox_already_run = true;
 
-    #include "..\..\..\configuration\lootBox.sqf"
+    #include "..\..\..\optional_configuration\lootBox.sqf"
     f_var_lootbox_loaded = true;
 
 }

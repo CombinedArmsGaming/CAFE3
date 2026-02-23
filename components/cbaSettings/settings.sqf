@@ -4,8 +4,8 @@
 		This file stores the presets for forcing mission-addon settings
 -------------------------------------------------------------------------------------------------------------------- */
 
-#include "..\..\configuration\cbaSettings.hpp"
-#include "..\..\configuration\respawn.hpp"
+#include "..\..\optional_configuration\cbaSettings.hpp"
+#include "..\..\core_configuration\respawn.hpp"
 
 //Medical
 

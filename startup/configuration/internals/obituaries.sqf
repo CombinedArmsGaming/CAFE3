@@ -7,8 +7,8 @@
 */
 
 
-#include "..\..\..\configuration\obituaries\obituaries_global.sqf"
-#include "..\..\..\configuration\obituaries\obituaries_blufor.sqf"
-#include "..\..\..\configuration\obituaries\obituaries_opfor.sqf"
-#include "..\..\..\configuration\obituaries\obituaries_indfor.sqf"
-#include "..\..\..\configuration\obituaries\obituaries_civ.sqf"
+#include "..\..\..\optional_configuration\obituaries\obituaries_global.sqf"
+#include "..\..\..\optional_configuration\obituaries\obituaries_blufor.sqf"
+#include "..\..\..\optional_configuration\obituaries\obituaries_opfor.sqf"
+#include "..\..\..\optional_configuration\obituaries\obituaries_indfor.sqf"
+#include "..\..\..\optional_configuration\obituaries\obituaries_civ.sqf"

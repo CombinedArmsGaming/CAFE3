@@ -1,2 +1,2 @@
 #include "../../macros.hpp"
-#include "..\..\configuration\slottingGenerator.hpp"
+#include "..\..\core_configuration\slottingGenerator.hpp"

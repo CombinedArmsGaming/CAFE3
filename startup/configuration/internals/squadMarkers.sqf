@@ -12,10 +12,10 @@ if (isNil "f_var_squadMarkers_already_run") then
         {    
             #include "..\..\..\squadmarker_macros.hpp"
 
-            #include "..\..\..\configuration\squadMarkers\squadMarkers_blufor.sqf"
-            #include "..\..\..\configuration\squadMarkers\squadMarkers_opfor.sqf"
-            #include "..\..\..\configuration\squadMarkers\squadMarkers_indfor.sqf"
-            #include "..\..\..\configuration\squadMarkers\squadMarkers_civ.sqf"
+            #include "..\..\..\core_configuration\squadMarkers\squadMarkers_blufor.sqf"
+            #include "..\..\..\core_configuration\squadMarkers\squadMarkers_opfor.sqf"
+            #include "..\..\..\core_configuration\squadMarkers\squadMarkers_indfor.sqf"
+            #include "..\..\..\core_configuration\squadMarkers\squadMarkers_civ.sqf"
             
             // List of important squads as [groupId squad, side squad]
             private _importantSquadsList = (allGroups select {SQUAD_IS_IMPORTANT(_x)}) apply {[groupId _x, side _x]};
