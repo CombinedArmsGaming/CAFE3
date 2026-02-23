@@ -438,6 +438,25 @@ class CAFE_InfoText: CAFE_DefaultText {
 	sizeEx = 0.7*GRID_H;
 };
 
+class CAFE_InfoTextLeft: CAFE_InfoText
+{
+	style = ST_MULTI + ST_NO_RECT;
+	x = 0;
+	w = ticketsInfoWidth * GRID_W;
+};
+class CAFE_InfoTextCenter: CAFE_InfoText
+{
+	style = ST_MULTI + ST_NO_RECT + ST_CENTER;
+	x = (infoTextWidth/2 - deathTimerWidth/2) * GRID_W;
+	w = deathTimerWidth * GRID_W;
+};
+class CAFE_InfoTextRight: CAFE_InfoText
+{
+	style = ST_MULTI + ST_NO_RECT + ST_RIGHT;
+	x = (infoTextWidth - waveInfoWidth) * GRID_W;
+	w = waveInfoWidth * GRID_W;
+};
+
 class CAFE_InfoBoxTopBorder: CAFE_DefaultText
 {
 	idc = IDC_INFO_BOX_OUTLINE;

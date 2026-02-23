@@ -33,29 +33,20 @@ class CAFE_SpawnPicker_Dialog
 		{
 			class Controls 
 			{
-				class TicketsText: CAFE_InfoText
+				class TicketsText: CAFE_InfoTextLeft
 				{
 					idc = IDC_TICKETS_TEXT;
 					text = "Personal Tickets: 2\nSide Tickets: 30";
-					style = ST_MULTI + ST_NO_RECT;
-					x = 0;
-					w = ticketsInfoWidth * GRID_W;
 				}
-				class DeathTimer: CAFE_InfoText
+				class DeathTimer: CAFE_InfoTextCenter
 				{
 					idc = IDC_DEATH_TIMER;
 					text = "Dead for:\n00:00";
-					style = ST_MULTI + ST_NO_RECT + ST_CENTER;
-					x = (infoTextWidth/2 - deathTimerWidth/2) * GRID_W;
-					w = deathTimerWidth * GRID_W;
 				}
-				class WaveInfo: CAFE_InfoText
+				class WaveInfo: CAFE_InfoTextRight
 				{
 					IDC= IDC_WAVE_TEXT;
 					text = "Respawn Wave Status:\nUnavailable (wait 1m 20s)";
-					style = ST_MULTI + ST_NO_RECT + ST_RIGHT;
-					x = (infoTextWidth - waveInfoWidth) * GRID_W;
-					w = waveInfoWidth * GRID_W;
 				}
 			}
 		}
@@ -96,38 +87,9 @@ class CAFE_SpawnPicker_Dialog
 		}
 
 		#ifdef ALLOW_LOADOUT_CHANGE_UPON_RESPAWN
-		class LoadoutInfoBoxes: RscControlsGroup
+		class LoadoutInfoBoxes: CAFE_LoadoutInfoBoxesCtrlGroup
 		{
-			idc = IDC_LOADOUT_CT_GROUP;
-			x = (CENTER_X - verticalBarrierWidth/2 - infoBoxWidth) * GRID_W + GRID_X;
-			y = infoBoxY * GRID_H + GRID_Y;
-			w = (infoBoxWidth * 2 + verticalBarrierWidth) * GRID_W;
-			h = (infoBoxHeight) * GRID_H;
-			onLoad = "(_this # 0) ctrlShow false";
-			class Controls 
-			{
-				class LoadoutsListbox: CAFE_DefaultListBox
-				{
-					idc = IDC_LOADOUTSLIST;
-					x = 0;
-					y = 0;
-					w = infoBoxWidth * GRID_W;
-					h = infoBoxHeight * GRID_H;
-					onLBSelChanged = "_this call f_fnc_spawnPickerDialog_loadoutsList_onLBSelChanged;";
-					onLoad = "_this call f_fnc_spawnPickerDialog_populateLoadoutsList"
-				}
-				class GearListbox: CAFE_DefaultListBox
-				{
-					idc = IDC_GEARLIST;
-					x = (infoBoxWidth + verticalBarrierWidth) * GRID_W;
-					y = 0;
-					w = infoBoxWidth * GRID_W;
-					h = infoBoxHeight * GRID_H;
-					colorDisabled[] = {1,1,1,1};
-					// Allows scrolling but doesn't allow selecting
-					onLBSelChanged = "_this call f_fnc_listBoxDeselectWithoutScrolling"
-				}
-			};
+			
 		}
 		#endif
 
