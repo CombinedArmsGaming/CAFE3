@@ -83,8 +83,8 @@ class CAFE_SpawnPicker_Dialog
     {	
 		class GroupInfoBoxes: CAFE_GroupInfoBoxesCtrlGroup
 		{
-
-		}
+			onLoad = "(_this # 0) ctrlShow false";
+		};
 
 		#ifdef ALLOW_LOADOUT_CHANGE_UPON_RESPAWN
 		class LoadoutInfoBoxes: CAFE_LoadoutInfoBoxesCtrlGroup
@@ -94,23 +94,12 @@ class CAFE_SpawnPicker_Dialog
 		#endif
 
 		// These info boxes can't be in a controls group because CT_MAP_MAIN controls don't allow it
-		class SpawnListbox: CAFE_DefaultListBox
+		class SpawnListbox: CAFE_SpawnpointListbox
 		{
-			idc = IDC_SPAWNPICKER_SPAWNLIST;
-			x = (CENTER_X - verticalBarrierWidth/2 - infoBoxWidth) * GRID_W + GRID_X;
-			y = infoBoxY * GRID_H + GRID_Y;
-			w = infoBoxWidth * GRID_W;
-			h = infoBoxHeight * GRID_H;
-			sizeEx = 1 * GRID_H;
 			onLBSelChanged = "_this call f_fnc_spawnPickerDialog_spawnList_onLBSelChanged;";
 		}
-		class MapScreen: RscMapControl
+		class MapScreen: CAFE_MapInfoBox
 		{
-			idc = IDC_RESPAWN_MAP;
-			x = (CENTER_X + verticalBarrierWidth/2) * GRID_W + GRID_X;
-			y = infoBoxY * GRID_H + GRID_Y;
-			w = infoBoxWidth * GRID_W;
-			h = infoBoxHeight * GRID_H;
 		}
 
 		// Info box selector buttons
@@ -121,7 +110,7 @@ class CAFE_SpawnPicker_Dialog
 			text = "Location";
 			colorBackground[] = {LOCATION_PICKER_COLOR};
 			colorBackgroundActive[] = {LOCATION_PICKER_COLOR};
-			onButtonClick = "['location'] call f_fnc_spawnPickerDialog_switchInfoBox";
+			onButtonClick = "['location', ctrlParent (_this # 0)] call f_fnc_spawnPickerDialog_switchInfoBox";
 		}
 		class GroupButton: InfoBoxSelectorButton
 		{
@@ -130,7 +119,7 @@ class CAFE_SpawnPicker_Dialog
 			text = "Group";
 			colorBackground[] = {0, 0, 0,1};
 			colorBackgroundActive[] = {GROUP_PICKER_COLOR};
-			onButtonClick = "['group'] call f_fnc_spawnPickerDialog_switchInfoBox";
+			onButtonClick = "['group', ctrlParent (_this # 0)] call f_fnc_spawnPickerDialog_switchInfoBox";
 		}
 		#ifdef ALLOW_LOADOUT_CHANGE_UPON_RESPAWN
 		class LoadoutButton: InfoBoxSelectorButton
@@ -140,69 +129,22 @@ class CAFE_SpawnPicker_Dialog
 			text = "Loadout";
 			colorBackground[] = {0, 0, 0,1};
 			colorBackgroundActive[] = {LOADOUT_PICKER_COLOR};
-			onButtonClick = "['loadout'] call f_fnc_spawnPickerDialog_switchInfoBox";
+			onButtonClick = "['loadout', ctrlParent (_this # 0)] call f_fnc_spawnPickerDialog_switchInfoBox";
 		}
 		#endif
 
-		class TeleportGroup: RscControlsGroup 
+		class TeleportGroup: CAFE_TeleportToSquadCtrlGroup 
 		{
-			idc = -1;
-			x = (CENTER_X - teleportGroupWidth/2) * GRID_W + GRID_X;
-			y = teleportGroupY * GRID_H + GRID_Y;
-			w = teleportGroupWidth * GRID_W;
-			h = teleportGroupHeight * GRID_H;
-			class Controls 
-			{
-				class TeleportTitle: CAFE_DefaultText
-				{
-					idc = -1;
-					text = "Teleport to squad:";
-					x = 0;
-					y = 0;
-					w = teleportTitleWidth * GRID_W;
-					h = teleportGroupHeight * GRID_H;
-				};
-				class TeleportCheckbox: CAFE_DefaultTextCheckBox
-				{
-					idc = IDC_TELEPORTCHECKBOX;
-					x = teleportTitleWidth * GRID_W;
-					y = 0;
-					w = teleportCheckboxWidth * GRID_W;
-					h = teleportGroupHeight * GRID_H;
-					strings[] = {"No"};
-					checked_strings[] = {"Yes"};
-					style = 2;
-					onLoad = "(_this # 0) ctrlSetChecked (missionNamespace getVariable ['f_var_playerWishesTeleportAfterRespawn', false])";
-				};
-			}
 		}
 		
 		
 		// Ready button
-		class ReadyButton: CAFE_DefaultButton
+		class ReadyButton: CAFE_ReadyButton
 		{
-			idc = IDC_READY_BUTTON;
-			x = (CENTER_X - readyButtonWidth/2) * GRID_W + GRID_X;
-			y = readyButtonY * GRID_H + GRID_Y;
-			w = readyButtonWidth * GRID_W;
-			h = readyButtonHeight * GRID_H;
-			text = "READY";
-			onButtonClick = "closeDialog 1";
-			colorBackground[] = {LOCATION_PICKER_COLOR};
-			colorBackgroundActive[] = {0, 0, 0, 1};
 		}
 
-		class CancelButton: CAFE_DefaultButton
+		class CancelButton: CAFE_CancelButton
 		{
-			idc = IDC_CANCEL_BUTTON;
-			x = infoBoxOutlineTopLeftX * GRID_W + GRID_X;
-			y = (readyButtonY + ((readyButtonHeight - cancelButtonHeight) / 2)) * GRID_H + GRID_Y;
-			w = cancelButtonWidth * GRID_W;
-			h = cancelButtonHeight * GRID_H;
-			text = "CANCEL";
-			onButtonClick = "closeDialog 3";
-			colorBackground[] = {0, 0, 0, 0.25};
-			colorBackgroundActive[] = {0, 0, 0, 1};
 		}
 	};
 

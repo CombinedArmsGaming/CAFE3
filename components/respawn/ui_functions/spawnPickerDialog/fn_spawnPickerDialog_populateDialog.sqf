@@ -80,36 +80,7 @@ ctrlMapAnimCommit(_mapCtrl);
 // List of important squads as [groupId group, side group]. Created in startup/configuration/internals/squadMarkers.sqf
 private _groupsList = _display displayCtrl IDC_GROUPSLIST;
 
-// Collect all important squads and all squads with players in them that it makes sense to let this player join
-private _groupsToInclude = (groups playerSide) select {
-	private _name = groupId _x;
-
-	// Not spectators group
-	(_name isNotEqualTo "Spectators") and
-	// Not zeus group if the player is not a zeus
-	((player getVariable ["f_var_isZeus", false]) or {(toLower _name) isNotEqualTo "zeus"}) and 
-	// Must either be important or have players in
-	(SQUAD_IS_IMPORTANT(_x) or ({((units _x) findIf { isPlayer _x }) >= 0}))
-};
-
-// Add the squads to the list
-{
-	private _name = groupId _x;
-	private _count = count (units _x);
-	private _idx = _groupsList lbAdd (format ["%1 (%2)", _name, _count]);
-	_groupsList lbSetData [_idx, _name];
-} forEach _groupsToInclude;
-
-_groupsList lbSortBy ["TEXT", false, false];
-
-// Default select the item in the list according to the players last group name
-private _playerGroupName = missionNamespace getVariable ["f_var_lastPlayerGroupName", ""];
-DEBUG_FORMAT1_LOG("[RESPAWN] lastPlayerGroupName was %1, attempting to select", _playerGroupname);
-for "_i" from 0 to ((lbSize _groupsList) - 1) do {
-    if ((_groupsList lbData _i) isEqualTo _playerGroupName) exitWith {
-        _groupsList lbSetCurSel _i;
-    }
-};
+[_groupsList] call f_fnc_populateGroupsList;
 
 /*
     Teleport Checkbox
@@ -140,7 +111,7 @@ _waveInfo ctrlShow ([RESPAWN_TRIGGERED_WAVE] call f_fnc_isRespawnModeActive);
 _spawnList lbSetCurSel (_selectedListIdx max 0);
 DEBUG_FORMAT3_LOG("[RESPAWN] Selecting list index %1, spawn index %2, spawn %3", _selectedListIdx, _selectedSpawnIdx, _spawnListEntries # _selectedSpawnIdx);
 
-["location"] call f_fnc_spawnPickerDialog_switchInfoBox;
+["location", _display] call f_fnc_spawnPickerDialog_switchInfoBox;
 
 private _ignoreAlive = missionNamespace getVariable ["f_var_spawnPickerDialog_ignoreAlive", false];
 missionNamespace setVariable ["f_var_spawnPickerDialog_ignoreAlive", nil];
