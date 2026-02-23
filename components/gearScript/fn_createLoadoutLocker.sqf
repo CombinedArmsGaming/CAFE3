@@ -19,83 +19,42 @@ if (IS_PLAYER) then
 
 	if (_registry isEqualTo []) exitWith {};
 
-	_openDialog = {
-		player setVariable ["f_var_interactedLockerFaction", _this # 3];
-		createDialog "CAFE_LoadoutPicker_Dialog";
-	};
-
-	_condition = "!(_this getVariable ['f_var_assignGear_running', false])";
-
-	_codeTemplate = "['%1', (_this select 1), '%2'] call f_fnc_assignGear;";
-
 	_locker addAction
 	[
 		"Open Loadout Menu",
-		_openDialog,
+		{
+			// Elements 0 1 and 2 of the arguments are from addAction, 3 is _faction
+			player setVariable ["f_var_interactedLockerFaction", _this # 3];
+			createDialog "CAFE_LoadoutPicker_Dialog";
+		},
 		_faction,
 		1.5,
-		true,
+		true, // Show title text when approaching
 		true,
 		"",
-		_condition,
+		"!(_this getVariable ['f_var_assignGear_running', false])",
 		5
 	];
 
-	// Add the base ACE3 category
+	// Add the ACE3 interaction
 	[
 		_locker,
 		0,
 		[],
 		[
 			"cafe3_takeLoadout",
-			"Take Loadout",
+			"Open Loadout Menu",
 			"",
+			{
+				// # 2 selects the optional args, and then # 0 gets _faction out of them
+				player setVariable ["f_var_interactedLockerFaction", (_this # 2) # 0];
+				createDialog "CAFE_LoadoutPicker_Dialog";
+			},
+			{!(player getVariable ['f_var_assignGear_running', false])},
 			{},
-			{true}
+			[_faction]
 		] call ace_interact_menu_fnc_createAction
 	] call ace_interact_menu_fnc_addActionToObject;
-
-	{
-		_xCaps = toUpper _x;
-
-		if !(_xCaps isEqualTo "DEFAULT") then
-		{
-			_condition = "!(_this getVariable ['f_var_assignGear_running', false])";
-
-			if (_xCaps isEqualTo "ZEUS") then
-			{
-				_condition = "!((_this getVariable ['f_var_assignGear_running', false]) or {!(_this getVariable ['f_var_isZeus', false])})";
-			};
-
-			_locker addAction
-			[
-				format ["<t color='#999999'>Take loadout:</t> <t color='#ff8800'>%1</t>", _xCaps],
-				format [_codeTemplate, _x, _faction],
-				nil,
-				1.5,
-				false,
-				true,
-				"",
-				_condition,
-				5
-			];
-
-			[
-				_locker,
-				0,
-				["cafe3_takeLoadout"],
-				[
-					format ["cafe3_takeLoadout_%1", _xCaps],
-					_xCaps,
-					"",
-					compile format ["_this = [_target, _player];" + _codeTemplate, _x, _faction],
-					compile ("_this = _player;" + _condition)
-				] call ace_interact_menu_fnc_createAction
-			] call ace_interact_menu_fnc_addActionToObject;
-		};
-
-	} forEach _registry;
-
 };
 
 _locker setVariable ["f_var_isLoadoutLocker", true];
