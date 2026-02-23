@@ -86,7 +86,7 @@ class CAFE_SpawnPicker_Dialog
 		#ifdef ALLOW_LOADOUT_CHANGE_UPON_RESPAWN
 		class LoadoutInfoBoxes: CAFE_LoadoutInfoBoxesCtrlGroup
 		{
-			
+			onLoad = "(_this # 0) ctrlShow false";
 		}
 		#endif
 

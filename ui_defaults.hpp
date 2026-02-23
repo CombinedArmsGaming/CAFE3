@@ -548,6 +548,8 @@ class CAFE_LoadoutInfoBoxesCtrlGroup: RscControlsGroup
 			y = 0;
 			w = infoBoxWidth * GRID_W;
 			h = infoBoxHeight * GRID_H;
+			onLBSelChanged = "_this call f_fnc_spawnPickerDialog_loadoutsList_onLBSelChanged;";
+			onLoad = "_this call f_fnc_spawnPickerDialog_populateLoadoutsList"
 		}
 		class GearListbox: CAFE_DefaultListBox
 		{
