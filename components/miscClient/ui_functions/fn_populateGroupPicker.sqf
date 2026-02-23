@@ -12,8 +12,6 @@
 
 params ["_groupsList"];
 
-systemChat format ["groups list %1", _groupsList];
-
 // Collect all important squads and all squads with players in them that it makes sense to let this player join
 private _groupsToInclude = (groups playerSide) select {
 	private _name = groupId _x;

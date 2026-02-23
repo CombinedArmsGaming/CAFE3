@@ -12,7 +12,11 @@
 
 disableSerialization;
 
-params ["_selectedGroupName", "_playersList"];
+params ["_control", "_lbCurSel"];
+
+private _playersList = (ctrlParent _control) displayCtrl IDC_PLAYERSLIST;
+
+private _selectedGroupName = _control lbData _lbCurSel;
 
 DEBUG_FORMAT1_LOG("[UI] Updating players list for %1", _selectedGroupName);
 

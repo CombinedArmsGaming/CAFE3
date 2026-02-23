@@ -23,7 +23,7 @@ _groupList = _display displayCtrl IDC_GROUPSLIST;
 [_grouplist] call f_fnc_populateGroupPicker;
 
 
-_teleportCheckbox = _display displayCtrl IDC_GROUPPICKER_TELEPORTCHECKBOX;
+_teleportCheckbox = _display displayCtrl IDC_TELEPORTCHECKBOX;
 
 _mayTeleport = player getVariable ["f_var_mayTeleportToGroup", false];
 
