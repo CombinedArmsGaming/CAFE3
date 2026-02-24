@@ -4,6 +4,8 @@ RUN_AS_ASYNC(f_fnc_createLoadoutLocker);
 
 params ["_locker", "_faction"];
 
+_locker lockInventory true;
+
 WAIT_UNTIL_MISSION_STARTED();
 waitUntil { IS_TRUE(f_var_gearscript_loaded) };
 
