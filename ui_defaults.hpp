@@ -331,74 +331,6 @@ class CAFE_DefaultCombo
 
 #include "\a3\ui_f\hpp\definecommongrids.inc"
 
-#define dialogY 0
-#define dialogWidth 32
-
-#define infoTextVerticalPadding 0.6 // Padding above the info text group
-#define infoTextLineHeight 0.7 // Height of one line of the info text box
-#define ticketsInfoWidth 7
-#define timerInfoWidth 6
-#define waveInfoWidth 8.5
-
-#define deathTimerWidth 9
-
-#define infoBoxWidth 14 // Width of one of the little info boxes that have stuff like spawn list, map, loadout list, etc.
-#define infoBoxHeight 14
-#define verticalBarrierWidth 0.2 // Width of the vertical barrier separating list you pick from and info on the other side
-#define infoBoxSelectorHeight 1 // Height of the three options you swap between to choose which infoBox you want
-#define infoBoxOutlineWidth 0.2 // Width of the outline that goes around the info boxes
-
-#define teleportGroupVerticalPadding 0.5 // Padding above the checkbox
-#define teleportGroupHeight 1
-#define teleportCheckboxWidth 4.5
-#define teleportTitleWidth 6.5
-#define teleportGroupWidth (teleportCheckboxWidth + teleportTitleWidth)
-
-#define readyButtonVerticalPadding 0.5
-#define readyButtonWidth 9.5
-#define readyButtonHeight 2
-
-#define cancelButtonWidth 4
-#define cancelButtonHeight 1.5
-
-#define GUI_GRID_WIDTH 40
-#define GUI_GRID_HEIGHT 25
-#define CENTER_X GUI_GRID_WIDTH/2
-#define CENTER_Y GUI_GRID_HEIGHT/2
-
-#define GRID_X GUI_GRID_CENTER_X // Left edge of GUI_GRID_CENTER
-#define GRID_Y GUI_GRID_CENTER_Y // Top edge of GUI_GRID_CENTER
-#define GRID_W GUI_GRID_CENTER_W // Width of one grid cell
-#define GRID_H GUI_GRID_CENTER_H // Height of one grid cell
-
-// Derived parameters
-#define infoTextY (dialogY + infoTextVerticalPadding)
-
-#define infoBoxOutlineTopLeftX (CENTER_X - verticalBarrierWidth / 2 - infoBoxWidth - infoBoxOutlineWidth) // X coord of the top left outside edge of the outline around the info boxes 
-#define infoBoxOutlineTopLeftY (infoTextY + infoTextLineHeight * 2) // Y coord of ^
-#define infoBoxOutlineBottomRightX (CENTER_X + verticalBarrierWidth / 2 + infoBoxWidth + infoBoxOutlineWidth) // X coord of the bottom right outside edge of the outline around the info boxes
-#define infoBoxOutlineBottomRightY (infoBoxOutlineTopLeftY + infoBoxOutlineWidth * 2 + infoBoxHeight)
-
-#define infoTextWidth (infoBoxOutlineBottomRightX - infoBoxOutlineTopLeftX)
-
-#define infoBoxY (infoBoxOutlineTopLeftY + infoBoxOutlineWidth)
-
-#define infoBoxSelectorButtonY (infoBoxOutlineBottomRightY)
-
-#ifdef ALLOW_LOADOUT_CHANGE_UPON_RESPAWN
-#define infoBoxSelectorButtonW ((infoBoxOutlineBottomRightX - infoBoxOutlineTopLeftX) / 3)
-#else 
-#define infoBoxSelectorButtonW ((infoBoxOutlineBottomRightX - infoBoxOutlineTopLeftX) / 2)
-#endif
-
-#define infoBoxSelectorButtonH 3
-
-#define teleportGroupY (infoBoxOutlineBottomRightY + infoBoxSelectorButtonH + teleportGroupVerticalPadding)
-
-#define readyButtonY (teleportGroupY + teleportGroupHeight + readyButtonVerticalPadding)
-
-#define dialogHeight (readyButtonY + readyButtonVerticalPadding + readyButtonHeight - dialogY)
-
 class CAFE_InfoBoxSelectorButton : CAFE_DefaultButton {
 	y = (infoBoxSelectorButtonY) * GRID_H + GRID_Y;
 	w = (infoBoxSelectorButtonW) * GRID_W;
@@ -500,6 +432,26 @@ class CAFE_VerticalBarrier: CAFE_DefaultText {
 	colorBackground[] = {0.42, 0.42, 0.42, 1};
 };
 
+class CAFE_GroupListbox: CAFE_DefaultListBox
+{
+	idc = IDC_GROUPSLIST;
+	x = 0;
+	y = 0;
+	w = infoBoxWidth * GRID_W;
+	h = infoBoxHeight * GRID_H;
+	onLBSelChanged = "_this call f_fnc_groupsList_onLBSelChanged;";
+}
+class CAFE_PlayersListbox: CAFE_DefaultListBox
+{
+	idc = IDC_PLAYERSLIST;
+	x = (infoBoxWidth + verticalBarrierWidth) * GRID_W;
+	y = 0;
+	w = infoBoxWidth * GRID_W;
+	h = infoBoxHeight * GRID_H;
+	colorDisabled[] = {1,1,1,1};
+	// Allows scrolling but doesn't allow selecting
+	onLBSelChanged = "_this call f_fnc_listBoxDeselectWithoutScrolling";
+}
 class CAFE_GroupInfoBoxesCtrlGroup: RscControlsGroup
 {
 	idc = IDC_GROUP_CT_GROUP;
@@ -509,25 +461,11 @@ class CAFE_GroupInfoBoxesCtrlGroup: RscControlsGroup
 	h = (infoBoxHeight) * GRID_H;
 	class Controls 
 	{
-		class GroupListbox: CAFE_DefaultListBox
+		class GroupListbox: CAFE_GroupListbox
 		{
-			idc = IDC_GROUPSLIST;
-			x = 0;
-			y = 0;
-			w = infoBoxWidth * GRID_W;
-			h = infoBoxHeight * GRID_H;
-			onLBSelChanged = "_this call f_fnc_groupsList_onLBSelChanged;";
 		}
-		class PlayersListbox: CAFE_DefaultListBox
+		class PlayersListbox: CAFE_PlayersListbox
 		{
-			idc = IDC_PLAYERSLIST;
-			x = (infoBoxWidth + verticalBarrierWidth) * GRID_W;
-			y = 0;
-			w = infoBoxWidth * GRID_W;
-			h = infoBoxHeight * GRID_H;
-			colorDisabled[] = {1,1,1,1};
-			// Allows scrolling but doesn't allow selecting
-			onLBSelChanged = "_this call f_fnc_listBoxDeselectWithoutScrolling";
 		}
 	};
 };

@@ -31,6 +31,9 @@ class CAFE_LoadoutPicker_Dialog
 			}
 		}
 
+        class VerticalBarrier: CAFE_VerticalBarrier
+		{}
+
 		class InfoBoxBorders: CAFE_InfoBoxBorderGroup {
 			class Controls 
 			{
@@ -52,10 +55,6 @@ class CAFE_LoadoutPicker_Dialog
 				};
 			}
 		}
-
-		class VerticalBarrier: CAFE_VerticalBarrier
-		{}
-		
 	};
 
 
@@ -63,7 +62,7 @@ class CAFE_LoadoutPicker_Dialog
     {	
 		class LoadoutInfoBoxes: CAFE_LoadoutInfoBoxesCtrlGroup
 		{}
-		
+
 		// Ready button
 		class ReadyButton: CAFE_ReadyButton
 		{
@@ -74,7 +73,6 @@ class CAFE_LoadoutPicker_Dialog
 		{
 		}
 	};
-
 };
 
 // Hardcode again to avoid messing with any other UIs that use this
