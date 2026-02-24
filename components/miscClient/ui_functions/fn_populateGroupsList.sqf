@@ -35,8 +35,8 @@ private _groupsToInclude = (groups playerSide) select {
 _groupsList lbSortBy ["TEXT", false, false];
 
 // Default select the item in the list according to the players last group name
-private _playerGroupName = missionNamespace getVariable ["f_var_lastPlayerGroupName", ""];
-DEBUG_FORMAT1_LOG("[RESPAWN] lastPlayerGroupName was %1, attempting to select", _playerGroupname);
+private _playerGroupName = (groupId (group player));
+DEBUG_FORMAT1_LOG("[UI] Attempting to select group %1", _playerGroupname);
 for "_i" from 0 to ((lbSize _groupsList) - 1) do {
     if ((_groupsList lbData _i) isEqualTo _playerGroupName) exitWith {
         _groupsList lbSetCurSel _i;

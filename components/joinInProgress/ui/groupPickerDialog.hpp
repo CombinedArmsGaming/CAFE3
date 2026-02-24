@@ -73,6 +73,7 @@ class CAFE_GroupPicker_Dialog
 			{
 				class GroupListbox: CAFE_GroupListbox
 				{
+					onLBSelChanged = "_this call f_fnc_groupPickerDialog_groupsList_onLBSelChanged;";
 				}
 				class PlayersListbox: CAFE_PlayersListbox
 				{
