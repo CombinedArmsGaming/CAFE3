@@ -266,6 +266,26 @@ if (hasInterface) then
         diwako_dui_radar_sortType = "custom";
     };
 
+    // Code which is run each frame after DUI draws the radar
+    diwako_dui_custom_code = {
+        /*
+            1. Display of the RscTile
+            2. Control of the compass
+            3. Control of the bearing indicator
+            4. Control group of the units displayed on the compass
+            5. All currently shown unit icons on the compass
+        */
+        params ["", "", "", "_unitsCtrlGrp"];
+        
+        private _deadPlayers = (units player) select {!alive _x};
+        
+        private _deadPlayerIDs = (_deadPlayers) apply {_x getVariable ["diwako_dui_unit_id", nil]};
+        
+        {
+            ctrlDelete (_unitsCtrlGrp getVariable [format ["diwako_dui_ctrl_unit_%1", _x], controlNull]);
+        } forEach _deadPlayerIDs; 
+    };
+
     f_var_hidingDeadPlayers = true;
 
     #endif
