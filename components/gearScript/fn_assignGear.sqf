@@ -1,5 +1,11 @@
 #include "macros.hpp"
 
+// Overwrite the EDEN Editor ACRE radio settings to be empty
+// This line runs more often than is necessary but it has to go here for timing reasons.
+// It has to be set after expressions of EDEN entity attributes are called but before postInit happens.
+// It will also run every time gearscript happens but that's the cost of doing business.
+(_this select 1) setVariable ["acre_sys_radio_setup", "[]"];
+
 RUN_AS_ASYNC(f_fnc_assignGear);
 
 // ====================================================================================
