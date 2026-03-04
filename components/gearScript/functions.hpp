@@ -1,43 +1,55 @@
 class gearScript
 {
     file = "components\gearScript";
-    class assignGear{};
-    class applyLoadout{};
-    class applyLoadoutModifications{};
-    class createLoadoutLocker{};
+    class addGogglesEventHandler{preInit=1;};
     class addInsigniaMonitor{};
+    class addItemToLoadoutContainer{};
+    class addLinkedItemToLoadout{};
+    class addMaxLoadEventHandler{preInit=1;};
+    class alterUnitMaxLoads{};
+    class applyGunbag{};
+    class applyLoadout{};
+    class assignGear{};
+    class createLoadoutLocker{};
+    class getCustomInsignia{};
+    class normaliseCbaExtendedLoadout{};
+    class reapplyGear{};
+    class removeItemFromLoadout{};
+    class removeLinkedItemFromLoadout{};
 };
 
 class gearScriptCrates
 {
     file = "components\gearScript\crateSupport";
-    class addRifleToCrate{};
+    class addBackpacksToCrate{};
+    class addBandagesToCrate{};
+    class addBloodToCrate{};
+    class addItemsToCrate{};
+    class addLauncherAmmoToCrate{};
+    class addLauncherToCrate{};
+    class addMedsToCrate{};
+    class addPistolAmmoToCrate{};
+    class addPistolToCrate{};
     class addRifleAmmoToCrate{};
     class addRifleGrenadesToCrate{};
-    class addPistolToCrate{};
-    class addPistolAmmoToCrate{};
-    class addLauncherToCrate{};
-    class addLauncherAmmoToCrate{};
-    class addBandagesToCrate{};
-    class addBackpacksToCrate{};
-    class addItemsToCrate{};
-    class addMedsToCrate{};
-    class addBloodToCrate{};
-    class applyCrateModifications{};
+    class addRifleToCrate{};
     class addSplintsToCrate{};
-};
-
-class gearScriptRadios
-{
-    file = "components\gearScript\radioSupport";
-    class removeRadioFromItems{};
-    class searchAndDestroyRadios{};
+    class applyCrateModifications{};
 };
 
 class gearScript_zen
 {
     file = "components\gearScript\zen";
-    class zen_createSupplyCrate{};
+    class zen_createLoadoutLocker{};
     class zen_createSupplyCrate_followUpDialog{};
     class zen_createSupplyCrate_performAction{};
+    class zen_createSupplyCrate{};
+};
+
+class gearScript_gunbag
+{
+    file = "components\gearScript\gunbag";
+    class getWeaponStateFromClassName{};
+    class setGunbagVariableFromArsenalExport{};
+    class setGunbagVariableState{};
 };

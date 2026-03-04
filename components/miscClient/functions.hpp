@@ -6,9 +6,6 @@ class miscClient
     class paradropUnit{};
     class setRating{};
     class say3D{};
-    class removeRadios{};
-    class generateRadioList{};
-    class onlyRadioTalkers{};
 };
 class miscClient_ui
 {
@@ -24,9 +21,8 @@ class miscClient_zen
 	class zen_woundUnitRandomlyAdvanced{};
 	class zen_woundGroupRandomly{};
     class zen_woundGroupRandomlyAdvanced{};
-    class zen_createJammer{};
-	class zen_removeJammers{};
     class zen_immersiveRevive{};
     class zen_healWounds{};
 	class zen_fixOverdose{};
+    class zen_toggleAIPath{};
 };

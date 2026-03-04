@@ -5,22 +5,15 @@
 -------------------------------------------------------------------------------------------------------------------- */
 
 #include "..\..\configuration\cbaSettings.hpp"
+#include "..\..\configuration\respawn.hpp"
 
 //Medical
 
 //Advanced 80% slower reopening
 
-#ifdef CA_MEDICAL_ADVANCED_80
+#ifdef CA_MEDICAL_ADVANCED
 
-	#include "medical_advanced_80.sqf"
-
-#endif
-
-//Advanced 95% reopening
-
-#ifdef CA_MEDICAL_ADVANCED_95
-
-	#include "medical_advanced_95.sqf"
+	#include "medical_advanced.sqf"
 
 #endif
 
@@ -37,7 +30,7 @@
 
 //Limited
 
-#ifdef CA2_SPECTATE_LIMITED
+#ifdef CAFE_SPECTATE_LIMITED
 
 	#include "spectate_limited.sqf"
 
@@ -45,16 +38,16 @@
 
 //Full
 
-#ifdef CA2_SPECTATE_FULL
+#ifdef CAFE_SPECTATE_FULL
 
 	#include "spectate_full.sqf"
 
 #endif
-	
+
 
 //Logistics
 
-#ifdef CA2_LOGISTICS 1
+#ifdef CAFE_LOGISTICS
 
 	#include "logistics_settings.sqf"
 
@@ -68,6 +61,17 @@
 
 #endif
 
+//ACE Adv. Car Damage
 
+#ifdef DISABLE_ACE_CAR_DAMAGE
 
+	#include "ace_vic_settings.sqf"
 
+#endif
+
+// Diwako DUI squad radar
+#ifdef HIDE_DEAD_IN_SQUAD
+
+	#include "dui_settings.sqf"
+
+#endif

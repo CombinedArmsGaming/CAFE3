@@ -8,11 +8,11 @@ _setGravestoneType =
 {
     params ["_objectName", "_outputName"];
 
-    _gravestoneType = "Box_Syndicate_Ammo_F";
+    _gravestoneType = "B_AssaultPack_rgr";
 
     _gravestone = missionNamespace getVariable [_objectName, ""];
 
-    if (typeName _gravestone == "OBJECT") then
+    if (_gravestone isEqualType objNull) then
     {
         if ([_gravestone] call f_fnc_isContainer) then
         {

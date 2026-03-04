@@ -1,79 +1,14 @@
 #include "macros.hpp"
 #include "..\..\squadmarker_macros.hpp"
 
-params ["_unit"];
+params ["_unit", ["_insigniaClass", ""]];
 
 private _message = format ["[INSIGNIA]: Tried to apply insignia to %1 but was not running locally.",_unit];
 LOCAL_ONLY_WARN(_unit, _message);
 
-
-private _faction = toLower (faction _unit);
-private _unitType = _unit getVariable ["f_var_assignGear", ""];
-private _insigniaVar = _unit getVariable ["f_var_insignia", ""];
-
-private _insigniaClass = "";
-
-
-#ifdef ENABLE_ADVANCED_INSIGNIA
-
-
-// Attempt to set insignia from f_var_insignia
-if (_insigniaVar isNotEqualTo "") then
-{
-    _insigniaClass = f_dict_insignia_custom getOrDefault [_insigniaVar, ""];
-};
-
-// Attempt to set insignia from unit gearscript role
-if ((_insigniaClass isEqualTo "") and {_unitType isNotEqualTo ""}) then
-{
-    _insigniaClass = f_dict_insignia_custom getOrDefault [_unitType, ""];
-};
-
-// Attempt to set insignia from unit group callsign
-if (_insigniaClass isEqualTo "") then
-{
-    private _callsign = groupId _group;
-    _insigniaClass = f_dict_insignia_custom getOrDefault [_callsign, ""];
-};
-
-
-#else
-
-
-// Attempt to set insignia from f_var_insignia
-if (_insigniaVar isNotEqualTo "") then
-{
-    _insigniaClass = f_dict_insignia_custom getOrDefault [_insigniaVar, ""];
-};
-
-
-#endif
-
-
-// Fall back on unit group colour
-if (_insigniaClass isEqualTo "") then
-{
-    private _group = group _unit;
-    private _colour = SQUAD_COLOUR(_group);
-
-    _insigniaClass = f_dict_insignia_colours getOrDefault [(str _colour), ""];
-
-    if (_insigniaClass isEqualTo "") then
-    {
-        _insigniaClass = f_dict_insignia_colours getOrDefault [(str COLOUR_BLACK), ""];
-    };
-
-    if ((_insigniaClass isNotEqualTo "") and {_unitType in ["ftl", "sl", "co", "xo"]}) then
-    {
-        _insigniaClass = _insigniaClass + "_SL";
-    };
-
-};
-
-
 if (_insigniaClass isNotEqualTo "") then
 {
-    DEBUG_FORMAT2_LOG("[INSIGNIA]: Found insignia '%2' for unit %1.",_unit,_insigniaClass)
+    DEBUG_FORMAT2_LOG("[INSIGNIA]: Found final insignia class '%2' for unit %1.",_unit,_insigniaClass)
 
 	waitUntil
     {
@@ -95,20 +30,25 @@ if (_insigniaClass isNotEqualTo "") then
 	private _index = -1;
 
 	{
-		if (_x isEqualTo "insignia") exitwith
+		if (toLower (_x) isEqualTo "insignia") exitwith
         {
             _index = _forEachIndex;
         };
 
 	} foreach _uniformInfos;
 
+    DEBUG_FORMAT2_LOG("[INSIGNIA]: Setting insignia of %1 to %2",_unit,_insigniaClass)
 	if (_index >= 0) then
     {
-        DEBUG_FORMAT2_LOG("[INSIGNIA]: Setting insignia of %1 to %2",_unit,_insigniaClass)
+        // Apply the insignia in every way we know, for maximum application consistency
 		_unit setVariable ["bis_fnc_setUnitInsignia_class", _insigniaClass, true];
         _unit setVariable ["f_arr_currentInsignia", [_index, _texture], true];
 		_unit setObjectTextureGlobal [_index, _texture];
 	};
+
+    // Apply the insignia in the same way ACE arsenal does it to make sure all variables are set correctly
+    [_unit, ""] call BIS_fnc_setUnitInsignia; // Clearing the insignia first is required. Unknown reason.
+    [_unit, _insigniaClass] call BIS_fnc_setUnitInsignia;
 
 }
 else

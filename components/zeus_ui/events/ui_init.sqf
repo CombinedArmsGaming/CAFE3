@@ -1,3 +1,4 @@
+#include "\a3\ui_f\hpp\definedikcodes.inc"
 // Initialisation
 case "ui_init": {
 	_eventExists = true;
@@ -346,10 +347,14 @@ case "ui_init": {
 
 			// Hide the UI when pressing backspace
 			_zeusUI displayAddEventHandler ["KeyDown", {
-				params ["_zeusUI", "_key"];
+				params ["_zeusUI", "_key", "_shift", "_ctrl", "_alt"];
 
-				// If the backspace key was pressed, toggle the UI visibility
-				if (_key == 14) then {
+				// Grab the type of the focused control
+				// 2 = CT_EDIT, such as the search bar
+				_focusedCtrlType = ctrlType focusedCtrl _zeusUI;
+
+				// If the backspace key was pressed outside of a text edit control, toggle the UI visibility
+				if (_key == 14 && _focusedCtrlType != 2) then {
 
 					// Only detect the first keyDown event (so that holding down the key doesn't toggle the UI every frame)
 					if !(_zeusUI getVariable [MACRO_VARNAME_UI_SHOULDHIDE_KEYDOWN, false]) then {
@@ -360,6 +365,11 @@ case "ui_init": {
 
 						["ui_toggle", [_isShown]] call f_fnc_zeusUI;
 					};
+				};
+
+				// Ignore alt-tab to avoid shifting spawn menu over one category
+				if (_key isEqualTo DIK_TAB && _alt) then {
+					true
 				};
 			}];
 			_zeusUI displayAddEventHandler ["KeyUp", {

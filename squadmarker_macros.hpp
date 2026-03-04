@@ -2,20 +2,20 @@
 #define FACTION NONE
 #define SQUADS f_dict_squadmarkers
 
-#define COLOUR_RED	     [0.9,0,0,1]
+#define COLOUR_RED       [0.9,0,0,1]
 #define COLOUR_ORANGE    [1,0.5,0,1]
 #define COLOUR_YELLOW    [1,1,0,1]
 #define COLOUR_GREEN     [0,1,0,1]
 #define COLOUR_BLUE      [0.2,0.2,1,1]
 #define COLOUR_CYAN      [0,1,1,1]
 #define COLOUR_MAGENTA   [1,0,1,1]
-#define COLOUR_PINK	     [1,0.3,0.4,1]
+#define COLOUR_PINK      [1,0.3,0.4,1]
 #define COLOUR_PURPLE    [0.5,0,1,1]
 #define COLOUR_WHITE     [1,1,1,1]
 #define COLOUR_LIGHTGREY [0.7,0.7,0.7,1]
 #define COLOUR_DARKGREY  [0.3,0.3,0.3,1]
 #define COLOUR_BLACK	 [0,0,0,1]
-#define COLOUR_GREY	     [0.5,0.5,0.5,1]
+#define COLOUR_GREY      [0.5,0.5,0.5,1]
 #define COLOUR_BROWN	 [0.5,0.25,0,1]
 #define COLOUR_KHAKI	 [0.5,0.6,0.4,1]
 

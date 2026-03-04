@@ -4,9 +4,9 @@
  *
  * Arguments:
  * 0: Spawn positions, marker, object, group, location, array
- * 1: F3 group array
+ * 1: CAFE group array
  * 2: radius of area to patrol eg 200
- * 3: Faction of group used in F3 Assigngear.
+ * 3: Faction of group used in CAFE Assigngear.
  * 4: Side of units spawned, west east independent
  *
  * Return Value:

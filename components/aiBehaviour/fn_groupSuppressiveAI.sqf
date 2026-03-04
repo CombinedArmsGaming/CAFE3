@@ -81,7 +81,7 @@ isNil {
                         } forEach units _group;
 
                         // Transfer the group ownership to the server, as some commands require locality
-                        if (typeName _group == typeName objNull) then {
+                        if (_group isEqualType objNull) then {
                                 _group = group _group;  // (If the passed argument is a unit, get its group instead)
                         };
                         [_group, 2] remoteExec ["setGroupOwner", 2, false];

@@ -5,29 +5,26 @@
 
 INIT_COMPONENT(squadMarkers)
 
-// F3 - Briefing
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
+// CAFE - Briefing
+// Credits: Please see the CAFE online manual (https://github.com/CombinedArmsGaming/CAFE3/wiki)
 INIT_COMPONENT(briefing)
 
-// F3 - Safe start
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
-//INIT_COMPONENT(safeStart)
-
-// F3 - Radio Systems Support
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
-INIT_COMPONENT(radios)
+// Ceasefire
+INIT_COMPONENT(ceasefire)
 
 INIT_COMPONENT(miscClient)
 
 INIT_COMPONENT(miscShared)
-
-INIT_COMPONENT(respawnWaves)
 
 INIT_COMPONENT(zeus_ui)
 
 INIT_COMPONENT(downtime)
 
 INIT_COMPONENT(zenFunctions)
+
+INIT_COMPONENT(respawn)
+
+INIT_COMPONENT(joinInProgress)
 
 
 // Gravestones init
@@ -42,5 +39,13 @@ INIT_COMPONENT(gravestones)
 #ifdef ENABLE_VIEWDISTANCE_EDITOR
 
 INIT_COMPONENT(viewDistanceEditor)
+
+#endif
+
+
+// Identity replacements
+#ifdef ENABLE_IDENTITY_REPLACEMENT
+
+RUN_FUNC_ONCE(f_fnc_applyExistingUnitIdentities)
 
 #endif

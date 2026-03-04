@@ -1,4 +1,5 @@
 #include "macros.hpp"
+#include "..\..\respawn_macros.hpp"
 
 params ["_unit"];
 
@@ -27,14 +28,19 @@ _createSquadNode =
 
         _children = [];
 
+        private _shouldShowRespawnDialog = 
+        {
+            (_player getVariable ["f_var_canUseRespawnMenu", false]) and {[RESPAWN_TRIGGERED_WAVE] call f_fnc_isRespawnModeActive}
+        };
+
         // Respawn menu action
         _action =
         [
-            "CA2_RespawnMenu",
+            "CAFE_RespawnMenu",
             "Show Respawn Menu",
             "\A3\ui_f\data\igui\cfg\simpleTasks\types\getin_ca.paa",
-            {createDialog "RespawnWavesDialog";},
-            {_player getVariable ["f_var_canUseRespawnMenu", false]},
+            {createDialog "CAFE_TriggerRespawnWave_Dialog";},
+            _shouldShowRespawnDialog,
             {},
             [],
             "",
@@ -51,10 +57,10 @@ _createSquadNode =
         // Squad marker menu action
         _action =
         [
-            "CA2_SquadMarkerMenu",
+            "CAFE_SquadMarkerMenu",
             "Edit Squad Markers",
             "\A3\ui_f\data\igui\cfg\simpleTasks\types\move_ca.paa",
-            {createDialog "CA2_SquadMarker_Dialog";},
+            {createDialog "CAFE_SquadMarker_Dialog";},
             {(leader group _player) isEqualTo _player},
             {},
             [],
@@ -72,52 +78,10 @@ _createSquadNode =
         // Squad selection menu action
         _action =
         [
-            "CA2_ChangeSquadMenu",
+            "CAFE_ChangeSquadMenu",
             "Choose a Squad",
             "\A3\ui_f\data\igui\cfg\simpleTasks\types\meet_ca.paa",
-            {createDialog "CA2_GroupPicker_Dialog";},
-            {true},
-            {},
-            [],
-            "",
-            20,
-            [false,false,false,false,false],
-            {}
-        ];
-
-        _action call ace_interact_menu_fnc_createAction;
-
-        _children pushBack [_action, [], _target];
-
-
-        // Update group radio channels
-        _action =
-        [
-            "CA2_SetSquadChannels",
-            "Set Squad Radio Channels",
-            "\A3\ui_f\data\igui\cfg\simpleTasks\types\radio_ca.paa",
-            {[_player, true] spawn f_fnc_updateGroupRadioChannels;},
-            {(leader group _player) isEqualTo _player},
-            {},
-            [],
-            "",
-            20,
-            [false,false,false,false,false],
-            {}
-        ];
-
-        _action call ace_interact_menu_fnc_createAction;
-
-        _children pushBack [_action, [], _target];
-
-
-        // Get group radio channels
-        _action =
-        [
-            "CA2_GetSquadChannels",
-            "Get Squad Radio Channels",
-            "\A3\ui_f\data\igui\cfg\simpleTasks\types\radio_ca.paa",
-            {[_player, "always"] spawn f_fnc_setupRadioChannels;},
+            {createDialog "CAFE_GroupPicker_Dialog";},
             {true},
             {},
             [],

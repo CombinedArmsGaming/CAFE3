@@ -2,15 +2,15 @@
 
 // ====================================================================================
 
-// F3 - Disable Saving and Auto Saving
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
+// CAFE - Disable Saving and Auto Saving
+// Credits: Please see the CAFE online manual (https://github.com/CombinedArmsGaming/CAFE3/wiki)
 
 enableSaving [false, false];
 
 // ====================================================================================
 
-// F3 - Mute Orders and Reports
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
+// CAFE - Mute Orders and Reports
+// Credits: Please see the CAFE online manual (https://github.com/CombinedArmsGaming/CAFE3/wiki)
 
 enableSentences false;
 
@@ -35,9 +35,11 @@ if (IS_CLIENT) then
 {
 	DEBUG_PRINT_LOG("Using CLIENT groups.")
 
-    #include "startup\components\globals\clientGlobals.sqf"
-
-	#include "customStartup_client.sqf"
+	// Remove the spawn-block surrounding this #include if you need the customStartup code to finish running before configuration begins!
+	[] spawn
+	{
+		#include "customStartup_client.sqf"
+	};
 
 	#include "startup\configuration\groups\clientConfigGroup.sqf"
 
@@ -53,9 +55,11 @@ if (isServer) then
 {
 	DEBUG_PRINT_LOG("Using SERVER groups.")
 
-    #include "startup\components\globals\serverGlobals.sqf"
-
-	#include "customStartup_server.sqf"
+	// Remove the surrounding around this #include if you need the customStartup code to finish running before configuration begins!
+	[] spawn
+	{
+		#include "customStartup_server.sqf"
+	};
 
 	#include "startup\configuration\groups\serverConfigGroup.sqf"
 

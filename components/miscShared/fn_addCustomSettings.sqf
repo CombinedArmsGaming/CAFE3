@@ -1,4 +1,4 @@
 
-#define CATEGORY_NAME "CA2 - Mission framework settings"
+#define CATEGORY_NAME "CAFE3 - Mission framework settings"
 
 #include "../customSettings.hpp"

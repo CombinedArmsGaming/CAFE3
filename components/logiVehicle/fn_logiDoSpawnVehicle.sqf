@@ -20,7 +20,7 @@
 
 RUN_AS_ASYNC(f_fnc_logiDoSpawnVehicle);
 
-params ["_spawnType", "_logiVic", "_gearscriptType", "_text"];
+params ["_spawnType", "_logiVic", "_gearOrCode", "_text"];
 
 if LOGIVIC_IS_SPAWNING(_logiVic) exitWith {false};
 SET_LOGIVIC_SPAWNING(_logiVic,true);
@@ -33,7 +33,7 @@ private _message = if (_text isNotEqualTo "") then
 }
 else
 {
-	if (_gearscriptType isEqualTo "") then
+	if ((_gearOrCode isEqualTo "") or (_gearOrCode isEqualType {})) then
 	{
 		format ["Deploying '%1'...", GET_VEHICLE_DISPLAY_NAME(_type)]
 	}
@@ -96,18 +96,27 @@ _sign2 setPos (_logiVic modelToWorld [0,0,1]);
 
 
 // If vehicle has survived, fill it with any specified gear.
-if (_gearscriptType isNotEqualTo "") then
+if (_gearOrCode isEqualType {}) then
 {
 	private _logiType = GET_LOGITYPE(_logiVic);
 	private _faction = GET_FACTION_DYNAMIC(_logiType);
-
-	if (_faction isEqualTo "") then
+	[_spawnedVic, _logiVic, _logiType, _faction, _text] call _gearOrCode;
+}
+else
+{
+	if (_gearOrCode isNotEqualTo "") then
 	{
-		DEBUG_PRINT_CHAT("[LOGI-VICS]: Faction not specified for logi vic '%1', defaulting to 'blu_f'.")
-		_faction = "blu_f";
-	};
+		private _logiType = GET_LOGITYPE(_logiVic);
+		private _faction = GET_FACTION_DYNAMIC(_logiType);
 
-	[_gearscriptType, _spawnedVic, _faction] call f_fnc_assignGear;
+		if (_faction isEqualTo "") then
+		{
+			DEBUG_PRINT_CHAT("[LOGI-VICS]: Faction not specified for logi vic '%1', defaulting to 'blu_f'.")
+			_faction = "blu_f";
+		};
+
+		[_gearOrCode, _spawnedVic, _faction] call f_fnc_assignGear;
+	};
 };
 
 

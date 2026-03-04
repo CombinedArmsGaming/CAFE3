@@ -13,9 +13,14 @@ Available commands FOR UNIT LOADOUTS:
 CREATE_LOADOUT(UNIT_NAME,<ACE Arsenal code>);
 -   Assigns the ACE Arsenal loadout to the unit.
     For example, you can create a Rifleman loadout and assign it to the unit-name "rif".  The rif class will now be available at Loadout Lockers in-game.
+-   Also supports unit class-names.  You can get these from the editor by using "copy class name" from the right-click menu.
+    This is only supported for NPCs and will not work upon players!
+-   For example:
+    CREATE_LOADOUT(med,"O_medic_F");
+    Any non-player medic will now look like a CSAT medic.
 
 COPY_LOADOUT(TO,FROM);
--   Copies a loadout from one unit-type to another unit-type.  Useful if you want to give the same loadout to FTLs and SLs, etc.
+-   Copies a loadout from one unit-type to another unit-type.  Useful if you want to give the same loadout to FTLs and SLs, etc. Copies addons and whether facewear is forced.
 
 ADD_HAT(UNIT_NAME,"Hat Classname");
 -   Adds a hat to the unit's "random hats" list.  When a unit is given this loadout, they will recieve a random hat from the list.
@@ -26,16 +31,34 @@ ADD_HAT(UNIT_NAME,"Hat Classname");
 ADD_UNIFORM(UNIT_NAME,"Uniform Classname");
 ADD_VEST(UNIT_NAME,"Vest Classname");
 ADD_BACKPACK(UNIT_NAME,"Backpack Classname");
--   These all work the same as the ADD_HAT command.  The only difference is that they randomise uniforms, vests and backpacks.
+-   These all work the same as the ADD_HAT command.  The only difference is that they randomise uniforms, vests, and backpacks.
+
+ADD_FACEWEAR(UNIT_NAME,"Facewear Classname");
+-   Works similarly to the ADD_HAT command. 
+-   Facewear is optional by default. If the player has no facewear chosen, they will be given a random facewear from the list. Otherwise, they keep their preferred facewear.
+    This optionality can be overridden by the FORCE_FACEWEAR command.
+
+FORCE_FACEWEAR(UNIT_NAME);
+-   Forces the player to be assigned a facewear from the list defined by uses of ADD_FACEWEAR. This overrides the player's choice of facewear in their profile.
 
 COPY_ADDONS(TO,FROM);
 -   Copies all of the "random lists" from one unit-type to another unit-type.
     This is useful for adding random uniforms, hats etc to all of your units without having to do lots of repeated work.
+    This does not force facewear on the TO loadout, even if it is forced on the FROM loadout. 
 -   For example:
         Create a Rifleman loadout with a lot of good randomisation options.
         Create a new Anti-tank loadout.
         COPY_ADDONS(lat,rif);
         The Anti-tank loadout now has all of the Rifleman's randomisation.
+
+COPY_HATS(TO,FROM);
+COPY_UNIFORMS(TO,FROM);
+COPY_VESTS(TO,FROM);
+COPY_BACKPACKS(TO,FROM);
+COPY_FACEWEAR(TO,FROM);
+-   Copies only the hat, uniform, vest, backpack, or facewear randomisation from one unit-type to another one.
+    This is useful in situations where you only want to copy one type of randomisation from another unit-type.
+    This does not force facewear on the TO loadout, even if it is forced on the FROM loadout.
 
 CLEAR_HATS(UNIT_NAME);
 -   Empties the "random hats" list for the unit.
@@ -47,17 +70,18 @@ CLEAR_HATS(UNIT_NAME);
         The Machinegunner now has all of the Rifleman's randomisations.
         CLEAR_HATS(lmg);
         ADD_HAT(lmg,"H_Bandanna_cbr");
-        All Machinegunners now have random bandanas, but they still have random uniforms etc.
+        All Machinegunners now have bandanas, but they still have random uniforms etc.
 
-CLEAR_UNIFORM(UNIT_NAME);
-CLEAR_VEST(UNIT_NAME);
-CLEAR_BACKPACK(UNIT_NAME);
+CLEAR_UNIFORMS(UNIT_NAME);
+CLEAR_VESTS(UNIT_NAME);
+CLEAR_BACKPACKS(UNIT_NAME);
+CLEAR_FACEWEAR(UNIT_NAME);
 -   These all work the same as the CLEAR_HATS command.  The only difference is that they empty "random lists" for uniforms, vests and backpacks.
 
 CLEAR_ADDONS(UNIT_NAME);
 -   Empties all of the "random lists" for the unit type at the same time.  Just like using all of the CLEAR_* commands at once.
 
-ADD_VARIANT(UNIT_NAME,<ACE Arsenal code>);
+ADD_VARIANT(UNIT_NAME,<ACE Arsenal code> OR <unit class-name>);
 -   Advanced feature.  Adds alternative loadouts to the unit-type.  The loadout will now be randomly chosen between the two.
     You must create the first loadout using the CREATE_LOADOUT command before using this command.
     Randomisation options apply across all variant loadouts.
@@ -67,6 +91,76 @@ ADD_VARIANT(UNIT_NAME,<ACE Arsenal code>);
     Use ACE Arsenal to create a different Rifleman loadout with an M-16 rifle.
     ADD_VARIANT(rif,<ACE Arsenal code>);
     All riflemen will now randomly have an AK-47 or M-16 rifle.
+-   Also supports unit class-names.  You can get these from the editor by using "copy class name" from the right-click menu.
+    This is only supported for NPCs and will not work upon players!
+-   For example:
+    ADD_VARIANT(med,"O_medic_F");
+    Any non-player medic will now look like a CSAT medic.
+
+
+PUT_GUN_IN_GUNBAG(UNIT_NAME,<contents>)
+-   Allows the backpack of the given unit to be turned into an ACE gunbag, with the given contents placed inside.
+    The contents can be:
+    -   ACE Arsenal code:
+        This must be a full ACE Arsenal export.  Not just the part with the weapon.
+        An example of this exists in the default BLUFOR 'sniper' loadout.
+    -   Weapon config class-name:
+        An example of this exists in the default INDFOR 'sniper' loadout.
+        You can get the class-name of any weapon by clicking on it in ACE arsenal and then pressing CTRL+C (gets copied to clipboard).
+        There are advanced weapon classes which have scopes, bipods etc pre-applied.  You can find them in the CfgWeapons config.  If you don't know how to find these, it may be better to use the ACE Arsenal approach.
+
+-------------------------------------------------
+
+Available commands for editing UNIT LOADOUTS:
+
+These commands can cause OVERLOADED LOADOUTS.  
+This means that units may start with more items than they can technically carry, and if they drop any items they will not be able to pick them up again.
+It's always better to use ACE Arsenal to design and edit your loadouts.  Use these commands with care.
+
+ADD_ITEM_TO_UNIFORM(UNIT_NAME,"Item Name");
+ADD_ITEMS_TO_UNIFORM(UNIT_NAME,"Item Name",AMOUNT);
+-   Add an item to the unit's uniform.  If the uniform is full, it will be overloaded with this item.
+    This command only supports regular items and magazines.  It does not support weapons, clothing items etc.
+
+ADD_ITEM_TO_VEST(UNIT_NAME,"Item Name");
+ADD_ITEMS_TO_VEST(UNIT_NAME,"Item Name",AMOUNT);
+-   Add an item to the unit's vest.  If the vest is full, it will be overloaded with this item.
+    This command only supports regular items and magazines.  It does not support weapons, clothing items etc.   
+
+ADD_ITEM_TO_BACKPACK(UNIT_NAME,"Item Name");
+ADD_ITEMS_TO_BACKPACK(UNIT_NAME,"Item Name",AMOUNT);
+-   Add an item to the unit's backpack.  If the backpack is full, it will be overloaded with this item.
+    This command only supports regular items and magazines.  It does not support weapons, clothing items etc.
+
+REMOVE_ITEM_FROM_LOADOUT(UNIT_NAME,"Item Name");
+-   Removes every item of this kind from the unit's clothing (uniform, vest, backpack).
+    Does not remove clothing, held weapons, magazines from weapons etc.
+
+ADD_MAP(UNIT_NAME);
+REMOVE_MAP(UNIT_NAME);
+-   Adds or removes the "ItemMap" object for the given unit.
+
+ADD_GPS(UNIT_NAME);
+-   Adds the "ItemGPS" object for the given unit.
+
+ADD_TERMINAL(UNIT_NAME,"Item Name");
+REMOVE_TERMINAL(UNIT_NAME);
+-   Adds or removes a terminal item for the given unit (GPS, UAV terminal etc).
+
+ADD_COMPASS(UNIT_NAME);
+REMOVE_COMPASS(UNIT_NAME);
+-   Adds or removes the "ItemCompass" object for the given unit.
+
+ADD_WATCH(UNIT_NAME);
+-   Adds the "ItemWatch" object for the given unit.
+
+ADD_WATCH_ITEM(UNIT_NAME,"Item Name");
+REMOVE_WATCH(UNIT_NAME);
+-   Adds or removes a watch item for the given unit (Watch, Chemical detector etc).
+
+ADD_NVG(UNIT_NAME,"Item Name");
+REMOVE_NVG(UNIT_NAME);
+-   Adds or removes night-vision goggles for the given unit.
 
 -------------------------------------------------
 

@@ -2,12 +2,12 @@
 
 /*
  * Author: Poulern
- * Spawns a group according to F3 assign gear
+ * Spawns a group according to CAFE assign gear
  *
  * Arguments:
- * 0: F3 group array
+ * 0: CAFE group array
  * 1: Spawn position, marker, object, group, location, array
- * 2: Faction of group used in F3.
+ * 2: Faction of group used in CAFE.
  * 2: Side west east independent
  *
  * Return Value:
@@ -23,7 +23,7 @@ _posdir = _position call f_fnc_getDirPos;
 _spawnpos = _posdir select 0;
 
 	
-#ifdef CA2_SOGMISSION
+#ifdef CAFE_SOGMISSION
 
 	private _unitW = "vn_b_men_army_15";
 	private _unitE = "vn_o_men_nva_02";
@@ -43,6 +43,7 @@ switch (_side) do
 	case west: {_group = createGroup [west,true]; _unittype = _unitW;};
 	case east: {_group = createGroup [east,true]; _unittype = _unitE;};
 	case independent: {_group = createGroup [independent,true]; _unittype = _unitI;};
+	case civilian: {_group = createGroup [civilian,true]; _unittype = "C_man_1";};
 	default {_group = createGroup [east,true]};
 };
 

@@ -1,5 +1,5 @@
-// F3 - Briefing
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
+// CAFE - Briefing
+// Credits: Please see the CAFE online manual (https://github.com/CombinedArmsGaming/CAFE3/wiki)
 // ====================================================================================
 
 #include "macros.hpp"
@@ -11,17 +11,23 @@ DEBUG_PRINT_LOG("running f_briefing")
 WAIT_UNTIL_PLAYER_EXISTS();
 WAIT_UNTIL_SETTINGS_READY();
 
+
+// Add framework briefing panel.
+#include "briefings\ca_briefing_framework.sqf";
+
+
 // ====================================================================================
 
 // DETECT PLAYER FACTION
 // The following code detects what side the player's slot belongs to, and stores
 // it in the private variable _unitSide
 
-_unitSide = side player;
+_unitSide = side group player;
 
 DEBUG_FORMAT1_CHAT("DEBUG (briefing.sqf): Player faction: %1", _unitSide)
 
 #include "briefings\ca_briefing_player.sqf";
+#include "briefings\ca_briefing_respawn.sqf";
 
 // ====================================================================================
 

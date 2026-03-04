@@ -4,10 +4,10 @@
  *
  * Arguments:
  * 0: An array of markers ["mkr","mkr_1","mkr_2","mkr_3"]
- * 1: array of units according to F3 ["ftl","r","ar","aar","rat"]
+ * 1: array of units according to CAFE ["ftl","r","ar","aar","rat"]
  * 2: Vehicle classname
  * 3: radius of area to patrol eg 200
- * 4: Faction of group used in F3 Assigngear.
+ * 4: Faction of group used in CAFE Assigngear.
  * 5: Side of units spawned, west east independent
  *
  * Return Value:

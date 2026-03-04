@@ -17,20 +17,20 @@
 
 // Enables the gravestone corpse-manager.
 // When disabled, the default Arma 3 corpse manager will be used instead.
-// To disable the gravestone corpse-manager, comment-out or delete the line below INSTEAD of setting it to 0.
-#define ENABLE_GRAVESTONE_CORPSE_MANAGER 1
+// To disable the gravestone corpse-manager, comment-out or delete the line below.
+#define ENABLE_GRAVESTONE_CORPSE_MANAGER
 
 // Enables the gravestones for old corpses.
-// To disable gravestones, comment-out or delete the line below INSTEAD of setting it to 0.
-#define ENABLE_GRAVESTONES 1
+// To disable gravestones, comment-out or delete the line below.
+#define ENABLE_GRAVESTONES
 
 // Enable a priority list for important corpses (such as players).  These corpses will only be removed when there is no other choice.
-// To disable the priority list, comment-out or delete the line below INSTEAD of setting it to 0.
-#define GRAVESTONES_USE_PRIORITY_LIST 1
+// To disable the priority list, comment-out or delete the line below.
+#define GRAVESTONES_USE_PRIORITY_LIST
 
 // Enables gravestones only for important corpses (such as players).  Deletion rules remain the same for other corpses, but they will not receive a gravestone.
-// To allow gravestones for all units, comment-out or delete the line below INSTEAD of setting it to 0.
-//#define GRAVESTONES_ALLOW_PRIORITY_ONLY 1
+// To allow gravestones for all units, comment-out or delete the line below.
+//#define GRAVESTONES_ALLOW_PRIORITY_ONLY
 
 // The amount of corpses which can exist before gravestones start to appear.
 #define MAX_CORPSES_BEFORE_GRAVESTONES 20

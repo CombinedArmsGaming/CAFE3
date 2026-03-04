@@ -1,0 +1,22 @@
+class CfgRespawnTemplates
+{
+	#include "deathTimer\respawnTemplates.hpp"
+
+	#include "fixPlayerTickets\respawnTemplates.hpp"
+	
+	#include "loadout\respawnTemplates.hpp"
+
+	#include "squad\respawnTemplates.hpp"
+
+	#include "tickets\respawnTemplates.hpp"
+
+	#include "timed\respawnTemplates.hpp"
+
+	#include "triggeredWave\respawnTemplates.hpp"
+
+	#include "wave\respawnTemplates.hpp"
+
+	#include "weaponSafety\respawnTemplates.hpp"
+
+	#include "moveToSpawn\respawnTemplates.hpp"
+}

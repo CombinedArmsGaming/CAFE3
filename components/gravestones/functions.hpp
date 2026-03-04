@@ -8,8 +8,10 @@ class gravestones
     class fillGraveAndDeleteCorpse{};
     class getObituary{};
     class initGravestoneManager{};
+    class monitorGravestoneAccess{};
     class readGravestone{};
     class deleteGravestone{};
     class sendGravestoneToClients{};
     class sendUnitToGravestoneCache{};
+    class requestGravestoneLocality{};
 };

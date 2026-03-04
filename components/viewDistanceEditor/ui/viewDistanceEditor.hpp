@@ -1,6 +1,6 @@
 #include "../ui_macros.hpp"
 
-class CA2_ViewDistance_Dialog
+class CAFE_ViewDistance_Dialog
 {
 	idd = IDD_VIEWDISTANCE_DIALOG;
     enableSimulation = 1;
@@ -11,7 +11,7 @@ class CA2_ViewDistance_Dialog
 
 	class ControlsBackground
     {
-        class CA2_ViewDistance_Background: CA2_DefaultText
+        class CAFE_ViewDistance_Background: CAFE_DefaultText
         {
         	idc = 1000;
         	x = 11 * GUI_GRID_W + GUI_GRID_X;
@@ -21,7 +21,7 @@ class CA2_ViewDistance_Dialog
         	colorBackground[] = {0,0,0,0.5};
         };
 
-        class CA2_ViewDistance_Feedback: CA2_DefaultText
+        class CAFE_ViewDistance_Feedback: CAFE_DefaultText
         {
         	idc = 1006;
         	text = "Experimental view distance dialog.  Feedback?  Tell Bubbus.";
@@ -39,7 +39,7 @@ class CA2_ViewDistance_Dialog
     class Controls
     {
 
-        class CA2_ViewDistance_Title: CA2_DefaultText
+        class CAFE_ViewDistance_Title: CAFE_DefaultText
         {
         	idc = 1001;
         	text = "View distance editor:";
@@ -50,7 +50,7 @@ class CA2_ViewDistance_Dialog
         	sizeEx = 1.3 * GUI_GRID_H;
         };
 
-        class CA2_ViewDistance_TerrainDistanceTitle: CA2_DefaultText
+        class CAFE_ViewDistance_TerrainDistanceTitle: CAFE_DefaultText
         {
         	idc = 1002;
         	text = "Terrain distance:";
@@ -61,7 +61,7 @@ class CA2_ViewDistance_Dialog
         	sizeEx = 0.7 * GUI_GRID_H;
         };
 
-        class CA2_ViewDistance_TerrainDistanceSlider: CA2_DefaultSlider
+        class CAFE_ViewDistance_TerrainDistanceSlider: CAFE_DefaultSlider
         {
         	idc = IDC_VIEWDISTANCE_TERRAINSLIDER;
         	x = 12.5 * GUI_GRID_W + GUI_GRID_X;
@@ -70,7 +70,7 @@ class CA2_ViewDistance_Dialog
         	h = 1 * GUI_GRID_H;
         };
 
-        class CA2_ViewDistance_TerrainDistanceValue: CA2_DefaultText
+        class CAFE_ViewDistance_TerrainDistanceValue: CAFE_DefaultText
         {
         	idc = IDC_VIEWDISTANCE_TERRAINVALUE;
         	text = "";
@@ -80,7 +80,7 @@ class CA2_ViewDistance_Dialog
         	h = 1 * GUI_GRID_H;
         };
 
-        class CA2_ViewDistance_ObjectDistanceTitle: CA2_DefaultText
+        class CAFE_ViewDistance_ObjectDistanceTitle: CAFE_DefaultText
         {
         	idc = 1003;
         	text = "Object distance:";
@@ -91,7 +91,7 @@ class CA2_ViewDistance_Dialog
         	sizeEx = 0.7 * GUI_GRID_H;
         };
 
-        class CA2_ViewDistance_ObjectDistanceSlider: CA2_DefaultSlider
+        class CAFE_ViewDistance_ObjectDistanceSlider: CAFE_DefaultSlider
         {
         	idc = IDC_VIEWDISTANCE_OBJECTSLIDER;
         	x = 12.5 * GUI_GRID_W + GUI_GRID_X;
@@ -100,7 +100,7 @@ class CA2_ViewDistance_Dialog
         	h = 1 * GUI_GRID_H;
         };
 
-        class CA2_ViewDistance_ObjectDistanceValue: CA2_DefaultText
+        class CAFE_ViewDistance_ObjectDistanceValue: CAFE_DefaultText
         {
         	idc = IDC_VIEWDISTANCE_OBJECTVALUE;
         	text = "";
@@ -110,7 +110,7 @@ class CA2_ViewDistance_Dialog
         	h = 1 * GUI_GRID_H;
         };
 
-        class CA2_ViewDistance_ShadowDistanceTitle: CA2_DefaultText
+        class CAFE_ViewDistance_ShadowDistanceTitle: CAFE_DefaultText
         {
         	idc = 1004;
         	text = "Shadow distance:";
@@ -121,7 +121,7 @@ class CA2_ViewDistance_Dialog
         	sizeEx = 0.7 * GUI_GRID_H;
         };
 
-        class CA2_ViewDistance_ShadowDistanceSlider: CA2_DefaultSlider
+        class CAFE_ViewDistance_ShadowDistanceSlider: CAFE_DefaultSlider
         {
         	idc = IDC_VIEWDISTANCE_SHADOWSLIDER;
         	x = 12.5 * GUI_GRID_W + GUI_GRID_X;
@@ -130,7 +130,7 @@ class CA2_ViewDistance_Dialog
         	h = 1 * GUI_GRID_H;
         };
 
-        class CA2_ViewDistance_ShadowDistanceValue: CA2_DefaultText
+        class CAFE_ViewDistance_ShadowDistanceValue: CAFE_DefaultText
         {
         	idc = IDC_VIEWDISTANCE_SHADOWVALUE;
         	text = "";
@@ -140,7 +140,7 @@ class CA2_ViewDistance_Dialog
         	h = 1 * GUI_GRID_H;
         };
 
-        class CA2_ViewDistance_TerrainDetailTitle: CA2_DefaultText
+        class CAFE_ViewDistance_TerrainDetailTitle: CAFE_DefaultText
         {
         	idc = 1005;
         	text = "Terrain detail level:";
@@ -151,7 +151,7 @@ class CA2_ViewDistance_Dialog
         	sizeEx = 0.7 * GUI_GRID_H;
         };
 
-        class CA2_ViewDistance_TerrainDetailCombo: CA2_DefaultCombo
+        class CAFE_ViewDistance_TerrainDetailCombo: CAFE_DefaultCombo
         {
         	idc = IDC_VIEWDISTANCE_TERRAINCOMBO;
         	x = 18 * GUI_GRID_W + GUI_GRID_X;
@@ -160,7 +160,7 @@ class CA2_ViewDistance_Dialog
         	h = 1 * GUI_GRID_H;
         };
 
-        class CA2_ViewDistance_ConfirmButton: CA2_DefaultButton
+        class CAFE_ViewDistance_ConfirmButton: CAFE_DefaultButton
         {
         	idc = 1600;
         	text = "Confirm";
@@ -171,7 +171,7 @@ class CA2_ViewDistance_Dialog
             onButtonClick = "closeDialog 1";
         };
 
-        class CA2_ViewDistance_DismissButton: CA2_DefaultButton
+        class CAFE_ViewDistance_DismissButton: CAFE_DefaultButton
         {
         	idc = 1601;
         	text = "Dismiss";

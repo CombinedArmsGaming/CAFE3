@@ -31,7 +31,7 @@ _createViewNode =
         "CA_ViewDistanceAction",
         "Set View Distance",
         "\A3\ui_f\data\igui\cfg\simpleTasks\types\scout_ca.paa",
-        {createDialog "CA2_ViewDistance_Dialog";},
+        {createDialog "CAFE_ViewDistance_Dialog";},
         _condition,
         {},
         [],

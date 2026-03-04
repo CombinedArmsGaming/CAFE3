@@ -15,25 +15,68 @@ BEGIN_LOADOUTS;
 
     Available commands FOR UNIT LOADOUTS:
 
-    CREATE_LOADOUT(UNIT_NAME,<ACE Arsenal code>);
+    CREATE_LOADOUT(UNIT_NAME,<ACE Arsenal code> OR <unit class-name>);
     COPY_LOADOUT(TO,FROM);
 
     ADD_HAT(UNIT_NAME,"Hat Classname");
     ADD_UNIFORM(UNIT_NAME,"Uniform Classname");
     ADD_VEST(UNIT_NAME,"Vest Classname");
     ADD_BACKPACK(UNIT_NAME,"Backpack Classname");
+    ADD_FACEWEAR(UNIT_NAME,"Facewear Classname");
+
+    FORCE_FACEWEAR(UNIT_NAME);
 
     COPY_ADDONS(TO,FROM);
+
+    COPY_HATS(TO,FROM);
+    COPY_UNIFORMS(TO,FROM);
+    COPY_VESTS(TO,FROM);
+    COPY_BACKPACKS(TO,FROM);
+    COPY_FACEWEAR(TO,FROM);
 
     CLEAR_HATS(UNIT_NAME);
     CLEAR_UNIFORM(UNIT_NAME);
     CLEAR_VEST(UNIT_NAME);
     CLEAR_BACKPACK(UNIT_NAME);
+    CLEAR_FACEWEAR(UNIT_NAME);
 
     CLEAR_ADDONS(UNIT_NAME);
 
-    ADD_VARIANT(UNIT_NAME,<ACE Arsenal code>);
+    ADD_VARIANT(UNIT_NAME,<ACE Arsenal code> OR <unit class-name>);
 
+    -------------------------------------------------
+
+    Available commands for editing UNIT LOADOUTS:
+    (These commands can cause OVERLOADED LOADOUTS)
+
+    ADD_ITEM_TO_UNIFORM(UNIT_NAME,"Item Name");
+    ADD_ITEMS_TO_UNIFORM(UNIT_NAME,"Item Name",AMOUNT);
+
+    ADD_ITEM_TO_VEST(UNIT_NAME,"Item Name");
+    ADD_ITEMS_TO_VEST(UNIT_NAME,"Item Name",AMOUNT);
+
+    ADD_ITEM_TO_BACKPACK(UNIT_NAME,"Item Name");
+    ADD_ITEMS_TO_BACKPACK(UNIT_NAME,"Item Name",AMOUNT);
+
+    REMOVE_ITEM_FROM_LOADOUT(UNIT_NAME,"Item Name");
+
+    ADD_MAP(UNIT_NAME);
+    REMOVE_MAP(UNIT_NAME);
+
+    ADD_GPS(UNIT_NAME);
+    ADD_TERMINAL(UNIT_NAME,"Item Name");
+    REMOVE_TERMINAL(UNIT_NAME);
+
+    ADD_COMPASS(UNIT_NAME);
+    REMOVE_COMPASS(UNIT_NAME);
+
+    ADD_WATCH(UNIT_NAME);
+    ADD_WATCH_ITEM(UNIT_NAME,"Item Name");
+    REMOVE_WATCH(UNIT_NAME);
+
+    ADD_NVG(UNIT_NAME,"Item Name");
+    REMOVE_NVG(UNIT_NAME);
+    
     -------------------------------------------------
 
     Available commands FOR RE-SUPPLY CRATES:
@@ -67,6 +110,13 @@ BEGIN_LOADOUTS;
     For examples on how to use the gearscript system, see the "gear_blufor.sqf" file for a default "NATO 2035" loadout.  There are extra details in that file to explain things.
 
 */
+
+
+// IDAP Medic
+
+_baseLoadout = [[],[],[],["U_C_Paramedic_01_F",[["ACE_fieldDressing",10],["ACE_elasticBandage",5],["ACE_salineIV",1]]],[],["B_Messenger_IDAP_Medical_F",[["ACE_tourniquet",6],["ACE_surgicalKit",1],["ACE_splint",9],["ACE_salineIV",5],["ACE_epinephrine",2],["ACE_morphine",2]]],"","G_Respirator_white_F",[],["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch",""]];
+
+CREATE_LOADOUT(idap_medic,_baseLoadout);
 
 
 // Default loadout.

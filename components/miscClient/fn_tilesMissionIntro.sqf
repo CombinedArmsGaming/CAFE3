@@ -37,7 +37,7 @@ _structuredTextLines = [];
 {
     _text = _x#0;
 
-    if (typeName _text isNotEqualTo "ARRAY") then
+    if !(_text isEqualType []) then
     {
         _text = [_text];
     };

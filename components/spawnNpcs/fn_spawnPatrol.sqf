@@ -8,7 +8,7 @@
  * 0: array of units
  * 1: start position
  * 2: radius of area to patrol eg 200
- * 3: Faction of group used in F3.
+ * 3: Faction of group used in CAFE.
  * 4: side of group eg west east independent
  *
  * Return Value:

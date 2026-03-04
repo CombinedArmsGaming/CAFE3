@@ -35,6 +35,10 @@
     _logiVicToAdd = [VICTYPE, AMOUNT, GEAR, ""];                \
     GET_VAR(LOGIVIC_VAR(NAME,Vics),[]) pushBack _logiVicToAdd
 
+#define ADD_VEHICLE_WITH_CODE(NAME,VICTYPE,AMOUNT,CODE)         \
+    _logiVicToAdd = [VICTYPE, AMOUNT, CODE, ""];                \
+    GET_VAR(LOGIVIC_VAR(NAME,Vics),[]) pushBack _logiVicToAdd
+
 #define SET_CUSTOM_NAME(NAME) _logiVicToAdd set [3, NAME]
 
 #define ROLES_VAR(NAME) LOGIVIC_VAR(NAME,Roles)

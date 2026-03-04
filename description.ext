@@ -29,37 +29,36 @@ class Header
 
 
 onLoadName = "*** Insert mission name here. ***";
-onLoadMission = "Made with the CA2 Framework";
+onLoadMission = "Made with the CAFE3 Framework";
 author = "*** Insert mission author name here. ***";
 loadScreen = "ca_logo_large.jpg";
 
 
 // ============================================================================================
 
-
 enableDebugConsole = 1;
 
-// F3 - Debug variable, needs to exist pre-init.
+// CAFE - Debug variable, needs to exist pre-init.
 #include "startup\configuration\internals\debug.sqf"
-
 
 // ============================================================================================
 
 
-// F3 - Respawn Settings
-// Credits: Please see the F3 online manual (http://www.ferstaberinde.com/f3/en/)
-// 1	|	Respawn as Bird (for normal mission, no reinforcements).
-// 2	|	Respawn on death location without gear, used in special missions.
-// 3	|	Respawn at base marker (used when reinforcements are an option).
-// 4	|	Respawn either in group if an AI slot is filled or as seagull.
-// If 3 is chosen, place down makers with the following names as necessary:
-// respawn_west, respawn_guerilla, respawn_east, respawn_civillian.
-
-respawn = 3; //Suggested NOT to change this
-respawndelay = 3;
-respawnOnStart = 0;
-respawnTemplates[] = {"respawnWaves"};	// remove "f_spectator" when using respawn.
+// CAFE - Respawn Settings
+respawn = "BASE";
 respawnDialog = 0;
+
+respawnDelay = 10;
+respawnOnStart = 0;
+
+respawnTemplatesWest[] = RESPAWN_MODE_BLUFOR;
+respawnTemplatesEast[] = RESPAWN_MODE_OPFOR;
+respawnTemplatesGuer[] = RESPAWN_MODE_INDFOR;
+respawnTemplatesCiv[]  = RESPAWN_MODE_CIVILIAN;
+
+
+// CAFE - Respawn system includes.
+#include "components\respawn\cfgRespawnTemplates.hpp"
 
 
 // ============================================================================================
@@ -68,7 +67,15 @@ forceRotorLibSimulation = 0;
 
 // ============================================================================================
 
+#ifdef ENABLE_SLOTTING_GENERATOR_MODE
+
+disabledAI = false;
+
+#else
+
 disabledAI = true;
+
+#endif
 
 // ============================================================================================
 
@@ -120,26 +127,7 @@ class cfgNotifications
 		priority = 9;
 	};
 
-	// Notifications for the F3 Safe Start Component
-	class SafeStart
-	{
-		title = "SAFE START";
-		description = "%1";
-		iconPicture="\A3\UI_F\data\IGUI\Cfg\Actions\settimer_ca.paa";
-		duration = 10;
-		priority = 0;
-	};
-
-	class SafeStartMissionStarting
-	{
-		title = "SAFE START";
-		description = "%1";
-		iconPicture="\A3\UI_F\data\IGUI\Cfg\Actions\settimer_ca.paa";
-		duration = 3;
-		priority = 1;
-	};
-
-	// Notification for the F3 Mapclick Teleport component
+	// Notification for the CAFE Mapclick Teleport component
 	class MapClickTeleport
 	{
 		title= "NOTE";
@@ -149,7 +137,7 @@ class cfgNotifications
 		priority = 5;
 	};
 
-	// Notification for the F3 Mapclick Supply Drop component
+	// Notification for the CAFE Mapclick Supply Drop component
 	class MapClickSupplyDrop
 	{
 		title= "NOTE";
@@ -159,7 +147,7 @@ class cfgNotifications
 		priority = 5;
 	};
 
-	// Notification for the F3 JIP Component
+	// Notification for the CAFE JIP Component
 	class JIP
 	{
 		title= "REINFORCEMENTS";
@@ -177,93 +165,7 @@ class cfgNotifications
 
 class CfgDebriefing
 {
-	class End1
-	{
-		title = "Ending #1";
-		subtitle = "";
-		description = "Please post to the AAR thread!";
-		// pictureBackground = "";
-		// picture = "";
-		// pictureColor[] = {0.0,0.3,0.6,1};
-	};
-
-	class End2
-	{
-		title = "Ending #2";
-		subtitle = "";
-		description = "Please post to the AAR thread!";
-		// pictureBackground = "";
-		// picture = "";
-		// pictureColor[] = {0.0,0.3,0.6,1};
-	};
-
-	class End3
-	{
-		title = "Ending #3";
-		subtitle = "";
-		description = "Please post to the AAR thread!";
-		// pictureBackground = "";
-		// picture = "";
-		// pictureColor[] = {0.0,0.3,0.6,1};
-	};
-
-	class End4
-	{
-		title = "Ending #4";
-		subtitle = "";
-		description = "Please post to the AAR thread!";
-		// pictureBackground = "";
-		// picture = "";
-		// pictureColor[] = {0.0,0.3,0.6,1};
-	};
-
-	class End5
-	{
-		title = "Ending #5";
-		subtitle = "";
-		description = "Please post to the AAR thread!";
-		// pictureBackground = "";
-		// picture = "";
-		// pictureColor[] = {0.0,0.3,0.6,1};
-	};
-
-	class End6
-	{
-		title = "Mission Broke";
-		subtitle = "";
-		description = "Please post to the AAR thread!";
-		// pictureBackground = "";
-		// picture = "";
-		// pictureColor[] = {0.0,0.3,0.6,1};
-	};
-
-};
-
-
-// ============================================================================================
-
-
-class CfgRespawnTemplates
-{
-	/*
-	class f_Spectator
-	{
-		onPlayerRespawn = "f_fnc_CamInit";
-	};
-
-	// F3 JIP Menu
-	class f_JIP
-	{
-		onPlayerRespawn = "f\JIP\f_JIP_playerRespawn.sqf";
-	};
-	//*/
-	//*
-	class respawnWaves
-	{
-		onPlayerRespawn = "respawnTemplates\respawnWaves\onPlayerRespawn.sqf";
-	    onPlayerKilled = "respawnTemplates\respawnWaves\onPlayerKilled.sqf";
-	};
-	//*/
+	#include "configuration\endings.hpp"
 };
 
 
@@ -282,19 +184,13 @@ class CfgFunctions
 {
 	#include "components\functions.hpp"
 
-	class CA2Config
+	class CAFEConfig
 	{
 		class PreInit
 		{
-			class clientConfigGroup
+			class startup_preInit
 			{
-				file = "startup\configuration\groups\clientConfigGroup_preInit.sqf";
-				preInit = 1;
-			};
-
-			class serverConfigGroup
-			{
-				file = "startup\configuration\groups\serverConfigGroup_preInit.sqf";
+				file = "startup\startup_preInit.sqf";
 				preInit = 1;
 			};
 		};
@@ -322,6 +218,13 @@ class CfgDebriefingSections
 			variable = "acex_killTracker_outputText";
 	};
 
+#ifdef ENABLE_EXTENDED_STATS
+	class cafe_statsTracker
+	{
+		title = "Personal Stats";
+		variable = "cafe_playerStatsStr";
+	};
+#endif
 };
 
 
@@ -376,7 +279,7 @@ class CfgMusic
 
 class RscTitles
 {
-#include "titles.hpp"
+	#include "titles.hpp"
 };
 
 
@@ -390,6 +293,10 @@ class Extended_DisplayUnload_EventHandlers
         ca_fixcamera = "showChat true";
     };
 
+	class RscDisplayCurator
+	{
+		clientDisplayUnload = "[] call f_fnc_exitZeus;";
+	};
 };
 
 
@@ -490,6 +397,13 @@ class Extended_InitPost_EventHandlers
 
 #endif
 
+#ifdef ENABLE_EXTENDED_STATS
+		class addStatsEventHandlers
+		{
+			init = "_this call f_fnc_addStatsEventHandlersToClass";
+		};
+#endif
+
 		class addSquadManagerActions
 		{
             init = "_this call f_fnc_addSquadManagerActionsToClass";
@@ -518,6 +432,15 @@ class Extended_InitPost_EventHandlers
 
 #endif
 
+#ifdef ENABLE_HUNTER_KILLER_ACTION
+
+		class addHunterKillerAction
+		{
+			init = "_this call f_fnc_addHunterKillerActions";
+		};
+
+#endif
+
 		class addAiDriverAction
 		{
 			init = "_this call f_fnc_addAiDriverActions";
@@ -527,18 +450,28 @@ class Extended_InitPost_EventHandlers
 
 
 
-#ifdef ENABLE_PUSH_BOATS_ACTION
-
 	class Ship
 	{
+		
+#ifdef ENABLE_PUSH_BOATS_ACTION
+
 		class addPushAction
 		{
 			init = "_this call f_fnc_addPushActionToClass";
 		};
-	};
 
 #endif
 
+#ifdef ENABLE_HUNTER_KILLER_ACTION
+
+		class addHunterKillerAction
+		{
+			init = "_this call f_fnc_addHunterKillerActions";
+		};
+
+#endif
+
+	};
 
 
 
@@ -567,14 +500,19 @@ class Extended_DisplayLoad_EventHandlers
 {
     class RscDiary
 	{
-		CA2_SquadMarkers = "[_this#0, (_this#0) displayCtrl 51] call f_fnc_createSquadMarkerHook;";
-        CA2_FireteamMarkers = "[_this#0, (_this#0) displayCtrl 51] call f_fnc_createFireteamMarkerHook;";
+		CAFE_SquadMarkers = "[_this#0, (_this#0) displayCtrl 51] call f_fnc_createSquadMarkerHook;";
+        CAFE_FireteamMarkers = "[_this#0, (_this#0) displayCtrl 51] call f_fnc_createFireteamMarkerHook;";
+        CAFE_RadioList = "[_this#0, (_this#0) displayCtrl 51] call f_fnc_createRadioList;";
     };
 
     class RscCustomInfoMiniMap
 	{
-		CA2_SquadMarkers = "[_this#0, (_this#0) displayCtrl 101] call f_fnc_createSquadMarkerHook;";
-	    CA2_FireteamMarkers = "[_this#0, (_this#0) displayCtrl 101] call f_fnc_createFireteamMarkerHook;";
+		CAFE_SquadMarkers = "[_this#0, (_this#0) displayCtrl 101] call f_fnc_createSquadMarkerHook;";
+	    CAFE_FireteamMarkers = "[_this#0, (_this#0) displayCtrl 101] call f_fnc_createFireteamMarkerHook;";
     };
 
+	class RscDisplayCurator
+	{
+		clientDisplayLoad = "[] call f_fnc_openZeus;";
+	};
 };

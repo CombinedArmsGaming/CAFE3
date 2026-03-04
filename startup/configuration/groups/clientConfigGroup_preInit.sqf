@@ -1,14 +1,13 @@
 #include "macros.hpp"
 CLIENT_ONLY;
 
+#include "..\..\components\globals\clientGlobals.sqf"
+
 // Client configuration group
 // Includes all config scripts needed for clients.
 
 // Debug settings
 #include "..\internals\debug.sqf"
-
-// Radios
-#include "..\..\..\configuration\radios\acre.sqf"
 
 // Insignia
 #include "..\internals\insigniaDefinition.sqf"
@@ -24,3 +23,6 @@ CLIENT_ONLY;
 
 // Logi vics
 #include "..\internals\logiVehicle.sqf"
+
+// Radio
+#include "..\internals\radio.sqf"

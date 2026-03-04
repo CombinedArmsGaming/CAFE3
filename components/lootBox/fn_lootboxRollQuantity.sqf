@@ -4,13 +4,13 @@ params ["_quantities"];
 
 _quantity = 1;
 
-if (typeName _quantities isEqualTo "SCALAR") then
+if (_quantities isEqualType 0) then
 {
     _quantity = _quantities;
 }
 else
 {
-    if (typeName _quantities isEqualTo "ARRAY") then
+    if (_quantities isEqualType []) then
     {
         if (count _quantities == 2) then
         {

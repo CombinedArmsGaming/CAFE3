@@ -9,7 +9,7 @@
  * 0: array of units
  * 1: start position
  * 3: Distance to charge. Recommended fall just a bit short of target. Set in meters
- * 3: Faction of group used in F3 Assigngear.
+ * 3: Faction of group used in CAFE Assigngear.
  * 4: Side of units spawned, west east independent
  *
  * Return Value:

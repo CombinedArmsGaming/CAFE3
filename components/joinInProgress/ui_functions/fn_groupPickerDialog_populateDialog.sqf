@@ -25,7 +25,12 @@ _groupList = _display displayCtrl IDC_GROUPPICKER_SQUADLIST;
     _name = (groupId _x);
     _text = format ["%1 (%2)", _name, _members];
 
-    if !(_name isEqualTo "Spectators") then
+    // If group is the spectators group, or a default-named non-important group, or the Zeus group, hide it from the menu.
+    if !(
+            (_name isEqualTo "Spectators") 
+            or {_name regexMatch "[A-Z][a-z]+ \d\d?-\d\d?"}
+            or {(!(player getVariable ["f_var_isZeus", false])) and {(toLower _name) isEqualTo "zeus"}}
+        ) then
     {
         _idx = _groupList lbAdd _text;
 
@@ -45,6 +50,8 @@ for "_i" from 0 to (lbSize _groupList) do
         _groupList lbSetCurSel _i;
     };
 
+    _groupList lbSetCurSel 0;
+
 };
 
 
@@ -63,4 +70,20 @@ if !(_mayTeleport) then
 else
 {
     _teleportCheckbox ctrlSetChecked true;
+};
+
+
+private _cancelDisabled = missionNamespace getVariable ["f_var_groupPicker_disableCancel", false];
+
+if (_cancelDisabled) then
+{
+    private _cancelButton = _display displayCtrl IDC_GROUPPICKER_CANCELBUTTON;
+    _cancelButton ctrlEnable false;
+    missionNamespace setVariable ["f_var_groupPicker_disableCancel", nil];
+};
+
+if (missionNamespace getVariable ["f_var_groupPicker_forceGearscript", false]) then
+{
+    f_var_groupPicker_forceGearscript_internal = true;
+    missionNamespace setVariable ["f_var_groupPicker_forceGearscript", nil];
 };

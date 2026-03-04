@@ -1,6 +1,6 @@
 #include "../ui_macros.hpp"
 
-class CA2_SubtitleText
+class CAFE_SubtitleText
 {
     idd = IDD_SUBTITLETEXT;
 
@@ -15,7 +15,7 @@ class CA2_SubtitleText
 
     class ControlsBackground
     {
-        class SubtitleText: CA2_DefaultStructuredText
+        class SubtitleText: CAFE_DefaultStructuredText
         {
         	idc = IDC_SUBTITLETEXT_TEXT;
         	x = 0 * GUI_GRID_W + GUI_GRID_X;

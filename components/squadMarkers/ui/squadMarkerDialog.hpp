@@ -1,6 +1,6 @@
 #include "../ui_macros.hpp"
 
-class CA2_SquadMarker_Dialog
+class CAFE_SquadMarker_Dialog
 {
 	idd = IDD_SQUADMARKER_DIALOG;
     enableSimulation = 1;
@@ -11,7 +11,7 @@ class CA2_SquadMarker_Dialog
 
 	class ControlsBackground
     {
-		class RscText_1000: CA2_DefaultText
+		class RscText_1000: CAFE_DefaultText
 		{
 			idc = 1000;
 			x = 6 * GUI_GRID_W + GUI_GRID_X;
@@ -21,7 +21,7 @@ class CA2_SquadMarker_Dialog
 			colorBackground[] = {0,0,0,0.5};
 		};
 
-		class RscText_1005: CA2_DefaultText
+		class RscText_1005: CAFE_DefaultText
 		{
 			idc = 1005;
 			x = 21 * GUI_GRID_W + GUI_GRID_X;
@@ -31,7 +31,7 @@ class CA2_SquadMarker_Dialog
 			colorBackground[] = {0,0,0,0.5};
 		};
 
-		class RscText_1009: CA2_DefaultText
+		class RscText_1009: CAFE_DefaultText
 		{
 			idc = 1009;
 			x = 6 * GUI_GRID_W + GUI_GRID_X;
@@ -46,7 +46,7 @@ class CA2_SquadMarker_Dialog
 
 	class Controls
     {
-		class CA2_SquadMarker_MarkerTitle: CA2_DefaultText
+		class CAFE_SquadMarker_MarkerTitle: CAFE_DefaultText
 		{
 			idc = 1001;
 			text = "Edit your squad marker:";
@@ -57,7 +57,7 @@ class CA2_SquadMarker_Dialog
 			sizeEx = 1.3 * GUI_GRID_H;
 		};
 
-		class CA2_SquadMarker_GroupTitle: CA2_DefaultText
+		class CAFE_SquadMarker_GroupTitle: CAFE_DefaultText
 		{
 			idc = 1002;
 			text = "Group name:";
@@ -67,7 +67,7 @@ class CA2_SquadMarker_Dialog
 			h = 1 * GUI_GRID_H;
 		};
 
-		class CA2_SquadMarker_GroupEdit: CA2_DefaultEdit
+		class CAFE_SquadMarker_GroupEdit: CAFE_DefaultEdit
 		{
 			idc = IDC_SQUADMARKER_DIALOG_GROUPEDIT;
 			x = 12.5 * GUI_GRID_W + GUI_GRID_X;
@@ -76,7 +76,7 @@ class CA2_SquadMarker_Dialog
 			h = 1 * GUI_GRID_H;
 		};
 
-		class CA2_SquadMarker_IconTitle: CA2_DefaultText
+		class CAFE_SquadMarker_IconTitle: CAFE_DefaultText
 		{
 			idc = 1003;
 			text = "Icon:";
@@ -86,7 +86,7 @@ class CA2_SquadMarker_Dialog
 			h = 1 * GUI_GRID_H;
 		};
 
-		class CA2_SquadMarker_IconListBox: CA2_DefaultListBox
+		class CAFE_SquadMarker_IconListBox: CAFE_DefaultListBox
 		{
 			idc = IDC_SQUADMARKER_DIALOG_ICONLISTBOX;
 			x = 7 * GUI_GRID_W + GUI_GRID_X;
@@ -96,7 +96,7 @@ class CA2_SquadMarker_Dialog
 			sizeEx = 0.7 * GUI_GRID_H;
 		};
 
-		class CA2_SquadMarker_ColourTitle: CA2_DefaultText
+		class CAFE_SquadMarker_ColourTitle: CAFE_DefaultText
 		{
 			idc = 1004;
 			text = "Colour:";
@@ -106,7 +106,7 @@ class CA2_SquadMarker_Dialog
 			h = 1 * GUI_GRID_H;
 		};
 
-		class CA2_SquadMarker_ColourListBox: CA2_DefaultListBox
+		class CAFE_SquadMarker_ColourListBox: CAFE_DefaultListBox
 		{
 			idc = IDC_SQUADMARKER_DIALOG_COLOURLISTBOX;
 			x = 13.5 * GUI_GRID_W + GUI_GRID_X;
@@ -116,7 +116,7 @@ class CA2_SquadMarker_Dialog
 			sizeEx = 0.7 * GUI_GRID_H;
 		};
 
-		class CA2_SquadMarker_SpecialistTitle: CA2_DefaultText
+		class CAFE_SquadMarker_SpecialistTitle: CAFE_DefaultText
 		{
 			idc = 1006;
 			text = "Specialist markers:";
@@ -127,7 +127,7 @@ class CA2_SquadMarker_Dialog
 			sizeEx = 1.3 * GUI_GRID_H;
 		};
 
-		class CA2_SquadMarker_AvailableSpecialistTitle: CA2_DefaultText
+		class CAFE_SquadMarker_AvailableSpecialistTitle: CAFE_DefaultText
 		{
 			idc = 1007;
 			text = "Available:";
@@ -137,7 +137,7 @@ class CA2_SquadMarker_Dialog
 			h = 1 * GUI_GRID_H;
 		};
 
-		class CA2_SquadMarker_AvailableSpecialistListBox: CA2_DefaultListBox
+		class CAFE_SquadMarker_AvailableSpecialistListBox: CAFE_DefaultListBox
 		{
 			idc = IDC_SQUADMARKER_DIALOG_AVAILABLELISTBOX;
 			x = 22 * GUI_GRID_W + GUI_GRID_X;
@@ -147,7 +147,7 @@ class CA2_SquadMarker_Dialog
 			sizeEx = 0.7 * GUI_GRID_H;
 		};
 
-		class CA2_SquadMarker_AddSpecialistButton: CA2_DefaultButton
+		class CAFE_SquadMarker_AddSpecialistButton: CAFE_DefaultButton
 		{
 			idc = 1600;
 			text = "Add";
@@ -158,7 +158,7 @@ class CA2_SquadMarker_Dialog
 			onButtonClick = "_this call f_fnc_squadMarkerDialog_addSpecialist";
 		};
 
-		class CA2_SquadMarker_VisibleSpecialistTitle: CA2_DefaultText
+		class CAFE_SquadMarker_VisibleSpecialistTitle: CAFE_DefaultText
 		{
 			idc = 1008;
 			text = "Visible:";
@@ -168,7 +168,7 @@ class CA2_SquadMarker_Dialog
 			h = 1 * GUI_GRID_H;
 		};
 
-		class CA2_SquadMarker_VisibleSpecialistListBox: CA2_DefaultListBox
+		class CAFE_SquadMarker_VisibleSpecialistListBox: CAFE_DefaultListBox
 		{
 			idc = IDC_SQUADMARKER_DIALOG_VISIBLELISTBOX;
 			x = 28.5 * GUI_GRID_W + GUI_GRID_X;
@@ -178,7 +178,7 @@ class CA2_SquadMarker_Dialog
 			sizeEx = 0.7 * GUI_GRID_H;
 		};
 
-		class CA2_SquadMarker_RemoveSpecialistButton: CA2_DefaultButton
+		class CAFE_SquadMarker_RemoveSpecialistButton: CAFE_DefaultButton
 		{
 			idc = 1601;
 			text = "Remove";
@@ -189,7 +189,7 @@ class CA2_SquadMarker_Dialog
             onButtonClick = "_this call f_fnc_squadMarkerDialog_removeSpecialist";
 		};
 
-		class CA2_SquadMarker_ConfirmButton: CA2_DefaultButton
+		class CAFE_SquadMarker_ConfirmButton: CAFE_DefaultButton
 		{
 			idc = 1602;
 			text = "Confirm";
@@ -200,7 +200,7 @@ class CA2_SquadMarker_Dialog
             onButtonClick = "closeDialog 1";
 		};
 		
-		class CA2_SquadMarker_CancelButton: CA2_DefaultButton
+		class CAFE_SquadMarker_CancelButton: CAFE_DefaultButton
 		{
 			idc = 1603;
 			text = "Cancel";
@@ -211,7 +211,7 @@ class CA2_SquadMarker_Dialog
             onButtonClick = "closeDialog 2";
 		};
 
-		class CA2_SquadMarker_IShowedYouMyDialogPleaseRespond: CA2_DefaultText
+		class CAFE_SquadMarker_IShowedYouMyDialogPleaseRespond: CAFE_DefaultText
 		{
 			idc = 1010;
 			text = "Experimental squad marker dialog.  Any feedback?  Tell Bubbus.";

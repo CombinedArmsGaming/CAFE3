@@ -5,11 +5,11 @@
  * Spawns a vehicle that attacks a location or area.
  *
  * Arguments:
- * 0: F3 group array
+ * 0: CAFE group array
  * 1: Spawn position, marker, object, group, location, array
  * 2: Marker, position or location to attack. If marker is type of area, then it will use that instead.
  * 3: Vehicle classname
- * 4: Faction of group used in F3 Assigngear.
+ * 4: Faction of group used in CAFE Assigngear.
  * 5: Side of units spawned, west east independent
  *
  * Return Value:
@@ -24,7 +24,7 @@ _group = _grpvehicle select 0;
 _posdir = _attackposition call f_fnc_getdirpos;
 _attackpos = _posdir select 0;
 
-if (typename _attackposition == "STRING") then
+if (_attackposition isEqualType "") then
 {
     if (markerShape _attackposition ==  "RECTANGLE" || markerShape _attackposition == "ELLIPSE") then
     {
