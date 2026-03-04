@@ -10,8 +10,8 @@ params ["_display"];
 /*
     ==== Spawns List ====
 */
-private _spawns = (player call bis_fnc_getRespawnPositions) + ((player call bis_fnc_objectSide) call bis_fnc_getRespawnMarkers);
-private _spawnListEntries = _spawns apply {[_x, (_x call BIS_fnc_showRespawnMenuPositionName) # 0]};
+private _spawns = [player] call f_fnc_getAvailableRespawns;
+private _spawnListEntries = _spawns apply {[_x, _x call f_fnc_getRespawnName]};
 // Markers have the name "_respawnMarker<index>"
 private _spawnMarkers = [];
 

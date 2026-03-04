@@ -3,7 +3,9 @@ class respawn
     file = "components\respawn";
     class addFreeTicket{};
     class forceJoinGroupByName{};
+    class getAvailableRespawns{};
     class getPlayerRespawnDelay{};
+    class getRespawnName{};
     class isRespawnModeActive{};
     class storePlayerGroup{postInit=1;};
     class leaderTagLoop{};
