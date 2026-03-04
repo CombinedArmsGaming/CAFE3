@@ -1,5 +1,11 @@
 #include "macros.hpp"
 
+// Overwrite the EDEN Editor ACRE radio settings to be empty
+// This line runs more often than is necessary but it has to go here for timing reasons.
+// It has to be set after expressions of EDEN entity attributes are called but before postInit happens.
+// It will also run every time gearscript happens but that's the cost of doing business.
+(_this select 1) setVariable ["acre_sys_radio_setup", "[]"];
+
 RUN_AS_ASYNC(f_fnc_assignGear);
 
 // ====================================================================================
@@ -15,7 +21,7 @@ if (count _this > 2) then
 
 if (IS_PLAYER) then
 {
-    waitUntil {local player};
+    waitUntil {(local player)};
 };
 
 LOCAL_ONLY(_unit);
@@ -53,7 +59,8 @@ if (time <= 1) then
         _unit setVariable ["f_var_assignGear", _typeOfUnit, true];
         _unit setVariable ["f_var_assignGear_Faction", _faction, true];
 
-        _unit setUnitLoadout [[],[],[],["U_B_CombatUniform_mcam",[]],[],[],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]];
+        // Preserve facewear
+        _unit setUnitLoadout [[],[],[],["U_B_CombatUniform_mcam",[]],[],[],"",goggles _unit,[],["ItemMap","","","ItemCompass","ItemWatch",""]];
 
         // In this scenario, player gearscripting gets taken over by the respawn template "CAFE_Loadout".  Just exit here.    
         _unit setVariable ["f_var_assignGear_done", true, true];

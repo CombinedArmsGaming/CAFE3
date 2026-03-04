@@ -4,8 +4,13 @@ params ["_map"];
 
 if !(alive player) exitWith {};
 if !IS_TRUE(f_var_allSettingsReady) exitWith {};
+if !IS_TRUE(f_var_showFTMarkers) exitWith {};
 
+#ifdef HIDE_DEAD_IN_SQUAD
 _group = (units player) select {alive _x};
+#else
+_group = units player;
+#endif
 _baseIcon = "\A3\ui_f\data\map\vehicleicons\iconMan_ca.paa";
 
 

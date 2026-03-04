@@ -15,3 +15,6 @@
 
 // Squad markers
 #include "..\internals\squadMarkers.sqf"
+
+// Map markers
+#include "..\internals\mapMarkers.sqf"

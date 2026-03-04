@@ -9,6 +9,10 @@ if ((isNil "_downIndicator") or {isNull _downIndicator}) exitWith
     uiNamespace setVariable ["f_downtimeWidget_state", nil];
 };
 
+// There's an invisible structured text control with IDC 140 that is on top of the CHOOSE SPAWN LOCATION button
+// No idea why it's there but disabling it makes the button work and seems to have no ill effects
+private _hiddenTextBox = (findDisplay 60000 displayCtrl 140);
+_hiddenTextBox ctrlEnable false;
 
 private _state = uiNamespace getVariable ["f_downtimeWidget_state", ["DEAD"]];
 _state params ["_prevDownState"];
@@ -47,13 +51,14 @@ uiNamespace setVariable ["f_downtimeWidget_state", [_downState]];
 
 if (_downState isNotEqualTo _prevDownState) then
 {
-    private _chooseSpawnButton = uiNamespace getVariable "f_downtimeWidget_chooseSpawnButton";
-    private _chooseSpawnText = uiNamespace getVariable "f_downtimeWidget_chooseSpawnButtonText";
-    private _ctrlGroup = uiNamespace getVariable "f_downtimeWidget_ctrlGroup";
-
     _downIndicator ctrlSetText _downState;
     _downIndicator ctrlSetTextColor (switch (_downState) do {case "DEAD": {[1, 0.7, 0.7, 1]}; case "DOWN": {[0.7, 0.7, 1, 1]}; case "ALIVE": {[0.7, 1, 0.7, 1]}; default {[1,1,1,1]}; });
     _downIndicator ctrlCommit 0;
+
+	#ifdef ENABLE_RESPAWN_DIALOG
+	private _chooseSpawnButton = uiNamespace getVariable "f_downtimeWidget_chooseSpawnButton";
+    private _chooseSpawnText = uiNamespace getVariable "f_downtimeWidget_chooseSpawnButtonText";
+    private _ctrlGroup = uiNamespace getVariable "f_downtimeWidget_ctrlGroup";
 
     _chooseSpawnButton ctrlShow (_downState isEqualTo "DEAD");
     _chooseSpawnButton ctrlCommit 0;
@@ -81,6 +86,12 @@ if (_downState isNotEqualTo _prevDownState) then
     });
     _ctrlGroup ctrlCommit 0.5;
     
+	// Open spawn picker dialog on death
+	if (_downState isEqualTo "DEAD") then 
+	{
+		[] call f_fnc_tryShowSpawnpointDialog;
+	};
+	#endif
 };
 
 

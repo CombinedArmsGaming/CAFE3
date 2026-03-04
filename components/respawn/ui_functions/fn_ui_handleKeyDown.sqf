@@ -1,19 +1,20 @@
+#include "\a3\ui_f\hpp\definedikcodes.inc"
 params ["","_key","_shift","_ctrl","_alt"];
 
 
-if (_key == 0x32) exitWith {
+if (_key == DIK_M) exitWith {
     [] call ace_spectator_fnc_ui_toggleMap;
     true
 };
 
 
-if (_key == 0x38) exitWith {
+if (_key == DIK_O) exitWith {
     [true] call ace_spectator_fnc_cam_toggleSlow;
     true
 };
 
 
-if (_key == 0x01) exitWith {
+if (_key == DIK_ESCAPE) exitWith {
     if (ace_spectator_uiMapVisible) then {
         [] call ace_spectator_fnc_ui_toggleMap;
     } else {
@@ -28,7 +29,7 @@ if (_key == 0x01) exitWith {
 };
 
 
-if (_key in [0x39, 0x9C]) exitWith {
+if (_key in [DIK_SPACE, DIK_NUMPADENTER]) exitWith {
     private _oldMode = ace_spectator_camMode;
     private _modes = ace_spectator_availableModes;
 
@@ -49,7 +50,7 @@ if (_key in [0x39, 0x9C]) exitWith {
 };
 
 
-if (_key == 0x31) exitWith {
+if (_key == DIK_N) exitWith {
     private _oldVision = ace_spectator_camVision;
     private _visions = ace_spectator_availableVisions;
 
@@ -69,19 +70,19 @@ if (_key == 0x31) exitWith {
 };
 
 
-if (_key == 0xC9) exitWith {
+if (_key == DIK_PGUP) exitWith {
     setViewDistance ((viewDistance + 250) min 2500);
     true
 };
 
 
-if (_key == 0xD1) exitWith {
+if (_key == DIK_PGDN) exitWith {
     setViewDistance ((viewDistance - 250) max 500);
     true
 };
 
 
-if (_key == 0x26) exitWith {
+if (_key == DIK_L) exitWith {
     if (ace_spectator_camLight) then {
         { deleteVehicle _x; } forEach ace_spectator_camLights;
         ace_spectator_camLights = [];
@@ -106,13 +107,13 @@ if (_key == 0x26) exitWith {
 };
 
 
-if (_key == 0x0E) exitWith {
+if (_key == DIK_BACKSPACE) exitWith {
     [] call ace_spectator_fnc_ui_toggleUI;
     true
 };
 
 
-if (_key == 0x3B) exitWith {
+if (_key == DIK_F1) exitWith {
     ace_spectator_uiHelpVisible = !ace_spectator_uiHelpVisible;
 
     [] call ace_spectator_fnc_ui_updateHelp;
@@ -124,32 +125,32 @@ if (_key == 0x3B) exitWith {
 };
 
 
-if (_key == 0x17) exitWith {
+if (_key == DIK_I) exitWith {
     ace_spectator_uiWidgetVisible = !ace_spectator_uiWidgetVisible;
     [] call ace_spectator_fnc_ui_updateWidget;
     true
 };
 
 
-if (_key == 0x19) exitWith {
+if (_key == DIK_P) exitWith {
     ace_spectator_drawProjectiles = !ace_spectator_drawProjectiles;
     true
 };
 
 
-if (_key == 0x18) exitWith {
+if (_key == DIK_O) exitWith {
     ace_spectator_drawUnits = !ace_spectator_drawUnits;
     true
 };
 
 
-if (_key == 0xCD) exitWith {
+if (_key == DIK_RIGHT) exitWith {
     [true] call ace_spectator_fnc_switchFocus;
     true
 };
 
 
-if (_key == 0xCB) exitWith {
+if (_key == DIK_LEFT) exitWith {
     [false] call ace_spectator_fnc_switchFocus;
     true
 };
@@ -175,7 +176,7 @@ if ((_key in (actionKeys "CuratorInterface")) && {!isNull (getAssignedCuratorLog
 };
 
 
-if ((_key == 0x1F) and {_ctrl isEqualTo true}) exitWith 
+if ((_key == DIK_S) and {_ctrl isEqualTo true}) exitWith 
 {
     if (!alive player) then
     {

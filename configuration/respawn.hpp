@@ -30,6 +30,17 @@
 // When a player respawns, do they get to teleport to a group of their choosing?
 // #define ALLOW_TELEPORT_UPON_RESPAWN
 
+// When a player respawns, do they get to choose their loadout?
+// #define ALLOW_LOADOUT_CHANGE_UPON_RESPAWN
+
+// When a player dies, do they get hidden from the squad HUD?  Turn off for hardcore settings but beware - this will confuse players who are used to this feature.
+#define HIDE_DEAD_IN_SQUAD
+
+// Should a player be able to open the respawn/spawn picker dialog? Without it, they won't be able to choose their spawnpoint. 
+// Disabling the dialog is useful if, for example, you want to only use respawn squares.
+// Use caution when commenting this out! Things can get weird if you allow players to respawn normally.
+#define ENABLE_RESPAWN_DIALOG
+
 // This only takes effect for the TRIGGERED_WAVES respawn modes.  Timed modes will use the RESPAWN_DELAY settings.
 #define RESPAWN_WAVE_DURATION               60
 
@@ -43,16 +54,16 @@
 #define RESPAWN_PLAYER_TICKETS_BLUFOR       2
        
 #define RESPAWN_MODE_OPFOR                  RESPAWN_MODE_TIMED_WAVES_TICKETS
-#define RESPAWN_DELAY_OPFOR                 10
-#define RESPAWN_SIDE_TICKETS_OPFOR          10
-//#define RESPAWN_PLAYER_TICKETS_OPFOR      2
+#define RESPAWN_DELAY_OPFOR                 180
+#define RESPAWN_SIDE_TICKETS_OPFOR          30
+#define RESPAWN_PLAYER_TICKETS_OPFOR        2
     
 #define RESPAWN_MODE_INDFOR                 RESPAWN_MODE_TIMED_WAVES_TICKETS
-#define RESPAWN_DELAY_INDFOR                RESPAWN_DELAY_BLUFOR
-//#define RESPAWN_SIDE_TICKETS_INDFOR       30
-//#define RESPAWN_PLAYER_TICKETS_INDFOR     2
+#define RESPAWN_DELAY_INDFOR                180
+#define RESPAWN_SIDE_TICKETS_INDFOR         30
+#define RESPAWN_PLAYER_TICKETS_INDFOR       2
 
 #define RESPAWN_MODE_CIVILIAN               RESPAWN_MODE_TIMED
-#define RESPAWN_DELAY_CIVILIAN              5
-//#define RESPAWN_SIDE_TICKETS_CIVILIAN     30
-//#define RESPAWN_PLAYER_TICKETS_CIVILIAN   2
+#define RESPAWN_DELAY_CIVILIAN              180
+#define RESPAWN_SIDE_TICKETS_CIVILIAN       30
+#define RESPAWN_PLAYER_TICKETS_CIVILIAN     2

@@ -10,6 +10,12 @@ if (_groupName isEqualType []) exitWith
     forEach _groupName;
 };
 
+private _groupNameUpper = toUpper _groupName;
+if (_groupNameUpper isNotEqualTo "DEFAULT") then
+{
+    (f_map_knownGroups getOrDefault [_side, [], true]) pushBackUnique _groupNameUpper;
+};
+
 private _channelHasPresetOverride = (_channel isEqualType []);
 private _channelName = _channel;
 
@@ -25,7 +31,7 @@ else
 
 [_radio, _channelName, _preset] call f_fnc_acre_generateChannelForRadio;
 
-private _radioKey = format ["%1::%2::%3", [_side] call f_fnc_sideToString, toUpper _groupName, RADIOS_SELECTOR_ALL];
+private _radioKey = format ["%1::%2::%3", [_side] call f_fnc_sideToString, _groupNameUpper, RADIOS_SELECTOR_ALL];
 
 private _radiosList = f_map_radioAssignments getOrDefault [_radioKey, [], true];
 

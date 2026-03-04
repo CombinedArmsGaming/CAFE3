@@ -8,4 +8,8 @@ private _widgetCtrlGroup = uiNamespace getVariable ["f_downtimeWidget_ctrlGroup"
 
 if ((isNull _widgetCtrlGroup) or {!ctrlShown _widgetCtrlGroup}) exitWith {};
 
-createDialog "CAFE_SpawnPicker_Dialog";
+if (missionNamespace getVariable ["f_var_spawnPickerDialog_lockedOut", false]) exitWith {DEBUG_PRINT_LOG("[RESPAWN] Denied opening of spawn picker dialog due to lockout")};
+
+#ifdef ENABLE_RESPAWN_DIALOG
+createDialog ["CAFE_SpawnPicker_Dialog", true];
+#endif

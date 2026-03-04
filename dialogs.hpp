@@ -8,4 +8,5 @@
 #include "components\joinInProgress\ui\groupPickerDialog.hpp"
 #include "components\viewDistanceEditor\ui\viewDistanceEditor.hpp"
 #include "components\respawn\triggeredWave\ui\triggeredWaveDialog.hpp"
+#include "components\respawn\ui\spectatorDowntimeWidget.hpp"
 #include "components\respawn\ui\spawnPickerDialog.hpp"

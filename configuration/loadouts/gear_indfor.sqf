@@ -22,13 +22,23 @@ BEGIN_LOADOUTS;
     ADD_UNIFORM(UNIT_NAME,"Uniform Classname");
     ADD_VEST(UNIT_NAME,"Vest Classname");
     ADD_BACKPACK(UNIT_NAME,"Backpack Classname");
+    ADD_FACEWEAR(UNIT_NAME,"Facewear Classname");
+
+    FORCE_FACEWEAR(UNIT_NAME);
 
     COPY_ADDONS(TO,FROM);
+
+    COPY_HATS(TO,FROM);
+    COPY_UNIFORMS(TO,FROM);
+    COPY_VESTS(TO,FROM);
+    COPY_BACKPACKS(TO,FROM);
+    COPY_FACEWEAR(TO,FROM);
 
     CLEAR_HATS(UNIT_NAME);
     CLEAR_UNIFORM(UNIT_NAME);
     CLEAR_VEST(UNIT_NAME);
     CLEAR_BACKPACK(UNIT_NAME);
+    CLEAR_FACEWEAR(UNIT_NAME);
 
     CLEAR_ADDONS(UNIT_NAME);
 
@@ -104,7 +114,7 @@ BEGIN_LOADOUTS;
 
 // Rifleman Loadout
 
-_baseLoadout = [["arifle_Mk20_ACO_pointer_F","","acc_flashlight","optic_Aco",["30Rnd_556x45_Stanag",30],[],""],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_I_CombatUniform_shortsleeve",[["ACE_elasticBandage",3],["ACE_epinephrine",1],["ACE_morphine",2],["ACE_packingBandage",3],["ACRE_PRC343_ID_18",1],["ACE_Flashlight_XL50",1],["ACE_MapTools",1],["ACE_splint",2],["ACE_tourniquet",2],["ACE_salineIV",1]]],["V_PlateCarrierIA1_dgtl",[["30Rnd_556x45_Stanag_Tracer_Yellow",2,30],["HandGrenade",2,1],["SmokeShell",2,1],["9Rnd_45ACP_Mag",2,8],["30Rnd_556x45_Stanag",8,30]]],["B_AssaultPack_dgtl",[["ACE_EntrenchingTool",1]]],"H_HelmetIA_net","G_Lowprofile",[],["ItemMap","","","ItemCompass","ItemWatch","NVGoggles_INDEP"]];
+_baseLoadout = [[["arifle_Mk20_F","","acc_flashlight","optic_Aco",["30Rnd_556x45_Stanag",30],[],""],[],[],["U_I_CombatUniform",[["ACE_MapTools",1],["ACE_Flashlight_XL50",1],["ACE_Canteen",1],["ACE_fieldDressing",5],["ACE_packingBandage",1],["ACE_quikclot",1],["ACE_salineIV",1],["ACE_tourniquet",2],["ACE_splint",1],["ACRE_PRC343",1],["ACE_painkillers",2,10]]],["V_PlateCarrierIA1_dgtl",[["30Rnd_556x45_Stanag_Tracer_Yellow",10,30],["HandGrenade",2,1],["SmokeShell",2,1]]],["B_AssaultPack_dgtl",[["30Rnd_556x45_Stanag_Tracer_Yellow",2,30]]],"H_HelmetIA_net","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],[]];
 
 CREATE_LOADOUT(rif,_baseLoadout);
 
@@ -114,14 +124,14 @@ ADD_UNIFORM(rif,"U_I_CombatUniform");
 
 // Commander Loadout
 
-_baseLoadout = [["arifle_Mk20C_F","","acc_flashlight","optic_Aco",["30Rnd_556x45_Stanag",30],[],""],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_I_OfficerUniform",[["ACE_elasticBandage",3],["ACE_epinephrine",1],["ACE_morphine",2],["ACE_packingBandage",3],["ACRE_PRC343_ID_15",1],["ACRE_PRC148_ID_2",1],["ACE_splint",2],["ACE_tourniquet",2],["ACRE_PRC152_ID_1",1]]],["V_TacVest_oli",[["SmokeShell",4,1],["30Rnd_556x45_Stanag_Tracer_Yellow",2,30],["SmokeShellBlue",2,1],["SmokeShellRed",2,1],["9Rnd_45ACP_Mag",1,8],["30Rnd_556x45_Stanag",5,30]]],["B_AssaultPack_dgtl",[["NVGoggles_INDEP",1]]],"H_MilCap_dgtl","G_Squares",["Rangefinder","","","",[],[],""],["ItemMap","ItemGPS","","ItemCompass","ItemWatch",""]];
+_baseLoadout = [[["arifle_Mk20_GL_F","","acc_flashlight","optic_Aco",["30Rnd_556x45_Stanag",30],["1Rnd_HE_Grenade_shell",1],""],[],["hgun_Pistol_heavy_01_F","","","",["11Rnd_45ACP_Mag",15],[],""],["U_I_CombatUniform",[["ACE_MapTools",1],["ACE_Flashlight_XL50",1],["ACE_Canteen",1],["ACE_fieldDressing",5],["ACE_packingBandage",1],["ACE_quikclot",1],["ACE_salineIV",1],["ACE_tourniquet",2],["ACE_splint",1],["ACRE_PRC343",1],["ACE_painkillers",2,10]]],["V_PlateCarrierIA1_dgtl",[["HandGrenade",2,1],["SmokeShell",2,1],["30Rnd_556x45_Stanag_Tracer_Yellow",9,30],["11Rnd_45ACP_Mag",2,15]]],["B_AssaultPack_dgtl",[["1Rnd_HE_Grenade_shell",10,1],["1Rnd_Smoke_Grenade_shell",6,1],["1Rnd_SmokeRed_Grenade_shell",2,1],["1Rnd_SmokeGreen_Grenade_shell",2,1],["1Rnd_SmokeBlue_Grenade_shell",2,1]]],"H_MilCap_dgtl","",["Rangefinder","","","",[],[],""],["ItemMap","","","ItemCompass","ItemWatch",""]],[]];
 
 CREATE_LOADOUT(co,_baseLoadout);
 
 
 // Fireteam lead Loadout
 
-_baseLoadout = [["arifle_Mk20_GL_F","","acc_pointer_IR","optic_Aco",["30Rnd_556x45_Stanag",30],["1Rnd_HE_Grenade_shell",1],""],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_I_CombatUniform_shortsleeve",[["ACE_elasticBandage",3],["ACE_epinephrine",1],["ACE_morphine",2],["ACE_packingBandage",3],["ACRE_PRC343_ID_18",1],["ACRE_PRC148_ID_2",1],["ACE_splint",2],["ACE_tourniquet",2],["ACRE_PRC152_ID_1",1]]],["V_PlateCarrierIAGL_dgtl",[["ACE_Flashlight_XL50",1],["ACE_MapTools",1],["HandGrenade",2,1],["30Rnd_556x45_Stanag_Tracer_Yellow",2,30],["9Rnd_45ACP_Mag",2,8],["30Rnd_556x45_Stanag",7,30]]],["B_AssaultPack_dgtl",[["1Rnd_HE_Grenade_shell",15,1],["1Rnd_Smoke_Grenade_shell",6,1],["1Rnd_SmokeRed_Grenade_shell",4,1],["1Rnd_SmokeBlue_Grenade_shell",4,1],["SmokeShell",4,1],["SmokeShellBlue",2,1],["SmokeShellRed",2,1]]],"H_HelmetIA_net","G_Lowprofile",["Binocular","","","",[],[],""],["ItemMap","ItemGPS","","ItemCompass","ItemWatch","NVGoggles_INDEP"]];
+_baseLoadout = [[["arifle_Mk20_GL_F","","acc_flashlight","optic_Aco",["30Rnd_556x45_Stanag",30],["1Rnd_HE_Grenade_shell",1],""],[],["hgun_Pistol_heavy_01_F","","","",["11Rnd_45ACP_Mag",15],[],""],["U_I_CombatUniform",[["ACE_MapTools",1],["ACE_Flashlight_XL50",1],["ACE_Canteen",1],["ACE_fieldDressing",5],["ACE_packingBandage",1],["ACE_quikclot",1],["ACE_salineIV",1],["ACE_tourniquet",2],["ACE_splint",1],["ACRE_PRC343",1],["ACE_painkillers",2,10]]],["V_PlateCarrierIA1_dgtl",[["HandGrenade",2,1],["SmokeShell",2,1],["30Rnd_556x45_Stanag_Tracer_Yellow",9,30],["11Rnd_45ACP_Mag",2,15]]],["B_AssaultPack_dgtl",[["1Rnd_HE_Grenade_shell",10,1],["1Rnd_Smoke_Grenade_shell",6,1],["1Rnd_SmokeRed_Grenade_shell",2,1],["1Rnd_SmokeGreen_Grenade_shell",2,1],["1Rnd_SmokeBlue_Grenade_shell",2,1]]],"H_HelmetIA_net","",["Binocular","","","",[],[],""],["ItemMap","","","ItemCompass","ItemWatch",""]],[]];
 
 CREATE_LOADOUT(ftl,_baseLoadout);
 COPY_ADDONS(ftl,rif);
@@ -132,9 +142,17 @@ COPY_ADDONS(ftl,rif);
 COPY_LOADOUT(sl,ftl);
 
 
-// Medic Loadout
+// Surgeon Loadout (Has PAK)
 
-_baseLoadout = [["arifle_Mk20C_F","","acc_flashlight","optic_Aco",["30Rnd_556x45_Stanag",30],[],""],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_I_CombatUniform_shortsleeve",[["ACRE_PRC343_ID_15",1],["ACRE_PRC148_ID_3",1],["ACRE_PRC152",1],["ACE_bloodIV",1],["ACE_bloodIV_500",1]]],["V_PlateCarrierIA1_dgtl",[["ACE_bloodIV",3],["ACE_bloodIV_500",1],["SmokeShell",4,1],["30Rnd_556x45_Stanag",5,30],["30Rnd_556x45_Stanag_Tracer_Yellow",2,30],["9Rnd_45ACP_Mag",2,8]]],["B_Kitbag_rgr",[["ACE_morphine",15],["ACE_epinephrine",10],["ACE_fieldDressing",10],["ACE_packingBandage",20],["ACE_elasticBandage",20],["ACE_bloodIV_500",3],["ACE_adenosine",5],["ACE_bloodIV",5],["ACE_splint",20],["ACE_tourniquet",10],["FSGm_ItemMedicBagMil",1],["ACE_personalAidKit",1],["ACE_surgicalKit",1],["ACE_EntrenchingTool",1]]],"H_HelmetIA_net","G_Lowprofile",["Binocular","","","",[],[],""],["ItemMap","ItemGPS","","ItemCompass","ItemWatch","NVGoggles_INDEP"]];
+_baseLoadout = [[["arifle_Mk20C_F","","acc_flashlight","optic_Aco",["30Rnd_556x45_Stanag",30],[],""],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_I_CombatUniform",[["ACE_MapTools",1],["ACE_Flashlight_XL50",1],["ACE_Canteen",1],["ACE_fieldDressing",5],["ACE_packingBandage",1],["ACE_quikclot",1],["ACE_salineIV",1],["ACE_tourniquet",2],["ACE_splint",1],["ACRE_PRC343",1],["ACE_painkillers",2,10]]],["V_PlateCarrierIA1_dgtl",[["HandGrenade",1,1],["SmokeShell",6,1],["30Rnd_556x45_Stanag_Tracer_Yellow",8,30],["9Rnd_45ACP_Mag",3,8]]],["B_Carryall_oli",[["ACE_bloodIV",8],["ACE_bloodIV_500",8],["ACE_splint",10],["ACE_tourniquet",8],["ACE_morphine",10],["ACE_epinephrine",10],["ACE_elasticBandage",20],["ACE_packingBandage",20],["FSGm_ItemMedicBag",1],["ACE_surgicalKit",1],["ACE_EntrenchingTool",1],["ACE_personalAidKit",1],["ACE_adenosine",5],["SmokeShell",2,1]]],"H_HelmetIA_net","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],[]];
+
+CREATE_LOADOUT(sur,_baseLoadout);
+COPY_ADDONS(sur,rif);
+
+
+// Medic Loadout (No PAK)
+
+_baseLoadout = [[["arifle_Mk20C_F","","acc_flashlight","optic_Aco",["30Rnd_556x45_Stanag",30],[],""],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_I_CombatUniform",[["ACE_MapTools",1],["ACE_Flashlight_XL50",1],["ACE_Canteen",1],["ACE_fieldDressing",5],["ACE_packingBandage",1],["ACE_quikclot",1],["ACE_salineIV",1],["ACE_tourniquet",2],["ACE_splint",1],["ACRE_PRC343",1],["ACE_painkillers",2,10]]],["V_PlateCarrierIA1_dgtl",[["HandGrenade",1,1],["SmokeShell",6,1],["30Rnd_556x45_Stanag_Tracer_Yellow",8,30],["9Rnd_45ACP_Mag",3,8]]],["B_Carryall_oli",[["ACE_salineIV",6],["ACE_salineIV_500",6],["ACE_splint",6],["ACE_tourniquet",6],["ACE_morphine",8],["ACE_epinephrine",8],["ACE_elasticBandage",25],["ACE_packingBandage",15],["ACE_quikclot",5],["FSGm_ItemMedicBag",1],["ACE_surgicalKit",1],["ACE_EntrenchingTool",1],["ACE_adenosine",5],["SmokeShell",2,1]]],"H_HelmetIA_net","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],[]];
 
 CREATE_LOADOUT(med,_baseLoadout);
 COPY_ADDONS(med,rif);
@@ -142,7 +160,7 @@ COPY_ADDONS(med,rif);
 
 // Combat Lifeserver Loadout
 
-_baseLoadout = [["arifle_Mk20C_F","","acc_flashlight","optic_Aco",["30Rnd_556x45_Stanag",30],[],""],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_I_CombatUniform_shortsleeve",[["ACRE_PRC343_ID_15",1],["ACRE_PRC148_ID_3",1],["ACRE_PRC152",1],["ACE_bloodIV",1],["ACE_bloodIV_500",1]]],["V_PlateCarrierIA1_dgtl",[["ACE_bloodIV",3],["ACE_bloodIV_500",1],["SmokeShell",4,1],["30Rnd_556x45_Stanag",5,30],["30Rnd_556x45_Stanag_Tracer_Yellow",2,30],["9Rnd_45ACP_Mag",2,8]]],["B_Kitbag_rgr",[["ACE_morphine",15],["ACE_epinephrine",10],["ACE_fieldDressing",10],["ACE_packingBandage",20],["ACE_elasticBandage",20],["ACE_bloodIV_500",5],["ACE_adenosine",5],["ACE_bloodIV",8],["ACE_splint",20],["ACE_tourniquet",10],["ACE_surgicalKit",1],["ACE_EntrenchingTool",1]]],"H_HelmetIA_net","G_Lowprofile",["Binocular","","","",[],[],""],["ItemMap","ItemGPS","","ItemCompass","ItemWatch","NVGoggles_INDEP"]];
+_baseLoadout = [[["arifle_Mk20C_F","","acc_flashlight","optic_Aco",["30Rnd_556x45_Stanag",30],[],""],[],[],["U_I_CombatUniform",[["ACE_MapTools",1],["ACE_Flashlight_XL50",1],["ACE_Canteen",1],["ACE_fieldDressing",5],["ACE_packingBandage",1],["ACE_quikclot",1],["ACE_salineIV",1],["ACE_tourniquet",2],["ACE_splint",1],["ACRE_PRC343",1],["ACE_painkillers",2,10]]],["V_PlateCarrierIA1_dgtl",[["HandGrenade",2,1],["SmokeShell",5,1],["30Rnd_556x45_Stanag_Tracer_Yellow",10,30]]],["B_AssaultPack_dgtl",[["ACE_salineIV",4],["ACE_salineIV_500",4],["ACE_splint",4],["ACE_tourniquet",4],["ACE_morphine",4],["ACE_epinephrine",4],["ACE_elasticBandage",10],["ACE_packingBandage",10],["ACE_quikclot",5],["ACE_adenosine",2]]],"H_HelmetIA_net","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],[]];
 
 CREATE_LOADOUT(cls,_baseLoadout);
 COPY_ADDONS(cls,rif);
@@ -150,7 +168,7 @@ COPY_ADDONS(cls,rif);
 
 // Autorifleman Loadout
 
-_baseLoadout = [["LMG_Mk200_black_F","","acc_flashlight","optic_Holosight_khk_F",["200Rnd_65x39_cased_Box",200],[],""],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_I_CombatUniform_shortsleeve",[["ACE_elasticBandage",3],["ACE_epinephrine",1],["ACE_morphine",1],["ACE_packingBandage",3],["ACE_salineIV_500",1],["ACRE_PRC343_ID_18",1],["ACE_splint",2],["ACE_tourniquet",2],["9Rnd_45ACP_Mag",2,8]]],["V_PlateCarrierIA1_dgtl",[["ACE_Flashlight_XL50",1],["ACE_MapTools",1],["SmokeShell",2,1],["200Rnd_65x39_cased_Box_Tracer",2,200]]],["B_Kitbag_rgr",[["HandGrenade",2,1],["200Rnd_65x39_cased_Box",4,200]]],"H_HelmetIA_net","G_Lowprofile",[],["ItemMap","","","ItemCompass","ItemWatch","NVGoggles_INDEP"]];
+_baseLoadout = [[["LMG_Mk200_black_F","","acc_flashlight","optic_MRCO",["200Rnd_65x39_cased_Box",200],[],"bipod_03_F_blk"],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_I_CombatUniform",[["ACE_MapTools",1],["ACE_Flashlight_XL50",1],["ACE_Canteen",1],["ACE_fieldDressing",5],["ACE_packingBandage",1],["ACE_quikclot",1],["ACE_salineIV",1],["ACE_tourniquet",2],["ACE_splint",1],["ACRE_PRC343",1],["ACE_painkillers",2,10]]],["V_PlateCarrierIA1_dgtl",[["HandGrenade",2,1],["SmokeShell",2,1],["9Rnd_45ACP_Mag",3,8],["200Rnd_65x39_cased_Box",1,200]]],["B_AssaultPack_dgtl",[["200Rnd_65x39_cased_Box_Tracer",3,200]]],"H_HelmetIA_net","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],[]];
 
 CREATE_LOADOUT(ar,_baseLoadout);
 COPY_ADDONS(ar,rif);
@@ -158,7 +176,7 @@ COPY_ADDONS(ar,rif);
 
 // Assistant AR Loadout
 
-_baseLoadout = [["arifle_Mk20_F","","acc_flashlight","optic_MRCO",["30Rnd_556x45_Stanag",30],[],""],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_I_CombatUniform_shortsleeve",[["ACE_elasticBandage",3],["ACE_epinephrine",1],["ACE_morphine",2],["ACE_packingBandage",3],["ACRE_PRC343_ID_15",1],["ACE_splint",2],["ACE_tourniquet",2],["ACE_Flashlight_XL50",1],["ACE_MapTools",1],["9Rnd_45ACP_Mag",1,8]]],["V_PlateCarrierIA1_dgtl",[["HandGrenade",2,1],["SmokeShell",2,1],["30Rnd_556x45_Stanag_Tracer_Yellow",5,30],["30Rnd_556x45_Stanag",5,30]]],["B_TacticalPack_oli",[["ACE_EntrenchingTool",1],["ACE_salineIV",1],["200Rnd_65x39_cased_Box",3,200],["200Rnd_65x39_cased_Box_Tracer",1,200]]],"H_HelmetIA_net","G_Lowprofile",["Binocular","","","",[],[],""],["ItemMap","","","ItemCompass","ItemWatch","NVGoggles_INDEP"]];
+_baseLoadout = [[["arifle_Mk20_F","","acc_flashlight","optic_Aco",["30Rnd_556x45_Stanag",30],[],""],[],[],["U_I_CombatUniform",[["ACE_MapTools",1],["ACE_Flashlight_XL50",1],["ACE_Canteen",1],["ACE_fieldDressing",5],["ACE_packingBandage",1],["ACE_quikclot",1],["ACE_salineIV",1],["ACE_tourniquet",2],["ACE_splint",1],["ACRE_PRC343",1],["ACE_painkillers",2,10]]],["V_PlateCarrierIA1_dgtl",[["30Rnd_556x45_Stanag_Tracer_Yellow",10,30],["HandGrenade",2,1],["SmokeShell",2,1]]],["B_Carryall_oli",[["ACE_EntrenchingTool",1],["30Rnd_556x45_Stanag_Tracer_Yellow",2,30],["200Rnd_65x39_cased_Box_Tracer",4,200]]],"H_HelmetIA_net","",["Binocular","","","",[],[],""],["ItemMap","","","ItemCompass","ItemWatch",""]],[]];
 
 CREATE_LOADOUT(aar,_baseLoadout);
 COPY_ADDONS(aar,rif);
@@ -166,15 +184,21 @@ COPY_ADDONS(aar,rif);
 
 // Light anti-tank Loadout
 
-_baseLoadout = [["arifle_Mk20C_F","","acc_flashlight","optic_Aco",["30Rnd_556x45_Stanag",30],[],""],["launch_NLAW_F","","","",[],[],""],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_I_CombatUniform_shortsleeve",[["ACE_elasticBandage",3],["ACE_epinephrine",1],["ACE_morphine",2],["ACE_packingBandage",3],["ACRE_PRC343_ID_18",1],["ACE_tourniquet",2],["ACE_splint",2],["ACE_Flashlight_XL50",1],["ACE_MapTools",1],["9Rnd_45ACP_Mag",1,8]]],["V_PlateCarrierIA1_dgtl",[["HandGrenade",2,1],["SmokeShell",2,1],["30Rnd_556x45_Stanag_Tracer_Yellow",2,30],["30Rnd_556x45_Stanag",8,30]]],["B_AssaultPack_dgtl",[["ACE_salineIV",1]]],"H_HelmetIA_net","G_Lowprofile",[],["ItemMap","","","ItemCompass","ItemWatch","NVGoggles_INDEP"]];
+_baseLoadout = [[["arifle_Mk20_F","","acc_flashlight","optic_Aco",["30Rnd_556x45_Stanag",30],[],""],["launch_NLAW_F","","","",[],[],""],[],["U_I_CombatUniform",[["ACE_MapTools",1],["ACE_Flashlight_XL50",1],["ACE_Canteen",1],["ACE_fieldDressing",5],["ACE_packingBandage",1],["ACE_quikclot",1],["ACE_salineIV",1],["ACE_tourniquet",2],["ACE_splint",1],["ACRE_PRC343",1],["ACE_painkillers",2,10]]],["V_PlateCarrierIA1_dgtl",[["30Rnd_556x45_Stanag_Tracer_Yellow",10,30],["HandGrenade",2,1],["SmokeShell",2,1]]],["B_AssaultPack_dgtl",[["30Rnd_556x45_Stanag_Tracer_Yellow",2,30]]],"H_HelmetIA_net","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],[]];
 
 CREATE_LOADOUT(lat,_baseLoadout);
 COPY_ADDONS(lat,rif);
 
+// Grenadier Loadout
+
+_baseLoadout = [[["arifle_Mk20_GL_F","","acc_flashlight","optic_Aco",["30Rnd_556x45_Stanag",30],["1Rnd_HE_Grenade_shell",1],""],[],["hgun_Pistol_heavy_01_F","","","",["11Rnd_45ACP_Mag",15],[],""],["U_I_CombatUniform",[["ACE_MapTools",1],["ACE_Flashlight_XL50",1],["ACE_Canteen",1],["ACE_fieldDressing",5],["ACE_packingBandage",1],["ACE_quikclot",1],["ACE_salineIV",1],["ACE_tourniquet",2],["ACE_splint",1],["ACRE_PRC343",1],["ACE_painkillers",2,10]]],["V_PlateCarrierIAGL_dgtl",[["HandGrenade",2,1],["SmokeShell",2,1],["30Rnd_556x45_Stanag_Tracer_Yellow",9,30],["11Rnd_45ACP_Mag",2,15]]],["B_AssaultPack_dgtl",[["1Rnd_HE_Grenade_shell",20,1],["1Rnd_Smoke_Grenade_shell",4,1]]],"H_HelmetIA_net","",["Binocular","","","",[],[],""],["ItemMap","","","ItemCompass","ItemWatch",""]],[]];
+
+CREATE_LOADOUT(gren,_baseLoadout);
+COPY_ADDONS(gren,rif);
 
 // Marksman Loadout
 
-_baseLoadout = [["srifle_EBR_F","","acc_flashlight","optic_DMS",["20Rnd_762x51_Mag",20],[],"bipod_03_F_blk"],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_I_CombatUniform_shortsleeve",[["ACE_elasticBandage",3],["ACE_epinephrine",1],["ACE_morphine",2],["ACE_packingBandage",3],["ACE_RangeCard",1],["ACE_MapTools",1],["ACE_Flashlight_XL50",1],["ACE_splint",2],["ACE_tourniquet",2],["ACRE_PRC343_ID_15",1],["9Rnd_45ACP_Mag",1,8]]],["V_PlateCarrierIA1_dgtl",[["ACRE_PRC343_ID_31",1],["SmokeShell",4,1],["20Rnd_762x51_Mag",6,20]]],["B_AssaultPack_dgtl",[["ACE_salineIV",1],["HandGrenade",2,1],["ACE_20Rnd_762x51_Mag_Tracer",6,20]]],"H_HelmetIA_net","G_Lowprofile",[],["ItemMap","","","ItemCompass","ItemWatch","NVGoggles_INDEP"]];
+_baseLoadout = [[["srifle_EBR_F","","acc_flashlight","optic_DMS",["20Rnd_762x51_Mag",20],[],"bipod_03_F_blk"],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_I_CombatUniform",[["ACE_MapTools",1],["ACE_Flashlight_XL50",1],["ACE_Canteen",1],["ACE_fieldDressing",5],["ACE_packingBandage",1],["ACE_quikclot",1],["ACE_salineIV",1],["ACE_tourniquet",2],["ACE_splint",1],["ACRE_PRC343",1],["ACE_painkillers",2,10]]],["V_PlateCarrierIA1_dgtl",[["HandGrenade",1,1],["SmokeShell",3,1],["9Rnd_45ACP_Mag",4,8],["20Rnd_762x51_Mag",6,20]]],["B_AssaultPack_dgtl",[["20Rnd_762x51_Mag",10,20]]],"H_HelmetIA_net","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],[]];
 
 CREATE_LOADOUT(mk,_baseLoadout);
 COPY_ADDONS(mk,rif);
@@ -192,16 +216,24 @@ PUT_GUN_IN_GUNBAG(sniper,"arifle_Mk20C_ACO_pointer_F");
 
 // Crewman Loadout
 
-_baseLoadout = [["hgun_PDW2000_F","","","optic_Aco_smg",["30Rnd_9x21_Mag",30],[],""],[],[],["U_I_HeliPilotCoveralls",[["ACE_elasticBandage",3],["ACE_morphine",2],["ACE_epinephrine",1],["ACE_packingBandage",3],["ACE_tourniquet",2],["ACRE_PRC343_ID_18",1],["ACRE_PRC148_ID_4",1],["ACE_splint",2],["ACRE_PRC152_ID_1",1]]],["V_Chestrig_khk",[["SmokeShell",4,1],["SmokeShellBlue",1,1],["SmokeShellRed",1,1],["30Rnd_9x21_Mag",5,30]]],["B_FieldPack_khk",[["ToolKit",1],["ACE_EntrenchingTool",1]]],"H_HelmetCrew_I","G_Combat",["Binocular","","","",[],[],""],["ItemMap","ItemGPS","","ItemCompass","ItemWatch","NVGoggles_INDEP"]];
+_baseLoadout = [[["hgun_PDW2000_F","","","optic_Aco_smg",["30Rnd_9x21_Mag",30],[],""],[],[],["U_I_CombatUniform_shortsleeve",[["ACE_MapTools",1],["ACE_Flashlight_XL50",1],["ACE_Canteen",1],["ACE_fieldDressing",5],["ACE_packingBandage",1],["ACE_quikclot",1],["ACE_salineIV",1],["ACE_tourniquet",2],["ACE_splint",1],["ACRE_PRC343",1],["ACE_painkillers",2,10]]],["V_TacVest_oli",[["ACE_EntrenchingTool",1],["30Rnd_9x21_Mag",4,30],["SmokeShell",4,1],["SmokeShellGreen",1,1],["SmokeShellBlue",1,1]]],["B_FieldPack_oli",[["ToolKit",1]]],"H_HelmetCrew_I","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],[]];
 
 CREATE_LOADOUT(crew,_baseLoadout);
 
 
 // Engineer/logi Loadout
 
-_baseLoadout = [["arifle_Mk20C_F","","acc_flashlight","optic_Aco",["30Rnd_556x45_Stanag",30],[],""],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_I_CombatUniform_shortsleeve",[["ACRE_PRC343_ID_15",1],["ACRE_PRC148_ID_3",1],["ACRE_PRC152",1],["ACE_bloodIV",1],["ACE_bloodIV_500",1]]],["V_PlateCarrierIA1_dgtl",[["ACE_bloodIV",3],["ACE_bloodIV_500",1],["SmokeShell",4,1],["30Rnd_556x45_Stanag",5,30],["30Rnd_556x45_Stanag_Tracer_Yellow",2,30],["9Rnd_45ACP_Mag",2,8]]],["B_AssaultPack_dgtl",[["ToolKit",1],["ACE_EntrenchingTool",1]]],"H_HelmetIA_net","G_Lowprofile",["Binocular","","","",[],[],""],["ItemMap","ItemGPS","","ItemCompass","ItemWatch","NVGoggles_INDEP"]];
+_baseLoadout = [[["arifle_Mk20_F","","acc_flashlight","optic_Aco",["30Rnd_556x45_Stanag",30],[],""],[],[],["U_I_CombatUniform",[["ACE_MapTools",1],["ACE_Flashlight_XL50",1],["ACE_Canteen",1],["ACE_fieldDressing",5],["ACE_packingBandage",1],["ACE_quikclot",1],["ACE_salineIV",1],["ACE_tourniquet",2],["ACE_splint",1],["ACRE_PRC343",1],["ACE_painkillers",2,10]]],["V_PlateCarrierIA1_dgtl",[["30Rnd_556x45_Stanag_Tracer_Yellow",10,30],["HandGrenade",2,1],["SmokeShell",2,1]]],["B_AssaultPack_dgtl",[["ToolKit",1],["ACE_DefusalKit",1],["ACE_EntrenchingTool",1],["MineDetector",1],["ACE_wirecutter",1],["ACE_Clacker",1],["30Rnd_556x45_Stanag_Tracer_Yellow",2,30]]],"","",[],["ItemMap","","","ItemCompass","ItemWatch",""]],[]];
 
 CREATE_LOADOUT(eng,_baseLoadout);
+
+
+// Zeus
+
+_baseLoadout = [[["arifle_SDAR_F","","","",["30Rnd_556x45_Stanag_Tracer_Red",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",17],[],""],["U_I_OfficerUniform",[["ACRE_PRC148",1],["ACRE_PRC152",1],["ACE_Banana",1]]],["V_PlateCarrierIA1_dgtl",[["ACE_Banana",1],["ACE_CableTie",10],["16Rnd_9x21_Mag",2,17],["30Rnd_556x45_Stanag_Tracer_Red",3,30]]],["B_AssaultPack_rgr",[["ACE_Banana",1],["ACE_UAVBattery",1],["ACE_EntrenchingTool",1],["ACE_DefusalKit",1],["ToolKit",1],["ACE_wirecutter",1]]],"H_HelmetCrew_I","G_Lowprofile",["Laserdesignator","","","",["Laserbatteries",1],[],""],["ItemMap","ItemGPS","","ItemCompass","ItemWatch","NVGoggles_INDEP"]],[]];
+
+CREATE_LOADOUT(zeus,_baseLoadout);
+COPY_ADDONS(zeus,rif);
 
 
 // Small crate loadout
@@ -216,7 +248,7 @@ ADD_RIFLE_AMMO_TO_CRATE(small,rif,30);
 ADD_RIFLE_AMMO_TO_CRATE(small,ar,4);
 ADD_RIFLE_AMMO_TO_CRATE(small,mk,5);
 ADD_RIFLE_AMMO_TO_CRATE(small,crew,2);
-ADD_RIFLE_GRENADES_TO_CRATE(small,ftl,4);
+ADD_RIFLE_GRENADES_TO_CRATE(small,ftl,10);
 
 ADD_ITEMS_TO_CRATE(small,"30Rnd_556x45_Stanag_Tracer_Yellow",10);
 ADD_ITEMS_TO_CRATE(small,"ACE_20Rnd_762x51_Mag_Tracer",6);
@@ -261,7 +293,7 @@ ADD_RIFLE_AMMO_TO_CRATE(med,rif,60);
 ADD_RIFLE_AMMO_TO_CRATE(med,ar,8);
 ADD_RIFLE_AMMO_TO_CRATE(med,mk,10);
 ADD_RIFLE_AMMO_TO_CRATE(med,crew,4);
-ADD_RIFLE_GRENADES_TO_CRATE(med,ftl,8);
+ADD_RIFLE_GRENADES_TO_CRATE(med,ftl,20);
 
 ADD_ITEMS_TO_CRATE(med,"30Rnd_556x45_Stanag_Tracer_Yellow",10);
 ADD_ITEMS_TO_CRATE(med,"ACE_20Rnd_762x51_Mag_Tracer",6);

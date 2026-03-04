@@ -6,6 +6,12 @@ private _sideStr = [_side] call f_fnc_sideToString;
 private _roleStr = toUpper _role;
 private _groupStr = toUpper _groupName;
 
+private _knownGroups = f_map_knownGroups getOrDefault [_side, []];
+if !(toUpper _groupStr in _knownGroups) then
+{
+    _groupStr = "DEFAULT";
+};
+
 private _queryStringsAdd = 
 [
     format ["%1::%2::%3", _sideStr, _groupStr, _roleStr],

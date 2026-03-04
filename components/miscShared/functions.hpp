@@ -27,11 +27,13 @@ class miscShared
     class makeExplosiveBig{};
     class monitorHeadlessClients{};
     class reapplyInsigniaLocal{};
+	class removeObjectsFromAllZeuses{};
     class runHCAware{};
     class sideToString{};
     class teleportPlayer{};
     class toggleAIPath{};
     class tryMoveIntoVehicle{};
     class tryRunOnHeadlessClient{};
+    class tryTeleport{};
     class woundUnitRandomly{};
 };

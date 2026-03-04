@@ -22,13 +22,23 @@ BEGIN_LOADOUTS;
     ADD_UNIFORM(UNIT_NAME,"Uniform Classname");
     ADD_VEST(UNIT_NAME,"Vest Classname");
     ADD_BACKPACK(UNIT_NAME,"Backpack Classname");
+    ADD_FACEWEAR(UNIT_NAME,"Facewear Classname");
+
+    FORCE_FACEWEAR(UNIT_NAME);
 
     COPY_ADDONS(TO,FROM);
+
+    COPY_HATS(TO,FROM);
+    COPY_UNIFORMS(TO,FROM);
+    COPY_VESTS(TO,FROM);
+    COPY_BACKPACKS(TO,FROM);
+    COPY_FACEWEAR(TO,FROM);
 
     CLEAR_HATS(UNIT_NAME);
     CLEAR_UNIFORM(UNIT_NAME);
     CLEAR_VEST(UNIT_NAME);
     CLEAR_BACKPACK(UNIT_NAME);
+    CLEAR_FACEWEAR(UNIT_NAME);
 
     CLEAR_ADDONS(UNIT_NAME);
 
@@ -102,7 +112,7 @@ BEGIN_LOADOUTS;
 */
 
 
-//IDAP Medic
+// IDAP Medic
 
 _baseLoadout = [[],[],[],["U_C_Paramedic_01_F",[["ACE_fieldDressing",10],["ACE_elasticBandage",5],["ACE_salineIV",1]]],[],["B_Messenger_IDAP_Medical_F",[["ACE_tourniquet",6],["ACE_surgicalKit",1],["ACE_splint",9],["ACE_salineIV",5],["ACE_epinephrine",2],["ACE_morphine",2]]],"","G_Respirator_white_F",[],["ItemMap","ItemGPS","ItemRadio","ItemCompass","ItemWatch",""]];
 

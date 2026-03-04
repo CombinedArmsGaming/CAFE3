@@ -11,12 +11,17 @@ private _respawnModeTicketsText = str RESPAWN_MODE_TICKETS;
 private _respawnModeTimedWavesTicketsText = str RESPAWN_MODE_TIMED_WAVES_TICKETS;
 private _respawnModeTriggeredWavesText = str RESPAWN_MODE_TRIGGERED_WAVES;
 private _respawnModeTriggeredWavesTicketsText = str RESPAWN_MODE_TRIGGERED_WAVES_TICKETS;
+private _hideDeadPlayersInSquad = missionNamespace getVariable ["f_var_hidingDeadPlayers", false];
+private _allowTeleportUponRespawn = missionNamespace getVariable ["f_var_allowingTpUponRespawn", false];
 
 // Defaults for if macros are not defined
 private _delay = "Not set";
 private _modeName = "Not set";
 private _sideTickets = "Not set";
 private _individualTickets = "Not set";
+private _hideDeadPlayersString = ["<font color='#FF5555'>will remain visible</font> on", "are removed from"] select _hideDeadPlayersInSquad;
+private _leadershipTransfer = ["is not transferred", "is transferred"] select _hideDeadPlayersInSquad;
+private _leadershipReturn = ["", " and given back upon TP"] select (_allowTeleportUponRespawn and _hideDeadPlayersInSquad);
 private _mode = "";
 
 if (_side == west) then {
@@ -124,6 +129,10 @@ _briefing = _briefing + format ["
 	<br/>
 	Respawn Tickets (Per-Player): %4
 	<br/>
-", _modeName, _delay, _sideTickets, _individualTickets];
+	Dead players %5 the squad HUD.
+	<br/>
+	Group leadership %6 on death%7.
+	<br/>
+", _modeName, _delay, _sideTickets, _individualTickets, _hideDeadPlayersString, _leadershipTransfer, _leadershipReturn];
 
 player createDiaryRecord ["CAFE", ["Current Respawn Settings", _briefing]];
