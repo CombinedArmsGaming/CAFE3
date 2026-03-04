@@ -5,11 +5,9 @@
 
 disableSerialization;
 
-params [["_newInfoBox", ""]];
+params [["_newInfoBox", ""], "_display"];
 
-private _display = findDisplay IDD_SPAWNPICKER_DIALOG;
-
-private _locationList = _display displayCtrl IDC_SPAWNPICKER_SPAWNLIST;
+private _locationList = _display displayCtrl IDC_SPAWNLIST;
 private _locationMap = _display displayCtrl IDC_RESPAWN_MAP;
 
 private _groupGroup = _display displayCtrl IDC_GROUP_CT_GROUP;
@@ -57,7 +55,7 @@ switch (_newInfoBox) do {
         _selectedColor = [GROUP_PICKER_COLOR];
 
         // Ensure that the players list is updated for the current selection
-        [_groupsList, lbCurSel _groupsList] call f_fnc_spawnPickerDialog_groupsList_onLBSelChanged;
+        [_groupsList, lbCurSel _groupsList] call f_fnc_groupsList_onLBSelChanged;
 
         DEBUG_PRINT_LOG("[RESPAWN] Switching info boxes to group");
     };
@@ -75,7 +73,7 @@ switch (_newInfoBox) do {
 
         _selectedColor = [LOADOUT_PICKER_COLOR];
 
-        [_loadoutsList, lbCurSel _loadoutsList] call f_fnc_spawnPickerDialog_loadoutsList_onLBSelChanged;
+        [_loadoutsList, lbCurSel _loadoutsList] call f_fnc_loadoutsList_onLBSelChanged;
 
         DEBUG_PRINT_LOG("[RESPAWN] Switching info boxes to loadout");
     };

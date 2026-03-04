@@ -23,6 +23,7 @@ class miscShared
     class isContainer{};
     class isKindOfAny{};
     class keepUnitHealthy{};
+    class listBoxDeselectWithoutScrolling{};
     class makeExplosion{};
     class makeExplosiveBig{};
     class monitorHeadlessClients{};

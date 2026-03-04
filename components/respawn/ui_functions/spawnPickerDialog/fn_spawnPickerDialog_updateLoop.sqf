@@ -73,7 +73,7 @@ if (_spawnsChanged) then {
     } forEach _spawnMarkers;
     _spawnMarkers = [];
 
-    private _spawnList = _display displayCtrl IDC_SPAWNPICKER_SPAWNLIST;
+    private _spawnList = _display displayCtrl IDC_SPAWNLIST;
     // Store the previously selected list index
     private _oldSelectedListIdx = lbCurSel _spawnList;
     // Clear the list of the old entries

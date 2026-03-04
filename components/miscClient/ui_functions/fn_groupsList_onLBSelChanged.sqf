@@ -1,18 +1,24 @@
 #include "macros.hpp"
 /*
     Populates the players list whenever the selected group changes
+
+    Arguments:
+        0: String - Name of the newly selected group
+        1: Control - Control of the players list
+
+    Returns:
+        Nothing
 */
 
 disableSerialization;
 
 params ["_control", "_lbCurSel"];
 
-
-private _playersList = findDisplay IDD_SPAWNPICKER_DIALOG displayCtrl IDC_PLAYERSLIST;
+private _playersList = (ctrlParent _control) displayCtrl IDC_PLAYERSLIST;
 
 private _selectedGroupName = _control lbData _lbCurSel;
 
-DEBUG_FORMAT1_LOG("[RESPAWN] Updating players list for %1", _selectedGroupName);
+DEBUG_FORMAT1_LOG("[UI] Updating players list for %1", _selectedGroupName);
 
 private _sideGroups = groups playerSide;
 private _selectedGroupIdx = _sideGroups findIf {(groupId _x) isEqualTo _selectedGroupName};

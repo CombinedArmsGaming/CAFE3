@@ -53,3 +53,10 @@ class gearScript_gunbag
     class setGunbagVariableFromArsenalExport{};
     class setGunbagVariableState{};
 };
+
+class gearScript_ui
+{
+    file = "components\gearScript\ui_functions";
+    class loadoutPickerDialog_onCloseDialog{};
+    class loadoutPickerDialog_populateDialog{};
+};

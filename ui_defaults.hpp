@@ -1,10 +1,12 @@
+#include "ui_macros.hpp"
+
 #define GUI_GRID_X		(0)
 #define GUI_GRID_Y		(0)
 #define GUI_GRID_W		(0.025)
 #define GUI_GRID_H		(0.04)
 
-
-
+import RscMapControl;
+import RscMapControlEmpty;
 
 class CAFE_DefaultStructuredText
 {
@@ -320,3 +322,267 @@ class CAFE_DefaultCombo
 	};
 
 };
+
+/*
+
+	Default controls used for the loadout, group picker, and respawn dialogs
+
+*/
+
+#include "\a3\ui_f\hpp\definecommongrids.inc"
+
+class CAFE_InfoBoxSelectorButton : CAFE_DefaultButton {
+	y = (infoBoxSelectorButtonY) * GRID_H + GRID_Y;
+	w = (infoBoxSelectorButtonW) * GRID_W;
+	h = (infoBoxSelectorButtonH) * GRID_H;
+}
+
+class CAFE_Background: CAFE_DefaultText  {
+	x = (CENTER_X - dialogWidth/2) * GRID_W + GRID_X;
+	y = dialogY * GRID_H + GRID_Y;
+	w = dialogWidth * GRID_W;
+	h = dialogHeight * GRID_H;
+	colorBackground[] = {0,0,0,0.5};
+};
+
+// Control group containing all of the informational text at the top of the dialog
+class CAFE_InfoTextControlGroup: RscControlsGroup {
+	// Positioned such that it spans from the left edge of the info box border to the right
+	x = (infoBoxOutlineTopLeftX) * GRID_W + GRID_X;
+	y = infoTextY * GRID_H + GRID_Y;
+	w = infoTextWidth * GRID_W;
+	h = (infoTextLineHeight * 2) * GRID_H;
+};
+
+// Control containing info text at the top of the dialog
+class CAFE_InfoText: CAFE_DefaultText {
+	y = 0;
+	h = infoTextLineHeight * 2 * GRID_H;
+	sizeEx = 0.7*GRID_H;
+};
+
+class CAFE_InfoTextLeft: CAFE_InfoText
+{
+	style = ST_MULTI + ST_NO_RECT;
+	x = 0;
+	w = ticketsInfoWidth * GRID_W;
+};
+class CAFE_InfoTextCenter: CAFE_InfoText
+{
+	style = ST_MULTI + ST_NO_RECT + ST_CENTER;
+	x = (infoTextWidth/2 - deathTimerWidth/2) * GRID_W;
+	w = deathTimerWidth * GRID_W;
+};
+class CAFE_InfoTextRight: CAFE_InfoText
+{
+	style = ST_MULTI + ST_NO_RECT + ST_RIGHT;
+	x = (infoTextWidth - waveInfoWidth) * GRID_W;
+	w = waveInfoWidth * GRID_W;
+};
+
+class CAFE_InfoBoxTopBorder: CAFE_DefaultText
+{
+	idc = IDC_INFO_BOX_OUTLINE;
+	x = 0;
+	y = 0;
+	w = (infoBoxOutlineBottomRightX - infoBoxOutlineTopLeftX) * GRID_W;
+	h = (infoBoxOutlineWidth) * GRID_H;
+	colorBackground[] = {BORDER_COLOR};
+};
+class CAFE_InfoBoxLeftBorder: CAFE_DefaultText
+{
+	idc = IDC_INFO_BOX_OUTLINE + 1;
+	x = 0;
+	y = 0;
+	w = (infoBoxOutlineWidth) * GRID_W;
+	h = (infoBoxOutlineBottomRightY - infoBoxOutlineTopLeftY) * GRID_H;
+	colorBackground[] = {BORDER_COLOR};
+};
+class CAFE_InfoBoxBottomBorder: CAFE_DefaultText
+{
+	idc = IDC_INFO_BOX_OUTLINE + 2;
+	x = 0;
+	y = (infoBoxHeight + infoBoxOutlineWidth) * GRID_H;
+	w = (infoBoxOutlineBottomRightX - infoBoxOutlineTopLeftX) * GRID_W;
+	h = (infoBoxOutlineWidth) * GRID_H;
+	colorBackground[] = {BORDER_COLOR};
+};
+class CAFE_InfoBoxRightBorder: CAFE_DefaultText
+{
+	idc = IDC_INFO_BOX_OUTLINE + 3;
+	x = (infoBoxWidth * 2 + verticalBarrierWidth + infoBoxOutlineWidth) * GRID_W;
+	y = 0;
+	w = (infoBoxOutlineWidth) * GRID_W;
+	h = (infoBoxOutlineBottomRightY - infoBoxOutlineTopLeftY) * GRID_H;
+	colorBackground[] = {BORDER_COLOR};
+};
+class CAFE_InfoBoxBorderGroup: RscControlsGroup 
+{
+	x = infoBoxOutlineTopLeftX * GRID_W + GRID_X;
+	y = infoBoxOutlineTopLeftY * GRID_H + GRID_Y;
+	w = (infoBoxOutlineBottomRightX - infoBoxOutlineTopLeftX + 1) * GRID_W;
+	h = (infoBoxOutlineBottomRightY - infoBoxOutlineTopLeftY + 1) * GRID_H;
+};
+
+class CAFE_VerticalBarrier: CAFE_DefaultText {
+	x = (CENTER_X - verticalBarrierWidth/2) * GRID_W + GRID_X;
+	y = (infoBoxY) * GRID_H + GRID_Y;
+	w = verticalBarrierWidth * GRID_W;
+	h = infoBoxHeight * GRID_H;
+	colorBackground[] = {0.42, 0.42, 0.42, 1};
+};
+
+class CAFE_GroupListbox: CAFE_DefaultListBox
+{
+	idc = IDC_GROUPSLIST;
+	x = 0;
+	y = 0;
+	w = infoBoxWidth * GRID_W;
+	h = infoBoxHeight * GRID_H;
+	onLBSelChanged = "_this call f_fnc_groupsList_onLBSelChanged;";
+}
+class CAFE_PlayersListbox: CAFE_DefaultListBox
+{
+	idc = IDC_PLAYERSLIST;
+	x = (infoBoxWidth + verticalBarrierWidth) * GRID_W;
+	y = 0;
+	w = infoBoxWidth * GRID_W;
+	h = infoBoxHeight * GRID_H;
+	colorDisabled[] = {1,1,1,1};
+	// Allows scrolling but doesn't allow selecting
+	onLBSelChanged = "_this call f_fnc_listBoxDeselectWithoutScrolling";
+}
+class CAFE_GroupInfoBoxesCtrlGroup: RscControlsGroup
+{
+	idc = IDC_GROUP_CT_GROUP;
+	x = (CENTER_X - verticalBarrierWidth/2 - infoBoxWidth) * GRID_W + GRID_X;
+	y = infoBoxY * GRID_H + GRID_Y;
+	w = (infoBoxWidth * 2 + verticalBarrierWidth) * GRID_W;
+	h = (infoBoxHeight) * GRID_H;
+	class Controls 
+	{
+		class GroupListbox: CAFE_GroupListbox
+		{
+		}
+		class PlayersListbox: CAFE_PlayersListbox
+		{
+		}
+	};
+};
+
+class CAFE_LoadoutInfoBoxesCtrlGroup: RscControlsGroup
+{
+	idc = IDC_LOADOUT_CT_GROUP;
+	x = (CENTER_X - verticalBarrierWidth/2 - infoBoxWidth) * GRID_W + GRID_X;
+	y = infoBoxY * GRID_H + GRID_Y;
+	w = (infoBoxWidth * 2 + verticalBarrierWidth) * GRID_W;
+	h = (infoBoxHeight) * GRID_H;
+	class Controls 
+	{
+		class LoadoutsListbox: CAFE_DefaultListBox
+		{
+			idc = IDC_LOADOUTSLIST;
+			x = 0;
+			y = 0;
+			w = infoBoxWidth * GRID_W;
+			h = infoBoxHeight * GRID_H;
+			onLBSelChanged = "_this call f_fnc_loadoutsList_onLBSelChanged;";
+			onLoad = "[_this # 0, (player getVariable 'f_var_interactedLockerFaction')] call f_fnc_populateLoadoutsList"
+		}
+		class GearListbox: CAFE_DefaultListBox
+		{
+			idc = IDC_GEARLIST;
+			x = (infoBoxWidth + verticalBarrierWidth) * GRID_W;
+			y = 0;
+			w = infoBoxWidth * GRID_W;
+			h = infoBoxHeight * GRID_H;
+			colorDisabled[] = {1,1,1,1};
+			// Allows scrolling but doesn't allow selecting
+			onLBSelChanged = "_this call f_fnc_listBoxDeselectWithoutScrolling";
+		}
+	};
+}
+
+// These info boxes can't be in a controls group because CT_MAP_MAIN controls don't allow it
+class CAFE_SpawnpointListbox: CAFE_DefaultListBox
+{
+	idc = IDC_SPAWNLIST;
+	x = (CENTER_X - verticalBarrierWidth/2 - infoBoxWidth) * GRID_W + GRID_X;
+	y = infoBoxY * GRID_H + GRID_Y;
+	w = infoBoxWidth * GRID_W;
+	h = infoBoxHeight * GRID_H;
+	sizeEx = 1 * GRID_H;
+}
+class CAFE_MapInfoBox: RscMapControl
+{
+	idc = IDC_RESPAWN_MAP;
+	x = (CENTER_X + verticalBarrierWidth/2) * GRID_W + GRID_X;
+	y = infoBoxY * GRID_H + GRID_Y;
+	w = infoBoxWidth * GRID_W;
+	h = infoBoxHeight * GRID_H;
+}
+
+class CAFE_TeleportToSquadCtrlGroup: RscControlsGroup 
+{
+	x = (CENTER_X - teleportGroupWidth/2) * GRID_W + GRID_X;
+	y = teleportGroupY * GRID_H + GRID_Y;
+	w = teleportGroupWidth * GRID_W;
+	h = teleportGroupHeight * GRID_H;
+	class Controls 
+	{
+		class TeleportTitle: CAFE_DefaultText
+		{
+			text = "Teleport to squad:";
+			x = 0;
+			y = 0;
+			w = teleportTitleWidth * GRID_W;
+			h = teleportGroupHeight * GRID_H;
+		};
+		class TeleportCheckbox: CAFE_DefaultTextCheckBox
+		{
+			idc = IDC_TELEPORTCHECKBOX;
+			x = teleportTitleWidth * GRID_W;
+			y = 0;
+			w = teleportCheckboxWidth * GRID_W;
+			h = teleportGroupHeight * GRID_H;
+			strings[] = {"No"};
+			checked_strings[] = {"Yes"};
+			style = 2;
+			onLoad = "(_this # 0) ctrlSetChecked (missionNamespace getVariable ['f_var_playerWishesTeleportAfterRespawn', false])";
+		};
+	}
+}
+
+// Ready button
+class CAFE_ReadyButton: CAFE_DefaultButton
+{
+	idc = IDC_READY_BUTTON;
+	x = (CENTER_X - readyButtonWidth/2) * GRID_W + GRID_X;
+	y = readyButtonY * GRID_H + GRID_Y;
+	w = readyButtonWidth * GRID_W;
+	h = readyButtonHeight * GRID_H;
+	text = "READY";
+	onButtonClick = "closeDialog 1";
+	colorBackground[] = {LOCATION_PICKER_COLOR};
+	colorBackgroundActive[] = {0, 0, 0, 1};
+}
+
+class CAFE_CancelButton: CAFE_DefaultButton
+{
+	idc = IDC_CANCEL_BUTTON;
+	x = infoBoxOutlineTopLeftX * GRID_W + GRID_X;
+	y = (readyButtonY + ((readyButtonHeight - cancelButtonHeight) / 2)) * GRID_H + GRID_Y;
+	w = cancelButtonWidth * GRID_W;
+	h = cancelButtonHeight * GRID_H;
+	text = "CANCEL";
+	onButtonClick = "closeDialog 3";
+	colorBackground[] = {0, 0, 0, 0.25};
+	colorBackgroundActive[] = {0, 0, 0, 1};
+}
+
+
+// Hardcode again to avoid messing with any other UIs that use this
+#define GUI_GRID_X		(0)
+#define GUI_GRID_Y		(0)
+#define GUI_GRID_W		(0.025)
+#define GUI_GRID_H		(0.04)

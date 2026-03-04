@@ -1,61 +1,67 @@
 #include "macros.hpp"
+#include "\a3\ui_f\hpp\definecommongrids.inc"
 
 disableSerialization;
 
 params ["_display"];
 
-// Group name editor.
-_group = group player;
+// Current group name
+private _group = group player;
 
-_groupText = _display displayCtrl IDC_GROUPPICKER_CURRENTSQUADTEXT;
-_groupText ctrlSetText (groupId _group);
+private _groupText = _display displayCtrl IDC_GROUPPICKER_CURRENTSQUADTEXT;
+_groupText ctrlSetText (format ["You are in:\n%1", groupId _group]);
 
-_groups = allGroups select
-{
-    ((side _x) isEqualTo (side _group)) and
-    {
-        SQUAD_IS_IMPORTANT(_x)
-        or {((units _x) findIf { isPlayer _x }) >= 0}
-    }
+private _groupList = _display displayCtrl IDC_GROUPSLIST;
+[_grouplist] call f_fnc_populateGroupsList;
+
+// Set focus to stop the ready button from flashing
+ctrlSetFocus _groupList;
+
+/* Map */
+private _mapCtrl = _display displayCtrl IDC_GROUPPICKER_MAP;
+
+if (IS_TRUE(f_var_showSquadMarkers)) then {
+    _mapCtrl ctrlShow true;
+
+    [_display, _mapCtrl] call f_fnc_createFireteamMarkerHook;
+    [_display, _mapCtrl] call f_fnc_createSquadMarkerHook;
+    
+    // Shorten all the lists to make room for the map
+    private _verticalBarrier = _display displayCtrl IDC_GROUPPICKER_VERTICALBARRIER;
+    _verticalBarrier ctrlSetPositionH (groupInfoBoxHeight * GRID_H);
+    _verticalBarrier ctrlCommit 0;
+
+    private _leftBorder = _display displayCtrl IDC_GROUPPICKER_LEFTBORDER;
+    private _bottomBorder = _display displayCtrl IDC_GROUPPICKER_BOTTOMBORDER;
+    private _rightBorder = _display displayCtrl IDC_GROUPPICKER_RIGHTBORDER;
+
+    _leftBorder ctrlSetPositionH ((infoBoxOutlineWidth * 2 + groupInfoBoxHeight) * GRID_H);
+    _leftBorder ctrlCommit 0;
+
+    _bottomBorder ctrlSetPositionY ((infoBoxOutlineWidth + groupInfoBoxHeight) * GRID_H);
+    _bottomBorder ctrlCommit 0;
+
+    _rightBorder ctrlSetPositionH ((infoBoxOutlineWidth * 2 + groupInfoBoxHeight) * GRID_H);
+    _rightBorder ctrlCommit 0;
+
+    private _groupInfoBoxesCtrlGrp = _display displayCtrl IDC_GROUP_CT_GROUP;
+    _groupInfoBoxesCtrlGrp ctrlSetPositionH (groupInfoBoxHeight * GRID_H);
+    _groupInfoBoxesCtrlGrp ctrlCommit 0;
+
+    private _groupListBox = _display displayCtrl IDC_GROUPSLIST;
+    _groupListbox ctrlSetPositionH (groupInfoBoxHeight * GRID_H);
+    _grouplistBox ctrlCommit 0;
+
+    private _playersListBox = _display displayCtrl IDC_PLAYERSLIST;
+    _playersListBox ctrlSetPositionH (groupInfoBoxHeight * GRID_H);
+    _playersListBox ctrlCommit 0;
+} else {
+    _mapCtrl ctrlShow false;
 };
 
-_groupList = _display displayCtrl IDC_GROUPPICKER_SQUADLIST;
-{
-    _members = count (units _x);
-    _name = (groupId _x);
-    _text = format ["%1 (%2)", _name, _members];
-
-    // If group is the spectators group, or a default-named non-important group, or the Zeus group, hide it from the menu.
-    if !(
-            (_name isEqualTo "Spectators") 
-            or {_name regexMatch "[A-Z][a-z]+ \d\d?-\d\d?"}
-            or {(!(player getVariable ["f_var_isZeus", false])) and {(toLower _name) isEqualTo "zeus"}}
-        ) then
-    {
-        _idx = _groupList lbAdd _text;
-
-        _groupList lbSetValue [_idx, (1000 - _members)];
-        _groupList lbSetData [_idx, _name];
-
-    };
-
-} forEach _groups;
-
-lbSortByValue _groupList;
-
-for "_i" from 0 to (lbSize _groupList) do
-{
-    if ((_groupList lbData _i) isEqualTo (groupId _group)) exitWith
-    {
-        _groupList lbSetCurSel _i;
-    };
-
-    _groupList lbSetCurSel 0;
-
-};
 
 
-_teleportCheckbox = _display displayCtrl IDC_GROUPPICKER_TELEPORTCHECKBOX;
+_teleportCheckbox = _display displayCtrl IDC_TELEPORTCHECKBOX;
 
 _mayTeleport = player getVariable ["f_var_mayTeleportToGroup", false];
 
