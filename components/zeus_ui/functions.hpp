@@ -7,6 +7,5 @@ class zeusui
 	class addToCurator{};
 	class addZeusActions{};
 	class exitZeus{};
-	class openZeus{};
 	class endingDialog{};
 };

@@ -19,13 +19,7 @@ enableSentences false;
 
 
 // Thanks to http://killzonekid.com/arma-scripting-tutorials-mission-root/
-MISSION_ROOT = call
-{
-    private "_arr";
-    _arr = toArray str missionConfigFile;
-    _arr resize (count _arr - 15);
-    toString _arr
-};
+MISSION_ROOT = getMissionPath "";
 
 
 

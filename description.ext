@@ -338,6 +338,7 @@ class Extended_Killed_EventHandlers
 
 // ============================================================================================
 
+#define STAGE PreInit
 
 class Extended_PreInit_EventHandlers
 {
@@ -354,7 +355,7 @@ class Extended_PreInit_EventHandlers
 	};
 
 #endif
-
+	EVENT_HANDLER(zeus_ui);
 };
 
 
