@@ -28,4 +28,9 @@ if (_groupTickets > 0) then {
     _str = _str + format ["\nSide tickets: %1",(_sideTickets max 0)];
 };
 
-_ticketsCtrl ctrlSetTooltip _str;
+
+
+_ticketsCtrl ctrlSetText _str;
+if (_playerTickets <= 0 and _sideTickets <= 0 and _groupTickets <= 0) then {
+	_ticketsCtrl ctrlSetTextColor [1, 0, 0, 1];
+};

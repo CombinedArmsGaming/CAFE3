@@ -11,6 +11,7 @@ class gearScript
     class applyLoadout{};
     class assignGear{};
     class createLoadoutLocker{};
+    class getCustomInsignia{};
     class normaliseCbaExtendedLoadout{};
     class reapplyGear{};
     class removeItemFromLoadout{};

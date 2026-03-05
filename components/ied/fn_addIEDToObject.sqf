@@ -7,7 +7,7 @@ SERVER_ONLY;
 
 params ["_object", "_isLarge", "_isProxy", "_proxySide", "_proxyRange"];
 
-[_object, _isLarge] call f_fnc_addDefuseActionsToObject;
+[_object, _isLarge] remoteExecCall ["f_fnc_addDefuseActionsToObject"];
 
 _object addEventHandler ["Killed", 
 {

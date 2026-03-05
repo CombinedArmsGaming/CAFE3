@@ -71,7 +71,13 @@ f_map_slot_shortcodes = createHashMapFromArray
 	["sniper", "SN"],
 	["spotter", "SPOT"],
 	["marksman", "MK"],
-	["designated marksman", "MK"]
+	["designated marksman", "MK"],
+	["zeus player", "ZEUS"],
+	["zeus player 1", "ZEUS"],
+	["zeus player 2", "ZEUS"],
+	["zeus", "ZEUS"],
+	["zeus 1", "ZEUS"],
+	["zeus 2", "ZEUS"]
 ];
 
 f_map_slot_icons = createHashMapFromArray

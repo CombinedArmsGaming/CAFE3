@@ -21,12 +21,13 @@ if (missionNamespace getVariable ["f_var_spawnPickerDialog_respawnHeld", false])
     missionNamespace setVariable ["f_var_spawnPickerDialog_respawnHeld", false];
 };
 
-if (_exitCode == 2) exitWith {
+// Discard changes if closing dialog with cancel button
+if (_exitCode == 3) exitWith {
 
 };
 
-
-if (_exitCode == 1) then
+// Save changes whether exiting with ready button or escape
+if (_exitCode == 1 or _exitCode == 2) then
 {
     private _spawnList = _display displayCtrl IDC_SPAWNPICKER_SPAWNLIST;
 
@@ -52,9 +53,9 @@ if (_exitCode == 1) then
     // Store the player's selection of group
 
     private _groupsList = _display displayCtrl IDC_GROUPSLIST;
-    DEBUG_FORMAT1_LOG("[RESPAWN] Dialog closing, groups list selected index was %1", _groupsList lbText (lbCurSel _groupsList));
+    DEBUG_FORMAT1_LOG("[RESPAWN] Dialog closing, groups list selected index was %1", _groupsList lbData (lbCurSel _groupsList));
     if ((lbCurSel _groupsList) >= 0) then {
-        private _groupName = _groupsList lbText (lbCurSel _groupsList);
+        private _groupName = _groupsList lbData (lbCurSel _groupsList);
         DEBUG_FORMAT1_LOG("[RESPAWN] Storing new group for player: %1", _groupName);
         missionNamespace setVariable ["f_var_lastPlayerGroupName", _groupName];
     };
