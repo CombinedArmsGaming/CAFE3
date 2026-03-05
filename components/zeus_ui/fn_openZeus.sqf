@@ -47,7 +47,9 @@ if (player getVariable ["f_var_turnZeusInvisible", true]) then
 
 	// Start the custom Zeus UI
 	["ui_init"] call f_fnc_zeusUI;
+	#ifdef ENABLE_ZEUS_NOTIFIER
 	["ui_init", MACRO_VARNAME_UI_ID_NOTIFIER] call f_fnc_zeusUI;
+	#endif
 
 	private _eventID = [
 		MACRO_VARNAME_SERVER_NOTIF_EVENT,

@@ -1,3 +1,5 @@
+#define ENABLE_ZEUS_NOTIFIER 
+
 #define LONG_TIME_DEAD 300 // How many seconds should a player be dead before Zeus is notified?
 #define LOW_FPS_VALUE 30 // What should the median FPS be at or below to notify Zeus?
 
