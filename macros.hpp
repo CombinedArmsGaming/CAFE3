@@ -136,7 +136,7 @@ if (!(local OBJ)) exitWith { ARGS remoteExec [#FUNC,OBJ]; }
     #define PREP(fncName) FUNC(fncName) = compile preprocessFileLineNumbers QPATHTOF(fncName)
 #else
     #undef PREP
-    #define PREP(fncName) [QPATHTOF(fncName), QfUNC(fncName)] call CBA_fnc_compileFunction
+    #define PREP(fncName) [QPATHTOF(fncName), QFUNC(fncName)] call CBA_fnc_compileFunction
 #endif
 
 #ifdef DISABLE_COMPILE_CACHE
