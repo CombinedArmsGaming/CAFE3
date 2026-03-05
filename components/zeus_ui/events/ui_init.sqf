@@ -1004,6 +1004,18 @@ case "ui_init": {
 				SQUARE(MACRO_COLOUR_WHITE_OPAQUE)
 			] call _createCtrl;
 
+			// Title
+			private _notifierTitle = [
+				"text",
+				-1,
+				safeZoneW * MACRO_POS_NOTIFIER_TOGGLE_WIDTH,
+				0,
+				safeZoneW * (MACRO_POS_NOTIFIER_WIDTH - MACRO_POS_NOTIFIER_TOGGLE_WIDTH),
+				safeZoneH * (MACRO_POS_NOTIFIER_GAP_DRAGGING_Y),
+				_zeusUI_notifierCtrlGrp,
+				"Notifier"
+			] call _createCtrl;
+
 			// List Tree
 				private _listTree = [
 					"Tree",
