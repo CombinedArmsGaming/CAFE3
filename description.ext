@@ -337,10 +337,15 @@ class Extended_Killed_EventHandlers
 
 
 // ============================================================================================
-
+#define STAGE PreInit
 
 class Extended_PreInit_EventHandlers
 {
+	class DisableCaching
+	{
+		init = "CBA_xeh_isRecompileEnabled_compile = true; CBA_xeh_isRecompileEnabled_functions = true;"
+	};
+
 	class AddCustomSettings
 	{
 		init = "call compile preprocessFileLineNumbers 'components\miscShared\fn_addCustomSettings.sqf'";
@@ -355,6 +360,7 @@ class Extended_PreInit_EventHandlers
 
 #endif
 
+	EVENT_HANDLER(zeus_ui)
 };
 
 

@@ -1,3 +1,5 @@
+#define COMPONENT zeus_ui
+
 #include "../../macros.hpp"
 #include "config\macros.hpp"
 #include "..\..\notifier_macros.hpp"

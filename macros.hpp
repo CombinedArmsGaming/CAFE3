@@ -120,3 +120,40 @@ if (!(local OBJ)) exitWith { ARGS remoteExec [#FUNC,OBJ]; }
 
 #define FULL_KILL_LOG_KEY_SERVER 'f_var_killTracking_##KILL_LOG_NAME##'
 #define FULL_KILL_LOG_KEY_CLIENT 'f_var_killTracking_##KILL_LOG_NAME##_received'
+
+// From CBA script_macros_common https://github.com/CBATeam/CBA_A3/blob/83ee1abecb2b6c0ae32f882d4547d2fbed1158f9/addons/main/script_macros_common.hpp 
+#define DOUBLES(var1,var2) var1##_##var2
+#define TRIPLES(var1,var2,var3) var1##_##var2##_##var3
+#define QUOTE(var1) #var1
+
+// Used for live recompiling, from ACE repo: https://github.com/acemod/ACE3/blob/master/addons/main/script_macros.hpp
+#define FUNC(var1) TRIPLES(f,fnc,var1)
+#define QFUNC(var1) QUOTE(FUNC(var1))
+#define QPATHTOF(var1) QUOTE(components\COMPONENT\DOUBLES(fn,var1).sqf)
+#define QPATHTOSUBF(subfolder,fncName) QUOTE(components\COMPONENT\subfolder\DOUBLES(fn,fncName).sqf)
+
+#ifdef DISABLE_COMPILE_CACHE
+    #undef PREP
+    #define PREP(fncName) FUNC(fncName) = compile preprocessFileLineNumbers QPATHTOF(fncName)
+	#define PREP_SUB(fncName) FUNC(fncName) = compile preprocessFileLineNumbers QPATHTOSUBF(SUB_COMPONENT,fncName)
+#else
+    #undef PREP
+    #define PREP(fncName) [QPATHTOF(fncName), QFUNC(fncName)] call CBA_fnc_compileFunction
+	#define PREP_SUB(fncName) [QPATHTOSUBF(SUB_COMPONENT,fncName), QFUNC(fncName)] call CBA_fnc_compileFunction
+#endif
+
+#ifdef DISABLE_COMPILE_CACHE
+    #define LINKFUNC(x) {call FUNC(x)}
+    #define PREP_RECOMPILE_START    if (isNil "ACE_PREP_RECOMPILE") then {ACE_RECOMPILES = []; ACE_PREP_RECOMPILE = {{call _x} forEach ACE_RECOMPILES;}}; private _recomp = {
+    #define PREP_RECOMPILE_END      }; call _recomp; ACE_RECOMPILES pushBack _recomp;
+#else
+    #define LINKFUNC(x) FUNC(x)
+    #define PREP_RECOMPILE_START ; /* disabled */
+    #define PREP_RECOMPILE_END ; /* disabled */
+#endif
+
+#define EVENT_HANDLER(component)\
+	class component {\
+		init = QUOTE(call COMPILE_SCRIPT(component,DOUBLES(XEH,STAGE)));\
+	};
+#define COMPILE_SCRIPT(component,script) (compile preprocessFileLineNumbers 'components\component\script.sqf')
