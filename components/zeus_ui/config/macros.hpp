@@ -35,6 +35,10 @@
 	#define MACRO_IDC_NOTIFIER_BACKGROUND									3006
 	#define MACRO_IDC_NOTIFIER_BACKGROUND_OUTLINE							3007
 
+	// Notifier - List elements
+	#define MACRO_IDC_NOTIFIER_IMM_RESPAWN_BUTTON							501
+	#define MACRO_IDC_NOTIFIER_RESPAWN_SQUARE_BUTTON						502
+
 	// Presets UI
 	#define MACRO_IDC_PRESETS_CTRLGRP                                       2000
 	#define MACRO_IDC_PRESETS_DUMMYCTRL                                     2001
@@ -66,7 +70,6 @@
 	// Presets - Advanced AI
 	#define MACRO_IDC_PRESETS_ADVANCEDAI_CHECKBOX                                 2300
 	#define MACRO_IDC_PRESETS_ADVANCEDAI_SETTINGS_COVER                           2301
-
 
 
 
