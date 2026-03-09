@@ -27,6 +27,14 @@
 	#define MACRO_IDC_MAIN_UNITS_LISTBOX                                    1003
 	#define MACRO_IDC_MAIN_PRESETS_LISTBOX                                  1004
 
+	// Notifier UI
+	#define MACRO_IDC_NOTIFIER_CTRLGRP										3000
+	#define MACRO_IDC_NOTIFIER_DRAGGING_FRAME								3001
+	#define MACRO_IDC_NOTIFIER_TREE											3004
+	#define MACRO_IDC_NOTIFIER_COLLAPSE_TOGGLE								3005
+	#define MACRO_IDC_NOTIFIER_BACKGROUND									3006
+	#define MACRO_IDC_NOTIFIER_BACKGROUND_OUTLINE							3007
+
 	// Presets UI
 	#define MACRO_IDC_PRESETS_CTRLGRP                                       2000
 	#define MACRO_IDC_PRESETS_DUMMYCTRL                                     2001
@@ -81,6 +89,12 @@
 	#define MACRO_POS_PRESETS_INDENT_X                                      0.01
 	#define MACRO_POS_PRESETS_INDENT_SLIDER_X                               0.1
 
+	// Notifier UI
+	#define MACRO_POS_NOTIFIER_WIDTH										0.12
+	#define MACRO_POS_NOTIFIER_HEIGHT										0.22
+	#define MACRO_POS_NOTIFIER_GAP_DRAGGING_Y								0.02
+	#define MACRO_POS_NOTIFIER_TOGGLE_WIDTH									0.013
+
 	// Other
 	#define MACRO_POS_GAP_X                                                 0.002
 	#define MACRO_POS_GAP_Y                                                 0.004
@@ -119,6 +133,7 @@
 	#define MACRO_VARNAME_UI_MOUSEOFFSET                                    "mouseOffset"
 	#define MACRO_VARNAME_UI_ID_MAIN                                        0
 	#define MACRO_VARNAME_UI_ID_PRESETS                                     1
+	#define MACRO_VARNAME_UI_ID_NOTIFIER									2
 	#define MACRO_VARNAME_UI_SLIDER_CTRLFILL                                "ctrlFill"
 	#define MACRO_VARNAME_UI_SLIDER_CTRLTEXTBOX                             "ctrlTextBox"
 	#define MACRO_VARNAME_UI_SLIDER_CTRLSLIDER                              "ctrlSlider"
@@ -126,6 +141,21 @@
 	#define MACRO_VARNAME_UI_SETTING_MIN                                    "min"
 	#define MACRO_VARNAME_UI_SETTING_MAX                                    "max"
 	#define MACRO_VARNAME_UI_SHOULDHIDE_KEYDOWN                             "shouldHide_keyDown"
+
+	#define MACRO_VARNAME_UI_NOTIFIERCTRLGRP								"ca_zeusUI_notifierCtrlGrp"
+	#define MACRO_VARNAME_UI_POS_NOTIFIERCTRLGRP							"ca_zeusUI_pos_notifierCtrlGrp"
+	#define MACRO_VARNAME_UI_NOTIFIER_TREE									"ca_zeusUI_notifierTree"
+	#define MACRO_VARNAME_UI_NOTIFIER_COLLAPSED								"ca_zeusUI_notifierCollapsed"
+
+
+	// Notifier
+	#define MACRO_VARNAME_NOTIFIER_MAP										"ca_zeusUI_notifier_map"
+	#define MACRO_VARNAME_SERVER_NOTIF_EVENT								"ca_zeusUI_serverNotifEvent"
+	#define MACRO_VARNAME_COLLAPSED_LISTS									"ca_zeusUI_collapsedLists"
+	#define MACRO_VARNAME_VISIBLE_LISTS										"ca_zeusUI_visibleLists"
+	#define MACRO_VARNAME_ALL_LIST_NAMES									"f_var_notifier_allListNames"
+	#define MACRO_VARNAME_LIST_TITLE_HASHMAP								"f_var_notifier_listTitleHashmap"
+	#define MACRO_VARNAME_FPS_LOG											"f_var_notifier_fps"
 
 	// Custom Preset Settings
 	#define MACRO_VARNAME_PRESET_GAI                                        "ca_zeusUI_preset_gAI"

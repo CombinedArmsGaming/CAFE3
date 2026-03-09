@@ -64,6 +64,17 @@ class CA_ZeusUI_ScriptedText : RscText {
 	w = 0;
 	h = 0;
 };
+class CA_ZeusUI_ScriptedTextMulti : RscText {
+	style = ST_LEFT + ST_MULTI + ST_NO_RECT;
+	lineSpacing = 1;
+	font = "RobotoCondensed";
+	sizeEx = 0.032;
+	shadow = 0;
+	x = 0;
+	y = 0;
+	w = 0;
+	h = 0;
+}
 class CA_ZeusUI_ScriptedOutline : RscBox {
 	style = ST_WITH_RECT;
 	shadow = 0;
@@ -100,6 +111,11 @@ class CA_ZeusUI_ScriptedButton : RscButton {
 	h = 0;
 };
 
+class CA_ZeusUI_ScriptedPictureButton : CA_ZeusUI_ScriptedButton {
+	style = ST_PICTURE;
+	colorFocused[] = CURLY(MACRO_COLOUR_BUTTON);
+};
+
 class CA_ZeusUI_ScriptedButton_Red : CA_ZeusUI_ScriptedButton {
 	colorBackground[] = CURLY(MACRO_COLOUR_RED);
 	colorBackgroundActive[] = CURLY(MACRO_COLOUR_RED);
@@ -115,4 +131,13 @@ class CA_ZeusUI_ScriptedTextBox : RscEdit {
 	y = 0;
 	w = 0;
 	h = 0;
+};
+
+class CA_ZeusUI_ScriptedTree : RscTree {
+	font = "RobotoCondensed";
+	sizeEx = 0.032;
+	shadow = 0;
+	colorSelect[] = {0, 0, 0, 0};
+	colorText[] = {1, 1, 1, 1};
+	colorSelectText[] = {1, 1, 1, 1};
 };

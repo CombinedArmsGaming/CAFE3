@@ -32,6 +32,7 @@ private _return = nil;
 private _zeusUI = findDisplay 312;
 private _zeusUI_mainCtrlGrp = uiNamespace getVariable [MACRO_VARNAME_UI_MAINCTRLGRP, controlNull];
 private _zeusUI_presetsCtrlGrp = uiNamespace getVariable [MACRO_VARNAME_UI_PRESETSCTRLGRP, controlNull];
+private _zeusUI_notifierCtrlGrp = uiNamespace getVariable [MACRO_VARNAME_UI_NOTIFIERCTRLGRP, controlNull];
 if (_event != "ui_init" and {isNull _zeusUI_mainCtrlGrp}) exitWith {systemChat "Zeus UI isn't open!"};
 
 
@@ -43,10 +44,12 @@ switch (_event) do {
 
 	#include "events\ui_checkbox_changed.sqf"
 	#include "events\ui_close.sqf"
+	#include "events\ui_collapse.sqf"
 	#include "events\ui_dragging_start.sqf"
 	#include "events\ui_dragging.sqf"
 	#include "events\ui_dragging_stop.sqf"
 	#include "events\ui_init.sqf"
+	#include "events\ui_notifier_refresh.sqf"
 	#include "events\ui_select_category.sqf"
 	#include "events\ui_select_preset.sqf"
 	#include "events\ui_select_unit.sqf"

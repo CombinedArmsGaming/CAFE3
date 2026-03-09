@@ -17,6 +17,12 @@ CLIENT_ONLY;
 
 if(!(player getVariable ["f_var_isZeus",false])) exitWith {}; //Fallback in case the script execution is run on the wrong machine
 
+private _eventID = missionNamespace getVariable "f_var_notifierEH";
+if (isNil "_eventID") then {
+	DEBUG_PRINT_LOG("[ZEUS_UI] Zeus exited without event handler ID set");
+} else {
+	[MACRO_VARNAME_SERVER_NOTIF_EVENT, _eventID] call CBA_fnc_removeEventHandler;
+};
 
 private _pos = getPos curatorCamera; //have to get the positions before the Zeus display closes
 

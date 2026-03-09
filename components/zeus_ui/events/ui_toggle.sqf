@@ -17,6 +17,7 @@ case "ui_toggle": {
 
 	} forEach [
 		_zeusUI_mainCtrlGrp,
-		_zeusUI_presetsCtrlGrp
+		_zeusUI_presetsCtrlGrp,
+		_zeusUI_notifierCtrlGrp
 	];
 };

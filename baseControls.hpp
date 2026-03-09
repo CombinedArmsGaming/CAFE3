@@ -429,3 +429,54 @@ class RscControlsGroupNoVScrollbars: RscControlsGroup
 		width = 0;
 	};
 };
+
+class RscTree
+{
+	deletable = 0;
+	fade = 0;
+	access = 0;
+	type = CT_TREE;
+	colorBackground[] = {0,0,0,0};
+	colorSelect[] = {1,1,1,0.7};
+	colorDisabled[] = {1,1,1,0.25};
+	colorText[] = {1,1,1,1};
+	colorSelectText[] = {0,0,0,1};
+	colorBorder[] = {0,0,0,0};
+	colorSearch[] =
+	{
+		"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.13])",
+		"(profilenamespace getvariable ['GUI_BCG_RGB_G',0.54])",
+		"(profilenamespace getvariable ['GUI_BCG_RGB_B',0.21])",
+		"(profilenamespace getvariable ['GUI_BCG_RGB_A',0.8])"
+	};
+	colorMarked[] = {0.2,0.3,0.7,1};
+	colorMarkedText[] = {0,0,0,1};
+	colorMarkedSelected[] = {0,0.5,0.5,1};
+	multiselectEnabled = 0;
+	colorPicture[] = {1,1,1,1};
+	colorPictureSelected[] = {0,0,0,1};
+	colorPictureDisabled[] = {1,1,1,0.25};
+	colorPictureRight[] = {1,1,1,1};
+	colorPictureRightSelected[] = {0,0,0,1};
+	colorPictureRightDisabled[] = {1,1,1,0.25};
+	colorArrow[] = {1,1,1,1};
+	maxHistoryDelay = 1;
+	shadow = 0;
+	style = ST_LEFT;
+	font = "RobotoCondensed";
+	sizeEx = GUI_TEXT_SIZE_MEDIUM;
+	expandedTexture = "A3\ui_f\data\gui\rsccommon\rsctree\expandedTexture_ca.paa";
+	hiddenTexture = "A3\ui_f\data\gui\rsccommon\rsctree\hiddenTexture_ca.paa";
+	x = 0;
+	y = 0;
+	w = 0.1;
+	h = 0.2;
+	rowHeight = 0.0439091;
+	colorSelectBackground[] = {0,0,0,0.5};
+	colorLines[] = {0,0,0,0};
+	borderSize = 0;
+	expandOnDoubleclick = 1;
+	class ScrollBar : ScrollBar
+	{
+	};
+};

@@ -1,0 +1,38 @@
+This file explains the system for the Zeus notifier.
+
+-- Adding new lists ---
+
+To add new lists, add a new define in notifier_macros.hpp and add it to NOTIFIER_ALL_LISTS in that file. 
+When you wish to add a player to that list, call f_fnc_raiseNotifierEvent like so:
+[NOTIFIER_LIST_*, false] call f_fnc_raiseNotifierEvent
+
+To remove a player, call like so:
+[NOTIFIER_LIST_*, true] call f_fnc_raiseNotifierEvent
+
+If you wish for the player to be added to a list and then automatically removed from the list after a certain amount of time, call like so:
+[NOTIFIER_LIST_*, false, 120] call f_fnc_raiseNotifierEvent
+This will add the player to the list, and automatically remove them from it after 120 seconds. 
+They can be removed earlier than this timeout, and the timer can be refreshed (or changed or removed) by calling the function again.
+
+--- Implementation info ---
+
+The server maintains a public hashmap for every list in the notifier.
+The hashmap is keyed by string names of lists, defined as NOTIFIER_LIST_* macros in notifier_macros.hpp.
+The hashmap values are arrays of player names that are currently in the respective list.
+
+Players are added to lists on their clients volition. 
+This distributes any required processing power and allows events to be raised when the relevant action is taken rather than requiring continuous monitoring by the server.
+When a client wishes to be added to a list, it raises a CBA server event named NOTIFIER_CLIENT_NEW_NOTIF_EVENT.
+It passes parameters in the form [string list name, string player name, bool removeFromList].
+	list name should be defined in notifier_macros.hpp
+	removeFromList should be set to true if the client is requesting to be removed from the list, and false otherwise
+
+The server's event handler is created in .\init_component.sqf.
+When the server handles an event, it updates its hashmap and then raises MACRO_VARNAME_SERVER_NOTIF_EVENT events on every Zeus machine.
+These events contain an argument which is an array containing the updated list's name.
+Zeus machines then update their UI with the new hashmap data. 
+The Zeus event handler is created in .\fn_openZeus.sqf.
+Zeus machines also get the hashmap data every time the Zeus UI is opened.
+
+The UI is a tree display. When a list is added to the tree, it is given the highest value on the tree.
+This value is stored in the visibleLists hashmap. The tree is sorted when it is rebuilt on the next UI opening.

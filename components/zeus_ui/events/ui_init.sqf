@@ -6,6 +6,7 @@ case "ui_init": {
 	// Determine which UI to initialise
 	// 0: Main UI
 	// 1: Presets UI
+	// 2: Notifier UI
 	private _menuID = _args param [0, MACRO_VARNAME_UI_ID_MAIN];
 
 	// Create a function to simplify creating controls
@@ -16,7 +17,7 @@ case "ui_init": {
 
 		switch (toLower _class) do {
 			case "controlsgroup": {
-				_ctrl = _zeusUI ctrlCreate ["RscControlsGroup", _idc];
+				_ctrl = _zeusUI ctrlCreate ["RscControlsGroup", _idc, _ctrlGrp];
 				_ctrl ctrlSetPixelPrecision 2;
 			};
 			case "box": {
@@ -50,6 +51,10 @@ case "ui_init": {
 				};
 
 				_ctrl = _zeusUI ctrlCreate [format ["CA_ZeusUI_ScriptedButton%1", _suffix], _idc, _ctrlGrp];
+				_ctrl ctrlSetText (_this select 7);
+			};
+			case "picturebutton": {
+				_ctrl = _zeusUI ctrlCreate ["CA_ZeusUI_ScriptedPictureButton", _idc, _ctrlGrp];
 				_ctrl ctrlSetText (_this select 7);
 			};
 			case "checkbox": {
@@ -97,6 +102,11 @@ case "ui_init": {
 				_ctrl = _zeusUI ctrlCreate ["CA_ZeusUI_ScriptedTextBox", _idc, _ctrlGrp];
 				_ctrl ctrlSetBackgroundColor SQUARE(MACRO_COLOUR_BACKGROUND);
 				_ctrl ctrlSetPixelPrecision 2;
+			};
+			case "tree": {
+				_ctrl = _zeusUI ctrlCreate ["CA_ZeusUI_ScriptedTree", _idc, _ctrlGrp];
+				_ctrl ctrlSetPixelPrecision 2;
+				_ctrl ctrlSetTextColor SQUARE(MACRO_COLOUR_WHITE_TEXT);
 			};
 		};
 
@@ -933,5 +943,214 @@ case "ui_init": {
 				_zeusUI_presetsCtrlGrp ctrlCommit 0;
 			};
 		};
-	};
+
+
+
+		// Notifier UI
+		case MACRO_VARNAME_UI_ID_NOTIFIER: {
+			// Create the controls
+			// Fetch the last main control group position from the profile namespace
+			(profileNamespace getVariable [MACRO_VARNAME_UI_POS_NOTIFIERCTRLGRP, [
+				safeZoneX + safeZoneW * 0.73,
+				safeZoneY + safeZoneH * (1 - MACRO_POS_NOTIFIER_HEIGHT - 0.01)
+			]]) params ["_posX", "_posY"];
+
+			// Main Control Group
+			_zeusUI_notifierCtrlGrp = [
+				"ControlsGroup",
+				MACRO_IDC_NOTIFIER_CTRLGRP,
+				_posX,
+				_posY,
+				safeZoneW * MACRO_POS_NOTIFIER_WIDTH,
+				safeZoneH * MACRO_POS_NOTIFIER_HEIGHT
+			] call _createCtrl;
+
+			uiNamespace setVariable [MACRO_VARNAME_UI_NOTIFIERCTRLGRP, _zeusUI_notifierCtrlGrp];
+
+			// Dragging frame
+			private _ctrlDraggingFrame = [
+				"Frame",
+				MACRO_IDC_NOTIFIER_DRAGGING_FRAME,
+				safeZoneW * MACRO_POS_NOTIFIER_TOGGLE_WIDTH,
+				0,
+				safeZoneW * (MACRO_POS_NOTIFIER_WIDTH - MACRO_POS_NOTIFIER_TOGGLE_WIDTH),
+				safeZoneH * MACRO_POS_NOTIFIER_GAP_DRAGGING_Y,
+				_zeusUI_notifierCtrlGrp,
+				SQUARE(MACRO_COLOUR_BACKGROUND)
+			] call _createCtrl;
+			_ctrlDraggingFrame ctrlAddEventHandler ["MouseButtonDown", {["ui_dragging_start", _this] call f_fnc_zeusUI}];
+
+			// Background
+			[
+				"Box",
+				MACRO_IDC_NOTIFIER_BACKGROUND,
+				0,
+				0,
+				safeZoneW * MACRO_POS_NOTIFIER_WIDTH,
+				safeZoneH * MACRO_POS_NOTIFIER_HEIGHT,
+				_zeusUI_notifierCtrlGrp,
+				SQUARE(MACRO_COLOUR_BACKGROUND)
+			] call _createCtrl;
+
+			// Background Outline
+			[
+				"Outline",
+				MACRO_IDC_NOTIFIER_BACKGROUND_OUTLINE,
+				0,
+				0,
+				safeZoneW * MACRO_POS_NOTIFIER_WIDTH,
+				safeZoneH * MACRO_POS_NOTIFIER_HEIGHT,
+				_zeusUI_notifierCtrlGrp,
+				SQUARE(MACRO_COLOUR_WHITE_OPAQUE)
+			] call _createCtrl;
+
+			// Title
+			private _notifierTitle = [
+				"text",
+				-1,
+				safeZoneW * MACRO_POS_NOTIFIER_TOGGLE_WIDTH,
+				0,
+				safeZoneW * (MACRO_POS_NOTIFIER_WIDTH - MACRO_POS_NOTIFIER_TOGGLE_WIDTH),
+				safeZoneH * (MACRO_POS_NOTIFIER_GAP_DRAGGING_Y),
+				_zeusUI_notifierCtrlGrp,
+				"Notifier"
+			] call _createCtrl;
+
+			// List Tree
+				private _listTree = [
+					"Tree",
+					MACRO_IDC_NOTIFIER_TREE,
+					0,
+					safeZoneH * (MACRO_POS_TEXT_HEIGHT + MACRO_POS_GAP_Y),
+					safeZoneW * MACRO_POS_NOTIFIER_WIDTH,
+					safeZoneH * (MACRO_POS_NOTIFIER_HEIGHT - MACRO_POS_TEXT_HEIGHT - MACRO_POS_GAP_Y),
+					_zeusUI_notifierCtrlGrp
+				] call _createCtrl;
+
+				// Add event handlers to save which lists are collapsed between openings of the UI
+				_listTree ctrlAddEventHandler ["TreeCollapsed", {
+					params ["_tree", "_path"];
+					private _listName = _tree tvData _path;
+					private _collapsedLists = uiNamespace getVariable [MACRO_VARNAME_COLLAPSED_LISTS, []];
+					_collapsedLists pushBackUnique _listName;
+					uiNamespace setVariable [MACRO_VARNAME_COLLAPSED_LISTS, _collapsedLists];
+					DEBUG_FORMAT2_LOG("[ZEUS_NOTIFIER] Collapsed list %1. Collapsed lists now: %2", _listName, _collapsedLists);
+				}];
+
+				_listTree ctrlAddEventHandler ["TreeExpanded", {
+					params ["_tree", "_path"];
+					private _listName = _tree tvData _path;
+					private _collapsedLists = uiNamespace getVariable [MACRO_VARNAME_COLLAPSED_LISTS, []];
+					private _listIdx = _collapsedLists find _listName;
+					if (_listIdx > -1) then {
+						_collapsedLists deleteAt _listIdx;
+						DEBUG_FORMAT2_LOG("[ZEUS_NOTIFIER] Expanded list %1. Collapsed lists now: %2", _listName, _collapsedLists);
+					} else {
+						DEBUG_FORMAT2_LOG("[ZEUS_NOTIFIER] Expanded list %1 but it was not in the collapsed lists array (%2)", _listName, _collapsedLists);
+					};
+					uiNamespace setVariable [MACRO_VARNAME_COLLAPSED_LISTS, _collapsedLists];
+				}];
+
+				// Add all lists with content to the tree
+					// Get the notif hashmap
+					private _notifHashMap = missionNamespace getVariable [MACRO_VARNAME_NOTIFIER_MAP, false];
+					if (_notifHashMap isEqualTo false) exitWith {
+						private _str = "[ZEUS_NOTIFIER] Client: Notifier refresh event raised but notifier map does not exist.";
+						DEBUG_PRINT_CHAT(_str);
+						DEBUG_PRINT_LOG(_str);
+					};
+
+					// Get the list title hashmap
+					private _listTitleHashmap = missionNamespace getVariable MACRO_VARNAME_LIST_TITLE_HASHMAP;
+					if (isNil "_listTitleHashmap") exitWith {
+						DEBUG_PRINT_LOG("[ZEUS_NOTIFIER] Client: Could not find list title hashmap!");
+					};
+
+					// Get the hashmap of previously visible lists (key: list name, value: position in tree, highest value on top)
+					private _visibleLists = uiNamespace getVariable [MACRO_VARNAME_VISIBLE_LISTS, createHashMap];
+					// Dead players list always has value 0 so it's on the bottom
+					_visibleLists set [NOTIFIER_LIST_DEAD_PLAYERS # 0, 0];
+					_maxValue = selectMax (values _visibleLists);
+
+					// Add any lists with content
+					{
+						private _listName = _x;
+						private _listContents = _y;
+						// Add to the tree if there is something in the list
+						if (count _listContents > 0) then {
+							// Add the list title
+							private _listIndex = _listTree tvAdd [[], _listTitleHashmap get _listName];	
+							_listTree tvSetData [[_listIndex], _listName];
+							// Add the list contents below the title
+							{
+								_listTree tvAdd [[_listIndex], _x];
+							} forEach _listContents;
+
+							if (_listName in _visibleLists) then {
+								// If the list was visible last time, keep the same value so it is sorted the same
+								_listTree tvSetValue [[_listIndex], _visibleLists get _listName];
+							} else {
+								// If the list was not visible last time, set its value to be higher than any other so it goes on top
+								_listTree tvSetValue [[_listIndex], _maxValue + 1];
+								// Add to visible lists
+								_visibleLists insert [[_listName, _maxValue + 1]];
+								// Update the max value in case there are multiple new lists
+								_maxValue = _maxValue + 1;
+							};
+						};
+					} forEach _notifHashMap;
+
+				uiNamespace setVariable [MACRO_VARNAME_VISIBLE_LISTS, _visibleLists];
+
+				tvExpandAll _listTree;
+				_listTree tvSortByValue [[]];
+
+				// Restore collapsed lists
+					private _collapsedLists = uiNamespace getVariable [MACRO_VARNAME_COLLAPSED_LISTS, []];
+					
+					{
+						// Search for the correct list in the tree
+						private _listName = _x;
+						for "_i" from 0 to ((_listTree tvCount []) - 1) do {
+							if ((_listTree tvData [_i]) isEqualTo _listName) then {
+								_listTree tvCollapse [_i];
+								break;
+							};
+						};
+					} forEach _collapsedLists;
+
+				uiNamespace setVariable [MACRO_VARNAME_UI_NOTIFIER_TREE, _listTree];
+
+			
+			
+			// Set up the collapse button with the collapsed arrow or extended arrow, depending on if it was previously collapsed or not
+			private _notifierCollapsed = profileNamespace getVariable [MACRO_VARNAME_UI_NOTIFIER_COLLAPSED, false];
+
+			private _pictureString = if (_notifierCollapsed) then {"A3\ui_f\data\gui\rsccommon\rsctree\hiddenTexture_ca.paa"} else {"A3\ui_f\data\gui\rsccommon\rsctree\expandedTexture_ca.paa"};
+
+			// Collapse toggle
+			private _collapseButton = [
+				"picturebutton",
+				MACRO_IDC_NOTIFIER_COLLAPSE_TOGGLE,
+				0,
+				0,
+				safeZoneW * MACRO_POS_NOTIFIER_TOGGLE_WIDTH,
+				safeZoneH * (MACRO_POS_NOTIFIER_GAP_DRAGGING_Y),
+				_zeusUI_notifierCtrlGrp,
+				_pictureString
+			] call _createCtrl;
+
+			// Collapse/expand the window to the correct initial state
+			["ui_collapse", [_collapseButton, _notifierCollapsed]] call f_fnc_zeusUI;
+
+			_collapseButton ctrlAddEventHandler ["ButtonClick", {
+				params ["_ctrl"];
+				private _notifierCollapsed = profileNamespace getVariable [MACRO_VARNAME_UI_NOTIFIER_COLLAPSED, false];
+				profileNamespace setVariable [MACRO_VARNAME_UI_NOTIFIER_COLLAPSED, !_notifierCollapsed];
+
+
+				["ui_collapse", [_ctrl, !_notifierCollapsed]] call f_fnc_zeusUI;
+			}];
+		};
+	}
 };
