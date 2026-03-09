@@ -43,7 +43,7 @@ if (_didFirstSpawn) exitWith
 
 		// Check if the x and y of the spawn location and the player's location are close enough
 		private _sameLocation = true;
-		private _tolerance = 1;
+		private _tolerance = 20;
 		{
 			if (abs (_x - (_spawnLocation # _forEachIndex)) > _tolerance) then {
 				_sameLocation = false;
