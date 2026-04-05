@@ -13,7 +13,6 @@ if !EXISTS(f_dict_insignia_custom) then
 		["med_vic_alt", "insignia_GI_MED_VIC_ALT"],
         ["co",          "insignia_GI_CO"],
         ["xo",          "insignia_GI_XO"],
-        ["sur",         "insignia_GI_Surgeon"],
         ["log",         "insignia_GI_LOG"],
         ["log_sl",      "insignia_GI_LOG_SL"],
         ["log_vic",     "insignia_GI_LOG_SL_VIC"],
