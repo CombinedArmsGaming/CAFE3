@@ -159,7 +159,7 @@ COPY_LOADOUT(sl,ftl);   // SLs will be identical to FTLs.  Because FTLs get the 
 
 // Surgeon Loadout (Has PAK)
 
-_baseLoadout = [[["arifle_MXC_F","","acc_flashlight","optic_ACO_grn",["30Rnd_65x39_caseless_mag",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",17],[],""],["U_B_CombatUniform_mcam",[["ACE_packingBandage",1],["ACE_fieldDressing",5],["ACE_splint",1],["ACE_tourniquet",2],["ACE_salineIV",1],["ACE_quikclot",1],["ACE_Canteen",1],["ACE_Flashlight_XL50",1],["ACE_MapTools",1],["ACRE_PRC343",1],["ACE_painkillers",2,10]]],["V_PlateCarrier1_rgr",[["HandGrenade",1,1],["SmokeShell",10,1],["30Rnd_65x39_caseless_green",6,30],["30Rnd_65x39_caseless_green_mag_Tracer",2,30],["16Rnd_9x21_Mag",2,17]]],["B_Carryall_khk",[["ACE_morphine",10],["ACE_epinephrine",10],["ACE_packingBandage",20],["ACE_elasticBandage",20],["ACE_adenosine",5],["ACE_splint",10],["ACE_tourniquet",8],["FSGm_ItemMedicBag",1],["ACE_surgicalKit",1],["ACE_EntrenchingTool",1],["ACE_quikclot",5],["ACE_personalAidKit",1],["ACE_bloodIV",8],["ACE_bloodIV_500",8]]],"H_HelmetB_snakeskin","",["Binocular","","","",[],[],""],["ItemMap","ItemGPS","","ItemCompass","ItemWatch","NVGoggles"]],[]];
+_baseLoadout = [[["arifle_MXC_F","","acc_flashlight","optic_ACO_grn",["30Rnd_65x39_caseless_mag",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",17],[],""],["U_B_CombatUniform_mcam",[["ACE_packingBandage",1],["ACE_fieldDressing",5],["ACE_splint",1],["ACE_tourniquet",2],["ACE_salineIV",1],["ACE_quikclot",1],["ACE_Canteen",1],["ACE_Flashlight_XL50",1],["ACE_MapTools",1],["ACRE_PRC343",1],["ACE_painkillers",2,10]]],["V_PlateCarrier1_rgr",[["HandGrenade",1,1],["SmokeShell",10,1],["30Rnd_65x39_caseless_mag",6,30],["30Rnd_65x39_caseless_mag_Tracer",2,30],["16Rnd_9x21_Mag",2,17]]],["B_Carryall_khk",[["ACE_morphine",10],["ACE_epinephrine",10],["ACE_packingBandage",20],["ACE_elasticBandage",20],["ACE_adenosine",5],["ACE_splint",10],["ACE_tourniquet",8],["FSGm_ItemMedicBag",1],["ACE_surgicalKit",1],["ACE_EntrenchingTool",1],["ACE_quikclot",5],["ACE_personalAidKit",1],["ACE_bloodIV",8],["ACE_bloodIV_500",8]]],"H_HelmetB_snakeskin","",["Binocular","","","",[],[],""],["ItemMap","ItemGPS","","ItemCompass","ItemWatch","NVGoggles"]],[]];
 
 CREATE_LOADOUT(sur,_baseLoadout);
 COPY_ADDONS(sur,rif);
@@ -167,7 +167,7 @@ COPY_ADDONS(sur,rif);
 
 // Medic Loadout (No PAK)
 
-_baseLoadout = [[["arifle_MXC_F","","acc_flashlight","optic_ACO_grn",["30Rnd_65x39_caseless_mag",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",17],[],""],["U_B_CombatUniform_mcam",[["ACE_packingBandage",1],["ACE_fieldDressing",5],["ACE_splint",1],["ACE_tourniquet",2],["ACE_salineIV",1],["ACE_quikclot",1],["ACE_Canteen",1],["ACE_Flashlight_XL50",1],["ACE_MapTools",1],["ACRE_PRC343",1],["ACE_painkillers",2,10]]],["V_PlateCarrier1_rgr",[["HandGrenade",1,1],["SmokeShell",10,1],["30Rnd_65x39_caseless_green",6,30],["30Rnd_65x39_caseless_green_mag_Tracer",2,30],["16Rnd_9x21_Mag",2,17]]],["B_Carryall_khk",[["ACE_morphine",8],["ACE_epinephrine",8],["ACE_packingBandage",15],["ACE_elasticBandage",25],["ACE_adenosine",5],["ACE_splint",6],["ACE_tourniquet",6],["FSGm_ItemMedicBag",1],["ACE_surgicalKit",1],["ACE_EntrenchingTool",1],["ACE_quikclot",5],["ACE_salineIV",8],["ACE_salineIV_500",8],["ACE_fieldDressing",10],["SmokeShell",4,1]]],"H_HelmetB_snakeskin","",["Binocular","","","",[],[],""],["ItemMap","ItemGPS","","ItemCompass","ItemWatch","NVGoggles"]],[]];
+_baseLoadout = [[["arifle_MXC_F","","acc_flashlight","optic_ACO_grn",["30Rnd_65x39_caseless_mag",30],[],""],[],["hgun_P07_F","","","",["16Rnd_9x21_Mag",17],[],""],["U_B_CombatUniform_mcam",[["ACE_packingBandage",1],["ACE_fieldDressing",5],["ACE_splint",1],["ACE_tourniquet",2],["ACE_salineIV",1],["ACE_quikclot",1],["ACE_Canteen",1],["ACE_Flashlight_XL50",1],["ACE_MapTools",1],["ACRE_PRC343",1],["ACE_painkillers",2,10]]],["V_PlateCarrier1_rgr",[["HandGrenade",1,1],["SmokeShell",10,1],["30Rnd_65x39_caseless_mag",6,30],["30Rnd_65x39_caseless_mag_Tracer",2,30],["16Rnd_9x21_Mag",2,17]]],["B_Carryall_khk",[["ACE_morphine",8],["ACE_epinephrine",8],["ACE_packingBandage",15],["ACE_elasticBandage",25],["ACE_adenosine",5],["ACE_splint",6],["ACE_tourniquet",6],["FSGm_ItemMedicBag",1],["ACE_surgicalKit",1],["ACE_EntrenchingTool",1],["ACE_quikclot",5],["ACE_salineIV",8],["ACE_salineIV_500",8],["ACE_fieldDressing",10],["SmokeShell",4,1]]],"H_HelmetB_snakeskin","",["Binocular","","","",[],[],""],["ItemMap","ItemGPS","","ItemCompass","ItemWatch","NVGoggles"]],[]];
 
 CREATE_LOADOUT(med,_baseLoadout);
 COPY_ADDONS(med,rif);
@@ -311,7 +311,7 @@ ADD_PISTOL_AMMO_TO_CRATE(med,rif,12);
 ADD_RIFLE_AMMO_TO_CRATE(med,rif,50);
 ADD_RIFLE_AMMO_TO_CRATE(med,ar,15);
 ADD_RIFLE_AMMO_TO_CRATE(med,crew,4);
-ADD_RIFLE_AMMO_TO_CRATE(small,mk,10);
+ADD_RIFLE_AMMO_TO_CRATE(med,mk,10);
 ADD_RIFLE_GRENADES_TO_CRATE(med,ftl,10);
 
 ADD_ITEMS_TO_CRATE(med,"30Rnd_65x39_caseless_mag_Tracer",20);
