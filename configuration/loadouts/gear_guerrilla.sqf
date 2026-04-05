@@ -143,6 +143,7 @@ ADD_VEST(rif,"V_TacVest_blk");
 // Commander Loadout
 
 _baseLoadout = [[["arifle_TRG20_F","","acc_flashlight","optic_ACO_grn",["30Rnd_556x45_Stanag_Tracer_Yellow",30],[],""],[],["hgun_ACPC2_F","","","",["9Rnd_45ACP_Mag",8],[],""],["U_BG_leader",[["ACE_tourniquet",2],["ACE_splint",1],["ACE_packingBandage",1],["ACE_fieldDressing",5],["ACE_elasticBandage",1],["ACE_salineIV",1],["ACRE_PRC343",1],["ACE_painkillers",2,10]]],["V_BandollierB_oli",[["ACE_MapTools",1],["ACE_Flashlight_XL50",1],["SmokeShell",2,1],["9Rnd_45ACP_Mag",2,8],["30Rnd_556x45_Stanag_Tracer_Yellow",5,30],["SmokeShellRed",2,1],["SmokeShellBlue",2,1]]],[],"H_Hat_grey","",["Rangefinder","","","",[],[],""],["ItemMap","ItemGPS","","ItemCompass","ItemWatch",""]],[]];
+
 CREATE_LOADOUT(co,_baseLoadout);
 
 
